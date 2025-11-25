@@ -1,6 +1,7 @@
 # OpenHands Skills Registry
 
 Public registry of **Skills** for [OpenHands](https://github.com/OpenHands/OpenHands) - reusable guidelines that customize agent behavior.
+Check the [documentation](https://docs.openhands.dev/overview/skills) for more information.
 
 > **Note**: Skills were previously called Microagents. The `.openhands/microagents/` folder path still works for backward compatibility.
 
