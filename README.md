@@ -24,12 +24,8 @@ Always loaded as part of the agent's context, providing baseline knowledge and g
 - Project setup and build instructions
 - General development guidelines
 
-**Frontmatter:** Optional
+**Frontmatter:** Not used
 ```markdown
----
-agent: CodeActAgent  # Optional: specify which agent this applies to
----
-
 # Repository Purpose
 This project is a web application built with React and Node.js...
 ```
@@ -104,10 +100,6 @@ We welcome contributions! Skills in this registry help the entire OpenHands comm
 
 #### General Skill Template
 ```markdown
----
-agent: CodeActAgent
----
-
 # Skill Name
 
 ## Overview
@@ -168,13 +160,18 @@ Example code or workflow
 
 ## Skill Frontmatter Reference
 
-### Required Fields (for keyword-triggered skills only)
+### General Skills
+General skills do not use frontmatter. They should start directly with the markdown content.
+
+### Keyword-Triggered Skills
+
+#### Required Fields
 
 | Field | Description | Example |
 |-------|-------------|---------|
 | `triggers` | List of keywords that activate the skill | `triggers: [git, github, gitlab]` |
 
-### Optional Fields
+#### Optional Fields
 
 | Field | Description | Default |
 |-------|-------------|---------|
