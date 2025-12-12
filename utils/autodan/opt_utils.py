@@ -212,7 +212,7 @@ def crossover(str1, str2, num_points):
             new_para2.extend(para2[last_swap:])
         else:
             new_para1.extend(para2[last_swap:])
-            new_para2.extend(para2[last_swap:])
+            new_para2.extend(para1[last_swap:])
 
         new_paragraphs1.append(" ".join(new_para1))
         new_paragraphs2.append(" ".join(new_para2))
