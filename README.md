@@ -17,6 +17,66 @@
 </a>
 
 
+## 🔥 Latest Results on Frontier Models (Dec 2025)
+
+CKA-Agent demonstrates consistent high attack success rates against the latest frontier models, including **GPT-5.2**, **Gemini-3.0-Pro**, and **Claude-Haiku-4.5**. The results are summarized below:
+
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">Model</th>
+      <th colspan="4" align="center">HarmBench</th>
+      <th colspan="4" align="center">StrongREJECT</th>
+    </tr>
+    <tr>
+      <th>FS ↑</th>
+      <th>PS ↑</th>
+      <th>V ↓</th>
+      <th>R ↓</th>
+      <th>FS ↑</th>
+      <th>PS ↑</th>
+      <th>V ↓</th>
+      <th>R ↓</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>🟢 GPT-5.2</b></td>
+      <td><b>0.889</b></td>
+      <td>0.079</td>
+      <td>0.024</td>
+      <td>0.008</td>
+      <td><b>0.932</b></td>
+      <td>0.056</td>
+      <td>0.006</td>
+      <td>0.006</td>
+    </tr>
+    <tr>
+      <td><b>🟣 Gemini-3.0-Pro</b></td>
+      <td><b>0.881</b></td>
+      <td>0.087</td>
+      <td>0.000</td>
+      <td>0.032</td>
+      <td><b>0.951</b></td>
+      <td>0.037</td>
+      <td>0.006</td>
+      <td>0.006</td>
+    </tr>
+    <tr>
+      <td><b>🟠 Claude-Haiku-4.5</b></td>
+      <td><b>0.960</b></td>
+      <td>0.024</td>
+      <td>0.008</td>
+      <td>0.008</td>
+      <td><b>0.969</b></td>
+      <td>0.025</td>
+      <td>0.006</td>
+      <td>0.000</td>
+    </tr>
+  </tbody>
+</table>
+
+> **Metrics:** FS = Full Success, PS = Partial Success, V = Vacuous, R = Refusal. Results collected in December 2025.
 
 ## Overview
 This repository contains the official implementation of **CKA-Agent**, a novel approach to bypassing the guardrails of commercial large language models (LLMs) through **harmless prompt weaving** and **adaptive tree search** techniques. 
