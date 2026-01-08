@@ -68,7 +68,7 @@ When OpenHands works with a repository, it:
 
 **Note**: V1 also supports loading from `.openhands/skills/` for backward compatibility.
 
-## Types of Skills/Skills
+## Types of Skills
 
 Most skills use markdown files with YAML frontmatter. For repository agents (repo.md), the frontmatter is optional - if not provided, the file will be loaded with default settings as a repository agent.
 
