@@ -10,7 +10,7 @@ Skills are specialized prompts that enhance OpenHands with domain-specific knowl
 
 This directory (`OpenHands/skills/`) contains shareable skills that will be used in V1 conversations. For V0 conversations, the system continues to use skills from the same underlying files.
 
-## Sources of Skills/Skills
+## Sources of Skills
 
 OpenHands loads skills (V1) or skills (V0) from two sources:
 
