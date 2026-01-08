@@ -1,11 +1,10 @@
 ---
-description: When using npm to install packages, you will not be able to use an interactive
-  shell, and it may be hard to confirm your actions.
+name: npm
+description: Handle npm package installation in non-interactive environments by piping confirmations. Use when installing Node.js packages that require user confirmation prompts.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: npm
 triggers:
 - npm
 ---

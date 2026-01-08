@@ -1,13 +1,10 @@
 ---
-description: PdfLatex is a tool that converts Latex sources into PDF. This is specifically
-  very important for researchers, as they use it to publish their findings. It could
-  be installed very easily using Linux terminal, though this seems an annoying task
-  on Windows. Installation commands are given below.
+name: pdflatex
+description: Install and use pdflatex to compile LaTeX documents into PDFs on Linux. Use when generating academic papers, research publications, or any documents written in LaTeX.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: pdflatex
 triggers:
 - pdflatex
 ---

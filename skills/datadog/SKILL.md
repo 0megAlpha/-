@@ -1,10 +1,9 @@
 ---
-description: 'Before performing any Datadog operations, first check if the required
-  environment variables are set:'
+name: datadog
+description: Query and analyze Datadog logs, metrics, APM traces, and monitors using the Datadog API. Use when debugging production issues, monitoring application performance, or investigating alerts.
 metadata:
   type: knowledge
   version: 1.0.0
-name: datadog
 triggers:
 - datadog
 ---

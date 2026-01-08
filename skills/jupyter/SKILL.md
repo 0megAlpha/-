@@ -1,11 +1,10 @@
 ---
-description: Notebooks are JSON files. Cells are in `nb['cells']`, each has `source`
-  (list of strings) and `cell_type` ('code', 'markdown', or 'raw').
+name: jupyter
+description: Read, modify, execute, and convert Jupyter notebooks programmatically. Use when working with .ipynb files for data science workflows, including editing cells, clearing outputs, or converting to other formats.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: jupyter
 triggers:
 - ipynb
 - jupyter

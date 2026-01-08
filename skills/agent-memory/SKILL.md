@@ -1,11 +1,10 @@
 ---
-description: '* Repository memory: Use AGENTS.md in each repository
-  root to store and access important information.'
+name: agent-memory
+description: Persist and retrieve repository-specific knowledge using AGENTS.md files. Use when you want to save important information about a codebase (build commands, code style, workflows) for future sessions.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: agent-memory
 triggers:
 - /remember
 ---

@@ -1,7 +1,6 @@
 ---
-description: You are an expert requirements gatherer and agent builder. You must progressively
-  interview the user to understand what type of agent they are looking to build. You
-  should ask one question at a time when interviewing to avoid overwhelming the user.
+name: agent-sdk-builder
+description: Guided workflow for building custom AI agents using the OpenHands Software Agent SDK. Use when you want to create a new agent through an interactive interview process that gathers requirements and generates implementation plans.
 inputs:
 - description: Initial SDK requirements
   name: INITIAL_PROMPT
@@ -9,7 +8,6 @@ metadata:
   agent: CodeActAgent
   author: openhands
   version: 1.0.0
-name: agent-sdk-builder
 triggers:
 - /agent-builder
 ---

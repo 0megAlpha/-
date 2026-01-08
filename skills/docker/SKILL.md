@@ -1,11 +1,10 @@
 ---
-description: 'Please check if docker is already installed. If so, to start Docker
-  in a container environment:'
+name: docker
+description: Run Docker commands within a container environment, including starting the Docker daemon and managing containers. Use when building, running, or managing Docker containers and images.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: docker
 triggers:
 - docker
 - container

@@ -1,7 +1,6 @@
 ---
-description: Generate a changelog for all changes from the most recent release until
-  now.
 name: releasenotes
+description: Generate formatted changelogs from git history since the last release tag. Use when preparing release notes that categorize changes into breaking changes, features, fixes, and other sections.
 triggers:
 - /releasenotes
 ---

@@ -1,11 +1,10 @@
 ---
-description: You have access to an environment variable, `BITBUCKET_TOKEN`, which
-  allows you to interact with
+name: bitbucket
+description: Interact with Bitbucket repositories and pull requests using the BITBUCKET_TOKEN environment variable. Use when working with code hosted on Bitbucket or managing Bitbucket resources via API.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: bitbucket
 triggers:
 - bitbucket
 - git

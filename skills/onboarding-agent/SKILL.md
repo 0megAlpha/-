@@ -1,12 +1,10 @@
 ---
-description: In **<= 5 progressive questions**, interview the user to identify their
-  coding goal and constraints, then generate a **concrete, step-by-step plan** that
-  maximizes the likelihood of a **successful pull request (PR)**.
+name: onboarding-agent
+description: Interactive onboarding workflow that interviews users to understand their coding goals and generates PR-ready implementation plans. Use when starting a new development task to ensure clear requirements and structured execution.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: onboarding-agent
 triggers:
 - /onboard
 ---

@@ -1,11 +1,10 @@
 ---
-description: You have access to an environment variable, `GITLAB_TOKEN`, which allows
-  you to interact with
+name: gitlab
+description: Interact with GitLab repositories, merge requests, and APIs using the GITLAB_TOKEN environment variable. Use when working with code hosted on GitLab or managing GitLab resources.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: gitlab
 triggers:
 - gitlab
 - git
