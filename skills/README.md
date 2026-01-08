@@ -63,7 +63,7 @@ your-repository/
 
 When OpenHands works with a repository, it:
 
-1. Loads repository-specific instructions from `.openhands/skills/repo.md` (V0) or `.openhands/skills/` (V1) if present
+1. Loads repository-specific instructions from `.openhands/microagents/repo.md` (V0) or `.openhands/skills/` (V1) if present
 2. Loads relevant knowledge agents based on keywords in conversations
 
 **Note**: V1 also supports loading from `.openhands/skills/` for backward compatibility.
