@@ -1,5 +1,5 @@
 ---
-description: This agent helps create new microagents in the `.openhands/microagents`
+description: This agent helps create new skills in the `.openhands/skills`
   directory by providing guidance and templates.
 metadata:
   agent: CodeActAgent
@@ -8,25 +8,25 @@ metadata:
 name: add-agent
 triggers:
 - new agent
-- new microagent
+- new skill
 - create agent
 - create an agent
-- create microagent
-- create a microagent
+- create skill
+- create a skill
 - add agent
 - add an agent
-- add microagent
-- add a microagent
-- microagent template
+- add skill
+- add a skill
+- skill template
 ---
 
-This agent helps create new microagents in the `.openhands/microagents` directory by providing guidance and templates.
+This agent helps create new skills in the `.openhands/skills` directory by providing guidance and templates.
 
-Microagents are specialized prompts that provide context and capabilities for specific domains or tasks. They are activated by trigger words in the conversation and help the AI assistant understand what capabilities are available, how to use specific APIs or tools, what limitations exist, and how to handle common scenarios.
+Skills are specialized prompts that provide context and capabilities for specific domains or tasks. They are activated by trigger words in the conversation and help the AI assistant understand what capabilities are available, how to use specific APIs or tools, what limitations exist, and how to handle common scenarios.
 
-When creating a new microagent:
+When creating a new skill:
 
-- Create a markdown file in `.openhands/microagents/` with an appropriate name (e.g., `github.md`, `google_workspace.md`)
+- Create a markdown file in `.openhands/skills/` with an appropriate name (e.g., `github.md`, `google_workspace.md`)
 - Include YAML frontmatter with metadata (name, type, version, agent, triggers)
 - type is by DEFAULT knowledge
 - version is DEFAULT 1.0.0
@@ -39,5 +39,5 @@ When creating a new microagent:
 
 For detailed information, see:
 
-- [Microagents Overview](https://docs.all-hands.dev/usage/prompting/microagents-overview)
+- [Skills Overview](https://docs.all-hands.dev/usage/prompting/skills-overview)
 - [Example GitHub Skill](https://github.com/OpenHands/OpenHands/blob/main/skills/github.md)

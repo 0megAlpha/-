@@ -1,5 +1,5 @@
 ---
-description: '* Repository memory: Use .openhands/microagents/repo.md under each repository
+description: '* Repository memory: Use AGENTS.md in each repository
   root to store and access important information.'
 metadata:
   agent: CodeActAgent
@@ -10,7 +10,7 @@ triggers:
 - /remember
 ---
 
-* Repository memory: Use .openhands/microagents/repo.md under each repository root to store and access important information.
+* Repository memory: Use AGENTS.md in each repository root to store and access important information.
   - If this file exists, it will be added to your context automatically.
   - If missing, you should create it unless the user has explicitly asked you to not do so.
 
@@ -32,4 +32,4 @@ triggers:
   - If you've only explored a portion of the codebase, clearly note this limitation in the repository structure documentation
   - If you don't know the essential commands for working with the repository, such as lint or typecheck, ask the user and suggest adding them to repo.md for future reference (with permission)
 
-When you receive this message, please review and summarize your recent actions and observations, then present a list of valuable information that should be saved in repo.md to the user.
+When you receive this message, please review and summarize your recent actions and observations, then present a list of valuable information that should be saved in AGENTS.md to the user.
