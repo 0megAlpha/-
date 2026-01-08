@@ -151,7 +151,7 @@ You can see an example of a repo agent in [the agent for the OpenHands repo itse
 
 1. Create your agent file in the appropriate directory:
    - `skills/` for expertise (public, shareable)
-   - Note: Repository-specific agents should remain in their respective repositories' `.openhands/skills/` (V1) or `.openhands/skills/` (V0) directory
+   - Note: Repository-specific agents should remain in their respective repositories' `.openhands/skills/` (V1) or `.openhands/microagents/` (V0) directory
 2. Test thoroughly
 3. Submit a pull request to OpenHands
 
