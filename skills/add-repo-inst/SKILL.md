@@ -16,7 +16,7 @@ triggers:
 
 Please browse the current repository under /workspace/{{ REPO_FOLDER_NAME }}, look at the documentation and relevant code, and understand the purpose of this repository.
 
-Specifically, I want you to create a `.openhands/microagents/repo.md`  file. This file should contain succinct information that summarizes (1) the purpose of this repository, (2) the general setup of this repo, and (3) a brief description of the structure of this repo.
+Specifically, I want you to create a `.openhands/skills/repo.md`  file. This file should contain succinct information that summarizes (1) the purpose of this repository, (2) the general setup of this repo, and (3) a brief description of the structure of this repo.
 
 Here's an example:
 ```markdown

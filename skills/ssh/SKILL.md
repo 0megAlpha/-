@@ -1,11 +1,11 @@
 ---
-description: This microagent provides capabilities for establishing and managing SSH
+description: This skill provides capabilities for establishing and managing SSH
   connections to remote machines.
 metadata:
   agent: CodeActAgent
   type: knowledge
   version: 1.0.0
-name: sshmicroagent
+name: ssh
 triggers:
 - ssh
 - remote server
@@ -16,9 +16,9 @@ triggers:
 - ssh keys
 ---
 
-# SSH Microagent
+# SSH Skill
 
-This microagent provides capabilities for establishing and managing SSH connections to remote machines.
+This skill provides capabilities for establishing and managing SSH connections to remote machines.
 
 ## Capabilities
 

@@ -1,5 +1,5 @@
 ---
-description: '* Repository memory: Use .openhands/microagents/repo.md under each repository
+description: '* Repository memory: Use .openhands/skills/repo.md under each repository
   root to store and access important information.'
 metadata:
   agent: CodeActAgent
@@ -10,7 +10,7 @@ triggers:
 - /remember
 ---
 
-* Repository memory: Use .openhands/microagents/repo.md under each repository root to store and access important information.
+* Repository memory: Use .openhands/skills/repo.md under each repository root to store and access important information.
   - If this file exists, it will be added to your context automatically.
   - If missing, you should create it unless the user has explicitly asked you to not do so.
 
