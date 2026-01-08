@@ -3,7 +3,7 @@
 Public registry of **Skills** for [OpenHands](https://github.com/OpenHands/OpenHands) - reusable guidelines that customize agent behavior.
 Check the [documentation](https://docs.openhands.dev/overview/skills) for more information.
 
-> **Note**: Skills were previously called Skills. The `.openhands/skills/` folder path still works for backward compatibility.
+> **Note**: Skills were previously called Microagents. The `.openhands/microagents/` folder path still works for backward compatibility.
 
 ## What are Skills?
 
