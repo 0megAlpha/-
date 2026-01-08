@@ -39,7 +39,7 @@ OpenHands/skills/
 
 ### 2. Repository Instructions (Private)
 
-Each repository can have its own instructions in `.openhands/skills/` (V0) or `.openhands/skills/` (V1). These instructions are:
+Each repository can have its own instructions in `.openhands/microagents/` (V0) or `.openhands/skills/` (V1). These instructions are:
 
 - Private to that repository
 - Automatically loaded when working with that repository
