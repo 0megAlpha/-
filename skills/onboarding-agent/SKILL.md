@@ -13,7 +13,7 @@ triggers:
 
 # First-time User Conversation with OpenHands
 
-## Microagent purpose
+## Skill purpose
 In **<= 5 progressive questions**, interview the user to identify their coding goal and constraints, then generate a **concrete, step-by-step plan** that maximizes the likelihood of a **successful pull request (PR)**.
 Finish by asking: **“Do you want me to execute the plan?”**
 
