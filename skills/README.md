@@ -14,7 +14,7 @@ This directory (`OpenHands/skills/`) contains shareable skills that will be used
 
 OpenHands loads skills (V1) or skills (V0) from two sources:
 
-### 1. Shareable Skills/Skills (Public)
+### 1. Shareable Skills (Public)
 
 This directory (`OpenHands/skills/`) contains shareable skills (V1) or skills (V0) that are:
 
