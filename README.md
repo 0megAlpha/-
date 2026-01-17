@@ -4,10 +4,11 @@
 
 A cross-platform plugin providing powerful, zero-configuration slash commands for development workflows. Works with **Claude Code**, **Codex CLI**, and **OpenCode**.
 
+[![npm](https://img.shields.io/npm/v/awsome-slash?color=red)](https://www.npmjs.com/package/awsome-slash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-2.4.0-blue)](https://github.com/avifenesh/awsome-slash/releases)
-[![GitHub stars](https://img.shields.io/github/stars/avifenesh/awsome-slash?style=flat&color=yellow)](https://github.com/avifenesh/awsome-slash/stargazers)
-[![Claude Code](https://img.shields.io/badge/Claude-Code%20Plugin-blue)](https://code.claude.com/)
+[![Version](https://img.shields.io/badge/version-2.4.1-blue)](https://github.com/avifenesh/awsome-slash/releases)
+[![GitHub stars](https://img.shields.io/github/stars/awsome-slash?style=flat&color=yellow)](https://github.com/avifenesh/awsome-slash/stargazers)
+[![Claude Code](https://img.shields.io/badge/Claude-Code%20Plugin-blue)](https://docs.anthropic.com/en/docs/claude-code)
 [![Codex CLI](https://img.shields.io/badge/Codex-CLI%20Compatible-green)](https://developers.openai.com/codex/cli)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-orange)](https://opencode.ai)
 
@@ -21,14 +22,22 @@ A cross-platform plugin providing powerful, zero-configuration slash commands fo
 
 ## Installation
 
-### Claude Code (Native)
+### npm (Recommended)
 
 ```bash
-# Option 1: Marketplace (recommended)
-claude plugin marketplace add avifenesh/awsome-slash
-claude plugin install next-task@awsome-slash ship@awsome-slash
+npm install awsome-slash
+```
 
-# Option 2: Direct install
+### Claude Code
+
+```bash
+# Option 1: npm (recommended)
+claude plugin add npm:awsome-slash
+
+# Option 2: GitHub
+claude plugin add github:avifenesh/awsome-slash
+
+# Option 3: Local clone
 git clone https://github.com/avifenesh/awsome-slash.git
 ./scripts/install/claude.sh
 ```
@@ -36,6 +45,8 @@ git clone https://github.com/avifenesh/awsome-slash.git
 ### OpenCode
 
 ```bash
+npm install awsome-slash
+# or
 git clone https://github.com/avifenesh/awsome-slash.git
 cd awsome-slash
 ./scripts/install/opencode.sh
@@ -44,6 +55,8 @@ cd awsome-slash
 ### Codex CLI
 
 ```bash
+npm install awsome-slash
+# or
 git clone https://github.com/avifenesh/awsome-slash.git
 cd awsome-slash
 ./scripts/install/codex.sh

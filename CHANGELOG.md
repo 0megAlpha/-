@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.4.1] - 2026-01-18
+
+### Added
+- Published to npm as `awsome-slash` for easier installation
+- Added `.npmignore` and `files` field for optimized package size (191KB → 143KB)
+
+### Changed
+- npm is now the recommended installation method
+- Updated README with npm badges and installation instructions
+
 ## [2.4.0] - 2026-01-18
 
 ### Added

@@ -45,6 +45,10 @@ logs/
 
 # Claude Code local files
 .claude/
+settings.local.json
+tasks.json
+workflow-state.json
+*.local.md
 
 # Package manager locks (keep package-lock.json for reproducibility)
 # Uncomment if using yarn or pnpm exclusively
