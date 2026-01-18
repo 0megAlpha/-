@@ -84,27 +84,39 @@ echo
 # Install commands with path adjustments
 echo "⚙️  Installing commands..."
 
-COMMANDS=(
-  "deslop-around"
-  "next-task"
-  "project-review"
-  "ship"
-  "pr-merge"
+# Command mappings: target_name:plugin:source_file
+# Format allows commands from different plugins
+COMMAND_MAPPINGS=(
+  "deslop-around:deslop-around:deslop-around"
+  "next-task:next-task:next-task"
+  "delivery-approval:next-task:delivery-approval"
+  "update-docs-around:next-task:update-docs-around"
+  "project-review:project-review:project-review"
+  "ship:ship:ship"
+  "reality-check-scan:reality-check:scan"
+  "reality-check-set:reality-check:set"
 )
 
-for cmd in "${COMMANDS[@]}"; do
-  SOURCE_FILE="$REPO_ROOT/plugins/$cmd/commands/$cmd.md"
-  # Install directly in prompts directory (Codex looks here)
-  TARGET_FILE="$CODEX_PROMPTS_DIR/$cmd.md"
+for mapping in "${COMMAND_MAPPINGS[@]}"; do
+  IFS=':' read -r TARGET_NAME PLUGIN SOURCE_NAME <<< "$mapping"
+  SOURCE_FILE="$REPO_ROOT/plugins/$PLUGIN/commands/$SOURCE_NAME.md"
+  TARGET_FILE="$CODEX_PROMPTS_DIR/$TARGET_NAME.md"
 
   if [ -f "$SOURCE_FILE" ]; then
-    # Replace Claude-specific path variables with Codex lib paths
-    # Escape sed special characters in path to prevent injection
-    SAFE_LIB_DIR=$(echo "${CODEX_LIB_DIR}/.." | sed 's/[&/\]/\\&/g')
-    sed "s|\${CLAUDE_PLUGIN_ROOT}|${SAFE_LIB_DIR}|g" "$SOURCE_FILE" > "$TARGET_FILE"
-    echo "  ✓ Installed /prompts:$cmd"
+    # Copy command file to prompts directory
+    cp "$SOURCE_FILE" "$TARGET_FILE"
+    echo "  ✓ Installed /prompts:$TARGET_NAME"
   else
-    echo "  ⚠️  Skipped /$cmd (source not found)"
+    echo "  ⚠️  Skipped /$TARGET_NAME (source not found: $SOURCE_FILE)"
+  fi
+done
+
+# Remove old/legacy commands that no longer exist
+OLD_COMMANDS=("pr-merge")
+for old_cmd in "${OLD_COMMANDS[@]}"; do
+  if [ -f "$CODEX_PROMPTS_DIR/$old_cmd.md" ]; then
+    rm "$CODEX_PROMPTS_DIR/$old_cmd.md"
+    echo "  🗑️  Removed legacy /prompts:$old_cmd"
   fi
 done
 
