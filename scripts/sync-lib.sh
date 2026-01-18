@@ -11,6 +11,26 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
+# Auto-install pre-commit hook if missing
+HOOK_PATH="$REPO_ROOT/.git/hooks/pre-commit"
+if [ -d "$REPO_ROOT/.git" ] && [ ! -f "$HOOK_PATH" ]; then
+  echo "Installing pre-commit hook..."
+  cat > "$HOOK_PATH" << 'HOOK'
+#!/bin/sh
+# Auto-sync lib/ to plugins/ when lib/ files are staged
+
+if git diff --cached --name-only | grep -q "^lib/"; then
+  echo "lib/ changes detected, syncing to plugins..."
+  bash scripts/sync-lib.sh
+  git add plugins/*/lib/
+  echo "Synced and staged plugin lib/ copies"
+fi
+HOOK
+  chmod +x "$HOOK_PATH"
+  echo "  ✓ Pre-commit hook installed"
+  echo ""
+fi
+
 echo "Syncing lib/ to all plugins..."
 
 PLUGINS=(
