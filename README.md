@@ -12,12 +12,13 @@ A cross-platform plugin providing powerful, zero-configuration slash commands fo
 [![Codex CLI](https://img.shields.io/badge/Codex-CLI%20Compatible-green)](https://developers.openai.com/codex/cli)
 [![OpenCode](https://img.shields.io/badge/OpenCode-Compatible-orange)](https://opencode.ai)
 
-## What's New in v2.4.6
+## What's New in v2.4.7
 
-- **Documentation Accuracy** - Fixed all config file names, phase counts, and time estimates
-- **Auto-Resume Prevention** - Added mandatory gates to prevent automatic task resumption
-- **Planning Flow** - Improved architecture with JSON output and orchestrator control
-- **Work Guidelines** - Added "No Summary Files" policy to CLAUDE.md
+- **Simplified State Management** - Rewrote workflow-state.js, removed 9,000+ lines of overengineered code
+- **Removed Config System** - Deleted unused schemas and config system
+- **Tasks Lifecycle Wiring** - tasks.json now auto-registers/clears with workflow lifecycle
+- **Project Philosophy** - Added development guidelines to CLAUDE.md
+- **Agent Model Updates** - task-discoverer and code-explorer upgraded to opus
 
 ---
 

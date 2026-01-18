@@ -9,6 +9,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes documented.
 
+## [2.4.7] - 2026-01-18
+
+### Changed
+- **Simplified State Management** - Rewrote workflow-state.js (#90)
+  - Reduced from 922 to ~520 lines
+  - Removed overengineered config system (~10,000 lines deleted)
+  - Removed 13 unused JSON schema files
+  - Replaced complex nested state with simple two-file system:
+    - `tasks.json` in main project: tracks active worktree/task
+    - `flow.json` in worktree: tracks workflow progress
+  - Removed arbitrary maxReviewIterations (now runs until approved)
+  - Removed unused mergeStrategy option
+- **Tasks Lifecycle Wiring** - tasks.json now auto-registers/clears with workflow lifecycle
+  - `createFlow()` automatically registers task in tasks.json
+  - `completeWorkflow()` and `abortWorkflow()` automatically clear active task
+- **Agent Model Updates** - task-discoverer and code-explorer upgraded to opus
+- **Project Philosophy** - Added development guidelines to CLAUDE.md
+  - Core priorities: User DX > worry-free automation > minimal tokens > quality > simplicity
+  - Plugin purpose clarification: for OTHER projects, not internal tooling
+
+### Fixed
+- **Path Validation** - Added path validation to prevent traversal attacks in workflow-state.js
+- **Error Logging** - Added critical error logging for corrupted JSON files
+- **hasActiveTask** - Fixed false positive with legacy format (uses `!= null` instead of truthiness)
+- **writeFlow** - Fixed mutation issues by cloning before modification
+- **updateFlow** - Fixed null handling logic
+- **completePhase** - Fixed to use updateFlow pattern consistently
+
 ## [2.4.6] - 2026-01-18
 
 ### Fixed
