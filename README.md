@@ -54,7 +54,7 @@ Complete task-to-production automation with state management and resume capabili
 /next-task bug                    # Filter by task type
 ```
 
-**Workflow phases (tracked in `.claude/workflow-state.json`):**
+**Workflow phases (tracked in `.claude/flow.json`):**
 - policy-selection
 - task-discovery
 - worktree-setup
@@ -83,7 +83,7 @@ Complete task-to-production automation with state management and resume capabili
 
 **Notes:**
 - Fully autonomous after plan approval
-- Resume capability with `.claude/workflow-state.json`
+- Resume capability with `.claude/flow.json`
 - Policy-based stopping points (pr-created, merged, deployed, production)
 - /ship handles PR creation, CI monitoring, merge, and cleanup
 
