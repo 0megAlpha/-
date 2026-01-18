@@ -5,86 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
-
-### Added
-- **OpenCode/Codex Integration** - Complete cross-platform MCP server support
-  - `task_discover` tool now implements real GitHub/Linear/PLAN.md task discovery
-  - `review_code` tool now runs actual multi-agent code review with iteration
-  - Added `convert-agents.js` script for converting Claude Code agents to OpenCode/Codex formats
-  - OpenCode agent format: JSON with instructions, model, capabilities, behavior sections
-  - Codex agent format: YAML with Kubernetes-style spec (apiVersion, kind, metadata, spec)
-  - Supports frontmatter parsing and conversion from Claude Code agent markdown files
-- **MCP Server Tests** - 406 new test lines covering task discovery and code review functionality
-- **js-yaml Dependency** - Added for YAML conversion in agent format converter
-
-### Changed
-- **MCP Server** - Upgraded from placeholder stubs to full implementations (315 lines added)
-  - `task_discover`: Parses GitHub issues, Linear tasks, PLAN.md with priority scoring
-  - `review_code`: Spawns 8 specialized review agents in parallel with iteration support
-- **Documentation** - Updated CROSS_PLATFORM.md to mark OpenCode and Codex as "Supported" (was "Experimental")
-
-### Deprecated
-- **Synchronous API Functions**: All sync functions now show deprecation warnings
-  - `detect()` → use `detectAsync()` instead
-  - `detectCI()` → use `detectCIAsync()` instead
-  - `detectDeployment()` → use `detectDeploymentAsync()` instead
-  - `detectProjectType()` → use `detectProjectTypeAsync()` instead
-  - `detectPackageManager()` → use `detectPackageManagerAsync()` instead
-  - `detectBranchStrategy()` → use `detectBranchStrategyAsync()` instead
-  - `detectMainBranch()` → use `detectMainBranchAsync()` instead
-  - `checkTool()` → use `checkToolAsync()` instead
-  - `verifyTools()` → use `verifyToolsAsync()` instead
-  - Warnings appear once per function with migration guidance
-  - **Sync functions will be removed in v3.0.0**
-- **Configuration Management** - Centralized configuration system (lib/config/)
-  - Environment variable support (`AWESOME_SLASH_*` vars)
-  - `.awesomeslashrc.json` loading (home directory and project root)
-  - package.json `awesomeSlash` field integration
-  - Schema validation and caching (5s TTL)
-  - See [lib/config/README.md](./lib/config/README.md) for full documentation
-- **Shell Escaping Utilities** - Centralized module (lib/utils/shell-escape.js)
-  - 5 escaping functions for safe shell command construction
-  - Command injection prevention
-  - Extracted from context-optimizer for reusability
-- **State Schema Validation** - New `validateStateSchema()` export in workflow-state.js
-  - Comprehensive validation of all required fields
-  - Validates version, workflow, policy, phases, checkpoints, and metrics
-- **Linear Task Source** - MCP server integration
-  - Discovers tasks via GitHub issues with Linear URLs
-  - Extracts Linear IDs from issue bodies
-  - Full filtering and prioritization support
-
-### Fixed
-- **Security**: Command injection vulnerabilities (7 critical issues)
-  - Fixed unsafe git branch/ref parameters in context-optimizer.js
-  - Added validateBranchName(), validateGitRef(), validateLimit()
-  - Secured 8 command-building functions
-- **Security**: Path traversal protection in workflow-state.js
-  - Added validateBasePath() and validateStatePathWithinBase()
-- **Security**: TOCTOU race condition in ensureStateDir()
-- **Security**: Prototype pollution protection in deepMerge (MAX_MERGE_DEPTH=50)
-- **Performance**: Multiple optimizations (20 issues addressed)
-  - State caching with 200ms TTL for rapid successive reads
-  - Lazy index initialization in review-patterns.js (deferred to first access)
-  - O(1) phase lookup with PHASE_INDEX Map
-  - Shallow merge optimization for simple state updates (isSimpleUpdate helper)
-  - Single-pass filtering in slop-patterns.js getPatternsByCriteria()
-  - Exclude result caching (200 entries, FIFO eviction)
-  - Optimized deepFreeze using for-in vs forEach
-  - Removed redundant Map.has() checks before get()
-  - Cached arrays to avoid repeated Array.from() calls
-  - TTY-aware JSON formatting in detect-platform.js
-  - O(1) cache eviction using Map insertion order
-
-### Changed
-- **lib/index.js** - Added config export for unified entry point
-- **lib/utils/context-optimizer.js** - Now uses shell-escape module
-- **mcp-server/index.js** - Added error boundary with handlers for uncaughtException, unhandledRejection, SIGINT, SIGTERM
-- **Documentation** - Added Configuration section to README.md
-- **Documentation** - Updated Repository Structure in README.md to include config/ and utils/
-
-## [2.4.4] - 2026-01-18
+## [Unreleased]\n\nNo unreleased changes documented.\n\n## [2.4.4] - 2026-01-18
 
 ### Added
 - **PR Auto-Review Process** - Added mandatory workflow for 4 auto-reviewers (Copilot, Claude, Gemini, Codex)
@@ -302,7 +223,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - **Master Workflow Orchestrator** - Complete task-to-production automation
-- **State Management** - `.claude/.workflow-state.json` for workflow persistence
+- **State Management** - `.claude/workflow-state.json` for workflow persistence
 - **8 Specialist Agents** - Opus for complex tasks, Sonnet for operations
 - **Cross-Platform MCP Server** - Integration with OpenCode and Codex CLI
 - **Resume Capability** - `--status`, `--resume`, `--abort` flags
@@ -368,3 +289,4 @@ Initial release with full feature set.
 - MIT License
 - Security policy
 - Contributing guidelines
+

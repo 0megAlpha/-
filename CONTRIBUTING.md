@@ -1,10 +1,10 @@
 # Contributing to Awesome Slash Commands
 
-Thank you for your interest in contributing! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing. This document provides guidelines and instructions.
 
 ## Code of Conduct
 
-Be respectful and inclusive. We're all here to make better tools.
+Be respectful and inclusive. We are all here to make better tools.
 
 ## How to Contribute
 
@@ -22,7 +22,7 @@ Be respectful and inclusive. We're all here to make better tools.
 
 1. Check [Issues](https://github.com/avifenesh/awesome-slash/issues) and [Discussions](https://github.com/avifenesh/awesome-slash/discussions)
 2. Create a new discussion or issue describing:
-   - The problem you're trying to solve
+   - The problem you are trying to solve
    - Your proposed solution
    - Why it would benefit others
    - Potential implementation approach
@@ -39,7 +39,7 @@ Be respectful and inclusive. We're all here to make better tools.
 5. **Update documentation** if needed
 6. **Commit with clear messages**:
    ```bash
-   git commit -m "feat: add support for BitBucket Pipelines"
+   git commit -m "feat: add support for Bitbucket Pipelines"
    ```
 7. **Push to your fork**:
    ```bash
@@ -58,7 +58,7 @@ Be respectful and inclusive. We're all here to make better tools.
 - Node.js 18+ (for running scripts)
 - Git
 - GitHub CLI (`gh`)
-- Code editor (VS Code recommended)
+- Code editor
 
 ### Initial Setup
 
@@ -84,49 +84,46 @@ node lib/platform/verify-tools.js
 
 ```
 awesome-slash/
-├── .claude-plugin/      # Plugin manifest
-├── lib/                 # CANONICAL shared libraries (edit here!)
-│   ├── platform/        # Platform detection
-│   ├── patterns/        # Pattern libraries
-│   └── utils/           # Helper utilities
-├── plugins/             # Individual plugins
-│   ├── deslop-around/
-│   │   ├── .claude-plugin/
-│   │   ├── commands/
-│   │   └── lib/         # Copy of shared lib (DO NOT edit directly)
-│   ├── next-task/
-│   ├── project-review/
-│   └── ship/
-├── adapters/            # Codex/OpenCode adapters
-├── scripts/             # Developer tools
-└── docs/                # Documentation
+|-- .claude-plugin/      # Plugin manifest
+|-- lib/                 # CANONICAL shared libraries (edit here)
+|   |-- platform/        # Platform detection
+|   |-- patterns/        # Pattern libraries
+|   |-- utils/           # Helper utilities
+|-- plugins/             # Individual plugins
+|   |-- deslop-around/
+|   |   |-- .claude-plugin/
+|   |   |-- commands/
+|   |   |-- lib/         # Copy of shared lib (do not edit directly)
+|   |-- next-task/
+|   |-- project-review/
+|   |-- ship/
+|-- adapters/            # Codex/OpenCode adapters
+|-- scripts/             # Developer tools
+|-- docs/                # Documentation
 ```
 
-### Library Architecture (IMPORTANT!)
+### Library Architecture (Important)
 
-Claude Code installs each plugin separately, so each plugin needs its own `lib/` directory. To avoid maintaining 5 copies manually:
+Claude Code installs each plugin separately, so each plugin needs its own `lib/` directory.
 
-- **`lib/`** (root) = **Canonical source** - always edit files here
-- **`plugins/*/lib/`** = Copies for installation - never edit directly
+- **`lib/` (root)** = canonical source - always edit files here
+- **`plugins/*/lib/`** = copies for installation - never edit directly
 
 **When you modify any file in `lib/`:**
 
 ```bash
-# 1. Edit files in lib/ (the root directory)
+# 1. Edit files in lib/
 vim lib/platform/detect-platform.js
 
 # 2. Sync changes to all plugins
 ./scripts/sync-lib.sh
 
-# 3. Commit BOTH the source and copies
+# 3. Commit both the source and copies
 git add lib/ plugins/*/lib/
 git commit -m "fix(lib): your change description"
 ```
 
-**Why this matters:**
-- If you edit `plugins/ship/lib/detect-platform.js` directly, your changes will be lost next time someone runs `sync-lib.sh`
-- All 5 plugins must have identical lib files
-- The sync script ensures consistency
+If you edit `plugins/ship/lib/platform/detect-platform.js` directly, your changes will be lost next time `sync-lib.sh` runs.
 
 ## Coding Standards
 
@@ -148,13 +145,13 @@ git commit -m "fix(lib): your change description"
  * @returns {Promise<string|null>} CI platform name or null if not detected
  */
 async function detectCIAsync() {
-  if (await existsAsync(".github/workflows")) return "github-actions";
-  if (await existsAsync(".gitlab-ci.yml")) return "gitlab-ci";
+  if (await existsAsync('.github/workflows')) return 'github-actions';
+  if (await existsAsync('.gitlab-ci.yml')) return 'gitlab-ci';
   return null;
 }
 ```
 
-> **Note**: Use async versions (`detectCIAsync()`, `detectAsync()`, etc.) for new code.
+> Use async versions (`detectCIAsync()`, `detectAsync()`, etc.) for new code.
 > Synchronous functions (`detectCI()`, `detect()`, etc.) are deprecated and will be removed in v3.0.0.
 
 ### Markdown Commands
@@ -176,8 +173,8 @@ async function detectCIAsync() {
 ### Documentation
 
 - Update README.md for new features
-- Add to COMMANDS.md for new commands
-- Update PLATFORM_SUPPORT.md for new platforms
+- Update docs/USAGE.md for new commands
+- Update docs/CROSS_PLATFORM.md for new platforms
 - Keep CHANGELOG.md updated
 
 ## Adding Support for New Platforms
@@ -189,23 +186,18 @@ async function detectCIAsync() {
    if (fs.existsSync('.bitbucket-pipelines.yml')) return 'bitbucket';
    ```
 
-2. Update detection matrix in `README.md`
+2. Update detection matrix in README.md
 
-3. Test on actual project using that platform
+3. Test on a real project using that platform
 
 ### Deployment Platform
 
-1. Add to `lib/platform/deployment-detector.js`:
+1. Add detection logic to `lib/platform/detect-platform.js`:
    ```javascript
-   "platform-name": {
-     detect: ["config-file"],
-     deployUrl: "command to get URL",
-     logs: "command to get logs",
-     status: "command to check status"
-   }
+   if (fs.existsSync('platform.json')) return 'platform-name';
    ```
 
-2. Update `/ship` command
+2. Update `/ship` command logic as needed
 
 3. Test deployment validation
 
@@ -223,7 +215,7 @@ async function detectCIAsync() {
 
 2. Update `lib/platform/detect-platform.js` to detect it
 
-3. Test with actual project
+3. Test with an actual project
 
 ## Commit Message Format
 
@@ -256,13 +248,13 @@ test(platform): add tests for CI detection
 
 ## Pull Request Process
 
-1. **Fork & Branch**: Create a feature branch
-2. **Implement**: Make your changes
-3. **Test**: Ensure everything works
-4. **Document**: Update relevant docs
-5. **PR**: Submit with clear description
-6. **Review**: Address feedback
-7. **Merge**: Maintainer will merge when approved
+1. Fork and branch
+2. Implement changes
+3. Test everything
+4. Update docs
+5. Submit PR with clear description
+6. Address review feedback
+7. Maintainer merges when approved
 
 ### PR Checklist
 
@@ -277,7 +269,6 @@ test(platform): add tests for CI detection
 
 - **Questions**: Use [Discussions](https://github.com/avifenesh/awesome-slash/discussions)
 - **Bugs**: Use [Issues](https://github.com/avifenesh/awesome-slash/issues)
-- **Chat**: (Coming soon)
 
 ## Recognition
 
@@ -286,4 +277,4 @@ Contributors will be recognized in:
 - README.md contributors section
 - GitHub contributors page
 
-Thank you for contributing to Awesome Slash Commands!
+Thank you for contributing to Awesome Slash Commands.

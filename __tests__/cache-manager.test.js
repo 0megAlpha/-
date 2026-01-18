@@ -48,17 +48,20 @@ describe('CacheManager', () => {
     });
 
     it('should handle different value types', () => {
-      cache.set('string', 'hello');
-      cache.set('number', 42);
-      cache.set('object', { foo: 'bar' });
-      cache.set('array', [1, 2, 3]);
-      cache.set('null', null);
+      // Use a larger cache for this test since we're testing 5 different values
+      const largeCache = new CacheManager({ maxSize: 10, ttl: 100 });
 
-      expect(cache.get('string')).toBe('hello');
-      expect(cache.get('number')).toBe(42);
-      expect(cache.get('object')).toEqual({ foo: 'bar' });
-      expect(cache.get('array')).toEqual([1, 2, 3]);
-      expect(cache.get('null')).toBeNull();
+      largeCache.set('string', 'hello');
+      largeCache.set('number', 42);
+      largeCache.set('object', { foo: 'bar' });
+      largeCache.set('array', [1, 2, 3]);
+      largeCache.set('null', null);
+
+      expect(largeCache.get('string')).toBe('hello');
+      expect(largeCache.get('number')).toBe(42);
+      expect(largeCache.get('object')).toEqual({ foo: 'bar' });
+      expect(largeCache.get('array')).toEqual([1, 2, 3]);
+      expect(largeCache.get('null')).toBeNull();
     });
   });
 

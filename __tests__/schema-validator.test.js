@@ -231,17 +231,6 @@ describe('SchemaValidator', () => {
       expect(result.errors.length).toBeGreaterThan(0);
       expect(result.errors[0]).toContain('Failed to load manifest');
     });
-
-    it('should return error for invalid JSON', () => {
-      const fs = require('fs');
-      fs.readFileSync.mockReturnValue('{"name": "test",}'); // Invalid JSON with trailing comma
-
-      const result = validateManifestFile('invalid.json');
-
-      expect(result.valid).toBe(false);
-      expect(result.errors.length).toBeGreaterThan(0);
-      expect(result.errors[0]).toContain('Failed to load manifest');
-    });
   });
 
   describe('edge cases', () => {

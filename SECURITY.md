@@ -4,10 +4,10 @@
 
 We release patches for security vulnerabilities. Currently supported versions:
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| Version | Supported |
+| ------- | --------- |
+| 2.x.x   | Yes       |
+| 1.x.x   | No        |
 
 ## Reporting a Vulnerability
 
@@ -24,12 +24,7 @@ Use GitHub's Security Advisory feature:
 2. Click "Report a vulnerability"
 3. Provide detailed information about the vulnerability
 
-### 3. Or Email Directly
-
-If you prefer, you can email security reports to:
-- **Email:** Create a private security advisory on GitHub instead (preferred method)
-
-### 4. Include in Your Report
+### 3. Include in Your Report
 
 Please include:
 - Description of the vulnerability
