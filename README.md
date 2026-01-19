@@ -6,7 +6,7 @@ A cross-platform plugin providing powerful, zero-configuration slash commands fo
 
 [![npm](https://img.shields.io/npm/v/awesome-slash?color=red)](https://www.npmjs.com/package/awesome-slash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-2.5.0-blue)](https://github.com/avifenesh/awesome-slash/releases)
+[![Version](https://img.shields.io/badge/version-2.5.1-blue)](https://github.com/avifenesh/awesome-slash/releases)
 [![GitHub stars](https://img.shields.io/github/stars/avifenesh/awesome-slash?style=flat&color=yellow)](https://github.com/avifenesh/awesome-slash/stargazers)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Plugin-blue)](https://docs.anthropic.com/en/docs/claude-code)
 [![Codex CLI](https://img.shields.io/badge/Codex-CLI%20Compatible-green)](https://developers.openai.com/codex/cli)
@@ -16,13 +16,18 @@ A cross-platform plugin providing powerful, zero-configuration slash commands fo
 
 > **💡 Model Recommendation**: Using **Opus** as the main agent model produces significantly better results and follows workflow phases more tightly. While Sonnet works for simpler tasks, Opus is recommended for complex multi-step workflows.
 
+## What's New in v2.5.1
+
+- **Platform-Aware State Directories** - State now stored in `.opencode/` for OpenCode, `.codex/` for Codex
+- **Fixed OpenCode/Codex Installers** - Correct config formats and Windows path handling
+- **MCP Server Bug Fixes** - Fixed workflow state references and resume logic
+- **Documentation Updates** - Added note that Codex uses `$` prefix instead of `/`
+
 ## What's New in v2.5.0
 
-- **Multi-Source Task Discovery** - Support for GitHub, GitLab, local files, custom CLI tools, and ad-hoc sources
+- **Multi-Source Task Discovery** - Support for GitHub, GitLab, local files, custom CLI tools
 - **Source Preference Caching** - Your last-used source appears first on subsequent runs
 - **Security Hardening** - Fixed command injection and path traversal vulnerabilities
-- **Large Backlog Handling** - Intelligent pagination and priority filtering for repos with many issues
-- **Streamlined Policy Selection** - Direct questions from orchestrator, removed separate agent
 
 ## What's New in v2.4.7
 
@@ -53,6 +58,8 @@ git clone https://github.com/avifenesh/awesome-slash.git
 ---
 
 ## Available Commands
+
+> **Platform Note:** Commands use `/` prefix in Claude Code and OpenCode, but `$` prefix in Codex CLI (e.g., `$next-task` instead of `/next-task`).
 
 ### `/next-task` - Master Workflow Orchestrator
 

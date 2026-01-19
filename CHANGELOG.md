@@ -9,6 +9,41 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 No unreleased changes documented.
 
+## [2.5.1] - 2026-01-19
+
+### Added
+- **Platform-Aware State Directories** - State files now stored in platform-specific directories
+  - Claude Code: `.claude/`
+  - OpenCode: `.opencode/`
+  - Codex CLI: `.codex/`
+  - Override with `AI_STATE_DIR` environment variable
+- **New lib/platform/state-dir.js** - Centralized platform detection module
+
+### Fixed
+- **OpenCode Installer** - Fixed config format (uses `mcp` key, `type: local`)
+- **Codex Installer** - Fixed to use `config.toml` with Windows-style paths
+- **MCP Server Bugs** - Fixed `state.workflow.id` → `state.task.id` references
+- **MCP Resume Logic** - Fixed `checkpoints.canResume` to use correct state fields
+
+### Changed
+- **Codex Skills** - Added explicit instructions to get files from git diff or ask user
+- **OpenCode Commands** - Added "CRITICAL: Always Ask User First" sections
+- **Documentation** - Added note that Codex uses `$` prefix instead of `/` for commands
+
+## [2.5.0] - 2026-01-19
+
+### Added
+- **Multi-Source Task Discovery** - Support for GitHub, GitLab, local files, custom CLI tools
+- **Source Preference Caching** - Last-used source cached in `sources/preference.json`
+- **Large Backlog Handling** - Pagination and priority filtering for repos with many issues
+
+### Changed
+- **Streamlined Policy Selection** - Direct questions from orchestrator, removed separate agent
+
+### Security
+- **Command Injection** - Fixed shell command injection vulnerabilities
+- **Path Traversal** - Fixed path traversal in source-cache.js
+
 ## [2.4.7] - 2026-01-18
 
 ### Changed

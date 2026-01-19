@@ -4,11 +4,13 @@ This document describes how to use awesome-slash-commands with different AI codi
 
 ## Supported Platforms
 
-| Platform | Integration Method | Status |
-|----------|-------------------|--------|
-| Claude Code | Native plugins | ✅ Full support |
-| OpenCode | MCP + Agent configs | ✅ Supported |
-| Codex CLI | MCP + Skills | ✅ Supported |
+| Platform | Integration Method | Command Prefix | Status |
+|----------|-------------------|----------------|--------|
+| Claude Code | Native plugins | `/` (slash) | ✅ Full support |
+| OpenCode | MCP + Agent configs | `/` (slash) | ✅ Supported |
+| Codex CLI | MCP + Skills | `$` (dollar) | ✅ Supported |
+
+> **Note:** Codex CLI uses `$` prefix for skills (e.g., `$next-task`, `$ship`) instead of `/` slash commands.
 
 ## Common Architecture
 
@@ -66,25 +68,36 @@ claude --add-plugin /path/to/awesome-slash/plugins/ship
 
 ## OpenCode Integration
 
-### Option 1: MCP Server (Recommended)
+### Option 1: Automated Install (Recommended)
 
-Add to your OpenCode MCP config:
+```bash
+cd /path/to/awesome-slash
+./scripts/install/opencode.sh
+```
+
+This installs MCP server, slash commands (`/next-task`, `/ship`, `/review`, `/deslop`), and agents.
+
+### Option 2: Manual MCP Config
+
+Add to `~/.config/opencode/opencode.json`:
 
 ```json
 {
-  "mcpServers": {
+  "mcp": {
     "awesome-slash": {
-      "command": "node",
-      "args": ["/path/to/awesome-slash/mcp-server/index.js"],
-      "env": {
-        "PLUGIN_ROOT": "/path/to/awesome-slash"
-      }
+      "type": "local",
+      "command": ["node", "/path/to/awesome-slash/mcp-server/index.js"],
+      "environment": {
+        "PLUGIN_ROOT": "/path/to/awesome-slash",
+        "AI_STATE_DIR": ".opencode"
+      },
+      "enabled": true
     }
   }
 }
 ```
 
-### Option 2: Agent Configuration
+### Option 3: Agent Configuration
 
 Create agent definitions in OpenCode format:
 
@@ -119,31 +132,45 @@ When invoked, you should:
 
 ## Codex CLI Integration
 
-### Option 1: MCP Server
+> **Note:** Codex uses `$` prefix for skills instead of `/` slash commands (e.g., `$next-task`, `$ship`).
 
-Add to your Codex config:
+### Option 1: Automated Install (Recommended)
 
-```json
-{
-  "mcpServers": {
-    "awesome-slash": {
-      "command": "node",
-      "args": ["/path/to/awesome-slash/mcp-server/index.js"]
-    }
-  }
-}
+```bash
+cd /path/to/awesome-slash
+./scripts/install/codex.sh
 ```
 
-### Option 2: Custom Skills
+This installs MCP server config in `~/.codex/config.toml` and skills (`$next-task`, `$ship`, `$review`, `$deslop`).
 
-Create Codex skills that invoke the MCP server tools:
+### Option 2: Manual MCP Config
 
-```yaml
-# ~/.codex/skills/next-task.yaml
+Add to `~/.codex/config.toml`:
+
+```toml
+[mcp_servers.awesome-slash]
+command = "node"
+args = ["/path/to/awesome-slash/mcp-server/index.js"]
+env = { PLUGIN_ROOT = "/path/to/awesome-slash", AI_STATE_DIR = ".codex" }
+enabled = true
+```
+
+### Option 3: Custom Skills
+
+Create Codex skills in `~/.codex/skills/<name>/SKILL.md`:
+
+```markdown
+---
 name: next-task
-description: Intelligent task prioritization with code validation
-trigger: "find next task|what should I work on|prioritize tasks"
-mcp_tool: workflow_start
+description: Master workflow orchestrator for task automation
+---
+
+# Next Task Workflow
+
+Use the awesome-slash MCP tools:
+- `workflow_status` - Check current state
+- `workflow_start` - Start new workflow
+- `task_discover` - Find tasks
 ```
 
 ## MCP Server Tools
@@ -217,8 +244,8 @@ The plugin auto-detects the platform and uses the appropriate directory. Overrid
 ### Codex CLI
 - OpenAI-native with GPT-5-Codex
 - State directory: `.codex/`
-- Skills in `~/.codex/skills/`
-- MCP for external tools
+- Skills in `~/.codex/skills/` (invoked with `$` prefix, e.g., `$next-task`)
+- MCP config in `~/.codex/config.toml`
 
 ## Migration Guide
 
