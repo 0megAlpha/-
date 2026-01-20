@@ -166,9 +166,11 @@ function installForOpenCode(installDir) {
   console.log('\n📦 Installing for OpenCode...\n');
 
   const home = process.env.HOME || process.env.USERPROFILE;
+  // Commands go to ~/.opencode/commands/awesome-slash/
+  const commandsDir = path.join(home, '.opencode', 'commands', 'awesome-slash');
+  // MCP config goes to ~/.config/opencode/opencode.json
   const configPath = getConfigPath('opencode');
   const configDir = path.dirname(configPath);
-  const commandsDir = path.join(home, '.config', 'opencode', 'commands');
 
   fs.mkdirSync(configDir, { recursive: true });
   fs.mkdirSync(commandsDir, { recursive: true });
@@ -206,13 +208,21 @@ function installForOpenCode(installDir) {
     }
   }
 
-  // Sync command files
+  // Also clean up old wrong location if it exists
+  const wrongDir = path.join(home, '.config', 'opencode', 'commands');
+  if (fs.existsSync(wrongDir)) {
+    fs.rmSync(wrongDir, { recursive: true, force: true });
+  }
+
+  // Sync command files (matching install.sh mappings)
   const commandMappings = [
+    ['deslop-around.md', 'deslop-around', 'deslop-around.md'],
     ['next-task.md', 'next-task', 'next-task.md'],
+    ['delivery-approval.md', 'next-task', 'delivery-approval.md'],
+    ['update-docs-around.md', 'next-task', 'update-docs-around.md'],
+    ['project-review.md', 'project-review', 'project-review.md'],
     ['ship.md', 'ship', 'ship.md'],
-    ['deslop.md', 'deslop-around', 'deslop-around.md'],
-    ['review.md', 'project-review', 'project-review.md'],
-    ['reality-check.md', 'reality-check', 'scan.md']
+    ['reality-check-scan.md', 'reality-check', 'scan.md']
   ];
 
   for (const [target, plugin, source] of commandMappings) {
@@ -236,10 +246,10 @@ function installForCodex(installDir) {
   const home = process.env.HOME || process.env.USERPROFILE;
   const configDir = path.join(home, '.codex');
   const configPath = path.join(configDir, 'config.toml');
-  const skillsDir = path.join(home, '.codex', 'skills');
+  const promptsDir = path.join(configDir, 'prompts');
 
   fs.mkdirSync(configDir, { recursive: true });
-  fs.mkdirSync(skillsDir, { recursive: true });
+  fs.mkdirSync(promptsDir, { recursive: true });
 
   // Update MCP config
   const mcpPath = path.join(installDir, 'mcp-server', 'index.js').replace(/\\/g, '\\\\');
@@ -256,8 +266,10 @@ function installForCodex(installDir) {
       `[mcp_servers.awesome-slash]
 command = "node"
 args = ["${mcpPath}"]
-env = { PLUGIN_ROOT = "${pluginRoot}", AI_STATE_DIR = ".codex" }
-enabled = true
+
+[mcp_servers.awesome-slash.env]
+PLUGIN_ROOT = "${pluginRoot}"
+AI_STATE_DIR = ".codex"
 `
     );
   } else {
@@ -265,54 +277,60 @@ enabled = true
 [mcp_servers.awesome-slash]
 command = "node"
 args = ["${mcpPath}"]
-env = { PLUGIN_ROOT = "${pluginRoot}", AI_STATE_DIR = ".codex" }
-enabled = true
+
+[mcp_servers.awesome-slash.env]
+PLUGIN_ROOT = "${pluginRoot}"
+AI_STATE_DIR = ".codex"
 `;
   }
 
   fs.writeFileSync(configPath, configContent);
 
-  // Remove old/deprecated skill directories
-  const oldSkills = ['reality-check-set', 'pr-merge'];
-  for (const oldSkill of oldSkills) {
-    const oldPath = path.join(skillsDir, oldSkill);
+  // Remove old/deprecated prompts
+  const oldPrompts = ['reality-check-set.md', 'pr-merge.md'];
+  for (const oldPrompt of oldPrompts) {
+    const oldPath = path.join(promptsDir, oldPrompt);
     if (fs.existsSync(oldPath)) {
-      fs.rmSync(oldPath, { recursive: true, force: true });
-      console.log(`  Removed deprecated: ${oldSkill}`);
+      fs.unlinkSync(oldPath);
+      console.log(`  Removed deprecated: ${oldPrompt}`);
     }
   }
 
-  // Sync skill files (add name field required by Codex)
-  const skillMappings = [
-    ['next-task', 'next-task', 'next-task.md', 'Next Task'],
-    ['ship', 'ship', 'ship.md', 'Ship'],
-    ['deslop', 'deslop-around', 'deslop-around.md', 'Deslop Around'],
-    ['review', 'project-review', 'project-review.md', 'Project Review'],
-    ['reality-check', 'reality-check', 'scan.md', 'Reality Check']
+  // Also clean up old skills directory if it exists
+  const oldSkillsDir = path.join(configDir, 'skills');
+  if (fs.existsSync(oldSkillsDir)) {
+    const oldSkillDirs = ['next-task', 'ship', 'deslop', 'review', 'reality-check', 'reality-check-set', 'pr-merge'];
+    for (const dir of oldSkillDirs) {
+      const oldPath = path.join(oldSkillsDir, dir);
+      if (fs.existsSync(oldPath)) {
+        fs.rmSync(oldPath, { recursive: true, force: true });
+      }
+    }
+  }
+
+  // Sync prompt files (prompts system - simpler than skills)
+  const promptMappings = [
+    ['next-task.md', 'next-task', 'next-task.md'],
+    ['ship.md', 'ship', 'ship.md'],
+    ['deslop-around.md', 'deslop-around', 'deslop-around.md'],
+    ['project-review.md', 'project-review', 'project-review.md'],
+    ['reality-check-scan.md', 'reality-check', 'scan.md'],
+    ['delivery-approval.md', 'next-task', 'delivery-approval.md'],
+    ['update-docs-around.md', 'next-task', 'update-docs-around.md']
   ];
 
-  for (const [skillName, plugin, source, displayName] of skillMappings) {
+  for (const [target, plugin, source] of promptMappings) {
     const srcPath = path.join(installDir, 'plugins', plugin, 'commands', source);
-    const skillDir = path.join(skillsDir, skillName);
-    const destPath = path.join(skillDir, 'SKILL.md');
+    const destPath = path.join(promptsDir, target);
     if (fs.existsSync(srcPath)) {
-      fs.mkdirSync(skillDir, { recursive: true });
-      // Read source and add name field to frontmatter for Codex compatibility
-      let content = fs.readFileSync(srcPath, 'utf8');
-      if (content.startsWith('---')) {
-        // Insert name field after opening ---
-        content = content.replace(/^---\n/, `---\nname: ${displayName}\n`);
-      } else {
-        // Add frontmatter if missing
-        content = `---\nname: ${displayName}\n---\n\n${content}`;
-      }
-      fs.writeFileSync(destPath, content);
+      fs.copyFileSync(srcPath, destPath);
     }
   }
 
   console.log('✅ Codex CLI installation complete!');
   console.log(`   Config: ${configPath}`);
-  console.log(`   Skills: ${skillsDir}`);
+  console.log(`   Prompts: ${promptsDir}`);
+  console.log('   Access via: /prompts:next-task, /prompts:ship, etc.');
   console.log('   MCP tools: workflow_start, workflow_status, workflow_resume, task_discover, review_code\n');
   return true;
 }
