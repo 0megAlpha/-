@@ -56,3 +56,4 @@ workflow-state.json
 # yarn.lock
 # pnpm-lock.yaml
 TECHNICAL_DEBT.md
+*.tgz
