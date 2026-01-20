@@ -260,20 +260,33 @@ function installForCodex(installDir) {
     configContent = fs.readFileSync(configPath, 'utf8');
   }
 
-  if (configContent.includes('[mcp_servers.awesome-slash]')) {
-    configContent = configContent.replace(
-      /\[mcp_servers\.awesome-slash\][\s\S]*?(?=\n\[|$)/,
-      `[mcp_servers.awesome-slash]
-command = "node"
-args = ["${mcpPath}"]
+  // Remove any existing awesome-slash MCP config using line-by-line approach
+  // This is more reliable than regex for TOML
+  const lines = configContent.split('\n');
+  const filteredLines = [];
+  let inAwesomeSlashSection = false;
 
-[mcp_servers.awesome-slash.env]
-PLUGIN_ROOT = "${pluginRoot}"
-AI_STATE_DIR = ".codex"
-`
-    );
-  } else {
-    configContent += `
+  for (const line of lines) {
+    // Check if entering an awesome-slash section
+    if (line.match(/^\[mcp_servers\.awesome-slash/)) {
+      inAwesomeSlashSection = true;
+      continue;
+    }
+    // Check if entering a different section (not awesome-slash subsection)
+    if (line.match(/^\[/) && !line.match(/^\[mcp_servers\.awesome-slash/)) {
+      inAwesomeSlashSection = false;
+    }
+    // Keep lines that are not in awesome-slash sections
+    if (!inAwesomeSlashSection) {
+      filteredLines.push(line);
+    }
+  }
+
+  configContent = filteredLines.join('\n').trimEnd();
+
+  // Add the MCP config
+  configContent += `
+
 [mcp_servers.awesome-slash]
 command = "node"
 args = ["${mcpPath}"]
@@ -282,7 +295,6 @@ args = ["${mcpPath}"]
 PLUGIN_ROOT = "${pluginRoot}"
 AI_STATE_DIR = ".codex"
 `;
-  }
 
   fs.writeFileSync(configPath, configContent);
 
