@@ -166,6 +166,8 @@ Remove debugging code, old TODOs, and AI slop from your codebase.
 - Placeholder text, magic numbers
 - Empty catch blocks, disabled linters
 - Placeholder functions (`return 0`, `todo!()`, `raise NotImplementedError`)
+- Excessive documentation (JSDoc >3x function body)
+- Phantom references (issue/PR mentions, file path references in comments)
 
 ---
 
