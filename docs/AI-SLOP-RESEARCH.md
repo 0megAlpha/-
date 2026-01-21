@@ -709,11 +709,12 @@ let validated_email = normalize_email(&raw_input);
 | Priority | Tasks | Status | Release |
 |----------|-------|--------|---------|
 | Priority 1 (Quick Wins) | 3 tasks | ✅ 100% Complete | Pending |
-| Priority 2 (Medium Effort) | 2 tasks | ⏳ 0% Complete | Pending |
+| Priority 2 (Medium Effort) | 2 tasks | ⏳ 50% Complete | Pending |
 | Priority 3 (Advanced) | 2 tasks | ⏳ 0% Complete | Pending |
-| **Total** | **7 tasks** | **3/7 (43%)** | **After 100%** |
+| **Total** | **7 tasks** | **4/7 (57%)** | **After 100%** |
 
 **Commits on main (not released):**
+- `5950ccb` - feat(deslop): add generic naming detection for JS/TS, Python, Rust, Go (#110)
 - `0e68b21` - feat(deslop): add doc/code ratio and phantom reference detection
 - `50ce0d2` - docs: update /deslop-around pattern documentation
 
@@ -746,11 +747,12 @@ let validated_email = normalize_email(&raw_input);
 
 ### Priority 2: Medium Effort (Medium, High Impact) - ⏳ PENDING
 
-~~4. **Generic Naming Detection**~~ ✅ **DONE** (Committed, not released)
+~~4. **Generic Naming Detection**~~ ✅ **DONE** (Merged to main, v2.7.0)
    - Patterns: `generic_naming_js`, `generic_naming_py`, `generic_naming_rust`, `generic_naming_go`
    - Flags: data, result, item, temp, value, output, response, obj, ret, res, val, arr, str, num, buf, ctx, cfg, opts, args, params
    - Python pattern excludes for-in loop variables to reduce false positives
-   - **Status**: Comprehensive regex tests with ReDoS protection
+   - Go pattern fixed to remove invalid `var` with `:=` syntax
+   - **Status**: 38 tests, 95%+ coverage, ReDoS protection, PR #110 merged
 
 5. **Verbosity Detection** ⏳ TODO
    - Comment-to-code ratio per function
