@@ -8,16 +8,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- **Slop Detection Pipeline Architecture** - 3-phase detection pipeline with certainty-tagged findings (#107)
+- **Slop Detection Pipeline Architecture** - 3-phase detection pipeline with certainty-tagged findings (#107, #116)
   - **Phase 1** (always runs): Built-in regex patterns + multi-pass analyzers
   - **Phase 2** (optional): CLI tool integration (jscpd, madge, escomplex) - if available
-  - **Phase 3**: LLM handoff with structured findings
+  - **Phase 3**: LLM handoff with structured findings via `formatHandoffPrompt()`
   - Certainty levels: HIGH (regex), MEDIUM (multi-pass), LOW (CLI tools)
   - Thoroughness levels: quick (regex only), normal (+multi-pass), deep (+CLI)
   - Mode inheritance from deslop-around: report (analyze only) vs apply (fix issues)
   - New `runPipeline()` function in lib/patterns/pipeline.js
+  - New `formatHandoffPrompt()` for token-efficient LLM handoff (compact output grouped by certainty)
   - New lib/patterns/cli-enhancers.js for optional tool detection
-  - deslop-work.md agent updated to use pipeline orchestrator
   - Graceful degradation when CLI tools not installed
 
 - **Buzzword Inflation Detection** - New project-level analyzer for `/deslop-around` command (#113)
@@ -108,6 +108,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     - `speculative_generality_unused_params`: Underscore-prefixed params
     - `speculative_generality_empty_interface`: Empty TypeScript interfaces
   - All patterns have ReDoS-safe regex and comprehensive test coverage
+
+### Changed
+- **deslop-work Agent Refactor** - Rewrote from pseudo-JavaScript to explicit Bash/Read/Grep tool usage (#116)
+  - Now uses pipeline orchestrator (`runPipeline()`) instead of inline pattern matching
+  - Certainty-based decision making: HIGH (auto-fix), MEDIUM (verify context), LOW (investigate)
+  - Structured handoff via `formatHandoffPrompt()` reduces agent prompt verbosity
+  - Clearer separation: pipeline collects findings, agent makes decisions
+  - Improved maintainability with declarative tool instructions
+- **deslop-around Command** - Enhanced documentation for mode usage and pattern library (#116)
+  - Clarified report vs apply mode behavior
+  - Added references to pattern library categories
+  - Updated code smell detection section with latest patterns
 
 ### Fixed
 - **findMatchingBrace** - Now skips comments to avoid breaking on quotes/apostrophes in comment text (e.g., "it's", "we're")
