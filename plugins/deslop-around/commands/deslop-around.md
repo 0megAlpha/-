@@ -7,19 +7,21 @@ argument-hint: "[report|apply] [scope-path] [max-changes]"
 
 You are a senior maintainer doing periodic repo hygiene. Your mission: remove "AI slop" while preserving behavior and minimizing diffs.
 
-## Modes
+## Modes (User Choice)
 
-| Mode | Scope | Use Case |
-|------|-------|----------|
-| **Path-based** | `/deslop-around src/` | Targeted cleanup of specific path |
-| **Codebase** | `/deslop-around` | Full repository hygiene sweep |
+This command supports **two scope modes** - you choose:
 
-**Note**: For diff-based cleanup of new work only (unpushed commits), use the `deslop-work` agent via `/next-task`.
+| Mode | Scope | Command |
+|------|-------|---------|
+| **Path-based** | Specific directory/files | `/deslop-around [apply] src/` |
+| **Codebase** | Entire repository | `/deslop-around [apply]` |
+
+For **diff-based cleanup** of new work only, use the `deslop-work` agent via `/next-task`.
 
 ## Arguments
 
 - **Mode**: `report` (default) or `apply`
-- **Scope**: Path or glob pattern (default: `.`)
+- **Scope**: Path or glob pattern (default: `.` = codebase)
 - **Max changes**: Number of changesets (default: 5)
 
 Parse from $ARGUMENTS or use defaults.
@@ -80,24 +82,30 @@ git ls-files | wc -l           # File count
 
 ## AI Slop Definitions
 
-Detect patterns from `${CLAUDE_PLUGIN_ROOT}/lib/patterns/slop-patterns.js`:
+Detect and remove patterns from `${CLAUDE_PLUGIN_ROOT}/lib/patterns/slop-patterns.js`.
 
-**Categories:**
-- Console debugging (JS, Python, Rust, Go)
-- Old TODOs and FIXMEs
-- Placeholder functions (`todo!()`, `raise NotImplementedError`, `return 0`)
-- Empty catch/except blocks
-- Excessive documentation (>3x function body)
-- Phantom references (issue/PR mentions, stale file paths)
-- Infrastructure without implementation (unused DB clients, caches, API clients)
-- Code smells (boolean blindness, message chains, mutable globals)
+**Categories detected:**
+
+| Category | Examples |
+|----------|----------|
+| Console debugging | `console.log()`, `print()`, `dbg!()`, `println!()` |
+| Old TODOs | Comments with TODO/FIXME >90 days old |
+| Placeholder code | `return 0`, `todo!()`, `raise NotImplementedError` |
+| Empty catch/except | Empty error handlers without logging |
+| Hardcoded secrets | API keys, tokens, credentials |
+| Excessive docs | JSDoc >3x function body length |
+| Phantom references | Issue/PR mentions in comments |
+| Code smells | Boolean blindness, message chains, mutable globals |
 
 **Certainty levels:**
-- **HIGH**: Direct regex match - auto-fixable
-- **MEDIUM**: Multi-pass analysis - verify context
-- **LOW**: Heuristic - use judgment
 
-See pattern library for full regex patterns and language variants.
+| Level | Action | Description |
+|-------|--------|-------------|
+| **HIGH** | Auto-fix | Direct regex match - definitive slop |
+| **MEDIUM** | Verify context | Multi-pass analysis - review before fixing |
+| **LOW** | Flag only | Heuristic - may be false positive |
+
+See pattern library for full regex patterns and language-specific variants.
 
 ## Phase A: Map + Diagnose (Always)
 
