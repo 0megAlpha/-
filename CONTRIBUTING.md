@@ -1,101 +1,98 @@
 # Contributing to Awesome Slash Commands
 
-Thank you for your interest in contributing.
+## Approval Process
+
+**All PRs require approval from the repo owner (@avifenesh).** There are no other maintainers.
+
+PRs may receive AI-assisted reviews (Copilot, Claude, Gemini, Codex) at the owner's discretion. **If you receive review comments, you must address ALL of them before merge** - no exceptions.
+
+---
 
 ## What We Care About
 
-**This is a plugin for OTHER projects** - it provides workflow automation for developers using Claude Code, Codex CLI, and OpenCode in their repositories.
+**This is a plugin for OTHER projects** - workflow automation for Claude Code, Codex CLI, and OpenCode users.
 
 ### Core Priorities (In Order)
 
-1. **User DX** - The developer experience when using this plugin in external projects
-2. **Controlled, worry-free automation** - Users should trust the plugin to run autonomously
-3. **Minimal context/token consumption** - Agents should be efficient, not verbose
-4. **Quality agent output** - Code written by agents must be production-ready
-5. **Simplicity over features** - Remove complexity that doesn't serve users
+1. **User DX** - Experience when using this plugin in external projects
+2. **Worry-free automation** - Users trust the plugin to run autonomously
+3. **Token efficiency** - Agents should be efficient, not verbose
+4. **Quality output** - Code written by agents must be production-ready
+5. **Simplicity** - Remove complexity that doesn't serve users
 
 ### What To Avoid
 
-- **Overengineering** - No config systems nobody asked for, no schemas for the sake of schemas
-- **Internal tooling focus** - We don't optimize for developing THIS repo
-- **Complexity creep** - Every abstraction must justify its existence
-- **Summary/audit files** - Don't create files that clutter the repo
-
-### Before Contributing, Ask
-
-- "Does this help plugin users?" - Not internal tooling, not developer convenience here
-- "Is this simple enough?" - If it feels overengineered, it probably is
-- "Will agents using this consume fewer tokens?" - Efficiency matters
-- "Does this make the automation more reliable?" - Trust is everything
+- **Overengineering** - No config systems nobody asked for
+- **Internal tooling** - Don't optimize for developing THIS repo
+- **Complexity creep** - Every abstraction must justify itself
+- **Summary files** - No `*_AUDIT.md`, `*_SUMMARY.md` - clutter
 
 ---
 
-## How to Contribute
+## Before You Start
 
-### Reporting Bugs
+### Multi-File Changes
 
-1. Check if the bug already exists in [Issues](https://github.com/avifenesh/awesome-slash/issues)
-2. If not, create a new issue with:
-   - Clear description of the bug
-   - Steps to reproduce
-   - Expected vs actual behavior
-   - Your environment (OS, Node version, Claude version)
+For changes touching multiple files, **read the relevant checklist first**:
 
-### Suggesting Features
-
-1. Check [Issues](https://github.com/avifenesh/awesome-slash/issues) and [Discussions](https://github.com/avifenesh/awesome-slash/discussions)
-2. Create a new discussion describing:
-   - The problem you are trying to solve for **plugin users**
-   - Your proposed solution
-   - Why it's worth the added complexity (if any)
-
-### Pull Requests
-
-1. Fork and create a branch from `main`
-2. Make your changes following our standards
-3. Test thoroughly
-4. Update CHANGELOG.md
-5. Submit PR with clear description
-
----
-
-## Development Setup
-
-### Prerequisites
-
-- Node.js 18+
-- Git
-- GitHub CLI (`gh`)
-
-### Initial Setup
-
-```bash
-git clone https://github.com/YOUR-USERNAME/awesome-slash.git
-cd awesome-slash
-npm install
-npm test
-```
+| Change Type | Checklist |
+|-------------|-----------|
+| New slash command | `checklists/new-command.md` |
+| New agent | `checklists/new-agent.md` |
+| New lib module | `checklists/new-lib-module.md` |
+| MCP server update | `checklists/update-mcp.md` |
 
 ### Library Architecture
 
-Claude Code installs each plugin separately, so each plugin needs its own `lib/` directory.
-
-- **`lib/` (root)** = canonical source - always edit files here
-- **`plugins/*/lib/`** = copies for installation - never edit directly
-
-**When you modify any file in `lib/`:**
+`lib/` is the canonical source. Plugins get copies.
 
 ```bash
-# 1. Edit files in lib/
-vim lib/platform/detect-platform.js
+# Edit in lib/
+vim lib/patterns/pipeline.js
 
-# 2. Sync changes to all plugins
+# Sync to all plugins
 ./scripts/sync-lib.sh
 
-# 3. Commit both the source and copies
+# Commit both
 git add lib/ plugins/*/lib/
-git commit -m "fix(lib): your change description"
+git commit -m "fix(lib): description"
 ```
+
+---
+
+## Pull Request Process
+
+### 1. Create PR
+
+```bash
+git checkout -b feature/your-change
+# make changes
+npm test
+git add -A && git commit -m "feat(scope): description"
+git push -u origin feature/your-change
+gh pr create --base main
+```
+
+### 2. Address Review Comments
+
+Every comment must be addressed:
+- **Critical/High** → Fix immediately
+- **Medium/Minor** → Fix (shows quality)
+- **Questions** → Answer with explanation
+- **False positives** → Reply explaining why, then resolve
+
+**Never ignore a comment. Never leave threads unresolved.**
+
+### 3. Iterate Until Clean
+
+Repeat until:
+- [ ] CI passes
+- [ ] Zero unresolved comment threads
+- [ ] No "changes requested" reviews
+
+### 4. Owner Review
+
+Once clean, the repo owner will review and merge.
 
 ---
 
@@ -103,44 +100,35 @@ git commit -m "fix(lib): your change description"
 
 ### Keep It Simple
 
-- Prefer flat data structures over nested objects
-- Avoid abstractions until you need them three times
-- Delete unused code completely - no backwards-compatibility hacks
-- One file doing one thing well beats a complex module system
+- Flat data structures over nested objects
+- No abstractions until needed three times
+- Delete unused code completely
+- One file doing one thing well
 
-### JavaScript/Node.js
+### JavaScript
 
-- Modern JavaScript (ES2020+)
-- `const` over `let`, no `var`
+- ES2020+, `const` over `let`
 - async/await over callbacks
 - Handle errors explicitly
-- JSDoc for exported functions
+- JSDoc for exports
 
 ### Agent Prompts
 
-- Be concise - every token costs
-- Be specific - vague prompts waste iterations
-- Include constraints - prevent scope creep
-- Test with real tasks
+- Concise - every token costs
+- Specific - vague prompts waste iterations
+- Constrained - prevent scope creep
 
 ---
 
-## Commit Message Format
+## Commit Messages
 
-We follow [Conventional Commits](https://www.conventionalcommits.org/):
+[Conventional Commits](https://www.conventionalcommits.org/):
 
 ```
 <type>(<scope>): <description>
 ```
 
-**Types:** `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
-
-**Examples:**
-```
-feat(sources): add GitLab support
-fix(ship): correct CI status polling
-docs(readme): update installation steps
-```
+Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`
 
 ---
 
@@ -148,9 +136,9 @@ docs(readme): update installation steps
 
 - [ ] Tests pass (`npm test`)
 - [ ] CHANGELOG.md updated
-- [ ] Commit messages follow convention
-- [ ] No unnecessary complexity added
-- [ ] Helps plugin users (not just internal dev)
+- [ ] Checklist read (if multi-file change)
+- [ ] All review comments addressed
+- [ ] No unnecessary complexity
 
 ---
 
@@ -158,5 +146,3 @@ docs(readme): update installation steps
 
 - **Questions**: [Discussions](https://github.com/avifenesh/awesome-slash/discussions)
 - **Bugs**: [Issues](https://github.com/avifenesh/awesome-slash/issues)
-
-Thank you for contributing.
