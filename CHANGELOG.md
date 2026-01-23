@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.8.0] - 2025-01-23
+
 ### Added
 - **Master /enhance Orchestrator** - New `/enhance` command runs all enhancers in parallel (#118)
   - Orchestrates 5 enhancers: plugin, agent, claudemd, docs, prompt
