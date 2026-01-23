@@ -135,7 +135,7 @@ function installForClaude() {
     }
 
     // Install or update plugins
-    const plugins = ['next-task', 'ship', 'deslop-around', 'project-review', 'reality-check'];
+    const plugins = ['next-task', 'ship', 'deslop-around', 'project-review', 'reality-check', 'enhance'];
     for (const plugin of plugins) {
       console.log(`  Installing ${plugin}...`);
       try {
@@ -152,7 +152,7 @@ function installForClaude() {
     }
 
     console.log('\n✅ Claude Code installation complete!\n');
-    console.log('Commands: /next-task, /ship, /deslop-around, /project-review, /reality-check:scan');
+    console.log('Commands: /next-task, /ship, /deslop-around, /project-review, /reality-check:scan, /enhance');
     return true;
   } catch (err) {
     console.log('❌ Auto-install failed. Manual installation:');

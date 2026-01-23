@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.8.1] - 2025-01-23
+
+### Fixed
+- **CLI Installer** - Added missing `enhance` plugin to Claude Code installation
+
 ## [2.8.0] - 2025-01-23
 
 ### Added
