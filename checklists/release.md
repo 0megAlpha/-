@@ -21,6 +21,16 @@ grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/ mcp-s
 - [ ] `plugins/deslop-around/.claude-plugin/plugin.json`
 - [ ] `plugins/project-review/.claude-plugin/plugin.json`
 - [ ] `plugins/reality-check/.claude-plugin/plugin.json`
+- [ ] `plugins/enhance/.claude-plugin/plugin.json`
+
+## New Plugin Checklist
+
+If adding a NEW plugin (not just updating):
+
+- [ ] `bin/cli.js` → Add plugin name to `plugins` array (~line 138)
+- [ ] `bin/cli.js` → Update console output message (~line 155)
+- [ ] `docs/INSTALLATION.md` → Add `/plugin install <name>@awesome-slash` commands
+- [ ] `.claude-plugin/marketplace.json` → Add new plugin entry
 
 ## Documentation Updates
 

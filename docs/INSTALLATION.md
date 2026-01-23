@@ -15,6 +15,7 @@ Add the marketplace and install plugins directly in Claude Code:
 /plugin install deslop-around@awesome-slash
 /plugin install project-review@awesome-slash
 /plugin install reality-check@awesome-slash
+/plugin install enhance@awesome-slash
 ```
 
 **Scopes** (optional):
@@ -75,6 +76,7 @@ Add the marketplace and install plugins:
 /plugin install deslop-around@awesome-slash
 /plugin install project-review@awesome-slash
 /plugin install reality-check@awesome-slash
+/plugin install enhance@awesome-slash
 ```
 
 **Scopes** (optional):
@@ -154,6 +156,7 @@ You should see commands:
 - `/deslop-around` - AI slop cleanup
 - `/project-review` - Multi-agent code review
 - `/reality-check:scan` - Plan drift detection
+- `/enhance` - Enhancement analyzer suite
 
 ### OpenCode / Codex
 
