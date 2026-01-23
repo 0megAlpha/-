@@ -103,7 +103,41 @@ npm install -g awesome-slash@latest
 awesome-slash  # Select option 2 for OpenCode
 ```
 
-This installs MCP server and slash commands (`/next-task`, `/ship`, `/deslop-around`, `/project-review`).
+This installs:
+- MCP server for tools (`workflow_status`, `slop_detect`, etc.)
+- Slash commands (`/next-task`, `/ship`, `/deslop-around`, `/project-review`)
+- **Native OpenCode plugin** with advanced features:
+
+### Native Plugin Features
+
+The native plugin (`~/.opencode/plugins/awesome-slash/`) provides deep integration:
+
+| Feature | Description |
+|---------|-------------|
+| **Auto-thinking selection** | Adjusts thinking budget per agent complexity (0-20k tokens) |
+| **Workflow enforcement** | Blocks `git push`/`gh pr create` until `/ship` |
+| **Session compaction** | Preserves workflow state when context overflows |
+| **Activity tracking** | Updates `flow.json` on significant tool executions |
+
+**Agent Thinking Tiers:**
+
+| Tier | Budget | Agents |
+|------|--------|--------|
+| Execution | 0 | worktree-manager, simple-fixer, ci-monitor |
+| Discovery | 8k | task-discoverer, docs-updater |
+| Analysis | 12k | exploration-agent, deslop-work, ci-fixer |
+| Reasoning | 16k | planning-agent, implementation-agent, review-orchestrator |
+| Synthesis | 20k | plan-synthesizer, enhancement-orchestrator |
+
+**Provider-Specific Thinking:**
+
+The plugin auto-detects your model provider and applies the correct thinking config:
+
+```typescript
+// Anthropic → thinking.budgetTokens
+// OpenAI → reasoningEffort ("high"/"medium"/"low")
+// Google → thinkingConfig.thinkingBudget
+```
 
 ### Option 2: Manual MCP Config
 
@@ -266,8 +300,13 @@ The plugin auto-detects the platform and uses the appropriate directory. Overrid
 ### OpenCode
 - Works with any model provider (Claude, OpenAI, Google, local)
 - State directory: `.opencode/`
-- Slash commands in `~/.config/opencode/commands/`
-- Agent definitions in `~/.config/opencode/agents/`
+- Slash commands in `~/.opencode/commands/awesome-slash/`
+- Native plugin in `~/.opencode/plugins/awesome-slash/`
+- **Native plugin features:**
+  - Auto-thinking selection (adjusts budget per agent)
+  - Workflow enforcement (blocks git push until /ship)
+  - Session compaction with state preservation
+  - Provider-agnostic thinking config (Anthropic, OpenAI, Google)
 - Custom tools via MCP
 
 ### Codex CLI

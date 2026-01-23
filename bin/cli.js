@@ -168,12 +168,15 @@ function installForOpenCode(installDir) {
   const home = process.env.HOME || process.env.USERPROFILE;
   // Commands go to ~/.opencode/commands/awesome-slash/
   const commandsDir = path.join(home, '.opencode', 'commands', 'awesome-slash');
+  // Native plugin goes to ~/.opencode/plugins/awesome-slash/
+  const pluginDir = path.join(home, '.opencode', 'plugins', 'awesome-slash');
   // MCP config goes to ~/.config/opencode/opencode.json
   const configPath = getConfigPath('opencode');
   const configDir = path.dirname(configPath);
 
   fs.mkdirSync(configDir, { recursive: true });
   fs.mkdirSync(commandsDir, { recursive: true });
+  fs.mkdirSync(pluginDir, { recursive: true });
 
   // Update MCP config
   let config = {};
@@ -197,6 +200,21 @@ function installForOpenCode(installDir) {
   };
 
   fs.writeFileSync(configPath, JSON.stringify(config, null, 2));
+
+  // Install native OpenCode plugin (auto-thinking, workflow enforcement, compaction)
+  const pluginSrcDir = path.join(installDir, 'adapters', 'opencode-plugin');
+  if (fs.existsSync(pluginSrcDir)) {
+    // Copy plugin files
+    const pluginFiles = ['index.ts', 'package.json'];
+    for (const file of pluginFiles) {
+      const srcPath = path.join(pluginSrcDir, file);
+      const destPath = path.join(pluginDir, file);
+      if (fs.existsSync(srcPath)) {
+        fs.copyFileSync(srcPath, destPath);
+      }
+    }
+    console.log('  ✓ Installed native plugin (auto-thinking, workflow enforcement)');
+  }
 
   // Remove old/deprecated command files
   const oldCommands = ['reality-check-set.md', 'pr-merge.md'];
@@ -237,8 +255,10 @@ function installForOpenCode(installDir) {
   console.log('✅ OpenCode installation complete!');
   console.log(`   Config: ${configPath}`);
   console.log(`   Commands: ${commandsDir}`);
+  console.log(`   Plugin: ${pluginDir}`);
   console.log('   Access via: /next-task, /ship, /deslop-around, /project-review, /reality-check-scan, /enhance');
-  console.log('   MCP tools: workflow_status, workflow_start, workflow_resume, task_discover, review_code, slop_detect, enhance_analyze\n');
+  console.log('   MCP tools: workflow_status, workflow_start, workflow_resume, task_discover, review_code, slop_detect, enhance_analyze');
+  console.log('   Native features: Auto-thinking selection, workflow enforcement, session compaction\n');
   return true;
 }
 

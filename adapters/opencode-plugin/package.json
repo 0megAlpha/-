@@ -1,0 +1,21 @@
+{
+  "name": "awesome-slash-opencode-plugin",
+  "version": "1.0.0",
+  "description": "Native OpenCode plugin for awesome-slash workflow automation",
+  "main": "index.ts",
+  "type": "module",
+  "dependencies": {
+    "@opencode-ai/plugin": "^0.1.0"
+  },
+  "peerDependencies": {
+    "bun": ">=1.0.0"
+  },
+  "keywords": [
+    "opencode",
+    "plugin",
+    "awesome-slash",
+    "workflow"
+  ],
+  "author": "Avi Fenesh",
+  "license": "MIT"
+}

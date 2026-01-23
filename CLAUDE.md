@@ -25,6 +25,7 @@ Quick reference for AI assistants. Follow links for details.
    - New agent → `checklists/new-agent.md`
    - New lib module → `checklists/new-lib-module.md`
    - MCP server update → `checklists/update-mcp.md`
+   - OpenCode plugin update → `checklists/update-opencode-plugin.md`
    *WHY: Multi-file changes have hidden dependencies. Checklists prevent missed updates.*
 </critical-rules>
 
@@ -43,6 +44,11 @@ plugins/                # Claude Code plugins
 ├── deslop-around/      # AI slop cleanup
 ├── project-review/     # Multi-agent review
 └── reality-check/      # Plan drift detection
+
+adapters/               # Platform-specific adapters
+├── opencode-plugin/    # Native OpenCode plugin (auto-thinking, hooks)
+├── opencode/           # OpenCode install script
+└── codex/              # Codex install script
 
 mcp-server/             # Cross-platform MCP server
 bin/cli.js              # npm CLI installer

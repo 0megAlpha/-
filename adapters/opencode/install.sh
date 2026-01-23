@@ -197,6 +197,22 @@ fi
 echo "  ✓ Added MCP server to opencode.json"
 echo
 
+# Install native OpenCode plugin (auto-thinking, workflow enforcement, compaction)
+echo "🔌 Installing native plugin..."
+PLUGIN_DIR="${OPENCODE_CONFIG_DIR}/plugins/awesome-slash"
+PLUGIN_SRC="${REPO_ROOT}/adapters/opencode-plugin"
+
+if [ -d "$PLUGIN_SRC" ]; then
+  mkdir -p "$PLUGIN_DIR"
+  cp "$PLUGIN_SRC/index.ts" "$PLUGIN_DIR/" 2>/dev/null || true
+  cp "$PLUGIN_SRC/package.json" "$PLUGIN_DIR/" 2>/dev/null || true
+  echo "  ✓ Installed native plugin to $PLUGIN_DIR"
+  echo "    Features: Auto-thinking selection, workflow enforcement, session compaction"
+else
+  echo "  ⚠️  Native plugin source not found at $PLUGIN_SRC"
+fi
+echo
+
 # Create README
 cat > "$OPENCODE_COMMANDS_DIR/README.md" << 'EOF'
 # awesome-slash for OpenCode
