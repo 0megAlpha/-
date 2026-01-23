@@ -6,7 +6,7 @@ A cross-platform plugin providing powerful, zero-configuration slash commands fo
 
 [![npm](https://img.shields.io/npm/v/awesome-slash?color=red)](https://www.npmjs.com/package/awesome-slash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-2.7.0-blue)](https://github.com/avifenesh/awesome-slash/releases)
+[![Version](https://img.shields.io/badge/version-2.7.1-blue)](https://github.com/avifenesh/awesome-slash/releases)
 [![GitHub stars](https://img.shields.io/github/stars/avifenesh/awesome-slash?style=flat&color=yellow)](https://github.com/avifenesh/awesome-slash/stargazers)
 [![Claude Code](https://img.shields.io/badge/Claude-Code%20Plugin-blue)](https://docs.anthropic.com/en/docs/claude-code)
 [![Codex CLI](https://img.shields.io/badge/Codex-CLI%20Compatible-green)](https://developers.openai.com/codex/cli)
@@ -289,15 +289,19 @@ Run all enhancement analyzers in parallel and generate a unified report.
 
 ---
 
-### `/enhance:plugin` - Plugin Structure Analyzer
+### Focused Enhancers
+
+> **Note:** Individual enhancers can be run via `/enhance --focus=TYPE` or the shorthand `/enhance:TYPE`. Both are equivalent.
+
+#### `/enhance:plugin` - Plugin Structure Analyzer
 
 Analyze plugin structures, MCP tools, and security patterns against best practices.
 
 ```bash
-/enhance:plugin                   # Analyze all plugins
+/enhance --focus=plugin           # Via master command (recommended)
+/enhance:plugin                   # Shorthand syntax
 /enhance:plugin next-task         # Analyze specific plugin
 /enhance:plugin --fix             # Apply HIGH certainty auto-fixes
-/enhance:plugin --verbose         # Show all issues
 ```
 
 **Checks:**
@@ -306,17 +310,15 @@ Analyze plugin structures, MCP tools, and security patterns against best practic
 - Security patterns
 - Tool over-exposure
 
----
-
-### `/enhance:agent` - Agent Prompt Optimizer
+#### `/enhance:agent` - Agent Prompt Optimizer
 
 Analyze agent prompt files for prompt engineering best practices.
 
 ```bash
-/enhance:agent                    # Analyze all agents
+/enhance --focus=agent            # Via master command (recommended)
+/enhance:agent                    # Shorthand syntax
 /enhance:agent exploration-agent  # Analyze specific agent
 /enhance:agent --fix              # Apply auto-fixes
-/enhance:agent --verbose          # Show all issues
 ```
 
 **Detects:**
@@ -325,17 +327,15 @@ Analyze agent prompt files for prompt engineering best practices.
 - Chain-of-thought appropriateness
 - Anti-patterns and prompt bloat
 
----
-
-### `/enhance:docs` - Documentation Optimizer
+#### `/enhance:docs` - Documentation Optimizer
 
 Analyze documentation for readability and RAG optimization.
 
 ```bash
-/enhance:docs                     # Default mode (balanced)
+/enhance --focus=docs             # Via master command (recommended)
+/enhance:docs                     # Shorthand syntax
 /enhance:docs --ai                # AI-only mode (aggressive RAG optimization)
 /enhance:docs docs/ --fix         # Apply fixes to docs directory
-/enhance:docs --verbose           # Show all issues
 ```
 
 **Modes:**
@@ -348,14 +348,13 @@ Analyze documentation for readability and RAG optimization.
 - Token efficiency (AI mode)
 - Structure and organization
 
----
-
-### `/enhance:claudemd` - Project Memory Optimizer
+#### `/enhance:claudemd` - Project Memory Optimizer
 
 Analyze CLAUDE.md/AGENTS.md for optimization opportunities.
 
 ```bash
-/enhance:claudemd                 # Analyze current project
+/enhance --focus=claudemd         # Via master command (recommended)
+/enhance:claudemd                 # Shorthand syntax
 /enhance:claudemd /path/to/proj   # Analyze specific project
 /enhance:claudemd --verbose       # Show all issues
 ```
@@ -367,17 +366,15 @@ Analyze CLAUDE.md/AGENTS.md for optimization opportunities.
 - Cross-platform compatibility
 - WHY explanations for rules
 
----
-
-### `/enhance:prompt` - Prompt Quality Analyzer
+#### `/enhance:prompt` - Prompt Quality Analyzer
 
 Analyze general prompts for prompt engineering best practices.
 
 ```bash
-/enhance:prompt                   # Analyze prompts in current directory
+/enhance --focus=prompt           # Via master command (recommended)
+/enhance:prompt                   # Shorthand syntax
 /enhance:prompt my-prompt.md      # Analyze specific prompt
 /enhance:prompt prompts/ --fix    # Apply fixes to prompts directory
-/enhance:prompt --verbose         # Show all issues
 ```
 
 **Differentiation:**
@@ -390,8 +387,6 @@ Analyze general prompts for prompt engineering best practices.
 - Context gaps (WHY explanations, priority order)
 - Output format issues
 - Anti-patterns (redundant CoT, prompt bloat)
-
----
 
 ---
 
@@ -461,7 +456,7 @@ Override with `AI_STATE_DIR` environment variable.
 }
 ```
 
-### Specialist Agents (16 Total)
+### Specialist Agents (21 Total)
 
 **Core Workflow (Opus - Complex Tasks):**
 | Agent | Purpose |
@@ -495,11 +490,16 @@ Override with `AI_STATE_DIR` environment variable.
 
 *Data collection handled by JavaScript collectors (lib/reality-check/collectors.js)*
 
-**Enhancement Orchestration (Mixed Models):**
+**Enhancement (Mixed Models):**
 | Agent | Model | Purpose |
 |-------|-------|---------|
 | enhancement-orchestrator | opus | Coordinate parallel enhancer execution and aggregate results |
 | enhancement-reporter | sonnet | Generate unified reports with deduplication |
+| plugin-enhancer | sonnet | Analyze plugin structures and MCP tools |
+| agent-enhancer | opus | Analyze agent prompts and frontmatter |
+| docs-enhancer | sonnet | Analyze documentation for RAG optimization |
+| claudemd-enhancer | sonnet | Analyze CLAUDE.md/AGENTS.md files |
+| prompt-enhancer | opus | Analyze general prompts for quality |
 
 
 ---
