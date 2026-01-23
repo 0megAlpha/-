@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.8.2] - 2025-01-23
+
+### Added
+- **MCP enhance_analyze Tool** - Cross-platform enhance support for OpenCode and Codex
+  - Runs plugin, agent, docs, claudemd, and prompt analyzers via MCP
+  - Options: `path`, `focus`, `mode` (report/apply), `compact`
+  - Deduplication and certainty-sorted output
+
+### Fixed
+- **Documentation** - Added enhance plugin to INSTALLATION.md commands
+- **Release Checklist** - Added "New Plugin Checklist" and "New MCP Tool Checklist" sections
+
 ## [2.8.1] - 2025-01-23
 
 ### Fixed
