@@ -550,7 +550,20 @@ OpenCode supports thinking/reasoning across **multiple providers** with differen
 | Multi-select | `multiSelect: true` | `multiple: true` |
 | Custom input | Always available | `custom: true` (default) |
 | Header max | 12 chars | 30 chars |
+| **Label max** | No strict limit | **30 chars** (enforced) |
 | Batch questions | 1-4 questions | Unlimited |
+
+**CRITICAL: Label Length**
+OpenCode enforces a **30-character limit** on option labels. Truncate task titles:
+```javascript
+function truncateLabel(num, title) {
+  const prefix = `#${num}: `;
+  const maxTitleLen = 30 - prefix.length;
+  return title.length > maxTitleLen
+    ? prefix + title.substring(0, maxTitleLen - 1) + '…'
+    : prefix + title;
+}
+```
 
 ### OpenCode Question Schema
 
