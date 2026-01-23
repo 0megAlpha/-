@@ -248,7 +248,11 @@ function installForOpenCode(installDir) {
     const srcPath = path.join(installDir, 'plugins', plugin, 'commands', source);
     const destPath = path.join(commandsDir, target);
     if (fs.existsSync(srcPath)) {
-      fs.copyFileSync(srcPath, destPath);
+      // Read, transform CLAUDE_PLUGIN_ROOT -> PLUGIN_ROOT, then write
+      let content = fs.readFileSync(srcPath, 'utf8');
+      content = content.replace(/\$\{CLAUDE_PLUGIN_ROOT\}/g, '${PLUGIN_ROOT}');
+      content = content.replace(/\$CLAUDE_PLUGIN_ROOT/g, '$PLUGIN_ROOT');
+      fs.writeFileSync(destPath, content);
     }
   }
 
@@ -381,6 +385,10 @@ AI_STATE_DIR = ".codex"
         // Add new frontmatter
         content = `---\nname: ${skillName}\ndescription: ${description}\n---\n\n${content}`;
       }
+
+      // Transform CLAUDE_PLUGIN_ROOT -> PLUGIN_ROOT for Codex
+      content = content.replace(/\$\{CLAUDE_PLUGIN_ROOT\}/g, '${PLUGIN_ROOT}');
+      content = content.replace(/\$CLAUDE_PLUGIN_ROOT/g, '$PLUGIN_ROOT');
 
       fs.writeFileSync(destPath, content);
       console.log(`  ✓ Installed skill: ${skillName}`);

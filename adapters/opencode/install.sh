@@ -98,8 +98,9 @@ for mapping in "${COMMAND_MAPPINGS[@]}"; do
   TARGET_FILE="$OPENCODE_COMMANDS_DIR/$TARGET_NAME.md"
 
   if [ -f "$SOURCE_FILE" ]; then
-    # Copy command file to commands directory
-    cp "$SOURCE_FILE" "$TARGET_FILE"
+    # Copy and transform CLAUDE_PLUGIN_ROOT -> PLUGIN_ROOT for OpenCode
+    sed 's/\${CLAUDE_PLUGIN_ROOT}/${PLUGIN_ROOT}/g; s/\$CLAUDE_PLUGIN_ROOT/$PLUGIN_ROOT/g' \
+      "$SOURCE_FILE" > "$TARGET_FILE"
     echo "  ✓ Installed /$TARGET_NAME"
   else
     echo "  ⚠️  Skipped /$TARGET_NAME (source not found: $SOURCE_FILE)"
