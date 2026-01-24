@@ -106,9 +106,50 @@ In workflow.md, add to Agent Tool Restrictions table:
 | new-agent | Allowed: X, Y | Disallowed: Z |
 ```
 
-## 7. Test Agent
+## 7. Cross-Platform Compatibility
+
+**Reference:** `checklists/cross-platform-compatibility.md`
+
+### Automatic Handling (by installer)
+The installer (`bin/cli.js`) automatically handles:
+- Copies agent to `~/.opencode/agents/` for OpenCode
+- Transforms frontmatter (tools → permissions, model names)
+- Codex uses MCP tools, not native agents (no extra work needed)
+
+### Manual Requirements
+- [ ] Use `${PLUGIN_ROOT}` not `${CLAUDE_PLUGIN_ROOT}` in agent file
+- [ ] All `AskUserQuestion` labels ≤30 characters (OpenCode limit)
+- [ ] Use `AI_STATE_DIR` env var for state paths
+
+### Frontmatter Transformation (automatic)
+
+| Claude Code | OpenCode (auto-converted) |
+|-------------|---------------------------|
+| `tools: Bash(git:*)` | `permission: bash: allow` |
+| `tools: Read, Edit` | `permission: read: allow, edit: allow` |
+| `model: sonnet` | `model: anthropic/claude-sonnet-4` |
+| `model: opus` | `model: anthropic/claude-opus-4` |
+
+## 8. Run Quality Validation
 
 ```bash
+# Run /enhance on the new agent
+/enhance plugins/next-task/agents/new-agent.md
+
+# Run tests
+npm test
+```
+
+## 9. Test Agent
+
+```bash
+# Rebuild and install
+npm pack && npm install -g ./awesome-slash-*.tgz
+echo "1 2 3" | awesome-slash
+
+# Verify agent is installed for OpenCode
+ls ~/.opencode/agents/ | grep new-agent
+
 # Run workflow and verify agent is called
 /next-task
 
@@ -116,7 +157,7 @@ In workflow.md, add to Agent Tool Restrictions table:
 Task({ subagent_type: "next-task:new-agent", prompt: "Test" })
 ```
 
-## 8. Update Agent Count
+## 10. Update Agent Count
 
 File: `README.md`
 
@@ -125,3 +166,11 @@ Update "Specialist Agents (N Total)" section.
 File: `docs/ARCHITECTURE.md`
 
 Add to appropriate agent category table.
+
+## Quick Reference
+
+| Platform | Agent Location | Frontmatter |
+|----------|---------------|-------------|
+| Claude Code | Plugin `agents/` | Claude format (tools, model) |
+| OpenCode | `~/.opencode/agents/` | Auto-transformed (permissions) |
+| Codex CLI | N/A (uses MCP) | N/A |

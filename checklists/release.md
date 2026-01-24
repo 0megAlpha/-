@@ -58,6 +58,34 @@ npm pack --dry-run          # Package builds correctly
 git status                  # No uncommitted changes
 ```
 
+## Cross-Platform Verification
+
+**Reference:** `checklists/cross-platform-compatibility.md`
+
+```bash
+# Build and install for all platforms
+npm pack
+npm install -g ./awesome-slash-*.tgz
+echo "1 2 3" | awesome-slash
+```
+
+### Verify Each Platform
+
+- [ ] **Claude Code**: Commands appear in `/plugin list`
+- [ ] **OpenCode**: Commands in `~/.opencode/commands/awesome-slash/`
+- [ ] **OpenCode**: Agents in `~/.opencode/agents/` (21 files)
+- [ ] **OpenCode**: MCP config in `~/.config/opencode/opencode.json`
+- [ ] **Codex CLI**: Skills in `~/.codex/skills/` (8 directories)
+- [ ] **Codex CLI**: MCP config in `~/.codex/config.toml`
+
+### Verify Skill Descriptions (Codex)
+
+```bash
+# Check that all skills have trigger phrases
+head -5 ~/.codex/skills/*/SKILL.md
+# Should show: description: "Use when user asks to..."
+```
+
 ## Release Commands
 
 ```bash

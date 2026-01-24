@@ -117,7 +117,35 @@ node -e "const lib = require('./plugins/next-task/lib'); console.log(Object.keys
 - [ ] Update `docs/ARCHITECTURE.md` if significant
 - [ ] Add to `lib/cross-platform/RESEARCH.md` if cross-platform relevant
 
-## 7. Commit Both Source and Copies
+## 7. Cross-Platform Considerations
+
+**Reference:** `checklists/cross-platform-compatibility.md`
+
+If module handles state or paths:
+- [ ] Use `AI_STATE_DIR` env var, not hardcoded `.claude/`
+- [ ] Use `PLUGIN_ROOT` env var, not `CLAUDE_PLUGIN_ROOT`
+
+```javascript
+// CORRECT
+const stateDir = process.env.AI_STATE_DIR || '.claude';
+const pluginRoot = process.env.PLUGIN_ROOT || process.env.CLAUDE_PLUGIN_ROOT;
+
+// WRONG
+const stateDir = '.claude';
+const pluginRoot = process.env.CLAUDE_PLUGIN_ROOT;
+```
+
+## 8. Run Quality Validation
+
+```bash
+# Run tests
+npm test
+
+# Verify all tests pass
+npm test -- --testPathPattern={module-name}
+```
+
+## 9. Commit Both Source and Copies
 
 ```bash
 git add lib/ plugins/*/lib/

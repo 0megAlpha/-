@@ -72,12 +72,17 @@ const commandMappings = [
   ['new-command.md', 'plugin-name', 'new-command.md'],
 ];
 
-// Codex skill mappings (~line 328)
+// Codex skill mappings (~line 476) - MUST include trigger phrases!
 const skillMappings = [
   // ... existing
-  ['new-command', 'plugin-name', 'new-command.md', 'Description for skill'],
+  ['new-command', 'plugin-name', 'new-command.md',
+    'Use when user asks to "trigger1", "trigger2", "trigger3". Brief description of what it does.'],
 ];
 ```
+
+**CRITICAL for Codex:** The description MUST include trigger phrases like:
+- `'Use when user asks to "find bugs", "review code", "check quality"...'`
+- Without trigger phrases, Codex won't know when to invoke the skill
 
 ## 5. Update Documentation
 
@@ -85,7 +90,41 @@ const skillMappings = [
 - [ ] `README.md` → Add to Available Commands section
 - [ ] `CHANGELOG.md` → Note the addition
 
-## 6. Test Cross-Platform
+## 6. Cross-Platform Compatibility
+
+**Reference:** `checklists/cross-platform-compatibility.md`
+
+### OpenCode Requirements
+- [ ] All `AskUserQuestion` labels ≤30 characters
+- [ ] Use `${PLUGIN_ROOT}` not `${CLAUDE_PLUGIN_ROOT}` in command file
+- [ ] Use `AI_STATE_DIR` env var for state paths, not hardcoded `.claude/`
+
+### Codex Requirements
+- [ ] Skill description has trigger phrases (see step 4)
+- [ ] YAML frontmatter will be escaped automatically by installer
+
+### Code Patterns
+```javascript
+// CORRECT - Works on all platforms
+const pluginRoot = process.env.PLUGIN_ROOT || process.env.CLAUDE_PLUGIN_ROOT;
+const stateDir = process.env.AI_STATE_DIR || '.claude';
+
+// WRONG - Only works on Claude Code
+const pluginRoot = process.env.CLAUDE_PLUGIN_ROOT;
+const stateDir = '.claude';
+```
+
+## 7. Run Quality Validation
+
+```bash
+# Run /enhance on the new command
+/enhance plugins/{plugin-name}/commands/new-command.md
+
+# Run tests
+npm test
+```
+
+## 8. Test Cross-Platform
 
 ```bash
 # Rebuild package
@@ -93,7 +132,7 @@ npm pack
 
 # Test installation
 npm install -g ./awesome-slash-*.tgz
-awesome-slash  # Select all platforms
+echo "1 2 3" | awesome-slash  # Install all platforms
 
 # Verify command exists
 # Claude Code: /new-command
@@ -101,8 +140,16 @@ awesome-slash  # Select all platforms
 # Codex CLI: $new-command
 ```
 
-## 7. Sync Library (if command uses lib/)
+## 9. Sync Library (if command uses lib/)
 
 ```bash
 ./scripts/sync-lib.sh
 ```
+
+## Quick Reference
+
+| Platform | Invocation | Label Limit | Trigger Phrases |
+|----------|------------|-------------|-----------------|
+| Claude Code | `/command` | No limit | Not needed |
+| OpenCode | `/command` | **30 chars** | Not needed |
+| Codex CLI | `$command` | No limit | **Required** |

@@ -112,16 +112,37 @@ describe('MCP Server - new_tool', () => {
 });
 ```
 
-## 7. Test Cross-Platform
+## 7. Cross-Platform Verification
+
+**Reference:** `checklists/cross-platform-compatibility.md`
 
 ```bash
 # Rebuild and install
 npm pack
 npm install -g ./awesome-slash-*.tgz
-awesome-slash  # Reinstall for all platforms
+echo "1 2 3" | awesome-slash  # Reinstall for all platforms
 
 # Test MCP server loads
 node -e "require('./mcp-server/index.js')"
+```
+
+### Verify MCP Config Updated
+
+- [ ] **OpenCode**: Check `~/.config/opencode/opencode.json` has MCP entry
+- [ ] **Codex CLI**: Check `~/.codex/config.toml` has MCP entry
+- [ ] **Claude Code**: Verify via `/plugin list`
+
+### Test Tool on Each Platform
+
+```bash
+# Claude Code
+# Use tool via MCP
+
+# OpenCode
+# Use tool via MCP (same interface)
+
+# Codex CLI
+# Use tool via MCP (same interface)
 ```
 
 ## Tool Response Format

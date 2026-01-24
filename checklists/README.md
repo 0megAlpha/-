@@ -2,6 +2,12 @@
 
 Action-specific checklists to ensure consistency across the codebase.
 
+## Workflow
+
+1. **BEFORE starting** → Read the relevant checklist
+2. **WHILE working** → Follow the checklist steps
+3. **BEFORE delivering** → Verify ALL checklist items are done
+
 ## Available Checklists
 
 | Checklist | When to Use |
@@ -13,6 +19,13 @@ Action-specific checklists to ensure consistency across the codebase.
 | [new-lib-module.md](./new-lib-module.md) | Adding a new library module |
 | [update-mcp.md](./update-mcp.md) | Adding/updating MCP server tools |
 | [update-opencode-plugin.md](./update-opencode-plugin.md) | Updating native OpenCode plugin |
+
+## Every Checklist Includes
+
+All checklists now include these common steps:
+- Cross-platform compatibility verification
+- Quality validation (`/enhance`, `npm test`)
+- Platform-specific requirements (OpenCode labels, Codex triggers)
 
 ## Knowledge Base References
 
