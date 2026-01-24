@@ -8,7 +8,7 @@ PRs may receive AI-assisted reviews (Copilot, Claude, Gemini, Codex) at the owne
 
 ---
 
-## What We Care About
+## What Matters Here
 
 **This is a plugin for OTHER projects** - workflow automation for Claude Code, Codex CLI, and OpenCode users.
 

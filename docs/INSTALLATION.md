@@ -1,6 +1,19 @@
 # Installation Guide
 
-Complete installation instructions for awesome-slash across all supported platforms.
+One codebase works across three platforms—Claude Code, OpenCode, and Codex CLI. Install once, get the same workflows everywhere. State files adapt automatically to each platform's conventions.
+
+---
+
+## Quick Navigation
+
+| Section | Jump to |
+|---------|---------|
+| [Claude Code](#claude-code-recommended) | Marketplace install (easiest) |
+| [npm Install](#all-platforms-npm-global-install) | Works for all platforms |
+| [Alternative Methods](#alternative-installation-methods) | Local dev, manual |
+| [Verify Installation](#verify-installation) | Check it worked |
+| [Prerequisites](#prerequisites) | What you need first |
+| [Troubleshooting](#troubleshooting) | Common issues |
 
 ---
 

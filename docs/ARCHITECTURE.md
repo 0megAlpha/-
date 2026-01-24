@@ -1,8 +1,22 @@
 # Multi-Platform Architecture
 
-> **Status:** Implemented
->
-> Cross-platform support is complete with unified CLI installer, MCP server, and shared library.
+The design principle: write tools once, run everywhere. AI models already have their strengths—code generation, reasoning, analysis. The bottleneck is orchestration, state management, and platform integration. This architecture handles those parts so the models can do what they're good at.
+
+---
+
+## Quick Navigation
+
+| Section | Jump to |
+|---------|---------|
+| [Overview](#overview) | Platform support |
+| [Architecture](#architecture) | Directory structure |
+| [Cross-Platform Library](#cross-platform-library-libcross-platform) | Shared utilities |
+| [State Directories](#state-directory-by-platform) | Where state lives |
+| [MCP Server Tools](#mcp-server-tools) | Tool reference |
+| [Platform Details](#platform-installation-details) | Per-platform setup |
+| [Knowledge Base](#knowledge-base) | Research docs |
+
+---
 
 ## Overview
 

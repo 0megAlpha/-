@@ -1,222 +1,485 @@
 # awesome-slash
 
-> Stop babysitting AI agents. Automate your entire workflow.
+AI models can write code. That's not the hard part anymore. The hard part is everything else—picking what to work on, managing branches, reviewing output, cleaning up artifacts, handling CI, addressing comments, deploying. **awesome-slash automates the entire workflow**, not just the coding.
 
-**1307 tests. 7 languages. 21 specialist agents. Production-grade.**
-
-[![npm](https://img.shields.io/npm/v/awesome-slash?color=red)](https://www.npmjs.com/package/awesome-slash)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/avifenesh/awesome-slash?style=flat&color=yellow)](https://github.com/avifenesh/awesome-slash/stargazers)
-
-**Claude Code** | **OpenCode** | **Codex CLI**
-
-[Try It Now](#try-it-now-30-seconds) | [Documentation](./docs/) | [Support](#support)
+**Works with:** Claude Code | OpenCode | Codex CLI
 
 ---
 
-## Try It Now (30 seconds)
+## Quick Navigation
 
-```bash
-# Claude Code
-/plugin marketplace add avifenesh/awesome-slash
-/plugin install deslop-around@awesome-slash
-
-# Then just run:
-/deslop-around
-```
-
-See what AI slop is hiding in your code. No config. No setup.
-
----
-
-## Which Plugin Do You Need?
-
-| Your Problem | Plugin | What Actually Happens |
-|-------------|--------|----------------------|
-| "I have 50 issues, which first?" | `/next-task` | Discovers → Worktree → Implements → Reviews (no limit) → Ships |
-| "PRs are scary" | `/ship` | Auto-detects CI + deploy platform → Monitors → Auto-rollback if fails |
-| "AI slop everywhere" | `/deslop-around` | 3-phase pipeline: regex (HIGH) → analyzers (MEDIUM) → CLI tools (LOW) |
-| "Need thorough review" | `/project-review` | 8 agents review in parallel until zero critical/high issues |
-| "Docs lie about code" | `/reality-check` | JS collectors + single Opus call. Semantic matching, not string search. |
-| "Prompts need work" | `/enhance` | 5 analyzers, 50+ patterns, certainty-based findings |
+| Section | What's there |
+|---------|--------------|
+| [Commands](#commands) | All 6 commands with jump links |
+| [What This Does](#what-this-project-does) | The problem and how this solves it |
+| [What's Different](#what-makes-this-different) | Why this isn't just another AI tool |
+| [Design Philosophy](#design-philosophy) | The thinking behind the architecture |
+| [Command Details](#command-details) | Deep dive into each command |
+| [Installation](#installation) | Get started in 2 commands |
+| [Documentation](#documentation) | Links to detailed docs |
 
 ---
 
-## The Plugin Marketplace
+## Commands
 
-### Workflow Automation
+| Command | What it does | Details |
+|---------|--------------|---------|
+| [`/next-task`](#next-task) | Picks a task, implements it, reviews it, ships it | [→](#next-task) |
+| [`/ship`](#ship) | Creates PR, monitors CI, addresses reviews, merges | [→](#ship) |
+| [`/deslop-around`](#deslop-around) | Finds and removes debug code, TODOs, AI artifacts | [→](#deslop-around) |
+| [`/project-review`](#project-review) | Multi-agent code review until issues resolved | [→](#project-review) |
+| [`/reality-check:scan`](#reality-checkscan) | Compares your docs to actual code state | [→](#reality-checkscan) |
+| [`/enhance`](#enhance) | Analyzes prompts, plugins, docs for improvements | [→](#enhance) |
+
+---
+
+## What This Project Does
+
+You have AI coding assistants. They can write code. But the full workflow—picking what to work on, setting up branches, implementing, reviewing, fixing issues, creating PRs, monitoring CI, addressing reviewer comments, merging—still requires you to babysit every step.
+
+**awesome-slash automates the entire workflow.** Not just code generation, but the complete process from "I have 50 issues" to "PR merged and deployed."
+
+### The Core Idea
+
+Most AI tools generate code and stop. You still have to:
+- Decide what to work on
+- Create branches
+- Run the implementation
+- Review the output
+- Clean up AI artifacts
+- Create PRs
+- Wait for CI
+- Address review comments
+- Merge and deploy
+
+This plugin handles all of that. You approve a plan, then it runs autonomously until there's a merged PR (or until something genuinely needs your input).
+
+---
+
+## What Makes This Different
+
+### 1. Certainty-Based Detection
+
+Every finding is tagged with a certainty level:
+- **HIGH** - Definitely a problem. Safe to auto-fix.
+- **MEDIUM** - Probably a problem. Needs context.
+- **LOW** - Might be a problem. Needs human judgment.
+
+This means you can run `/deslop-around apply` and trust that it won't break things.
+
+### 2. Review Loops Without Limits
+
+The review-orchestrator agent doesn't have a max iteration count. It keeps running code-reviewer, silent-failure-hunter, and test-analyzer until there are zero critical or high-severity issues. Then it runs deslop-work on its own fixes to catch any AI artifacts it introduced.
+
+### 3. Workflow Enforcement
+
+A SubagentStop hook prevents agents from skipping phases. You can't push to remote before `/ship` is invoked. You can't skip the review loop. The workflow literally enforces the quality gates.
+
+### 4. Resume From Any Point
+
+State is tracked in two files:
+- `tasks.json` - Which task you're working on (in your main repo)
+- `flow.json` - Which phase you're in (in your worktree)
+
+If your session dies, `/next-task --resume` picks up exactly where you left off.
+
+### 5. Token Efficiency
+
+- Compact output modes reduce tokens by 60-70%
+- `/reality-check:scan` uses JavaScript collectors + a single LLM call (77% reduction vs multi-agent approaches)
+- Pre-indexed pattern maps give O(1) lookups instead of scanning
+
+### 6. Cross-Platform
+
+Same workflows work on Claude Code, OpenCode, and Codex CLI. State directories adapt automatically (`.claude/`, `.opencode/`, `.codex/`).
+
+---
+
+## Design Philosophy
 
 <details>
-<summary><strong>/next-task</strong> - Master Workflow Orchestrator</summary>
+<summary><strong>Why build this? What's the thinking?</strong> (click to expand)</summary>
 
-**Problem:** You have dozens of issues. Manual workflow is tedious.
+### The Actual Problem
 
-**Solution:** Complete task-to-production automation with 14 specialist agents.
-- Discovers tasks from GitHub/GitLab/Linear/local files
-- Creates worktree + branch
-- Implements with quality gates (deslop, test coverage, review)
-- Ships PR with validation
-- **Resume from any checkpoint if interrupted**
+Frontier models write good code. That's solved. What's not solved:
+
+- **Context management** - Models forget what they're doing mid-session
+- **Compaction amnesia** - Long sessions get summarized, losing critical state
+- **Task drift** - Without structure, agents wander from the actual goal
+- **Skipped steps** - Agents skip reviews, tests, or cleanup when not enforced
+- **Token waste** - Using LLM calls for work that static analysis can do faster
+- **Babysitting** - Manually orchestrating each phase of development
+- **Repetitive requests** - Asking for the same workflow every single session
+
+### How This Addresses It
+
+**1. One agent, one job, done extremely well**
+
+Same principle as good code: single responsibility. The exploration-agent explores. The implementation-agent implements. The review-orchestrator coordinates reviews. No agent tries to do everything. 29 specialized agents, each with narrow scope and clear success criteria.
+
+**2. Pipeline with gates, not a monolith**
+
+Same principle as DevOps. Each step must pass before the next begins. Can't push before review. Can't merge before CI passes. Hooks enforce this—agents literally cannot skip phases.
+
+**3. Tools do tool work, agents do agent work**
+
+If static analysis, regex, or a shell command can do it, don't ask an LLM. Pattern detection uses pre-indexed regex. File discovery uses glob. Platform detection uses file existence checks. The LLM only handles what requires judgment. Finding console.log statements? Code does it better and faster.
+
+**4. Agents don't need to know how tools work**
+
+The slop detector returns findings with certainty levels. The agent doesn't need to understand the three-phase pipeline, the regex patterns, or the analyzer heuristics. Good tool design means the consumer doesn't need implementation details.
+
+**5. Build tools where tools don't exist**
+
+Many tasks lack existing tools. JavaScript collectors for reality-check. Multi-pass analyzers for slop detection. The result: agents receive structured data, not raw problems to figure out.
+
+**6. Research-backed prompt engineering**
+
+Documented techniques that measurably improve results:
+- **Progressive disclosure** - Agents see only what's needed for the current step
+- **Structured output** - JSON between delimiters, XML tags for sections
+- **Explicit constraints** - What agents MUST NOT do matters as much as what they do
+- **Few-shot examples** - Where patterns aren't obvious
+- **Tool calling over generation** - Let the model use tools rather than generate tool-like output
+
+**7. Validate plan and results, not every step**
+
+Approve the plan. See the results. The middle is automated. One plan approval unlocks autonomous execution through implementation, review, cleanup, and shipping.
+
+**8. Right model for the task**
+
+opus for everything wastes money. haiku for everything produces poor results. Match model capability to task complexity:
+- **opus** - Exploration, planning, implementation, review orchestration
+- **sonnet** - Pattern matching, validation, discovery
+- **haiku** - Git operations, file moves, CI polling
+
+Quality compounds. Poor exploration → poor plan → poor implementation → review cycles. Early phases deserve the best model.
+
+**9. Persistent state survives sessions**
+
+Two JSON files track everything: what task, what phase. Sessions can die and resume. Multiple sessions run in parallel on different tasks using separate worktrees. State files prevent collisions.
+
+**10. Delegate everything automatable**
+
+Agents don't just write code. They:
+- Clean their own output (deslop-work)
+- Update documentation (docs-updater)
+- Fix CI failures (ci-fixer)
+- Respond to review comments
+- Check for plan drift (reality-check)
+- Analyze their own prompts (/enhance)
+
+If it can be specified, it can be delegated.
+
+**11. Orchestrator stays high-level**
+
+The main workflow orchestrator doesn't read files, search code, or write implementations. It launches specialized agents and receives their outputs. Keeps the orchestrator's context window available for coordination rather than filled with file contents.
+
+**12. Leverage existing platforms**
+
+Claude Code, OpenCode, and Codex CLI have excellent built-in tooling. Read, Write, Edit, Glob, Grep, Bash, Task. The platforms handle file operations, terminal access, sub-agent coordination. This project adds workflow logic on top.
+
+**13. Composable, not monolithic**
+
+Every command works standalone. `/deslop-around` cleans code without needing `/next-task`. `/ship` merges PRs without needing the full workflow. Pieces compose together, but each piece is useful on its own.
+
+### What This Gets You
+
+- **Run multiple sessions** - Different tasks in different worktrees, no interference
+- **Fast iteration** - Approve plan, check results, repeat
+- **Stay in the interesting parts** - Policy decisions, architecture choices, edge cases
+- **Minimal review burden** - Most issues caught and fixed before you see the output
+- **No repetitive requests** - The workflow you want, without asking each time
+- **Scale horizontally** - More sessions, more tasks, same oversight level
+
+### The Bet
+
+With proper workflow structure, context management, and quality gates, AI agents can handle the complete development cycle autonomously—from task selection through merged PR. The limiting factor isn't model capability. It's orchestration.
+
+</details>
+
+---
+
+## Command Details
+
+### /next-task
+
+**Purpose:** Complete task-to-production automation.
+
+**What happens when you run it:**
+
+1. **Policy Selection** - You choose task source (GitHub issues, GitLab, local file), priority filter, and stopping point
+2. **Task Discovery** - Shows top 5 prioritized tasks, you pick one
+3. **Worktree Setup** - Creates isolated branch and working directory
+4. **Exploration** - Analyzes codebase to understand context
+5. **Planning** - Designs implementation approach
+6. **User Approval** - You review and approve the plan (last human interaction)
+7. **Implementation** - Executes the plan
+8. **Pre-Review** - Runs deslop-work and test-coverage-checker
+9. **Review Loop** - Multi-agent review iterates until clean
+10. **Delivery Validation** - Verifies tests pass, build passes, requirements met
+11. **Docs Update** - Updates CHANGELOG and related documentation
+12. **Ship** - Creates PR, monitors CI, addresses comments, merges
+
+**Agents involved:**
+
+| Agent | Model | Role |
+|-------|-------|------|
+| task-discoverer | sonnet | Finds and ranks tasks from your source |
+| worktree-manager | haiku | Creates git worktrees and branches |
+| exploration-agent | opus | Deep codebase analysis before planning |
+| planning-agent | opus | Designs step-by-step implementation plan |
+| implementation-agent | opus | Writes the actual code |
+| deslop-work | sonnet | Removes AI artifacts before review |
+| test-coverage-checker | sonnet | Validates tests exist and are meaningful |
+| review-orchestrator | opus | Coordinates parallel review agents |
+| delivery-validator | sonnet | Final checks before shipping |
+| docs-updater | sonnet | Updates documentation |
+| ci-monitor | haiku | Watches CI status |
+| ci-fixer | sonnet | Fixes CI failures and review comments |
+| simple-fixer | haiku | Executes mechanical edits |
+
+**Usage:**
 
 ```bash
-/next-task              # Start workflow
-/next-task --resume     # Resume from checkpoint
-/next-task --status     # Check progress
+/next-task              # Start new workflow
+/next-task --resume     # Resume interrupted workflow
+/next-task --status     # Check current state
 /next-task --abort      # Cancel and cleanup
 ```
 
-**18-Phase Workflow:** policy-selection → task-discovery → worktree-setup → exploration → planning → user-approval → implementation → review-loop → delivery-approval → ship-prep → create-pr → ci-wait → comment-fix → merge → production-ci → deploy → production-release → complete
+[Full workflow documentation →](./docs/workflows/NEXT-TASK.md)
 
-</details>
+---
 
-<details>
-<summary><strong>/ship</strong> - Complete PR Workflow</summary>
+### /ship
 
-**Problem:** PRs sit waiting for CI. Deploys are scary.
+**Purpose:** Takes your current branch from "ready to commit" to "merged PR."
 
-**Solution:** Commit → PR → CI → Review → Merge → Deploy, fully automated.
-- Detects your CI (GitHub Actions, GitLab CI, CircleCI, Jenkins, Travis)
-- Detects your deploy platform (Railway, Vercel, Netlify, Fly.io, Render)
-- Monitors CI, addresses review comments
-- Automatic rollback if production fails
+**What happens when you run it:**
+
+1. **Pre-flight** - Detects CI platform, deployment platform, branch strategy
+2. **Commit** - Stages and commits with generated message (if uncommitted changes)
+3. **Push & PR** - Pushes branch, creates pull request
+4. **CI Monitor** - Waits for CI, retries on transient failures
+5. **Review Wait** - Waits 3 minutes for auto-reviewers (Copilot, Claude, Gemini, Codex)
+6. **Address Comments** - Handles every comment from every reviewer
+7. **Merge** - Merges when all comments resolved and CI passes
+8. **Deploy** - Deploys and validates (if multi-branch workflow)
+9. **Cleanup** - Removes worktree, closes issue, deletes branch
+
+**Platform Detection:**
+
+| Type | Detected |
+|------|----------|
+| CI | GitHub Actions, GitLab CI, CircleCI, Jenkins, Travis |
+| Deploy | Railway, Vercel, Netlify, Fly.io, Render |
+| Project | Node.js, Python, Rust, Go, Java |
+
+**Review Comment Handling:**
+
+Every comment gets addressed. No exceptions. The workflow categorizes comments and handles each:
+- Code fixes get implemented
+- Style suggestions get applied
+- Questions get answered
+- False positives get explained
+
+If something can't be fixed, the workflow replies explaining why and resolves the thread.
+
+**Usage:**
 
 ```bash
-/ship                   # Full workflow
-/ship --dry-run         # Preview what will happen
-/ship --strategy rebase # Use rebase instead of squash
+/ship                       # Full workflow
+/ship --dry-run             # Preview without executing
+/ship --strategy rebase     # Use rebase instead of squash
 ```
 
-</details>
+[Full workflow documentation →](./docs/workflows/SHIP.md)
 
-### Code Quality
+---
 
-<details>
-<summary><strong>/deslop-around</strong> - AI Slop Detection</summary>
+### /deslop-around
 
-**Problem:** Your codebase is full of console.logs, TODOs, and AI artifacts.
+**Purpose:** Finds AI slop—debug statements, placeholder text, verbose comments, TODOs—and removes it.
 
-**Solution:** 3-phase detection pipeline with 95% false positive reduction.
-- **Phase 1:** Regex patterns (HIGH certainty) - always runs
-- **Phase 2:** Multi-pass analyzers (MEDIUM certainty) - context-aware
-- **Phase 3:** CLI tools (LOW certainty) - graceful degradation
-- Supports JS/TS, Python, Rust, Go, Java
+**How detection works:**
 
-**Detects:** Console debugging, old TODOs, commented code, placeholder text, magic numbers, empty catch blocks, placeholder functions, excessive documentation, phantom references, buzzword inflation, code smells
+Three phases run in sequence:
+
+1. **Phase 1: Regex Patterns** (HIGH certainty)
+   - `console.log`, `print()`, `dbg!()`, `println!()`
+   - `// TODO`, `// FIXME`, `// HACK`
+   - Empty catch blocks, disabled linters
+   - Hardcoded secrets (API keys, tokens)
+
+2. **Phase 2: Multi-Pass Analyzers** (MEDIUM certainty)
+   - Doc-to-code ratio (excessive comments)
+   - Verbosity ratio (AI preambles)
+   - Over-engineering patterns
+   - Buzzword inflation
+   - Dead code detection
+   - Stub functions
+
+3. **Phase 3: CLI Tools** (LOW certainty, optional)
+   - jscpd, madge, escomplex (JS/TS)
+   - pylint, radon (Python)
+   - golangci-lint (Go)
+   - clippy (Rust)
+
+**Languages supported:** JavaScript/TypeScript, Python, Rust, Go, Java
+
+**Usage:**
 
 ```bash
-/deslop-around          # Report only
-/deslop-around apply    # Fix automatically
+/deslop-around              # Report only (safe)
+/deslop-around apply        # Fix HIGH certainty issues
 /deslop-around apply src/ 10  # Fix 10 issues in src/
 ```
 
-</details>
+**Thoroughness levels:**
 
-<details>
-<summary><strong>/project-review</strong> - Multi-Agent Code Review</summary>
+- `quick` - Phase 1 only
+- `normal` - Phase 1 + Phase 2 (default)
+- `deep` - All phases if tools available
 
-**Problem:** You need thorough review but don't have time.
+[Pattern reference →](./docs/reference/SLOP-PATTERNS.md)
 
-**Solution:** 8 specialized agents review until zero issues remain.
-- Security, Performance, Architecture, Testing
-- Error Handling, Code Quality, Type Safety, Documentation
-- Iterates until all critical/high issues resolved
+---
+
+### /project-review
+
+**Purpose:** Multi-agent code review that iterates until issues are resolved.
+
+**What happens when you run it:**
+
+Up to 8 specialized role-based agents run based on your project:
+
+| Agent | When Active | Focus Area |
+|-------|-------------|------------|
+| security-expert | Always | Vulnerabilities, auth, secrets |
+| performance-engineer | Always | N+1 queries, memory, blocking ops |
+| test-quality-guardian | If tests exist | Coverage, edge cases, mocking |
+| architecture-reviewer | If 50+ files | Modularity, patterns, SOLID |
+| database-specialist | If DB detected | Queries, indexes, transactions |
+| api-designer | If API detected | REST, errors, pagination |
+| frontend-specialist | If frontend detected | Components, state, UX |
+| devops-reviewer | If CI/CD detected | Pipelines, configs, secrets |
+
+Findings are collected and categorized by severity (critical/high/medium/low). Critical and high issues get fixed automatically. The loop repeats until no critical or high issues remain.
+
+**Usage:**
 
 ```bash
-/project-review              # Full review
-/project-review --recent     # Only recent changes
-/project-review --domain security  # Focused review
+/project-review                   # Full review
+/project-review --quick           # Single pass
+/project-review --domain security # Security focus only
+/project-review --recent          # Only recent changes
 ```
 
-</details>
+[Agent reference →](./docs/reference/AGENTS.md#project-review-plugin-agents)
 
-### Analysis & Intelligence
+---
 
-<details>
-<summary><strong>/reality-check:scan</strong> - Plan Drift Detection</summary>
+### /reality-check:scan
 
-**Problem:** Your docs say one thing, your code does another.
+**Purpose:** Compares your documentation and plans to what's actually in the code.
 
-**Solution:** Deep analysis comparing documentation to actual implementation.
-- Finds issues that should be closed (already done)
-- Finds "done" phases that aren't actually done
-- Identifies release blockers
-- ~77% token reduction vs multi-agent approaches
+**The problem it solves:**
+
+Your roadmap says "user authentication: done." But is it actually implemented? Your GitHub issue says "add dark mode." Is it already in the codebase? Plans drift from reality. This command finds the drift.
+
+**How it works:**
+
+1. **JavaScript collectors** gather data (fast, token-efficient)
+   - GitHub issues and their labels
+   - Documentation files
+   - Actual code exports and implementations
+
+2. **Single Opus call** performs semantic analysis
+   - Matches concepts, not strings ("user auth" matches `auth/`, `login.js`, `session.ts`)
+   - Identifies implemented but not documented
+   - Identifies documented but not implemented
+   - Finds stale issues that should be closed
+
+**Why this approach:**
+
+Multi-agent collection wastes tokens on coordination. JavaScript collectors are fast and deterministic. One well-prompted LLM call does the actual analysis. Result: 77% token reduction.
+
+**Usage:**
 
 ```bash
-/reality-check:scan          # Full analysis
+/reality-check:scan              # Full analysis
 /reality-check:scan --depth quick  # Quick scan
 ```
 
-</details>
+---
 
-<details>
-<summary><strong>/enhance</strong> - Quality Analyzer Suite</summary>
+### /enhance
 
-**Problem:** Your prompts, plugins, and docs need improvement.
+**Purpose:** Analyzes your prompts, plugins, agents, and docs for improvement opportunities.
 
-**Solution:** 5 specialized enhancers run in parallel.
-- **plugin** - Plugin structures, MCP tools, security patterns
-- **agent** - Agent prompts, frontmatter, tool restrictions
-- **claudemd** - CLAUDE.md/AGENTS.md project memory files
-- **docs** - Documentation structure and RAG optimization
-- **prompt** - General prompt quality and clarity
+**Five analyzers run in parallel:**
+
+| Analyzer | What it checks |
+|----------|----------------|
+| plugin-enhancer | Plugin structure, MCP tool definitions, security patterns |
+| agent-enhancer | Agent frontmatter, tool restrictions, prompt quality |
+| claudemd-enhancer | CLAUDE.md/AGENTS.md structure, token efficiency |
+| docs-enhancer | Documentation readability, RAG optimization |
+| prompt-enhancer | Prompt engineering patterns, clarity, examples |
+
+**Each finding includes:**
+- Certainty level (HIGH/MEDIUM/LOW)
+- Specific location (file:line)
+- What's wrong
+- How to fix it
+- Whether it can be auto-fixed
+
+**Usage:**
 
 ```bash
-/enhance                     # Run all analyzers
-/enhance --focus=agent       # Specific analyzer
-/enhance --apply             # Apply HIGH certainty fixes
+/enhance                    # Run all analyzers
+/enhance --focus=agent      # Just agent prompts
+/enhance --apply            # Apply HIGH certainty fixes
 ```
 
-</details>
-
 ---
 
-## What Makes It Different
+## How Commands Work Together
 
-<details>
-<summary><strong>For the curious</strong> - Real engineering under the hood</summary>
+**Standalone use:**
 
-**Not another AI wrapper.** Here's what's actually happening:
-
-| Capability | The Detail |
-|------------|------------|
-| **Certainty-Based Detection** | Findings tagged HIGH/MEDIUM/LOW. HIGH = auto-fix safe. LOW = needs judgment. |
-| **Self-Healing Review Loop** | Review-orchestrator has NO iteration limit. Loops until clean. Then runs deslop on the fixes. |
-| **Workflow Enforcement** | SubagentStop hook literally prevents skipping phases. Cannot push before validation. |
-| **Autonomous Validation** | Delivery-validator extracts requirements from task description, maps to changed files, verifies implementation. No human approval needed. |
-| **Token Efficiency** | Compact mode = 60-70% reduction. Reality-check uses JS collectors + single Opus call = 77% reduction. |
-| **ReDoS Hardening** | MAX_PATTERN_CACHE=50, MAX_GLOB_WILDCARDS=10, maxBuffer=10MB. Won't DOS your machine. |
-| **Semantic Matching** | Reality-check compares "user authentication" concept to auth/, login.js, session handling. Not string matching. |
-| **7 Languages** | JS/TS, Python, Rust, Go, Java with language-specific patterns. 2,232 lines of detection rules. |
-
-</details>
-
----
-
-## How They Work Together
-
-**Use standalone:**
 ```bash
-/deslop-around apply    # Just clean up slop
+/deslop-around apply    # Just clean up your code
 /ship                   # Just ship this branch
 ```
 
-**Use integrated:**
+**Integrated workflow:**
+
+When you run `/next-task`, it orchestrates everything:
+
 ```
-/next-task picks issue → explores → plans → implements
+/next-task picks task → explores codebase → plans implementation
     ↓
-deslop-work cleans before review
+implementation-agent writes code
+    ↓
+deslop-work cleans AI artifacts
     ↓
 review-orchestrator iterates until approved
     ↓
-/ship creates PR → monitors CI → merges → deploys
+delivery-validator checks requirements
+    ↓
+docs-updater syncs documentation
+    ↓
+/ship creates PR → monitors CI → merges
 ```
 
-**Resume from any checkpoint** if interrupted. State tracked in `.claude/flow.json`.
+The workflow tracks state so you can resume from any point.
 
 ---
 
-## Quick Install
+## Installation
 
 ### Claude Code (Recommended)
 
@@ -226,7 +489,7 @@ review-orchestrator iterates until approved
 /plugin install ship@awesome-slash
 ```
 
-### Any Platform (npm)
+### All Platforms (npm)
 
 ```bash
 npm install -g awesome-slash && awesome-slash
@@ -234,50 +497,7 @@ npm install -g awesome-slash && awesome-slash
 
 Interactive installer for Claude Code, OpenCode, and Codex CLI.
 
-```bash
-npm update -g awesome-slash       # Update
-npm uninstall -g awesome-slash    # Remove
-```
-
-[Full Installation Guide →](./docs/INSTALLATION.md)
-
----
-
-## Why awesome-slash?
-
-| Feature | The Reality |
-|---------|-------------|
-| **1307 Tests** | Production-grade. Not a weekend project. |
-| **21 Specialist Agents** | Opus for reasoning, Sonnet for reviews, Haiku for execution |
-| **7 Languages** | JS/TS, Python, Rust, Go, Java with 2,232 lines of patterns |
-| **Zero Config** | Auto-detects CI (5 platforms), deploy (6 platforms), project type |
-| **Resume Anywhere** | Dual state system: tasks.json + flow.json. Exact checkpoint recovery. |
-| **Cross-Platform** | Claude Code, OpenCode, Codex CLI. Same tools, different state dirs. |
-
----
-
-## Cross-Platform Support
-
-All platforms share the same workflow tools via MCP (Model Context Protocol):
-
-| Tool | Description |
-|------|-------------|
-| `workflow_status` | Get current workflow state |
-| `workflow_start` | Start a new workflow |
-| `workflow_resume` | Resume from checkpoint |
-| `workflow_abort` | Cancel and cleanup |
-| `task_discover` | Find and prioritize tasks |
-| `review_code` | Run pattern-based code review |
-| `slop_detect` | Detect AI slop patterns |
-| `enhance_analyze` | Analyze plugins, agents, docs |
-
-**Platform Note:** Commands use `/` prefix in Claude Code and OpenCode, but `$` prefix in Codex CLI.
-
-| Platform | State Directory |
-|----------|-----------------|
-| Claude Code | `.claude/` |
-| OpenCode | `.opencode/` |
-| Codex CLI | `.codex/` |
+[Full installation guide →](./docs/INSTALLATION.md)
 
 ---
 
@@ -288,19 +508,36 @@ All platforms share the same workflow tools via MCP (Model Context Protocol):
 - Node.js 18+
 
 **For GitHub workflows:**
-- GitHub CLI (`gh`) with authentication
+- GitHub CLI (`gh`) authenticated
 
 **For GitLab workflows:**
-- GitLab CLI (`glab`) with authentication
+- GitLab CLI (`glab`) authenticated
 
 ---
 
 ## Documentation
 
-- [Installation](./docs/INSTALLATION.md) - All install methods
-- [Usage Guide](./docs/USAGE.md) - Examples and workflows
-- [Architecture](./docs/ARCHITECTURE.md) - Technical details
-- [Cross-Platform](./docs/CROSS_PLATFORM.md) - OpenCode/Codex setup
+| Topic | Link |
+|-------|------|
+| Installation | [docs/INSTALLATION.md](./docs/INSTALLATION.md) |
+| Cross-Platform Setup | [docs/CROSS_PLATFORM.md](./docs/CROSS_PLATFORM.md) |
+| Usage Examples | [docs/USAGE.md](./docs/USAGE.md) |
+| Architecture | [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) |
+
+### Workflow Deep-Dives
+
+| Workflow | Link |
+|----------|------|
+| /next-task Flow | [docs/workflows/NEXT-TASK.md](./docs/workflows/NEXT-TASK.md) |
+| /ship Flow | [docs/workflows/SHIP.md](./docs/workflows/SHIP.md) |
+
+### Reference
+
+| Topic | Link |
+|-------|------|
+| Slop Patterns | [docs/reference/SLOP-PATTERNS.md](./docs/reference/SLOP-PATTERNS.md) |
+| Agent Reference | [docs/reference/AGENTS.md](./docs/reference/AGENTS.md) |
+| MCP Tools | [docs/reference/MCP-TOOLS.md](./docs/reference/MCP-TOOLS.md) |
 
 ---
 
@@ -311,6 +548,4 @@ All platforms share the same workflow tools via MCP (Model Context Protocol):
 
 ---
 
-> **Model Recommendation:** Using **Opus** as the main agent model produces significantly better results. While Sonnet works for simpler tasks, Opus is recommended for complex multi-step workflows.
-
-Made by [Avi Fenesh](https://github.com/avifenesh) | MIT License
+MIT License | Made by [Avi Fenesh](https://github.com/avifenesh)

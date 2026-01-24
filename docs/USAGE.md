@@ -1,6 +1,21 @@
 # Usage Guide
 
-Complete guide to using awesome-slash commands with real-world examples.
+You shouldn't have to repeat the same requests every session. These commands handle entire workflows—from picking a task to merging a PR—with just a few interactions. You approve the plan, then the system runs autonomously.
+
+**For deep dives:** See [workflow documentation](./workflows/) for phase-by-phase breakdowns.
+
+---
+
+## Quick Navigation
+
+| Section | Jump to |
+|---------|---------|
+| [Command Overview](#command-overview) | What each command does |
+| [When to Use](#when-to-use-each-command) | Quick decision guide |
+| [Command Reference](#command-reference) | Detailed usage for each |
+| [Real-World Examples](#real-world-examples) | See it in action |
+| [Common Workflows](#common-workflows) | Typical usage patterns |
+| [Tips](#tips-for-success) | Get the most out of it |
 
 ---
 
@@ -8,10 +23,12 @@ Complete guide to using awesome-slash commands with real-world examples.
 
 | Command | Purpose | Scope |
 |---------|---------|-------|
-| `/deslop-around` | Clean up debugging code, TODOs | Fast codebase scan |
 | `/next-task` | Find and implement prioritized tasks | Full autonomous workflow |
-| `/project-review` | Multi-agent code review | Thorough analysis |
 | `/ship` | Complete PR workflow to production | CI, deployment, validation |
+| `/deslop-around` | Clean up debugging code, TODOs | Fast codebase scan |
+| `/project-review` | Multi-agent code review | Thorough analysis |
+| `/reality-check:scan` | Compare docs to actual code | Plan drift detection |
+| `/enhance` | Analyze prompts, plugins, docs | Quality improvement |
 
 ---
 
@@ -95,25 +112,21 @@ Complete task-to-production automation with state management.
 /next-task --implement            # Start implementing selected task
 ```
 
-**18-Phase Workflow:**
-1. Policy Selection → Configure workflow policy
-2. Task Discovery → Find and prioritize tasks
-3. Worktree Setup → Create isolated environment
+**12-Phase Workflow:**
+1. Policy Selection → Choose task source, priority, stopping point
+2. Task Discovery → Find and prioritize tasks, you pick one
+3. Worktree Setup → Create isolated branch and directory
 4. Exploration → Deep codebase analysis
 5. Planning → Design implementation plan
-6. **User Approval → Get plan approval (LAST human interaction)**
+6. **User Approval → Approve the plan (LAST human interaction)**
 7. Implementation → Execute the plan
-8. Review Loop → Multi-agent review until approved
-9. Delivery Approval → Autonomous completion validation
-10. Ship Prep → Prepare for shipping
-11. Create PR → Create pull request
-12. CI Wait → Wait for continuous integration
-13. Comment Fix → Address PR feedback
-14. Merge → Merge pull request
-15. Production CI → Production pipeline validation
-16. Deploy → Deploy to production
-17. Production Release → Production release validation
-18. Complete → Finalize and cleanup
+8. Pre-Review → Clean AI slop, check test coverage
+9. Review Loop → Multi-agent review until clean
+10. Delivery Validation → Verify tests, build, requirements
+11. Docs Update → Sync documentation
+12. Ship → Create PR, monitor CI, address comments, merge
+
+[Full workflow documentation →](./workflows/NEXT-TASK.md)
 
 ---
 

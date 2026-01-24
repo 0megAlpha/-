@@ -1,6 +1,10 @@
 # Documentation
 
-> Quick navigation to find what you need.
+AI models can write code. The bottleneck is everything else—picking tasks, managing branches, reviewing output, handling CI, addressing comments, deploying. These docs show how awesome-slash automates the full workflow, not just the coding part.
+
+**New here?** Start with [USAGE.md](./USAGE.md) to see commands in action.
+
+---
 
 ## Quick Links
 
@@ -8,80 +12,91 @@
 |-------------|-------|
 | Install and start using | [INSTALLATION.md](./INSTALLATION.md) |
 | See examples and workflows | [USAGE.md](./USAGE.md) |
-| Understand the architecture | [ARCHITECTURE.md](./ARCHITECTURE.md) |
+| Understand how /next-task works | [workflows/NEXT-TASK.md](./workflows/NEXT-TASK.md) |
+| Understand how /ship works | [workflows/SHIP.md](./workflows/SHIP.md) |
 | Use with OpenCode or Codex | [CROSS_PLATFORM.md](./CROSS_PLATFORM.md) |
+| See all slop patterns | [reference/SLOP-PATTERNS.md](./reference/SLOP-PATTERNS.md) |
+| See all agents | [reference/AGENTS.md](./reference/AGENTS.md) |
+| See MCP tools | [reference/MCP-TOOLS.md](./reference/MCP-TOOLS.md) |
+| Understand the architecture | [ARCHITECTURE.md](./ARCHITECTURE.md) |
 
 ---
 
-## Document Overview
+## Document Categories
 
-### [INSTALLATION.md](./INSTALLATION.md)
-**Who it's for:** Everyone getting started
+### Getting Started
 
-- Claude Code marketplace installation (30 seconds)
-- npm global install for all platforms
-- Verification steps
-- Prerequisites (Git, Node.js 18+, optional `gh` CLI)
-- Troubleshooting common issues
+| Document | Description |
+|----------|-------------|
+| [INSTALLATION.md](./INSTALLATION.md) | Install via marketplace or npm. Prerequisites. Verification. |
+| [USAGE.md](./USAGE.md) | Command examples, common workflows, tips. |
 
-### [USAGE.md](./USAGE.md)
-**Who it's for:** Daily users
+### Workflow Deep-Dives
 
-- Command reference (`/deslop-around`, `/next-task`, `/project-review`, `/ship`)
-- Real-world examples with expected output
-- Common workflows (new feature, code review, maintenance)
-- Tips for success
+| Document | Description |
+|----------|-------------|
+| [workflows/NEXT-TASK.md](./workflows/NEXT-TASK.md) | Complete /next-task flow: phases, agents, state management, resume. |
+| [workflows/SHIP.md](./workflows/SHIP.md) | Complete /ship flow: CI monitoring, review handling, merge, deploy. |
 
-### [ARCHITECTURE.md](./ARCHITECTURE.md)
-**Who it's for:** Contributors and curious engineers
+### Reference
 
-- Directory structure and component organization
-- MCP server tools (8 tools available)
-- Cross-platform library usage
-- State management (tasks.json, flow.json)
-- Implementation status and testing
+| Document | Description |
+|----------|-------------|
+| [reference/AGENTS.md](./reference/AGENTS.md) | All 29 agents: purpose, model, tools, restrictions. |
+| [reference/SLOP-PATTERNS.md](./reference/SLOP-PATTERNS.md) | All detection patterns by language, severity, auto-fix. |
+| [reference/MCP-TOOLS.md](./reference/MCP-TOOLS.md) | MCP server tools: parameters, returns, platform config. |
 
-### [CROSS_PLATFORM.md](./CROSS_PLATFORM.md)
-**Who it's for:** OpenCode and Codex CLI users
+### Platform & Architecture
 
-- Platform-specific installation
-- Agent list (21 total across 3 plugins)
-- MCP configuration examples
-- Migration between platforms
-- State directory differences
+| Document | Description |
+|----------|-------------|
+| [CROSS_PLATFORM.md](./CROSS_PLATFORM.md) | Claude Code, OpenCode, Codex CLI setup. Migration. |
+| [ARCHITECTURE.md](./ARCHITECTURE.md) | Directory structure, libraries, state management. |
 
 ---
 
 ## Key Concepts
 
-### Plugins (6 total)
+### Commands
 
-| Plugin | Purpose |
-|--------|---------|
-| `/next-task` | Task-to-production workflow (14 agents) |
-| `/ship` | Complete PR workflow to production |
-| `/deslop-around` | 3-phase AI slop detection |
+| Command | Purpose |
+|---------|---------|
+| `/next-task` | Task discovery → implementation → review → ship |
+| `/ship` | Push → PR → CI → reviews → merge → deploy |
+| `/deslop-around` | 3-phase slop detection and cleanup |
 | `/project-review` | Multi-agent code review |
-| `/reality-check` | Plan drift detection |
-| `/enhance` | Quality analyzer suite (7 agents) |
+| `/reality-check:scan` | Compare docs to actual code |
+| `/enhance` | Analyze prompts, plugins, docs |
 
 ### State Files
 
 | File | Location | Purpose |
 |------|----------|---------|
-| `tasks.json` | `.claude/` | Active task registry |
-| `flow.json` | `.claude/` (worktree) | Workflow progress |
-| `preference.json` | `.claude/sources/` | Cached task source |
+| `tasks.json` | `{state-dir}/` | Which task is active |
+| `flow.json` | `{state-dir}/` (worktree) | Which phase you're in |
+| `preference.json` | `{state-dir}/sources/` | Cached task source preference |
 
-Platform-aware: `.claude/` (Claude Code), `.opencode/` (OpenCode), `.codex/` (Codex CLI)
+State directories by platform:
+- Claude Code: `.claude/`
+- OpenCode: `.opencode/`
+- Codex CLI: `.codex/`
 
-### Detection Pipeline (deslop-around)
+### Agent Models
 
-| Phase | Certainty | Method |
-|-------|-----------|--------|
-| 1 | HIGH | Regex patterns (2,232 lines) |
-| 2 | MEDIUM | Multi-pass analyzers |
-| 3 | LOW | CLI tools (optional) |
+| Model | Used For |
+|-------|----------|
+| opus | Complex reasoning (exploration, planning, implementation, review) |
+| sonnet | Pattern matching (slop detection, validation, discovery) |
+| haiku | Mechanical execution (worktree, simple-fixer, ci-monitor) |
+
+### Certainty Levels
+
+| Level | Meaning | Auto-Fix? |
+|-------|---------|-----------|
+| CRITICAL | Security issue | Yes (with warning) |
+| HIGH | Definite problem | Yes |
+| MEDIUM | Probable problem | No |
+| LOW | Possible problem | No |
 
 ---
 

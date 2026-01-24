@@ -1,6 +1,21 @@
 # Cross-Platform Integration Guide
 
-This document describes how to use awesome-slash-commands with different AI coding assistants.
+Build tools once, run everywhere. The core workflows are the same regardless of which AI assistant you use. Platform differences are abstracted away—state files, configuration paths, and command syntax adapt automatically. You get the same automation whether you're using Claude Code, OpenCode, or Codex CLI.
+
+---
+
+## Quick Navigation
+
+| Section | Jump to |
+|---------|---------|
+| [Supported Platforms](#supported-platforms) | Which platforms work |
+| [Claude Code](#claude-code-native) | Native plugin installation |
+| [OpenCode](#opencode) | MCP + agent setup |
+| [Codex CLI](#codex-cli) | Skills + MCP setup |
+| [State Directories](#state-directories) | Where state files live |
+| [Troubleshooting](#troubleshooting) | Common issues |
+
+---
 
 ## Supported Platforms
 
@@ -54,7 +69,7 @@ claude --plugin-dir /path/to/awesome-slash/plugins/next-task
 - `/project-review` - Multi-agent code review
 - `/reality-check:scan` - Plan drift detection
 
-### Available Agents (21 Total)
+### Available Agents (29 Total)
 
 **next-task: Core Workflow (13 agents)**
 
