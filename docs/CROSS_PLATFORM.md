@@ -129,6 +129,18 @@ npm install -g awesome-slash@latest
 awesome-slash  # Select option 2 for OpenCode
 ```
 
+If your OpenCode setup does not have the same models as the defaults, you can skip per-agent model overrides:
+
+```bash
+awesome-slash --strip-models
+```
+
+Or set an environment variable for non-interactive installs:
+
+```bash
+AWESOME_SLASH_STRIP_MODELS=1 awesome-slash
+```
+
 This installs:
 - MCP server for tools (`workflow_status`, `slop_detect`, etc.)
 - Slash commands (`/next-task`, `/ship`, `/deslop`, `/audit-project`, `/drift-detect`, `/repo-map`, `/sync-docs`)

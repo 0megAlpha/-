@@ -162,8 +162,9 @@ function installForClaude() {
   }
 }
 
-function installForOpenCode(installDir) {
+function installForOpenCode(installDir, options = {}) {
   console.log('\n📦 Installing for OpenCode...\n');
+  const { stripModels = false } = options;
 
   const home = process.env.HOME || process.env.USERPROFILE;
   // Commands go to ~/.opencode/commands/awesome-slash/
@@ -344,7 +345,7 @@ function installForOpenCode(installDir) {
             opencodeFrontmatter += 'mode: subagent\n';
 
             // Map model names
-            if (parsed.model) {
+            if (parsed.model && !stripModels) {
               const modelMap = {
                 'sonnet': 'anthropic/claude-sonnet-4',
                 'opus': 'anthropic/claude-opus-4',
@@ -564,6 +565,8 @@ function removeInstallation() {
 
 async function main() {
   const args = process.argv.slice(2);
+  const stripModels = args.includes('--strip-models') ||
+    ['1', 'true', 'yes'].includes((process.env.AWESOME_SLASH_STRIP_MODELS || '').toLowerCase());
 
   // Handle --remove / --uninstall
   if (args.includes('--remove') || args.includes('--uninstall')) {
@@ -584,9 +587,13 @@ awesome-slash v${VERSION} - Workflow automation for AI coding assistants
 
 Usage:
   awesome-slash              Interactive installer (select platforms)
+  awesome-slash --strip-models  Skip per-agent model overrides (OpenCode)
   awesome-slash --remove     Remove local installation
   awesome-slash --version    Show version
   awesome-slash --help       Show this help
+
+Environment:
+  AWESOME_SLASH_STRIP_MODELS=1  Same as --strip-models
 
 Supported Platforms:
   1) Claude Code  - /next-task, /ship, /deslop, /audit-project
@@ -658,7 +665,7 @@ Docs: https://github.com/avifenesh/awesome-slash
         installForClaude();
         break;
       case 'opencode':
-        installForOpenCode(installDir);
+        installForOpenCode(installDir, { stripModels });
         break;
       case 'codex':
         installForCodex(installDir);
