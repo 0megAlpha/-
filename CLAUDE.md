@@ -2,8 +2,6 @@
 
 > **Cross-tool compatible**: This file works as CLAUDE.md (Claude Code) and can be copied to AGENTS.md for OpenCode, Codex, and other AI tools.
 
-Quick reference for AI assistants. Follow links for details.
-
 <project-memory>
 
 <critical-rules>
@@ -34,7 +32,7 @@ Quick reference for AI assistants. Follow links for details.
 6. **Before delivering ANY work** - Check the relevant checklist for completion requirements:
    - Identify which checklist applies to your work (see rule #5)
    - Go through EVERY item in that checklist
-   - Run `/enhance` on new/modified commands, agents, or prompts
+   - Run the `enhance` command on new or modified commands, agents, or prompts
    - Verify cross-platform compatibility (OpenCode + Codex)
    - Update `bin/cli.js` mappings if new command/agent added
    - Don't mark complete until ALL checklist items are done
@@ -131,7 +129,6 @@ Cannot skip in /next-task:
 - No summary files (`*_AUDIT.md`, `*_SUMMARY.md`) - use CHANGELOG.md
 - BEFORE starting → Read the relevant checklist (`checklists/*.md`)
 - BEFORE delivering → Go through that checklist item by item
-- Run `/enhance` on new/modified commands, agents, prompts
 - 3 platforms: Claude Code + OpenCode + Codex - ALL must work
 </end-reminder>
 
