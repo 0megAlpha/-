@@ -648,6 +648,50 @@ Allowlist only needed commands per subagent.
 Require explicit confirmations for sensitive actions.
 ```
 
+### Best Practices (from Claude Code Docs)
+
+**Most Important:** Context window management. Performance degrades as context fills.
+
+**Single highest-leverage improvement:** Give Claude verification criteria.
+```text
+Before: "implement email validation"
+After: "write validateEmail function. test cases: user@example.com=true, invalid=false, user@.com=false. run tests after implementing"
+```
+
+**Workflow Pattern:** Explore → Plan → Implement → Commit
+1. Enter Plan Mode, read files, understand context
+2. Create detailed implementation plan
+3. Switch to Normal Mode, implement with verification
+4. Commit with descriptive message
+
+**CLAUDE.md Guidelines:**
+
+| Include | Exclude |
+|---------|---------|
+| Bash commands Claude can't guess | Things Claude can infer from code |
+| Code style rules differing from defaults | Standard conventions Claude knows |
+| Testing instructions, preferred runners | Detailed API docs (link instead) |
+| Architectural decisions specific to project | Information that changes frequently |
+| Common gotchas or non-obvious behaviors | Self-evident practices |
+
+**If Claude ignores rules:** The CLAUDE.md is probably too long. Prune ruthlessly.
+
+**Emphasis for important rules:** Use "IMPORTANT:" or "MUST" prefix to improve adherence.
+
+**Common Failure Patterns:**
+1. **Kitchen sink session** - Fix: `/clear` between unrelated tasks
+2. **Correcting over and over** - Fix: After two failed corrections, `/clear` and write better initial prompt
+3. **Over-specified CLAUDE.md** - Fix: Remove anything Claude does correctly without the instruction
+4. **Trust-then-verify gap** - Fix: Always provide verification (tests, scripts, screenshots)
+5. **Infinite exploration** - Fix: Scope investigations or use subagents
+
+**Subagent Usage:** Delegate research to subagents to keep main context clean:
+```text
+"Use subagents to investigate how authentication handles token refresh"
+```
+
+**Skills with side effects:** Add `disable-model-invocation: true` for manual-only invocation.
+
 ### Key Sources
 - [Claude Code Slash Commands](https://code.claude.com/docs/en/slash-commands)
 - [Claude Code Customization Guide](https://alexop.dev/posts/claude-code-customization-guide-claudemd-skills-subagents/)
