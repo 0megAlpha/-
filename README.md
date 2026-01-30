@@ -6,7 +6,7 @@
 [![GitHub stars](https://img.shields.io/github/stars/avifenesh/awesome-slash?style=social)](https://github.com/avifenesh/awesome-slash/stargazers)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Skills and workflow automation for AI coding assistants.
+AI models can write code. That's not the hard part anymore. The hard part is everything else—picking what to work on, managing branches, reviewing output, cleaning up artifacts, handling CI, addressing comments, deploying. **awesome-slash automates the entire workflow**, not just the coding.
 
 **9 plugins · 29 agents · 20 skills · 22k lines of lib code · 1,348 tests · 3 platforms**
 
