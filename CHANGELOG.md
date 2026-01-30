@@ -7,6 +7,38 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.6.0-rc.1] - 2026-01-30
+
+### Added
+- **Meta-Skill: maintain-cross-platform** - Comprehensive knowledge base for repo maintainers covering 3-platform architecture, validation suite, release process, and automation opportunities (1,024 lines)
+- **Validation Suite** - 6 comprehensive validators running in CI and pre-push hook
+  - `validate:counts` - Doc accuracy (agents, plugins, skills, versions, CLAUDE.md↔AGENTS.md alignment)
+  - `validate:paths` - Hardcoded path detection with smart context-aware filtering
+  - `validate:platform-docs` - Cross-platform docs consistency validation
+- **Pre-Push Hook Enhancement** - 3-phase validation: validation suite, /enhance enforcement, release tag checks
+- **Skills: validate-delivery and update-docs** - New skills extracted from agents for reusability
+
+### Changed
+- **Agent-to-Skill Refactoring** - Moved implementation from agents to skills following Command→Agent→Skill pattern
+  - delivery-validator: 467 lines → 109 (agent) + 157 (skill) = cleaner separation
+  - docs-updater: 513 lines → 103 (agent) + 162 (skill) = better modularity
+  - worktree-manager: Streamlined for clarity
+- **All 10 Enhance Skills** - Complete knowledge embedded with workflows, patterns, examples
+  - orchestrator, reporter, agent-prompts, claude-memory, docs, plugins, prompts, hooks, skills
+  - Each includes: Critical Rules, Detection Patterns, Output Format, Success Criteria
+- **Documentation** - Aligned agent counts across all docs (39 total = 29 file-based + 10 role-based)
+- **AGENTS.md Created** - 100% aligned with CLAUDE.md for cross-platform compatibility
+
+### Fixed
+- **Cross-Platform Compatibility** - Hardcoded `.claude/flow.json` paths replaced with `${stateDir}/flow.json`
+- **Documentation Accuracy** - Plugin count (8→9), agent count (29→39) aligned across README, CLAUDE.md, docs
+- **Pre-Push Validation** - Now runs full validation suite automatically before every push
+
+### Infrastructure
+- Validation suite prevents regressions: hardcoded paths, count mismatches, version drift, doc conflicts
+- Pre-push hook enforces CLAUDE.md Critical Rule #7 (/enhance on modified enhanced content)
+- All 1400+ tests passing, all validators passing
+
 ## [3.5.0] - 2026-01-30
 
 ### Added
