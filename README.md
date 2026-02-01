@@ -32,7 +32,7 @@ From messy project to clean codebase. From drifted plan to focused execution. Fr
 
 - **Detection**: regex, AST analysis, static analysis—fast, deterministic, no tokens wasted
 - **Judgment**: LLM calls for synthesis, planning, review—where reasoning matters
-- **Result**: 77% fewer tokens for drift-detect vs multi-agent approaches, certainty-graded findings throughout
+- **Result**: 77% fewer tokens for [/drift-detect](#drift-detect) vs multi-agent approaches, certainty-graded findings throughout
 
 **Certainty levels exist because not all findings are equal:**
 
@@ -111,11 +111,11 @@ Skills give your agents specialized capabilities. When you install a plugin, its
 5. **Planning** - Designs implementation approach
 6. **User Approval** - You review and approve the plan (last human interaction)
 7. **Implementation** - Executes the plan
-8. **Pre-Review** - Runs deslop-agent and test-coverage-checker
+8. **Pre-Review** - Runs [deslop](#deslop)-agent and test-coverage-checker
 9. **Review Loop** - Multi-agent review iterates until clean
 10. **Delivery Validation** - Verifies tests pass, build passes, requirements met
 11. **Docs Update** - Updates CHANGELOG and related documentation
-12. **Ship** - Creates PR, monitors CI, addresses comments, merges
+12. **[Ship](#ship)** - Creates PR, monitors CI, addresses comments, merges
 
 Phase 9 uses the `orchestrate-review` skill to spawn parallel reviewers (code quality, security, performance, test coverage) plus conditional specialists.
 
@@ -481,7 +481,7 @@ You refactor `auth.js` into `auth/index.js`. Your README still says `import from
 
 **Integrated workflow:**
 
-When you run `/next-task`, it orchestrates everything:
+When you run [`/next-task`](#next-task), it orchestrates everything:
 
 ```
 /next-task picks task → explores codebase → plans implementation
@@ -496,7 +496,7 @@ delivery-validator checks requirements
     ↓
 sync-docs-agent syncs documentation
     ↓
-/ship creates PR → monitors CI → merges
+[/ship](#ship) creates PR → monitors CI → merges
 ```
 
 The workflow tracks state so you can resume from any point.
@@ -575,8 +575,8 @@ Agents don't just write code. They:
 - Update documentation (sync-docs-agent)
 - Fix CI failures (ci-fixer)
 - Respond to review comments
-- Check for plan drift (drift-detect)
-- Analyze their own prompts (/enhance)
+- Check for plan drift ([/drift-detect](#drift-detect))
+- Analyze their own prompts ([/enhance](#enhance))
 
 If it can be specified, it can be delegated.
 
@@ -586,7 +586,7 @@ The main workflow orchestrator doesn't read files, search code, or write impleme
 
 **12. Composable, not monolithic**
 
-Every command works standalone. `/deslop` cleans code without needing `/next-task`. `/ship` merges PRs without needing the full workflow. Pieces compose together, but each piece is useful on its own.
+Every command works standalone. [`/deslop`](#deslop) cleans code without needing [`/next-task`](#next-task). [`/ship`](#ship) merges PRs without needing the full workflow. Pieces compose together, but each piece is useful on its own.
 
 ### What This Gets You
 
