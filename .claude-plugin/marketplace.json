@@ -85,21 +85,5 @@
       "version": "3.7.2-rc.9",
       "category": "development"
     }
-  ],
-  "mcpServer": {
-    "name": "awesome-slash",
-    "source": "./mcp-server",
-    "description": "Cross-platform MCP server with 3-phase slop detection pipeline and enhance analyzers",
-    "tools": [
-      "workflow_status",
-      "workflow_start",
-      "workflow_resume",
-      "workflow_abort",
-      "task_discover",
-      "review_code",
-      "slop_detect",
-      "enhance_analyze",
-      "repo_map"
-    ]
-  }
+  ]
 }

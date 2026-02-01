@@ -28,7 +28,6 @@
    - New command → `checklists/new-command.md`
    - New agent → `checklists/new-agent.md`
    - New lib module → `checklists/new-lib-module.md`
-   - MCP server update → `checklists/update-mcp.md`
    - OpenCode plugin update → `checklists/update-opencode-plugin.md`
    - Repo map changes → `checklists/repo-map.md`
    *WHY: Multi-file changes have hidden dependencies. Checklists prevent missed updates.*

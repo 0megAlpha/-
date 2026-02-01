@@ -8,21 +8,13 @@ Update ALL these files with new version:
 
 ```bash
 # Quick check current versions
-grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/ mcp-server/index.js 2>/dev/null
+grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/
 ```
 
 - [ ] `package.json` → `"version": "X.Y.Z"`
 - [ ] `.claude-plugin/plugin.json` → `"version": "X.Y.Z"`
-- [ ] `.claude-plugin/marketplace.json` → `"version"` (9 occurrences)
-- [ ] `mcp-server/index.js` → `version: 'X.Y.Z'` (search: MCP_SERVER_VERSION)
-- [ ] `plugins/audit-project/.claude-plugin/plugin.json`
-- [ ] `plugins/deslop/.claude-plugin/plugin.json`
-- [ ] `plugins/drift-detect/.claude-plugin/plugin.json`
-- [ ] `plugins/enhance/.claude-plugin/plugin.json`
-- [ ] `plugins/next-task/.claude-plugin/plugin.json`
-- [ ] `plugins/repo-map/.claude-plugin/plugin.json`
-- [ ] `plugins/ship/.claude-plugin/plugin.json`
-- [ ] `plugins/sync-docs/.claude-plugin/plugin.json`
+- [ ] `.claude-plugin/marketplace.json` → `"version"` (10 occurrences)
+- [ ] All 9 plugin.json files in `plugins/*/.claude-plugin/`
 
 ## New Plugin Checklist
 
@@ -33,17 +25,6 @@ If adding a NEW plugin (not just updating):
 - [ ] `docs/INSTALLATION.md` → Add `/plugin install <name>@awesome-slash` commands
 - [ ] `.claude-plugin/marketplace.json` → Add new plugin entry to `plugins` array
 - [ ] `plugins/<name>/.claude-plugin/plugin.json` → Create plugin manifest
-
-## New MCP Tool Checklist
-
-If adding a NEW MCP tool:
-
-- [ ] `mcp-server/index.js` → Add tool to TOOLS array
-- [ ] `mcp-server/index.js` → Add handler to toolHandlers
-- [ ] `bin/cli.js` → Update MCP tools output messages (OpenCode + Codex)
-- [ ] `.claude-plugin/marketplace.json` → Add tool to `mcpServer.tools` array
-- [ ] `README.md` → Add to Cross-Platform Integration table
-- [ ] `docs/CROSS_PLATFORM.md` → Document tool usage
 
 ## Documentation Updates
 

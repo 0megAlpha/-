@@ -23,7 +23,6 @@ workflow-state.json
 # Build artifacts
 node_modules/
 **/node_modules/
-mcp-server/node_modules/
 *.log
 npm-debug.log*
 .npm/
@@ -52,10 +51,8 @@ scripts/sync-lib.sh
 scripts/validate-plugins.js
 scripts/validate-cross-platform.js
 scripts/validate-repo-consistency.js
-scripts/mcp-smoke-test.js
 
 # Misc
 *.tgz
 .env*
 .npmrc
-mcp-server/package-lock.json

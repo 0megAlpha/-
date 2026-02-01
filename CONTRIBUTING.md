@@ -40,7 +40,6 @@ For changes touching multiple files, **read the relevant checklist first**:
 | New slash command | `checklists/new-command.md` |
 | New agent | `checklists/new-agent.md` |
 | New lib module | `checklists/new-lib-module.md` |
-| MCP server update | `checklists/update-mcp.md` |
 
 ### Library Architecture
 
