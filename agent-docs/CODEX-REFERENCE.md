@@ -36,29 +36,21 @@ When user runs `awesome-slash` and selects Codex:
 
 ```
 ~/.awesome-slash/           # Full package copy
-~/.codex/skills/
+
+~/.codex/skills/            # 24 skills installed
+├── next-task/SKILL.md
 ├── deslop/SKILL.md
 ├── enhance/SKILL.md
-├── next-task/SKILL.md
-├── delivery-approval/SKILL.md
-├── sync-docs/SKILL.md
-├── audit-project/SKILL.md
 ├── ship/SKILL.md
-└── drift-detect-scan/SKILL.md
-
-~/.codex/config.toml        # MCP config added
+├── audit-project/SKILL.md
+├── drift-detect/SKILL.md
+├── repo-map/SKILL.md
+├── sync-docs/SKILL.md
+├── perf/SKILL.md
+└── ... (15 more internal skills)
 ```
 
-**MCP Configuration Added:**
-```toml
-[mcp_servers.awesome-slash]
-command = "node"
-args = ["~/.awesome-slash/mcp-server/index.js"]
-
-[mcp_servers.awesome-slash.env]
-PLUGIN_ROOT = "~/.awesome-slash"
-AI_STATE_DIR = ".codex"
-```
+Skills are invoked with `$` prefix: `$next-task`, `$ship`, etc.
 
 ---
 
@@ -290,24 +282,11 @@ When using Codex as MCP server:
 
 ## MCP Integration
 
-### Codex as MCP Client
+### Codex MCP Support
 
-Configure MCP servers in `config.toml`:
+Codex supports MCP (Model Context Protocol) for tool integration.
 
-```toml
-[mcp_servers.awesome-slash]
-command = "node"
-args = ["/path/to/mcp-server/index.js"]
-
-[mcp_servers.awesome-slash.env]
-PLUGIN_ROOT = "/path/to/awesome-slash"
-AI_STATE_DIR = ".codex"
-```
-
-### Codex as MCP Server
-
-Codex can run as an MCP server, allowing other agents to use it:
-
+**Codex as MCP Server:**
 ```bash
 # Start Codex as MCP server
 codex mcp-server
@@ -316,8 +295,7 @@ codex mcp-server
 npx @modelcontextprotocol/inspector codex mcp-server
 ```
 
-### Managing MCP Servers
-
+**Managing MCP Servers:**
 ```bash
 codex mcp add my-server
 codex mcp list
@@ -325,17 +303,7 @@ codex mcp get my-server
 codex mcp remove my-server
 ```
 
-### MCP Tools Available
-
-All 8 awesome-slash tools work in Codex:
-- `workflow_status` - Get current workflow state
-- `workflow_start` - Start new workflow
-- `workflow_resume` - Resume from checkpoint
-- `workflow_abort` - Cancel and cleanup
-- `task_discover` - Find tasks from sources
-- `review_code` - Pattern-based code review
-- `slop_detect` - 3-phase slop detection
-- `enhance_analyze` - Quality analyzers
+Note: awesome-slash uses native Codex skills (in `~/.codex/skills/`) instead of MCP for better integration.
 
 ---
 

@@ -69,21 +69,16 @@ Update **ALL** these locations before release:
 | File | Location |
 |------|----------|
 | `package.json` | `"version": "X.Y.Z"` |
-| `mcp-server/index.js` | `version: 'X.Y.Z'` in Server config (~line 668) |
 | `README.md` | Version badge `version-X.Y.Z-blue` |
 | `README.md` | "What's New in vX.Y.Z" section |
 | `.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
-| `.claude-plugin/marketplace.json` | `"version"` (appears 6x) |
-| `plugins/next-task/.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
-| `plugins/ship/.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
-| `plugins/deslop/.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
-| `plugins/audit-project/.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
-| `plugins/drift-detect/.claude-plugin/plugin.json` | `"version": "X.Y.Z"` |
+| `.claude-plugin/marketplace.json` | `"version"` (appears multiple times) |
+| `plugins/*/.claude-plugin/plugin.json` | All 9 plugin versions |
 | `CHANGELOG.md` | New entry at top |
 
 **Quick version grep:**
 ```bash
-grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/ mcp-server/index.js
+grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/
 ```
 
 ---
@@ -188,7 +183,7 @@ The workflow provides a summary, but you can also verify manually:
 
 The workflow validates all version numbers match. If it fails:
 ```bash
-grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/ mcp-server/index.js
+grep -r '"version"' package.json .claude-plugin/ plugins/*/.claude-plugin/
 ```
 Update any mismatched files.
 

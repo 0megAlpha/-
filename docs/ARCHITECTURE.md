@@ -12,7 +12,7 @@ The design principle: write tools once, run everywhere. AI models already have t
 | [Architecture](#architecture) | Directory structure |
 | [Cross-Platform Library](#cross-platform-library-libcross-platform) | Shared utilities |
 | [State Directories](#state-directory-by-platform) | Where state lives |
-| [MCP Server Tools](#mcp-server-tools) | Tool reference |
+| [Core Capabilities](#core-capabilities) | Command reference |
 | [Platform Details](#platform-installation-details) | Per-platform setup |
 | [Knowledge Base](#knowledge-base) | Research docs |
 
@@ -53,8 +53,6 @@ awesome-slash/
 │   ├── repo-map/                 # AST repo map generation
 │   ├── state/                    # Workflow state
 │   └── sources/                  # Task source discovery
-├── mcp-server/                   # Cross-platform MCP server
-│   └── index.js                  # Exposes tools to all platforms
 ├── plugins/                      # Claude Code plugins
 │   ├── next-task/
 │   ├── ship/
@@ -116,23 +114,23 @@ State files:
 - `{state-dir}/sources/preference.json` - Cached task source
 - `{state-dir}/repo-map.json` - Cached AST repo map
 
-### MCP Server Tools
+### Core Capabilities
 
-The MCP server (`mcp-server/index.js`) exposes tools to all platforms:
+The package provides these capabilities through commands, agents, and skills:
 
-| Tool | Description |
-|------|-------------|
-| `workflow_status` | Get current workflow state |
-| `workflow_start` | Start a new workflow with policy |
-| `workflow_resume` | Resume from checkpoint |
-| `workflow_abort` | Cancel and cleanup |
-| `task_discover` | Find tasks from configured sources |
-| `review_code` | Run pipeline-based code review |
-| `slop_detect` | Detect AI slop with certainty levels |
-| `enhance_analyze` | Analyze plugins, agents, docs, prompts, hooks, skills |
-| `repo_map` | Generate or update cached AST repo map |
+| Capability | Command | Description |
+|------------|---------|-------------|
+| Workflow orchestration | `/next-task` | Task discovery through PR merge |
+| PR workflow | `/ship` | Commit, push, CI monitor, merge |
+| Code quality | `/deslop` | AI slop detection and cleanup |
+| Enhancement | `/enhance` | Analyze plugins, agents, docs, prompts |
+| Performance | `/perf` | Performance investigation workflow |
+| Repo mapping | `/repo-map` | AST-based symbol/import mapping |
+| Documentation | `/sync-docs` | Sync docs with code changes |
+| Drift detection | `/drift-detect` | Plan vs implementation analysis |
+| Code review | `/audit-project` | Multi-agent code review |
 
-**slop_detect** uses the full 3-phase pipeline:
+**Slop detection** uses the full 3-phase pipeline:
 - Phase 1: Regex patterns (HIGH certainty)
 - Phase 2: Multi-pass analyzers (MEDIUM certainty)
 - Phase 3: CLI tools (LOW certainty, optional)
@@ -161,26 +159,17 @@ awesome-slash  # Select option 2
 ```
 
 **Locations:**
-- Config: `~/.config/opencode/opencode.json`
 - Commands: `~/.opencode/commands/awesome-slash/`
+- Agents: `~/.opencode/agents/`
+- Skills: `~/.opencode/skills/`
+- Native plugin: `~/.opencode/plugins/awesome-slash/`
 
 **Commands:** `/next-task`, `/ship`, `/deslop`, `/audit-project`, `/drift-detect`, `/repo-map`, `/enhance`, `/perf`, `/sync-docs`
 
-**MCP Config Added:**
-```json
-{
-  "mcp": {
-    "awesome-slash": {
-      "type": "local",
-      "command": ["node", "~/.awesome-slash/mcp-server/index.js"],
-      "environment": {
-        "PLUGIN_ROOT": "~/.awesome-slash",
-        "AI_STATE_DIR": ".opencode"
-      }
-    }
-  }
-}
-```
+**Native Plugin Features:**
+- Auto-thinking selection per agent
+- Workflow enforcement
+- Session compaction
 
 ### Codex CLI
 
@@ -207,20 +196,11 @@ description: Master workflow orchestrator for task-to-production automation
 [skill content]
 ```
 
-**MCP Config Added:**
-```toml
-[mcp_servers.awesome-slash]
-command = "node"
-args = ["~/.awesome-slash/mcp-server/index.js"]
-env = { PLUGIN_ROOT = "~/.awesome-slash", AI_STATE_DIR = ".codex" }
-enabled = true
-```
-
 ## Command Compatibility
 
 | Command | Claude Code | OpenCode | Codex CLI | Notes |
 |---------|-------------|----------|-----------|-------|
-| `/next-task` | [OK] Full | [OK] Full | [OK] Full | MCP tools available |
+| `/next-task` | [OK] Full | [OK] Full | [OK] Full | Master workflow |
 | `/ship` | [OK] Full | [OK] Full | [OK] Full | Requires `gh` CLI |
 | `/deslop` | [OK] Full | [OK] Full | [OK] Full | Uses pipeline.js |
 | `/audit-project` | [OK] Full | [OK] Full | [OK] Full | Multi-agent review |

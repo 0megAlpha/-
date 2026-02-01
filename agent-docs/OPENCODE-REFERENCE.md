@@ -22,7 +22,7 @@ OpenCode has significant features Claude Code doesn't have:
 | Config file | `opencode.jsonc` | `settings.json` |
 | State directory | `.opencode/` | `.claude/` |
 | Commands location | `~/.opencode/commands/` | Plugin commands |
-| Skills location | `.opencode/skill/` | `.claude/skills/` |
+| Skills location | `~/.opencode/skills/` | `.claude/skills/` |
 | Agent definitions | `.opencode/agent/*.md` | Plugin agents |
 | Model selection | Any provider (75+) | Anthropic only |
 | User questions | Numbered list | Checkboxes |
@@ -35,36 +35,43 @@ OpenCode has significant features Claude Code doesn't have:
 When user runs `awesome-slash` and selects OpenCode:
 
 ```
-~/.awesome-slash/           # Full package copy
-~/.opencode/commands/awesome-slash/
-├── deslop.md        # From plugins/deslop/commands/
-├── enhance.md              # From plugins/enhance/commands/
-├── next-task.md            # From plugins/next-task/commands/
+~/.awesome-slash/                    # Full package copy
+
+~/.opencode/commands/awesome-slash/  # 10 commands
+├── next-task.md
 ├── delivery-approval.md
+├── ship.md
+├── deslop.md
+├── enhance.md
+├── audit-project.md
+├── drift-detect.md
+├── repo-map.md
 ├── sync-docs.md
-├── audit-project.md       # From plugins/audit-project/commands/
-├── ship.md                 # From plugins/ship/commands/
-└── drift-detect-scan.md   # From plugins/drift-detect/commands/scan.md
+└── perf.md
 
-~/.config/opencode/opencode.json  # MCP config added
+~/.opencode/agents/                  # 29 agents
+├── task-discoverer.md
+├── exploration-agent.md
+├── planning-agent.md
+├── implementation-agent.md
+├── delivery-validator.md
+├── ... (24 more)
+
+~/.opencode/skills/                  # 24 skills
+├── task-discovery/SKILL.md
+├── orchestrate-review/SKILL.md
+├── deslop/SKILL.md
+├── ... (21 more)
+
+~/.opencode/plugins/awesome-slash/   # Native plugin
+└── index.ts                         # Auto-thinking, workflow enforcement
 ```
 
-**MCP Configuration Added:**
-```json
-{
-  "mcp": {
-    "awesome-slash": {
-      "type": "local",
-      "command": ["node", "~/.awesome-slash/mcp-server/index.js"],
-      "environment": {
-        "PLUGIN_ROOT": "~/.awesome-slash",
-        "AI_STATE_DIR": ".opencode"
-      },
-      "enabled": true
-    }
-  }
-}
-```
+**Native Plugin Features:**
+- Auto-thinking selection (adjusts budget per agent)
+- Workflow enforcement (blocks git push until /ship)
+- Session compaction with state preservation
+- Provider-agnostic thinking config
 
 ---
 
@@ -273,23 +280,23 @@ You are a senior code reviewer. Analyze code thoroughly...
 
 ## MCP Integration
 
-### Local Server (Our Setup)
+OpenCode supports MCP (Model Context Protocol) for external tool integration.
+
+### Local Server Example
 
 ```jsonc
 {
   "mcp": {
-    "awesome-slash": {
+    "my-server": {
       "type": "local",
-      "command": ["node", "/path/to/mcp-server/index.js"],
-      "environment": { "PLUGIN_ROOT": "...", "AI_STATE_DIR": ".opencode" },
-      "enabled": true,
-      "timeout": 10000
+      "command": ["node", "/path/to/server.js"],
+      "enabled": true
     }
   }
 }
 ```
 
-### Remote Server (HTTP)
+### Remote Server Example
 
 ```jsonc
 {
@@ -302,17 +309,7 @@ You are a senior code reviewer. Analyze code thoroughly...
 }
 ```
 
-### MCP Tools Available
-
-All 8 tools work identically in OpenCode:
-- `workflow_status` - Get current workflow state
-- `workflow_start` - Start new workflow
-- `workflow_resume` - Resume from checkpoint
-- `workflow_abort` - Cancel and cleanup
-- `task_discover` - Find tasks from sources
-- `review_code` - Pattern-based code review
-- `slop_detect` - 3-phase slop detection
-- `enhance_analyze` - Quality analyzers
+Note: awesome-slash uses native OpenCode commands, agents, and skills instead of MCP for better integration and features like auto-thinking selection.
 
 ---
 
@@ -321,14 +318,14 @@ All 8 tools work identically in OpenCode:
 ### Skill Location
 
 OpenCode scans (in order):
-1. `.opencode/skill/<name>/SKILL.md`
-2. `.claude/skills/<name>/SKILL.md` (Claude Code compatibility)
-3. `~/.config/opencode/skills/`
+1. `~/.opencode/skills/<name>/SKILL.md` (global - where we install)
+2. `.opencode/skills/<name>/SKILL.md` (per-project)
+3. `.claude/skills/<name>/SKILL.md` (Claude Code compatibility)
 
 ### Skill Format
 
 ```yaml
-# .opencode/skill/my-skill/SKILL.md
+# ~/.opencode/skills/my-skill/SKILL.md
 ---
 name: my-skill
 description: When to use this skill
@@ -339,8 +336,8 @@ Skill content and instructions...
 
 ### Compatibility
 
-Our skills in `.claude/skills/` are automatically discovered by OpenCode.
-No duplication needed.
+Our skills are installed to `~/.opencode/skills/` for global access.
+OpenCode also scans `.claude/skills/` for Claude Code compatibility.
 
 ---
 
