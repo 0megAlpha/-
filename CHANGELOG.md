@@ -7,12 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [3.8.0-rc.2] - 2026-02-02
-
-### Fixed
-- **OpenCode Plugin TypeError** - Handle `input.agent` as object or string in chat.params hook
-
-## [3.8.0-rc.1] - 2026-02-02
+## [3.8.0] - 2026-02-02
 
 ### Added
 - **sync-docs Repo-Map Integration** - AST-based symbol detection for documentation drift
@@ -25,9 +20,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - **OpenCode Config Path** - Use correct `~/.config/opencode/` path (not `~/.opencode/`)
+- **OpenCode Plugin TypeError** - Handle `input.agent` as object or string in chat.params hook
+- **OpenCode Command Transform** - Policy section only added to next-task command (not all commands)
 - **CI Validation** - Restored agent count detail for delivery validation
 
 ### Changed
+- **sync-docs Skill** - Updated with proper agent instructions and tool restrictions
 - **Documentation** - Optimized CLAUDE.md for token efficiency
 
 ## [3.7.2] - 2026-02-01
