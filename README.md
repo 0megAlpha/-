@@ -603,7 +603,7 @@ Every command works standalone. [`/deslop`](#deslop) cleans code without needing
 
 ## Installation
 
-### Claude Code (Recommended)
+### Claude Code (Recommended way)
 
 ```bash
 /plugin marketplace add avifenesh/awesome-slash
