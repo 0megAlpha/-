@@ -7,8 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.9.0-rc.1] - 2026-02-04
+
 ### Added
-- **Cross-File Semantic Analysis** - Multi-file consistency checking for /enhance (#155)
+- **Cross-File Semantic Analysis** - Multi-file consistency checking for /enhance (#171)
   - `analyzeToolConsistency()` - Detect tools used but not declared in frontmatter
   - `analyzeWorkflowCompleteness()` - Verify referenced agents exist
   - `analyzePromptConsistency()` - Find duplicate/contradictory rules across agents
@@ -17,7 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Optional `tools.json` config for custom tool lists
   - O(n) keyword indexing for contradiction detection
   - Path traversal and ReDoS prevention
-- **Prompt Code Validation** - AST-based analysis for code blocks in prompts (#156)
+- **Prompt Code Validation** - AST-based analysis for code blocks in prompts (#169)
   - `extractCodeBlocks()` utility for parsing fenced code blocks with language tags
   - `invalid_json_in_code_block` pattern: Validates JSON syntax (HIGH certainty)
   - `invalid_js_syntax` pattern: Validates JavaScript syntax (MEDIUM certainty)
@@ -26,6 +28,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - New `code-validation` category in enhance reports
   - Skips validation inside `<bad-example>` tags to avoid false positives
   - Performance: <100ms per file (pre-compiled regex patterns, size limits)
+- **Comprehensive Test Coverage** - 164 new tests for cross-file and prompt analyzers
+  - False positive prevention tests (prose context, markdown links, bad-example variants)
+  - False negative prevention tests (tool detection, syntax validation)
+  - Performance tests (100KB content, 200 agent refs, caching behavior)
+  - Edge case tests (Unicode, nesting, path traversal)
+  - Real codebase integration tests
+
+### Fixed
+- **Bad-example Tag Consistency** - `<bad_example>` with underscore now supported in cross-file-analyzer (was only supporting hyphen/space variants)
+- **Fix Function Alignment** - `fixAggressiveEmphasis()` now fixes all words detected by pattern (added ABSOLUTELY, TOTALLY, EXTREMELY, DEFINITELY, COMPLETELY, ENTIRELY, FORBIDDEN, URGENT)
 
 ## [3.8.2] - 2026-02-04
 
