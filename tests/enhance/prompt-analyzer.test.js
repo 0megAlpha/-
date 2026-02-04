@@ -420,6 +420,426 @@ describe('Prompt Patterns', () => {
 
       expect(result).toBeNull();
     });
+
+    it('should not flag JSON with JS code block containing schema', () => {
+      const content = `
+        Return JSON format.
+
+        \`\`\`javascript
+        const schema = {
+          "name": "string",
+          "value": 123
+        };
+        \`\`\`
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag JSON with object literal assignment', () => {
+      // Pattern detects JSON schemas in JS code blocks with quoted keys
+      const content = `
+        Return JSON format.
+
+        \`\`\`javascript
+        const config = {
+          "name": "test",
+          "value": 123
+        };
+        \`\`\`
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag CLI output format flags', () => {
+      const content = `Run the command with --output json flag to get JSON results.`;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag function returns JSON descriptions', () => {
+      const content = `The analyzer function returns JSON with findings and summary.`;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('missing_context_why', () => {
+    const pattern = promptPatterns.promptPatterns.missing_context_why;
+
+    it('should detect rules without WHY explanations', () => {
+      // Create content with many rules but no explanations
+      // Pattern requires >= 400 tokens and >= 8 rules with < 30% explanations
+      const rules = `
+        You must validate all incoming requests carefully.
+        You must verify user identity on each request.
+        You must confirm operation completion status.
+        Always check resource availability first.
+        Never skip the initialization process.
+        Required: monitor system health regularly.
+        Do not ignore warning messages received.
+        Always review configuration changes made.
+        Never bypass access control mechanisms.
+        Required: track all user activity logs.
+        You must inspect file integrity periodically.
+        Always examine network traffic patterns.
+      `;
+      // Repeat to get >= 400 tokens (~1600 chars needed)
+      const content = rules.repeat(4);
+
+      const result = pattern.check(content);
+
+      expect(result).toBeTruthy();
+      expect(result.issue).toContain('rules');
+    });
+
+    it('should not flag rules with inline dash explanations', () => {
+      const content = `
+        You must validate input - Prevents injection attacks.
+        Always check permissions - Ensures proper access control.
+        Never expose secrets - Protects user data.
+        Required: handle timeouts - Prevents resource exhaustion.
+        Do not skip validation - Maintains data integrity.
+        Always use encryption - Secures communications.
+        Never store plaintext - Complies with security standards.
+        Required: audit logging - Enables forensic analysis.
+        You must sanitize data - Blocks malicious input.
+        Always verify tokens - Prevents unauthorized access.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag rules with parenthetical explanations', () => {
+      const content = `
+        Always validate input (prevents SQL injection and XSS attacks).
+        Must check permissions (ensures proper access control for users).
+        Required to log errors (helps with debugging and monitoring).
+        Never expose secrets (protects sensitive user credentials).
+        Always use encryption (secures data in transit and at rest).
+        Must sanitize output (prevents cross-site scripting vulnerabilities).
+        Required audit trail (enables compliance and forensics).
+        Never skip validation (maintains data integrity always).
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag rules with for-X explanations', () => {
+      const content = `
+        Validate all inputs for security and data integrity.
+        Cache results for performance and reduced latency.
+        Log errors for debugging and troubleshooting issues.
+        Use encryption for security and compliance requirements.
+        Sanitize output for safety and preventing XSS attacks.
+        Check permissions for security and access control.
+        Monitor metrics for performance and reliability tracking.
+        Handle timeouts for efficiency and resource management.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('critical_info_buried', () => {
+    const pattern = promptPatterns.promptPatterns.critical_info_buried;
+
+    it('should detect critical info buried in middle', () => {
+      // Create content with many critical keywords in the middle
+      const lines = [];
+      for (let i = 0; i < 40; i++) {
+        if (i < 12 || i > 28) {
+          lines.push('Regular content line ' + i);
+        } else {
+          // Put critical info in middle (30-70% = lines 12-28)
+          lines.push('This is critical and essential and important warning: mandatory rule ' + i);
+        }
+      }
+      const content = lines.join('\n');
+
+      const result = pattern.check(content);
+
+      expect(result).toBeTruthy();
+      expect(result.issue).toContain('critical');
+    });
+
+    it('should not flag SKILL.md files with workflow phases', () => {
+      const content = `
+        # Skill Name
+
+        ## Workflow
+
+        ### Phase 1
+        Important instructions here.
+
+        ### Phase 2
+        Critical steps to follow.
+
+        ## Constraints
+        Essential rules to observe.
+      `.repeat(3);
+
+      const result = pattern.check(content, '/path/to/SKILL.md');
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag when has critical rules section at start', () => {
+      const lines = ['## Critical Rules', '- Important rule 1', '- Essential rule 2'];
+      // Add padding to make it 40+ lines
+      for (let i = 0; i < 40; i++) {
+        lines.push('Regular content line ' + i);
+      }
+      const content = lines.join('\n');
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag when critical count is below threshold (8)', () => {
+      const lines = [];
+      for (let i = 0; i < 30; i++) {
+        if (i >= 9 && i <= 21 && i % 3 === 0) {
+          // Only 5 critical terms (below threshold of 8)
+          lines.push('This is important content');
+        } else {
+          lines.push('Regular line ' + i);
+        }
+      }
+      const content = lines.join('\n');
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('missing_instruction_priority', () => {
+    const pattern = promptPatterns.promptPatterns.missing_instruction_priority;
+
+    it('should detect missing priority with many constraints', () => {
+      // Content with 10+ MUST clauses but no priority indicators
+      // Pattern requires >= 600 tokens (~2400 chars)
+      const rules = `
+        You MUST validate input before processing any user data received.
+        You MUST check user permissions before allowing resource access.
+        You MUST log all errors to the centralized monitoring system.
+        You MUST sanitize output before rendering content to users.
+        You MUST handle timeouts gracefully with exponential retry logic.
+        You MUST encrypt sensitive data at rest and during transit.
+        You MUST verify authentication tokens before granting access.
+        You MUST audit all administrative actions for compliance tracking.
+        You MUST rate limit incoming requests to prevent service abuse.
+        You MUST validate request schemas before processing data payloads.
+        You MUST check cryptographic signatures for data integrity verification.
+        You MUST implement proper session management for user authentication.
+      `;
+      // Repeat 3x to ensure >= 600 tokens
+      const content = rules + '\n\nAdditional background context.\n' + rules + '\n\nMore details.\n' + rules;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeTruthy();
+      expect(result.issue).toContain('priority');
+    });
+
+    it('should not flag when has numbered critical rules', () => {
+      const content = `
+        ## Critical Rules
+
+        1. Validate all input
+        2. Check permissions
+        3. Log errors
+        4. Handle timeouts
+        5. Sanitize output
+
+        You MUST follow these rules.
+        You MUST not skip any step.
+        You MUST report violations.
+      `.repeat(2);
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag when has precedence language', () => {
+      const content = `
+        Safety rules take precedence over all other rules.
+
+        You MUST validate input.
+        You MUST check permissions.
+        You MUST log errors.
+        You MUST sanitize output.
+        You MUST handle timeouts.
+        You MUST encrypt data.
+        You MUST verify tokens.
+        You MUST audit actions.
+        You MUST rate limit.
+        You MUST check schemas.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag H3+ constraint sections', () => {
+      const content = `
+        ### Constraints
+        - Rule 1
+
+        ### More Constraints
+        - Rule 2
+
+        ### Additional Constraints
+        - Rule 3
+
+        You must follow rules.
+        You must be consistent.
+      `.repeat(3);
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should only count case-sensitive MUST (emphasis)', () => {
+      // Lowercase 'must' should not count toward threshold
+      const content = `
+        You must validate input.
+        You must check permissions.
+        You must log errors.
+        You must sanitize output.
+        You must handle timeouts.
+        You must encrypt data.
+        You must verify tokens.
+        You must audit actions.
+        You must rate limit.
+        You must check schemas.
+        You must follow rules.
+      `;
+
+      const result = pattern.check(content);
+
+      // Should not flag because lowercase 'must' doesn't count
+      expect(result).toBeNull();
+    });
+  });
+
+  describe('missing_verification_criteria', () => {
+    const pattern = promptPatterns.promptPatterns.missing_verification_criteria;
+
+    it('should detect missing verification in action tasks', () => {
+      // Content with action words but no verification indicators
+      // Pattern requires >= 150 tokens (~600 chars)
+      // Avoid verification words: test, verify, validate, check, assert, expected, baseline, benchmark, profile
+      const content = `
+        Implement the new feature for user authentication flow in the application.
+        Create the login form component with email and password input fields.
+        Build the API endpoint for secure token generation service integration.
+        Add the middleware layer for request processing and routing logic.
+        Write the database schema definitions for user storage tables and indexes.
+        Refactor the session management code structure for better maintainability.
+        Update the configuration settings and environment variables for production.
+        Modify the error handling logic to provide better user feedback messages.
+        Add logging statements throughout the codebase for debugging purposes.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeTruthy();
+      expect(result.issue).toContain('verification');
+    });
+
+    it('should not flag commands that delegate to agents', () => {
+      const content = `
+        Implement the feature.
+
+        Task({
+          subagent_type: 'implementation-agent',
+          prompt: 'Build the feature'
+        });
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag when has test verification', () => {
+      const content = `
+        Implement the new feature.
+        Create the component.
+        Build the API endpoint.
+
+        Run tests after implementation to verify correctness.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag when has performance verification', () => {
+      const content = `
+        Optimize the query performance.
+        Refactor the data processing pipeline.
+        Update the caching strategy.
+
+        Run baseline measurements before changes.
+        Benchmark the results after optimization.
+        Profile to identify remaining bottlenecks.
+      `;
+
+      const result = pattern.check(content);
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag SKILL.md files', () => {
+      const content = `
+        Implement the workflow.
+        Create the processing steps.
+        Build the validation logic.
+      `;
+
+      const result = pattern.check(content, '/path/to/SKILL.md');
+
+      expect(result).toBeNull();
+    });
+
+    it('should not flag agent files', () => {
+      const content = `
+        ---
+        name: test-agent
+        tools: Read, Write
+        ---
+
+        Implement the feature.
+        Create the component.
+      `;
+
+      const result = pattern.check(content, '/agents/test.md');
+
+      expect(result).toBeNull();
+    });
   });
 
   describe('prompt_bloat', () => {

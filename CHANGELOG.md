@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.9.0] - 2026-02-04
+
+### Fixed
+- **Prompt Analyzer False Positives** - Reduced false positives from 175 to 0 across 81 prompt files
+  - `json_without_schema`: Detects JSON in JS code blocks, excludes CLI flags (`--output json`)
+  - `missing_context_why`: Recognizes inline explanations (dashes, parentheses, "for X" phrases)
+  - `critical_info_buried`: Skips SKILL.md with workflow phases, files with Critical Rules section
+  - `missing_instruction_priority`: Detects numbered rules, precedence language, case-sensitive MUST
+  - `missing_verification_criteria`: Skips agent-delegating commands, adds perf indicators
+  - Added design decision documentation for threshold rationale
+  - 23 new test cases covering all pattern changes
+- **Agent Count Documentation** - Fixed file-based agent count in docs/reference/AGENTS.md (30→29)
+
 ## [3.9.0-rc.6] - 2026-02-04
 
 ### Added
