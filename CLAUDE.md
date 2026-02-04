@@ -63,7 +63,7 @@
 
 ```
 lib/          → Shared library (canonical source)
-plugins/      → 9 plugins, 39 agents (29 file-based + 10 role-based), 24 skills
+plugins/      → 9 plugins, 40 agents (30 file-based + 10 role-based), 25 skills
 adapters/     → Platform adapters (opencode-plugin/, opencode/, codex/)
 checklists/   → Action checklists (8 files)
 bin/cli.js    → npm CLI installer
@@ -72,7 +72,7 @@ bin/cli.js    → npm CLI installer
 | Plugin | Agents | Skills | Purpose |
 |--------|--------|--------|---------|
 | next-task | 10 | 3 | Master workflow orchestration |
-| enhance | 9 | 9 | Code quality analyzers |
+| enhance | 10 | 9 | Code quality analyzers |
 | ship | 0 | 0 | PR creation and deployment |
 | perf | 6 | 8 | Performance investigation |
 | audit-project | 10 | 0 | Multi-agent code review |
@@ -115,7 +115,7 @@ awesome-slash                # Run installer
 <agents>
 ## Agents
 
-39 agents across 9 plugins. Key agents by model:
+40 agents across 9 plugins. Key agents by model:
 
 | Model | Agents | Use Case |
 |-------|--------|----------|
@@ -129,7 +129,7 @@ See [README.md](./README.md#command-details) and [docs/reference/AGENTS.md](./do
 <skills>
 ## Skills
 
-24 skills across plugins. Agents invoke skills for reusable implementation.
+25 skills across plugins. Agents invoke skills for reusable implementation.
 
 | Category | Key Skills |
 |----------|------------|

@@ -12,7 +12,7 @@ Complete reference for all agents in awesome-slash.
 |--------|--------|---------|
 | next-task | 10 | [task-discoverer](#task-discoverer), [worktree-manager](#worktree-manager), [exploration-agent](#exploration-agent), [planning-agent](#planning-agent), [implementation-agent](#implementation-agent), [test-coverage-checker](#test-coverage-checker), [delivery-validator](#delivery-validator), [ci-monitor](#ci-monitor), [ci-fixer](#ci-fixer), [simple-fixer](#simple-fixer) |
 | audit-project | 10 | [code-quality-reviewer](#code-quality-reviewer), [security-expert](#security-expert), [performance-engineer](#performance-engineer), [test-quality-guardian](#test-quality-guardian), [architecture-reviewer](#architecture-reviewer), [database-specialist](#database-specialist), [api-designer](#api-designer), [frontend-specialist](#frontend-specialist), [backend-specialist](#backend-specialist), [devops-reviewer](#devops-reviewer) |
-| enhance | 9 | [enhancement-orchestrator](#enhancement-orchestrator), [plugin-enhancer](#plugin-enhancer), [agent-enhancer](#agent-enhancer), [claudemd-enhancer](#claudemd-enhancer), [docs-enhancer](#docs-enhancer), [prompt-enhancer](#prompt-enhancer), [hooks-enhancer](#hooks-enhancer), [skills-enhancer](#skills-enhancer), [enhancement-reporter](#enhancement-reporter) |
+| enhance | 10 | [enhancement-orchestrator](#enhancement-orchestrator), [plugin-enhancer](#plugin-enhancer), [agent-enhancer](#agent-enhancer), [claudemd-enhancer](#claudemd-enhancer), [docs-enhancer](#docs-enhancer), [prompt-enhancer](#prompt-enhancer), [hooks-enhancer](#hooks-enhancer), [skills-enhancer](#skills-enhancer), [cross-file-enhancer](#cross-file-enhancer), [enhancement-reporter](#enhancement-reporter) |
 | drift-detect | 1 | [plan-synthesizer](#plan-synthesizer) |
 | repo-map | 1 | [map-validator](#map-validator) |
 | perf | 6 | [perf-orchestrator](#perf-orchestrator), [perf-theory-gatherer](#perf-theory-gatherer), [perf-theory-tester](#perf-theory-tester), [perf-code-paths](#perf-code-paths), [perf-investigation-logger](#perf-investigation-logger), [perf-analyzer](#perf-analyzer) |
@@ -427,7 +427,7 @@ awesome-slash uses 39 specialized agents across 9 plugins (8 have agents - ship 
 
 ### hooks-enhancer
 
-**Model:** sonnet
+**Model:** opus
 **Purpose:** Analyze hook definitions.
 
 **Checks:**
@@ -442,7 +442,7 @@ awesome-slash uses 39 specialized agents across 9 plugins (8 have agents - ship 
 
 ### skills-enhancer
 
-**Model:** sonnet
+**Model:** opus
 **Purpose:** Analyze SKILL.md quality.
 
 **Checks:**
@@ -452,6 +452,24 @@ awesome-slash uses 39 specialized agents across 9 plugins (8 have agents - ship 
 
 **Tools available:**
 - Read, Glob, Grep
+
+---
+
+### cross-file-enhancer
+
+**Model:** sonnet
+**Purpose:** Analyze cross-file semantic consistency.
+
+**Checks:**
+- Tools used vs declared in frontmatter
+- Agent references exist
+- Duplicate instructions across files
+- Contradictory rules (ALWAYS vs NEVER)
+- Orphaned agents
+- Skill tool mismatches
+
+**Tools available:**
+- Read, Glob, Grep, Bash(git:*)
 
 ---
 

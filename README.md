@@ -8,7 +8,7 @@
 
 AI models can write code. That's not the hard part anymore. The hard part is everything else—picking what to work on, managing branches, reviewing output, cleaning up artifacts, handling CI, addressing comments, deploying. **awesome-slash automates the entire workflow**, not just the coding.
 
-**9 plugins · 39 agents · 24 skills · 26k lines of lib code · 1,818 tests · 3 platforms**
+**9 plugins · 40 agents · 25 skills · 26k lines of lib code · 3,357 tests · 3 platforms**
 
 If you find this useful: [⭐ Star the repo](https://github.com/avifenesh/awesome-slash)
 
@@ -66,12 +66,12 @@ Each command works standalone. Together, they form complete workflows.
 
 ## Skills
 
-24 skills included across the plugins:
+25 skills included across the plugins:
 
 | Category | Skills |
 |----------|--------|
 | **Performance** | `perf:analyzer`, `perf:baseline`, `perf:benchmark`, `perf:code-paths`, `perf:investigation-logger`, `perf:profile`, `perf:theory`, `perf:theory-tester` |
-| **Enhancement** | `enhance:agent-prompts`, `enhance:claude-memory`, `enhance:docs`, `enhance:hooks`, `enhance:orchestrator`, `enhance:plugins`, `enhance:prompts`, `enhance:reporter`, `enhance:skills` |
+| **Enhancement** | `enhance:agent-prompts`, `enhance:claude-memory`, `enhance:cross-file`, `enhance:docs`, `enhance:hooks`, `enhance:orchestrator`, `enhance:plugins`, `enhance:prompts`, `enhance:reporter`, `enhance:skills` |
 | **Workflow** | `next-task:orchestrate-review`, `next-task:discover-tasks`, `next-task:validate-delivery` |
 | **Cleanup** | `deslop:deslop`, `sync-docs:sync-docs` |
 | **Analysis** | `drift-detect:drift-analysis`, `repo-map:repo-mapping` |
@@ -86,7 +86,7 @@ Skills give your agents specialized capabilities. When you install a plugin, its
 |---------|--------------|
 | [The Approach](#the-approach) | Why it's built this way |
 | [Commands](#commands) | All 9 commands overview |
-| [Skills](#skills) | 24 skills across plugins |
+| [Skills](#skills) | 25 skills across plugins |
 | [Command Details](#command-details) | Deep dive into each command |
 | [How Commands Work Together](#how-commands-work-together) | Standalone vs integrated |
 | [Design Philosophy](#design-philosophy) | The thinking behind the architecture |
