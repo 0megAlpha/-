@@ -70,8 +70,16 @@ describe('dev-install script', () => {
       expect(devInstallSource.includes(".claude', 'plugins'")).toBe(true);
     });
 
-    test('defines OPENCODE_DIR', () => {
-      expect(devInstallSource.includes('OPENCODE_DIR')).toBe(true);
+    test('defines OPENCODE_CONFIG_DIR using XDG path', () => {
+      // Should use ~/.config/opencode/ (XDG) not ~/.opencode/
+      expect(devInstallSource.includes('OPENCODE_CONFIG_DIR')).toBe(true);
+      expect(devInstallSource.includes('getOpenCodeConfigDir')).toBe(true);
+      expect(devInstallSource.includes(".config', 'opencode'")).toBe(true);
+    });
+
+    test('defines LEGACY_OPENCODE_DIR for cleanup', () => {
+      // Legacy path kept for cleaning up old installations
+      expect(devInstallSource.includes('LEGACY_OPENCODE_DIR')).toBe(true);
       expect(devInstallSource.includes(".opencode'")).toBe(true);
     });
 
@@ -83,6 +91,65 @@ describe('dev-install script', () => {
     test('defines AWESOME_SLASH_DIR', () => {
       expect(devInstallSource.includes('AWESOME_SLASH_DIR')).toBe(true);
       expect(devInstallSource.includes(".awesome-slash'")).toBe(true);
+    });
+  });
+
+  describe('getOpenCodeConfigDir() logic', () => {
+    // Extract and test the function logic directly
+    const path = require('path');
+
+    function getOpenCodeConfigDir(env) {
+      const HOME = env.HOME || env.USERPROFILE;
+      const xdgConfigHome = env.XDG_CONFIG_HOME;
+      if (xdgConfigHome && xdgConfigHome.trim()) {
+        return path.join(xdgConfigHome, 'opencode');
+      }
+      return path.join(HOME, '.config', 'opencode');
+    }
+
+    test('uses XDG_CONFIG_HOME when set', () => {
+      const result = getOpenCodeConfigDir({
+        HOME: '/home/user',
+        XDG_CONFIG_HOME: '/custom/config'
+      });
+      expect(result).toBe(path.join('/custom/config', 'opencode'));
+    });
+
+    test('falls back to ~/.config/opencode when XDG_CONFIG_HOME unset', () => {
+      const result = getOpenCodeConfigDir({
+        HOME: '/home/user'
+      });
+      expect(result).toBe(path.join('/home/user', '.config', 'opencode'));
+    });
+
+    test('falls back when XDG_CONFIG_HOME is empty string', () => {
+      const result = getOpenCodeConfigDir({
+        HOME: '/home/user',
+        XDG_CONFIG_HOME: ''
+      });
+      expect(result).toBe(path.join('/home/user', '.config', 'opencode'));
+    });
+
+    test('falls back when XDG_CONFIG_HOME is whitespace only', () => {
+      const result = getOpenCodeConfigDir({
+        HOME: '/home/user',
+        XDG_CONFIG_HOME: '   '
+      });
+      expect(result).toBe(path.join('/home/user', '.config', 'opencode'));
+    });
+
+    test('uses USERPROFILE on Windows when HOME not set', () => {
+      const result = getOpenCodeConfigDir({
+        USERPROFILE: 'C:\\Users\\user'
+      });
+      expect(result).toBe(path.join('C:\\Users\\user', '.config', 'opencode'));
+    });
+
+    test('script implementation matches expected pattern', () => {
+      // Verify the script has the exact logic we tested above
+      expect(devInstallSource).toMatch(/if\s*\(\s*xdgConfigHome\s*&&\s*xdgConfigHome\.trim\(\)\s*\)/);
+      expect(devInstallSource).toMatch(/path\.join\s*\(\s*xdgConfigHome\s*,\s*['"]opencode['"]\s*\)/);
+      expect(devInstallSource).toMatch(/path\.join\s*\(\s*HOME\s*,\s*['"]\.config['"]\s*,\s*['"]opencode['"]\s*\)/);
     });
   });
 

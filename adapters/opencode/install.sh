@@ -12,9 +12,21 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 # Use $HOME which works correctly on all platforms including Git Bash on Windows
 # (Git Bash sets HOME to Unix-style path like /c/Users/username)
-OPENCODE_CONFIG_DIR="${HOME}/.opencode"
-OPENCODE_COMMANDS_DIR="${OPENCODE_CONFIG_DIR}/commands/awesome-slash"
+# OpenCode global config follows XDG Base Directory Specification:
+# - Default: ~/.config/opencode/
+# - Override: $XDG_CONFIG_HOME/opencode/ (if XDG_CONFIG_HOME is set and not empty/whitespace)
+# Note: Must match logic in scripts/dev-install.js getOpenCodeConfigDir()
+if [[ -n "${XDG_CONFIG_HOME}" && "${XDG_CONFIG_HOME}" =~ [^[:space:]] ]]; then
+  OPENCODE_CONFIG_DIR="${XDG_CONFIG_HOME}/opencode"
+else
+  OPENCODE_CONFIG_DIR="${HOME}/.config/opencode"
+fi
+# OpenCode expects commands directly in commands/, not a subdirectory
+OPENCODE_COMMANDS_DIR="${OPENCODE_CONFIG_DIR}/commands"
 LIB_DIR="${OPENCODE_COMMANDS_DIR}/lib"
+
+# Legacy path for cleanup (incorrect, pre-XDG location)
+LEGACY_OPENCODE_DIR="${HOME}/.opencode"
 
 # Detect OS for platform-specific notes
 if [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" || "$OSTYPE" == "cygwin" ]]; then
@@ -235,17 +247,64 @@ else
 fi
 echo
 
+# Clean up legacy paths (~/.opencode/ - incorrect, pre-XDG location)
+echo "[CLEANUP] Checking for legacy installations..."
+LEGACY_COMMANDS_DIR="${LEGACY_OPENCODE_DIR}/commands/awesome-slash"
+LEGACY_PLUGINS_DIR="${LEGACY_OPENCODE_DIR}/plugins/awesome-slash"
+LEGACY_AGENTS_DIR="${LEGACY_OPENCODE_DIR}/agents"
+
+cleaned_legacy=false
+if [ -d "$LEGACY_COMMANDS_DIR" ]; then
+  rm -rf "$LEGACY_COMMANDS_DIR"
+  echo "  [DEL] Removed legacy ~/.opencode/commands/awesome-slash"
+  cleaned_legacy=true
+fi
+if [ -d "$LEGACY_PLUGINS_DIR" ]; then
+  rm -rf "$LEGACY_PLUGINS_DIR"
+  echo "  [DEL] Removed legacy ~/.opencode/plugins/awesome-slash"
+  cleaned_legacy=true
+fi
+if [ -d "$LEGACY_AGENTS_DIR" ]; then
+  # Only remove known agent files, not the whole directory
+  # Must match list in scripts/dev-install.js knownAgents array
+  # Generated from: ls plugins/*/agents/*.md | xargs basename | sort -u
+  known_agents=(
+    'agent-enhancer.md' 'ci-fixer.md' 'ci-monitor.md' 'claudemd-enhancer.md'
+    'delivery-validator.md' 'deslop-agent.md' 'docs-enhancer.md' 'enhancement-orchestrator.md'
+    'enhancement-reporter.md' 'exploration-agent.md' 'hooks-enhancer.md' 'implementation-agent.md'
+    'map-validator.md' 'perf-analyzer.md' 'perf-code-paths.md' 'perf-investigation-logger.md'
+    'perf-orchestrator.md' 'perf-theory-gatherer.md' 'perf-theory-tester.md' 'plan-synthesizer.md'
+    'planning-agent.md' 'plugin-enhancer.md' 'prompt-enhancer.md' 'simple-fixer.md'
+    'skills-enhancer.md' 'sync-docs-agent.md' 'task-discoverer.md' 'test-coverage-checker.md'
+    'worktree-manager.md'
+  )
+  for agent in "${known_agents[@]}"; do
+    if [ -f "$LEGACY_AGENTS_DIR/$agent" ]; then
+      rm "$LEGACY_AGENTS_DIR/$agent"
+      cleaned_legacy=true
+    fi
+  done
+  if [ "$cleaned_legacy" = true ]; then
+    echo "  [DEL] Removed legacy agent files from ~/.opencode/agents"
+  fi
+fi
+if [ "$cleaned_legacy" = false ]; then
+  echo "  [OK] No legacy installations found"
+fi
+echo
+
 # Success message
 echo "[OK] Installation complete!"
 echo
 echo "[LIST] Installed Commands:"
-for cmd in "${COMMANDS[@]}"; do
+for mapping in "${COMMAND_MAPPINGS[@]}"; do
+  IFS=':' read -r cmd _ _ <<< "$mapping"
   echo "  • /$cmd"
 done
 echo
 echo "[NEXT] Next Steps:"
 echo "  1. Start OpenCode TUI: opencode"
-echo "  2. Use commands: /$cmd"
+echo "  2. Use commands: /next-task, /ship, etc."
 echo "  3. See help: cat $OPENCODE_COMMANDS_DIR/README.md"
 echo
 echo "[TIP] OpenCode Pro Tips:"
