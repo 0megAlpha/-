@@ -13,7 +13,7 @@
 2. **Plugin for OTHER projects** - Optimize for plugin users, not internal dev convenience.
    *WHY: Every decision should improve the experience for developers using this in their repos.*
 
-3. **No summary files** - No `*_AUDIT.md`, `*_SUMMARY.md`, `*_COMPLETION.md`. Use CHANGELOG.md.
+3. **Use CHANGELOG.md for completion tracking** - Record all release notes and completion in CHANGELOG.md (not `*_AUDIT.md`, `*_SUMMARY.md`, `*_COMPLETION.md`).
    *WHY: Summary files clutter repos and add no value. Report completion verbally.*
 
 4. **Unless** it is a very small change of max few lines, or an urgent hotfix, **MUST create PRs for all changes** - No direct pushes to main.
@@ -42,10 +42,9 @@
    - Don't mark complete until ALL checklist items are done
    *WHY: Checklists exist because we kept missing things. They are the definition of "done".*
 
-8. **No emojis or ASCII art** - No emojis or decorative ASCII boxes in any files.
+8. **Use plain text markers** - Use `[OK]`, `[ERROR]`, `[WARN]`, `[CRITICAL]` for status output.
    - Save tokens - conciseness and clarity over decorations.
-   - Use plain text: `[OK]`, `[ERROR]`, `[WARN]`, `[CRITICAL]`
-   - Use markdown formatting instead of decorative borders
+   - Use markdown formatting instead of decorative borders or emojis
    *WHY: Emojis and ASCII art waste tokens. AI models parse plain text better.*
 
 9. **gh/git on Windows** - Escape `$` as `\$` in GraphQL queries, avoid `!=` in jq (use `== "A" or == "B"`).
@@ -150,7 +149,7 @@ See [README.md](./README.md#skills) for full skill list.
 | `tasks.json` | `{stateDir}/` | Active task registry |
 | `flow.json` | `{stateDir}/` (worktree) | Workflow progress |
 | `preference.json` | `{stateDir}/sources/` | Cached task source |
-| `suppressions.json` | `~/.claude/enhance/` | Auto-learned suppressions |
+| `suppressions.json` | `~/.<claude\|opencode\|codex>/enhance/` | Auto-learned suppressions |
 
 Platform-aware state directory:
 - Claude Code: `.claude/`
@@ -203,7 +202,7 @@ Cannot skip in /next-task:
 
 <end-reminder>
 **REMEMBER**:
-- No summary files (`*_AUDIT.md`, `*_SUMMARY.md`) - use CHANGELOG.md
+- Use CHANGELOG.md for completion tracking (not summary files)
 - BEFORE starting → Read the relevant checklist (`checklists/*.md`)
 - BEFORE delivering any work, especially releases → Go through that checklist item by item
 - 3 platforms: Claude Code + OpenCode + Codex - ALL must work
