@@ -87,7 +87,7 @@ Skills give your agents specialized capabilities. When you install a plugin, its
 | Section | What's there |
 |---------|--------------|
 | [The Approach](#the-approach) | Why it's built this way |
-| [Commands](#commands) | All 9 commands overview |
+| [Commands](#commands) | All 10 commands overview |
 | [Skills](#skills) | 25 skills across plugins |
 | [Command Details](#command-details) | Deep dive into each command |
 | [How Commands Work Together](#how-commands-work-together) | Standalone vs integrated |

@@ -29,7 +29,7 @@ Complete reference for all agents in awesome-slash.
 
 ## Overview
 
-awesome-slash uses 39 specialized agents across 9 plugins (8 have agents - ship uses commands only). Each agent is optimized for a specific task and assigned a model based on complexity:
+awesome-slash uses 39 specialized agents across 10 plugins (9 have agents - ship uses commands only). Each agent is optimized for a specific task and assigned a model based on complexity:
 
 | Model | Use Case | Cost |
 |-------|----------|------|
@@ -698,6 +698,32 @@ These are role-based agents invoked via Task tool with specialized prompts. They
 - Secret management
 - Docker best practices
 - Deployment strategies
+
+---
+
+## learn Plugin Agent
+
+### learn-agent
+
+**Model:** opus
+**Purpose:** Research any topic online and create comprehensive learning guides with RAG-optimized indexes.
+
+**What it does:**
+1. Uses progressive query architecture (funnel approach: broad → specific → deep)
+2. Gathers 10-40 online sources based on depth level
+3. Scores sources by authority, recency, depth, examples, uniqueness
+4. Uses just-in-time retrieval to save tokens (only fetches high-scoring sources)
+5. Creates structured learning guides with examples and best practices
+6. Updates CLAUDE.md/AGENTS.md master indexes for future RAG lookups
+7. Runs enhance:enhance-docs and enhance:enhance-prompts for quality
+
+**Tools available:**
+- WebSearch, WebFetch, Read, Write, Glob, Grep, Skill
+
+**Output:**
+- Topic-specific guide in `agent-knowledge/`
+- Updated master index in `agent-knowledge/CLAUDE.md`
+- Source metadata with quality scores in `agent-knowledge/resources/`
 
 ---
 

@@ -62,7 +62,8 @@ awesome-slash/
 │   ├── perf/                     # Performance investigations
 │   ├── drift-detect/
 │   ├── sync-docs/       # Documentation sync
-│   └── repo-map/        # AST repo mapping
+│   ├── repo-map/        # AST repo mapping
+│   └── learn/           # Topic research and learning guides
 ├── bin/                          # CLI installer
 │   └── cli.js                    # Interactive installer
 ├── meta/

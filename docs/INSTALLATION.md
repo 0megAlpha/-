@@ -32,6 +32,7 @@ Add the marketplace and install plugins directly in Claude Code:
 /plugin install enhance@awesome-slash
 /plugin install perf@awesome-slash
 /plugin install sync-docs@awesome-slash
+/plugin install learn@awesome-slash
 ```
 
 **Scopes** (optional):
@@ -184,6 +185,7 @@ You should see commands:
 - `/enhance` - Enhancement analyzer suite
 - `/perf` - Performance investigation workflow
 - `/sync-docs` - Documentation sync
+- `/learn` - Topic research and learning guides
 
 ### OpenCode / Codex
 
