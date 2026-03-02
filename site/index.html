@@ -195,6 +195,9 @@
             <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-8" id="tab-8" tabindex="-1" data-index="8">/repo-map</button>
             <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-9" id="tab-9" tabindex="-1" data-index="9">/sync-docs</button>
             <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-10" id="tab-10" tabindex="-1" data-index="10">/learn</button>
+            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-11" id="tab-11" tabindex="-1" data-index="11">/consult</button>
+            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-12" id="tab-12" tabindex="-1" data-index="12">/debate</button>
+            <button class="tabs__tab" role="tab" aria-selected="false" aria-controls="tab-panel-13" id="tab-13" tabindex="-1" data-index="13">/web-ctl</button>
           </div>
 
           <!-- Tab panels -->
@@ -406,6 +409,63 @@
 <span class="code-prompt">$</span> /learn kubernetes --depth=brief    <span class="code-comment"># Quick overview</span></code></pre>
             </div>
           </div>
+
+          <div class="tabs__panel" role="tabpanel" id="tab-panel-11" aria-labelledby="tab-11" hidden>
+            <h3 class="tabs__panel-name">/consult</h3>
+            <p class="tabs__panel-tagline">Get a second opinion from another AI tool</p>
+            <ul class="tabs__panel-features">
+              <li>Cross-tool AI consultation via ACP transport</li>
+              <li>6 providers: Claude, Gemini, Codex, Copilot, Kiro, OpenCode</li>
+              <li>Effort-mapped model selection per provider</li>
+              <li>Session continuations and context injection</li>
+            </ul>
+            <div class="code-block">
+              <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/consult &quot;Is this the right approach?&quot; --tool=gemini --effort=high
+/consult &quot;Review for performance&quot; --tool=codex">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/></svg>
+              </button>
+              <pre><code><span class="code-prompt">$</span> /consult "Is this the right approach?" --tool=gemini <span class="code-comment"># Second opinion</span>
+<span class="code-prompt">$</span> /consult "Review for performance" --tool=codex      <span class="code-comment"># Codex review</span></code></pre>
+            </div>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="tab-panel-12" aria-labelledby="tab-12" hidden>
+            <h3 class="tabs__panel-name">/debate</h3>
+            <p class="tabs__panel-tagline">Structured adversarial debate between AI tools</p>
+            <ul class="tabs__panel-features">
+              <li>Multi-round proposer/challenger format</li>
+              <li>Evidence-backed arguments with mandatory counterpoints</li>
+              <li>Any two AI tools as debaters (Claude, Gemini, Codex, Kiro, etc.)</li>
+              <li>Final verdict from the orchestrator</li>
+            </ul>
+            <div class="code-block">
+              <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/debate codex vs gemini about microservices vs monolith
+/debate claude vs kiro about our auth implementation">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/></svg>
+              </button>
+              <pre><code><span class="code-prompt">$</span> /debate codex vs gemini about microservices vs monolith  <span class="code-comment"># Structured debate</span>
+<span class="code-prompt">$</span> /debate claude vs kiro about our auth implementation     <span class="code-comment"># Codebase debate</span></code></pre>
+            </div>
+          </div>
+
+          <div class="tabs__panel" role="tabpanel" id="tab-panel-13" aria-labelledby="tab-13" hidden>
+            <h3 class="tabs__panel-name">/web-ctl</h3>
+            <p class="tabs__panel-tagline">Browser automation for AI agents</p>
+            <ul class="tabs__panel-features">
+              <li>Headless Playwright with encrypted session persistence</li>
+              <li>Human-in-the-loop auth handoff with CAPTCHA detection</li>
+              <li>Anti-bot measures and output sanitization</li>
+              <li>Snapshot-based accessibility tree for element discovery</li>
+            </ul>
+            <div class="code-block">
+              <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/web-ctl goto https://example.com
+/web-ctl auth github --url https://github.com/login">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 010 1.5h-1.5a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-1.5a.75.75 0 011.5 0v1.5A1.75 1.75 0 019.25 16h-7.5A1.75 1.75 0 010 14.25v-7.5z"/><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0114.25 11h-7.5A1.75 1.75 0 015 9.25v-7.5zm1.75-.25a.25.25 0 00-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 00.25-.25v-7.5a.25.25 0 00-.25-.25h-7.5z"/></svg>
+              </button>
+              <pre><code><span class="code-prompt">$</span> /web-ctl goto https://example.com                       <span class="code-comment"># Navigate</span>
+<span class="code-prompt">$</span> /web-ctl auth github --url https://github.com/login    <span class="code-comment"># Auth handoff</span></code></pre>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -497,8 +557,8 @@
         <!-- Agent tier tabs -->
         <div class="agents-skills__tabs anim-fade-up" data-delay="200">
           <div class="agent-tabs" role="tablist" aria-label="Agent tiers">
-            <button class="agent-tabs__tab agent-tabs__tab--active" role="tab" aria-selected="true" aria-controls="agent-tier-opus" id="agent-tab-opus" data-index="0">Opus <span class="agent-tabs__count">13</span></button>
-            <button class="agent-tabs__tab" role="tab" aria-selected="false" aria-controls="agent-tier-sonnet" id="agent-tab-sonnet" tabindex="-1" data-index="1">Sonnet <span class="agent-tabs__count">13</span></button>
+            <button class="agent-tabs__tab agent-tabs__tab--active" role="tab" aria-selected="true" aria-controls="agent-tier-opus" id="agent-tab-opus" data-index="0">Opus <span class="agent-tabs__count">14</span></button>
+            <button class="agent-tabs__tab" role="tab" aria-selected="false" aria-controls="agent-tier-sonnet" id="agent-tab-sonnet" tabindex="-1" data-index="1">Sonnet <span class="agent-tabs__count">15</span></button>
             <button class="agent-tabs__tab" role="tab" aria-selected="false" aria-controls="agent-tier-haiku" id="agent-tab-haiku" tabindex="-1" data-index="2">Haiku <span class="agent-tabs__count">4</span></button>
             <button class="agent-tabs__tab" role="tab" aria-selected="false" aria-controls="agent-tier-specialists" id="agent-tab-specialists" tabindex="-1" data-index="3">Specialists <span class="agent-tabs__count">10</span></button>
           </div>
@@ -519,6 +579,7 @@
               <div class="agent-card"><span class="agent-card__name">hooks-enhancer</span><span class="tier-badge tier-badge--opus">opus</span><p class="agent-card__desc">Git hooks and automation analysis</p></div>
               <div class="agent-card"><span class="agent-card__name">prompt-enhancer</span><span class="tier-badge tier-badge--opus">opus</span><p class="agent-card__desc">Prompt engineering best practices</p></div>
               <div class="agent-card"><span class="agent-card__name">skills-enhancer</span><span class="tier-badge tier-badge--opus">opus</span><p class="agent-card__desc">Skill definition quality analysis</p></div>
+              <div class="agent-card"><span class="agent-card__name">debate-orchestrator</span><span class="tier-badge tier-badge--opus">opus</span><p class="agent-card__desc">Structured adversarial debate coordination</p></div>
             </div>
           </div>
 
@@ -538,6 +599,8 @@
               <div class="agent-card"><span class="agent-card__name">perf-theory-tester</span><span class="tier-badge tier-badge--sonnet">sonnet</span><p class="agent-card__desc">Controlled experiment execution</p></div>
               <div class="agent-card"><span class="agent-card__name">sync-docs-agent</span><span class="tier-badge tier-badge--sonnet">sonnet</span><p class="agent-card__desc">Documentation sync and update</p></div>
               <div class="agent-card"><span class="agent-card__name">agnix-agent</span><span class="tier-badge tier-badge--sonnet">sonnet</span><p class="agent-card__desc">Agent config linting orchestration</p></div>
+              <div class="agent-card"><span class="agent-card__name">consult-agent</span><span class="tier-badge tier-badge--sonnet">sonnet</span><p class="agent-card__desc">Cross-tool AI consultation orchestration</p></div>
+              <div class="agent-card"><span class="agent-card__name">web-session</span><span class="tier-badge tier-badge--sonnet">sonnet</span><p class="agent-card__desc">Browser automation and session management</p></div>
             </div>
           </div>
 
@@ -614,6 +677,10 @@
               <span class="skill-card">sync-docs</span>
               <span class="skill-card">learn-topic</span>
               <span class="skill-card">agnix-lint</span>
+              <span class="skill-card">consult</span>
+              <span class="skill-card">debate</span>
+              <span class="skill-card">web-auth</span>
+              <span class="skill-card">web-browse</span>
             </div>
           </div>
         </div>
