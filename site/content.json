@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "agentsys",
-    "description": "A modular runtime and orchestration system for AI agents. 12 plugins, 41 agents, 27 skills — structured pipelines for Claude Code, OpenCode, and Codex CLI.",
+    "description": "A modular runtime and orchestration system for AI agents. 14 plugins, 43 agents, 30 skills — structured pipelines for Claude Code, OpenCode, Codex CLI, Cursor, and Kiro.",
     "url": "https://agent-sh.github.io/agentsys",
     "repo": "https://github.com/agent-sh/agentsys",
     "npm": "https://www.npmjs.com/package/agentsys",
@@ -23,17 +23,17 @@
   },
   "stats": [
     {
-      "value": "0",
+      "value": "14",
       "label": "Plugins",
       "suffix": ""
     },
     {
-      "value": "10",
+      "value": "43",
       "label": "Agents",
       "suffix": ""
     },
     {
-      "value": "0",
+      "value": "30",
       "label": "Skills",
       "suffix": ""
     },
@@ -43,12 +43,12 @@
       "suffix": ""
     },
     {
-      "value": "3,357",
+      "value": "3,709",
       "label": "Tests",
       "suffix": ""
     },
     {
-      "value": "3",
+      "value": "5",
       "label": "Platforms",
       "suffix": ""
     }
@@ -98,7 +98,7 @@
     {
       "name": "/agnix",
       "tagline": "Lint agent configs before they break",
-      "description": "155 validation rules (57 auto-fixable) for Skills, Memory, Hooks, MCP, and Plugins across 10+ AI tools including Claude Code, Cursor, GitHub Copilot, Codex CLI, OpenCode, and Gemini CLI. SARIF output for GitHub Code Scanning.",
+      "description": "230+ validation rules (57 auto-fixable) for Skills, Memory, Hooks, MCP, and Plugins across 10+ AI tools including Claude Code, Cursor, Kiro, GitHub Copilot, Codex CLI, OpenCode, and Gemini CLI. SARIF output for GitHub Code Scanning.",
       "example": "/agnix --fix",
       "category": "linting"
     },
@@ -168,9 +168,23 @@
     {
       "name": "/consult",
       "tagline": "Get a second opinion from another AI tool",
-      "description": "Cross-tool AI consultation. Ask Gemini, Codex, Claude, OpenCode, or Copilot for a second opinion on any question. Supports session continuations, context injection, and configurable thinking effort.",
+      "description": "Cross-tool AI consultation via ACP (Agent Client Protocol). Ask Gemini, Codex, Claude, OpenCode, Copilot, or Kiro for a second opinion. Supports ACP and CLI transports, session continuations, context injection, and user-extensible provider registry.",
       "example": "/consult \"Is this the right approach?\" --tool=gemini --effort=high",
       "category": "analysis"
+    },
+    {
+      "name": "/debate",
+      "tagline": "Structured adversarial debate between AI tools",
+      "description": "Multi-round structured debates between any two AI tools as proposer and challenger. Evidence-backed arguments, mandatory counterpoints, and a verdict from the orchestrator. Supports ACP transport for Kiro participation.",
+      "example": "/debate claude vs kiro about microservices vs monolith",
+      "category": "analysis"
+    },
+    {
+      "name": "/web-ctl",
+      "tagline": "Browser automation for AI agents",
+      "description": "Navigate, authenticate, and interact with web pages via headless Playwright. Persistent encrypted sessions, human-in-the-loop auth handoff with CAPTCHA detection, and anti-bot measures.",
+      "example": "/web-ctl browse https://example.com",
+      "category": "maintenance"
     }
   ],
   "philosophy": [
@@ -235,12 +249,22 @@
       "opencode": {
         "name": "OpenCode",
         "prefix": "/",
-        "state_dir": ".opencode/"
+        "state_dir": "~/.config/opencode/"
       },
       "codex": {
         "name": "Codex CLI",
         "prefix": "$",
-        "state_dir": ".codex/"
+        "state_dir": "~/.codex/"
+      },
+      "cursor": {
+        "name": "Cursor",
+        "prefix": "/",
+        "state_dir": ".cursor/"
+      },
+      "kiro": {
+        "name": "Kiro",
+        "prefix": "steering",
+        "state_dir": "~/.kiro/"
       }
     }
   },
