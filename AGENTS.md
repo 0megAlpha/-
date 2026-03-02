@@ -1,6 +1,6 @@
 # Project Memory: AgentSys
 
-> **Cross-tool compatible**: This file works as CLAUDE.md (Claude Code) and can be copied to AGENTS.md for OpenCode, Codex, and other AI tools.
+> **Cross-tool compatible**: Works across all 5 platforms - Claude Code, OpenCode, Codex CLI, Cursor, and Kiro.
 
 <project-memory>
 
@@ -150,7 +150,7 @@ agentsys                # Run installer
 <agents>
 ## Agents
 
-39 agents across 9 plugins. Key agents by model:
+43 agents across 14 plugins. Key agents by model:
 
 | Model | Agents | Use Case |
 |-------|--------|----------|

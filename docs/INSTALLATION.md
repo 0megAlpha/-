@@ -352,6 +352,7 @@ gh auth login
 - Skills use standard SKILL.md format in `.kiro/skills/`
 - Agents converted to JSON in `.kiro/agents/`
 - Reads AGENTS.md and `.kiro/steering/*.md` for instructions
+- **Note**: Kiro's subagent spawning is experimental (max 4). Workflows with parallel Task() calls (e.g., next-task Phase 9 with 4-10 reviewers) automatically fall back to 2 sequential combined reviewers (`reviewer-quality-security`, `reviewer-perf-test`)
 
 ---
 

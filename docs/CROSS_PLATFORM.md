@@ -350,8 +350,21 @@ The plugin auto-detects the platform and uses the appropriate directory. Overrid
 - Project-scoped installation
 - State directory: `.kiro/`
 - Steering files in `.kiro/steering/` (commands with `inclusion: manual`)
-- Skills in `.kiro/skills/`, agents in `.kiro/agents/`
+- Skills in `.kiro/skills/`, agents converted to JSON in `.kiro/agents/`
 - Reads AGENTS.md and `.kiro/steering/*.md` for instructions
+- **Subagent spawning**: Experimental (max 4 agents). Primary agent invokes subagents by name from `.kiro/agents/*.json`. Sequential only - no parallel spawning publicly available yet.
+- **Parallel Task() adaptation**: Workflows that spawn 4+ parallel reviewers (next-task Phase 9, audit-project Phase 2) are adapted with a try-4-then-fallback-to-2 pattern. Two combined reviewer agents (`reviewer-quality-security`, `reviewer-perf-test`) merge review passes for the sequential fallback.
+- **No team/swarm pattern**: TeamCreate, SendMessage not supported. All orchestration is single-primary with sequential subagent delegation.
+
+### Subagent Capabilities by Platform
+
+| Feature | Claude Code | Kiro | OpenCode | Codex | Cursor |
+|---------|-------------|------|----------|-------|--------|
+| Sub-agent spawning | Task() tool | By name from .kiro/agents/*.json | @agent syntax | N/A | N/A |
+| Parallel agents | Yes (multiple Task) | Experimental (max 4) | No | N/A | N/A |
+| Agent teams | TeamCreate + SendMessage | Not supported | Not supported | N/A | N/A |
+| Combined reviewers | Not needed (parallel) | reviewer-quality-security, reviewer-perf-test | Not needed (sequential) | N/A | N/A |
+| ACP transport | Via acp/run.js | Native (kiro-cli acp) | Via acp/run.js | Via adapter | Via adapter |
 
 ## Migration Guide
 

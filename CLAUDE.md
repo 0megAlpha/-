@@ -1,6 +1,6 @@
 # agentsys
 
-> A modular runtime and orchestration system for AI agents - works with Claude Code, OpenCode, and Codex CLI
+> A modular runtime and orchestration system for AI agents - works with Claude Code, OpenCode, Codex CLI, Cursor, and Kiro
 
 ## Critical Rules
 
