@@ -7,6 +7,6 @@
     "shell"
   ],
   "resources": [
-    "file://.kiro/steering/**/*.md"
+    ".kiro/steering/**/*.md"
   ]
 }

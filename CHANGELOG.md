@@ -7,11 +7,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.3] - 2026-03-02
+
+### Fixed
+
+- **Restored file:// prefix in Kiro agent resources** - kiro-cli requires `file://` or `skill://` scheme prefix on resources. The 5.3.2 removal caused all 34 agents to fail validation.
+
 ## [5.3.2] - 2026-03-02
 
 ### Fixed
 
-- **Invalid file:// URI in Kiro agent resources** - `file://.kiro/steering/**/*.md` violated RFC 3986. Now uses relative glob `.kiro/steering/**/*.md`.
+- **Invalid file:// URI in Kiro agent resources** - Attempted to remove `file://` prefix (reverted in 5.3.3).
 - **Kiro detection too strict** - Now detects `.kiro/` existence alone, catching fresh workspaces.
 - **Silent tool stripping** - `task`, `web`, `fetch`, `notebook`, `lsp` tools added to Kiro agent mapping.
 - **Kiro session continuity** - `supportsContinue` set to `true` (Kiro ACP reports `loadSession: true`).
