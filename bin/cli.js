@@ -946,9 +946,8 @@ function detectInstalledPlatforms() {
   const opencodeDir = getOpenCodeConfigDir();
   if (fs.existsSync(opencodeDir)) platforms.push('opencode');
   if (fs.existsSync(path.join(home, '.codex'))) platforms.push('codex');
-  // Cursor rules are project-scoped; detect only if Cursor rules/commands/skills exist in CWD
-  const cursorDir = path.join(process.cwd(), '.cursor');
-  if (fs.existsSync(path.join(cursorDir, 'rules')) || fs.existsSync(path.join(cursorDir, 'commands')) || fs.existsSync(path.join(cursorDir, 'skills'))) platforms.push('cursor');
+  // Cursor: detect global ~/.cursor/ or project .cursor/
+  if (fs.existsSync(path.join(home, '.cursor')) || fs.existsSync(path.join(process.cwd(), '.cursor'))) platforms.push('cursor');
   // Kiro: detect global ~/.kiro/ or project .kiro/
   if (fs.existsSync(path.join(home, '.kiro')) || fs.existsSync(path.join(process.cwd(), '.kiro'))) platforms.push('kiro');
   return platforms;
@@ -1606,12 +1605,13 @@ function installForCodex(installDir, options = {}) {
 function installForCursor(installDir, options = {}) {
   console.log('\n[INSTALL] Installing for Cursor...\n');
   const { filter = null } = options;
-  const cwd = process.cwd();
+  const home = process.env.HOME || process.env.USERPROFILE;
 
-  // Create target directories (all project-scoped)
-  const skillsDir = path.join(cwd, '.cursor', 'skills');
-  const commandsDir = path.join(cwd, '.cursor', 'commands');
-  const rulesDir = path.join(cwd, '.cursor', 'rules');
+  // Install globally to ~/.cursor/ (same as other platforms)
+  const cursorHome = path.join(home, '.cursor');
+  const skillsDir = path.join(cursorHome, 'skills');
+  const commandsDir = path.join(cursorHome, 'commands');
+  const rulesDir = path.join(cursorHome, 'rules');
   fs.mkdirSync(skillsDir, { recursive: true });
   fs.mkdirSync(commandsDir, { recursive: true });
   fs.mkdirSync(rulesDir, { recursive: true });
@@ -1694,7 +1694,7 @@ function installForCursor(installDir, options = {}) {
   console.log(`\n[OK] Cursor installation complete!`);
   console.log(`   Skills: ${skillCount} installed to ${skillsDir}`);
   console.log(`   Commands: ${cmdCount} installed to ${commandsDir}`);
-  console.log('   All content is project-scoped and auto-loaded by Cursor.\n');
+  console.log(`   Global install: ${cursorHome}\n`);
   return true;
 }
 
@@ -1706,18 +1706,24 @@ function installForKiro(installDir, options = {}) {
   const home = process.env.HOME || process.env.USERPROFILE;
   const kiroHome = path.join(home, '.kiro');
   const skillsDir = path.join(kiroHome, 'skills');
-  const steeringDir = path.join(kiroHome, 'steering');
+  const promptsDir = path.join(kiroHome, 'prompts');
   const agentsDir = path.join(kiroHome, 'agents');
   fs.mkdirSync(skillsDir, { recursive: true });
-  fs.mkdirSync(steeringDir, { recursive: true });
+  fs.mkdirSync(promptsDir, { recursive: true });
   fs.mkdirSync(agentsDir, { recursive: true });
 
-  // Cleanup old agentsys steering files (only those matching known commands)
+  // Clean up legacy steering dir if it exists (renamed to prompts)
+  const legacySteeringDir = path.join(kiroHome, 'steering');
+  if (fs.existsSync(legacySteeringDir)) {
+    fs.rmSync(legacySteeringDir, { recursive: true, force: true });
+  }
+
+  // Cleanup old agentsys prompt files (only those matching known commands)
   const steeringMappingsForCleanup = discovery.getKiroSteeringMappings(installDir);
-  const knownSteeringFiles = new Set(steeringMappingsForCleanup.map(([name]) => `${name}.md`));
-  for (const f of fs.readdirSync(steeringDir).filter(f => f.endsWith('.md'))) {
-    if (knownSteeringFiles.has(f)) {
-      fs.unlinkSync(path.join(steeringDir, f));
+  const knownPromptFiles = new Set(steeringMappingsForCleanup.map(([name]) => `${name}.md`));
+  for (const f of fs.readdirSync(promptsDir).filter(f => f.endsWith('.md'))) {
+    if (knownPromptFiles.has(f)) {
+      fs.unlinkSync(path.join(promptsDir, f));
     }
   }
 
@@ -1776,12 +1782,12 @@ function installForKiro(installDir, options = {}) {
     }
   }
 
-  // Install commands as steering files
+  // Install commands as prompts (invoked with @ in kiro-cli)
   const steeringMappings = discovery.getKiroSteeringMappings(installDir);
-  let steeringCount = 0;
-  for (const [steeringName, plugin, sourceFile, description] of steeringMappings) {
+  let promptCount = 0;
+  for (const [promptName, plugin, sourceFile, description] of steeringMappings) {
     if (filter && filter.commands && filter.commands.length > 0) {
-      if (!filter.commands.includes(steeringName)) continue;
+      if (!filter.commands.includes(promptName)) continue;
     }
     const srcPath = path.join(installDir, 'plugins', plugin, 'commands', sourceFile);
     if (!fs.existsSync(srcPath)) {
@@ -1791,11 +1797,11 @@ function installForKiro(installDir, options = {}) {
     let content = fs.readFileSync(srcPath, 'utf8');
     content = transforms.transformCommandForKiro(content, {
       pluginInstallPath: path.join(installDir, 'plugins', plugin),
-      name: steeringName,
+      name: promptName,
       description
     });
-    fs.writeFileSync(path.join(steeringDir, `${steeringName}.md`), content);
-    steeringCount++;
+    fs.writeFileSync(path.join(promptsDir, `${promptName}.md`), content);
+    promptCount++;
   }
 
   // Install agents as JSON files
@@ -1845,7 +1851,7 @@ function installForKiro(installDir, options = {}) {
 
   console.log(`\n[OK] Kiro installation complete!`);
   console.log(`   Skills: ${skillCount} installed to ${skillsDir}`);
-  console.log(`   Steering: ${steeringCount} installed to ${steeringDir}`);
+  console.log(`   Prompts: ${promptCount} installed to ${promptsDir} (invoke with @name in kiro-cli)`);
   console.log(`   Agents: ${agentCount} installed to ${agentsDir} (includes 2 combined reviewers)`);
   console.log(`   Global install: ${kiroHome}\n`);
   return true;
@@ -1867,8 +1873,8 @@ function removeInstallation() {
   console.log('  - Claude: /plugin marketplace remove agentsys');
   console.log('  - OpenCode: Remove files under ~/.config/opencode/ (commands/*.md, agents/*.md, skills/*/SKILL.md) and ~/.config/opencode/plugins/agentsys.ts');
   console.log('  - Codex: Remove ~/.codex/skills/*/');
-  console.log('  - Cursor: Remove .cursor/skills/, .cursor/commands/, and .cursor/rules/agentsys-*.mdc from your project');
-  console.log('  - Kiro: Remove ~/.kiro/skills/, ~/.kiro/steering/, and ~/.kiro/agents/');
+  console.log('  - Cursor: Remove ~/.cursor/skills/, ~/.cursor/commands/, and ~/.cursor/rules/agentsys-*.mdc');
+  console.log('  - Kiro: Remove ~/.kiro/skills/, ~/.kiro/prompts/, and ~/.kiro/agents/');
 }
 
 function printSubcommandHelp(subcommand) {
@@ -2030,8 +2036,8 @@ Supported Platforms:
   claude   - Claude Code (marketplace install or development mode)
   opencode - OpenCode (local commands + native plugin)
   codex    - Codex CLI (local skills)
-  cursor   - Cursor (project-scoped skills + commands)
-  kiro     - Kiro (project-scoped steering + skills + agents)
+  cursor   - Cursor (global ~/.cursor/ skills + commands)
+  kiro     - Kiro (global ~/.kiro/ prompts + skills + agents)
 
 Install:  npm install -g agentsys && agentsys
 Update:   npm update -g agentsys && agentsys

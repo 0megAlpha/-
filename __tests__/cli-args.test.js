@@ -242,17 +242,21 @@ describe('installForCursor', () => {
   let tmpDir;
   let originalCwd;
   let originalLog;
+  let originalHome;
 
   beforeEach(() => {
     tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'cursor-install-test-'));
     originalCwd = process.cwd();
+    originalHome = process.env.HOME;
     process.chdir(tmpDir);
+    process.env.HOME = tmpDir; // Cursor installs globally to ~/.cursor/
     originalLog = console.log;
     console.log = jest.fn();
   });
 
   afterEach(() => {
     process.chdir(originalCwd);
+    process.env.HOME = originalHome;
     console.log = originalLog;
     fs.rmSync(tmpDir, { recursive: true, force: true });
   });
@@ -534,7 +538,7 @@ describe('installForKiro', () => {
     expect(content).toContain('name: my-skill');
   });
 
-  test('installs commands as steering files to .kiro/steering/<name>.md', () => {
+  test('installs commands as prompts to .kiro/prompts/<name>.md', () => {
     const installDir = setupInstallDir({
       'my-cmd.md': '---\ndescription: A test command\n---\n# My Command\nBody content'
     });
@@ -544,7 +548,7 @@ describe('installForKiro', () => {
 
     installForKiro(installDir);
 
-    const steeringDir = path.join(tmpDir, '.kiro', 'steering');
+    const steeringDir = path.join(tmpDir, '.kiro', 'prompts');
     const files = fs.readdirSync(steeringDir);
     expect(files).toContain('my-cmd.md');
 
@@ -573,11 +577,11 @@ describe('installForKiro', () => {
     expect(parsed.description).toBe('A test agent');
     expect(parsed.prompt).toContain('Agent instructions here');
     expect(parsed.tools).toEqual(expect.arrayContaining(['read', 'write', 'shell']));
-    expect(parsed.resources).toEqual(['file://.kiro/steering/**/*.md']);
+    expect(parsed.resources).toEqual(['file://.kiro/prompts/**/*.md']);
   });
 
   test('cleans up old steering files on reinstall', () => {
-    const steeringDir = path.join(tmpDir, '.kiro', 'steering');
+    const steeringDir = path.join(tmpDir, '.kiro', 'prompts');
     fs.mkdirSync(steeringDir, { recursive: true });
     fs.writeFileSync(path.join(steeringDir, 'user-custom.md'), 'custom');
 
@@ -607,7 +611,7 @@ describe('installForKiro', () => {
 
     installForKiro(installDir, { filter: { commands: ['allowed-cmd'] } });
 
-    const steeringDir = path.join(tmpDir, '.kiro', 'steering');
+    const steeringDir = path.join(tmpDir, '.kiro', 'prompts');
     const files = fs.readdirSync(steeringDir);
     expect(files).toContain('allowed-cmd.md');
     expect(files).not.toContain('blocked-cmd.md');
@@ -658,7 +662,7 @@ describe('installForKiro', () => {
 
     expect(() => installForKiro(installDir)).not.toThrow();
 
-    const steeringDir = path.join(tmpDir, '.kiro', 'steering');
+    const steeringDir = path.join(tmpDir, '.kiro', 'prompts');
     const files = fs.readdirSync(steeringDir);
     expect(files.length).toBe(0);
   });
