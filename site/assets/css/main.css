@@ -904,22 +904,6 @@
 }
 
 /* --------------------------------------------------------------------------
- * TABS PANEL - HOW IT WORKS PARAGRAPH
- * -------------------------------------------------------------------------- */
-.tabs__panel-how {
-  font-size: var(--text-sm);
-  color: var(--color-text-secondary);
-  line-height: 1.6;
-  margin-top: var(--space-3);
-  padding-top: var(--space-3);
-  border-top: 1px solid var(--color-border-subtle);
-}
-
-.tabs__panel-how strong {
-  color: var(--color-text-primary);
-}
-
-/* --------------------------------------------------------------------------
  * SCROLL CUE
  * -------------------------------------------------------------------------- */
 .scroll-cue {
