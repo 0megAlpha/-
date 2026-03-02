@@ -658,6 +658,30 @@
           { title: 'Score sources', desc: 'Each source is scored by quality, relevance, and authority. Low-quality sources are filtered out.' },
           { title: 'Create guide', desc: 'Synthesizes a structured learning guide with RAG-optimized index saved for future agent lookups.' }
         ]
+      },
+      11: {
+        subtitle: 'Ask another AI. Get a second opinion.',
+        steps: [
+          { title: 'Detect tools', desc: 'Finds which AI CLI tools are installed on your system. Picks the right model and flags for your effort level.' },
+          { title: 'Run consultation', desc: 'Spawns the tool via ACP (JSON-RPC 2.0 over stdio) or CLI with safe-mode defaults and a 240s timeout.' },
+          { title: 'Return response', desc: 'Parses output, redacts secrets (Shannon entropy > 4.0), and returns the response. Supports session continuations.' }
+        ]
+      },
+      12: {
+        subtitle: 'Two AIs argue. You get the truth.',
+        steps: [
+          { title: 'Set up debate', desc: 'Parses natural language to identify proposer, challenger, topic, rounds, and effort level.' },
+          { title: 'Run rounds', desc: 'Proposer builds a case with evidence. Challenger responds with counterpoints. Each round refines the arguments.' },
+          { title: 'Deliver verdict', desc: 'The orchestrator synthesizes all rounds and picks a winner with reasoning and actionable takeaways.' }
+        ]
+      },
+      13: {
+        subtitle: 'Browser automation. Encrypted sessions.',
+        steps: [
+          { title: 'Start session', desc: 'Creates an encrypted browser profile using AES-256-GCM. No daemon - each action is a single Playwright process.' },
+          { title: 'Authenticate', desc: 'Opens headed Chrome for human login (2FA, CAPTCHAs). Polls for success, then encrypts cookies for reuse.' },
+          { title: 'Run headless', desc: 'Subsequent actions run headless using saved cookies. Snapshot-based element discovery with classified error codes.' }
+        ]
       }
     };
 
