@@ -904,6 +904,60 @@
 }
 
 /* --------------------------------------------------------------------------
+ * TABS PANEL - HOW IT WORKS PARAGRAPH
+ * -------------------------------------------------------------------------- */
+.tabs__panel-how {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-top: var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-border-subtle);
+}
+
+.tabs__panel-how strong {
+  color: var(--color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+ * SCROLL CUE
+ * -------------------------------------------------------------------------- */
+.scroll-cue {
+  text-align: center;
+  padding: var(--space-8) 0 var(--space-4);
+}
+
+.scroll-cue__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.scroll-cue__link:hover {
+  color: var(--color-text-primary);
+}
+
+.scroll-cue__text {
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.scroll-cue__arrow {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+/* --------------------------------------------------------------------------
  * HOW IT WORKS
  * -------------------------------------------------------------------------- */
 .how-it-works {

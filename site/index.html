@@ -116,7 +116,7 @@
             for AI agents.
           </h1>
           <p class="hero__subtitle anim-fade-up" data-delay="350">
-            Structured pipelines, gated phases, specialized agents. Works with Claude Code, OpenCode, and Codex CLI. 3,917 tests. Production-grade.
+            Structured pipelines, gated phases, specialized agents. Works with Claude Code, OpenCode, Codex CLI, Cursor, and Kiro. 3,750 tests. Production-grade.
           </p>
           <div class="hero__ctas anim-fade-up" data-delay="500">
             <a href="#install" class="btn btn--primary">Get Started</a>
@@ -419,6 +419,7 @@
               <li>Effort-mapped model selection per provider</li>
               <li>Session continuations and context injection</li>
             </ul>
+            <p class="tabs__panel-how"><strong>How it works:</strong> Detects installed AI tools, picks the right model for your effort level, spawns the tool with safe-mode defaults and a 240s timeout, then returns the response. Supports ACP (JSON-RPC 2.0 over stdio) and CLI transports with automatic fallback. User-extensible provider registry.</p>
             <div class="code-block">
               <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/consult &quot;Is this the right approach?&quot; --tool=gemini --effort=high
 /consult &quot;Review for performance&quot; --tool=codex">
@@ -438,6 +439,7 @@
               <li>Any two AI tools as debaters (Claude, Gemini, Codex, Kiro, etc.)</li>
               <li>Final verdict from the orchestrator</li>
             </ul>
+            <p class="tabs__panel-how"><strong>How it works:</strong> Parses natural language ("codex vs gemini about X") to identify proposer, challenger, topic, and rounds. Proposer builds a case with evidence. Challenger responds with counterpoints and alternatives. Each round, the proposer defends and the challenger refines. After all rounds, the orchestrator delivers a verdict picking a winner with reasoning.</p>
             <div class="code-block">
               <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/debate codex vs gemini about microservices vs monolith
 /debate claude vs kiro about our auth implementation">
@@ -457,6 +459,7 @@
               <li>Anti-bot measures and output sanitization</li>
               <li>Snapshot-based accessibility tree for element discovery</li>
             </ul>
+            <p class="tabs__panel-how"><strong>How it works:</strong> Each invocation runs a single Playwright process - no daemon. Sessions persist via Chrome's userDataDir with AES-256-GCM encryption. For login flows, opens a headed browser for human auth (2FA, CAPTCHAs), then encrypts cookies. Subsequent calls run headless using the saved session. All actions return classified error codes with recovery suggestions.</p>
             <div class="code-block">
               <button class="code-block__copy" aria-label="Copy code to clipboard" data-code="/web-ctl goto https://example.com
 /web-ctl auth github --url https://github.com/login">
@@ -469,6 +472,14 @@
         </div>
       </div>
     </section>
+
+    <!-- ===== SCROLL CUE ===== -->
+    <div class="scroll-cue anim-fade-up" data-delay="300">
+      <a href="#how-it-works" class="scroll-cue__link" aria-label="Scroll to How It Works">
+        <span class="scroll-cue__text">How It Works</span>
+        <svg class="scroll-cue__arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+      </a>
+    </div>
 
     <!-- ===== HOW IT WORKS ===== -->
     <section class="how-it-works" id="how-it-works" aria-labelledby="hiw-title">
