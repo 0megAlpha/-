@@ -1712,17 +1712,23 @@ function installForKiro(installDir, options = {}) {
   fs.mkdirSync(promptsDir, { recursive: true });
   fs.mkdirSync(agentsDir, { recursive: true });
 
-  // Clean up legacy steering dir if it exists (renamed to prompts)
+  // Get known command names for cleanup
+  const steeringMappingsForCleanup = discovery.getKiroSteeringMappings(installDir);
+  const knownCommandFiles = new Set(steeringMappingsForCleanup.map(([name]) => `${name}.md`));
+
+  // Clean up legacy agentsys files from steering dir (renamed to prompts)
   const legacySteeringDir = path.join(kiroHome, 'steering');
   if (fs.existsSync(legacySteeringDir)) {
-    fs.rmSync(legacySteeringDir, { recursive: true, force: true });
+    for (const f of fs.readdirSync(legacySteeringDir).filter(f => f.endsWith('.md'))) {
+      if (knownCommandFiles.has(f)) {
+        fs.unlinkSync(path.join(legacySteeringDir, f));
+      }
+    }
   }
 
-  // Cleanup old agentsys prompt files (only those matching known commands)
-  const steeringMappingsForCleanup = discovery.getKiroSteeringMappings(installDir);
-  const knownPromptFiles = new Set(steeringMappingsForCleanup.map(([name]) => `${name}.md`));
+  // Cleanup old agentsys prompt files
   for (const f of fs.readdirSync(promptsDir).filter(f => f.endsWith('.md'))) {
-    if (knownPromptFiles.has(f)) {
+    if (knownCommandFiles.has(f)) {
       fs.unlinkSync(path.join(promptsDir, f));
     }
   }
