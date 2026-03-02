@@ -5,7 +5,7 @@
     "url": "https://agent-sh.github.io/agentsys",
     "repo": "https://github.com/agent-sh/agentsys",
     "npm": "https://www.npmjs.com/package/agentsys",
-    "version": "5.3.6",
+    "version": "5.3.7",
     "author": "Avi Fenesh",
     "author_url": "https://github.com/avifenesh"
   },
@@ -38,12 +38,12 @@
       "suffix": ""
     },
     {
-      "value": "26k",
+      "value": "30k",
       "label": "Lines of Lib Code",
       "suffix": ""
     },
     {
-      "value": "3,709",
+      "value": "3,750",
       "label": "Tests",
       "suffix": ""
     },
@@ -370,39 +370,40 @@
   },
   "recent_releases": [
     {
+      "version": "5.3.7",
+      "date": "2026-03-02",
+      "highlights": [
+        "Kiro platform support -- global install to ~/.kiro/ with agents, prompts, and skills",
+        "ACP (Agent Client Protocol) transport for /consult and /debate",
+        "Combined reviewer agents for Kiro's 4-agent limit",
+        "Cursor global install to ~/.cursor/"
+      ]
+    },
+    {
+      "version": "5.2.0",
+      "date": "2026-02-28",
+      "highlights": [
+        "New /consult plugin -- cross-tool AI consultation via ACP and CLI transports",
+        "New /debate plugin -- structured adversarial debates between AI tools",
+        "User-extensible provider registry for 6 AI tools"
+      ]
+    },
+    {
+      "version": "5.0.0",
+      "date": "2026-02-20",
+      "highlights": [
+        "New /web-ctl plugin -- browser automation with encrypted session persistence",
+        "Human-in-the-loop auth handoff with CAPTCHA detection",
+        "5 platform support: Claude Code, OpenCode, Codex CLI, Cursor, Kiro"
+      ]
+    },
+    {
       "version": "4.1.0",
       "date": "2026-02-05",
       "highlights": [
-        "New /agnix plugin -- lint agent configurations with 155 validation rules across 10+ AI tools",
+        "New /agnix plugin -- lint agent configurations with 230+ validation rules",
         "SARIF output for GitHub Code Scanning integration",
-        "Cross-platform validation for Claude Code, Cursor, Copilot, Codex, OpenCode, Gemini CLI, and more"
-      ]
-    },
-    {
-      "version": "4.0.0",
-      "date": "2026-02-05",
-      "highlights": [
-        "New /learn plugin -- research any topic, create learning guides with RAG index",
-        "Progressive query architecture with source quality scoring",
-        "Agent frontmatter converted to YAML array format for spec compliance"
-      ]
-    },
-    {
-      "version": "3.9.0",
-      "date": "2026-02-04",
-      "highlights": [
-        "Reduced prompt analyzer false positives from 175 to 0",
-        "Agent Skills Open Standard compliance with automated validation",
-        "Cross-file semantic analysis for /enhance"
-      ]
-    },
-    {
-      "version": "3.8.0",
-      "date": "2026-02-02",
-      "highlights": [
-        "sync-docs repo-map integration with AST-based symbol detection",
-        "Version bump tool for coordinated releases",
-        "OpenCode config path and plugin fixes"
+        "Cross-platform validation for 10+ AI tools"
       ]
     }
   ],
@@ -462,7 +463,7 @@
   ],
   "research": {
     "knowledge_base": "8,000 lines of curated documentation from Anthropic, OpenAI, Google, and Microsoft",
-    "testing": "3,357 tests passing",
+    "testing": "3,750 tests passing",
     "drift_detect_repos": "1,000+ repositories validated",
     "token_reduction": "77% fewer tokens for drift-detect vs multi-agent approaches"
   },

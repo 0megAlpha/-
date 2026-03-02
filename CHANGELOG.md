@@ -7,6 +7,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.3.7] - 2026-03-02
+
+### Fixed
+
+- **Website numbers updated** - Stats now show 14 plugins, 43 agents, 30 skills, 3,750 tests, 13 commands. Previously showed stale counts from earlier versions.
+- **Kiro install TDZ bug** - Fixed `steeringMappingsForCleanup` used before initialization in v5.3.6 published code. Variable ordering corrected.
+
 ## [5.3.6] - 2026-03-02
 
 ### Fixed
