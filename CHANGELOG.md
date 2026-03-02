@@ -7,11 +7,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [5.3.0] - 2026-03-02
 
 ### Added
 
-- **Kiro platform support (#276)** - agentsys now installs to Kiro as a 5th platform alongside Claude Code, OpenCode, Codex CLI, and Cursor. Use `agentsys --tool kiro` or `agentsys install <plugin> --tool kiro` to install. Commands become steering files in `.kiro/steering/` (with `inclusion: manual` frontmatter), skills are copied to `.kiro/skills/` (standard SKILL.md format), and agents are converted to JSON in `.kiro/agents/`. All content is project-scoped under `.kiro/`. Kiro reads AGENTS.md and `.kiro/steering/*.md` for instructions. Platform detection uses `.kiro/` directory presence.
+- **Kiro platform support (#276, #278)** - agentsys now installs to Kiro as a 5th platform alongside Claude Code, OpenCode, Codex CLI, and Cursor. Use `agentsys --tool kiro` or `agentsys install <plugin> --tool kiro` to install. Commands become steering files in `.kiro/steering/` (with `inclusion: manual` frontmatter), skills are copied to `.kiro/skills/` (standard SKILL.md format), and agents are converted to JSON in `.kiro/agents/`. All content is project-scoped under `.kiro/`. Platform detection uses `.kiro/` directory presence.
+
+- **Kiro subagent transforms (#279, #280)** - Task() calls transform to `Delegate to the \`agent\` subagent` with prompt context. AskUserQuestion transforms to markdown numbered-list prompts. Plugin namespace prefixes are stripped.
+
+- **Kiro parallel agent adaptation** - Workflows spawning 4+ parallel reviewer agents (next-task Phase 9, audit-project Phase 2) are automatically adapted for Kiro's experimental 4-agent limit. `installForKiro()` generates two combined reviewer agents (`reviewer-quality-security`, `reviewer-perf-test`). `transformCommandForKiro()` detects consecutive reviewer delegations and rewrites as try-4-then-fallback-to-2 pattern.
+
+- **Subagent comparison documentation** - CROSS_PLATFORM.md now has a platform comparison table for subagent capabilities (spawning, parallelism, teams, ACP) across all 5 platforms.
+
+### Changed
+
+- **`transformAgentForKiro()` refactored** - Now reuses `discovery.parseFrontmatter()` instead of custom parsing. Supports YAML array syntax for tools field.
+
+### Fixed
+
+- **Copy-paste bug in `installForCursor()`** - Skill transform was calling `transformSkillForKiro` instead of `transformSkillForCursor`.
 
 ## [5.2.1] - 2026-03-01
 

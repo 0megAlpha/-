@@ -13,6 +13,7 @@
 | GitHub Org Project Management (Multi-Repo OSS) | github-org-project-management.md | 15 | deep | 2026-02-21 |
 | GitHub Organization Structure Patterns | github-org-structure-patterns.md | 18 | deep | 2026-02-21 |
 | Multi-Product Org Docs & Website Architecture | multi-product-org-docs.md | 42 | deep | 2026-02-21 |
+| ACP with Codex, Gemini, Copilot, Claude | acp-with-codex-gemini-copilot-claude.md | 24 | medium | 2026-03-02 |
 
 ## Trigger Phrases
 
@@ -36,8 +37,6 @@ Use this knowledge when user asks about:
 - "Codex MCP" -> ai-cli-advanced-integration-patterns.md
 - "Crush OpenCode" -> ai-cli-advanced-integration-patterns.md
 - "Agent SDK hosting" -> ai-cli-advanced-integration-patterns.md
-- "A2A protocol" -> ai-cli-advanced-integration-patterns.md
-- "Cross-tool MCP" -> ai-cli-advanced-integration-patterns.md
 - "AI CLI server mode" -> ai-cli-advanced-integration-patterns.md
 - "Claude Code as service" -> ai-cli-advanced-integration-patterns.md
 - "Plugin distribution patterns" -> skill-plugin-distribution-patterns.md
@@ -117,6 +116,27 @@ Use this knowledge when user asks about:
 - "Diataxis framework" -> multi-product-org-docs.md
 - "Pagefind search" -> multi-product-org-docs.md
 - "docs-as-code" -> multi-product-org-docs.md
+- "ACP protocol" -> acp-with-codex-gemini-copilot-claude.md
+- "Agent Communication Protocol" -> acp-with-codex-gemini-copilot-claude.md
+- "A2A protocol" -> acp-with-codex-gemini-copilot-claude.md
+- "agent to agent communication" -> acp-with-codex-gemini-copilot-claude.md
+- "cross AI tool communication" -> acp-with-codex-gemini-copilot-claude.md
+- "MCP vs ACP vs A2A" -> acp-with-codex-gemini-copilot-claude.md
+- "Codex CLI agent protocol" -> acp-with-codex-gemini-copilot-claude.md
+- "Gemini CLI agent protocol" -> acp-with-codex-gemini-copilot-claude.md
+- "Copilot agent communication" -> acp-with-codex-gemini-copilot-claude.md
+- "Claude Code agent teams" -> acp-with-codex-gemini-copilot-claude.md
+- "Claude Agent SDK multi-agent" -> acp-with-codex-gemini-copilot-claude.md
+- "sequential thinking MCP" -> acp-with-codex-gemini-copilot-claude.md
+- "MCP bridge server" -> acp-with-codex-gemini-copilot-claude.md
+- "BeeAI Agent Stack" -> acp-with-codex-gemini-copilot-claude.md
+- "Kiro ACP" -> acp-with-codex-gemini-copilot-claude.md
+- "Cross-tool MCP bridges" -> acp-with-codex-gemini-copilot-claude.md
+- "ACP SDK" -> acp-with-codex-gemini-copilot-claude.md
+- "A2A SDK" -> acp-with-codex-gemini-copilot-claude.md
+- "agent interoperability" -> acp-with-codex-gemini-copilot-claude.md
+- "Agent Cards A2A" -> acp-with-codex-gemini-copilot-claude.md
+- "claude mcp serve cross-tool" -> acp-with-codex-gemini-copilot-claude.md
 
 ## Quick Lookup
 
@@ -192,6 +212,16 @@ Use this knowledge when user asks about:
 | GitBook, ReadMe, Nextra | multi-product-org-docs.md |
 | GitHub Pages docs hosting | multi-product-org-docs.md |
 | Cloudflare Pages, Vercel hosting | multi-product-org-docs.md |
+| ACP, Agent Communication Protocol | acp-with-codex-gemini-copilot-claude.md |
+| A2A, Agent2Agent, agent-to-agent | acp-with-codex-gemini-copilot-claude.md |
+| ACP vs MCP vs A2A | acp-with-codex-gemini-copilot-claude.md |
+| BeeAI, Agent Stack, agent interop | acp-with-codex-gemini-copilot-claude.md |
+| agent teams, subagents, multi-agent | acp-with-codex-gemini-copilot-claude.md |
+| MCP bridge, Gemini bridge, OpenAI bridge | acp-with-codex-gemini-copilot-claude.md |
+| sequential thinking, cross-AI reasoning | acp-with-codex-gemini-copilot-claude.md |
+| Agent Cards, agent discovery | acp-with-codex-gemini-copilot-claude.md |
+| claude mcp serve, claude as MCP server | acp-with-codex-gemini-copilot-claude.md |
+| acp-sdk, a2a-sdk | acp-with-codex-gemini-copilot-claude.md |
 
 ## How to Use
 
