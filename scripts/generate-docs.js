@@ -392,7 +392,7 @@ function generateAgentCounts(agents, plugins) {
  */
 // Static counts for cross-repo plugins not discoverable locally
 const STATIC_PLUGIN_COUNT = 19;
-const STATIC_AGENT_COUNT = 38;
+const STATIC_AGENT_COUNT = 47;
 
 function updateSiteContent(plugins, agents, skills) {
   const contentPath = path.join(ROOT_DIR, 'site', 'content.json');
