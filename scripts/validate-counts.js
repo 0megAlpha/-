@@ -241,7 +241,7 @@ function formatCountMismatch(file, metric, expected, actual) {
  */
 function runValidation() {
   // When plugins/ doesn't exist, counts are not meaningful — return ok
-  if (!fs.existsSync(path.join(REPO_ROOT, 'plugins'))) {
+  if (!fs.existsSync(path.join(REPO_ROOT, 'plugins')) || fs.readdirSync(path.join(REPO_ROOT, 'plugins')).filter(f => fs.statSync(path.join(REPO_ROOT, 'plugins', f)).isDirectory()).length === 0) {
     return {
       status: 'ok',
       message: 'plugins/ not present (extracted to standalone repos)',

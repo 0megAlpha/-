@@ -122,15 +122,16 @@ function validateVersions() {
 }
 
 function validateMappings() {
-  const pluginsExist = fs.existsSync(PLUGINS_DIR);
+  const pluginDirs = listPluginDirs();
+  const pluginsPopulated = pluginDirs.length > 0;
 
   // Use discovery module instead of parsing hardcoded arrays from source
   const discoveredPlugins = normalizeList(discovery.discoverPlugins(ROOT_DIR));
   const commandMappings = discovery.getCommandMappings(ROOT_DIR);
   const skillMappings = discovery.getCodexSkillMappings(ROOT_DIR);
 
-  // Only require plugins when plugins/ directory exists
-  if (pluginsExist) {
+  // Only require plugins when plugins/ directory has actual plugin subdirectories
+  if (pluginsPopulated) {
     if (discoveredPlugins.length === 0) {
       errors.push('discovery found no plugins');
     }
@@ -144,16 +145,16 @@ function validateMappings() {
     }
   }
 
-  const pluginDirs = normalizeList(listPluginDirs());
+  const normalizedPluginDirs = normalizeList(pluginDirs);
   const marketplace = readJson(path.join(ROOT_DIR, '.claude-plugin', 'marketplace.json'), 'marketplace.json');
   const marketplacePlugins = normalizeList((marketplace?.plugins || []).map(p => p.name));
 
   // Compare discovered plugins vs filesystem only when plugins/ exists
-  if (pluginsExist) {
-    compareLists('Discovered plugins vs plugins/', pluginDirs, discoveredPlugins);
+  if (pluginsPopulated) {
+    compareLists('Discovered plugins vs plugins/', normalizedPluginDirs, discoveredPlugins);
 
     if (marketplacePlugins.length > 0) {
-      compareLists('Marketplace plugins vs plugins/', pluginDirs, marketplacePlugins);
+      compareLists('Marketplace plugins vs plugins/', normalizedPluginDirs, marketplacePlugins);
     }
     if (marketplacePlugins.length > 0) {
       compareLists('Marketplace plugins vs discovered plugins', marketplacePlugins, discoveredPlugins);
@@ -161,7 +162,7 @@ function validateMappings() {
   }
 
   // Validate command mappings - source files exist (only when plugins/ exists)
-  if (pluginsExist) {
+  if (pluginsPopulated) {
     const seenTargets = new Set();
     for (const [target, plugin, source] of commandMappings) {
       if (seenTargets.has(target)) {
@@ -206,7 +207,7 @@ function validateMappings() {
 }
 
 function validateAgentCounts() {
-  if (!fs.existsSync(PLUGINS_DIR)) return;
+  if (listPluginDirs().length === 0) return;
   const fileBasedCount = listPluginsWithAgents()
     .map(plugin => {
       const agentsDir = path.join(PLUGINS_DIR, plugin, 'agents');

@@ -41,7 +41,8 @@ describe('adapter-transforms', () => {
       // and prefixes remain (the transform is a no-op for unknown prefixes).
       const fs = require('fs');
       const pluginsDir = path.join(REPO_ROOT, 'plugins');
-      if (fs.existsSync(pluginsDir)) {
+      const hasPlugins = fs.existsSync(pluginsDir) && fs.readdirSync(pluginsDir).some(f => fs.statSync(path.join(pluginsDir, f)).isDirectory());
+      if (hasPlugins) {
         expect(result).toContain('`exploration-agent`');
         expect(result).toContain('planning-agent');
         expect(result).not.toContain('next-task:');

@@ -399,6 +399,15 @@ function updateSiteContent(plugins, agents, skills) {
 
   const content = JSON.parse(fs.readFileSync(contentPath, 'utf8'));
 
+  // Sync meta.version from package.json
+  const pkgPath = path.join(ROOT_DIR, 'package.json');
+  if (fs.existsSync(pkgPath)) {
+    const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+    if (content.meta && pkg.version) {
+      content.meta.version = pkg.version;
+    }
+  }
+
   // Use static counts as fallback (cross-repo plugins not discoverable locally)
   const effectivePlugins = plugins.length > 0 ? plugins.length : STATIC_PLUGIN_COUNT;
   const effectiveAgents = agents.length > 0 ? agents.length + ROLE_BASED_AGENT_COUNT : STATIC_AGENT_COUNT;
