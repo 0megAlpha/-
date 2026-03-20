@@ -275,8 +275,10 @@ describe('generate-docs', () => {
       const skills = discovery.discoverSkills(REPO_ROOT);
       const result = genDocs.updateSiteContent(plugins, agents, skills);
       expect(result).not.toBeNull();
-      expect(result.agents.total).toBe(agents.length + genDocs.ROLE_BASED_AGENT_COUNT);
-      expect(result.agents.file_based).toBe(agents.length);
+      // Static fallbacks are used when local discovery finds 0 (external plugins)
+      const effectiveAgents = agents.length > 0 ? agents.length + genDocs.ROLE_BASED_AGENT_COUNT : genDocs.STATIC_AGENT_COUNT;
+      expect(result.agents.total).toBe(effectiveAgents);
+      expect(result.agents.file_based).toBe(effectiveAgents - genDocs.ROLE_BASED_AGENT_COUNT);
       expect(result.agents.role_based).toBe(genDocs.ROLE_BASED_AGENT_COUNT);
     });
 
@@ -290,9 +292,13 @@ describe('generate-docs', () => {
       const agentStat = result.stats.find(s => s.label === 'Agents');
       const skillStat = result.stats.find(s => s.label === 'Skills');
 
-      expect(pluginStat.value).toBe(String(plugins.length));
-      expect(agentStat.value).toBe(String(agents.length + genDocs.ROLE_BASED_AGENT_COUNT));
-      expect(skillStat.value).toBe(String(skills.length));
+      // Static fallbacks are used when local discovery finds 0 (external plugins)
+      const effectivePlugins = plugins.length > 0 ? plugins.length : genDocs.STATIC_PLUGIN_COUNT;
+      const effectiveAgents = agents.length > 0 ? agents.length + genDocs.ROLE_BASED_AGENT_COUNT : genDocs.STATIC_AGENT_COUNT;
+      const effectiveSkills = skills.length > 0 ? skills.length : genDocs.STATIC_SKILLS.length;
+      expect(pluginStat.value).toBe(String(effectivePlugins));
+      expect(agentStat.value).toBe(String(effectiveAgents));
+      expect(skillStat.value).toBe(String(effectiveSkills));
     });
   });
 });

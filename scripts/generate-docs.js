@@ -103,7 +103,10 @@ const STATIC_SKILLS = [
   { plugin: 'git-map', name: 'git-mapping' },
   { plugin: 'onboard', name: 'onboard' },
   { plugin: 'can-i-help', name: 'can-i-help' },
-  { plugin: 'audit-project', name: 'audit-project' }
+  { plugin: 'audit-project', name: 'audit-project' },
+  { plugin: 'glidemq', name: 'glide-mq' },
+  { plugin: 'glidemq', name: 'glide-mq-migrate-bullmq' },
+  { plugin: 'glidemq', name: 'glide-mq-migrate-bee' }
 ];
 
 // Purpose mapping for architecture table
@@ -387,7 +390,7 @@ function generateAgentCounts(agents, plugins) {
  * Update counts in site/content.json programmatically.
  */
 // Static counts for cross-repo plugins not discoverable locally
-const STATIC_PLUGIN_COUNT = 18;
+const STATIC_PLUGIN_COUNT = 19;
 const STATIC_AGENT_COUNT = 38;
 
 function updateSiteContent(plugins, agents, skills) {
@@ -633,5 +636,7 @@ module.exports = {
   CATEGORY_MAP,
   PURPOSE_MAP,
   ROLE_BASED_AGENT_COUNT,
-  STATIC_SKILLS
+  STATIC_SKILLS,
+  STATIC_PLUGIN_COUNT,
+  STATIC_AGENT_COUNT
 };

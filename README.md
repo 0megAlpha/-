@@ -106,7 +106,7 @@ Each command works standalone. Together, they compose into end-to-end pipelines.
 ## Skills
 
 <!-- GEN:START:readme-skills -->
-36 skills included across the plugins:
+39 skills included across the plugins:
 
 | Category | Skills |
 |----------|--------|
@@ -120,6 +120,7 @@ Each command works standalone. Together, they compose into end-to-end pipelines.
 | **Web** | `web-auth`, `web-browse` |
 | **Release** | `release` |
 | **Analysis** | `drift-analysis`, `git-mapping`, `repo-mapping` |
+| **Other** | `glide-mq-migrate-bee`, `glide-mq-migrate-bullmq`, `glide-mq` |
 <!-- GEN:END:readme-skills -->
 
 **External skill plugins** (standalone repos, installed separately):
