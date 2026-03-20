@@ -111,6 +111,7 @@ Each command works standalone. Together, they compose into end-to-end pipelines.
 | Category | Skills |
 |----------|--------|
 | **Workflow** | `discover-tasks`, `orchestrate-review`, `validate-delivery` |
+| **Message Queues** | `glide-mq-migrate-bee`, `glide-mq-migrate-bullmq`, `glide-mq` |
 | **Enhancement** | `enhance-agent-prompts`, `enhance-claude-memory`, `enhance-cross-file`, `enhance-docs`, `enhance-hooks`, `enhance-orchestrator`, `enhance-plugins`, `enhance-prompts`, `enhance-skills` |
 | **Performance** | `baseline`, `benchmark`, `code-paths`, `investigation-logger`, `perf-analyzer`, `profile`, `theory-gatherer`, `theory-tester` |
 | **Cleanup** | `deslop`, `sync-docs` |
@@ -120,7 +121,6 @@ Each command works standalone. Together, they compose into end-to-end pipelines.
 | **Web** | `web-auth`, `web-browse` |
 | **Release** | `release` |
 | **Analysis** | `drift-analysis`, `git-mapping`, `repo-mapping` |
-| **Other** | `glide-mq-migrate-bee`, `glide-mq-migrate-bullmq`, `glide-mq` |
 <!-- GEN:END:readme-skills -->
 
 **External skill plugins** (standalone repos, installed separately):
@@ -140,12 +140,33 @@ Skills are the reusable implementation units. Agents invoke skills; commands orc
 | [The Approach](#the-approach) | Why it's built this way |
 | [Commands](#commands) | All 19 commands overview |
 | [Skills](#skills) | 39 skills across plugins |
+| [Skill-Only Plugins](#skill-only-plugins) | glide-mq and other non-command plugins |
 | [Command Details](#command-details) | Deep dive into each command |
 | [How Commands Work Together](#how-commands-work-together) | Standalone vs integrated |
 | [Design Philosophy](#design-philosophy) | The thinking behind the architecture |
 | [Installation](#installation) | Get started |
 | [Research & Testing](#research--testing) | What went into building this |
 | [Documentation](#documentation) | Links to detailed docs |
+
+---
+
+## Skill-Only Plugins
+
+Plugins that provide skills without a `/` command. Installed alongside agentsys; skills become available to all agents.
+
+### glide-mq
+
+Build message queues, background jobs, and workflow orchestration with [glide-mq](https://github.com/avifenesh/glide-mq) - high-performance Node.js queue on Valkey/Redis.
+
+| Skill | What it does |
+|-------|--------------|
+| `glide-mq` | Greenfield queue development - queues, workers, ordering, rate limiting, flows, broadcast, step jobs |
+| `glide-mq-migrate-bullmq` | Migrate from BullMQ to glide-mq - API mapping, breaking changes, feature comparison |
+| `glide-mq-migrate-bee` | Migrate from Bee-Queue to glide-mq - API mapping, pattern conversion |
+
+Key features: per-key ordering, group concurrency, runtime group rate limiting (`job.rateLimitGroup()`), token bucket, DAG workflows, broadcast pub/sub, step jobs, deduplication, serverless producers.
+
+[Skill plugin →](https://github.com/agent-sh/glidemq) | [glide-mq docs →](https://avifenesh.github.io/glide-mq.dev/) | [npm →](https://www.npmjs.com/package/glide-mq)
 
 ---
 
@@ -953,28 +974,6 @@ The plugin wraps the [agent-analyzer](https://github.com/agent-sh/agent-analyzer
 **Agent:** can-i-help-agent (opus model)
 
 [Full documentation →](https://github.com/agent-sh/can-i-help)
-
----
-
-## Skill-Only Plugins
-
-Plugins that provide skills without a `/` command. Installed alongside agentsys; skills become available to all agents.
-
-### glide-mq
-
-**Purpose:** Build message queues, background jobs, and workflow orchestration with [glide-mq](https://github.com/avifenesh/glide-mq) - high-performance Node.js queue on Valkey/Redis.
-
-**Skills:**
-
-| Skill | What it does |
-|-------|--------------|
-| `glide-mq` | Greenfield queue development - queues, workers, ordering, rate limiting, flows, broadcast, step jobs |
-| `glide-mq-migrate-bullmq` | Migrate from BullMQ to glide-mq - API mapping, breaking changes, feature comparison |
-| `glide-mq-migrate-bee` | Migrate from Bee-Queue to glide-mq - API mapping, pattern conversion |
-
-**Key features covered:** per-key ordering, group concurrency, runtime group rate limiting (`job.rateLimitGroup()`), token bucket, DAG workflows, broadcast pub/sub, step jobs, deduplication, serverless producers.
-
-[Full documentation →](https://github.com/agent-sh/glidemq) | [glide-mq docs →](https://avifenesh.github.io/glide-mq.dev/)
 
 ---
 

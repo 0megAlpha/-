@@ -63,7 +63,8 @@ const CATEGORY_MAP = {
   'git-map': 'Analysis',
   'onboard': 'Onboarding',
   'can-i-help': 'Onboarding',
-  'audit-project': 'Code Review'
+  'audit-project': 'Code Review',
+  'glidemq': 'Message Queues'
 };
 
 // Static skill definitions for cross-repo plugins (not discoverable locally)
@@ -258,7 +259,7 @@ function generateSkillsTable(skills) {
 
   // Defined category order
   const categoryOrder = [
-    'Workflow', 'Enhancement', 'Performance', 'Cleanup',
+    'Workflow', 'Message Queues', 'Enhancement', 'Performance', 'Cleanup',
     'Code Review', 'AI Collaboration', 'Onboarding',
     'Web', 'Release', 'Analysis', 'Linting', 'Other'
   ];
