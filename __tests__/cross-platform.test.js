@@ -546,6 +546,20 @@ describe('cross-platform', () => {
     it('should handle empty string', () => {
       expect(truncate('', 10)).toBe('');
     });
+
+    it('should not split surrogate pairs when truncating emoji strings', () => {
+      // 10 emoji: 20 UTF-16 code units, 10 code points.
+      // Old substring(0, 15) would produce an orphaned high surrogate.
+      // Spread-based slicing preserves each code point cleanly.
+      const emojis = '🎉'.repeat(10);
+      const result = truncate(emojis, 7);
+      expect(result).toBe('🎉'.repeat(4) + '...');
+      expect(result).not.toContain('�');
+    });
+
+    it('should handle negative maxLength', () => {
+      expect(truncate('hello', -1)).toBe('hello');
+    });
   });
 
   describe('compactSummary', () => {
