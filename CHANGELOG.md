@@ -7,6 +7,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [5.7.0] - 2026-03-23
+
+### Changed
+
+- **repo-intel consolidation** - Merged `git-map` and `repo-map` plugins into a single `repo-intel` plugin backed by agent-analyzer. One artifact, one command (`/repo-intel`), 24 query types. `repo-map` repo deleted, `git-map` renamed to `repo-intel`.
+- **ast-grep removed** - `lib/repo-map/` migrated from ast-grep to agent-analyzer binary. Removed runner.js (1,364 lines), queries/ (355 lines), usage-analyzer.js (407 lines), concurrency.js. Net -2,717 lines.
+- Plugin count: 19 -> 18 (two merged into one)
+
+### Added
+
+- **Benchmarks section** in README and website - real data showing Sonnet + agentsys outperforms raw Opus at 40% lower cost, with 73-83% savings when switching models within agentsys
+- **map-validator agent** ported from repo-map to repo-intel
+- `onboard`, `can-i-help`, `stale-docs` query types added to `/repo-intel` command
+
+### Fixed
+
+- **agnix CI** - Fixed release workflow (draft-then-publish) and pinned to v0.16.5 with working binaries
+- **7 broken test suites** from ast-grep migration - deleted 5 obsolete test files, rewrote 2
+- All PR review comments addressed across 6 repos
+
 ## [5.6.4] - 2026-03-20
 
 ### Added
