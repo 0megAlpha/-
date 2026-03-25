@@ -43,7 +43,7 @@
       "suffix": ""
     },
     {
-      "value": "3,445",
+      "value": "3,750",
       "label": "Tests",
       "suffix": ""
     },
@@ -505,7 +505,7 @@
   ],
   "research": {
     "knowledge_base": "8,000 lines of curated documentation from Anthropic, OpenAI, Google, and Microsoft",
-    "testing": "3,445 tests passing",
+    "testing": "3,750 tests passing",
     "drift_detect_repos": "1,000+ repositories validated",
     "token_reduction": "77% fewer tokens for drift-detect vs multi-agent approaches"
   },
