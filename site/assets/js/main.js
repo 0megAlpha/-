@@ -636,11 +636,11 @@
         ]
       },
       8: {
-        subtitle: 'AST-based. Cached. Always current.',
+        subtitle: 'Unified analysis. Cached. 24 query types.',
         steps: [
-          { title: 'Parse with AST', desc: 'Uses ast-grep to extract every export, function, class, and import from your codebase.' },
-          { title: 'Build the map', desc: 'Creates a cached JSON map of symbols and their relationships stored in the platform state directory.' },
-          { title: 'Validate output', desc: 'The map-validator agent checks for obvious errors, missing data, and structural issues.' }
+          { title: 'Analyze repo', desc: 'Rust binary scans git history, file structure, and code patterns. Extracts hotspots, coupling, ownership, and conventions.' },
+          { title: 'Build cached map', desc: 'Creates repo-intel.json with symbols, imports, exports, and metadata in the platform state directory.' },
+          { title: 'Query on demand', desc: '24 query types: hotspots, bugspots, test-gaps, bus-factor, diff-risk, conventions, stale-docs, and more.' }
         ]
       },
       9: {
@@ -681,6 +681,56 @@
           { title: 'Start session', desc: 'Creates an encrypted browser profile using AES-256-GCM. No daemon - each action is a single Playwright process.' },
           { title: 'Authenticate', desc: 'Opens headed Chrome for human login (2FA, CAPTCHAs). Polls for success, then encrypts cookies for reuse.' },
           { title: 'Run headless', desc: 'Subsequent actions run headless using saved cookies. Snapshot-based element discovery with classified error codes.' }
+        ]
+      },
+      14: {
+        subtitle: 'Five quality gates. Zero shortcuts.',
+        steps: [
+          { title: 'Clean and simplify', desc: 'Deslop, simplify, and test-coverage-checker run in parallel. AI slop removed, code simplified, test gaps flagged.' },
+          { title: 'Lint configs', desc: 'If changes touch agent/skill/plugin files, runs agnix (342 rules) and /enhance in parallel. Auto-fixes applied.' },
+          { title: 'Review loop', desc: '4 core reviewers (code quality, security, performance, tests) plus conditional specialists. Max 5 iterations with stall detection.' },
+          { title: 'Validate delivery', desc: 'Tests pass, build passes, requirements met, diff-risk scored. Blocks shipping if any mandatory check fails.' },
+          { title: 'Sync docs', desc: 'Finds stale references, updates CHANGELOG, fixes version numbers. Documentation matches code before the PR.' }
+        ]
+      },
+      15: {
+        subtitle: 'Quality gates then ship. One command.',
+        steps: [
+          { title: 'Run /prepare-delivery', desc: 'All five quality gates: deslop, config lint, review loop, delivery validation, and docs sync.' },
+          { title: 'Run /ship', desc: 'Commit, push, create PR, wait for auto-reviewers, address comments, monitor CI, merge.' },
+          { title: 'Done', desc: 'From code-complete to merged PR. If gates fail, ship does not run. Each piece also runs independently.' }
+        ]
+      },
+      16: {
+        subtitle: 'Detect ecosystem. Tag. Publish.',
+        steps: [
+          { title: 'Discover release method', desc: 'Finds your release tool: semantic-release, release-it, goreleaser, cargo-release, or manual npm/cargo/go publish.' },
+          { title: 'Pre-release checks', desc: 'Runs tests, verifies build, checks repo-intel health (bus factor, AI ratio, bugspots). Bumps version.' },
+          { title: 'Tag and publish', desc: 'Creates git tag, publishes to registry (npm, crates.io, PyPI, etc.), creates GitHub release with notes.' }
+        ]
+      },
+      17: {
+        subtitle: 'Transcripts in. Automation suggestions out.',
+        steps: [
+          { title: 'Read transcripts', desc: 'Reads saved sessions from Claude Code, Codex, and OpenCode. No hooks, no per-turn overhead.' },
+          { title: 'Cluster patterns', desc: 'Extracts observations, groups by theme, weights by frequency. Identifies repetitive workflows.' },
+          { title: 'Suggest automation', desc: 'Recommends skills, hooks, and agents that would automate the patterns found. Checks existing ecosystem first.' }
+        ]
+      },
+      18: {
+        subtitle: 'Automated data collection. Interactive tour.',
+        steps: [
+          { title: 'Collect project data', desc: 'Scans package.json, git history, directory structure, key files, and conventions automatically.' },
+          { title: 'Generate overview', desc: 'Synthesizes a structured project summary: architecture, patterns, key files, and entry points.' },
+          { title: 'Interactive Q&A', desc: 'Answers questions about the codebase interactively. Identifies key files, conventions, and gotchas.' }
+        ]
+      },
+      19: {
+        subtitle: 'Match skills to project needs.',
+        steps: [
+          { title: 'Analyze project', desc: 'Uses repo-intel to find test gaps, stale docs, open issues, bugspots, and areas with low bus factor.' },
+          { title: 'Match skills', desc: 'Asks about your experience and interests. Matches your skills to areas where you can make the most impact.' },
+          { title: 'Suggest tasks', desc: 'Presents ranked list of good-first tasks, documentation fixes, test gaps, and contribution opportunities.' }
         ]
       }
     };
