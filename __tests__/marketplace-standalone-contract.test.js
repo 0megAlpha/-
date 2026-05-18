@@ -25,9 +25,9 @@ const expectedStandalonePlugins = {
     category: 'development',
   },
   axiom: {
-    version: '0.6.1',
-    ref: 'v0.6.1',
-    commit: 'ba77271a4ff7084d2d567cf3173204390be80f3b',
+    version: '0.6.2',
+    ref: 'v0.6.2',
+    commit: 'e3f3fabfcb19c140a38cbd5c5129ac69ca50b359',
     command: '/axiom',
     category: 'productivity',
   },

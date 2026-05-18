@@ -19,7 +19,7 @@
 </p>
 
 <p align="center">
-  <b>24 plugins · 49 agents · 45 skills (across all repos) · 30k lines of lib code · 3,513 tests · 5 platforms</b><br>
+  <b>24 plugins · 50 agents · 45 skills (across all repos) · 30k lines of lib code · 3,518 tests · 5 platforms</b><br>
   <em>Plugins distributed as standalone repos under <a href="https://github.com/agent-sh">agent-sh</a> org - agentsys is the marketplace &amp; installer</em>
 </p>
 
@@ -41,11 +41,11 @@
 AI models can write code. That's not the hard part anymore. The hard part is everything around it - task selection, branch management, code review, artifact cleanup, CI, PR comments, deployment. **AgentSys is the runtime that orchestrates agents to handle all of it** - structured pipelines, gated phases, specialized agents, and persistent state that survives session boundaries.
 
 ---
-> Building custom skills, agents, hooks, or MCP tools? [agnix](https://github.com/agent-sh/agnix) is the CLI + LSP linter that catches config errors before they fail silently - real-time IDE validation, auto suggestions, auto-fix, and 399 rules for Claude Code, Codex, OpenCode, Cursor, Kiro, Copilot, Gemini CLI, Cline, Windsurf, Roo Code, Amp, and more.
+> Building custom skills, agents, hooks, or MCP tools? [agnix](https://github.com/agent-sh/agnix) is the CLI + LSP linter that catches config errors before they fail silently - real-time IDE validation, auto suggestions, auto-fix, and 423 rules for Claude Code, Codex, OpenCode, Cursor, Kiro, Copilot, Gemini CLI, Cline, Windsurf, Roo Code, Amp, and more.
 
 ## What This Is
 
-An agent orchestration system - 24 plugins, 49 agents (39 file-based + 10 role-based specialists in audit-project), and 45 skills that compose into structured pipelines for software development. Each plugin lives in its own standalone repo under the [agent-sh](https://github.com/agent-sh) org. agentsys is the marketplace and installer that ties them together.
+An agent orchestration system - 24 plugins, 50 agents (40 file-based + 10 role-based specialists in audit-project), and 45 skills that compose into structured pipelines for software development. Each plugin lives in its own standalone repo under the [agent-sh](https://github.com/agent-sh) org. agentsys is the marketplace and installer that ties them together.
 
 Each agent has a single responsibility, a specific model assignment, and defined inputs/outputs. Pipelines enforce phase gates so agents can't skip steps. State persists across sessions so work survives interruptions.
 
@@ -120,7 +120,7 @@ The investment shifts from model spend to pipeline design. Better prompts, riche
 | [`/gate-and-ship`](#gate-and-ship) | Quality gates then ship (/prepare-delivery + /ship) |
 | [`/axiom`](#axiom) | Durable memory: load, query, list, bootstrap projects, and record approved knowledge |
 | [`/banthis`](#banthis) | Durable negative memory: persist banned agent behaviors |
-| [`/agnix`](#agnix) | Lint agent configurations (399 rules) |
+| [`/agnix`](#agnix) | Lint agent configurations (423 rules) |
 | [`/ship`](#ship) | PR creation, CI monitoring, merge |
 | [`/deslop`](#deslop) | Clean AI slop patterns |
 | [`/perf`](#perf) | Performance investigation with baselines and profiling |
@@ -318,11 +318,14 @@ Each piece runs independently - use `/prepare-delivery` alone to review before d
 
 **[axiom](https://github.com/agent-sh/axiom)** is a standalone plugin and CLI. It creates a private `axiom-based` knowledge repo after explicit approval, keeps only thin context loaded automatically, and stores durable decisions, memories, preferences, and project notes in queryable files.
 
+**Auto-loading at session start (v0.6.2+):** The plugin ships a `SessionStart` hook that runs `axiom before-any --auto-project --detect-only --quiet` automatically in Claude Code and Codex (Codex requires `[features].plugin_hooks = true` in `~/.codex/config.toml`). The hook never mutates state - it emits `## Axiom Setup` when `~/.axiom` is missing or `## Project Detection` when the current git project has no scaffold, then the agent asks the user before running `axiom init` or `axiom project <slug>`. An OpenCode plugin scaffold (`opencode-plugin/axiom.mjs`) hooks `session.created` and pre-warms `~/.axiom/.session-context.md`; full session-start context injection waits on [sst/opencode#5409](https://github.com/sst/opencode/issues/5409). On Cursor / Cline / Aider / Gemini CLI the agent invokes `before-any` via the skill instead.
+
 **What it does:**
 
 | Command | Use |
 |---------|-----|
 | `axiom before-any --quiet` | Load global thin context at the start of meaningful work |
+| `axiom before-any --auto-project --detect-only --quiet` | Read-only auto-load used by the SessionStart hook |
 | `axiom before-any --project <slug>` | Load project context and create missing project scaffolds |
 | `axiom query "<keyword>" --project <slug>` | Retrieve focused, source-backed project knowledge |
 | `axiom list --topics --project <slug>` | Explore what knowledge exists before querying |
@@ -389,7 +392,7 @@ agnix catches these issues before they cause problems.
 | **Best Practices** | Tool restrictions, model selection, trigger phrase quality |
 | **Cross-Platform** | Compatibility across Claude Code, Codex, OpenCode, Cursor, Kiro, Copilot, Gemini CLI, Cline, Windsurf, Roo Code, Amp, and more |
 
-**399 validation rules** (126 auto-fixable) derived from:
+**423 validation rules** (129 auto-fixable) derived from:
 - Official tool specifications (Claude Code, Codex CLI, OpenCode, Cursor, Kiro, GitHub Copilot, Gemini CLI, Cline, Windsurf, Roo Code, Amp, and more)
 - Research papers on agent reliability and prompt injection
 - Real-world testing across 500+ repositories
@@ -1327,7 +1330,7 @@ The system is built on research, not guesswork.
 - Instruction following reliability
 
 **Testing:**
-- 3,513 tests passing
+- 3,518 tests passing
 - Drift-detect validated on 1,000+ repositories
 - E2E workflow testing across all commands
 - Cross-platform validation (Claude Code, OpenCode, Codex CLI, Cursor, Kiro)
