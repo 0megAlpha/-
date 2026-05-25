@@ -3,7 +3,7 @@
   "name": "Linear issue triage assistant",
   "category": "Project management",
   "description": "Classify new Linear issues, suggest labels, find duplicates, and ask clarifying questions.",
-  "requiredMcpIds": [
+  "requiredIntegrationIds": [
     "linear"
   ],
   "popularityRank": 90,

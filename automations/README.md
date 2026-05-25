@@ -12,4 +12,4 @@ Consumers can import the package export:
 import { AUTOMATION_CATALOG } from "@openhands/extensions/automations";
 ```
 
-Each automation references required MCPs by ID. Those IDs should match entries in `mcps/catalog/*.json`.
+Each automation references required integrations by ID. Those IDs should match entries in `integrations/catalog/*.json`.

@@ -1,7 +1,7 @@
 {
   "name": "@openhands/extensions",
   "version": "0.0.0",
-  "description": "Public OpenHands extension catalogs for skills, plugins, MCPs, and automation templates.",
+  "description": "Public OpenHands extension catalogs for skills, plugins, integrations, and automation templates.",
   "license": "MIT",
   "type": "module",
   "repository": {
@@ -18,8 +18,9 @@
   },
   "files": [
     "automations",
-    "mcps",
+    "integrations",
     "LICENSE",
+    "MIGRATION.md",
     "README.md"
   ],
   "exports": {
@@ -34,17 +35,17 @@
       "default": "./automations/index.js"
     },
     "./automations/catalog/*.json": "./automations/catalog/*.json",
-    "./mcps": {
-      "types": "./mcps/index.d.ts",
-      "import": "./mcps/index.js",
-      "default": "./mcps/index.js"
+    "./integrations": {
+      "types": "./integrations/index.d.ts",
+      "import": "./integrations/index.js",
+      "default": "./integrations/index.js"
     },
-    "./mcps/logos": {
-      "types": "./mcps/logos.d.ts",
-      "import": "./mcps/logos.js",
-      "default": "./mcps/logos.js"
+    "./integrations/logos": {
+      "types": "./integrations/logos.d.ts",
+      "import": "./integrations/logos.js",
+      "default": "./integrations/logos.js"
     },
-    "./mcps/catalog/*.json": "./mcps/catalog/*.json",
+    "./integrations/catalog/*.json": "./integrations/catalog/*.json",
     "./package.json": "./package.json"
   }
 }

@@ -3,7 +3,7 @@
   "name": "Slack standup digest",
   "category": "Team updates",
   "description": "Summarize yesterday’s Slack activity into an async standup note with blockers, decisions, and owners.",
-  "requiredMcpIds": [
+  "requiredIntegrationIds": [
     "slack"
   ],
   "popularityRank": 94,

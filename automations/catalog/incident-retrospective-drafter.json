@@ -3,7 +3,7 @@
   "name": "Incident retrospective drafter",
   "category": "Reliability",
   "description": "Collect incident chatter and issue updates, then draft a timeline and follow-up checklist.",
-  "requiredMcpIds": [
+  "requiredIntegrationIds": [
     "slack",
     "linear",
     "notion"

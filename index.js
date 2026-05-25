@@ -1,2 +1,2 @@
-export { MCP_CATALOG } from "./mcps/index.js";
+export { INTEGRATION_CATALOG } from "./integrations/index.js";
 export { AUTOMATION_CATALOG } from "./automations/index.js";

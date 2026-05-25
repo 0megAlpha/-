@@ -3,7 +3,7 @@
   "name": "GitHub repository monitor",
   "category": "Developer tools",
   "description": "Watch a repository for @OpenHands mentions in issues and PR comments, start a conversation, and post the agent's reply back to GitHub.",
-  "requiredMcpIds": ["github"],
+  "requiredIntegrationIds": ["github"],
   "popularityRank": 98,
   "estimatedSetupMinutes": 5,
   "prompt": "Set up a GitHub repository monitor automation that polls a repository for comments containing a trigger phrase (default: @OpenHands) and starts an OpenHands conversation in response, then posts the agent's reply back to GitHub. Walk me through the setup.",

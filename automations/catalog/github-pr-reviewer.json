@@ -3,7 +3,7 @@
   "name": "GitHub PR review copilot",
   "category": "Code review",
   "description": "Watch pull requests, inspect the diff, and leave a concise review with risks and suggested follow-ups.",
-  "requiredMcpIds": [
+  "requiredIntegrationIds": [
     "github"
   ],
   "popularityRank": 100,

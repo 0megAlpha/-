@@ -5,7 +5,7 @@ export interface RecommendedAutomation {
   description: string;
   prompt: string;
   exampleImplementation: string;
-  requiredMcpIds: string[];
+  requiredIntegrationIds: string[];
   popularityRank: number;
   estimatedSetupMinutes: number;
 }

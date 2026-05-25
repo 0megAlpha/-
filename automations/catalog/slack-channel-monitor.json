@@ -3,7 +3,7 @@
   "name": "Slack channel monitor",
   "category": "Team communication",
   "description": "Watch Slack channels for @openhands mentions, open a conversation with the message context, and reply in the thread when the agent finishes.",
-  "requiredMcpIds": ["slack"],
+  "requiredIntegrationIds": ["slack"],
   "popularityRank": 92,
   "estimatedSetupMinutes": 7,
   "prompt": "Set up a Slack channel monitor automation that polls Slack channels for messages containing a trigger phrase (default: @openhands) and starts an OpenHands conversation in response, then posts the agent's reply back to the Slack thread. Walk me through the setup — ask me which channels to monitor and what trigger phrase to use.",
