@@ -1,0 +1,1052 @@
+"""Vendored copy of pensa-safe-edit (refactored).
+
+This is a snapshot of /usr/local/bin/pensa-safe-edit from pensa-orion,
+shipped with sentinelx-cloud-core so the agent can perform structured
+file edits without depending on a system-installed binary.
+
+When invoked as a script (entry point sentinelx-pensa-safe-edit),
+main() runs argparse on sys.argv. The CLI surface (flags + stdout
+prefixes OK:/BACKUP:/CHANGES:/VALIDATOR:/DRY-RUN:/SOURCE_BACKUP:/
+BACKUP_BEFORE_RESTORE:) is IDENTICAL to the legacy binary so
+handlers/edit.py keeps working unchanged.
+
+What changed in the refactor (and why)
+======================================
+
+1. NO SHELL. The validator used to run via subprocess.run(cmd,
+   shell=True) with the preset being a shell string (e.g. the nginx
+   preset was literally "sudo nginx -t -c /etc/nginx/nginx.conf").
+   That put a shell-interpreted command on the edit path — a vector
+   the core threat model does not account for here. Presets are now
+   argv LISTS and execution is subprocess.run(argv, shell=False).
+   The target file is passed as a list ELEMENT, never substituted into
+   a string, so quoting/metacharacters are no longer a concern.
+
+2. STRUCTURED ERRORS IN ENGLISH. The internal failures used to be
+   ad-hoc Spanish strings ("Texto objetivo no encontrado", ...) that
+   the LLM received verbatim. They are now SafeEditError(code, message)
+   with stable English codes. The CLI prints them as
+   "ERROR[<code>]: <message>".
+
+3. API-FIRST. The editing logic lives in apply_edit(spec) ->
+   EditResult (a pure-ish function returning a structured result).
+   main() is a thin wrapper: parse argv -> build EditSpec -> call
+   apply_edit -> print the legacy stdout format. Other Python callers
+   can import apply_edit and skip the text round-trip entirely.
+
+4. copy_metadata NO LONGER SWALLOWS chown failures silently. When the
+   process can't chown the temp file to the original owner (typical
+   when the agent runs as a non-root user editing another user's
+   file), it records chown_skipped + reason on the result instead of
+   silently passing. Surfaced as "METADATA: chown_skipped (<reason>)".
+
+Only stdlib is used (argparse, re, shutil, subprocess, tempfile).
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime as dt
+import os
+import re
+import shutil
+import subprocess
+import sys
+import tempfile
+from dataclasses import dataclass, field
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Errors
+# ---------------------------------------------------------------------------
+
+
+class SafeEditError(Exception):
+    """A structured, English-coded failure.
+
+    `code` is a stable machine-readable token (snake_case). `message`
+    is a short human-readable English sentence. The CLI maps the code
+    to its historical exit status so the contract with the agent's
+    handler (which only inspects returncode + output text) is intact.
+    """
+
+    def __init__(self, code: str, message: str) -> None:
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+
+# Map error codes to the legacy process exit codes. Keeping the exit
+# codes stable matters because handlers/edit.py sets ok = (returncode
+# == 0); any nonzero keeps meaning "failed".
+_EXIT_FOR_CODE = {
+    "bad_arguments": 2,
+    "target_not_found": 2,
+    "target_missing_value": 2,
+    "missing_pattern": 2,
+    "missing_markers": 2,
+    "unsupported_mode": 2,
+    "inline_and_file": 2,
+    "target_text_not_found": 2,
+    "insufficient_matches": 2,
+    "regex_no_match": 2,
+    "start_marker_not_found": 2,
+    "end_marker_not_found": 2,
+    "no_effective_change": 3,
+    "validation_failed": 4,
+    "write_failed": 5,
+    "restore_backup_missing": 2,
+    "restore_backup_not_file": 2,
+    "restore_failed": 5,
+    "unsupported_validator_preset": 2,
+}
+
+
+def eprint(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
+
+
+# ---------------------------------------------------------------------------
+# Low-level helpers
+# ---------------------------------------------------------------------------
+
+
+def read_text(path: Path) -> str:
+    return path.read_text(encoding="utf-8")
+
+
+def write_text(path: Path, content: str) -> None:
+    path.write_text(content, encoding="utf-8")
+
+
+def run_argv(
+    argv: list[str], env=None
+) -> subprocess.CompletedProcess:
+    """Run a command WITHOUT a shell.
+
+    argv is a real argument vector. shell=False means metacharacters in
+    any element (including the target path) are inert — they are passed
+    to the program as literal arguments, never interpreted by /bin/sh.
+    This is the core hardening of the refactor.
+    """
+    return subprocess.run(
+        argv, shell=False, text=True, capture_output=True, env=env
+    )
+
+
+def ensure_parent(path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+
+@dataclass
+class MetadataResult:
+    """Outcome of trying to preserve a file's metadata onto the temp."""
+
+    chown_skipped: bool = False
+    chown_skip_reason: str = ""
+
+
+def copy_metadata(src: Path, dst: Path) -> MetadataResult:
+    """Copy mode, flags, extended attributes and ownership from src to dst;
+    give dst the current time.
+
+    dst always carries NEW content (an edit, or a restore from a backup), so
+    its mtime must move: tools that decide by mtime (PHP OPcache with
+    validate_timestamps, make, rsync -u, any file watcher) have to see the
+    change. Until 0.23.29 copystat also copied src's atime/mtime and an edited
+    PHP file kept serving the old code until PHP-FPM restarted
+    (sxrep_HGZJZXHF7RD7). Backups are made with copy2 elsewhere and keep the
+    original's times, which is right for them.
+
+    shutil.copystat (mode/flags/xattrs, e.g. the SELinux label) is
+    best-effort and rarely fails. os.chown CAN fail with PermissionError when the running
+    process is not root and not the file's owner — which is exactly the
+    common case for the agent (runs as its service user, edits files
+    owned by someone else).
+
+    The legacy code did `except PermissionError: pass` here, silently
+    losing ownership. We instead RECORD the skip so the caller can put
+    it in the result/stdout. We do not attempt to escalate (no sudo
+    chown) — escalating inside the editor is out of scope and would
+    widen the trust surface.
+    """
+    res = MetadataResult()
+    shutil.copystat(src, dst, follow_symlinks=False)
+    os.utime(dst)  # new content, new mtime (and atime): see the docstring
+    chown = getattr(os, "chown", None)
+    if chown is None:
+        # Windows: no POSIX ownership model (os.chown doesn't exist); ACLs
+        # govern access, and copystat above copied the portable bits. Nothing
+        # to chown -- record it as skipped rather than crashing the edit.
+        res.chown_skipped = True
+        res.chown_skip_reason = "not applicable on Windows (no os.chown)"
+        return res
+    try:
+        st = src.stat()
+        chown(dst, st.st_uid, st.st_gid)
+    except PermissionError as exc:
+        res.chown_skipped = True
+        res.chown_skip_reason = f"EPERM ({exc.strerror or 'not permitted'})"
+    except OSError as exc:
+        res.chown_skipped = True
+        res.chown_skip_reason = f"OSError ({exc.strerror or exc})"
+    return res
+
+
+def make_backup(src: Path, backup_dir: Path | None) -> Path:
+    ts = dt.datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    base_dir = backup_dir if backup_dir else src.parent
+    base_dir.mkdir(parents=True, exist_ok=True)
+    backup = base_dir / f"{src.name}.bak.{ts}"
+    shutil.copy2(src, backup)
+    return backup
+
+
+# ---------------------------------------------------------------------------
+# Editing primitives (pure string transforms)
+# ---------------------------------------------------------------------------
+
+
+def replace_text_once(
+    content: str, old: str, new: str, count: int
+) -> tuple[str, int]:
+    if count == 0:
+        occurrences = content.count(old)
+        if occurrences == 0:
+            raise SafeEditError(
+                "target_text_not_found",
+                "the target text to replace was not found in the file",
+            )
+        return content.replace(old, new), occurrences
+    occurrences = content.count(old)
+    if occurrences < count:
+        raise SafeEditError(
+            "insufficient_matches",
+            f"not enough matches: found {occurrences}, "
+            f"requested {count}",
+        )
+    return content.replace(old, new, count), min(occurrences, count)
+
+
+def replace_regex(
+    content: str, pattern: str, repl: str, count: int, flags: int
+) -> tuple[str, int]:
+    new_content, n = re.subn(
+        pattern, repl, content, count=count, flags=flags
+    )
+    if n == 0:
+        raise SafeEditError(
+            "regex_no_match", "the regex pattern matched nothing"
+        )
+    return new_content, n
+
+
+def replace_block(
+    content: str, start: str, end: str, new_block: str
+) -> tuple[str, int]:
+    s = content.find(start)
+    if s == -1:
+        raise SafeEditError(
+            "start_marker_not_found", "start marker not found"
+        )
+    e = content.find(end, s + len(start))
+    if e == -1:
+        raise SafeEditError(
+            "end_marker_not_found", "end marker not found"
+        )
+    e += len(end)
+    return content[:s] + new_block + content[e:], 1
+
+
+def load_value(
+    inline: str | None, file_path: str | None, empty_ok: bool = True
+) -> str:
+    if inline is not None and file_path is not None:
+        raise SafeEditError(
+            "inline_and_file",
+            "cannot use an inline value and a file at the same time",
+        )
+    if file_path is not None:
+        return Path(file_path).read_text(encoding="utf-8")
+    if inline is None:
+        if empty_ok:
+            return ""
+        raise SafeEditError(
+            "target_missing_value", "a required value is missing"
+        )
+    return inline
+
+
+def interpret_escapes(value: str) -> str:
+    return bytes(value, "utf-8").decode("unicode_escape")
+
+
+# ---------------------------------------------------------------------------
+# Validators — argv lists, NO shell
+# ---------------------------------------------------------------------------
+
+
+def _yaml_validator_argv(target: Path) -> list[str]:
+    # Inline Python: load the YAML, raise on error. The file path is a
+    # separate argv element (sys.argv[1] inside the snippet), never
+    # interpolated into the code string.
+    snippet = (
+        "import sys; from pathlib import Path; import yaml; "
+        "yaml.safe_load(Path(sys.argv[1]).read_text(encoding='utf-8'))"
+    )
+    return [sys.executable, "-c", snippet, str(target)]
+
+
+def _toml_validator_argv(target: Path) -> list[str]:
+    # tomllib ships with Python 3.11+. Binary mode because tomllib.load
+    # expects a binary stream. Covers pyproject.toml, Cargo.toml, etc.
+    snippet = (
+        "import sys, tomllib; tomllib.load(open(sys.argv[1], 'rb'))"
+    )
+    return [sys.executable, "-c", snippet, str(target)]
+
+
+def _json_validator_argv(target: Path) -> list[str]:
+    # json.tool would normally print the reformatted document to
+    # stdout; the legacy preset redirected it to /dev/null via shell.
+    # Without a shell we just discard stdout in run_argv's capture
+    # (capture_output=True swallows it); a zero return code still means
+    # "valid JSON".
+    return [sys.executable, "-m", "json.tool", str(target)]
+
+
+_PYTHON_COMPILE_CHECK = (
+    "import sys; p = sys.argv[1]; "
+    "compile(open(p, 'rb').read(), p, 'exec', dont_inherit=True)"
+)
+
+
+def build_validator_preset(preset: str, target: Path) -> list[str]:
+    """Return the validator command as an argv LIST (never a string).
+
+    The target path is always a discrete list element. This is the
+    structural reason the validator path is no longer shell-injectable.
+    """
+    t = str(target)
+    if preset == "nginx":
+        return ["sudo", "nginx", "-t", "-c", "/etc/nginx/nginx.conf"]
+    if preset == "json":
+        return _json_validator_argv(target)
+    if preset == "python":
+        # compile() catches what py_compile does (syntax errors, 'return' outside a
+        # function...) without writing bytecode: py_compile saves it into the
+        # __pycache__ next to the candidate, i.e. in the target's own directory, and
+        # failed with Errno 13 where the agent can't write there, or left stray .pyc
+        # files where it can (sxrep_N318DCSMDYWE).
+        return [sys.executable, "-c", _PYTHON_COMPILE_CHECK, t]
+    if preset == "sh":
+        return ["bash", "-n", t]
+    if preset == "systemd":
+        return ["systemd-analyze", "verify", t]
+    if preset == "yaml":
+        return _yaml_validator_argv(target)
+    if preset == "toml":
+        return _toml_validator_argv(target)
+    raise SafeEditError(
+        "unsupported_validator_preset",
+        f"unsupported validator preset: {preset!r}",
+    )
+
+
+def _write_over(target: Path, source: Path) -> None:
+    """Write source's bytes over target in place: same inode, so owner, group, mode
+    and ACLs stay."""
+    with open(target, "r+b") as dst, open(source, "rb") as src:
+        dst.write(src.read())
+        dst.truncate()
+        dst.flush()
+        os.fsync(dst.fileno())
+
+
+def _install_new(tmp_path: Path, target: Path) -> None:
+    """Put a newly created file in place only if nothing appeared at target meanwhile:
+    a hard link fails if it exists; without hard links, the name is reserved with
+    O_EXCL first. The mode follows the umask, as a plain create would."""
+    mask = os.umask(0)
+    os.umask(mask)
+    os.chmod(tmp_path, 0o666 & ~mask)
+    taken = SafeEditError(
+        "target_exists",
+        f"{target} was created by someone else while this edit was being prepared; it was "
+        "left as it is and nothing was written",
+    )
+    try:
+        os.link(tmp_path, target)
+    except FileExistsError as exc:
+        raise taken from exc
+    except OSError:
+        try:
+            fd = os.open(target, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
+        except FileExistsError as exc:
+            raise taken from exc
+        mine = os.fstat(fd)
+        os.close(fd)
+        try:
+            os.replace(tmp_path, target)
+        except BaseException:
+            # Remove the empty reservation if the replace failed, and only if it is
+            # still ours (sx-review, 2026-11-01).
+            try:
+                now = os.lstat(target)
+                if (now.st_ino, now.st_dev) == (mine.st_ino, mine.st_dev) and now.st_size == 0:
+                    os.unlink(target)
+            except OSError:
+                pass
+            raise
+        return
+    os.unlink(tmp_path)
+
+
+def _install(tmp_path: Path, target: Path, result: "EditResult") -> None:
+    """Put the new content at target without changing who owns it.
+
+    The atomic path (os.replace) puts a new file in place, owned by the agent's
+    user. When copy_metadata couldn't give it the original owner (the agent
+    isn't root and doesn't own the file), that rename handed the file to the
+    agent: sxrep_916B3X4TFK4K, a mode-660 test file of user micha ended up
+    owned by sentinelx and micha could no longer read it. In that case write
+    the new content into the existing file instead, as editors do when they
+    can't keep the owner: same inode, so owner, group, mode and ACLs stay. It
+    isn't atomic, but the backup was taken before this point.
+
+    Windows has no POSIX owner (copy_metadata always reports the skip there);
+    the rename keeps working as before.
+    """
+    ownership_lost = (
+        result.chown_skipped
+        and hasattr(os, "chown")
+        and target.exists()
+        and not target.is_symlink()
+    )
+    if not ownership_lost:
+        os.replace(tmp_path, target)
+        return
+    try:
+        open(target, "r+b").close()
+    except PermissionError as exc:
+        raise SafeEditError(
+            "not_writable",
+            f"{target} is not writable by the agent's user, and replacing it "
+            "would hand the file to that user; nothing was changed",
+        ) from exc
+    # Writing in place isn't atomic; that is acceptable only because a backup was
+    # taken first. secret=... takes none on purpose: a failed write left a
+    # half-written credential (sxrep_YW9E73QKVSQC), and the private recovery copy
+    # 0.23.40 used instead could outlive a crash in the temp dir. So without a
+    # backup, the in-place path is refused before anything is touched.
+    if not (result.backup or result.backup_before_restore):
+        raise SafeEditError(
+            "not_writable",
+            f"{target} can't be replaced without handing it to the agent's user, and "
+            "writing it in place isn't atomic; with no backup (secret edits keep none) "
+            "that could leave it half-written. Nothing was changed. Run the edit with "
+            "sudo=true (root keeps the owner and replaces the file atomically), or let "
+            "the agent's user own the file.",
+        )
+    _write_over(target, tmp_path)
+    result.in_place = True
+    result.chown_skipped = False  # the original owner, group and mode are kept
+
+
+# systemd decides what a file is by its name. systemd-analyze verify refuses
+# any other name ("Failed to prepare filename ...: Invalid argument"), so the
+# temp file (<name>.<random>) could never be verified, and a drop-in (.conf)
+# can't be verified on its own at all (sxrep_NQE9F1SJHP71). Verifying the unit
+# with its drop-in in place isn't a usable check either: invalid values only
+# warn and verify still exits 0. So: units are verified as an exact-name copy
+# in a private directory; anything else is refused before it is touched.
+SYSTEMD_UNIT_SUFFIXES = frozenset({
+    ".service", ".socket", ".device", ".mount", ".automount", ".swap",
+    ".target", ".path", ".timer", ".slice", ".scope",
+})
+
+SYSTEMD_UNSUPPORTED_MESSAGE = (
+    "validator_preset=systemd verifies unit files (.service, .socket, .timer "
+    "and the other unit types) with systemd-analyze, which can't check a "
+    "drop-in or any other file on its own. Nothing was changed. Apply the edit "
+    "without the validator, then run systemctl daemon-reload and check the unit "
+    "with systemctl cat and systemctl show."
+)
+
+
+def build_validator(
+    cmd: str | None, preset: str | None, target: Path
+) -> list[str] | None:
+    """Resolve the effective validator to an argv list, or None.
+
+    - preset: looked up in build_validator_preset (argv list).
+    - cmd (custom --validator): the legacy contract allowed a shell
+      string with a {file} placeholder. To keep that usable WITHOUT a
+      shell we shlex.split() it and substitute {file} as a discrete
+      element. A custom validator that genuinely needs a pipe or
+      redirect must now wrap itself explicitly, e.g.
+      `bash -c 'jq . {file} > /dev/null'` — an explicit, visible
+      decision rather than an implicit shell on every edit.
+    """
+    if cmd and preset:
+        raise SafeEditError(
+            "bad_arguments",
+            "cannot use --validator and --validator-preset together",
+        )
+    if preset:
+        return build_validator_preset(preset, target)
+    if not cmd:
+        return None
+    import shlex
+
+    parts = shlex.split(cmd)
+    return [
+        (str(target) if tok == "{file}" else tok) for tok in parts
+    ]
+
+
+def show_diff(src: Path, dst: Path) -> str:
+    """Return a unified diff string (also printed by the CLI).
+
+    Uses stdlib difflib rather than shelling out to `diff -u`: the external
+    binary isn't present on Windows (and this avoids a process spawn on every
+    diff). Output is a standard unified diff on every platform.
+    """
+    import difflib
+
+    def _lines(p: Path) -> list[str]:
+        try:
+            return p.read_text(encoding="utf-8", errors="replace").splitlines(keepends=True)
+        except OSError:
+            return []
+
+    return "".join(
+        difflib.unified_diff(_lines(src), _lines(dst), fromfile=str(src), tofile=str(dst))
+    )
+
+
+# ---------------------------------------------------------------------------
+# API: EditSpec / EditResult / apply_edit
+# ---------------------------------------------------------------------------
+
+
+@dataclass
+class EditSpec:
+    """Everything apply_edit needs. Mirrors the CLI flags 1:1."""
+
+    path: str
+    mode: str | None = None
+    restore: str | None = None
+    old: str | None = None
+    old_file: str | None = None
+    new: str | None = None
+    new_file: str | None = None
+    pattern: str | None = None
+    start_marker: str | None = None
+    end_marker: str | None = None
+    count: int = 0
+    multiline: bool = False
+    dotall: bool = False
+    do_interpret_escapes: bool = False
+    backup_dir: str | None = None
+    validator: str | None = None
+    validator_preset: str | None = None
+    diff: bool = False
+    dry_run: bool = False
+    allow_no_change: bool = False
+    create: bool = False
+    # No <name>.bak.<ts> copy of the previous content. For secret writes: the
+    # backup would leave the OLD credential next to the new one, in the same
+    # directory (maybe one a web server serves).
+    no_backup: bool = False
+
+
+@dataclass
+class EditResult:
+    """Structured outcome. The CLI renders this into legacy stdout."""
+
+    ok: bool
+    action: str  # "edit" | "restore"
+    target: str
+    changed: int = 0
+    backup: str | None = None
+    source_backup: str | None = None
+    backup_before_restore: str | None = None
+    validator: list[str] | None = None
+    diff_text: str = ""
+    dry_run: bool = False
+    chown_skipped: bool = False
+    chown_skip_reason: str = ""
+    in_place: bool = False
+    messages: list[str] = field(default_factory=list)
+
+
+def _apply_mode(spec: EditSpec, original: str) -> tuple[str, int]:
+    new_value = load_value(spec.new, spec.new_file)
+
+    if spec.mode == "replace":
+        old_value = load_value(spec.old, spec.old_file, empty_ok=False)
+        if spec.do_interpret_escapes:
+            old_value = interpret_escapes(old_value)
+            new_value = interpret_escapes(new_value)
+        return replace_text_once(
+            original, old_value, new_value, spec.count
+        )
+
+    if spec.mode == "regex":
+        if not spec.pattern:
+            raise SafeEditError(
+                "missing_pattern", "--pattern is required for mode=regex"
+            )
+        if spec.do_interpret_escapes:
+            new_value = interpret_escapes(new_value)
+        flags = 0
+        if spec.multiline:
+            flags |= re.MULTILINE
+        if spec.dotall:
+            flags |= re.DOTALL
+        return replace_regex(
+            original, spec.pattern, new_value, spec.count, flags
+        )
+
+    if spec.mode == "replace-block":
+        if not spec.start_marker or not spec.end_marker:
+            raise SafeEditError(
+                "missing_markers",
+                "--start-marker and --end-marker are required for "
+                "mode=replace-block",
+            )
+        if spec.do_interpret_escapes:
+            new_value = interpret_escapes(new_value)
+        return replace_block(
+            original, spec.start_marker, spec.end_marker, new_value
+        )
+
+    if spec.mode == "append":
+        if spec.do_interpret_escapes:
+            new_value = interpret_escapes(new_value)
+        return original + new_value, (1 if new_value else 0)
+
+    if spec.mode == "prepend":
+        if spec.do_interpret_escapes:
+            new_value = interpret_escapes(new_value)
+        return new_value + original, (1 if new_value else 0)
+
+    if spec.mode == "write":
+        if spec.do_interpret_escapes:
+            new_value = interpret_escapes(new_value)
+        return new_value, 1
+
+    raise SafeEditError(
+        "unsupported_mode", f"unsupported mode: {spec.mode!r}"
+    )
+
+
+def _scratch_for(spec: EditSpec) -> str | None:
+    """A private directory for a dry run's temp file, or None for a real run.
+
+    A dry run must leave no trace. Writing the temp next to the target (which
+    a real run needs, so os.replace stays an atomic same-filesystem rename)
+    creates and deletes a file in the user's directory: invisible on a normal
+    disk, but a NAS share with a recycle bin keeps the deleted temp, and any
+    directory watcher sees the change. Reported on a QNAP CIFS share.
+    """
+    return tempfile.mkdtemp(prefix="sx-dryrun-") if spec.dry_run else None
+
+
+def _do_restore(spec: EditSpec) -> EditResult:
+    target = Path(spec.path)
+    backup_path = Path(spec.restore or "")
+    backup_dir = Path(spec.backup_dir) if spec.backup_dir else None
+
+    if not backup_path.exists():
+        raise SafeEditError(
+            "restore_backup_missing",
+            "the specified backup does not exist",
+        )
+    if not backup_path.is_file():
+        raise SafeEditError(
+            "restore_backup_not_file",
+            "the specified backup is not a regular file",
+        )
+
+    scratch = _scratch_for(spec)
+    fd, tmp_name = tempfile.mkstemp(
+        prefix=target.name + ".", dir=scratch or str(target.parent)
+    )
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+    result = EditResult(
+        ok=True, action="restore", target=str(target),
+        source_backup=str(backup_path),
+    )
+    try:
+        shutil.copy2(backup_path, tmp_path)
+        if target.exists():
+            meta = copy_metadata(target, tmp_path)
+            result.chown_skipped = meta.chown_skipped
+            result.chown_skip_reason = meta.chown_skip_reason
+        if spec.diff and target.exists():
+            result.diff_text = show_diff(target, tmp_path)
+        if spec.dry_run:
+            result.dry_run = True
+            return result
+        if target.exists():
+            result.backup_before_restore = str(
+                make_backup(target, backup_dir)
+            )
+        _install(tmp_path, target, result)
+        return result
+    except SafeEditError:
+        raise
+    except Exception as exc:
+        raise SafeEditError(
+            "restore_failed", f"failed restoring backup: {exc}"
+        ) from exc
+    finally:
+        tmp_path.unlink(missing_ok=True)
+        if scratch:
+            shutil.rmtree(scratch, ignore_errors=True)
+
+
+def apply_edit(spec: EditSpec) -> EditResult:
+    """Apply an edit (or restore); see _apply_edit. A create writes nothing at the
+    target until its content is validated, and never replaces a file that appeared
+    meanwhile (0.23.52; 0.23.43 created it first and removed it on failure)."""
+    target = Path(spec.path)
+    # Directories a create makes for its target are removed again if it fails, deepest
+    # first and only while empty (sx-review, 2026-11-01: they were left behind).
+    new_dirs: list[Path] = []
+    if spec.create and not spec.dry_run and not spec.restore:
+        p = target.parent
+        while not p.exists():
+            new_dirs.append(p)
+            p = p.parent
+    try:
+        return _apply_edit(spec)
+    except BaseException:
+        for d in new_dirs:
+            try:
+                d.rmdir()
+            except OSError:
+                break
+        raise
+
+
+def _apply_edit(spec: EditSpec) -> EditResult:
+    """Apply an edit (or restore) atomically. Pure-ish: the only side
+    effects are the temp file and the final os.replace. A dry run has none
+    in the target's directory: its temp file lives in a private scratch dir.
+
+    Raises SafeEditError on any handled failure; the CLI converts that
+    to the historical exit code. Atomicity is unchanged from legacy:
+    write to a temp file in the same directory, validate, then
+    os.replace() (atomic rename). If anything fails before the replace,
+    the original file is untouched.
+    """
+    target = Path(spec.path)
+    backup_dir = Path(spec.backup_dir) if spec.backup_dir else None
+
+    if spec.restore and spec.mode:
+        raise SafeEditError(
+            "bad_arguments", "cannot use --restore and --mode together"
+        )
+    if not spec.restore and not spec.mode:
+        raise SafeEditError(
+            "bad_arguments", "either --mode or --restore is required"
+        )
+
+    if spec.restore:
+        return _do_restore(spec)
+
+    # Nothing touches the disk until the arguments are known to be good, and
+    # a dry run never creates the parent directories or the target: a missing
+    # target is simulated as empty, in memory.
+    creating = False
+    if not target.exists():
+        if not spec.create:
+            raise SafeEditError(
+                "target_not_found",
+                "file does not exist; pass --create to create it",
+            )
+        # Nothing is created before the content is validated: the new file is put in
+        # place at the end, and only if the path is still free (sxrep_YEKEFZ56TWY3).
+        if not spec.dry_run:
+            ensure_parent(target)
+        original = ""
+        creating = True
+    else:
+        original = read_text(target)
+    updated, changed = _apply_mode(spec, original)
+
+    if updated == original and not spec.allow_no_change:
+        raise SafeEditError(
+            "no_effective_change", "the edit produced no changes"
+        )
+
+    scratch = _scratch_for(spec)
+    fd, tmp_name = tempfile.mkstemp(
+        prefix=target.name + ".", dir=scratch or str(target.parent)
+    )
+    os.close(fd)
+    tmp_path = Path(tmp_name)
+
+    result = EditResult(
+        ok=True, action="edit", target=str(target), changed=changed
+    )
+    try:
+        write_text(tmp_path, updated)
+        if target.exists():  # a simulated create has nothing to copy from
+            meta = copy_metadata(target, tmp_path)
+            result.chown_skipped = meta.chown_skipped
+            result.chown_skip_reason = meta.chown_skip_reason
+
+        validate_path, verify_dir = tmp_path, None
+        if spec.validator_preset == "systemd":
+            if target.suffix not in SYSTEMD_UNIT_SUFFIXES:
+                raise SafeEditError("validator_unsupported", SYSTEMD_UNSUPPORTED_MESSAGE)
+            verify_dir = tempfile.mkdtemp(prefix="sx-verify-")
+            validate_path = Path(verify_dir) / target.name
+            shutil.copyfile(tmp_path, validate_path)
+        try:
+            validator_argv = build_validator(
+                spec.validator, spec.validator_preset, validate_path
+            )
+            if validator_argv:
+                result.validator = validator_argv
+                proc = run_argv(validator_argv)
+                if proc.returncode != 0:
+                    detail = (proc.stdout or "").strip()
+                    err = (proc.stderr or "").strip()
+                    tail = " / ".join(x for x in (detail, err) if x)
+                    raise SafeEditError(
+                        "validation_failed",
+                        "validation failed"
+                        + (f": {tail}" if tail else ""),
+                    )
+        finally:
+            if verify_dir:
+                shutil.rmtree(verify_dir, ignore_errors=True)
+
+        if spec.diff:
+            result.diff_text = show_diff(target, tmp_path)
+
+        if spec.dry_run:
+            result.dry_run = True
+            return result
+
+        if creating:
+            _install_new(tmp_path, target)
+            return result
+        if not spec.no_backup:
+            result.backup = str(make_backup(target, backup_dir))
+        _install(tmp_path, target, result)
+        return result
+    except SafeEditError:
+        raise
+    except Exception as exc:
+        raise SafeEditError(
+            "write_failed", f"failed editing file: {exc}"
+        ) from exc
+    finally:
+        tmp_path.unlink(missing_ok=True)
+        if scratch:
+            shutil.rmtree(scratch, ignore_errors=True)
+
+
+# ---------------------------------------------------------------------------
+# CLI wrapper — preserves the legacy stdout contract verbatim
+# ---------------------------------------------------------------------------
+
+
+def _render_result(result: EditResult) -> None:
+    """Print the legacy stdout format so handlers/edit.py is unaffected.
+
+    handlers/edit.py only reads returncode + the combined stdout/stderr
+    text, so the exact prefixes are kept for the LLM's benefit and for
+    any other consumer that greps them.
+    """
+    if result.diff_text:
+        print(result.diff_text)
+
+    if result.action == "restore":
+        if result.dry_run:
+            print(f"DRY-RUN: restore simulated on {result.target}")
+            print(f"SOURCE_BACKUP: {result.source_backup}")
+        else:
+            print(f"OK: restored {result.target}")
+            print(f"SOURCE_BACKUP: {result.source_backup}")
+            if result.backup_before_restore:
+                print(
+                    "BACKUP_BEFORE_RESTORE: "
+                    f"{result.backup_before_restore}"
+                )
+        if result.in_place:
+            print("METADATA: written in place to keep the file's owner, group and permissions")
+        elif result.chown_skipped:
+            print(f"METADATA: chown_skipped ({result.chown_skip_reason})")
+        return
+
+    # action == "edit"
+    if result.dry_run:
+        print(f"DRY-RUN: change simulated on {result.target}")
+        print(f"CHANGES: {result.changed}")
+        if result.validator:
+            print(f"VALIDATOR: {' '.join(result.validator)}")
+        if result.chown_skipped and hasattr(os, "chown"):
+            print("METADATA: a real run writes in place, to keep the file's owner, group and permissions")
+        elif result.chown_skipped:
+            print(f"METADATA: chown_skipped ({result.chown_skip_reason})")
+        return
+
+    print(f"OK: edited {result.target}")
+    print(f"BACKUP: {result.backup or 'none'}")
+    print(f"CHANGES: {result.changed}")
+    if result.validator:
+        print(f"VALIDATOR: {' '.join(result.validator)}")
+    if result.in_place:
+        print("METADATA: written in place to keep the file's owner, group and permissions")
+    elif result.chown_skipped:
+        print(f"METADATA: chown_skipped ({result.chown_skip_reason})")
+
+
+def _spec_from_args(args: argparse.Namespace) -> EditSpec:
+    return EditSpec(
+        path=args.path,
+        mode=args.mode,
+        restore=args.restore,
+        old=args.old,
+        old_file=args.old_file,
+        new=args.new,
+        new_file=args.new_file,
+        pattern=args.pattern,
+        start_marker=args.start_marker,
+        end_marker=args.end_marker,
+        count=args.count,
+        multiline=args.multiline,
+        dotall=args.dotall,
+        do_interpret_escapes=args.interpret_escapes,
+        backup_dir=args.backup_dir,
+        validator=args.validator,
+        validator_preset=args.validator_preset,
+        diff=args.diff,
+        dry_run=args.dry_run,
+        allow_no_change=args.allow_no_change,
+        create=args.create,
+        no_backup=args.no_backup,
+    )
+
+
+def main() -> int:
+    # Issue #26: apply_edit() COMMITS before the result is rendered, and
+    # the rendered diff can carry characters the console encoding cannot
+    # represent (Windows cp1252). A raising print would therefore report
+    # failure AFTER the state changed, and a retried non-idempotent
+    # append would duplicate the mutation. Force a non-throwing UTF-8
+    # text layer up front. Harmless on Linux/macOS.
+    for _stream in (sys.stdout, sys.stderr):
+        _reconfigure = getattr(_stream, "reconfigure", None)
+        if _reconfigure is not None:
+            try:
+                _reconfigure(encoding="utf-8", errors="backslashreplace")
+            except (ValueError, OSError):
+                pass
+
+    parser = argparse.ArgumentParser(
+        description="Safe atomic file editing (API-first, no shell)"
+    )
+    parser.add_argument("path", help="File to edit or restore")
+    parser.add_argument(
+        "--mode",
+        choices=[
+            "replace", "regex", "replace-block",
+            "append", "prepend", "write",
+        ],
+        help="Edit mode",
+    )
+    parser.add_argument(
+        "--restore", help="Restore from an existing backup"
+    )
+    parser.add_argument("--old", help="Text to replace")
+    parser.add_argument("--old-file", help="File with text to replace")
+    parser.add_argument("--new", help="New text")
+    parser.add_argument("--new-file", help="File with new text")
+    parser.add_argument("--pattern", help="Regex to replace")
+    parser.add_argument("--start-marker", help="Block start marker")
+    parser.add_argument("--end-marker", help="Block end marker")
+    parser.add_argument(
+        "--count", type=int, default=0,
+        help="Number of replacements (0 = all)",
+    )
+    parser.add_argument(
+        "--multiline", action="store_true", help="Regex multiline"
+    )
+    parser.add_argument(
+        "--dotall", action="store_true", help="Regex dotall"
+    )
+    parser.add_argument(
+        "--interpret-escapes",
+        action="store_true",
+        help="Interpret \\n, \\t and unicode escapes in --old/--new",
+    )
+    parser.add_argument("--backup-dir", help="Backup directory")
+    parser.add_argument(
+        "--validator",
+        help="Validation command. Use {file} as placeholder. "
+        "Runs WITHOUT a shell (shlex-split); wrap in bash -c "
+        "explicitly if you need pipes/redirects.",
+    )
+    parser.add_argument(
+        "--validator-preset",
+        choices=[
+            "nginx", "json", "python", "sh", "yaml", "systemd", "toml",
+        ],
+        help="Predefined validator",
+    )
+    parser.add_argument(
+        "--diff", action="store_true", help="Show a unified diff"
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Simulate the change without writing the final file",
+    )
+    parser.add_argument(
+        "--allow-no-change",
+        action="store_true",
+        help="Do not fail if the final content is identical",
+    )
+    parser.add_argument(
+        "--create", action="store_true",
+        help="Create the file if it does not exist",
+    )
+    parser.add_argument(
+        "--no-backup", action="store_true",
+        help="Do not keep a .bak copy of the previous content",
+    )
+    args = parser.parse_args()
+
+    spec = _spec_from_args(args)
+    try:
+        result = apply_edit(spec)
+    except SafeEditError as exc:
+        eprint(f"ERROR[{exc.code}]: {exc.message}")
+        return _EXIT_FOR_CODE.get(exc.code, 1)
+
+    # Issue #26 (belt and braces): the edit is already committed at this
+    # point, so no rendering problem may be reported as a failed edit.
+    try:
+        _render_result(result)
+    except Exception:  # noqa: BLE001 - never fail after the commit
+        try:
+            eprint(
+                "WARNING: rendering the result failed; "
+                "the edit WAS applied"
+            )
+        except Exception:  # noqa: BLE001
+            pass
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
