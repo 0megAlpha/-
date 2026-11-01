@@ -7,9 +7,6 @@
 [submodule "openhands-sdk"]
 	path = openhands/software-agent-sdk
 	url = https://github.com/OpenHands/software-agent-sdk.git
-[submodule "openhands-extensions"]
-	path = openhands/extensions
-	url = https://github.com/OpenHands/extensions.git
 [submodule "CKA-Agent"]
 	path = CKA-Agent
 	url = https://github.com/Graph-COM/CKA-Agent.git
