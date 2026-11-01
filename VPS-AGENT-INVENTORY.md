@@ -125,3 +125,16 @@ This section supersedes earlier assumptions about the current access state where
 3. Recheck the OpenHands extensions Git lock and fetch only after confirming no active process owns it.
 4. Review the 2,563 staged Google-AI entries and nested OpenHands gitlink; preserve exact Git metadata.
 5. Mirror each repository into its mapped directory using Git history or a verified archive, then validate file hashes, commit refs, submodules and final target branch status.
+
+
+## User-confirmed Gateway setup checkpoint — 2026-11-01
+
+- User supplied a screenshot showing one stored secret named `github-mirror-token`, purpose `stdin`, saved retention. The screenshot does not show an `environment` credential.
+- Live Gateway stored-value listing confirms exactly one value: `github-mirror-token` with purpose `stdin`. There is no `github-mirror-credential` environment value.
+- The sudo setup flow now reports `sudoAccessSaved=true`; a privileged Git status check succeeded for `/home/xiaye/Ai-agent-skill`, so elevated read access is now working at least for that path.
+- `/home/xiaye/Ai-agent-skill` live state: branch `main`, HEAD `3d97a5bd684d02bf5677c92e59aba5a414a66fc5`, ahead 1 / behind 24; unstaged `push.sh`; seven untracked paths (`FINAL_ENTRY.md`, `deploy/`, `fleet/`, `frontend/memory-viewer/`, and three workflow YAML files). Preserve all; no pull, reset, commit or push was performed.
+- `/home/xiaye/hermes-007` live state: branch `master`, HEAD `e6f0042db752885c072a782fd7ede1b17350e7c3`, ahead 0 / behind 22; two untracked secret-guide directories. Preserve; no pull or push.
+- `/home/xiaye/Claude-code` live state: branch `main`, HEAD `18399889f65b8f6b1b787e0f2af6e3cf725a4d5d`, clean, ahead 0 / behind 0.
+- GitHub target repo remains private and connected identity has admin/push permissions. Mirror branch `vps-mirror/inventory-2026-11` exists at `488b50e00112d65974b4aef6da99387c293ece33`.
+- Attempting Gateway typed `git.fetch` with `https_credential_from=github-mirror-token` was rejected because that value is purpose `stdin`, while HTTPS credential input requires purpose `environment`. This is the active blocker for HTTPS fetch/push from Gateway. No original source repositories have been pushed in this resumed session.
+- Prior OpenHands extensions fetch attempts encountered a Git lock conflict; do not delete lock files without confirming no active Git process.
