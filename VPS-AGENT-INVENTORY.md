@@ -138,3 +138,31 @@ This section supersedes earlier assumptions about the current access state where
 - GitHub target repo remains private and connected identity has admin/push permissions. Mirror branch `vps-mirror/inventory-2026-11` exists at `488b50e00112d65974b4aef6da99387c293ece33`.
 - Attempting Gateway typed `git.fetch` with `https_credential_from=github-mirror-token` was rejected because that value is purpose `stdin`, while HTTPS credential input requires purpose `environment`. This is the active blocker for HTTPS fetch/push from Gateway. No original source repositories have been pushed in this resumed session.
 - Prior OpenHands extensions fetch attempts encountered a Git lock conflict; do not delete lock files without confirming no active Git process.
+
+
+## Execution checkpoint — 2026-11-02 00:09 +08:00
+
+### Newly verified credential state
+- Gateway now lists `github-mirror-credential` with purpose `environment`, saved retention. This is in addition to the existing `github-mirror-token` with purpose `stdin`.
+- Gateway sudo request currently reports `sudoAccessSaved=false` / `action_required`. Privileged operations remain blocked.
+- The target GitHub repository remains private. Its mirror branch is writable through the GitHub connector.
+
+### Current remote mappings and fetch results
+| Local path | Remote | Result |
+|---|---|---|
+| `/home/xiaye/Claude-code` | origin = `xh09411-web/Claude-code` (private/not found for configured credential) | Fetch failed NOT_FOUND. Local branch remains clean. |
+| `/home/xiaye/hermes-007` | origin = `xh09411-web/hermes-007`; upstream = `NousResearch/hermes-agent` | Upstream fetch attempted twice; Gateway returned CONFLICT indicating Git lock. Local working tree has two untracked secrets-guide directories; preserved. |
+| `/home/xiaye/openhands-extensions` | origin = `OpenHands/extensions` | Public fetch attempted multiple times; Gateway returned CONFLICT indicating Git lock. Local working tree clean. Process listing found no running process whose command contains git; no lock was deleted. |
+| `/home/xiaye/CKA-Agent` | origin = `Graph-COM/CKA-Agent` | Fetch failed permission denied on `.git/FETCH_HEAD`. Local config modification and backup remain preserved. |
+| `/home/xiaye/repository/Google-AI` | origin = `xh09411-web/Google-AI` (private) | Not fetched; 2,563 staged paths including `.gitmodules` and an OpenHands gitlink remain untouched. |
+| `/home/xiaye/Ai-agent-skill` | Not inspected with current user due ownership | sudo required. Prior verified state: main, ahead 1 / behind 24, one modified script and seven untracked paths. |
+| `/home/xiaye/All-in`, `/opt/agent-plane`, `/opt/sentinelx-cloud-core` | Not inspected with current user due ownership | sudo required. |
+
+### Important result
+The new HTTPS environment credential is present, but it does not grant access to unrelated private source repositories under `xh09411-web`; the Claude Code fetch returned repository-not-found. Do not assume this credential can fetch those private origins. Public upstream fetches for Hermes/OpenHands are currently blocked by Gateway's Git-lock conflict handling. No Agent source repository was committed, pulled, or pushed in this execution checkpoint. No package installation or service configuration was changed.
+
+### Safe next steps
+1. User must finish Gateway sudo setup (current live state still action_required).
+2. For private upstreams under `xh09411-web`, the credential must have read access to those source repositories as well as write access to the destination repository, or the user must explicitly authorize a different source credential.
+3. Resolve Git lock conflicts through Gateway-supported Git operations; do not delete lock files blindly.
+4. Mirror each project with preserved commit history, submodules, staged state and untracked content; verify destination hashes and refs before claiming completion.
