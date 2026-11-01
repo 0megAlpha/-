@@ -148,3 +148,11 @@ Other root-level Agent directories without confirmed identity stay in `VPS-AGENT
 - Hermes has two untracked secrets-guide directories; inspect before inclusion.
 - CKA-Agent has a modified config and a backup.
 - Shellway currently has no paired computers; SentinelX has no enrolled hosts; Termalin Pro access has expired. These are not blockers for GitHub source mirroring while Gateway SSH is available.
+
+
+## Branch preparation checkpoint — 2026-11-02
+
+- A separate remote branch `vps-mirror/full-tree` has now been created from inventory commit `67bda3627cdbab549ba1793f981638f388b499b3`.
+- The branch currently starts with the same tree as the inventory branch; it has **not yet** been converted from gitlinks to ordinary source folders.
+- Perform Section D only in a fresh clone of `vps-mirror/full-tree` with submodules not initialized. Do not alter `vps-mirror/inventory-2026-11`.
+- After converting the public source pointers to subtree folders, import reviewed VPS-local snapshots as described in Section E and the destination map in Section F.
