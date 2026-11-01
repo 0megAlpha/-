@@ -8,7 +8,7 @@ These folders are pinned to verified upstream commits. Clone with `--recurse-sub
 
 | Folder | Upstream | Pinned HEAD |
 |---|---|---|
-| `hermes/` | https://github.com/NousResearch/hermes-agent | `c7c7e0fa92f40c8f526e4a52c0966c128245ffd3` |
+| `hermes/` | https://github.com/NousResearch/hermes-agent | `c7da41dd522dc19cc08bbfcfa69d4b078224b45d` |
 | `openhands/core/` | https://github.com/OpenHands/OpenHands | `cdd6a69248ce8f99b41ff4c47bdf68dee95024e5` |
 | `openhands/software-agent-sdk/` | https://github.com/OpenHands/software-agent-sdk | `98849457621881ae2414719b82b8bc1cf535b4ab` |
 | `openhands/extensions/` | https://github.com/OpenHands/extensions | `6fb2b67680b9a5b41452a148e5705f99c7df1a75` |
