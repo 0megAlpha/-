@@ -1,0 +1,15 @@
+[submodule "hermes"]
+	path = hermes
+	url = https://github.com/NousResearch/hermes-agent.git
+[submodule "openhands-core"]
+	path = openhands/core
+	url = https://github.com/OpenHands/OpenHands.git
+[submodule "openhands-sdk"]
+	path = openhands/software-agent-sdk
+	url = https://github.com/OpenHands/software-agent-sdk.git
+[submodule "openhands-extensions"]
+	path = openhands/extensions
+	url = https://github.com/OpenHands/extensions.git
+[submodule "CKA-Agent"]
+	path = CKA-Agent
+	url = https://github.com/Graph-COM/CKA-Agent.git
