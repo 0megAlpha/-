@@ -88,3 +88,40 @@ These are VPS paths only. They do not yet have verified destination folders or e
 - Gateway SSH: connected to `agent-vps`.
 - PR Completion: installed skill available for review/commit workflows.
 - Additional app installations or permission escalation are not required to use these connected tools. Never enable blanket full-access permissions merely to complete a repository transfer.
+
+
+## Execution checkpoint — 2026-11-01 (latest resumed session)
+
+This section supersedes earlier assumptions about the current access state where they differ.
+
+### Confirmed live Git state
+
+| VPS repository | Branch / HEAD | Current local state | Action taken |
+|---|---|---|---|
+| `/home/xiaye/Claude-code` | `main`, `18399889f65b8f6b1b787e0f2af6e3cf725a4d5d` | Clean; tracks `origin/main`; ahead 0 / behind 0 | Status verified. Not mirrored to target yet. |
+| `/home/xiaye/hermes-007` | `master`, `e6f0042db752885c072a782fd7ede1b17350e7c3` | Ahead 0 / behind 22; two untracked secrets-guide directories | Status verified. Do not copy secret-related docs blindly. Not pulled or mirrored. |
+| `/home/xiaye/openhands-extensions` | `main`, `6fb2b67680b9a5b41452a148e5705f99c7df1a75` | Clean; tracks `origin/main`; ahead 0 / behind 0 | Status verified. Fetch attempted twice; Git reported an existing lock/another Git process after partial remote-ref output. No pull or mirror claimed. |
+| `/home/xiaye/CKA-Agent` | `main`, `938becd7011e834ed9cf89140e9fdddc12a2866c` | One modified `config/config.yml` and one untracked `config/config.yml.bak` | Preserved; no reset, stage, commit, or pull. |
+| `/home/xiaye/repository/Google-AI` | `main`, `e7b8730381df94100a4f0064441515f49db0f6a1` | 2,563 staged paths, including `.gitmodules` and `openhands-core` submodule/gitlink; status truncated | Preserved. No commit/push/pull. Must inspect staged diff and submodule provenance before mirroring. |
+| `/home/xiaye/Ai-agent-skill` | Not read in this session | Git refuses operation because directory/repo is owned by another user | Root/sudo permission required. |
+| `/home/xiaye/All-in` | Not read in this session | Git refuses operation because directory/repo is owned by another user | Root/sudo permission required; secret-bearing `.env` excluded. |
+| `/opt/agent-plane` | Not read in this session | Git refuses operation because directory/repo is owned by another user | Root/sudo permission required. |
+| `/opt/sentinelx-cloud-core` | Not read in this session | Git refuses operation because directory/repo is owned by another user | Root/sudo permission required. |
+
+### Credential and privilege checkpoint
+
+- GitHub target repo `0megAlpha/-` was revalidated as `private`; connected GitHub identity has push permission.
+- Target branch `vps-mirror/inventory-2026-11` exists. Default branch remains `main`.
+- Gateway managed SSH identity is active and verified for `agent-vps`.
+- Gateway stored value `github-mirror-token` exists but is purpose `stdin`; it is not a Git HTTPS credential.
+- Required Gateway value `github-mirror-credential` with purpose `environment` does not yet exist.
+- Gateway sudo state is `action_required`; `sudoAccessSaved=false`.
+- No source repository was committed or pushed in this resumed session. Only this inventory checkpoint is being updated.
+
+### Next safe operations
+
+1. User enters a GitHub token in Gateway as `github-mirror-credential` with purpose `environment`, scoped only to the target repo and required upstreams.
+2. User grants one-time or saved sudo through Gateway; avoid unrestricted blanket root if a narrower approved route is available.
+3. Recheck the OpenHands extensions Git lock and fetch only after confirming no active process owns it.
+4. Review the 2,563 staged Google-AI entries and nested OpenHands gitlink; preserve exact Git metadata.
+5. Mirror each repository into its mapped directory using Git history or a verified archive, then validate file hashes, commit refs, submodules and final target branch status.
