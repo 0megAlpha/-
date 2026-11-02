@@ -1,6 +1,0 @@
-{
-  "name": "claude-task-runner",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-task-runner",
-  "main": "index.js"
-}

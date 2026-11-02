@@ -1,6 +1,0 @@
-{
-  "name": "claude-sleep-daemon",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-sleep-daemon",
-  "main": "index.js"
-}

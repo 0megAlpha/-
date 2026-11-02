@@ -1,4 +1,0 @@
-description: "Direct prompt without any jailbreak techniques"
-config:
-  use_system_prompt: false
-  system_prompt: ""

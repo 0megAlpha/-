@@ -1,6 +1,0 @@
-{
-  "name": "@modelcontextprotocol/server-sqlite",
-  "version": "1.0.0",
-  "description": "Official MCP server sqlite",
-  "main": "index.js"
-}
