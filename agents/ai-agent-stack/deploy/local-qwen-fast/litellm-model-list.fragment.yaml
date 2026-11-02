@@ -1,0 +1,18 @@
+# Merge these entries into the active LiteLLM model_list; do not replace the full config.
+model_list:
+  - model_name: my-model
+    litellm_params:
+      model: openai/qwen3-4b-local
+      api_base: http://127.0.0.1:8089/v1
+      api_key: os.environ/LOCAL_MODEL_API_KEY
+      extra_body:
+        chat_template_kwargs:
+          enable_thinking: false
+  - model_name: my-model-slow
+    litellm_params:
+      model: openai//opt/qwen38-runtime/Qwen3.8-27B-EfficientThink-SimPO-Q8_0.gguf
+      api_base: http://127.0.0.1:8088/v1
+      api_key: local-no-auth
+      extra_body:
+        chat_template_kwargs:
+          enable_thinking: false

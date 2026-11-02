@@ -1,0 +1,109 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-04T18:13:13.307788+00:00",
+  "finished_at": "2026-10-04T18:17:17.171103+00:00",
+  "argv": [
+    "/root/.local/bin/hermes",
+    "update"
+  ],
+  "pid": 3492,
+  "outcome": "success",
+  "pre_update": {
+    "sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+    "short_sha": "170d616c",
+    "version": "0.21.3",
+    "source": "git"
+  },
+  "post_update": {
+    "sha": "fdcae6debac4ad33adc449a4263433b389b563ef",
+    "short_sha": "fdcae6de",
+    "version": "0.21.5",
+    "source": "git",
+    "commit_date": 1791136551
+  },
+  "steps": [
+    {
+      "name": "pre_update_backup",
+      "ok": true,
+      "detail": "snapshot=20261004-181313-pre-update",
+      "at": "2026-10-04T18:13:13.760229+00:00"
+    },
+    {
+      "name": "historical_takeover",
+      "ok": true,
+      "detail": "continuing in the selected interpreter",
+      "at": "2026-10-04T18:15:59.495524+00:00"
+    }
+  ],
+  "skips": [],
+  "gateway_restart": {
+    "restarted_services": [],
+    "relaunched_profiles": [],
+    "externally_supervised_profiles": [],
+    "killed_pids": [],
+    "failed_units": [],
+    "incomplete": false,
+    "phase_error": ""
+  },
+  "fleet": [],
+  "update_id": "79f0d30349a446d299bfddda00d42f4a",
+  "correlation_id": null,
+  "plan": {
+    "install_method": "git",
+    "updatable_in_place": true,
+    "update_mechanism": "hermes update",
+    "expected_sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+    "expected_version": "0.21.3",
+    "profiles": [
+      "default"
+    ],
+    "runtimes": [
+      {
+        "kind": "serve",
+        "profile": "default",
+        "pid": 3508575,
+        "supervisor": "manual-serve",
+        "code_sha": null,
+        "code_version": null,
+        "restart_via": "respawn-argv",
+        "detail": {
+          "argv": "/root/.local/bin/hermes serve --port 8642 --host 127.0.0.1",
+          "host": "127.0.0.1",
+          "port": 8642,
+          "create_time": 1791024476.24
+        }
+      }
+    ]
+  },
+  "runtime_outcomes": [
+    {
+      "kind": "serve",
+      "profile": "default",
+      "pid": 3508575,
+      "mechanism": "respawn-argv",
+      "outcome": "restarted"
+    }
+  ],
+  "pm_venv_rebuild": {
+    "ok": true,
+    "reason": ""
+  },
+  "pm_feature_list": [
+    "acp",
+    "all",
+    "anthropic",
+    "bedrock",
+    "computer-use",
+    "doc-extract",
+    "edge-tts",
+    "google",
+    "vertex",
+    "vision",
+    "web",
+    "wecom",
+    "youtube"
+  ],
+  "pm_steps": [],
+  "pm_exit_code": 0,
+  "pm_sync_outcome": "ok"
+}

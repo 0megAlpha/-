@@ -1,0 +1,11 @@
+[Unit]
+Description=Refresh Agent Integration Progress every 30 minutes
+
+[Timer]
+OnBootSec=3min
+OnUnitActiveSec=30min
+AccuracySec=1min
+Unit=agent-integration-progress-report.service
+
+[Install]
+WantedBy=timers.target

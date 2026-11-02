@@ -1,0 +1,48 @@
+services:
+  openhands:
+    image: ai-agent-snapshots/agent-canvas:1.27.1-browsermcp-fixed-20261015
+    build:
+      context: /root/AI-Agent-Skill/plugins/openhands/browsermcp-patch
+      dockerfile: Dockerfile
+    container_name: openhands-final
+    restart: unless-stopped
+    init: true
+    network_mode: bridge
+    ports:
+      # Never publish this container directly to a LAN/public interface.
+      # Nginx exposes the UI only on the Tailscale address.
+      - "127.0.0.1:8009:8000"
+    extra_hosts:
+      - "host.docker.internal:10.0.0.1"
+    environment:
+      OPENHANDS_SUPPRESS_BANNER: "1"
+      AGENT_CANVAS_BASE_PATH: "/canvas"
+      AGENT_CANVAS_ALLOW_LAN_SESSION_KEY: "true"
+      OH_ACP_SKILL_SOURCING: "openhands_managed"
+      OH_TELEMETRY_EXPORTER: "none"
+      VITE_DO_NOT_TRACK: "1"
+      DO_NOT_TRACK: "1"
+      LOG_JSON: "true"
+      NPM_CONFIG_CACHE: "/home/openhands/.npm"
+      UV_CACHE_DIR: "/home/openhands/.cache/uv"
+      PYTHONPATH: "/opt/oh-my-agent"
+      OHMA_SKILL_ROOTS: "/opt/skills-canonical"
+      OHMA_DRAFT_ROOT: "/home/openhands/.openhands/oh-my-agent-drafts"
+    volumes:
+      - /root/openhands-canvas-browsermcp-state-20261014:/home/openhands/.openhands
+      - /root/openhands-canvas-browsermcp-projects-20261014:/projects
+      - /root/AI-Agent-Skill/skills:/opt/skills-canonical:ro
+      - /root/AI-Agent-Skill/plugins/openhands/oh-my-agent:/opt/oh-my-agent:ro
+      - /var/run/docker.sock:/var/run/docker.sock
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:8000/ready').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 60s
+    stop_grace_period: 30s
+

@@ -1,0 +1,32 @@
+{
+  "name": "conduit",
+  "image": "matrixconduit/matrix-conduit:latest",
+  "cmd": [
+    "/nix/store/s2qhwpjv6dnw1mv6jb8lp22s3c1ksv7x-conduit-static-x86_64-unknown-linux-musl-0.10.13/bin/conduit"
+  ],
+  "entrypoint": [
+    "/nix/store/i65qpkjkzc66z4abzbp77acp4430f140-tini-static-x86_64-unknown-linux-musl-0.19.0/bin/tini",
+    "--"
+  ],
+  "env_keys": [
+    "CONDUIT_CONFIG"
+  ],
+  "ports": {
+    "6167/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "6167"
+      }
+    ]
+  },
+  "restart": "unless-stopped",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/root/conduit-data",
+      "dst": "/var/lib/matrix-conduit",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

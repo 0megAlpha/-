@@ -1,0 +1,6 @@
+{
+  "provider": "nous",
+  "model": "hermes-2-pro",
+  "base_url": "http://localhost:11434/v1",
+  "memory_enabled": true
+}

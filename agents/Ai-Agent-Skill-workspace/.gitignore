@@ -1,0 +1,47 @@
+# Secrets & Credentials
+.env*
+*.key
+*.pem
+*.pk8
+.sim-key
+.pg-pass
+auth.json
+*.secret
+credentials.json
+
+# Runtime & Cache
+logs/
+cache/
+*.db
+*.db-shm
+*.db-wal
+*.log
+*.pid
+*.lock
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+dist/
+build/
+
+# System
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+.idea/
+
+# Legacy/Backup
+legacy_old_remote/
+*.bak
+*.backup
+openhands-core/.agents/skills/build-your-own-x
+openhands-core/
+hermes-007/
+Google-ai/
+Hermes-007/
+open-hands/
+
+# Embedded git metadata (moved from nested skill repos, 2026-09-17)
+.embedded-git/

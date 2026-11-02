@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Company 控制台</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, "PingFang TC", "Microsoft JhengHei", sans-serif; background: #0f1420; color: #e6e9f0; min-height: 100vh; padding: 32px 16px; }
+  h1 { text-align: center; font-size: 26px; letter-spacing: 1px; margin-bottom: 6px; }
+  .sub { text-align: center; color: #8b93a7; font-size: 13px; margin-bottom: 28px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .card { background: #1a2233; border: 1px solid #2a3550; border-radius: 14px; padding: 20px; transition: .2s; }
+  .card:hover { border-color: #4a5a80; transform: translateY(-2px); }
+  .card .tag { display: inline-block; font-size: 11px; padding: 2px 10px; border-radius: 20px; margin-bottom: 10px; letter-spacing: .5px; }
+  .tag.opencode { background: #16324f; color: #7cc4ff; }
+  .tag.webui { background: #1f3a1f; color: #7ee787; }
+  .tag.openhands { background: #3a2a1a; color: #ffc878; }
+  .tag.gateway { background: #331a33; color: #d9a3ff; }
+  .tag.switch { background: #332b1a; color: #ffe07a; }
+  .card h2 { font-size: 18px; margin-bottom: 8px; }
+  .card a.url { display: block; color: #7cc4ff; font-size: 14px; word-break: break-all; margin-bottom: 8px; text-decoration: none; }
+  .card a.url:hover { text-decoration: underline; }
+  .card p { color: #9aa4bd; font-size: 13px; line-height: 1.7; }
+  .status { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; }
+  .footer { text-align: center; color: #5d6679; font-size: 12px; margin-top: 30px; line-height: 1.8; }
+  .box { max-width: 1100px; margin: 24px auto 0; background: #161d2c; border: 1px solid #2a3550; border-radius: 14px; padding: 18px 20px; }
+  .box h3 { font-size: 15px; margin-bottom: 10px; color: #ffe07a; }
+  .box code { background: #0f1420; padding: 2px 8px; border-radius: 6px; color: #7ee787; font-size: 13px; }
+  .box li { margin: 6px 0 6px 18px; color: #9aa4bd; font-size: 13px; }
+</style>
+</head>
+<body>
+<h1>🤖 AI Company 控制台</h1>
+<div class="sub">VPS 服務一覽（205.189.160.125）— 背景常駐、開機自動恢復</div>
+
+<div class="grid">
+  <div class="card">
+    <span class="tag opencode">OPencode</span>
+    <h2>🔧 opencode 網頁版</h2>
+    <a class="url" href="/opencode">http://205.189.160.125:4096</a>
+    <p>終端 AI 編碼助手（Web UI）。登入帳密在 VPS：<code>cat /root/.config/opencode/server.env</code></p>
+  </div>
+  <div class="card">
+    <span class="tag webui">OpenWebUI</span>
+    <h2>💬 OpenWebUI 聊天</h2>
+    <a class="url" href="/webui">http://205.189.160.125:8080</a>
+    <p>多模型聊天 + 圖片/檔案上傳。首次需註冊管理員。</p>
+  </div>
+  <div class="card">
+    <span class="tag openhands">OpenHands</span>
+    <h2>🛠️ openhands 自主工程</h2>
+    <a class="url" href="/openhands">http://205.189.160.125:3000</a>
+    <p>長時自主 coding agent（瀏覽器模式）。模型已預設接閘道。</p>
+  </div>
+  <div class="card">
+    <span class="tag gateway">LiteLLM</span>
+    <h2>🌐 LiteLLM API 閘道</h2>
+    <a class="url" href="http://127.0.0.1:4000/v1/models">port 4000（本機）</a>
+    <p>統一模型閘道。設定：<code>/root/ai-company/config/litellm.yaml</code></p>
+  </div>
+  <div class="card">
+    <span class="tag switch">切換</span>
+    <h2>🔀 使用者切換</h2>
+    <p>Termius 輸入 <code>switch</code> 或 <code>game</code> / <code>xiaye</code> 切換身份（root 紅、xiaye 綠、game 黃）。</p>
+  </div>
+  <div class="card">
+    <span class="tag switch">助手</span>
+    <h2>🤖 常駐 AI 助手</h2>
+    <p>Termius 輸入 <code>ai</code> 或 <code>tmux attach -t assistant</code> 呼叫常駐 opencode 助手。離開：先按 <code>Ctrl+B</code> 再按 <code>D</code>。</p>
+  </div>
+</div>
+
+<div class="box">
+  <h3>📌 容量提醒</h3>
+  <ul>
+    <li>每天 08:00 自動檢查；超過門檻會寫入 <code>/root/ai-company/reports/CAPACITY-REMINDER.txt</code></li>
+    <li>快速查看：<code>tail -20 /root/ai-company/reports/CAPACITY-REMINDER.txt</code></li>
+  </ul>
+</div>
+
+<div class="footer">
+  由 AI Company 佈建 · 所有服務 systemd/docker 常駐 · VPS 重啟自動恢復<br>
+  敏感資訊提醒：push / 匯入前請確認無 API key 或憑證
+</div>
+</body>
+</html>

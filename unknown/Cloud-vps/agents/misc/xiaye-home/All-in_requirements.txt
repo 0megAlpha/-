@@ -1,0 +1,4 @@
+# SESM / Orchestrator 執行依賴
+requests>=2.31
+# 向量記憶（不用 Qdrant 可註解掉）
+qdrant-client>=1.9

@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "🔍 正在掃描敏感資訊..."
+gitleaks protect --staged --verbose
+
+if [ $? -ne 0 ]; then
+  echo ""
+  echo "⚠️  偵測到可能的敏感資訊（API Key / Token / IP / 密碼等）"
+  echo "請確認是否要強制提交（不建議）："
+  read -p "輸入 yes 強制提交，其他任意鍵取消: " confirm
+  if [ "$confirm" != "yes" ]; then
+    echo "❌ 已取消提交"
+    exit 1
+  fi
+fi

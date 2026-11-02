@@ -1,0 +1,11 @@
+[Unit]
+Description=Unified Simulation API for AI Agents
+After=network.target litellm.service
+
+[Service]
+ExecStart=/usr/local/bin/node /root/工作流部署/01-模擬API/sim-api.mjs
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

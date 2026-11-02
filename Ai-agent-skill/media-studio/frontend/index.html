@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Media Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background-color: #0f172a; color: #e2e8f0; font-family: sans-serif; }
+.card { background: rgba(30, 41, 59, 0.7); border: 1px solid rgba(255,255,255,0.1); }
+</style>
+</head>
+<body class="min-h-screen p-4">
+<div class="max-w-4xl mx-auto">
+<h1 class="text-2xl font-bold text-cyan-400 mb-4">MEDIA STUDIO</h1>
+<div class="flex gap-2 mb-6 flex-wrap">
+<button onclick="tab('convert')" class="tab px-4 py-2 rounded-xl bg-slate-800">轉換</button>
+<button onclick="tab('repair')" class="tab px-4 py-2 rounded-xl bg-slate-800">修復</button>
+<button onclick="tab('import')" class="tab px-4 py-2 rounded-xl bg-slate-800">URL 匯入</button>
+<button onclick="tab('automation')" class="tab px-4 py-2 rounded-xl bg-slate-800">自動化</button>
+<button onclick="tab('shortcut')" class="tab px-4 py-2 rounded-xl bg-slate-800">Shortcut</button>
+<button onclick="tab('security')" class="tab px-4 py-2 rounded-xl bg-slate-800">安全掃描</button>
+<button onclick="tab('outputs')" class="tab px-4 py-2 rounded-xl bg-slate-800">下載中心</button>
+</div>
+<div id="content" class="card rounded-2xl p-6"></div>
+</div>
+<script>
+function tab(name) {
+  const c = document.getElementById("content");
+  if (name === "convert") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">檔案轉換</h2>' +
+      '<input type="file" id="cfile" class="mb-3 block w-full"><br>' +
+      '<input type="text" id="ctarget" placeholder="目標格式 png jpg mp4 mp3 pdf zip json" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<button onclick="doConvert()" class="bg-cyan-600 px-4 py-2 rounded-xl">轉換</button>' +
+      '<pre id="cres" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "repair") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">媒體修復</h2>' +
+      '<input type="file" id="rfile" class="mb-3 block w-full"><br>' +
+      '<select id="raction" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<option value="upscale">放大</option><option value="denoise">降噪</option><option value="grayscale">灰階</option></select>' +
+      '<button onclick="doRepair()" class="bg-cyan-600 px-4 py-2 rounded-xl">修復</button>' +
+      '<pre id="rres" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "import") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">URL 匯入</h2>' +
+      '<input type="text" id="iurl" placeholder="貼上網址" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<button onclick="doImport()" class="bg-cyan-600 px-4 py-2 rounded-xl">匯入</button>' +
+      '<pre id="ires" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "automation") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">自動化生成</h2>' +
+      '<input type="text" id="aname" placeholder="工作流名稱" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<select id="akind" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<option value="n8n">n8n workflow</option><option value="github-actions">GitHub Actions</option></select>' +
+      '<button onclick="doAutomation()" class="bg-cyan-600 px-4 py-2 rounded-xl">生成</button>' +
+      '<pre id="ares" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "shortcut") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">Apple Shortcut</h2>' +
+      '<input type="text" id="sname" placeholder="捷徑名稱" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<button onclick="doShortcut()" class="bg-cyan-600 px-4 py-2 rounded-xl">生成</button>' +
+      '<pre id="sres" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "security") {
+    c.innerHTML = '<h2 class="font-bold text-cyan-300 mb-3">安全掃描</h2>' +
+      '<input type="text" id="starget" value="/root/AI-Agent-Skill" class="w-full p-2 mb-3 bg-slate-800 rounded">' +
+      '<button onclick="doSecurity()" class="bg-cyan-600 px-4 py-2 rounded-xl">掃描</button>' +
+      '<pre id="secres" class="mt-4 text-xs text-slate-300"></pre>';
+  } else if (name === "outputs") {
+    fetch("/api/outputs").then(function(r){return r.json();}).then(function(list){
+      let h = '<h2 class="font-bold text-cyan-300 mb-3">下載中心</h2>';
+      if (list.length === 0) h += '<p class="text-slate-500">尚無檔案</p>';
+      list.forEach(function(x){
+        h += '<div class="mb-2 p-2 bg-slate-800 rounded"><a href="/api/download/' + x.name + '" class="text-cyan-400">' + x.name + '</a> <span class="text-xs text-slate-500">' + x.size + ' bytes</span></div>';
+      });
+      c.innerHTML = h;
+    });
+  }
+}
+function doConvert() {
+  const f = document.getElementById("cfile").files[0];
+  const t = document.getElementById("ctarget").value;
+  if (notValid(f, t)) return;
+  const fd = new FormData();
+  fd.append("file", f);
+  fd.append("target", t);
+  fetch("/api/convert", { method: "POST", body: fd }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("cres").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function doRepair() {
+  const f = document.getElementById("rfile").files[0];
+  const a = document.getElementById("raction").value;
+  if (notValid(f, a)) return;
+  const fd = new FormData();
+  fd.append("file", f);
+  fd.append("action", a);
+  fetch("/api/media/repair", { method: "POST", body: fd }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("rres").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function doImport() {
+  const u = document.getElementById("iurl").value;
+  fetch("/api/import/url", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({url:u}) }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("ires").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function doAutomation() {
+  const n = document.getElementById("aname").value;
+  const k = document.getElementById("akind").value;
+  fetch("/api/automation/workflow", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({name:n, kind:k, steps:[{name:"step1", run:"echo hello"}]}) }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("ares").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function doShortcut() {
+  const n = document.getElementById("sname").value;
+  fetch("/api/shortcut/generate", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({name:n, steps:[{identifier:"is.workflow.actions.comment"}]}) }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("sres").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function doSecurity() {
+  const t = document.getElementById("starget").value;
+  fetch("/api/security/scan", { method: "POST", headers: {"Content-Type":"application/json"}, body: JSON.stringify({target:t}) }).then(function(r){return r.json();}).then(function(d){
+    document.getElementById("secres").textContent = JSON.stringify(d, null, 2);
+  });
+}
+function notValid(f, t) {
+  if (f && t) return false;
+  alert("請選擇檔案並填寫目標");
+  return true;
+}
+tab("convert");
+</script>
+</body>
+</html>

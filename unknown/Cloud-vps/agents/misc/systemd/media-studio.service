@@ -1,0 +1,16 @@
+[Unit]
+Description=Media Studio Backend
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/AI-Agent-Skill/media-studio/backend
+ExecStart=/usr/bin/python3 /root/AI-Agent-Skill/media-studio/backend/app.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/root/AI-Agent-Skill/logs/media_studio.log
+StandardError=append:/root/AI-Agent-Skill/logs/media_studio.log
+
+[Install]
+WantedBy=multi-user.target

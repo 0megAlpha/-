@@ -1,0 +1,9 @@
+[features]
+chat = false
+local_sandbox = true
+thoughts = false
+code_output_summary = false
+code_generation = "fast"
+code_output_reflection = true
+forced_apps = []
+final_answer = true

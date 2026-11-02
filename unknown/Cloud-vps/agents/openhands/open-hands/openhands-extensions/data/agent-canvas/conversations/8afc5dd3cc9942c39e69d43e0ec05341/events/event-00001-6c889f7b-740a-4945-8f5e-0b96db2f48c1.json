@@ -1,0 +1,1 @@
+{"id":"6c889f7b-740a-4945-8f5e-0b96db2f48c1","timestamp":"2026-08-08T14:54:12.954240","source":"user","parent_id":"9b665919-2304-4d06-b879-bc532c1f9eaf","llm_message":{"role":"user","content":[{"cache_prompt":false,"type":"text","text":"Reply with exactly: STAGING-OK"}],"thinking_blocks":[]},"activated_skills":[],"extended_content":[],"kind":"MessageEvent"}

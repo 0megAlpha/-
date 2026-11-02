@@ -1,0 +1,5 @@
+source_path=/root/Cloud-vps
+source_remote=git@github.com:tpisces88690/Cloud-vps.git
+source_branch=migration-agent-plane-update-20261029
+source_commit=1c4b55f28a27e29e60e13f96a09b08ffc286d02b
+migrated_at=2026-11-02 17:18:18

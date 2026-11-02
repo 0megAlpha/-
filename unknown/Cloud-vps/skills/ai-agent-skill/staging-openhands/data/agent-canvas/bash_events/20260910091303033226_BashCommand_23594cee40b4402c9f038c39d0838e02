@@ -1,0 +1,8 @@
+{
+  "command": "cd /home/openhands/.config ; (python3 globalState.py --status || python globalState.py --status) 2>/dev/null",
+  "cwd": null,
+  "timeout": 90,
+  "id": "23594cee40b4402c9f038c39d0838e02",
+  "timestamp": "2026-09-10T09:13:03.033226Z",
+  "kind": "BashCommand"
+}

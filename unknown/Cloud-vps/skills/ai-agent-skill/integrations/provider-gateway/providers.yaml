@@ -1,0 +1,47 @@
+gateway:
+  type: litellm
+  base_url: http://127.0.0.1:4000
+providers:
+  - openai
+  - anthropic
+  - google
+  - azure_openai
+  - aws_bedrock
+  - vertex_ai
+  - deepseek
+  - qwen
+  - mistral
+  - xai
+  - groq
+  - together
+  - fireworks
+  - openrouter
+  - ollama
+  - litellm
+policy:
+  secrets_from_environment_only: true
+  no_credentials_in_git: true
+  fallback: explicit
+
+authentication:
+  required: true
+  key_env: LITELLM_MASTER_KEY
+model_catalog:
+  default_alias: my-model
+  endpoint: /v1/models
+agent_endpoints:
+  openai_compatible: http://127.0.0.1:4000/v1
+  anthropic_compatible: http://127.0.0.1:4000
+  openhands_container: http://host.docker.internal:4001/v1
+
+active_model_aliases:
+  - my-model
+  - deepseek-free
+  - nvidia/meta/llama-3.1-8b-instruct
+  - nvidia/deepseek-ai/deepseek-r1
+  - nvidia/qwen/qwen3-32b
+verification:
+  catalog: passed
+  authenticated_catalog: passed
+  unauthenticated_catalog_rejected: passed
+  inference_e2e: not_run

@@ -1,0 +1,86 @@
+{{- if .Values.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openhands-integrations
+  labels:
+    app: openhands-integrations
+spec:
+  replicas: {{ .Values.integrationEvents.deployment.replicas | default 2 }}
+  selector:
+    matchLabels:
+      app: openhands-integrations
+  template:
+    metadata:
+      labels:
+        app: openhands-integrations
+      annotations:
+        {{- if .Values.allowedUsers }}
+        checksum/user-waitlist: {{ include (print $.Template.BasePath "/user-waitlist-configmap.yaml") . | sha256sum }}
+        {{- end }}
+        {{- if .Values.secretsChecksum }}
+        checksum/config-secrets: {{ .Values.secretsChecksum | quote }}
+        {{- end }}
+        {{- include "openhands.caBundle.checksumAnnotation" . | nindent 8 }}
+    spec:
+      terminationGracePeriodSeconds: 60
+      serviceAccountName: {{ .Values.serviceAccount.name }}
+      {{- with .Values.securityContext }}
+      securityContext:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        {{- include "openhands.caBundle.volume" . | nindent 8 }}
+        {{- if .Values.allowedUsers }}
+        - name: user-waitlist
+          configMap:
+            name: user-waitlist
+        {{- end }}
+      initContainers:
+      {{- include "openhands.dbInitContainers" . | nindent 6 }}
+      containers:
+      - name: openhands-integrations
+        imagePullPolicy: Always
+        image: '{{.Values.image.repository}}:{{.Values.image.tag | default .Chart.AppVersion }}'
+        command: ["/bin/sh"]
+        args:
+          - "-c"
+          - "exec {{- if .Values.datadog.enabled }} ddtrace-run {{- end }} uvicorn saas_server:app --host 0.0.0.0 --port 3000 --workers {{ .Values.integrationEvents.uvicorn.workers | default 2 }}"
+        ports:
+        - containerPort: 3000
+        resources:
+          {{- toYaml .Values.integrationEvents.deployment.resources | nindent 12 }}
+        startupProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          failureThreshold: 30
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          failureThreshold: 3
+        volumeMounts:
+          {{- include "openhands.caBundle.volumeMount" . | nindent 10 }}
+          {{- if .Values.allowedUsers }}
+          - name: user-waitlist
+            mountPath: /app/user-waitlist
+          {{- end }}
+        env:
+        {{- include "openhands.env" . | nindent 8 }}
+        {{- include "openhands.caBundle.env" . | nindent 8 }}
+{{- end }}

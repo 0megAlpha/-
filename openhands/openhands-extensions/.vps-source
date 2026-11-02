@@ -1,0 +1,5 @@
+source_path=/home/xiaye/openhands-extensions
+source_remote=https://github.com/OpenHands/extensions.git
+source_branch=main
+source_commit=21c88f56f02c7ebd4c3cac6ad3b7895290637348
+migrated_at=2026-11-02 17:17:35

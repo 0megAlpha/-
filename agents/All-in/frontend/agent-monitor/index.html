@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Fleet Monitor</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; --green:#3fb950; --yellow:#db6d28; --red:#f85149; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:monospace; background:var(--bg); color:var(--text); padding:20px; }
+h1 { color:var(--accent); font-size:20px; text-align:center; padding:16px; border-bottom:1px solid var(--border); margin-bottom:16px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; margin-bottom:16px; }
+.card h2 { color:var(--accent); font-size:14px; margin-bottom:10px; }
+input { width:60%; padding:8px; background:#0d1117; border:1px solid var(--border); color:var(--text); border-radius:4px; }
+button { padding:8px 16px; background:var(--accent); color:#fff; border:none; border-radius:4px; cursor:pointer; }
+table { width:100%; border-collapse:collapse; font-size:13px; }
+td, th { padding:6px 8px; border-bottom:1px solid #21262d; text-align:left; }
+.on { color:var(--green); } .off { color:var(--red); } .warn { color:var(--yellow); }
+#log { font-size:12px; color:#8b949e; max-height:200px; overflow-y:auto; }
+</style>
+</head>
+<body>
+<h1>🤖 Agent Fleet Monitor — 服務矩陣</h1>
+<div class="card">
+  <h2>基底 URL</h2>
+  <input id="ts-base" placeholder="http://100.126.48.60">
+  <button onclick="saveBase()">儲存</button>
+  <span id="base-note" style="font-size:12px;color:#8b949e;">（Ollama 只綁 127.0.0.1 時會顯示 unreachable，屬正常）</span>
+</div>
+<div class="card">
+  <h2>服務健康</h2>
+  <table id="svc-table"><thead><tr><th>服務</th><th>狀態</th><th>HTTP</th><th>延遲</th></tr></thead><tbody></tbody></table>
+</div>
+<div class="card"><h2>事件日誌</h2><div id="log"></div></div>
+<script src="monitor.js"></script>
+</body>
+</html>

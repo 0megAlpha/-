@@ -1,0 +1,11 @@
+logical_state	current_source_class	Git_policy	rebuild_requirement	cleanup_gate
+OpenHands workspace	bind-mounted workspace directory	Do not commit user workspace contents	Document empty workspace bootstrap and permissions	Keep while active container uses it
+OpenHands runtime state	bind-mounted application state	Do not commit sessions, logs, credentials, or runtime DB	Identify which parts are configuration vs user/runtime state	Do not delete until application restore test
+Docker socket access	Host Docker socket bind mount	Never encode socket credentials or host-specific path in portable config without review	Document least-privilege requirement and whether feature is necessary	Keep current runtime unchanged; security review separate
+New API application data	Persistent bind-mounted data	Do not commit database/runtime state	Document supported export/import and required environment variables	Retain until restore is verified
+Qdrant storage	Docker named volume	Do not commit vector data to source repo	Document volume backup/restore and collection reindex option	Never prune until ownership and restore are verified
+Open Terminal home	Docker named volume	Do not commit user files or credentials	Identify user files/config and export/import process	Retain until user-data review
+Open WebUI data	Persistent bind-mounted data	Do not commit database, uploads, model metadata, or credentials	Document supported backup/restore and external model dependencies	Retain until restore is verified
+Caddy configuration	Host-mounted active config file	Commit sanitized template only; keep certificates/private keys out of Git	Document environment-specific domain and TLS inputs	Do not replace or delete active config during this migration
+Conduit data	Persistent bind-mounted data	Do not commit messages, database, or keys	Document supported backup/restore and config location	Retain until restore is verified
+Agent Canvas home/projects	Docker named volumes	Do not commit user sessions, projects, logs, or credentials	Document what is disposable cache vs user-authored state	Retain until contents and restore requirements are confirmed

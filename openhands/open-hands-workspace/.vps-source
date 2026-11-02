@@ -1,0 +1,5 @@
+source_path=/root/open-hands-workspace
+source_remote=git@github.com:xh09411-web/open-hands.git
+source_branch=migration-vps-skills-update-20261029
+source_commit=696f35cbc5f127d07df398801155d1490e0ebc62
+migrated_at=2026-11-02 17:17:36

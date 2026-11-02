@@ -1,0 +1,114 @@
+{
+  "name": "lib",
+  "dependencies": {
+    "@anthropic-ai/claude-code": {
+      "version": "2.1.296",
+      "overridden": false
+    },
+    "@biomejs/biome": {
+      "version": "2.5.15",
+      "overridden": false
+    },
+    "@charmland/crush": {
+      "version": "0.98.1",
+      "overridden": false
+    },
+    "@colbymchenry/codegraph": {
+      "version": "1.6.2",
+      "overridden": false
+    },
+    "@continuedev/cli": {
+      "version": "1.5.47",
+      "overridden": false
+    },
+    "@deepseek-ai/dsh": {
+      "version": "0.2.0-rc.2",
+      "overridden": false
+    },
+    "@kilocode/cli": {
+      "version": "7.8.8",
+      "overridden": false
+    },
+    "@openai/codex": {
+      "version": "0.162.1",
+      "overridden": false
+    },
+    "@wonderwhy-er/desktop-commander": {
+      "version": "0.2.52",
+      "overridden": false
+    },
+    "9router": {
+      "version": "0.5.95",
+      "overridden": false
+    },
+    "bb-browser": {
+      "version": "0.14.2",
+      "overridden": false
+    },
+    "better-sqlite3": {
+      "version": "13.0.3",
+      "overridden": false
+    },
+    "corepack": {
+      "version": "0.36.0",
+      "overridden": false
+    },
+    "dsh1024": {
+      "version": "0.5.0",
+      "overridden": false
+    },
+    "freebuff": {
+      "version": "0.0.137",
+      "overridden": false
+    },
+    "lody": {
+      "version": "0.104.0",
+      "overridden": false
+    },
+    "n8n": {
+      "version": "2.42.7",
+      "overridden": false
+    },
+    "node-gyp": {
+      "version": "13.1.0",
+      "overridden": false
+    },
+    "npm": {
+      "version": "11.19.0",
+      "overridden": false
+    },
+    "oh-my-opencode": {
+      "version": "4.19.4",
+      "overridden": false
+    },
+    "opencode-ai": {
+      "version": "1.19.0",
+      "overridden": false
+    },
+    "promptfoo": {
+      "version": "0.124.1",
+      "overridden": false
+    },
+    "root": {
+      "version": "1.0.0",
+      "resolved": "file:../../../root",
+      "overridden": false
+    },
+    "skills": {
+      "version": "1.7.2",
+      "overridden": false
+    },
+    "sql.js": {
+      "version": "1.14.2",
+      "overridden": false
+    },
+    "systray2": {
+      "version": "2.1.4",
+      "overridden": false
+    },
+    "tweakcc": {
+      "version": "4.4.0",
+      "overridden": false
+    }
+  }
+}

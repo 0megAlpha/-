@@ -1,0 +1,6 @@
+{
+  "name": "flake8-python-check",
+  "version": "1.0.0",
+  "type": "linter",
+  "entry": "index.js"
+}

@@ -1,0 +1,30 @@
+version: 1
+
+network:
+  bind: 127.0.0.1
+  port: 20128
+  public_exposure: false
+
+auth:
+  require_api_key: true
+  credentials: environment_or_9router_store
+  never_commit_credentials: true
+
+logging:
+  request_body_logging: false
+  redact:
+    - authorization
+    - api_key
+    - cookie
+    - token
+
+providers:
+  groq:
+    credential_source: 9router_provider_connection
+    model_allowlist:
+      - openai/gpt-oss-120b
+
+safety:
+  no_arbitrary_upstream_urls: true
+  no_external_write_actions: true
+  no_autonomous_external_exploitation: true

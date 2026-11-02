@@ -1,0 +1,211 @@
+{{- if and .Values.enabled (include "openhands.keycloakProvisionRealm" .) }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak-config-script
+data:
+  keycloak-config.sh: |
+    #!/bin/sh
+    set -e
+
+    keycloak_api_call() {
+      COMMAND=$1
+      export RESPONSE=$(eval $COMMAND)
+      ERROR=$(echo "$RESPONSE" | jq -r 'try if type == "array" then (.[0].error // .[0].errorMessage) else (.error // .errorMessage) end')
+      if [ -n "$ERROR" ] && [ "null" != "$ERROR" ]; then
+        echo "Error from Keycloak: $RESPONSE"
+        exit 1
+      fi
+    }
+    echo "Waiting for Keycloak to be ready..."
+    until curl --output /dev/null --silent --head --fail $KEYCLOAK_SERVER_URL; do
+        echo '.'
+        sleep 5
+    done
+
+    ACCESS_TOKEN=$(curl -s -X POST "$KEYCLOAK_SERVER_URL/realms/master/protocol/openid-connect/token" -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=admin-cli" -d "grant_type=password" -d "username=tmpadmin" -d "password=$KEYCLOAK_ADMIN_PASSWORD" | jq -r '.access_token')
+    if [ "$ACCESS_TOKEN" = "null" ]; then
+      NEW_ACCESS_TOKEN=$(curl -s -X POST "$KEYCLOAK_SERVER_URL/realms/master/protocol/openid-connect/token" -H "Content-Type: application/x-www-form-urlencoded" -d "client_id=admin-cli" -d "grant_type=password" -d "username=admin" -d "password=$KEYCLOAK_ADMIN_PASSWORD" | jq -r '.access_token')
+      if [ "$NEW_ACCESS_TOKEN" = "null" ]; then
+        echo "Couldn't login using either the \"admin\" or \"tmpadmin\" accounts."
+        exit 1;
+      fi
+      ACCESS_TOKEN=$NEW_ACCESS_TOKEN
+    fi
+
+    keycloak_api_call "curl -s \"$KEYCLOAK_SERVER_URL/admin/realms/master/users?username=admin&exact=true\" -H \"Authorization: Bearer $ACCESS_TOKEN\""
+    if [ "[]" = "$RESPONSE" ]; then
+      echo "Creating new admin user..."
+      keycloak_api_call "curl -s -X POST \"$KEYCLOAK_SERVER_URL/admin/realms/master/users\" \
+        -H \"Authorization: Bearer $ACCESS_TOKEN\" \
+        -H \"Content-Type: application/json\" \
+        -d \"{
+          \\\"username\\\": \\\"admin\\\",
+          \\\"enabled\\\": true,
+          \\\"emailVerified\\\": true,
+          \\\"firstName\\\": \\\"Keycloak\\\",
+          \\\"lastName\\\": \\\"Admin\\\",
+          \\\"email\\\": \\\"admin@all-hands.dev\\\",
+          \\\"credentials\\\": [{
+          \\\"type\\\": \\\"password\\\",
+          \\\"value\\\": \\\"$KEYCLOAK_ADMIN_PASSWORD\\\",
+          \\\"temporary\\\": false
+          }]
+        }\""
+
+      keycloak_api_call "curl -s \"$KEYCLOAK_SERVER_URL/admin/realms/master/users?username=admin&exact=true\" -H \"Authorization: Bearer $ACCESS_TOKEN\""
+      ADMIN_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
+
+      keycloak_api_call "curl -s \"$KEYCLOAK_SERVER_URL/admin/realms/master/roles/admin\" -H \"Authorization: Bearer $ACCESS_TOKEN\" -H \"Content-Type: application/json\""
+      ADMIN_ROLE=$(echo "$RESPONSE" | sed 's/"/\\"/g')
+
+      keycloak_api_call "curl -s \"$KEYCLOAK_SERVER_URL/admin/realms/master/roles/create-realm\" -H \"Authorization: Bearer $ACCESS_TOKEN\" -H \"Content-Type: application/json\""
+      CREATE_ROLE=$(echo "$RESPONSE" | sed 's/"/\\"/g')
+
+      keycloak_api_call "curl -s -X POST \"$KEYCLOAK_SERVER_URL/admin/realms/master/users/$ADMIN_ID/role-mappings/realm\" \
+        -H \"Authorization: Bearer $ACCESS_TOKEN\" \
+        -H \"Content-Type: application/json\" \
+        -d \"[$ADMIN_ROLE]\""
+      keycloak_api_call "curl -s -X POST \"$KEYCLOAK_SERVER_URL/admin/realms/master/users/$ADMIN_ID/role-mappings/realm\" \
+        -H \"Authorization: Bearer $ACCESS_TOKEN\" \
+        -H \"Content-Type: application/json\" \
+        -d \"[$CREATE_ROLE]\""
+
+      keycloak_api_call "curl -s -X POST \"$KEYCLOAK_SERVER_URL/realms/master/protocol/openid-connect/token\" -H \"Content-Type: application/x-www-form-urlencoded\" -d \"client_id=admin-cli\" -d \"grant_type=password\" -d \"username=admin\" -d \"password=$KEYCLOAK_ADMIN_PASSWORD\""
+      ACCESS_TOKEN=$(echo "$RESPONSE" | jq -r '.access_token')
+
+      keycloak_api_call "curl -s \"$KEYCLOAK_SERVER_URL/admin/realms/master/users?username=tmpadmin&exact=true\" -H \"Authorization: Bearer $ACCESS_TOKEN\""
+      TMPADMIN_ID=$(echo "$RESPONSE" | jq -r '.[0].id')
+      keycloak_api_call "curl -s -X DELETE \"$KEYCLOAK_SERVER_URL/admin/realms/master/users/$TMPADMIN_ID\" -H \"Authorization: Bearer $ACCESS_TOKEN\""
+
+      echo "Created new user \"admin\". The password can be found in the \"keycloak-admin\" secret."
+    else
+      echo "User already exists: $RESPONSE"
+    fi
+
+    ERROR_MESSAGE=$(curl -s "$KEYCLOAK_SERVER_URL/admin/realms/$KEYCLOAK_REALM_NAME" -H "Authorization: Bearer $ACCESS_TOKEN" | jq -r '.error')
+    echo "Error message: $ERROR_MESSAGE"
+    export GITHUB_BASE_URL=""
+    if [ "$GITHUB_PROXY" = "1" ]; then
+      export GITHUB_BASE_URL="https://{{ .Values.ingress.host }}/github-proxy/test-auth-feat"
+    fi
+    # Render the realm template (needed for both create and update paths).
+    # Bitbucket Data Center needs a placeholder host when not configured, otherwise
+    # the OAuth2 provider creation fails with an invalid host.
+    export BITBUCKET_DATA_CENTER_HOST=${BITBUCKET_DATA_CENTER_HOST:-"placeholder.invalid"}
+    export GITLAB_HOST=${GITLAB_HOST:-"gitlab.com"}
+    export AZURE_DEVOPS_TENANT_ID=${AZURE_DEVOPS_TENANT_ID:-"common"}
+    envsubst '$WEB_HOST,$AUTH_WEB_HOST,$LAMINAR_WEB_HOST,$KEYCLOAK_REALM_NAME,$KEYCLOAK_CLIENT_ID,$KEYCLOAK_CLIENT_SECRET,$GITHUB_APP_CLIENT_ID,$GITHUB_APP_CLIENT_SECRET,$GITLAB_APP_CLIENT_ID,$GITLAB_APP_CLIENT_SECRET,$GITLAB_HOST,$BITBUCKET_APP_CLIENT_ID,$BITBUCKET_APP_CLIENT_SECRET,$GITHUB_BASE_URL,$KEYCLOAK_SMTP_PASSWORD,$BITBUCKET_DATA_CENTER_HOST,$BITBUCKET_DATA_CENTER_CLIENT_ID,$BITBUCKET_DATA_CENTER_CLIENT_SECRET,$AZURE_DEVOPS_TENANT_ID,$AZURE_DEVOPS_CLIENT_ID,$AZURE_DEVOPS_CLIENT_SECRET'< /realm-template/allhands-realm-github-provider.json.tmpl > /tmp/allhands-realm-github-provider.json
+    # Apply realm SSO session lifetimes (seconds) on top of the rendered realm
+    # JSON. These are numeric realm-level fields, so they are set with jq (the
+    # template must stay valid JSON) and flow through both the create path and
+    # the realm-settings update path below, meaning changes take effect on a
+    # live install at the next restart.
+    SSO_SESSION_IDLE_TIMEOUT={{ .Values.keycloak.ssoSessionIdleTimeout | default 259200 | int }}
+    SSO_SESSION_MAX_LIFESPAN={{ .Values.keycloak.ssoSessionMaxLifespan | default 604800 | int }}
+    jq --argjson idle "$SSO_SESSION_IDLE_TIMEOUT" --argjson max "$SSO_SESSION_MAX_LIFESPAN" \
+      '.ssoSessionIdleTimeout = $idle | .ssoSessionMaxLifespan = $max' \
+      /tmp/allhands-realm-github-provider.json > /tmp/allhands-realm-with-sessions.json
+    mv /tmp/allhands-realm-with-sessions.json /tmp/allhands-realm-github-provider.json
+    REALM_JSON=/tmp/allhands-realm-github-provider.json
+
+    if [ "$ERROR_MESSAGE" = "Realm not found." ]; then
+      echo "Creating allhands realm..."
+      keycloak_api_call "curl -s -X POST \"$KEYCLOAK_SERVER_URL/admin/realms\" -H \"Authorization: Bearer $ACCESS_TOKEN\" -H \"Content-Type: application/json\" --data \"@$REALM_JSON\""
+      echo "Created allhands realm."
+    else
+      echo "Updating allhands realm configuration..."
+      KC_REALM="$KEYCLOAK_SERVER_URL/admin/realms/$KEYCLOAK_REALM_NAME"
+      AUTH="-H \"Authorization: Bearer $ACCESS_TOKEN\""
+      CT="-H \"Content-Type: application/json\""
+
+      # 1. Update realm-level settings only (token lifespans, login config, SMTP, etc.).
+      #    Strip all sub-resource collections to avoid side effects.
+      jq 'del(.clients, .clientScopes, .roles, .groups, .defaultRole,
+             .scopeMappings, .clientScopeMappings, .identityProviders,
+             .identityProviderMappers, .authenticationFlows, .authenticatorConfig,
+             .requiredActions, .components, .defaultDefaultClientScopes,
+             .defaultOptionalClientScopes, .clientProfiles, .clientPolicies,
+             .keycloakVersion, .id)' $REALM_JSON > /tmp/realm-settings.json
+      if [ ! -s /tmp/realm-settings.json ]; then
+        echo "Error: Failed to generate realm settings JSON"
+        exit 1
+      fi
+      keycloak_api_call "curl -s -X PUT \"$KC_REALM\" $AUTH $CT --data \"@/tmp/realm-settings.json\""
+      echo "  Updated realm settings."
+
+      # 2. Upsert custom clients from the realm template (skip Keycloak built-ins).
+      #    PUT by UUID if the client already exists, POST otherwise. Strip the
+      #    template's hardcoded .id so POST lets Keycloak assign a fresh UUID.
+      BUILTIN_CLIENTS="account account-console admin-cli broker realm-management security-admin-console"
+      for cid in $(jq -r '.clients[].clientId' $REALM_JSON); do
+        case " $BUILTIN_CLIENTS " in
+          *" $cid "*) continue ;;
+        esac
+        jq --arg cid "$cid" '.clients[] | select(.clientId == $cid) | del(.id)' \
+          $REALM_JSON > /tmp/client.json
+        if [ ! -s /tmp/client.json ]; then
+          echo "Error: Client $cid not found in realm template"
+          exit 1
+        fi
+        EXISTING_UUID=$(curl -s "$KC_REALM/clients?clientId=$cid" \
+          -H "Authorization: Bearer $ACCESS_TOKEN" | jq -r '.[0].id')
+        if [ -n "$EXISTING_UUID" ] && [ "$EXISTING_UUID" != "null" ]; then
+          keycloak_api_call "curl -s -X PUT \"$KC_REALM/clients/$EXISTING_UUID\" $AUTH $CT --data \"@/tmp/client.json\""
+          echo "  Updated client: $cid"
+        else
+          keycloak_api_call "curl -s -X POST \"$KC_REALM/clients\" $AUTH $CT --data \"@/tmp/client.json\""
+          echo "  Created client: $cid"
+        fi
+      done
+
+      # 3. Update or create identity providers by alias.
+      EXISTING_IDPS=$(curl -s "$KC_REALM/identity-provider/instances" \
+        -H "Authorization: Bearer $ACCESS_TOKEN" | jq -r '.[].alias')
+      for alias in $(jq -r '.identityProviders[].alias' $REALM_JSON); do
+        jq --arg a "$alias" '.identityProviders[] | select(.alias == $a)' \
+          $REALM_JSON > /tmp/idp-$alias.json
+        if echo "$EXISTING_IDPS" | grep -qx "$alias"; then
+          keycloak_api_call "curl -s -X PUT \"$KC_REALM/identity-provider/instances/$alias\" $AUTH $CT --data \"@/tmp/idp-$alias.json\""
+          echo "  Updated identity provider: $alias"
+        else
+          keycloak_api_call "curl -s -X POST \"$KC_REALM/identity-provider/instances\" $AUTH $CT --data \"@/tmp/idp-$alias.json\""
+          echo "  Created identity provider: $alias"
+        fi
+      done
+
+      # 4. Update identity provider mappers (PUT existing by ID, POST new).
+      for alias in $(jq -r '.identityProviders[].alias' $REALM_JSON); do
+        EXISTING_MAPPERS=$(curl -s "$KC_REALM/identity-provider/instances/$alias/mappers" \
+          -H "Authorization: Bearer $ACCESS_TOKEN")
+        if ! echo "$EXISTING_MAPPERS" | jq -e 'type == "array"' >/dev/null 2>&1; then
+          echo "  Skipping mappers for $alias: $EXISTING_MAPPERS"
+          continue
+        fi
+        for mapper_name in $(jq -r --arg a "$alias" \
+          '.identityProviderMappers[] | select(.identityProviderAlias == $a) | .name' $REALM_JSON); do
+
+          jq --arg a "$alias" --arg n "$mapper_name" \
+            '.identityProviderMappers[] | select(.identityProviderAlias == $a and .name == $n)' \
+            $REALM_JSON > /tmp/mapper.json
+
+          EXISTING_ID=$(echo "$EXISTING_MAPPERS" | jq -r --arg n "$mapper_name" \
+            '.[] | objects | select(.name == $n) | .id')
+
+          if [ -n "$EXISTING_ID" ] && [ "$EXISTING_ID" != "null" ]; then
+            jq --arg id "$EXISTING_ID" '. + {id: $id}' /tmp/mapper.json > /tmp/mapper-update.json
+            keycloak_api_call "curl -s -X PUT \"$KC_REALM/identity-provider/instances/$alias/mappers/$EXISTING_ID\" $AUTH $CT --data \"@/tmp/mapper-update.json\""
+            echo "  Updated mapper: $alias/$mapper_name"
+          else
+            keycloak_api_call "curl -s -X POST \"$KC_REALM/identity-provider/instances/$alias/mappers\" $AUTH $CT --data \"@/tmp/mapper.json\""
+            echo "  Created mapper: $alias/$mapper_name"
+          fi
+        done
+      done
+
+      # Each step above is idempotent — PUTs and POSTs can safely be rerun.
+      # If the script fails midway, the next pod restart will re-apply all steps
+      # from the beginning without side effects.
+      echo "Updated allhands realm configuration."
+    fi
+{{- end }}

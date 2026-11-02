@@ -1,0 +1,67 @@
+{
+  "name": "open-webui-secure",
+  "image": "ghcr.io/open-webui/open-webui:main",
+  "cmd": [
+    "bash",
+    "start.sh"
+  ],
+  "entrypoint": null,
+  "env_keys": [
+    "ANONYMIZED_TELEMETRY",
+    "AUXILIARY_EMBEDDING_MODEL",
+    "DEFAULT_USER_ROLE",
+    "DOCKER",
+    "DO_NOT_TRACK",
+    "ENABLE_SIGNUP",
+    "ENV",
+    "GPG_KEY",
+    "HF_HOME",
+    "HOME",
+    "LANG",
+    "OLLAMA_BASE_URL",
+    "OPENAI_API_BASE_URL",
+    "OPENAI_API_KEY",
+    "PATH",
+    "PORT",
+    "PYTHONUNBUFFERED",
+    "PYTHON_SHA256",
+    "PYTHON_VERSION",
+    "RAG_EMBEDDING_MODEL",
+    "RAG_RERANKING_MODEL",
+    "SCARF_NO_ANALYTICS",
+    "SENTENCE_TRANSFORMERS_HOME",
+    "TIKTOKEN_CACHE_DIR",
+    "TIKTOKEN_ENCODING_NAME",
+    "USE_AUXILIARY_EMBEDDING_MODEL_DOCKER",
+    "USE_CUDA_DOCKER",
+    "USE_CUDA_DOCKER_VER",
+    "USE_EMBEDDING_MODEL_DOCKER",
+    "USE_OLLAMA_DOCKER",
+    "USE_RERANKING_MODEL_DOCKER",
+    "USE_SLIM_DOCKER",
+    "UV_LINK_MODE",
+    "WEBUI_AUTH",
+    "WEBUI_BUILD_VERSION",
+    "WEBUI_SECRET_KEY",
+    "WHISPER_MODEL",
+    "WHISPER_MODEL_DIR"
+  ],
+  "ports": {
+    "8080/tcp": [
+      {
+        "HostIp": "100.x.x.x",
+        "HostPort": "8081"
+      }
+    ]
+  },
+  "restart": "always",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/opt/open-webui/data",
+      "dst": "/app/backend/data",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

@@ -1,0 +1,5 @@
+open-terminal	ghcr.io/open-webui/open-terminal	0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp
+open-webui-secure	ghcr.io/open-webui/open-webui:main	100.x.x.x:8081->8080/tcp
+agent-plane-caddy	caddy:latest	80/tcp, 443/tcp, 2019/tcp, 443/udp, 127.0.0.1:8443->8443/tcp
+conduit	matrixconduit/matrix-conduit:latest	127.0.0.1:6167->6167/tcp
+openhands-canvas-staging	openhands-canvas:staging	8002/tcp, 127.0.0.1:8001->8000/tcp

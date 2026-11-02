@@ -1,0 +1,11 @@
+{
+  "sandbox": {
+    "enabled": true,
+    "image": "opencode-sandbox:latest",
+    "workspace": "/opt/opencode-sandbox/workspace",
+    "timeout": 120,
+    "auto_test": true
+  },
+  "testing": { "framework": "jest", "coverage": true, "lint": ["eslint", "prettier"] },
+  "memory": { "enabled": true, "backend": "local", "path": "/root/.opencode/memory" }
+}

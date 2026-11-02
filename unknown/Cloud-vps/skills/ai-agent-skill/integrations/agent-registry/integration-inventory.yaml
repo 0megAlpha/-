@@ -1,0 +1,124 @@
+version: 1
+updated_at: 2026-10-11
+
+update_policy:
+  allow_major: false
+  git:
+    default_channel: branch-head
+  npm:
+    default_channel: minor-patch
+
+privacy:
+  private_overlay_paths:
+    - overlays/private/runtime-overrides.env
+    - overlays/private/runtime-overrides.local.env
+    - overlays/private/inventory.overlay.yaml
+  track_private_values_in_git: false
+
+discovery:
+  owners:
+    - xh09411-web
+  include_archived: false
+  include_forks: false
+  keywords:
+    - agent
+    - skill
+    - plugin
+    - mcp
+    - acp
+    - openhands
+    - hermes
+    - dsh
+    - opencode
+    - flowise
+
+sources:
+  - id: claude-code
+    kind: git
+    remote: git@github.com:xh09411-web/Claude-code.git
+    branch: main
+    required: true
+    integration_role: runtime
+  - id: opencode
+    kind: git
+    remote: git@github.com:anomalyco/opencode.git
+    branch: dev
+    required: true
+    integration_role: runtime
+  - id: dsh
+    kind: git
+    remote: git@github.com:xh09411-web/--dsh.git
+    branch: main
+    required: true
+    integration_role: runtime
+  - id: cuga
+    kind: git
+    remote: git@github.com:xh09411-web/-cuga-agent-.git
+    branch: main
+    required: false
+    integration_role: runtime
+  - id: pentestgpt
+    kind: git
+    remote: git@github.com:xh09411-web/-PentestGPT-.git
+    branch: main
+    required: false
+    integration_role: runtime
+  - id: oh-my-agent
+    kind: git
+    remote: https://github.com/xh09411-web/-oh-my-agent-.git
+    branch: main
+    required: false
+    integration_role: runtime
+  - id: flowise
+    kind: git
+    remote: git@github.com:xh09411-web/flowise-LLM.git
+    branch: main
+    required: false
+    integration_role: runtime
+  - id: codex
+    kind: git
+    remote: https://github.com/openai/codex.git
+    branch: main
+    required: false
+    integration_role: runtime
+  - id: cline
+    kind: npm
+    package: "@cline/cli"
+    version: "0.0.13"
+    runtime_version: "3.0.62"
+    version_channel: latest
+    required: false
+    integration_role: package
+  - id: pi
+    kind: npm
+    package: "@earendil-works/pi-coding-agent"
+    version: "1.1.0"
+    version_channel: latest
+    required: false
+    integration_role: package
+
+agent_bindings:
+  - agent: openhands
+    source: openhands
+    mode: external-independent
+  - agent: hermes
+    source: hermes
+    mode: external-independent
+  - agent: dsh
+    source: dsh
+    mode: integrated-runtime
+  - agent: opencode
+    source: opencode
+    mode: integrated-runtime
+  - agent: cuga
+    source: cuga
+    mode: integrated-runtime
+  - agent: pentestgpt
+    source: pentestgpt
+    mode: integrated-runtime
+  - agent: claude-code
+    source: claude-code
+    mode: integrated-runtime
+  - agent: cline
+    source: cline
+    mode: package-runtime

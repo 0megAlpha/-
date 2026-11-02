@@ -1,0 +1,9 @@
+packages:
+  - .
+
+nodeLinker: hoisted
+autoInstallPeers: false
+allowBuilds:
+  '@code-yeongyu/comment-checker': set this to true or false
+  msgpackr-extract: set this to true or false
+  oh-my-openagent: set this to true or false

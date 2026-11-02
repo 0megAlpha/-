@@ -1,0 +1,80 @@
+{
+  "version": "2026.10.09.2",
+  "source_repo": "https://github.com/xh09411-web/Ai-Agent-Skill.git",
+  "primary_target": "OpenHands",
+  "skills": [
+    "agent-fleet-secure-workflow",
+    "agent-skills",
+    "agentic-security-review",
+    "api-compatibility",
+    "apollo-memory",
+    "composio",
+    "composio-tool-integration",
+    "define-to-ship",
+    "ecc",
+    "engineering-memory",
+    "evolution-tree",
+    "firecrawl",
+    "firecrawl-web-research",
+    "full-cycle-mobile-dev",
+    "harness-evolution",
+    "obra-superpowers",
+    "plan-once-verify-always",
+    "sesm-engine",
+    "skill-optimizer",
+    "understand-anything",
+    "vps-bridge"
+  ],
+  "status_model": [
+    "SOURCE",
+    "INSTALLED",
+    "CONFIGURED",
+    "LOADED",
+    "RUNNING",
+    "VERIFIED"
+  ],
+  "runtime_verified": false,
+  "agents": {
+    "codex_or_shared_agents": "/root/.agents/skills",
+    "claude_code": "/root/.claude/skills",
+    "opencode": "/root/.config/opencode/skills",
+    "hermes": "/root/.hermes/skills",
+    "openhands": "/root/.openhands/skills",
+    "dsh": "/root/.dsh/skills",
+    "cline": "/root/.cline/skills"
+  },
+  "runtime_loaded_verified": false,
+  "notes": "API model catalog and auth checks passed. External-provider generation and agent tool-use E2E remain unverified; no agent is marked RUNNING or VERIFIED without an actual task execution test. Secure multi-agent workflow skill added; runtime inference remains blocked by provider timeout and must not be marked verified. OWASP-aligned agentic security review skill added. Live model inference was attempted: cloud provider route fails on non-ASCII API key configuration; local model endpoint returns HTTP 200 but yielded no final content within the tested token budget. Keep inference and agent tool-use unverified.",
+  "api_gateway": {
+    "service": "litellm.service",
+    "endpoint": "http://127.0.0.1:4000/v1",
+    "anthropic_endpoint": "http://127.0.0.1:4000",
+    "openhands_bridge": "http://host.docker.internal:4001/v1",
+    "key_env": "LITELLM_MASTER_KEY",
+    "default_model": "my-model",
+    "model_aliases": [
+      "my-model",
+      "deepseek-free",
+      "nvidia/meta/llama-3.1-8b-instruct",
+      "nvidia/deepseek-ai/deepseek-r1",
+      "nvidia/qwen/qwen3-32b"
+    ],
+    "catalog_verification": "PASS",
+    "inference_e2e": "FAIL_CLOUD_KEY_ENCODING_AND_LOCAL_NO_FINAL_CONTENT"
+  },
+  "agent_status": {
+    "hermes": "CONFIG_UPDATED_CATALOG_VERIFIED",
+    "dsh": "CONFIG_UPDATED_CATALOG_VERIFIED",
+    "opencode": "CONFIG_UPDATED_CATALOG_VERIFIED",
+    "claude-code": "CONFIG_UPDATED_ROUTE_NOT_INFERENCE_VERIFIED",
+    "openhands": "ENV_CONFIGURED_BRIDGE_VERIFIED_INFERENCE_NOT_RUN",
+    "openwebui": "14_EXISTING_API_CONNECTIONS_PRESERVED_SHARED_GATEWAY_NOT_APPLIED",
+    "cline": "EXISTING_OPENAI_COMPATIBLE_PROVIDER_CONFIGURED_SHARED_GATEWAY_NOT_APPLIED",
+    "lody": "TOOL_RUNTIME_NO_PROVIDER_OVERRIDE",
+    "conduit": "MESSAGING_ONLY",
+    "flowise": "MANUAL_STARTUP_NOT_CONNECTED",
+    "cuga": "MANUAL_OR_NOT_RUNNING",
+    "pentestgpt": "MANUAL_AUTHORIZED_TARGETS_ONLY",
+    "xattacker": "MANUAL_ONLY_NEVER_AUTOSTART"
+  }
+}

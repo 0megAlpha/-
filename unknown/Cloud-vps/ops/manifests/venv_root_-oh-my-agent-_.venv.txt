@@ -1,0 +1,1 @@
+-e git+https://github.com/xh09411-web/-oh-my-agent-.git@f824560ec40fff7e732e6dea5e49680069b0b373#egg=oh_my_agent_evolution

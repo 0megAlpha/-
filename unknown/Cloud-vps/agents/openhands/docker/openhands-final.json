@@ -1,0 +1,81 @@
+{
+  "name": "openhands-final",
+  "image": "ai-agent-snapshots/agent-canvas:1.27.1-browsermcp-fixed-20261015",
+  "cmd": null,
+  "entrypoint": [
+    "tini",
+    "--",
+    "/opt/agent-canvas/entrypoint.sh"
+  ],
+  "env_keys": [
+    "ACP_NODE_DIR",
+    "AGENT_CANVAS_ALLOW_LAN_SESSION_KEY",
+    "AGENT_CANVAS_BASE_PATH",
+    "AGENT_CANVAS_BUILD_GIT_REF",
+    "AGENT_CANVAS_BUILD_GIT_SHA",
+    "CHROME_BIN",
+    "CHROMIUM_FLAGS",
+    "DO_NOT_TRACK",
+    "EDITOR",
+    "GIT_EDITOR",
+    "LANG",
+    "LC_ALL",
+    "LD_LIBRARY_PATH",
+    "LOG_JSON",
+    "NPM_CONFIG_CACHE",
+    "OHMA_DRAFT_ROOT",
+    "OHMA_SKILL_ROOTS",
+    "OH_ACP_SKILL_SOURCING",
+    "OH_ENABLE_VSCODE",
+    "OH_TELEMETRY_EXPORTER",
+    "OPENHANDS_BUILD_GIT_REF",
+    "OPENHANDS_BUILD_GIT_SHA",
+    "OPENHANDS_SUPPRESS_BANNER",
+    "OPENVSCODE_SERVER_ROOT",
+    "PATH",
+    "PUPPETEER_EXECUTABLE_PATH",
+    "PYTHONPATH",
+    "UV_CACHE_DIR",
+    "VISUAL",
+    "VITE_DO_NOT_TRACK",
+    "VITE_POSTHOG_API_KEY"
+  ],
+  "ports": {
+    "8000/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "8009"
+      }
+    ]
+  },
+  "restart": "unless-stopped",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/root/AI-Agent-Skill/skills",
+      "dst": "/opt/skills-canonical",
+      "rw": false
+    },
+    {
+      "src": "/root/AI-Agent-Skill/plugins/openhands/oh-my-agent",
+      "dst": "/opt/oh-my-agent",
+      "rw": false
+    },
+    {
+      "src": "/var/run/docker.sock",
+      "dst": "/var/run/docker.sock",
+      "rw": true
+    },
+    {
+      "src": "/root/openhands-canvas-browsermcp-state-20261014",
+      "dst": "/home/openhands/.openhands",
+      "rw": true
+    },
+    {
+      "src": "/root/openhands-canvas-browsermcp-projects-20261014",
+      "dst": "/projects",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

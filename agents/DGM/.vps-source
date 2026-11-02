@@ -1,0 +1,5 @@
+source_path=/root/-oh-my-agent-/upstreams/DGM
+source_remote=https://github.com/jennyzzt/dgm.git
+source_branch=main
+source_commit=a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2
+migrated_at=2026-11-02 17:17:49

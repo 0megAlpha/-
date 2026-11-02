@@ -1,0 +1,10 @@
+[Unit]
+Description=LiteLLM
+After=network.target
+[Service]
+EnvironmentFile=/root/.agent.env
+ExecStart=/usr/local/bin/litellm --config /root/litellm_config.yaml --port 4000 --host 127.0.0.1
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

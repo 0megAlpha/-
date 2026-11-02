@@ -1,0 +1,59 @@
+{
+  "extensions": {
+    "openhands": {
+      "name": "openhands",
+      "version": "0.1.0",
+      "description": "Unified OpenHands plugin — bundles Cloud CLI, REST API, Automations, and Software Agent SDK skills into a single plugin.",
+      "enabled": true,
+      "source": "/home/openhands/.openhands/cache/skills/public-skills/plugins/openhands",
+      "resolved_ref": null,
+      "repo_path": null,
+      "installed_at": "2026-09-30T17:32:31.911108+00:00",
+      "install_path": "/home/openhands/.openhands/plugins/installed/openhands"
+    },
+    "qa-changes": {
+      "name": "qa-changes",
+      "version": "0.1.0",
+      "description": "Automated QA validation of PR changes — sets up the environment, runs tests, exercises changed behavior, and reports results",
+      "enabled": true,
+      "source": "/home/openhands/.openhands/cache/skills/public-skills/plugins/qa-changes",
+      "resolved_ref": null,
+      "repo_path": null,
+      "installed_at": "2026-09-30T17:32:41.587817+00:00",
+      "install_path": "/home/openhands/.openhands/plugins/installed/qa-changes"
+    },
+    "pr-review": {
+      "name": "pr-review",
+      "version": "0.1.0",
+      "description": "Automated PR code review — analyzes diffs and posts inline review comments via the GitHub API",
+      "enabled": true,
+      "source": "/home/openhands/.openhands/cache/skills/public-skills/plugins/pr-review",
+      "resolved_ref": null,
+      "repo_path": null,
+      "installed_at": "2026-09-30T17:32:51.238633+00:00",
+      "install_path": "/home/openhands/.openhands/plugins/installed/pr-review"
+    },
+    "release-notes": {
+      "name": "release-notes",
+      "version": "1.0.0",
+      "description": "Generate consistent, well-structured release notes from git history with categorized changelog, contributor attribution, and semver tag support.",
+      "enabled": true,
+      "source": "/home/openhands/.openhands/cache/skills/public-skills/plugins/release-notes",
+      "resolved_ref": null,
+      "repo_path": null,
+      "installed_at": "2026-09-30T17:32:53.954551+00:00",
+      "install_path": "/home/openhands/.openhands/plugins/installed/release-notes"
+    },
+    "vulnerability-remediation": {
+      "name": "vulnerability-remediation",
+      "version": "1.0.0",
+      "description": "Automated security vulnerability scanning and AI-powered remediation. Scans repositories, skips when no issues found, and creates PRs with fixes.",
+      "enabled": true,
+      "source": "/home/openhands/.openhands/cache/skills/public-skills/plugins/vulnerability-remediation",
+      "resolved_ref": null,
+      "repo_path": null,
+      "installed_at": "2026-09-30T17:32:58.533187+00:00",
+      "install_path": "/home/openhands/.openhands/plugins/installed/vulnerability-remediation"
+    }
+  }
+}

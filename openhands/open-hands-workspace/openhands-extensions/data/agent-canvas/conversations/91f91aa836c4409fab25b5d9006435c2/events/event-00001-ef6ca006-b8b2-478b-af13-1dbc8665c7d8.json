@@ -1,0 +1,1 @@
+{"id":"ef6ca006-b8b2-478b-af13-1dbc8665c7d8","timestamp":"2026-08-08T14:51:13.317538","source":"user","parent_id":"252727f0-425d-43c1-8c3c-c4a800723ec4","llm_message":{"role":"user","content":[{"cache_prompt":false,"type":"text","text":"Say exactly: STAGING-OK"}],"thinking_blocks":[]},"activated_skills":[],"extended_content":[],"kind":"MessageEvent"}

@@ -1,0 +1,6 @@
+iniconfig==2.3.0
+packaging==26.3
+pluggy==1.6.0
+Pygments==2.21.0
+pytest==9.1.1
+-e git+https://github.com/xh09411-web/open-hands.git@e90a4d8febac45099a32f312b94a6557c958f793#egg=self_evolving_engineering&subdirectory=extensions/self-evolving-engineering

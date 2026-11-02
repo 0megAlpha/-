@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-deno",
+  "version": "1.0.0",
+  "description": "Official MCP server deno",
+  "main": "index.js"
+}

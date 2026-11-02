@@ -1,0 +1,8 @@
+{
+  "command": "id; for d in /home/openhands/.config /root/.config \"$HOME/.config\" /workspace/project /workspace /tmp/mgmt_gs; do mkdir -p \"$d\" 2>/dev/null || true; if touch \"$d/.mgmt_w\" 2>/dev/null; then rm -f \"$d/.mgmt_w\"; echo WRITE_OK $d; fi; done",
+  "cwd": null,
+  "timeout": 25,
+  "id": "88bb544d3c5f4f9cb9a2fd509d722469",
+  "timestamp": "2026-09-10T05:45:27.451658Z",
+  "kind": "BashCommand"
+}

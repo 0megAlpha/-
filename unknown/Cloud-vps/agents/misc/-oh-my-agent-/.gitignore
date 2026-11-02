@@ -1,0 +1,14 @@
+.venv/
+.evolution/
+__pycache__/
+*.pyc
+*.db
+
+.venv/
+.evolution/
+__pycache__/
+*.pyc
+*.db
+*.egg-info/
+
+upstreams/
