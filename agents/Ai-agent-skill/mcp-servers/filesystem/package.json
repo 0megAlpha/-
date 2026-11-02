@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-filesystem",
+  "version": "1.0.0",
+  "description": "Official MCP server filesystem",
+  "main": "index.js"
+}

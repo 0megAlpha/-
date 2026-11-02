@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "oh-my-agent": {
+      "command": "/usr/bin/python3",
+      "args": ["-m", "oh_my_agent.server"],
+      "env": {
+        "PYTHONPATH": "/opt/workspace_base/.openhands/oh-my-agent",
+        "OHMA_SKILL_ROOTS": "/opt/workspace_base/.agents/skills",
+        "OHMA_DRAFT_ROOT": "/opt/workspace_base/.openhands/oh-my-agent/drafts"
+      }
+    }
+  }
+}

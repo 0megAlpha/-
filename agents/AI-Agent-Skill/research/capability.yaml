@@ -1,0 +1,29 @@
+version: 1
+name: universal-research-repository-capability
+status: installed
+activation: default-off
+security:
+  network_access: opt_in
+  repository_access: opt_in
+  credential_use: environment_only
+  secrets_persisted: false
+  external_write: false
+  external_delete: false
+  target_scope: user_authorized
+engines:
+  web_search: {provider: duckduckgo-html, enabled_by_default: false, read_only: true}
+  repository: {providers: [github-rest, git-local], enabled_by_default: false, read_only: true}
+  local_knowledge: {provider: filesystem, enabled_by_default: false, read_only: true}
+per_agent:
+  hermes: {installed: true, enabled: false}
+  openhands: {installed: true, enabled: false}
+  dsh: {installed: true, enabled: false}
+  opencode: {installed: true, enabled: false}
+  cline: {installed: true, enabled: false}
+  openwebui: {installed: true, enabled: false}
+  lody: {installed: true, enabled: false}
+  conduit: {installed: true, enabled: false}
+  pentestgpt: {installed: true, enabled: false}
+  cuga: {installed: true, enabled: false}
+  flowise: {installed: true, enabled: false}
+  xattacker: {installed: true, enabled: false}

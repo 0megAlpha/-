@@ -1,0 +1,6 @@
+{
+  "name": "git-commit-message-linter",
+  "version": "1.0.0",
+  "type": "linter",
+  "entry": "index.js"
+}

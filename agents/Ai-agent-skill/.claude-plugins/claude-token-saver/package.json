@@ -1,0 +1,6 @@
+{
+  "name": "claude-token-saver",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-token-saver",
+  "main": "index.js"
+}

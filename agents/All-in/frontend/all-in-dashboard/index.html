@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Company Dashboard</title>
+<style>
+:root { --bg:#0d1117; --card:#161b22; --border:#30363d; --text:#c9d1d9; --accent:#58a6ff; --green:#3fb950; --yellow:#db6d28; --red:#f85149; }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",monospace; background:var(--bg); color:var(--text); padding:20px; }
+.header { text-align:center; padding:20px; border-bottom:1px solid var(--border); margin-bottom:20px; }
+.header h1 { color:var(--accent); font-size:24px; }
+.header p { color:#8b949e; font-size:12px; margin-top:8px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; }
+.card { background:var(--card); border:1px solid var(--border); border-radius:8px; padding:16px; }
+.card h2 { color:var(--accent); font-size:16px; margin-bottom:12px; border-bottom:1px solid var(--border); padding-bottom:8px; }
+.card input { width:100%; padding:8px; background:#0d1117; border:1px solid var(--border); color:var(--text); border-radius:4px; margin-bottom:8px; }
+.card button { width:100%; margin-top:4px; padding:10px; background:var(--accent); color:white; border:none; border-radius:4px; cursor:pointer; }
+.agent-row { display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #21262d; font-size:13px; }
+.agent-row:last-child { border-bottom:none; }
+.task-row { padding:8px 0; border-bottom:1px solid #21262d; font-size:13px; }
+.status-online { color:var(--green); }
+.status-offline { color:var(--red); }
+.status-warning { color:var(--yellow); }
+.log-entry { font-size:12px; color:#8b949e; padding:4px 0; border-bottom:1px dashed #21262d; word-break:break-all; }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>🏢 AI Software Company — Founder Dashboard</h1>
+  <p>CEO Command Center | Hermes Manager | Agent Fleet Monitor</p>
+</div>
+
+<div class="grid">
+  <div class="card">
+    <h2>⚙️ 連線設定</h2>
+    <input id="cfg-base" placeholder="Hermes Base URL（例：http://100.126.48.60:8642）">
+    <input id="cfg-qdrant" placeholder="Qdrant Base URL（例：http://100.126.48.60:6333）">
+    <input id="cfg-key" type="password" placeholder="API Key（僅存本機 localStorage，不入庫）">
+    <button onclick="saveConfig()">儲存設定</button>
+    <div id="cfg-note" class="log-entry">跨網域需 Hermes/Qdrant 開 CORS，否則面板顯示 offline。</div>
+  </div>
+
+  <div class="card">
+    <h2>👤 CEO Command</h2>
+    <input id="ceo-input" placeholder="輸入目標，例如：做一個待辦事項 SaaS">
+    <button onclick="sendGoal()">執行</button>
+    <div id="ceo-log" class="log-entry">等待指令...</div>
+  </div>
+
+  <div class="card">
+    <h2>🧠 Hermes Status</h2>
+    <div class="agent-row"><span>Status</span><span id="hermes-status" class="status-offline">unknown</span></div>
+    <div class="agent-row"><span>Memory</span><span id="hermes-memory">—</span></div>
+    <div class="agent-row"><span>Current Decision</span><span id="hermes-decision">Idle</span></div>
+  </div>
+
+  <div class="card">
+    <h2>🤖 Agent Fleet</h2>
+    <div id="agent-list">載入中...</div>
+  </div>
+
+  <div class="card">
+    <h2>📋 Active Tasks</h2>
+    <div id="task-list">等待 Hermes /v1/agents/status ...</div>
+  </div>
+
+  <div class="card">
+    <h2>✅ Verification</h2>
+    <div class="agent-row"><span>Tests</span><span id="verify-tests">pending</span></div>
+    <div class="agent-row"><span>Typecheck</span><span id="verify-type">pending</span></div>
+    <div class="agent-row"><span>Security</span><span id="verify-sec">pending</span></div>
+    <div class="agent-row"><span>Build</span><span id="verify-build">pending</span></div>
+  </div>
+
+  <div class="card">
+    <h2>📊 SESM Engine</h2>
+    <div class="agent-row"><span>Current State</span><span id="sesm-state">INIT</span></div>
+    <div class="agent-row"><span>Version</span><span id="sesm-version">v1</span></div>
+    <div class="agent-row"><span>Success Rate</span><span id="sesm-rate">0%</span></div>
+    <div class="agent-row"><span>Qdrant Points</span><span id="qdrant-points">—</span></div>
+  </div>
+</div>
+
+<script src="dashboard.js"></script>
+</body>
+</html>

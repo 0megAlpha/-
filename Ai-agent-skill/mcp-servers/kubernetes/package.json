@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-kubernetes",
+  "version": "1.0.0",
+  "description": "Official MCP server kubernetes",
+  "main": "index.js"
+}

@@ -1,0 +1,28 @@
+# === 敏感配置與金鑰 (絕對禁止推送) ===
+.env
+.env.local
+.env.production
+*.pem
+*.key
+credentials.yaml
+.dsh/
+.lody/
+.cline/
+.opencode/
+.private/
+.agents/private/
+.agents/skills-private/
+
+# === 運行時狀態與快取 (不需要同步) ===
+__pycache__/
+*.pyc
+node_modules/
+.conversations/
+memory/
+*.log
+.DS_Store
+.env.development
+.env.test
+
+deploy/.env
+deploy/.env.local

@@ -1,0 +1,6 @@
+.env
+*.key
+*.pem
+*secret*
+*token*
+mcp.json

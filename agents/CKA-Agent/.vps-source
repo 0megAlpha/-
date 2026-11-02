@@ -1,0 +1,5 @@
+source_path=/home/xiaye/CKA-Agent
+source_remote=https://github.com/Graph-COM/CKA-Agent.git
+source_branch=main
+source_commit=938becd7011e834ed9cf89140e9fdddc12a2866c
+migrated_at=2026-11-02 17:17:49

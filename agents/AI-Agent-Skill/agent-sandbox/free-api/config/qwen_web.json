@@ -1,0 +1,8 @@
+{
+  "provider": "qwen_web",
+  "repo": "https://github.com/y13sint/FreeQwenApi.git",
+  "install_path": "/opt/free-api/FreeQwenApi",
+  "port": 8083,
+  "capabilities": ["text_generation", "image_generation", "video_generation"],
+  "config": { "auto_login": false, "session_persistence": true }
+}

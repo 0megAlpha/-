@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {
+      "parameters": { "httpMethod": "POST", "path": "v6-factory-trigger", "options": {} },
+      "id": "v6-webhook-001",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": { "method": "POST", "url": "http://openhands-canvas:3000/api/tasks", "sendBody": true, "specifyBody": "json", "jsonBody": "={ \"task\": \"{{ $json.body.blueprint }}\" }", "options": {} },
+      "id": "v6-openhands-002",
+      "name": "Dispatch OpenHands",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [500, 300]
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Dispatch OpenHands", "type": "main", "index": 0 }]] }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "dsh-profile-default",
+  "private": true,
+  "dependencies": {
+    "oh-my-openagent": "^4.19.4",
+    "dsh-infinite-gen-4": "file:../../plugins/dsh-infinite-gen-4"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base"
+      ],
+      "patchReload": "live"
+    }
+  }
+}

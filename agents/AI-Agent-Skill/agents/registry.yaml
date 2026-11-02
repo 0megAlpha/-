@@ -1,0 +1,66 @@
+version: 1
+layer: ai-agent-skill
+session_key: [agent_id, workspace_id, session_id, provider_id, model_id]
+
+agents:
+  hermes: {source: /root/007-hermes, kind: local, capabilities: [chat, tools, terminal, files]}
+  openhands: {source: /root/open-hands, kind: http, capabilities: [chat, tools, terminal, files, browser]}
+  dsh: {source: /root/--dsh, kind: http, capabilities: [chat, tools, terminal, web, sandbox]}
+  opencode: {source: /root/opencode, kind: http, capabilities: [chat, tools, terminal, files]}
+  cline: {kind: acp, command: "cline --acp", capabilities: [chat, tools, terminal, files, browser]}
+  openwebui: {kind: http, capabilities: [chat, models, tools, knowledge]}
+  lody: {kind: local, capabilities: [browser, tools]}
+  conduit: {kind: http, capabilities: [matrix, messaging]}
+  pentestgpt: {source: /root/-PentestGPT-, kind: local, policy: manual-authorized-targets-only}
+  cuga: {source: /root/-cuga-agent-, kind: local, capabilities: [browser, tools]}
+  flowise: {source: /root/flowise-LLM, kind: http, startup: manual-until-build-clean}
+  xattacker: {source: /root/XAttacker, kind: local, policy: manual-authorized-targets-only, startup: never-automatic}
+
+providers:
+  openai_compatible: {endpoint_env: AGENT_THRONE_PROVIDER_URL, api_key_env: AGENT_THRONE_API_KEY}
+  litellm: {endpoint: http://127.0.0.1:4000/v1, api_key_env: LITELLM_MASTER_KEY, model_alias: my-model, auth_required: true}
+  llama_cpp: {endpoint: http://127.0.0.1:8088}
+  acp: {transport: stdio}
+
+security:
+  default_sandbox: true
+  read_only_observer: true
+  public_bind: false
+  secrets_in_repo: false
+  hidden_persistence: false
+  external_offensive_autorun: false
+research_capability:
+  contract: /root/AI-Agent-Skill/research/capability.yaml
+  installed: true
+  enabled_by_default: false
+  per_agent_override_required: true
+  operations: [web_search, github_repository_search, local_git_search, local_knowledge]
+  write_operations: []
+research_upstreams:
+  - name: BitDecoding
+    path: /root/ai-agent-skill/upstreams-research/BitDecoding
+    enabled: false
+  - name: StateMachine
+    path: /root/ai-agent-skill/upstreams-research/StateMachine
+    enabled: false
+  - name: HyperAgents
+    path: /root/ai-agent-skill/upstreams-research/HyperAgents
+    enabled: false
+  - name: hyperagent-public-skills
+    path: /root/ai-agent-skill/upstreams-research/hyperagent-public-skills
+    enabled: false
+  - name: live-swe-agent
+    path: /root/ai-agent-skill/upstreams-research/live-swe-agent
+    enabled: false
+  - name: PySR
+    path: /root/ai-agent-skill/upstreams-research/PySR
+    enabled: false
+  - name: ModelingToolkit.jl
+    path: /root/ai-agent-skill/upstreams-research/ModelingToolkit.jl
+    enabled: false
+  - name: PentestGPT
+    path: /root/ai-agent-skill/upstreams-research/PentestGPT
+    enabled: false
+  - name: FuzzingBrain
+    path: /root/ai-agent-skill/upstreams-research/FuzzingBrain
+    enabled: false

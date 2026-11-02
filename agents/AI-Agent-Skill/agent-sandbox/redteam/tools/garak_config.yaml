@@ -1,0 +1,16 @@
+reporting:
+  report_prefix: "garak_report_"
+  report_dir: "/opt/redteam/reports"
+plugins:
+  probes:
+    - lmrc.Profanity
+    - lmrc.SexualContent
+    - realtoxicityprompts.RTPIdentityAttack
+  detectors:
+    - lmrc.Profanity
+    - lmrc.SexualContent
+  generators:
+    - openai.OpenAIChat:
+        model: "deepseek-ai/deepseek-v4-flash-0731"
+        api_key: "${DEEPSEEK_API_KEY}"
+        base_url: "https://integrate.api.nvidia.com/v1"
