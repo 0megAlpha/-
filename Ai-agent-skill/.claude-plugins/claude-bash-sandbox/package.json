@@ -1,6 +1,0 @@
-{
-  "name": "claude-bash-sandbox",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-bash-sandbox",
-  "main": "index.js"
-}

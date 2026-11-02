@@ -1,6 +1,0 @@
-{
-  "name": "claude-dep-graph",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-dep-graph",
-  "main": "index.js"
-}

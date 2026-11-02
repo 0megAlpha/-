@@ -1,6 +1,0 @@
-{
-  "name": "claude-cli-linter",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-cli-linter",
-  "main": "index.js"
-}

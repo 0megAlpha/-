@@ -1,6 +1,0 @@
-{
-  "name": "@modelcontextprotocol/server-postgres",
-  "version": "1.0.0",
-  "description": "Official MCP server postgres",
-  "main": "index.js"
-}

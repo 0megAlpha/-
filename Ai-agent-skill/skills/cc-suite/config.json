@@ -1,6 +1,0 @@
-{
-  "name": "cc-suite",
-  "clients": ["claude-code", "codex", "gemini-cli"],
-  "mcp_bridge": { "enabled": true, "mode": "bidirectional", "port": 7654 },
-  "async_proxy": { "enabled": true, "timeout": 300 }
-}

@@ -1,6 +1,0 @@
-{
-  "name": "claude-diff-patcher",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-diff-patcher",
-  "main": "index.js"
-}
