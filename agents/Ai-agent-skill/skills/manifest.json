@@ -1,0 +1,24 @@
+{
+  "pack": "Ai-agent-skill",
+  "version": "2026.08.16",
+  "principles": [
+    "one pack many agents",
+    "skills need ownership",
+    "shared references at ~/.agents/references",
+    "from output to delivery"
+  ],
+  "skills": [
+    {"name": "engineering-memory", "source": "../All-in/skills/engineering-memory/SKILL.md", "owner": "All-in"},
+    {"name": "define-to-ship", "source": "../All-in/skills/define-to-ship/SKILL.md", "owner": "All-in"},
+    {"name": "plan-once-verify-always", "source": "../All-in/skills/plan-once-verify-always/SKILL.md", "owner": "All-in"},
+    {"name": "agent-skills", "source": "../All-in/skills/agent-skills/SKILL.md", "owner": "Ai-agent-skill"},
+    {"name": "ecc", "source": "../All-in/skills/ecc/SKILL.md", "owner": "All-in"},
+    {"name": "vps-bridge", "source": "../All-in/skills/vps-bridge/SKILL.md", "owner": "All-in"},
+    {"name": "apollo-memory", "source": "../All-in/skills/apollo-memory/SKILL.md", "owner": "All-in"},
+    {"name": "sesm-engine", "source": "../All-in/skills/sesm-engine/SKILL.md", "owner": "All-in"},
+    {"name": "harness-evolution", "source": "../All-in/skills/harness-evolution/SKILL.md", "owner": "All-in"}
+  ],
+  "references_dir": "~/.agents/references/",
+  "install_targets": ["~/.agents/skills", "~/.hermes/skills", "~/.config/opencode/skills"]
+}
+

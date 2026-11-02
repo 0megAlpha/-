@@ -1,0 +1,11 @@
+[Unit]
+Description=Google-ai Mobile Dashboard API
+After=network.target
+
+[Service]
+ExecStart=/usr/local/bin/node /root/Google-ai/server.mjs
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

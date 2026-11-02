@@ -1,0 +1,14 @@
+[Unit]
+Description=Ollama Service
+After=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/ollama serve
+User=ollama
+Group=ollama
+Restart=always
+RestartSec=3
+Environment="PATH=/root/.local/bin:/usr/local/go/bin:/root/go/bin:/root/.fly/bin:/root/.local/bin:/root/.local/bin:/root/.local/bin:/root/ai-agent-fleet/bin:/root/.local/bin:/root/.opencode/bin:/root/bin:/root/.opencode/bin:/root/ai-agent-fleet/bin:/root/.local/bin:/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+
+[Install]
+WantedBy=default.target

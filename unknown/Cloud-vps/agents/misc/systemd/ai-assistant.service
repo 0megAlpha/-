@@ -1,0 +1,10 @@
+[Unit]
+Description=Persistent AI assistant (opencode TUI in tmux)
+After=network-online.target litellm.service
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/ai-assistant.sh
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

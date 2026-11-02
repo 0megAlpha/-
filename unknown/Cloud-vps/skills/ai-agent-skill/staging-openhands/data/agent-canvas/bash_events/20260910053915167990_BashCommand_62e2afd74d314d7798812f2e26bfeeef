@@ -1,0 +1,8 @@
+{
+  "command": "echo MGMT_PING; echo SYSINFO ram_gb=$(awk '/MemTotal/{printf \"%d\",$2/1024/1024}' /proc/meminfo 2>/dev/null || echo 0) cpu=$(nproc 2>/dev/null || grep -c ^processor /proc/cpuinfo 2>/dev/null || echo 0) disk_gb=$(df -BG / 2>/dev/null | awk 'NR==2{gsub(/G/,\"\",$2); print $2+0}') host=$(hostname -s 2>/dev/null || echo unknown)",
+  "cwd": null,
+  "timeout": 45,
+  "id": "62e2afd74d314d7798812f2e26bfeeef",
+  "timestamp": "2026-09-10T05:39:15.167990Z",
+  "kind": "BashCommand"
+}

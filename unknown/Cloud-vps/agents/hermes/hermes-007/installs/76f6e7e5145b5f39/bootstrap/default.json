@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "identity": "79651b71bd56efd76d06f3de1df64dde09b58ff3",
+  "bootstrappedAt": "2026-10-15T01:20:49+0800",
+  "results": {
+    "adopt_blessed_checkout": {
+      "ok": true,
+      "skipped": "already-stamped"
+    },
+    "migrate_config": {
+      "ok": true,
+      "skipped": "up-to-date"
+    },
+    "state_db_guard": {
+      "ok": true
+    },
+    "drop_live_plugin_catalog": {
+      "ok": true
+    },
+    "expose_cli": {
+      "ok": true,
+      "written": []
+    }
+  }
+}

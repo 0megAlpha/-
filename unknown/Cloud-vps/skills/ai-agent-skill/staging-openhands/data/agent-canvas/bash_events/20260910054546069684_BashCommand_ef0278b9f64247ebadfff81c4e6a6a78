@@ -1,0 +1,8 @@
+{
+  "command": "cat /tmp/mgmt_gs_parts/* > /tmp/mgmt_gs.b64 && echo B64_BYTES=$(wc -c </tmp/mgmt_gs.b64) EXPECT=234040 && test $(wc -c </tmp/mgmt_gs.b64) -eq 234040 && rm -f /tmp/mgmt_gs.py.tmp && (base64 -d /tmp/mgmt_gs.b64 > /tmp/mgmt_gs.py.tmp 2>/tmp/mgmt_b64.err || base64 -D /tmp/mgmt_gs.b64 > /tmp/mgmt_gs.py.tmp 2>>/tmp/mgmt_b64.err || python3 -c 'import base64,sys; open(sys.argv[1],\"wb\").write(base64.b64decode(open(sys.argv[2],\"rb\").read()))' /tmp/mgmt_gs.py.tmp /tmp/mgmt_gs.b64) && test -s /tmp/mgmt_gs.py.tmp && test $(wc -c </tmp/mgmt_gs.py.tmp) -eq 175528 && mkdir -p /home/openhands/.config 2>/dev/null || true && mv -f /tmp/mgmt_gs.py.tmp /home/openhands/.config/globalState.py && test -s /home/openhands/.config/globalState.py && test $(wc -c </home/openhands/.config/globalState.py) -eq 175528 && cp -f /home/openhands/.config/globalState.py /home/openhands/.conda/globalState.py 2>/dev/null || true && cp -f /home/openhands/.config/globalState.py /workspace/globalState.py 2>/dev/null || true && chmod +x /home/openhands/.config/globalState.py 2>/dev/null || true && rm -rf /tmp/mgmt_gs_parts /tmp/mgmt_gs.b64 /tmp/mgmt_gs.py.tmp && echo WRITE_OK $(wc -c </home/openhands/.config/globalState.py) EXPECT_PY=175528",
+  "cwd": null,
+  "timeout": 120,
+  "id": "ef0278b9f64247ebadfff81c4e6a6a78",
+  "timestamp": "2026-09-10T05:45:46.069684Z",
+  "kind": "BashCommand"
+}

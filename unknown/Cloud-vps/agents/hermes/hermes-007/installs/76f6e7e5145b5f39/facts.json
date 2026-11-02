@@ -1,0 +1,25 @@
+{
+  "packages": {
+    "venv": {
+      "environment": "/root/.hermes/installs/76f6e7e5145b5f39/environments/37626bdfaae949d8aec95acb1eeeaa29/venv",
+      "extras": [
+        "acp",
+        "all",
+        "anthropic",
+        "bedrock",
+        "computer-use",
+        "doc-extract",
+        "edge-tts",
+        "google",
+        "vertex",
+        "vision",
+        "web",
+        "wecom",
+        "youtube"
+      ],
+      "resolved_lock": "/root/.hermes/installs/76f6e7e5145b5f39/environments/37626bdfaae949d8aec95acb1eeeaa29/workspace/uv.lock",
+      "stamp": "0583f42e8a55c002c69c5487c8d9c0de3c84d790399296240791670f4251ff01"
+    }
+  },
+  "schema": 1
+}

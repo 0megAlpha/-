@@ -1,0 +1,8 @@
+{
+  "name": "@modelcontextprotocol/server-mcp",
+  "version": "0.6.2",
+  "description": "Official MCP server integration",
+  "main": "index.js",
+  "scripts": { "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"" },
+  "dependencies": { "@modelcontextprotocol/sdk": "1.0.1" }
+}

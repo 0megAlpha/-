@@ -1,0 +1,11 @@
+# openhands
+遷移時間：2026-11-02 17:18:18
+## 模組
+- core
+- extensions
+- open-hands
+- open-hands-workspace
+- openhands-config
+- openhands-extensions
+- openhands-upstream
+- software-agent-sdk

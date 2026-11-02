@@ -1,0 +1,73 @@
+{{- if and .Values.enabled .Values.resendSync.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-resend-sync
+  labels:
+    app: {{ .Release.Name }}-resend-sync
+spec:
+  schedule: {{ .Values.resendSync.schedule | quote }}
+  concurrencyPolicy: {{ .Values.resendSync.concurrencyPolicy }}
+  failedJobsHistoryLimit: {{ .Values.resendSync.failedJobsHistoryLimit }}
+  successfulJobsHistoryLimit: {{ .Values.resendSync.successfulJobsHistoryLimit }}
+  jobTemplate:
+    spec:
+      backoffLimit: {{ .Values.resendSync.backoffLimit }}
+      template:
+        metadata:
+          labels:
+            app: {{ .Release.Name }}-resend-sync
+        spec:
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ .Values.serviceAccount.name }}
+          restartPolicy: OnFailure
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if .Values.caBundle.enabled }}
+          volumes:
+            {{- include "openhands.caBundle.volume" . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: {{ .Release.Name }}-resend-sync
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              imagePullPolicy: {{ .Values.image.pullPolicy | default "IfNotPresent" }}
+              command: ["python", "-m", "sync.resend_keycloak"]
+              resources:
+                {{- toYaml .Values.resendSync.resources | nindent 16 }}
+              {{- if .Values.caBundle.enabled }}
+              volumeMounts:
+                {{- include "openhands.caBundle.volumeMount" . | nindent 16 }}
+              {{- end }}
+              env:
+                - name: RESEND_AUDIENCE_ID
+                  value: {{ .Values.resendSync.audienceId | quote }}
+                - name: KEYCLOAK_REALM
+                  valueFrom:
+                    secretKeyRef:
+                      name: keycloak-realm
+                      key: realm-name
+                - name: BATCH_SIZE
+                  value: {{ .Values.resendSync.batchSize | default "2000" | quote }}
+                - name: MAX_RETRIES
+                  value: {{ .Values.resendSync.maxRetries | quote }}
+                - name: INITIAL_BACKOFF_SECONDS
+                  value: {{ .Values.resendSync.initialBackoffSeconds | quote }}
+                - name: MAX_BACKOFF_SECONDS
+                  value: {{ .Values.resendSync.maxBackoffSeconds | quote }}
+                - name: BACKOFF_FACTOR
+                  value: {{ .Values.resendSync.backoffFactor | quote }}
+                - name: RATE_LIMIT
+                  value: {{ .Values.resendSync.rateLimit | quote }}
+                {{- /* RESEND_API_KEY is provided by the shared openhands.env block below. */}}
+                {{- if .Values.resendSync.fromEmail }}
+                - name: RESEND_FROM_EMAIL
+                  value: {{ .Values.resendSync.fromEmail | quote }}
+                {{- end }}
+                {{- include "openhands.env" . | nindent 16 }}
+                {{- include "openhands.caBundle.env" . | nindent 16 }}
+{{- end }}

@@ -1,0 +1,6 @@
+{
+  "name": "claude-history-purger",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-history-purger",
+  "main": "index.js"
+}

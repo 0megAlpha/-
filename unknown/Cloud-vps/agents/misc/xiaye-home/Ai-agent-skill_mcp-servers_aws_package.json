@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-aws",
+  "version": "1.0.0",
+  "description": "Official MCP server aws",
+  "main": "index.js"
+}

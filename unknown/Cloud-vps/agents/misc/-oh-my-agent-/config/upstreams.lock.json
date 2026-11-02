@@ -1,0 +1,5 @@
+{
+  "StateM": {"url":"https://github.com/henryqin1997/statem.git","commit":"8c3309ad3e7b265e23a4db011ff98c5f6a132bd8"},
+  "HyperAgents": {"url":"https://github.com/facebookresearch/HyperAgents.git","commit":"59a68f672dfb92c74aeb7e61535d776fb36e172d"},
+  "DGM": {"url":"https://github.com/jennyzzt/dgm.git","commit":"a565fd2d1dca504ef5104a7cc0f3bdc4ab9b4fd2"}
+}

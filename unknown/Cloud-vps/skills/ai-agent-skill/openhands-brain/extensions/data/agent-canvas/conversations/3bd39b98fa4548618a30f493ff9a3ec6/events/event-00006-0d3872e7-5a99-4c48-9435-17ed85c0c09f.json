@@ -1,0 +1,1 @@
+{"id":"0d3872e7-5a99-4c48-9435-17ed85c0c09f","timestamp":"2026-08-16T15:58:07.658334","source":"user","parent_id":"99784cd6-933d-4146-a52d-006690224b02","llm_message":{"role":"user","content":[{"cache_prompt":false,"type":"text","text":"你好\n\n"}],"thinking_blocks":[]},"activated_skills":[],"extended_content":[],"kind":"MessageEvent"}

@@ -1,0 +1,45 @@
+{
+    auto_https off
+}
+
+http://127.0.0.1:8443 {
+    basic_auth {
+        weilin $2a$14$oTLcpjzeIPc9NBygLgu0g.ZQTCJgrUenyXvEMzH0YnP7ygLgSva9y
+    }
+
+    handle /openhands* {
+        uri strip_prefix /openhands
+        reverse_proxy 127.0.0.1:8000
+    }
+    handle /grafana* {
+        uri strip_prefix /grafana
+        reverse_proxy 127.0.0.1:3010
+    }
+    handle /jaeger* {
+        uri strip_prefix /jaeger
+        reverse_proxy 127.0.0.1:16686
+    }
+    handle /status* {
+        uri strip_prefix /status
+        reverse_proxy 127.0.0.1:3001
+    }
+    handle /webui* {
+        uri strip_prefix /webui
+        reverse_proxy 127.0.0.1:8081
+    }
+    handle /opencode* {
+        uri strip_prefix /opencode
+        reverse_proxy 127.0.0.1:4096
+    }
+    handle /n8n* {
+        uri strip_prefix /n8n
+        reverse_proxy 127.0.0.1:5678
+    }
+    handle /litellm* {
+        uri strip_prefix /litellm
+        reverse_proxy 127.0.0.1:4000
+    }
+    handle {
+        redir /status permanent
+    }
+}

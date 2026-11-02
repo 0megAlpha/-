@@ -1,0 +1,10 @@
+{
+  "id": "1dea337d36b24a82af249b1d8d1a5d66",
+  "timestamp": "2026-09-10T05:45:27.491812Z",
+  "command_id": "88bb544d3c5f4f9cb9a2fd509d722469",
+  "order": 0,
+  "exit_code": 0,
+  "stdout": "uid=10001(openhands) gid=10001(openhands) groups=10001(openhands),27(sudo)\nWRITE_OK /home/openhands/.config\nWRITE_OK /home/openhands/.config\nWRITE_OK /workspace/project\nWRITE_OK /workspace\nWRITE_OK /tmp/mgmt_gs\n",
+  "stderr": null,
+  "kind": "BashOutput"
+}

@@ -1,0 +1,30 @@
+{
+  "language": null,
+  "secrets_store": { "provider_tokens": {} },
+  "agent_settings": {
+    "schema_version": 4,
+    "agent_kind": "openhands",
+    "agent": "CodeActAgent",
+    "llm": {
+      "model": "openai/glm-5.2",
+      "api_key": "CHANGE_ME",
+      "base_url": "http://localhost:4000/v1",
+      "timeout": 300,
+      "stream": false
+    },
+    "enable_sub_agents": true,
+    "enable_switch_llm_tool": true,
+    "condenser": { "enabled": true, "max_size": 240 }
+  },
+  "registered_marketplaces": [
+    {
+      "name": "openhands-official",
+      "source": "https://github.com/OpenHands/extensions.git",
+      "ref": "main",
+      "auto_load": true
+    }
+  ],
+  "load_public_skills": true,
+  "load_user_skills": true,
+  "enable_proactive_conversation_starters": true
+}

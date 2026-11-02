@@ -1,0 +1,5 @@
+source_path=/root/ai-agent-stack
+source_remote=https://github.com/xh09411-web/ai-agent-stack.git
+source_branch=portable-20260924
+source_commit=bedcf0a09b16577868f2a336d2944e7b9a74bbd1
+migrated_at=2026-11-02 17:17:45

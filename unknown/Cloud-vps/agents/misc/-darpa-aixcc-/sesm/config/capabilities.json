@@ -1,0 +1,98 @@
+[
+  {
+    "name": "orchestrator",
+    "mode": "enabled",
+    "entrypoint": "orchestrator",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "state_machine",
+    "mode": "enabled",
+    "entrypoint": "state_machine",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "discovery_tree",
+    "mode": "enabled",
+    "entrypoint": "discovery_tree",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "evolution_engine",
+    "mode": "enabled",
+    "entrypoint": "evolution_engine",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "verification_gate",
+    "mode": "enabled",
+    "entrypoint": "verification_gate",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "tool_registry",
+    "mode": "enabled",
+    "entrypoint": "tool_registry",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "memory",
+    "mode": "enabled",
+    "entrypoint": "memory",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "mcp_gateway",
+    "mode": "enabled",
+    "entrypoint": "mcp_gateway",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "aixcc_research",
+    "mode": "sandbox_manual",
+    "entrypoint": "aixcc_research",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "fuzzing",
+    "mode": "sandbox_manual",
+    "entrypoint": "fuzzing",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "patch_validation",
+    "mode": "sandbox_manual",
+    "entrypoint": "patch_validation",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "llm_red_team",
+    "mode": "sandbox_manual",
+    "entrypoint": "llm_red_team",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "lora_candidate_lab",
+    "mode": "offline_candidate_only",
+    "entrypoint": "lora_candidate_lab",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "deployment",
+    "mode": "manual",
+    "entrypoint": "deployment",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "migration",
+    "mode": "disabled",
+    "entrypoint": "migration",
+    "rollback": "revert-to-parent"
+  },
+  {
+    "name": "economic_autonomy",
+    "mode": "simulation_only",
+    "entrypoint": "economic_autonomy",
+    "rollback": "revert-to-parent"
+  }
+]

@@ -1,0 +1,12 @@
+[Unit]
+Description=Local Llama Agent Model
+After=network.target
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/llama.cpp
+ExecStart=/opt/llama.cpp/build/bin/llama-server -m /opt/qwen38-runtime/Qwen3.8-27B-EfficientThink-SimPO-Q8_0.gguf --host 127.0.0.1 --port 8088 -c 1024 -np 1 -t 4 -ngl 0 -fa on --no-reasoning-preserve --metrics
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

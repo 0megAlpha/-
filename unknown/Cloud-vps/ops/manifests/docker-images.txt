@@ -1,0 +1,10 @@
+ai-agent-snapshots/agent-canvas:1.27.1-browsermcp-fixed-20261015	5.56GB
+ai-agent-snapshots/openhands-pre-api:20261009-053318	4.5GB
+calciumion/new-api:latest	325MB
+ghcr.io/open-webui/open-webui:main	6.51GB
+ghcr.io/open-webui/open-terminal:latest	5.71GB
+alpine:latest	13MB
+qdrant/qdrant:latest	288MB
+caddy:latest	88.7MB
+ghcr.io/invariantlabs-ai/server:openhands	3.49GB
+matrixconduit/matrix-conduit:latest	132MB

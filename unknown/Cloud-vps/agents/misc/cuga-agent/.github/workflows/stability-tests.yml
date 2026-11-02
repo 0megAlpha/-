@@ -1,0 +1,96 @@
+name: Stability Tests
+
+# "Stability Tests (Python 3.12)" and "(Python 3.13)" are required contexts in
+# main's branch protection. Do not add paths filters: a PR that skips this
+# workflow never reports those contexts and can never be merged.
+# yields an empty check list, which reads as green rather than as "never ran". Same hazard the
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+concurrency:
+  group: stability-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  AGENT_SETTING_CONFIG: ${{ vars.AGENT_SETTING_CONFIG }}
+  WATSONX_APIKEY: ${{ secrets.WATSONX_APIKEY }}
+  WATSONX_PROJECT_ID: ${{ vars.WATSONX_PROJECT_ID }}
+  WATSONX_URL: ${{ vars.WATSONX_URL }}
+  MODEL_NAME: ${{ secrets.MODEL_NAME }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+  PYTHONIOENCODING: utf-8
+  CUGA_THREAD_WORKSPACE_SEED: crm
+  PYTHONUNBUFFERED: "1"
+
+jobs:
+  stability-tests:
+    name: Stability Tests (Python ${{ matrix.python-version }})
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    # Nine live-model tests plus four service-stack startups exceed ten minutes
+    # when interim model replies need continuation; keep a bounded job deadline.
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version:
+          - "3.12"
+          - "3.13"
+          - "3.14"
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup-cuga
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Run stability tests
+        # 9 tests: 87% still allows one LLM flake (8/9=88.9%). 88% required a clean sweep.
+        run: uv run pytest src/system_tests/e2e -m stability --stability-threshold 87 -n0 --durations=20
+
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-python-${{ matrix.python-version }}
+          path: src/system_tests/e2e/logs/
+          retention-days: 7
+
+  stability-tests-windows:
+    name: Stability Tests Windows Smoke (Python 3.12)
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: windows-latest
+    timeout-minutes: 10
+    env:
+      UV_NO_PROGRESS: 1
+      UV_QUIET: 1
+    steps:
+      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          persist-credentials: false
+
+      - uses: ./.github/actions/setup-cuga
+        with:
+          python-version: "3.12"
+
+      - name: Run Windows smoke stability tests
+        run: uv run pytest src/system_tests/e2e/fast_test.py -m windows_smoke --stability-threshold 87 -n0 --durations=20
+
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-python-3.12-windows
+          path: src/system_tests/e2e/logs/
+          retention-days: 7

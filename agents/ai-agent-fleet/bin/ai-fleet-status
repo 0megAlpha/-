@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+set +e
+printf '%b%s%b\n' "\033[0;36m" "===== AI AGENT FLEET STATUS =====" "\033[0m"
+printf '%b%s%b\n' "\033[0;33m" "Core Tools:" "\033[0m"
+for x in opencode omo kilo goose crush aider cn ollama mini sweagent python3 git docker tmux npm node; do 
+    if command -v "$x" >/dev/null 2>&1; then 
+        printf '  %b✓%b %-15s %s\n' "\033[0;32m" "\033[0m" "$x" "$(command -v "$x")"
+    else 
+        printf '  %b✗%b %-15s %s\n' "\033[0;31m" "\033[0m" "$x" "not found"
+    fi
+done
+
+printf '\n%b%s%b\n' "\033[0;33m" "Python Virtual Environments:" "\033[0m"
+for p in "$HOME/ai-agent-fleet/venvs/agent-frameworks/bin/python" "$HOME/ai-agent-fleet/venvs/crewai-312/bin/python" "$HOME/ai-agent-fleet/venvs/mini-swe-agent/bin/python" "$HOME/ai-agent-fleet/venvs/swe-agent/bin/python" "$HOME/ai-agent-fleet/venvs/aider/bin/python"; do
+    if [ -x "$p" ]; then 
+        printf '  %b✓%b %s\n' "\033[0;32m" "\033[0m" "$p"
+    else 
+        printf '  %b✗%b %s\n' "\033[0;31m" "\033[0m" "$p"
+    fi
+done
+
+printf '\n%b%s%b\n' "\033[0;33m" "Existing Projects:" "\033[0m"
+for p in "$HOME/openhands" "$HOME/hermes-007" "$HOME/AI-Agent-Skill"; do 
+    if [ -e "$p" ]; then 
+        printf '  %b✓%b %s\n' "\033[0;32m" "\033[0m" "$p"
+    fi
+done
+
+printf '\n%b%s%b\n' "\033[0;33m" "Configuration:" "\033[0m"
+printf '  Workflow repository: %s\n' "${AI_FLEET_REPO:-$HOME/ai-agent-workflows}"
+printf '  Fleet root: %s\n' "${AI_FLEET_ROOT:-$HOME/ai-agent-fleet}"
+printf '\n'

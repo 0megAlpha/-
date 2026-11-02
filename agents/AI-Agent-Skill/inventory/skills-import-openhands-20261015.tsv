@@ -1,0 +1,134 @@
+skill_name	source	destination	action	sha256_tree
+add-javadoc	/root/open-hands/.agents/skills/add-javadoc	/root/AI-Agent-Skill/skills/add-javadoc	copied	96837dcd25abfa4fd224ef05798e8898600be8541b0cc42d6f565628c8a42265
+add-skill	/root/open-hands/.agents/skills/add-skill	/root/AI-Agent-Skill/skills/add-skill	copied	dc1ac3b1f2bc4797f8fe04add20a8224e84def9c0d09080035d565b3bb300491
+agent-canvas-environment	/root/open-hands/.agents/skills/agent-canvas-environment	/root/AI-Agent-Skill/skills/agent-canvas-environment	copied	e232fa3dc9de99984a5fe84f993a049d9792d52e2d782da6f223f4702970fa6d
+agent-creator	/root/open-hands/.agents/skills/agent-creator	/root/AI-Agent-Skill/skills/agent-creator	copied	0eb76a9cd9463ce9a5b2a2dddfef245dc21855b6abb4175b999cc0f1cbccddd2
+agent-memory	/root/open-hands/.agents/skills/agent-memory	/root/AI-Agent-Skill/skills/agent-memory	copied	183051917e48aa481603b8d476e64b10fdd7565b32fbb7cf1b43fffadb00dcd7
+agent-readiness-report	/root/open-hands/.agents/skills/agent-readiness-report	/root/AI-Agent-Skill/skills/agent-readiness-report	copied	e568c62725f48c3e9b7c58f6fb94249133f806e627c7b785028abc505e38c5ca
+agent-sdk-builder	/root/open-hands/.agents/skills/agent-sdk-builder	/root/AI-Agent-Skill/skills/agent-sdk-builder	copied	248ae87b0bcf65416bc2ce54a053ace346f893029853c7165a03c08336579b9a
+agent-skills	/root/open-hands/.agents/skills/agent-skills	/root/AI-Agent-Skill/skills/agent-skills	already-linked-to-canonical	
+api-compatibility	/root/open-hands/.agents/skills/api-compatibility	/root/AI-Agent-Skill/skills/api-compatibility	identical-existing	45c570be04d5bdc3e38518d53c05f601d46f2455d83d83a905a700f072294b18
+api-integration	/root/open-hands/.agents/skills/api-integration	/root/AI-Agent-Skill/skills/api-integration	copied	fc20c71ca14d70fa3f192fc1cadc9dbe8ff02d33f997951ce352d69a13d6191b
+apollo-memory	/root/open-hands/.agents/skills/apollo-memory	/root/AI-Agent-Skill/skills/apollo-memory	already-linked-to-canonical	
+auth-security	/root/open-hands/.agents/skills/auth-security	/root/AI-Agent-Skill/skills/auth-security	copied	614a82af74f12b8e0ddab13f184d3a7796410dfb6ccfe50a67d2827ed5e40275
+automated-ui-asset-generator	/root/open-hands/.agents/skills/automated-ui-asset-generator	/root/AI-Agent-Skill/skills/automated-ui-asset-generator	copied	03dce67fc39d6db110fe3c42a807714638c13d59c4f57408eda9fe4e03634163
+azure-devops	/root/open-hands/.agents/skills/azure-devops	/root/AI-Agent-Skill/skills/azure-devops	copied	880161e1a43f5449d0fbaf6feb72ab371bbaa9468c9f842dbb4e62c09a24cd89
+bitbucket	/root/open-hands/.agents/skills/bitbucket	/root/AI-Agent-Skill/skills/bitbucket	copied	ec5c8796a0c4aa8d59d3bfc582b71d3fe85564ba127e9dd3fbc3445d584bce40
+bitbucket-cloud	/root/open-hands/.agents/skills/bitbucket-cloud	/root/AI-Agent-Skill/skills/bitbucket-cloud	copied	4cd3ab3a91a9d81d0f9c1f557113e28256c60b2a1f730236768e722eddb777f0
+bitbucket-data-center	/root/open-hands/.agents/skills/bitbucket-data-center	/root/AI-Agent-Skill/skills/bitbucket-data-center	copied	220eda28d26f1e06e54d6d3634fb57e2dd77b8cc932ab222002afc949e9b4eeb
+BrowserGym	/root/open-hands/.agents/skills/BrowserGym	/root/AI-Agent-Skill/skills/BrowserGym	copied	f756b08ec8facbd7e9da3c34b653701251fada80ba34065b590ac1b36608ed67
+build-your-own-x	/root/open-hands/.agents/skills/build-your-own-x	/root/AI-Agent-Skill/skills/build-your-own-x	copied	c623fa9968c8c6110965f84fc5855d3f7fc85775a4e6b9a2c6dcfb50da576f35
+canvas-extension-api	/root/open-hands/.agents/skills/canvas-extension-api	/root/AI-Agent-Skill/skills/canvas-extension-api	copied	3980540a7f68a11ba61e0b3dd804ccf624df8d2a3fe75f199eeb548f7daa133e
+cc-suite-bridge	/root/open-hands/.agents/skills/cc-suite-bridge	/root/AI-Agent-Skill/skills/cc-suite-bridge	copied	756b11c512b536a6404afab7456000ec004c753ba3e1e3cf270d2d277c3355af
+ci-cd-pipeline	/root/open-hands/.agents/skills/ci-cd-pipeline	/root/AI-Agent-Skill/skills/ci-cd-pipeline	copied	dcd5f80837a976b365afe7f20aed152c7af123d2203679258568feedead1fa14
+CI-CD-Watcher	/root/open-hands/.agents/skills/CI-CD-Watcher	/root/AI-Agent-Skill/skills/CI-CD-Watcher	copied	75fe59526f68107fd94febfab0ccb3302fcf81c120d651cb35da60a53c8e6a18
+cluster-load-balancer	/root/open-hands/.agents/skills/cluster-load-balancer	/root/AI-Agent-Skill/skills/cluster-load-balancer	copied	83cbb6200160e48df517ff5f02892aede6829e4006eb7f7fa2b848dc36d81f20
+code-review	/root/open-hands/.agents/skills/code-review	/root/AI-Agent-Skill/skills/code-review	copied	02115cb6821210f0c6011e2b7fc089051af561042207337ce1d814f2ec2dd395
+code-simplifier	/root/open-hands/.agents/skills/code-simplifier	/root/AI-Agent-Skill/skills/code-simplifier	copied	f7532ed94c2595086da52715db8f9b0174a6d455ba7092061a9ed08bddff21cb
+composio	/root/open-hands/.agents/skills/composio	/root/AI-Agent-Skill/skills/composio	already-linked-to-canonical	
+composio-tool-integration	/root/open-hands/.agents/skills/composio-tool-integration	/root/AI-Agent-Skill/skills/composio-tool-integration	already-linked-to-canonical	
+cross-repo-testing	/root/open-hands/.agents/skills/cross-repo-testing	/root/AI-Agent-Skill/skills/cross-repo-testing	copied	a4ae04ab44f23e039db60e07e8b09b400b6fec9293ff30d0c7721e58d6644e8e
+datadog	/root/open-hands/.agents/skills/datadog	/root/AI-Agent-Skill/skills/datadog	copied	27249f9f5ede7ce3514f7aa1063eb3c86b2f030344b9069a65d667e6c59708a4
+db-migrate	/root/open-hands/.agents/skills/db-migrate	/root/AI-Agent-Skill/skills/db-migrate	copied	1cd37a36a46de329044698366c328b367eb79f24b8894ee589b3ddbaa0ca6b46
+DB-Schema-Grapher	/root/open-hands/.agents/skills/DB-Schema-Grapher	/root/AI-Agent-Skill/skills/DB-Schema-Grapher	copied	fb5c387613ccd62c5e3ec12ee955cbbdf4c4fdd57f80e8d91b821be189f9131b
+deep-packet-inspector	/root/open-hands/.agents/skills/deep-packet-inspector	/root/AI-Agent-Skill/skills/deep-packet-inspector	copied	3076aa003516275bbea0c1c8044d36ff27276cdd4304e72b79c67f795d369b9b
+define-to-ship	/root/open-hands/.agents/skills/define-to-ship	/root/AI-Agent-Skill/skills/define-to-ship	already-linked-to-canonical	
+deno	/root/open-hands/.agents/skills/deno	/root/AI-Agent-Skill/skills/deno	copied	8d830f340c03d1c8851dc700e58b28e0f8aa33860a4695c6eb00cd5c42eb7284
+dependency-resolver	/root/open-hands/.agents/skills/dependency-resolver	/root/AI-Agent-Skill/skills/dependency-resolver	copied	83d761d84900712a911ac6ed98c832398a4f7e1605ce99a952656c4c94a6f14e
+discord	/root/open-hands/.agents/skills/discord	/root/AI-Agent-Skill/skills/discord	copied	8725a3e74c7a79d7bb0fd0a3450fc2e52474cdaa8f32ed35aa85d2963a5b8ee6
+docker	/root/open-hands/.agents/skills/docker	/root/AI-Agent-Skill/skills/docker	copied	55400d5ba5c8ddf731522b70f98773f085e1d87e608798b03327c87d125d7d94
+docker-orchestration	/root/open-hands/.agents/skills/docker-orchestration	/root/AI-Agent-Skill/skills/docker-orchestration	copied	34104d3826e45b855b7eb83c39c34a76f22c860598c047edc567255bedfaa6a1
+Docker-Sandbox-Plus	/root/open-hands/.agents/skills/Docker-Sandbox-Plus	/root/AI-Agent-Skill/skills/Docker-Sandbox-Plus	copied	d0c408e1aa54894713afe3df4519033f10bc8a436464cd638a634de4fbd77e3a
+documentation-gen	/root/open-hands/.agents/skills/documentation-gen	/root/AI-Agent-Skill/skills/documentation-gen	copied	05617cbfc80ef58e76557532dc18383ad19e3694cee657d7c651f30df6387515
+ecc	/root/open-hands/.agents/skills/ecc	/root/AI-Agent-Skill/skills/ecc	already-linked-to-canonical	
+engineering-memory	/root/open-hands/.agents/skills/engineering-memory	/root/AI-Agent-Skill/skills/engineering-memory	already-linked-to-canonical	
+env-verifier	/root/open-hands/.agents/skills/env-verifier	/root/AI-Agent-Skill/skills/env-verifier	copied	563e886e58cbcffb597c6e5e465584c3a1b58fcebc6d96608165acbdbe82dea8
+evidence-based-citations	/root/open-hands/.agents/skills/evidence-based-citations	/root/AI-Agent-Skill/skills/evidence-based-citations	copied	5880b0a90a80422ac3a37fb6ecb04c8a89a43541be19c6af2b2e7144238b403c
+evolution-tree	/root/open-hands/.agents/skills/evolution-tree	/root/AI-Agent-Skill/skills/recovered-from-open-hands/evolution-tree	preserved-different-collision	369674f20526beb3c042c6c32c157a59e11223eda2bb33b5dc6a1be9ab895524
+ffmpeg-media-matrix	/root/open-hands/.agents/skills/ffmpeg-media-matrix	/root/AI-Agent-Skill/skills/ffmpeg-media-matrix	copied	c251c5989d1ba5b776f93cedf54edf68b5973dccbc6efe3d3431417df09289cd
+firecrawl	/root/open-hands/.agents/skills/firecrawl	/root/AI-Agent-Skill/skills/firecrawl	already-linked-to-canonical	
+firecrawl-web-research	/root/open-hands/.agents/skills/firecrawl-web-research	/root/AI-Agent-Skill/skills/firecrawl-web-research	already-linked-to-canonical	
+flarglebargle	/root/open-hands/.agents/skills/flarglebargle	/root/AI-Agent-Skill/skills/flarglebargle	copied	d1e85e58e026ac94ee1d821265760f13ae790834830037f9e480b8d740914b28
+frontend-design	/root/open-hands/.agents/skills/frontend-design	/root/AI-Agent-Skill/skills/frontend-design	copied	66ae3cb6a218f31f6480a00feba9d89d7591b8df8ee49d1ddbfe6932dae232d6
+full-cycle-mobile-dev	/root/open-hands/.agents/skills/full-cycle-mobile-dev	/root/AI-Agent-Skill/skills/full-cycle-mobile-dev	already-linked-to-canonical	
+git-commander	/root/open-hands/.agents/skills/git-commander	/root/AI-Agent-Skill/skills/git-commander	copied	90278e5dc823dae1cdf639ce5a7c0957e20ef3e20739f27cd6f779b32f839d1d
+Git-Flow-Manager	/root/open-hands/.agents/skills/Git-Flow-Manager	/root/AI-Agent-Skill/skills/Git-Flow-Manager	copied	9563d5e33f7fc7e32f389d1a9ba1667423e00064dbc915cee2546f35dfb9c4b8
+github	/root/open-hands/.agents/skills/github	/root/AI-Agent-Skill/skills/github	copied	f42347b565fa0da0c0851b7beac56eb45dd5f9c2cc63dfc20fde87d85dd869bb
+github-actions	/root/open-hands/.agents/skills/github-actions	/root/AI-Agent-Skill/skills/github-actions	copied	e2eb28f1428d65b6b92e24f29e264fd356617184d85abcc7673fffe8f89d6417
+github-agents-md-maintainer	/root/open-hands/.agents/skills/github-agents-md-maintainer	/root/AI-Agent-Skill/skills/github-agents-md-maintainer	copied	2ecf6447f8904b83da11dc2f86eb2c0c172292b53708abc8e18b5a41a1fee612
+github-delivery-watchdog	/root/open-hands/.agents/skills/github-delivery-watchdog	/root/AI-Agent-Skill/skills/github-delivery-watchdog	copied	55deadbf576e10632b6a15648799562a78eaa966a0ddfd72693c21fe5d6a69ac
+github-issue-to-pr	/root/open-hands/.agents/skills/github-issue-to-pr	/root/AI-Agent-Skill/skills/github-issue-to-pr	copied	68f046d8fbb71f190a90c7bb449540979b12d38b337fd37af084bea5cf12c1f4
+github-issue-triage	/root/open-hands/.agents/skills/github-issue-triage	/root/AI-Agent-Skill/skills/github-issue-triage	copied	269a56a5725ea4bf99e149f34a62e8bb3487ca67c21ff41931b447751d75868a
+github-pr-review	/root/open-hands/.agents/skills/github-pr-review	/root/AI-Agent-Skill/skills/github-pr-review	copied	067888675fa9dc7007162aae3ec19720855fd74bd83d78250113a39f7f2af8fe
+github-pr-reviewer	/root/open-hands/.agents/skills/github-pr-reviewer	/root/AI-Agent-Skill/skills/github-pr-reviewer	copied	8b042d7f94f234a5d19312bb30ff72b09ca11fbebfe3b01b7824e169d45abdf6
+github-repo-monitor	/root/open-hands/.agents/skills/github-repo-monitor	/root/AI-Agent-Skill/skills/github-repo-monitor	copied	0f8f6c3affb2d0ddb68ea40c103684a1a7d9cca167d325b8bed03a01f95a0ef3
+github-stale-ci-pr-closer	/root/open-hands/.agents/skills/github-stale-ci-pr-closer	/root/AI-Agent-Skill/skills/github-stale-ci-pr-closer	copied	2e8454d7f5fff19ad312c232750c037863588795a7806191c23776a1f3b988c7
+gitlab	/root/open-hands/.agents/skills/gitlab	/root/AI-Agent-Skill/skills/gitlab	copied	2a3d0b1b85fa2df162ba8865651e08347b289341c07efeea9f178c046b69284c
+gitlab-issue-to-mr	/root/open-hands/.agents/skills/gitlab-issue-to-mr	/root/AI-Agent-Skill/skills/gitlab-issue-to-mr	copied	c7ab5b1689b37007e3f1b2eaaffe978b20bdceaae1dd150de2c7599359ba2798
+go-microservices-generator	/root/open-hands/.agents/skills/go-microservices-generator	/root/AI-Agent-Skill/skills/go-microservices-generator	copied	c1834622e846fabe2e29fa251bfc1ecd3ddb3cf8e622838b6a333e590de829e6
+harness-evolution	/root/open-hands/.agents/skills/harness-evolution	/root/AI-Agent-Skill/skills/harness-evolution	already-linked-to-canonical	
+improve-agent-readiness	/root/open-hands/.agents/skills/improve-agent-readiness	/root/AI-Agent-Skill/skills/improve-agent-readiness	copied	3068c0f9753566de9a42f5be52ad4fb8edd093eac743871b268d7032c79bd84c
+incident-retrospective	/root/open-hands/.agents/skills/incident-retrospective	/root/AI-Agent-Skill/skills/incident-retrospective	copied	39f4fdc29b10516af5316fcceadffcdddaa18ca1e7878fdac8256d5836c020d6
+iterate	/root/open-hands/.agents/skills/iterate	/root/AI-Agent-Skill/skills/iterate	copied	b7bdb2bae3a6e32b144b68902cf48c068c5d9ec808a738bd4fc3c23a6befb5a9
+jira-issue-to-pr	/root/open-hands/.agents/skills/jira-issue-to-pr	/root/AI-Agent-Skill/skills/jira-issue-to-pr	copied	b1131f898f28a2b1011044aea35756cb1e01f44ebdea9f1339efdb845c1f2cdf
+jupyter	/root/open-hands/.agents/skills/jupyter	/root/AI-Agent-Skill/skills/jupyter	copied	82e590994e13a0614a0c1ea0f9ab047a735ae767c66cc01893ca5508358dfddb
+kubernetes	/root/open-hands/.agents/skills/kubernetes	/root/AI-Agent-Skill/skills/kubernetes	copied	1dfae3b75e321e2847912dc1eb7b5c20c1594b8c17e9c75fb54399e65af23201
+large-codebase	/root/open-hands/.agents/skills/large-codebase	/root/AI-Agent-Skill/skills/large-codebase	copied	8d1ba1b4ce70a66f50d413bcc920ba0d209c3b480d51b6a4619470acb792c566
+learn-from-code-review	/root/open-hands/.agents/skills/learn-from-code-review	/root/AI-Agent-Skill/skills/learn-from-code-review	copied	231a283398460a543b9ce114544cd72b2e6e433078602b082e211e58c4134ea6
+linear	/root/open-hands/.agents/skills/linear	/root/AI-Agent-Skill/skills/linear	copied	a1aac10761b3101e763ead657395755db706839e973d0e360c6949cc5123382c
+linear-triage	/root/open-hands/.agents/skills/linear-triage	/root/AI-Agent-Skill/skills/linear-triage	copied	b3ae914a9de32b5ae587642b83caba8e36f5487128f8d52641731f3580023810
+log-analyzer	/root/open-hands/.agents/skills/log-analyzer	/root/AI-Agent-Skill/skills/log-analyzer	copied	dc89b0bc3eac9aa82e7d23b245dcd217f1e36cd7940f6396aa91580856c6e2ec
+magic-word	/root/open-hands/.agents/skills/magic-word	/root/AI-Agent-Skill/skills/magic-word	copied	53fc878ad610386fbbaee9207fa572545268631584ab6c67fe76ac86e18c8475
+memory-leak-plugger	/root/open-hands/.agents/skills/memory-leak-plugger	/root/AI-Agent-Skill/skills/memory-leak-plugger	copied	cf10ff4591dbe55a052c02786e4d0dd6cfc7389817b29d553a4334f0ace0244a
+multimodal-mcp-adapter	/root/open-hands/.agents/skills/multimodal-mcp-adapter	/root/AI-Agent-Skill/skills/multimodal-mcp-adapter	copied	8e7920fa1fd2eb43ff13343d15e89905eef0ce10d2768b6145e7883a5f371e5c
+news-digest	/root/open-hands/.agents/skills/news-digest	/root/AI-Agent-Skill/skills/news-digest	copied	68e3bf367aaa9896ce8e0245f1e67692c83764e8a2248509f56904afbe6137f0
+notion	/root/open-hands/.agents/skills/notion	/root/AI-Agent-Skill/skills/notion	copied	3a5720cf3492442504466619c610f19d19a5f1c83f39a3f079085a5bf3401715
+npm	/root/open-hands/.agents/skills/npm	/root/AI-Agent-Skill/skills/npm	copied	9b21e1def3d8d639976f28b42bdcac4cac189dda5c40efdc1491fa47fa32530d
+npm-conflict-resolver	/root/open-hands/.agents/skills/npm-conflict-resolver	/root/AI-Agent-Skill/skills/npm-conflict-resolver	copied	eb783f8570420fc745c47aa83676d6a914d986b26064718c9d357e3bde0064e7
+obra-superpowers	/root/open-hands/.agents/skills/obra-superpowers	/root/AI-Agent-Skill/skills/obra-superpowers	already-linked-to-canonical	
+openhands-api	/root/open-hands/.agents/skills/openhands-api	/root/AI-Agent-Skill/skills/openhands-api	copied	6a6597a92194df9a1f78ef249cf2a4e40eb28bb99b155cdc313cc6bf797aeceb
+openhands-automation	/root/open-hands/.agents/skills/openhands-automation	/root/AI-Agent-Skill/skills/openhands-automation	copied	c852d2b6806b58ca02b179cb8496dcfeaa51e2729ab094f705f45d00d4a760fa
+openhands-enterprise-troubleshooting	/root/open-hands/.agents/skills/openhands-enterprise-troubleshooting	/root/AI-Agent-Skill/skills/openhands-enterprise-troubleshooting	copied	ace6e2de6aeea7e4e6cf719168d14b4d9b93b5690b5606e375a032bdb6a7a285
+openhands-sdk	/root/open-hands/.agents/skills/openhands-sdk	/root/AI-Agent-Skill/skills/openhands-sdk	copied	30689ba2239dec796e260fce2c01059ee6794b7181f1c76a1394f0e4ce00cce3
+OSWorld-Core	/root/open-hands/.agents/skills/OSWorld-Core	/root/AI-Agent-Skill/skills/OSWorld-Core	copied	e8069e20d2e0f7457b0114a8cd021ebb6bed23ff9792df81616361b56a4fcec8
+package-cleaner	/root/open-hands/.agents/skills/package-cleaner	/root/AI-Agent-Skill/skills/package-cleaner	copied	17597631325063d83e2246871648c0d0a6347e1d355f1e4176796981586be7bd
+pdflatex	/root/open-hands/.agents/skills/pdflatex	/root/AI-Agent-Skill/skills/pdflatex	copied	279e3917f2d4430eedb8f00dea8fe6dff5bff631dbf5ed5c7f42206897e4e694
+performance-tuner	/root/open-hands/.agents/skills/performance-tuner	/root/AI-Agent-Skill/skills/performance-tuner	copied	07468bf52af808486cd92886dd7bdace1f74b8590e6992f1fc7458116b557667
+plain-english-content	/root/open-hands/.agents/skills/plain-english-content	/root/AI-Agent-Skill/skills/plain-english-content	copied	a057259482ee068eccb2b70007845d28f6bdcd7dc06bd27c501ff553e3f19a6c
+plan-once-verify-always	/root/open-hands/.agents/skills/plan-once-verify-always	/root/AI-Agent-Skill/skills/plan-once-verify-always	already-linked-to-canonical	
+prd	/root/open-hands/.agents/skills/prd	/root/AI-Agent-Skill/skills/prd	copied	1db82991e34acf212162c3969922943e6cf5cc7ae96be45f973153844b936a30
+Pytest-AutoHealing	/root/open-hands/.agents/skills/Pytest-AutoHealing	/root/AI-Agent-Skill/skills/Pytest-AutoHealing	copied	800a533214df325c8ae37fdd75d9bc11cf0fa42d3c12a829586398c2af062bcb
+python-bytecode-optimizer	/root/open-hands/.agents/skills/python-bytecode-optimizer	/root/AI-Agent-Skill/skills/python-bytecode-optimizer	copied	01c96f1edda359f0ac6d4b6a652487228b29bcf999e25c0debe171a674393c51
+qa-changes	/root/open-hands/.agents/skills/qa-changes	/root/AI-Agent-Skill/skills/qa-changes	copied	3a81a2edcd857732d2d1f3bcd8d363fe00eedf7c7dc818412fca1735884e8215
+recovered-from-freebuff	/root/open-hands/.agents/skills/recovered-from-freebuff	/root/AI-Agent-Skill/skills/recovered-from-freebuff	already-linked-to-canonical	
+release-notes	/root/open-hands/.agents/skills/release-notes	/root/AI-Agent-Skill/skills/release-notes	copied	8cfd57e0351140162af6722a3a1038c609acdcfc4d28c22f14bb607479810c4c
+research-brief	/root/open-hands/.agents/skills/research-brief	/root/AI-Agent-Skill/skills/research-brief	copied	25b73d4022047d4e8e598a84b53079bf54921473049195a1348c1fe61cc41bba
+rust-wasm-compiler	/root/open-hands/.agents/skills/rust-wasm-compiler	/root/AI-Agent-Skill/skills/rust-wasm-compiler	copied	a7c644e6891158d5e8a13b3f536a411b25f2e373c74fe79e8a8a540d931c50b7
+security	/root/open-hands/.agents/skills/security	/root/AI-Agent-Skill/skills/security	copied	4e09e1744e3843b94d2d870b68bf21f0d265c981982dccbed108c38b39ea377e
+self-evolving-engineer	/root/open-hands/.agents/skills/self-evolving-engineer	/root/AI-Agent-Skill/skills/self-evolving-engineer	copied	1e6216ed2f48450391a1f4a52fc57bd77321fd66c00a4e855bfbc14eec86e677
+sesm-engine	/root/open-hands/.agents/skills/sesm-engine	/root/AI-Agent-Skill/skills/sesm-engine	already-linked-to-canonical	
+setup-agents-md	/root/open-hands/.agents/skills/setup-agents-md	/root/AI-Agent-Skill/skills/setup-agents-md	copied	04c3dc5e99272c807ce92d8dcd61e871084ea65033f9f6fd1e54fa7170e4984f
+setup-openhands	/root/open-hands/.agents/skills/setup-openhands	/root/AI-Agent-Skill/skills/setup-openhands	copied	7239daa2eaace579331a385088125e39f30d69a7698a0baca94a40bb28b3238d
+setup-pr-review	/root/open-hands/.agents/skills/setup-pr-review	/root/AI-Agent-Skill/skills/setup-pr-review	copied	a78afe32cee59be2916360db392a7d4096ad4815aee685f2d1dac5d0e58324fd
+skill-creator	/root/open-hands/.agents/skills/skill-creator	/root/AI-Agent-Skill/skills/skill-creator	copied	1b9b53780613f58ff44138460fb47804c94c1858b2df9e294761060e8b58ea5f
+skill-optimizer	/root/open-hands/.agents/skills/skill-optimizer	/root/AI-Agent-Skill/skills/skill-optimizer	already-linked-to-canonical	
+slack-channel-monitor	/root/open-hands/.agents/skills/slack-channel-monitor	/root/AI-Agent-Skill/skills/slack-channel-monitor	copied	2104fab43b3a4eae1953088a3b6734eb5738022fd6a4b90398964ddb3046b475
+Slack-Notifier-Agent	/root/open-hands/.agents/skills/Slack-Notifier-Agent	/root/AI-Agent-Skill/skills/Slack-Notifier-Agent	copied	cb212506f0adb76bec8e78ccedca1191bf0604facf226a925f9f3e4c9325cbc1
+slack-standup-digest	/root/open-hands/.agents/skills/slack-standup-digest	/root/AI-Agent-Skill/skills/slack-standup-digest	copied	a7fb0d9ed91c0c3de2478185c4ddc9ef55c368b27d8feb532f7db09c5222f3d5
+SonarQube-Linter	/root/open-hands/.agents/skills/SonarQube-Linter	/root/AI-Agent-Skill/skills/SonarQube-Linter	copied	5fea4dc2a8919215abc5e7b5b7e7b7317d010007fe3aed8bd1e6efce4811d94d
+spark-version-upgrade	/root/open-hands/.agents/skills/spark-version-upgrade	/root/AI-Agent-Skill/skills/spark-version-upgrade	copied	a30b0a2eed9054ba13135d7e9811fb9ac0cf051c8d44c004fb757eab4702132b
+ssh	/root/open-hands/.agents/skills/ssh	/root/AI-Agent-Skill/skills/ssh	copied	b2bd223a3475394e987034534d967542a03b96c71159628fea12986a513114b0
+swift-linux	/root/open-hands/.agents/skills/swift-linux	/root/AI-Agent-Skill/skills/swift-linux	copied	72c3db3e1e8c3be99dad57f52aca6617246e8fe17764f2d3b9cf5b280005c067
+technical-writing	/root/open-hands/.agents/skills/technical-writing	/root/AI-Agent-Skill/skills/technical-writing	copied	2006ad2ce965358c77c6cf0319f402bf83a249086bc48300874780446886d2e3
+theme-factory	/root/open-hands/.agents/skills/theme-factory	/root/AI-Agent-Skill/skills/theme-factory	copied	b33785286338c2765abd64b450ae6a096fa679c7b4ad1bebb73368ea9d8eb82c
+ticket-to-code-change	/root/open-hands/.agents/skills/ticket-to-code-change	/root/AI-Agent-Skill/skills/ticket-to-code-change	copied	f6f363870cecb377ae2dfeaae822750d7f2a2d75b449d5c8701c3c316d7cbd7d
+understand-anything	/root/open-hands/.agents/skills/understand-anything	/root/AI-Agent-Skill/skills/understand-anything	already-linked-to-canonical	
+unit-testing	/root/open-hands/.agents/skills/unit-testing	/root/AI-Agent-Skill/skills/unit-testing	copied	4becdd696ef47bc9add07a718574a546779198625a19d8762017239174e717c1
+upcoming-release	/root/open-hands/.agents/skills/upcoming-release	/root/AI-Agent-Skill/skills/upcoming-release	copied	1641fc7f6e69337a08335e0dd8e7794c1d857c6d3df56d80694233b1f5000612
+update-sdk	/root/open-hands/.agents/skills/update-sdk	/root/AI-Agent-Skill/skills/update-sdk	copied	5c971eaed1f7da3e47536186cd23ae42bfef97eb01ddc211bdcb9144b4d7990b
+upstream-fork-sync	/root/open-hands/.agents/skills/upstream-fork-sync	/root/AI-Agent-Skill/skills/upstream-fork-sync	copied	67e47c131feac671004fc799266514dbe3ff03768f4b66c2dd91ef20a4cdcf4b
+uv	/root/open-hands/.agents/skills/uv	/root/AI-Agent-Skill/skills/uv	copied	18943e5addeb6de36b155913ba48fb8bda8ab474fba36049582d830ead1d84f1
+vercel	/root/open-hands/.agents/skills/vercel	/root/AI-Agent-Skill/skills/vercel	copied	61cde52c486ebbe1ba2a25497652cf67df7d162db73882b830c2ed95a28dec14
+vps-bridge	/root/open-hands/.agents/skills/vps-bridge	/root/AI-Agent-Skill/skills/vps-bridge	already-linked-to-canonical	
+vulnerability-remediation	/root/open-hands/.agents/skills/vulnerability-remediation	/root/AI-Agent-Skill/skills/vulnerability-remediation	copied	1ef2e79705389e67a08362fc6db3e7a46307aa455e292b85331e80d245e2c8df
+zero-knowledge-proof-auth	/root/open-hands/.agents/skills/zero-knowledge-proof-auth	/root/AI-Agent-Skill/skills/zero-knowledge-proof-auth	copied	e435fcc338e2ea61fc5a92fad055f23708ca796c2a5305fa614a1af79e539ea9

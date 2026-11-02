@@ -1,0 +1,13 @@
+{ auto_https off }
+http://127.0.0.1:8443 {
+    basic_auth { xiaye $2a$14$skHAxt2z/0BzbAKtt8wisezYX.6NmNwZteBgiTS58abNgFEW3nzH. }
+    handle /ceo*   { uri strip_prefix /ceo;  reverse_proxy 127.0.0.1:8010 }
+    handle /fe*    { uri strip_prefix /fe;   reverse_proxy 127.0.0.1:8010 }
+    handle /hermes*{ uri strip_prefix /hermes; reverse_proxy 127.0.0.1:8642 }
+    handle /openhands* { uri strip_prefix /openhands; reverse_proxy 127.0.0.1:8000 }
+    handle /n8n*   { uri strip_prefix /n8n;  reverse_proxy 127.0.0.1:5678 }
+    handle /sonar* { uri strip_prefix /sonar; reverse_proxy 127.0.0.1:9000 }
+    handle {
+        reverse_proxy 127.0.0.1:8010
+    }
+}

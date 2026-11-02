@@ -1,0 +1,5 @@
+source_path=/root/openhands-config
+source_remote=https://github.com/xh09411-web/open-hands.git
+source_branch=master
+source_commit=a3006e16e2a8bf8bec26c1a90065daaff5f229f2
+migrated_at=2026-11-02 17:17:37

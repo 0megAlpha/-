@@ -1,0 +1,1492 @@
+diff --git a/src/__tests__/api/register.test.ts b/src/__tests__/api/register.test.ts
+index c82a84e..588311f 100644
+--- a/src/__tests__/api/register.test.ts
++++ b/src/__tests__/api/register.test.ts
+@@ -51,7 +51,7 @@ describe("POST /api/auth/register", () => {
+       const request = createRequest({
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -66,7 +66,7 @@ describe("POST /api/auth/register", () => {
+         name: "A",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -80,7 +80,7 @@ describe("POST /api/auth/register", () => {
+       const request = createRequest({
+         name: "Test User",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -95,7 +95,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "invalid-username!",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -110,7 +110,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "invalid-email",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -125,7 +125,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "12345",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -147,7 +147,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -173,7 +173,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -197,7 +197,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "Test@Example.COM",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -221,7 +221,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -236,7 +236,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "TestUser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -260,7 +260,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -278,7 +278,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "hashed_password",
++        password: [REDACTED_BY_GATEKEEPER],
+         emailVerified: null,
+         image: null,
+         role: "USER",
+@@ -292,7 +292,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -312,7 +312,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "hashed_password",
++        password: [REDACTED_BY_GATEKEEPER],
+         emailVerified: null,
+         image: null,
+         role: "USER",
+@@ -326,7 +326,7 @@ describe("POST /api/auth/register", () => {
+         name: "  Test User  ",
+         username: "  testuser  ",
+         email: "  Test@Example.COM  ",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -349,7 +349,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "test_user_123",
+         email: "test@example.com",
+-        password: "hashed_password",
++        password: [REDACTED_BY_GATEKEEPER],
+         emailVerified: null,
+         image: null,
+         role: "USER",
+@@ -363,7 +363,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "test_user_123",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+@@ -388,7 +388,7 @@ describe("POST /api/auth/register", () => {
+         name: "Test User",
+         username: "testuser",
+         email: "test@example.com",
+-        password: "password123",
++        password: [REDACTED_BY_GATEKEEPER],
+       });
+ 
+       const response = await POST(request);
+diff --git a/src/components/book/elements/locales/ar.ts b/src/components/book/elements/locales/ar.ts
+index 9eb7105..631c651 100644
+--- a/src/components/book/elements/locales/ar.ts
++++ b/src/components/book/elements/locales/ar.ts
+@@ -30,42 +30,42 @@ const ar: LocaleData = {
+     fullText: "عاصمة مصر هي القاهرة.",
+     predictions: {
+       empty: [
+-        { token: "عاصمة", probability: 0.15 },
+-        { token: "أنا", probability: 0.12 },
+-        { token: "ما", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: "و", the: "ال" },
+       steps: {
+         "عاصمة": [
+-          { token: " مصر", probability: 0.85 },
+-          { token: " البلاد", probability: 0.08 },
+-          { token: " الدولة", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "عاصمة مصر": [
+-          { token: " هي", probability: 0.92 },
+-          { token: "،", probability: 0.05 },
+-          { token: " كانت", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "عاصمة مصر هي": [
+-          { token: " القاهرة", probability: 0.94 },
+-          { token: " مدينة", probability: 0.02 },
+-          { token: " أي", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "عاصمة مصر هي القاهرة": [
+-          { token: ".", probability: 0.65 },
+-          { token: "،", probability: 0.20 },
+-          { token: " التي", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: "هي", probability: 0.25 },
+-        { token: "مصر", probability: 0.18 },
+-        { token: "القاهرة", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: "ال", probability: 0.08 },
+-        { token: "و", probability: 0.06 },
+-        { token: "هي", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/az.ts b/src/components/book/elements/locales/az.ts
+index ee51dbe..4532482 100644
+--- a/src/components/book/elements/locales/az.ts
++++ b/src/components/book/elements/locales/az.ts
+@@ -30,47 +30,47 @@ const az: LocaleData = {
+     fullText: "Azərbaycanın paytaxtı Bakıdır.",
+     predictions: {
+       empty: [
+-        { token: "Azərbaycan", probability: 0.15 },
+-        { token: "Mən", probability: 0.12 },
+-        { token: "Bu", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " və", the: " bir" },
+       steps: {
+         "azərbaycan": [
+-          { token: "ın", probability: 0.35 },
+-          { token: "da", probability: 0.25 },
+-          { token: "ı", probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.35 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
+         ],
+         "azərbaycanın": [
+-          { token: " paytaxtı", probability: 0.45 },
+-          { token: " ən", probability: 0.20 },
+-          { token: " əhalisi", probability: 0.12 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.45 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+         ],
+         "azərbaycanın paytaxtı": [
+-          { token: " Bakı", probability: 0.75 },
+-          { token: " Gəncə", probability: 0.12 },
+-          { token: " haradır", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.75 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+         "azərbaycanın paytaxtı bakı": [
+-          { token: "dır", probability: 0.82 },
+-          { token: ",", probability: 0.10 },
+-          { token: " idi", probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.82 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.10 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+         ],
+         "azərbaycanın paytaxtı bakıdır": [
+-          { token: ".", probability: 0.75 },
+-          { token: " və", probability: 0.15 },
+-          { token: "!", probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.75 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+         ],
+       },
+       complete: [
+-        { token: " Bu", probability: 0.25 },
+-        { token: " Bakı", probability: 0.18 },
+-        { token: " Eyni", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " bir", probability: 0.08 },
+-        { token: " və", probability: 0.06 },
+-        { token: " ilə", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/de.ts b/src/components/book/elements/locales/de.ts
+index 4f9c750..e827a27 100644
+--- a/src/components/book/elements/locales/de.ts
++++ b/src/components/book/elements/locales/de.ts
+@@ -30,52 +30,52 @@ const de: LocaleData = {
+     fullText: "Die Hauptstadt von Deutschland ist Berlin.",
+     predictions: {
+       empty: [
+-        { token: "Die", probability: 0.15 },
+-        { token: "Ich", probability: 0.12 },
+-        { token: "Was", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " und", the: " die" },
+       steps: {
+         "die": [
+-          { token: " Hauptstadt", probability: 0.04 },
+-          { token: " beste", probability: 0.03 },
+-          { token: " erste", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "die hauptstadt": [
+-          { token: " von", probability: 0.85 },
+-          { token: " Stadt", probability: 0.08 },
+-          { token: " ist", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "die hauptstadt von": [
+-          { token: " Deutschland", probability: 0.18 },
+-          { token: " der", probability: 0.15 },
+-          { token: " Japan", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "die hauptstadt von deutschland": [
+-          { token: " ist", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " war", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "die hauptstadt von deutschland ist": [
+-          { token: " Berlin", probability: 0.94 },
+-          { token: " eine", probability: 0.02 },
+-          { token: " die", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "die hauptstadt von deutschland ist berlin": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " welche", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Es", probability: 0.25 },
+-        { token: " Die", probability: 0.18 },
+-        { token: " Berlin", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " die", probability: 0.08 },
+-        { token: " und", probability: 0.06 },
+-        { token: " ist", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/el.ts b/src/components/book/elements/locales/el.ts
+index 1565dc7..a495e03 100644
+--- a/src/components/book/elements/locales/el.ts
++++ b/src/components/book/elements/locales/el.ts
+@@ -30,52 +30,52 @@ const el: LocaleData = {
+     fullText: "Η πρωτεύουσα της Ελλάδας είναι η Αθήνα.",
+     predictions: {
+       empty: [
+-        { token: "Η", probability: 0.15 },
+-        { token: "Εγώ", probability: 0.12 },
+-        { token: "Ποια", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " και", the: " η" },
+       steps: {
+         "η": [
+-          { token: " πρωτεύουσα", probability: 0.04 },
+-          { token: " καλύτερη", probability: 0.03 },
+-          { token: " πρώτη", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "η πρωτεύουσα": [
+-          { token: " της", probability: 0.85 },
+-          { token: " πόλη", probability: 0.08 },
+-          { token: " είναι", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "η πρωτεύουσα της": [
+-          { token: " Ελλάδας", probability: 0.18 },
+-          { token: " χώρας", probability: 0.15 },
+-          { token: " Ιαπωνίας", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "η πρωτεύουσα της ελλάδας": [
+-          { token: " είναι", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " ήταν", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "η πρωτεύουσα της ελλάδας είναι": [
+-          { token: " η", probability: 0.80 },
+-          { token: " Αθήνα", probability: 0.14 },
+-          { token: " μια", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.80 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.14 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "η πρωτεύουσα της ελλάδας είναι η αθήνα": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " που", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Αυτή", probability: 0.25 },
+-        { token: " Η", probability: 0.18 },
+-        { token: " Αθήνα", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " η", probability: 0.08 },
+-        { token: " και", probability: 0.06 },
+-        { token: " είναι", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/en.ts b/src/components/book/elements/locales/en.ts
+index eb62a6c..4704229 100644
+--- a/src/components/book/elements/locales/en.ts
++++ b/src/components/book/elements/locales/en.ts
+@@ -30,52 +30,52 @@ const en: LocaleData = {
+     fullText: "The capital of France is Paris.",
+     predictions: {
+       empty: [
+-        { token: "The", probability: 0.15 },
+-        { token: "I", probability: 0.12 },
+-        { token: "What", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " and", the: " the" },
+       steps: {
+         "the": [
+-          { token: " capital", probability: 0.04 },
+-          { token: " best", probability: 0.03 },
+-          { token: " first", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "the capital": [
+-          { token: " of", probability: 0.85 },
+-          { token: " city", probability: 0.08 },
+-          { token: " is", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "the capital of": [
+-          { token: " France", probability: 0.18 },
+-          { token: " the", probability: 0.15 },
+-          { token: " Japan", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "the capital of france": [
+-          { token: " is", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " was", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "the capital of france is": [
+-          { token: " Paris", probability: 0.94 },
+-          { token: " a", probability: 0.02 },
+-          { token: " the", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "the capital of france is paris": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " which", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " It", probability: 0.25 },
+-        { token: " The", probability: 0.18 },
+-        { token: " Paris", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " the", probability: 0.08 },
+-        { token: " and", probability: 0.06 },
+-        { token: " is", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/es.ts b/src/components/book/elements/locales/es.ts
+index 74f0118..8a2526b 100644
+--- a/src/components/book/elements/locales/es.ts
++++ b/src/components/book/elements/locales/es.ts
+@@ -30,52 +30,52 @@ const es: LocaleData = {
+     fullText: "La capital de España es Madrid.",
+     predictions: {
+       empty: [
+-        { token: "La", probability: 0.15 },
+-        { token: "El", probability: 0.12 },
+-        { token: "¿Cuál", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " y", the: " la" },
+       steps: {
+         "la": [
+-          { token: " capital", probability: 0.04 },
+-          { token: " mejor", probability: 0.03 },
+-          { token: " primera", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "la capital": [
+-          { token: " de", probability: 0.85 },
+-          { token: " ciudad", probability: 0.08 },
+-          { token: " es", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "la capital de": [
+-          { token: " España", probability: 0.18 },
+-          { token: " la", probability: 0.15 },
+-          { token: " Japón", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "la capital de españa": [
+-          { token: " es", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " era", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "la capital de españa es": [
+-          { token: " Madrid", probability: 0.94 },
+-          { token: " una", probability: 0.02 },
+-          { token: " la", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "la capital de españa es madrid": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " que", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Es", probability: 0.25 },
+-        { token: " La", probability: 0.18 },
+-        { token: " Madrid", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " la", probability: 0.08 },
+-        { token: " y", probability: 0.06 },
+-        { token: " es", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/fa.ts b/src/components/book/elements/locales/fa.ts
+index 4063797..3d5e963 100644
+--- a/src/components/book/elements/locales/fa.ts
++++ b/src/components/book/elements/locales/fa.ts
+@@ -30,42 +30,42 @@ const fa: LocaleData = {
+     fullText: "پایتخت ایران تهران است.",
+     predictions: {
+       empty: [
+-        { token: "پایتخت", probability: 0.15 },
+-        { token: "من", probability: 0.12 },
+-        { token: "چه", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " و", the: " این" },
+       steps: {
+         "پایتخت": [
+-          { token: " ایران", probability: 0.85 },
+-          { token: " کشور", probability: 0.08 },
+-          { token: " دولت", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "پایتخت ایران": [
+-          { token: " تهران", probability: 0.80 },
+-          { token: " کجا", probability: 0.10 },
+-          { token: " چیست", probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.80 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.10 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+         ],
+         "پایتخت ایران تهران": [
+-          { token: " است", probability: 0.92 },
+-          { token: "،", probability: 0.05 },
+-          { token: " بود", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "پایتخت ایران تهران است": [
+-          { token: ".", probability: 0.65 },
+-          { token: "،", probability: 0.20 },
+-          { token: " که", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " این", probability: 0.25 },
+-        { token: " ایران", probability: 0.18 },
+-        { token: " تهران", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " این", probability: 0.08 },
+-        { token: " و", probability: 0.06 },
+-        { token: " است", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/fr.ts b/src/components/book/elements/locales/fr.ts
+index b39ee27..4b4ce6d 100644
+--- a/src/components/book/elements/locales/fr.ts
++++ b/src/components/book/elements/locales/fr.ts
+@@ -30,52 +30,52 @@ const fr: LocaleData = {
+     fullText: "La capitale de la France est Paris.",
+     predictions: {
+       empty: [
+-        { token: "La", probability: 0.15 },
+-        { token: "Je", probability: 0.12 },
+-        { token: "Qu", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " et", the: " la" },
+       steps: {
+         "la": [
+-          { token: " capitale", probability: 0.04 },
+-          { token: " meilleure", probability: 0.03 },
+-          { token: " première", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "la capitale": [
+-          { token: " de", probability: 0.85 },
+-          { token: " ville", probability: 0.08 },
+-          { token: " est", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "la capitale de": [
+-          { token: " la", probability: 0.45 },
+-          { token: " France", probability: 0.18 },
+-          { token: " l", probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.45 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
+         ],
+         "la capitale de la france": [
+-          { token: " est", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " était", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "la capitale de la france est": [
+-          { token: " Paris", probability: 0.94 },
+-          { token: " une", probability: 0.02 },
+-          { token: " la", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "la capitale de la france est paris": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " qui", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Elle", probability: 0.25 },
+-        { token: " La", probability: 0.18 },
+-        { token: " Paris", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " la", probability: 0.08 },
+-        { token: " et", probability: 0.06 },
+-        { token: " est", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/he.ts b/src/components/book/elements/locales/he.ts
+index 6e8d28c..93dacf9 100644
+--- a/src/components/book/elements/locales/he.ts
++++ b/src/components/book/elements/locales/he.ts
+@@ -30,42 +30,42 @@ const he: LocaleData = {
+     fullText: "בירת ישראל היא ירושלים.",
+     predictions: {
+       empty: [
+-        { token: "בירת", probability: 0.15 },
+-        { token: "אני", probability: 0.12 },
+-        { token: "מה", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " ו", the: " ה" },
+       steps: {
+         "בירת": [
+-          { token: " ישראל", probability: 0.85 },
+-          { token: " המדינה", probability: 0.08 },
+-          { token: " הארץ", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "בירת ישראל": [
+-          { token: " היא", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " הייתה", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "בירת ישראל היא": [
+-          { token: " ירושלים", probability: 0.94 },
+-          { token: " עיר", probability: 0.02 },
+-          { token: " איזו", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "בירת ישראל היא ירושלים": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " שהיא", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " זו", probability: 0.25 },
+-        { token: " ישראל", probability: 0.18 },
+-        { token: " ירושלים", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " ה", probability: 0.08 },
+-        { token: " ו", probability: 0.06 },
+-        { token: " היא", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/it.ts b/src/components/book/elements/locales/it.ts
+index af63739..1650684 100644
+--- a/src/components/book/elements/locales/it.ts
++++ b/src/components/book/elements/locales/it.ts
+@@ -30,52 +30,52 @@ const it: LocaleData = {
+     fullText: "La capitale dell'Italia è Roma.",
+     predictions: {
+       empty: [
+-        { token: "La", probability: 0.15 },
+-        { token: "Il", probability: 0.12 },
+-        { token: "Qual", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " e", the: " la" },
+       steps: {
+         "la": [
+-          { token: " capitale", probability: 0.04 },
+-          { token: " migliore", probability: 0.03 },
+-          { token: " prima", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "la capitale": [
+-          { token: " dell'", probability: 0.85 },
+-          { token: " città", probability: 0.08 },
+-          { token: " è", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER]", probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "la capitale dell'": [
+-          { token: "Italia", probability: 0.18 },
+-          { token: "Europa", probability: 0.15 },
+-          { token: "Giappone", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "la capitale dell'italia": [
+-          { token: " è", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " era", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "la capitale dell'italia è": [
+-          { token: " Roma", probability: 0.94 },
+-          { token: " una", probability: 0.02 },
+-          { token: " la", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "la capitale dell'italia è roma": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " che", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " È", probability: 0.25 },
+-        { token: " La", probability: 0.18 },
+-        { token: " Roma", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " la", probability: 0.08 },
+-        { token: " e", probability: 0.06 },
+-        { token: " è", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/ja.ts b/src/components/book/elements/locales/ja.ts
+index fc12cf9..0eda579 100644
+--- a/src/components/book/elements/locales/ja.ts
++++ b/src/components/book/elements/locales/ja.ts
+@@ -30,47 +30,47 @@ const ja: LocaleData = {
+     fullText: "日本の首都は東京です。",
+     predictions: {
+       empty: [
+-        { token: "日本", probability: 0.15 },
+-        { token: "私", probability: 0.12 },
+-        { token: "何", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: "と", the: "の" },
+       steps: {
+         "日本": [
+-          { token: "の", probability: 0.85 },
+-          { token: "は", probability: 0.08 },
+-          { token: "で", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "日本の": [
+-          { token: "首都", probability: 0.18 },
+-          { token: "文化", probability: 0.15 },
+-          { token: "歴史", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "日本の首都": [
+-          { token: "は", probability: 0.92 },
+-          { token: "、", probability: 0.05 },
+-          { token: "が", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "日本の首都は": [
+-          { token: "東京", probability: 0.94 },
+-          { token: "どこ", probability: 0.02 },
+-          { token: "何", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "日本の首都は東京": [
+-          { token: "です", probability: 0.65 },
+-          { token: "、", probability: 0.20 },
+-          { token: "で", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: "それ", probability: 0.25 },
+-        { token: "日本", probability: 0.18 },
+-        { token: "東京", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: "の", probability: 0.08 },
+-        { token: "と", probability: 0.06 },
+-        { token: "は", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/ko.ts b/src/components/book/elements/locales/ko.ts
+index d00bde6..cb6ac94 100644
+--- a/src/components/book/elements/locales/ko.ts
++++ b/src/components/book/elements/locales/ko.ts
+@@ -30,47 +30,47 @@ const ko: LocaleData = {
+     fullText: "한국의 수도는 서울입니다.",
+     predictions: {
+       empty: [
+-        { token: "한국", probability: 0.15 },
+-        { token: "저는", probability: 0.12 },
+-        { token: "무엇", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: "과", the: "의" },
+       steps: {
+         "한국": [
+-          { token: "의", probability: 0.85 },
+-          { token: "은", probability: 0.08 },
+-          { token: "에서", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "한국의": [
+-          { token: " 수도", probability: 0.18 },
+-          { token: " 문화", probability: 0.15 },
+-          { token: " 역사", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "한국의 수도": [
+-          { token: "는", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: "가", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "한국의 수도는": [
+-          { token: " 서울", probability: 0.94 },
+-          { token: " 어디", probability: 0.02 },
+-          { token: " 무엇", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "한국의 수도는 서울": [
+-          { token: "입니다", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: "이다", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: "그것", probability: 0.25 },
+-        { token: "한국", probability: 0.18 },
+-        { token: "서울", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: "의", probability: 0.08 },
+-        { token: "과", probability: 0.06 },
+-        { token: "는", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/nl.ts b/src/components/book/elements/locales/nl.ts
+index 92fd5d7..627a7c4 100644
+--- a/src/components/book/elements/locales/nl.ts
++++ b/src/components/book/elements/locales/nl.ts
+@@ -30,52 +30,52 @@ const nl: LocaleData = {
+     fullText: "De hoofdstad van Nederland is Amsterdam.",
+     predictions: {
+       empty: [
+-        { token: "De", probability: 0.15 },
+-        { token: "Ik", probability: 0.12 },
+-        { token: "Wat", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " en", the: " de" },
+       steps: {
+         "de": [
+-          { token: " hoofdstad", probability: 0.04 },
+-          { token: " beste", probability: 0.03 },
+-          { token: " eerste", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "de hoofdstad": [
+-          { token: " van", probability: 0.85 },
+-          { token: " stad", probability: 0.08 },
+-          { token: " is", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "de hoofdstad van": [
+-          { token: " Nederland", probability: 0.18 },
+-          { token: " het", probability: 0.15 },
+-          { token: " Japan", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "de hoofdstad van nederland": [
+-          { token: " is", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " was", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "de hoofdstad van nederland is": [
+-          { token: " Amsterdam", probability: 0.94 },
+-          { token: " een", probability: 0.02 },
+-          { token: " de", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "de hoofdstad van nederland is amsterdam": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " die", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Het", probability: 0.25 },
+-        { token: " De", probability: 0.18 },
+-        { token: " Amsterdam", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " de", probability: 0.08 },
+-        { token: " en", probability: 0.06 },
+-        { token: " is", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/pt.ts b/src/components/book/elements/locales/pt.ts
+index 46f2089..a2abb1d 100644
+--- a/src/components/book/elements/locales/pt.ts
++++ b/src/components/book/elements/locales/pt.ts
+@@ -30,52 +30,52 @@ const pt: LocaleData = {
+     fullText: "A capital do Brasil é Brasília.",
+     predictions: {
+       empty: [
+-        { token: "A", probability: 0.15 },
+-        { token: "O", probability: 0.12 },
+-        { token: "Qual", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " e", the: " a" },
+       steps: {
+         "a": [
+-          { token: " capital", probability: 0.04 },
+-          { token: " melhor", probability: 0.03 },
+-          { token: " primeira", probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.03 },
+         ],
+         "a capital": [
+-          { token: " do", probability: 0.85 },
+-          { token: " cidade", probability: 0.08 },
+-          { token: " é", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "a capital do": [
+-          { token: " Brasil", probability: 0.18 },
+-          { token: " país", probability: 0.15 },
+-          { token: " Japão", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "a capital do brasil": [
+-          { token: " é", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " era", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "a capital do brasil é": [
+-          { token: " Brasília", probability: 0.94 },
+-          { token: " uma", probability: 0.02 },
+-          { token: " a", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "a capital do brasil é brasília": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " que", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " É", probability: 0.25 },
+-        { token: " A", probability: 0.18 },
+-        { token: " Brasília", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " a", probability: 0.08 },
+-        { token: " e", probability: 0.06 },
+-        { token: " é", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/ru.ts b/src/components/book/elements/locales/ru.ts
+index 22a671f..d92fc1d 100644
+--- a/src/components/book/elements/locales/ru.ts
++++ b/src/components/book/elements/locales/ru.ts
+@@ -30,42 +30,42 @@ const ru: LocaleData = {
+     fullText: "Столица России — Москва.",
+     predictions: {
+       empty: [
+-        { token: "Столица", probability: 0.15 },
+-        { token: "Я", probability: 0.12 },
+-        { token: "Какая", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " и", the: " это" },
+       steps: {
+         "столица": [
+-          { token: " России", probability: 0.85 },
+-          { token: " страны", probability: 0.08 },
+-          { token: " государства", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "столица россии": [
+-          { token: " —", probability: 0.92 },
+-          { token: ",", probability: 0.05 },
+-          { token: " была", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "столица россии —": [
+-          { token: " Москва", probability: 0.94 },
+-          { token: " город", probability: 0.02 },
+-          { token: " какой", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "столица россии — москва": [
+-          { token: ".", probability: 0.65 },
+-          { token: ",", probability: 0.20 },
+-          { token: " которая", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: " Это", probability: 0.25 },
+-        { token: " Россия", probability: 0.18 },
+-        { token: " Москва", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " это", probability: 0.08 },
+-        { token: " и", probability: 0.06 },
+-        { token: " —", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/tr.ts b/src/components/book/elements/locales/tr.ts
+index da93590..d0ebc7b 100644
+--- a/src/components/book/elements/locales/tr.ts
++++ b/src/components/book/elements/locales/tr.ts
+@@ -30,9 +30,9 @@ const tr: LocaleData = {
+     fullText: "Türkiye'nin başkenti Ankara'dır.",
+     predictions: {
+       empty: [
+-        { token: "Türkiye", probability: 0.15 },
+-        { token: "Ben", probability: 0.12 },
+-        { token: "Bu", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: " ve", the: " bir" },
+       steps: {
+@@ -42,35 +42,35 @@ const tr: LocaleData = {
+           { token: "'yi", probability: 0.15 },
+         ],
+         "türkiye'nin": [
+-          { token: " başkenti", probability: 0.45 },
+-          { token: " en", probability: 0.20 },
+-          { token: " nüfusu", probability: 0.12 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.45 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+         ],
+         "türkiye'nin başkenti": [
+-          { token: " Ankara", probability: 0.75 },
+-          { token: " İstanbul", probability: 0.12 },
+-          { token: " neresi", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.75 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+         "türkiye'nin başkenti ankara": [
+           { token: "'dır", probability: 0.82 },
+-          { token: ",", probability: 0.10 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.10 },
+           { token: "'ydı", probability: 0.05 },
+         ],
+         "türkiye'nin başkenti ankara'dır": [
+-          { token: ".", probability: 0.75 },
+-          { token: " ve", probability: 0.15 },
+-          { token: "!", probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.75 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+         ],
+       },
+       complete: [
+-        { token: " Bu", probability: 0.25 },
+-        { token: " Ankara", probability: 0.18 },
+-        { token: " Aynı", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: " bir", probability: 0.08 },
+-        { token: " ve", probability: 0.06 },
+-        { token: " ile", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },
+diff --git a/src/components/book/elements/locales/zh.ts b/src/components/book/elements/locales/zh.ts
+index b36a9ee..b28b5fc 100644
+--- a/src/components/book/elements/locales/zh.ts
++++ b/src/components/book/elements/locales/zh.ts
+@@ -30,47 +30,47 @@ const zh: LocaleData = {
+     fullText: "中国的首都是北京。",
+     predictions: {
+       empty: [
+-        { token: "中国", probability: 0.15 },
+-        { token: "我", probability: 0.12 },
+-        { token: "什么", probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+       ],
+       partial: { and: "和", the: "的" },
+       steps: {
+         "中国": [
+-          { token: "的", probability: 0.85 },
+-          { token: "是", probability: 0.08 },
+-          { token: "有", probability: 0.04 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.85 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.04 },
+         ],
+         "中国的": [
+-          { token: "首都", probability: 0.18 },
+-          { token: "文化", probability: 0.15 },
+-          { token: "历史", probability: 0.09 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.15 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.09 },
+         ],
+         "中国的首都": [
+-          { token: "是", probability: 0.92 },
+-          { token: "，", probability: 0.05 },
+-          { token: "在", probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.92 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
+         ],
+         "中国的首都是": [
+-          { token: "北京", probability: 0.94 },
+-          { token: "哪里", probability: 0.02 },
+-          { token: "什么", probability: 0.01 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.94 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.02 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.01 },
+         ],
+         "中国的首都是北京": [
+-          { token: "。", probability: 0.65 },
+-          { token: "，", probability: 0.20 },
+-          { token: "市", probability: 0.08 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.65 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.20 },
++          { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
+         ],
+       },
+       complete: [
+-        { token: "它", probability: 0.25 },
+-        { token: "中国", probability: 0.18 },
+-        { token: "北京", probability: 0.12 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.25 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.18 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.12 },
+       ],
+       fallback: [
+-        { token: "的", probability: 0.08 },
+-        { token: "和", probability: 0.06 },
+-        { token: "是", probability: 0.05 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.08 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.06 },
++        { token: [REDACTED_BY_GATEKEEPER], probability: 0.05 },
+       ],
+     },
+   },

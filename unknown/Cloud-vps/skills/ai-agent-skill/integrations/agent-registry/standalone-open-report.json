@@ -1,0 +1,98 @@
+{
+  "generated_at": "2026-10-13T02:35:37+00:00",
+  "summary": {
+    "total": 8,
+    "failed": 0
+  },
+  "failures": [],
+  "components": [
+    {
+      "agent": "openhands",
+      "source": "openhands",
+      "mode": "external-independent",
+      "adapter_path": "agents/openhands/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": false,
+      "lock_resolved": false,
+      "runtime_readme_exists": false,
+      "status": "ok"
+    },
+    {
+      "agent": "hermes",
+      "source": "hermes",
+      "mode": "external-independent",
+      "adapter_path": "agents/hermes/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": false,
+      "lock_resolved": false,
+      "runtime_readme_exists": false,
+      "status": "ok"
+    },
+    {
+      "agent": "dsh",
+      "source": "dsh",
+      "mode": "integrated-runtime",
+      "adapter_path": "agents/dsh/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    },
+    {
+      "agent": "opencode",
+      "source": "opencode",
+      "mode": "integrated-runtime",
+      "adapter_path": "agents/opencode/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    },
+    {
+      "agent": "cuga",
+      "source": "cuga",
+      "mode": "integrated-runtime",
+      "adapter_path": "agents/cuga/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    },
+    {
+      "agent": "pentestgpt",
+      "source": "pentestgpt",
+      "mode": "integrated-runtime",
+      "adapter_path": "agents/pentestgpt/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    },
+    {
+      "agent": "claude-code",
+      "source": "claude-code",
+      "mode": "integrated-runtime",
+      "adapter_path": "agents/claude-code/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    },
+    {
+      "agent": "cline",
+      "source": "cline",
+      "mode": "package-runtime",
+      "adapter_path": "agents/cline/adapter.yaml",
+      "adapter_exists": true,
+      "runtime_entry_exists": true,
+      "lock_resolved": true,
+      "runtime_readme_exists": true,
+      "status": "ok"
+    }
+  ]
+}

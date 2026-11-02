@@ -1,0 +1,32 @@
+{
+  "exit_code": 0,
+  "feature_list": [
+    "acp",
+    "all",
+    "anthropic",
+    "bedrock",
+    "computer-use",
+    "doc-extract",
+    "edge-tts",
+    "google",
+    "vertex",
+    "vision",
+    "web",
+    "wecom",
+    "youtube"
+  ],
+  "finished_at": "2026-10-08T15:59:39.064909+00:00",
+  "kind": "sync",
+  "outcome": "ok",
+  "platform": null,
+  "refusal": null,
+  "schema": 1,
+  "started_at": "2026-10-08T15:59:38.388480+00:00",
+  "steps": [],
+  "update_id": "9c591cb5005a473c8f2213cded38ea9d",
+  "venv_rebuild": {
+    "ok": false,
+    "reason": "already in sync"
+  },
+  "warnings": []
+}

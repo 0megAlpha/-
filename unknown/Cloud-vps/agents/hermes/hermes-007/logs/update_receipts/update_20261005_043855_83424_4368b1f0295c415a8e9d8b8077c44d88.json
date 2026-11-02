@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-04T20:38:11.016284+00:00",
+  "finished_at": "2026-10-04T20:38:53.876100+00:00",
+  "argv": [
+    "-c",
+    "update"
+  ],
+  "pid": 83424,
+  "outcome": "failed",
+  "pre_update": {
+    "sha": "fdcae6debac4ad33adc449a4263433b389b563ef",
+    "short_sha": "fdcae6de",
+    "version": "0.21.5",
+    "source": "git",
+    "commit_date": 1791136551
+  },
+  "post_update": {
+    "sha": "439334127f012e1ee0685acd5dba288e459af0ec",
+    "short_sha": "43933412",
+    "version": "0.21.5",
+    "source": "git",
+    "commit_date": 1791143379
+  },
+  "steps": [
+    {
+      "name": "pre_update_backup",
+      "ok": true,
+      "detail": "snapshot=20261004-203811-pre-update",
+      "at": "2026-10-04T20:38:11.215499+00:00"
+    },
+    {
+      "name": "local_changes_stash",
+      "ok": true,
+      "detail": "restored: 0746d9d46ca18de35c0d75bc52c4c57c201b2a9b",
+      "at": "2026-10-04T20:38:53.418707+00:00"
+    }
+  ],
+  "skips": [],
+  "gateway_restart": {},
+  "fleet": [],
+  "update_id": "4368b1f0295c415a8e9d8b8077c44d88",
+  "correlation_id": null,
+  "plan": {
+    "install_method": "git",
+    "updatable_in_place": true,
+    "update_mechanism": "hermes update",
+    "expected_sha": "fdcae6debac4ad33adc449a4263433b389b563ef",
+    "expected_version": "0.21.5",
+    "profiles": [
+      "default"
+    ],
+    "runtimes": [
+      {
+        "kind": "serve",
+        "profile": "default",
+        "pid": 6610,
+        "supervisor": "manual-serve",
+        "code_sha": null,
+        "code_version": null,
+        "restart_via": "respawn-argv",
+        "detail": {
+          "argv": "-c serve --port 8642 --host 127.0.0.1",
+          "host": "127.0.0.1",
+          "port": 8642,
+          "create_time": 1791137836.66
+        }
+      }
+    ]
+  },
+  "stages": [
+    {
+      "name": "plan",
+      "outcome": "success",
+      "at": "2026-10-04T20:38:11.137333+00:00"
+    },
+    {
+      "name": "snapshot",
+      "outcome": "success",
+      "at": "2026-10-04T20:38:11.215551+00:00"
+    },
+    {
+      "name": "apply",
+      "outcome": "success",
+      "at": "2026-10-04T20:38:53.425969+00:00",
+      "mode": "git"
+    }
+  ],
+  "exit_code": 1,
+  "stop_reason": "sys.exit(1)"
+}

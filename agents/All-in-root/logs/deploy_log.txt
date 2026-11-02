@@ -1,0 +1,23 @@
+All-in deploy log
+=================
+
+[2026-08-16] 由 DSH Agent（greencloud-ai，檔案寫入 session，無 shell）生成完整部署包。
+- 已生成：README、.env.example、.gitignore、docker-compose.yml、requirements.txt、
+  core/（sesm_engine.py 安全版、orchestrator.py、agent_registry.json、security/）、
+  skills/（9 個 SKILL.md）、config/、frontend/（all-in-dashboard、agent-monitor）、
+  deploy/（install.sh、verify.sh、push.sh、fix/01~03）、logs/。
+- 修復 4（面板接真實數據）已直接寫入 dashboard.js / monitor.js
+  （含 /health、/v1/agents/status、Qdrant /collections 真實 fetch 與離線降級）。
+- 待執行（需 shell，見 README Runbook）：
+  0) ~/.hermes/.env 的 API_SERVER_HOST 綁定修改：刻意未由 DSH 直接編輯
+     （編輯器要求先讀檔，會把真實 API Key 拉進對話；改由 fix/01 先備份再 sed，更安全）。
+  1) bash deploy/fix/01-fix-hermes-binding.sh   # 8642 綁定 + systemctl 重啟 + curl 200 驗證
+  2) bash deploy/fix/02-migrate-large-files.sh  # 6.1G 打包 + 臨時 HTTP + logs/migration.md
+  3) bash deploy/fix/03-install-harness-evolution.sh  # clone SWE-agent / mini-swe-agent
+  4) bash deploy/verify.sh                     # 服務健康驗證
+  5) bash deploy/push.sh "..."                 # 去敏掃描後推送（無 --force）
+- 誠實原則：未驗證前不宣稱完成；本 log 不偽造 commit hash 與服務狀態。
+- 安全調整紀錄：
+  * SESM 移除 meta-token／越獄指令，改用 ALLOWED_STATES 白名單 + 不可移除驗證閘 + MIN_TRIALS=20。
+  * 未收錄寄生式瀏覽器算力／偽裝層程式碼（未經他人同意使用其算力）。
+  * push 一律不用 --force；.env / *.env 已 gitignore；推送前跑 gitleaks / key_manager.py。

@@ -1,0 +1,8 @@
+[features]
+chat = false
+local_sandbox = false
+code_output_summary = true
+code_generation = "accurate"
+code_output_reflection = true
+forced_apps = []
+final_answer = true

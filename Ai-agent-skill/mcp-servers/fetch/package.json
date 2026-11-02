@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-fetch",
+  "version": "1.0.0",
+  "description": "Official MCP server fetch",
+  "main": "index.js"
+}

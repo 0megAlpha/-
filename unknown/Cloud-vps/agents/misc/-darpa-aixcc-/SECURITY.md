@@ -1,0 +1,2 @@
+# Security Boundary
+This repository does not enable autonomous exploitation of external targets, credential harvesting, persistence, stealth or defense evasion. Research execution is limited to local fixtures, disposable environments, competition/challenge data, or explicitly authorized targets. Production self-modification requires an explicit deployment gate and rollback evidence. Secrets are never committed.

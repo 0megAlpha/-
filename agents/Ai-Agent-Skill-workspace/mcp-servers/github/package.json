@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-github",
+  "version": "1.0.0",
+  "description": "Official MCP server github",
+  "main": "index.js"
+}

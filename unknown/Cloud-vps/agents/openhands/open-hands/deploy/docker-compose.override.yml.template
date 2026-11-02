@@ -1,0 +1,13 @@
+# ═══════════════════════════════════════════════════════════
+# openhands → LiteLLM 閘道綁定（範本）
+# 使用方式: 複製成 docker-compose.override.yml 並填入真實 key
+#   cp deploy/docker-compose.override.yml.template docker-compose.override.yml
+#   (docker-compose.override.yml 已被 .gitignore 排除，絕不可 push)
+# ═══════════════════════════════════════════════════════════
+services:
+  openhands:
+    network_mode: host
+    environment:
+      - LLM_MODEL=openai/glm-5.2
+      - LLM_API_KEY=CHANGE_ME_LITELLM_MASTER_KEY
+      - LLM_BASE_URL=http://localhost:4000/v1

@@ -1,0 +1,68 @@
+{
+  "name": "openhands",
+  "image": "ai-agent-snapshots/openhands-pre-api:20261009-053318",
+  "cmd": [
+    "uvicorn",
+    "openhands.server.listen:app",
+    "--host",
+    "0.0.0.0",
+    "--port",
+    "3000"
+  ],
+  "entrypoint": [
+    "/app/entrypoint.sh"
+  ],
+  "env_keys": [
+    "FILE_STORE",
+    "FILE_STORE_PATH",
+    "GPG_KEY",
+    "LANG",
+    "LLM_API_KEY",
+    "LLM_BASE_URL",
+    "LLM_MODEL",
+    "OPENHANDS_BUILD_VERSION",
+    "OPENHANDS_USER_ID",
+    "PATH",
+    "PYTHONPATH",
+    "PYTHON_GET_PIP_SHA256",
+    "PYTHON_GET_PIP_URL",
+    "PYTHON_PIP_VERSION",
+    "PYTHON_VERSION",
+    "RUN_AS_OPENHANDS",
+    "SANDBOX_LOCAL_RUNTIME_URL",
+    "SANDBOX_RUNTIME_CONTAINER_IMAGE",
+    "SANDBOX_USER_ID",
+    "USE_HOST_NETWORK",
+    "VIRTUAL_ENV",
+    "WORKSPACE_BASE",
+    "WORKSPACE_MOUNT_PATH"
+  ],
+  "ports": {
+    "3000/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "3000"
+      }
+    ]
+  },
+  "restart": "unless-stopped",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/root/workspace",
+      "dst": "/opt/workspace_base",
+      "rw": true
+    },
+    {
+      "src": "/var/run/docker.sock",
+      "dst": "/var/run/docker.sock",
+      "rw": true
+    },
+    {
+      "src": "/root/.openhands-state",
+      "dst": "/.openhands-state",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

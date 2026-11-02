@@ -1,0 +1,5 @@
+source_path=/root/-oh-my-agent-/upstreams/HyperAgents
+source_remote=https://github.com/facebookresearch/HyperAgents.git
+source_branch=main
+source_commit=59a68f672dfb92c74aeb7e61535d776fb36e172d
+migrated_at=2026-11-02 17:17:50

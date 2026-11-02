@@ -1,0 +1,32 @@
+schema_version: 1
+status: "requested inventory; each item needs independent authorization and runtime verification"
+rule: "Names below are requested capabilities, not a claim that they are already installed or connected."
+categories:
+  deployment_and_infrastructure:
+    owner: "AI-AGENT-SKILL"
+    items: ["Gateway", "Termalin", "Hey Terminal", "Remote Desktop Commander", "SentinelX", "AppDeploy", "BasicDeploy", "Vercel", "Render", "Pethost", "Runpod Official", "Modal", "Val Town", "Replit", "Base44", "Wix", "B12 Website Generator", "YepCode"]
+  coding_and_repository:
+    owner: "AI-AGENT-SKILL"
+    items: ["GitHub", "Codex Tasks Internal/CCA", "PR Completion", "Code Review", "Codex Engineering Guardrails", "Codex Dev Workflows", "Codex Usage", "Claude Code", "OpenCode", "Superpowers", "ZzzOps", "taskplane", "Unix Copilot", "Vibe Coder", "KaTeX Error Fixer", "HTML Code Generator"]
+  agent_orchestration_and_memory:
+    owner: "AI-AGENT-SKILL"
+    items: ["Brainbase MCP", "aictrl.dev", "Agent Reach", "Founder Pulse", "Develoop", "Smart Model Router", "Universal Plugin Installer", "Voice Notify for Codex", "Memocore", "ProductOS", "Codelit", "Deep Research", "AI Detector"]
+  design_and_product:
+    owner: "AI-AGENT-SKILL"
+    items: ["Product Design", "Themely Design+Style Generator", "FitAI Pro"]
+  user_agent_runtimes:
+    owner: "separate user-owned runtimes; reusable capabilities go in AI-AGENT-SKILL"
+    items: ["OpenHands (one final integrated instance)", "Hermes (007-hermes)", "DSH (user-built agent)", "CUGA (user-built agent)"]
+  additional_requested_labels:
+    owner: "AI-AGENT-SKILL"
+    items: ["深入研究", "PR Completion", "Code Review", "GitHub", "Codex Tasks (Internal/CCA)", "Hey Terminal", "Superpowers"]
+verification_fields:
+  - discovered_in_source
+  - version_or_commit
+  - license
+  - install_method
+  - owning_agent
+  - permission_scope
+  - secret_reference
+  - health_check
+  - rollback

@@ -1,0 +1,111 @@
+{
+  "generated_at": "2026-10-13T01:07:48+00:00",
+  "inventory_version": 1,
+  "sources": [
+    {
+      "id": "claude-code",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "9d48d05f10be37e7ce155120970998994500041d",
+      "required": true,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:27+00:00"
+    },
+    {
+      "id": "opencode",
+      "kind": "git",
+      "tracked": "dev",
+      "resolved": "bd23808adfdbd7f0fe693b8f0d3afd59ee214e81",
+      "required": true,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:32+00:00"
+    },
+    {
+      "id": "dsh",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "dd2c8aeab98cc3c547c694e6092397612fb1e809",
+      "required": true,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:35+00:00"
+    },
+    {
+      "id": "cuga",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "3ccbfe1fff36aac79adaadd894981faef2bf0d3e",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:38+00:00"
+    },
+    {
+      "id": "pentestgpt",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "5860f2eebeafd23dc68ea2fcf556f995bcae2c59",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:41+00:00"
+    },
+    {
+      "id": "oh-my-agent",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "f824560ec40fff7e732e6dea5e49680069b0b373",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:43+00:00"
+    },
+    {
+      "id": "flowise",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "9291856d1ea4a4ceea9f8fef8ce14f4f6c81e8eb",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:46+00:00"
+    },
+    {
+      "id": "codex",
+      "kind": "git",
+      "tracked": "main",
+      "resolved": "12cca49c81c8aa6a37a5cc4e39964ee3b70f9458",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:47+00:00"
+    },
+    {
+      "id": "cline",
+      "kind": "npm",
+      "tracked": "0.0.13",
+      "resolved": "0.0.13",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:48+00:00"
+    },
+    {
+      "id": "pi",
+      "kind": "npm",
+      "tracked": "1.1.0",
+      "resolved": "1.2.0",
+      "required": false,
+      "status": "ok",
+      "error": null,
+      "checked_at": "2026-10-13T01:07:48+00:00"
+    }
+  ],
+  "summary": {
+    "total": 10,
+    "updated": 1,
+    "failed": 0
+  }
+}

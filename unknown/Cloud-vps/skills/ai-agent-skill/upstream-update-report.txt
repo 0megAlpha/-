@@ -1,0 +1,16 @@
+AI Agent upstream check 2026-10-18T05:10:11+08:00
+
+ECC local=ef648e01899ba3e8dc6371642deaaf64b4477775 remote=NO_UPSTREAM
+Qwen3.8 local=2ea10dc725823bf7c3e21ce8557cbe15245132ae remote=upstream/main behind=0
+anything-llm local=feb04ca0a57cda6d0b3a69c62578f0af44d388fc remote=upstream/master behind=54
+claude-plugins-official local=d182ca456ca09d31d139f7d3818d1d333b103cce remote=upstream/main behind=204
+codegraph local=6560052a6f856855d3f71eee838fd66ccfa4285d remote=upstream/main behind=158
+codex-x local=8f018fddd3ee1a68464e4df8765eb370ede0c76f remote=upstream/main behind=196
+gpt-oss local=7b583341fe16729127f6d5b94a7b09ccae97e1a1 remote=upstream/main behind=1
+higress local=bda81f1067e1285775e650644a20a635f51b0a6d remote=upstream/main behind=11
+llama.cpp local=a7b94df2c616bc1f62a73b964b4a71cb0dcc488e remote=upstream/master behind=318
+metrics local=366f8b9dfe3a59656c67d5dcad9950f59c9bc96d remote=upstream/master behind=0
+open-generative-ai local=ce82e99365ee25271427442e92310c6b0c05e94c remote=upstream/main behind=479
+superpowers-zh local=fe340195c11e2571070ad6503966c272ea00f0bc remote=upstream/main behind=14
+understand-anything local=1d7418b8abfa543744ae029e63a482aee03f9022 remote=upstream/main behind=9
+vercel-skills local=18f96ea131dab3b0fcc9b27cf7c6f6cbb6174680 remote=upstream/main behind=548

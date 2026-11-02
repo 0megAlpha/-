@@ -1,0 +1,137 @@
+===== 容量檢查 2026-10-09 00:42 =====
+/dev/vda1       310G  262G   48G  85% /
+opencode.db: 1 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-09 00:42 =====
+/dev/vda1       310G  262G   48G  85% /
+opencode.db: 1 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-09 08:00 =====
+/dev/vda1       310G  264G   46G  86% /
+opencode.db: 1 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-10 08:00 =====
+/dev/vda1       310G  255G   55G  83% /
+opencode.db: 1 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-11 08:00 =====
+/dev/vda1       310G  255G   55G  83% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-12 08:00 =====
+/dev/vda1       310G  263G   47G  85% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-13 08:00 =====
+/dev/vda1       310G  264G   47G  86% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-14 08:00 =====
+/dev/vda1       310G  268G   43G  87% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-15 08:00 =====
+/dev/vda1       310G  271G   39G  88% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-16 08:00 =====
+/dev/vda1       310G  244G   66G  79% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+===== 容量檢查 2026-10-17 08:00 =====
+/dev/vda1       310G  246G   65G  80% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====
+===== 容量檢查 2026-10-18 08:00 =====
+/dev/vda1       310G  247G   64G  80% /
+opencode.db: 2 MB
+ai-company/logs: 1 MB
+-----
+⚠️  ⚠️  建議清理！門檻：磁碟>80% / opencode db>200MB / webui db>500MB / logs>200MB
+清理建議：
+  - opencode 舊 session：opencode web 刪除舊對話，或清 /root/.local/share/opencode/opencode.db
+  - OpenWebUI 舊聊天：在 UI 刪除舊對話（資料存 /root/ai-company/open-webui）
+  - 快取：rm -rf /root/.cache/pip /root/.cache/uv /tmp/pip-*
+  - 舊備份：ls -lh /root/ai-company/backups | tail
+===== 提醒結束 =====

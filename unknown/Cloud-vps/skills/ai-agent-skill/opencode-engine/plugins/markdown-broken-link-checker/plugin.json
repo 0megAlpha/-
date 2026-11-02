@@ -1,0 +1,6 @@
+{
+  "name": "markdown-broken-link-checker",
+  "version": "1.0.0",
+  "type": "linter",
+  "entry": "index.js"
+}

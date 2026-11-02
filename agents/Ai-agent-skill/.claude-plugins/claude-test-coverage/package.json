@@ -1,0 +1,6 @@
+{
+  "name": "claude-test-coverage",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-test-coverage",
+  "main": "index.js"
+}

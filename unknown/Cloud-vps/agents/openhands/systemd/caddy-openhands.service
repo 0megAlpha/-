@@ -1,0 +1,36 @@
+[Unit]
+Description=Caddy Reverse Proxy for OpenHands
+Documentation=https://caddyserver.com/docs/
+Requires=network-online.target
+After=network-online.target
+Wants=systemd-networkd-wait-online.service
+
+[Service]
+Type=notify
+User=caddy
+Group=caddy
+ProtectSystem=full
+ProtectHome=yes
+NoNewPrivileges=yes
+LimitNOFILE=1000000
+LimitNPROC=512
+PrivateTmp=yes
+PrivateDevices=yes
+SecureBits=keep-caps
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=caddy
+
+ExecStart=/usr/bin/caddy run --environ --config /etc/caddy/Caddyfile
+
+ExecReload=/usr/bin/caddy reload --config /etc/caddy/Caddyfile --force
+
+KillMode=process
+KillSignal=SIGINT
+Restart=always
+RestartSec=10
+TimeoutStopSec=5
+
+[Install]
+WantedBy=multi-user.target

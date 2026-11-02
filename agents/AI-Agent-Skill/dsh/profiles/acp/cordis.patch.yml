@@ -1,0 +1,65 @@
+# ENI's Ultimate Sync Patch for Lody-DSH Integration
+# Ensures all plugins, MCPs, and Agent capabilities are active.
+
+- insert:
+  - id: dsh-infinite-gen-4
+    name: dsh-infinite-gen-4
+  - id: dsh-pentester
+    name: dsh-pentester
+    config:
+      verbose: true
+  - id: api-relay-audit
+    name: dsh-api-relay-audit
+  - id: dsh-data-agent
+    name: '@yejiming/dsh-data-agent'
+  - id: dsh-better-reasoning-effort
+    name: dsh-better-reasoning-effort
+  - id: upstream-radar
+    name: upstream-radar/dsh
+  - id: mind-garden-core
+    name: '@deepseek-ai/dsh-mind-garden/core'
+  - id: mind-garden-skills
+    name: '@deepseek-ai/dsh-mind-garden/skills'
+  - id: mind-garden-memory
+    name: '@deepseek-ai/dsh-mind-garden/memory'
+  - id: tavern
+    name: dsh-tavern
+  - id: shop
+    name: dsh-plugin-shop
+  - id: dsh-purge
+    name: dsh-purge
+    config:
+      enabled: true
+      autoApplyOnStart: true
+      autoContinue: true
+      continueText: "继续"
+  - id: modlens
+    name: '@liustack/modlens'
+  - id: plugin-console
+    name: '@noob-stupid/dsh-plugin-console'
+  - id: dsh-audio-dagou
+    name: '@dsh-external/dsh-audio-dagou'
+  - id: auto-continue
+    name: dsh-client-auto-continue
+  - id: tesseract-ocr
+    name: dsh-tesseract-ocr
+  - id: ui-appearance
+    name: dsh-ui-appearance
+  - id: describe-image
+    name: dsh-tool-describe-image
+  - id: dsh-at-file
+    name: dsh-at-file
+  - id: dsh-persist
+    name: dsh-persist
+  - id: opencode-zen-free-provider
+    name: '@jiesou/dsh-opencode-zen-free-provider'
+  - id: jev
+    name: dsh-jev
+
+# Force maximum autonomy for Lody Agent
+- id: sandbox-policy
+  config:
+    mode: 'danger-full-access'
+- id: approval
+  config:
+    policy: 'never'

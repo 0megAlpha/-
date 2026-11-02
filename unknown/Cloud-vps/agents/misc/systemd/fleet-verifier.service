@@ -1,0 +1,12 @@
+[Unit]
+Description=AI Fleet Background Verifier (3h loop)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/root/工作流部署/09-背景守護/fleet-verifier.sh
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

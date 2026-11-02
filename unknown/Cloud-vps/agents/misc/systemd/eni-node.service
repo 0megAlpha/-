@@ -1,0 +1,14 @@
+[Unit]
+Description=ENI AI Node
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=ENI_HOME=/root/eni_system
+EnvironmentFile=/root/eni_system/config/bot.env
+ExecStart=/usr/bin/python3 /root/eni_system/ai_node/scripts/ai-node.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

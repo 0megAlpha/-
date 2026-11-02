@@ -1,0 +1,17 @@
+# 憑證與本機狀態永不入庫
+.env
+*.env
+!.env.example
+venv/
+node_modules/
+__pycache__/
+*.log
+logs/*.log
+*.db
+*.sqlite
+*.tar.gz
+.DS_Store
+
+# 修復 3：clone 下來的第三方 Harness 源碼（體積大、非本專案資產）不入庫
+**/harness-evolution/src/
+skills/harness-evolution/src/

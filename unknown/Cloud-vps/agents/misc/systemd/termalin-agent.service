@@ -1,0 +1,13 @@
+[Unit]
+Description=Termalin tunnel agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/local/bin/termalin-agent run
+Restart=always
+RestartSec=3
+User=root
+
+[Install]
+WantedBy=multi-user.target

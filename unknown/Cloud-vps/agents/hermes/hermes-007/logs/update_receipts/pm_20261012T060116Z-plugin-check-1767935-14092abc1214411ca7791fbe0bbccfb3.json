@@ -1,0 +1,197 @@
+{
+  "exit_code": 0,
+  "feature_list": null,
+  "finished_at": "2026-10-12T06:01:16.076872+00:00",
+  "kind": "plugin-check",
+  "outcome": "ok",
+  "platform": null,
+  "plugin_checks": [
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "browser",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "context_engine",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "cron_providers",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "dashboard_auth",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "disk-cleanup",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "google_meet",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "hermes-achievements",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "image_gen",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "kanban",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "memory",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "model-providers",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "observability",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "platforms",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "security-guidance",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "spotify",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "teams_pipeline",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "video_gen",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    },
+    {
+      "class": "manual",
+      "current": null,
+      "latest": null,
+      "min_hermes": null,
+      "name": "web",
+      "needs_fixing": null,
+      "reason": "no provenance; not auto-updatable",
+      "update_available": null
+    }
+  ],
+  "refusal": null,
+  "schema": 1,
+  "started_at": "2026-10-12T06:01:16.076651+00:00",
+  "steps": [],
+  "update_id": null,
+  "venv_rebuild": null,
+  "warnings": []
+}

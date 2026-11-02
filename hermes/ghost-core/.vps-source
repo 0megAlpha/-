@@ -1,0 +1,5 @@
+source_path=/root/ghost-core-deploy.UaldTq
+source_remote=git@github.com:xh09411-web/ghost-core.git
+source_branch=main
+source_commit=7359d8000135b1e7970e7ec7b1b96d5d171a30b6
+migrated_at=2026-11-02 17:17:43

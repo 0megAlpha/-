@@ -1,0 +1,7 @@
+[project]
+name="self-evolving-engineering"
+version="1.0.0"
+requires-python=">=3.11"
+dependencies=[]
+[project.scripts]
+see="see.cli:main"

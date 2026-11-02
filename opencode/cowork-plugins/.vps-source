@@ -1,0 +1,5 @@
+source_path=/root/.config/opencode/plugins/opencode-cowork-plugins
+source_remote=https://github.com/eren726290/opencode-cowork-plugins.git
+source_branch=main
+source_commit=d12219501abde85af9fd898f69500a0415a8df95
+migrated_at=2026-11-02 17:17:45

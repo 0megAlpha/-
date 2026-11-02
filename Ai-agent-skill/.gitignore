@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+.env
+*.env
+*.log
+node_modules/
+__pycache__/
+*.db
+*.sqlite
+.DS_Store
+=======
+# 敏感憑證
+.env
+.env.*
+*.key
+*.pem
+.credentials.yaml
+KEEP-SECRETS/
+config/secrets.json
+{}config/secrets.json
+tokens/
+keys/
+# 依賴與暫存
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.log
+dist/
+build/
+.cache/
+# 大檔案
+*.tar.gz
+*.zip
+*.7z
+>>>>>>> 57abf191ba6b1fe69de6cb4bf2d4b0a48c3a95e9

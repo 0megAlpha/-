@@ -1,0 +1,121 @@
+{
+  "schema": 1,
+  "started_at": "2026-10-08T15:57:32.011954+00:00",
+  "finished_at": "2026-10-08T16:00:44.559216+00:00",
+  "argv": [
+    "-c",
+    "update",
+    "--backup",
+    "--yes",
+    "--no-gateway-restart"
+  ],
+  "pid": 1007316,
+  "outcome": "success",
+  "pre_update": {
+    "sha": "439334127f012e1ee0685acd5dba288e459af0ec",
+    "short_sha": "43933412",
+    "version": "0.21.5",
+    "source": "git",
+    "commit_date": 1791143379
+  },
+  "post_update": {
+    "sha": "38880bd2f1e90dbc9a1aeec03af62539ee64719a",
+    "short_sha": "38880bd2",
+    "version": "0.21.6",
+    "source": "git",
+    "commit_date": 1791469080
+  },
+  "steps": [
+    {
+      "name": "pre_update_backup",
+      "ok": true,
+      "detail": "snapshot=20261008-155733-pre-update",
+      "at": "2026-10-08T15:57:44.458205+00:00"
+    },
+    {
+      "name": "local_changes_stash",
+      "ok": true,
+      "detail": "restored: 944d9a95f7b08fed2e241c052ee0e4ab2e4cfe51",
+      "at": "2026-10-08T15:58:57.885487+00:00"
+    }
+  ],
+  "skips": [
+    {
+      "name": "gateway_restart",
+      "reason": "--no-gateway-restart: deferred, marker kept",
+      "at": "2026-10-08T16:00:44.553697+00:00"
+    }
+  ],
+  "gateway_restart": {},
+  "fleet": [],
+  "update_id": "9c591cb5005a473c8f2213cded38ea9d",
+  "correlation_id": null,
+  "plan": {
+    "install_method": "git",
+    "updatable_in_place": true,
+    "update_mechanism": "hermes update",
+    "expected_sha": "439334127f012e1ee0685acd5dba288e459af0ec",
+    "expected_version": "0.21.5",
+    "profiles": [
+      "default"
+    ],
+    "runtimes": []
+  },
+  "stages": [
+    {
+      "name": "plan",
+      "outcome": "success",
+      "at": "2026-10-08T15:57:33.422118+00:00"
+    },
+    {
+      "name": "snapshot",
+      "outcome": "success",
+      "at": "2026-10-08T15:57:44.458256+00:00"
+    },
+    {
+      "name": "apply",
+      "outcome": "success",
+      "at": "2026-10-08T15:58:57.892962+00:00",
+      "mode": "git"
+    },
+    {
+      "name": "deps",
+      "outcome": "success",
+      "at": "2026-10-08T15:59:39.312539+00:00"
+    },
+    {
+      "name": "build",
+      "outcome": "success",
+      "at": "2026-10-08T16:00:44.548490+00:00"
+    },
+    {
+      "name": "restart",
+      "outcome": "skipped",
+      "at": "2026-10-08T16:00:44.553755+00:00"
+    }
+  ],
+  "exit_code": 0,
+  "stop_reason": "source update completion",
+  "pm_venv_rebuild": {
+    "ok": false,
+    "reason": "already in sync"
+  },
+  "pm_feature_list": [
+    "acp",
+    "all",
+    "anthropic",
+    "bedrock",
+    "computer-use",
+    "doc-extract",
+    "edge-tts",
+    "google",
+    "vertex",
+    "vision",
+    "web",
+    "wecom",
+    "youtube"
+  ],
+  "pm_steps": [],
+  "pm_exit_code": 0,
+  "pm_sync_outcome": "ok"
+}

@@ -1,0 +1,5 @@
+source_path=/root/-oh-my-agent-/upstreams/StateM
+source_remote=https://github.com/henryqin1997/statem.git
+source_branch=main
+source_commit=8c3309ad3e7b265e23a4db011ff98c5f6a132bd8
+migrated_at=2026-11-02 17:17:50

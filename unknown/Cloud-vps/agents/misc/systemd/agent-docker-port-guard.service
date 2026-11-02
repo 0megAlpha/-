@@ -1,0 +1,14 @@
+[Unit]
+Description=Restrict agent Docker published ports to private/Tailscale ingress
+After=docker.service network-online.target
+PartOf=docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/agent-docker-port-guard
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target

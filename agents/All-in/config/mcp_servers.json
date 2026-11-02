@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "hermes": {"url": "http://localhost:8642/mcp", "transport": "streamable-http"},
+    "qdrant": {"url": "http://localhost:6333/mcp", "transport": "streamable-http"}
+  }
+}
+

@@ -1,0 +1,37 @@
+{
+  "name": "agent-plane-caddy",
+  "image": "caddy:latest",
+  "cmd": [
+    "caddy",
+    "run",
+    "--config",
+    "/etc/caddy/Caddyfile",
+    "--adapter",
+    "caddyfile"
+  ],
+  "entrypoint": null,
+  "env_keys": [
+    "CADDY_VERSION",
+    "PATH",
+    "XDG_CONFIG_HOME",
+    "XDG_DATA_HOME"
+  ],
+  "ports": {
+    "8443/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "8443"
+      }
+    ]
+  },
+  "restart": "unless-stopped",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/opt/agent-plane/caddy/Caddyfile",
+      "dst": "/etc/caddy/Caddyfile",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

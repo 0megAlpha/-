@@ -1,0 +1,5 @@
+source_path=/.claude/skills/gstack
+source_remote=https://github.com/garrytan/gstack.git
+source_branch=main
+source_commit=a6b3a57512ca6d5c6aa5b68f74f736195021f96e
+migrated_at=2026-11-02 17:17:50

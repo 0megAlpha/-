@@ -1,0 +1,9 @@
+agent: openhands
+source: /root/open-hands
+role: agent
+integration_layer: /root/ai-agent-skill
+
+research_capability:
+  installed: true
+  enabled: false
+  contract: /root/ai-agent-skill/research/capability.yaml

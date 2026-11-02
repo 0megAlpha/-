@@ -1,0 +1,12 @@
+[Unit]
+Description=Lody Agent Runtime
+After=network.target litellm-agent.service
+[Service]
+Type=simple
+User=root
+Environment=HOME=/root
+ExecStart=/usr/local/bin/lody daemon-runner
+Restart=always
+RestartSec=8
+[Install]
+WantedBy=multi-user.target

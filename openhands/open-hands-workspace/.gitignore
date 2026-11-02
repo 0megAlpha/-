@@ -1,0 +1,19 @@
+# 二進制與運行時
+node/
+bin/
+venv/
+__pycache__/
+*.pyc
+.cache/
+*.db
+*.log
+*.lock
+state/
+cron/
+sessions/
+node_modules/
+skills/*/node_modules/
+.DS_Store
+*.pem
+*.key
+.env

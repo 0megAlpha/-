@@ -1,0 +1,6 @@
+{
+  "name": "json-schema-validator",
+  "version": "1.0.0",
+  "type": "linter",
+  "entry": "index.js"
+}

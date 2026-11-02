@@ -1,0 +1,13 @@
+- Current Branch: master
+- Remote URL: 
+- Uncommitted Changes (Count): 10
+- Untracked/Unsaved Assets:
+  -  audit_report.md
+  -  caddy/Caddyfile.bak.1787375997
+  -  caddy/Caddyfile.bak.1787382267
+  -  caddy/Caddyfile.bak.20260822-154405
+  -  caddy/Caddyfile.bak2.1787382370
+  -  caddy/Caddyfile.bak3.1787382452
+  -  caddy/Caddyfile.broken
+  -  www/
+### Repository: /opt/ai-agent-skill-main

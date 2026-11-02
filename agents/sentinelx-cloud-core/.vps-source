@@ -1,0 +1,5 @@
+source_path=/opt/sentinelx-cloud-core
+source_remote=https://github.com/pensados/sentinelx-cloud-core.git
+source_branch=main
+source_commit=55acee08e9b102f8a37f162f9950d40d8ef647b2
+migrated_at=2026-11-02 17:17:49

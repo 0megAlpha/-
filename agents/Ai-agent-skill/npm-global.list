@@ -1,0 +1,19 @@
+/usr/lib
+├── @anthropic-ai/claude-code@2.1.224
+├── @biomejs/biome@2.5.6
+├── @charmland/crush@0.88.0
+├── @continuedev/cli@1.5.47
+├── @deepseek-ai/dsh@0.1.5-rc.3
+├── @kilocode/cli@7.4.20
+├── @openai/codex@0.147.0
+├── bb-browser@0.14.2
+├── corepack@0.36.0
+├── dsh1024@0.5.0
+├── freebuff@0.0.137
+├── lody@0.100.0
+├── n8n@2.33.6
+├── npm@11.19.0
+├── oh-my-opencode@4.19.4
+├── promptfoo@0.123.1
+└── tweakcc@4.3.3
+

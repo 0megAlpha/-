@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-pdflatex",
+  "version": "1.0.0",
+  "description": "Official MCP server pdflatex",
+  "main": "index.js"
+}

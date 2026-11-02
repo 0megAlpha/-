@@ -1,0 +1,110 @@
+{
+  "swap": "git",
+  "branch": "main",
+  "pre_pull_sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+  "is_fork": false,
+  "gateway_mode": false,
+  "had_desktop_app_before_update": false,
+  "pre_update_snapshot_id": "20261004-181313-pre-update",
+  "pre_update_version": "0.21.3",
+  "active_lazy_features": [
+    "provider.anthropic",
+    "provider.bedrock",
+    "provider.vertex",
+    "tts.edge",
+    "platform.wecom_callback",
+    "skill.google_workspace",
+    "skill.youtube",
+    "tool.acp",
+    "tool.dashboard",
+    "tool.vision",
+    "tool.doc_extract",
+    "tool.computer_use"
+  ],
+  "active_tool_dependencies": [],
+  "plan": {
+    "install_method": "git",
+    "updatable_in_place": true,
+    "update_mechanism": "hermes update",
+    "expected_sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+    "expected_version": "0.21.3",
+    "profiles": [
+      "default"
+    ],
+    "runtimes": [
+      {
+        "kind": "serve",
+        "profile": "default",
+        "pid": 3508575,
+        "supervisor": "manual-serve",
+        "code_sha": null,
+        "code_version": null,
+        "restart_via": "respawn-argv",
+        "detail": {
+          "argv": "/root/.local/bin/hermes serve --port 8642 --host 127.0.0.1",
+          "host": "127.0.0.1",
+          "port": 8642,
+          "create_time": 1791024476.24
+        }
+      }
+    ]
+  },
+  "windows_gateway_resume": null,
+  "sibling_snapshots": {},
+  "receipt": {
+    "schema": 1,
+    "started_at": "2026-10-04T18:13:13.307788+00:00",
+    "finished_at": null,
+    "argv": [
+      "/root/.local/bin/hermes",
+      "update"
+    ],
+    "pid": 3492,
+    "outcome": "running",
+    "pre_update": {
+      "sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+      "short_sha": "170d616c",
+      "version": "0.21.3",
+      "source": "git"
+    },
+    "post_update": {},
+    "steps": [
+      {
+        "name": "pre_update_backup",
+        "ok": true,
+        "detail": "snapshot=20261004-181313-pre-update",
+        "at": "2026-10-04T18:13:13.760229+00:00"
+      }
+    ],
+    "skips": [],
+    "gateway_restart": {},
+    "fleet": [],
+    "plan": {
+      "install_method": "git",
+      "updatable_in_place": true,
+      "update_mechanism": "hermes update",
+      "expected_sha": "170d616ca6959170edaa721de8c7fff132f431c3",
+      "expected_version": "0.21.3",
+      "profiles": [
+        "default"
+      ],
+      "runtimes": [
+        {
+          "kind": "serve",
+          "profile": "default",
+          "pid": 3508575,
+          "supervisor": "manual-serve",
+          "code_sha": null,
+          "code_version": null,
+          "restart_via": "respawn-argv",
+          "detail": {
+            "argv": "/root/.local/bin/hermes serve --port 8642 --host 127.0.0.1",
+            "host": "127.0.0.1",
+            "port": 8642,
+            "create_time": 1791024476.24
+          }
+        }
+      ]
+    }
+  }
+}

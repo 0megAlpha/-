@@ -1,0 +1,25 @@
+model_provider: litellm
+litellm:
+  base_url: http://localhost:4001
+  model: qwen3-coder
+api_server:
+  key: "sk-REDACTED"
+  enabled: true
+  host: 127.0.0.1
+  port: 8642
+_config_version: 50
+
+mcp_servers:
+  codegraph:
+    command: codegraph
+    args:
+      - serve
+      - --mcp
+    timeout: 120
+    connect_timeout: 60
+    enabled: true
+
+platform_toolsets:
+  cli:
+    - hermes-cli
+    - mcp-codegraph

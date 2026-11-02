@@ -1,0 +1,19 @@
+[core]
+workspace_base = "/opt/openhands-sandbox/workspace"
+sandbox_container_image = "openhands-sandbox:latest"
+sandbox_timeout = 120
+
+[llm]
+model = "deepseek-ai/deepseek-v4-flash-0731"
+base_url = "https://integrate.api.nvidia.com/v1"
+
+[sandbox]
+enable_auto_lint = true
+enable_testing = true
+test_command = "pytest -v --tb=short"
+lint_command = "black --check . && ruff check ."
+
+[memory]
+enabled = true
+backend = "local"
+path = "/root/.openhands/memory"

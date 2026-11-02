@@ -1,0 +1,81 @@
+{{- if and .Values.enabled .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: openhands-integrations-ingress
+  annotations:
+    {{- if .Values.ingress.integrations.annotations }}
+    {{ .Values.ingress.integrations.annotations | toYaml | nindent 4 }}
+    {{- else }}
+    {{ .Values.ingress.annotations | toYaml | nindent 4 }}
+    {{- end }}
+spec:
+  ingressClassName: {{ .Values.ingress.class }}
+  {{- if .Values.tls.enabled }}
+  tls:
+  - hosts:
+    {{- if .Values.ingress.prefixWithBranch }}
+    - {{ .Values.branchSanitized }}.{{ .Values.ingress.host }}
+    {{- else }}
+    - {{ .Values.ingress.host }}
+    {{- end }}
+    secretName: app-all-hands-{{ .Values.tls.env }}-tls
+  {{- end }}
+  rules:
+  {{- if .Values.ingress.prefixWithBranch }}
+  - host: {{ .Values.branchSanitized }}.{{ .Values.ingress.host }}
+  {{- else }}
+  - host: {{ .Values.ingress.host }}
+  {{- end }}
+    http:
+      paths:
+      - path: /integration/github/events
+        pathType: Exact
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /integration/gitlab/events
+        pathType: Exact
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /integration/jira/events
+        pathType: Exact
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /integration/jira-dc/events
+        pathType: Exact
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /api/billing/stripe-webhook
+        pathType: Exact
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /slack
+        pathType: Prefix
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+      - path: /oauth/device
+        pathType: Prefix
+        backend:
+          service:
+            name: openhands-integrations-service
+            port:
+              number: 3000
+{{- end }}

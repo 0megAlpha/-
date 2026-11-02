@@ -1,0 +1,2 @@
+# Renew Tailscale TLS certificate only when within 21 days of expiry.
+17 3 * * * root /usr/local/sbin/renew-openhands-tailnet-cert.sh >> /var/log/openhands-tailnet-cert-renew.log 2>&1

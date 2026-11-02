@@ -1,0 +1,9 @@
+Legend: production dependency, optional only, dev only
+
+dsh-profile-default /root/.dsh/profiles/default (PRIVATE)
+│
+│   dependencies:
+├── dsh-infinite-gen-4@file:../../plugins/dsh-infinite-gen-4
+└── oh-my-openagent@4.19.4
+
+2 packages
