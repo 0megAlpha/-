@@ -1,6 +1,0 @@
-{
-  "name": "claude-env-protector",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-env-protector",
-  "main": "index.js"
-}

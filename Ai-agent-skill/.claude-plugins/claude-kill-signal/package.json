@@ -1,6 +1,0 @@
-{
-  "name": "claude-kill-signal",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-kill-signal",
-  "main": "index.js"
-}

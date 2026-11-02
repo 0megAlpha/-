@@ -1,6 +1,0 @@
-{
-  "name": "@modelcontextprotocol/server-npm",
-  "version": "1.0.0",
-  "description": "Official MCP server npm",
-  "main": "index.js"
-}

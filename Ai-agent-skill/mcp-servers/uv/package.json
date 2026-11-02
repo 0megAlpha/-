@@ -1,6 +1,0 @@
-{
-  "name": "@modelcontextprotocol/server-uv",
-  "version": "1.0.0",
-  "description": "Official MCP server uv",
-  "main": "index.js"
-}

@@ -1,6 +1,0 @@
-{
-  "name": "claude-mcp-filesystem",
-  "version": "1.0.0",
-  "description": "Claude Code plugin claude-mcp-filesystem",
-  "main": "index.js"
-}
