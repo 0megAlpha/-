@@ -1,0 +1,15 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-build-start 1  "build-start " 
+.SH NAME
+devin\-cloud\-drs\-build\-start \- Trigger an environment build without waiting
+.SH SYNOPSIS
+\fBdevin cloud drs build\-start\fR [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Trigger an environment build without waiting
+.PP
+Returns immediately with the build job ID. Use `build\-wait` to poll for completion.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

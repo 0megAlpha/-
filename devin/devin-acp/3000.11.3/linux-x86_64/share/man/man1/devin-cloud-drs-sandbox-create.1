@@ -1,0 +1,24 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-sandbox-create 1  "sandbox-create " 
+.SH NAME
+devin\-cloud\-drs\-sandbox\-create \- Create a sandbox Devin session for testing repo setup
+.SH SYNOPSIS
+\fBdevin cloud drs sandbox\-create\fR <\fB\-\-repo\fR> [\fB\-\-prompt\fR] [\fB\-\-secret\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Create a sandbox Devin session for testing repo setup
+.PP
+Spins up a fresh cloud session attached to the given repository. Use `devin cloud drs run` to execute commands inside the sandbox.
+.SH OPTIONS
+.TP
+\fB\-\-repo\fR \fI<REPO>\fR
+Repository in `owner/repo` format (e.g. `simonw/llm`)
+.TP
+\fB\-\-prompt\fR \fI<PROMPT>\fR [default: Sandbox session for declarative repo setup testing.]
+Initial prompt for the sandbox session
+.TP
+\fB\-\-secret\fR \fI<KEY=VALUE>\fR
+Per\-session secret in `KEY=VALUE` form (repeatable)
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

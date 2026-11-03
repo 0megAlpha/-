@@ -1,0 +1,26 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-rules-list 1  "list " 
+.SH NAME
+devin\-rules\-list \- List all available rules
+.SH SYNOPSIS
+\fBdevin rules list\fR [\fB\-\-provider\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+List all available rules
+.SH OPTIONS
+.TP
+\fB\-\-provider\fR \fI<PROVIDER>\fR
+Filter by provider
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+cursor: Cursor rules (.cursor/rules/)
+.IP \(bu 2
+windsurf: Windsurf rules (.windsurf/rules/)
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

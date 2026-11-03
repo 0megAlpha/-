@@ -1,0 +1,466 @@
+============================================================
+FULL AGENT INTEGRATION
+============================================================
+TIME=20261003-092217
+
+
+============================================================
+1. CANONICAL AGENT REPOSITORIES
+============================================================
+
+------------------------------------------------------------
+[REPO] Hermes
+PATH=/root/hermes-007
+REMOTE=https://github.com/xh09411-web/hermes-007.git
+BRANCH=master
+HEAD=d000425
+AHEAD=0 BEHIND=0
+[OK] already synchronized
+FINAL_HEAD=d000425
+
+------------------------------------------------------------
+[REPO] OpenHands
+PATH=/root/open-hands
+REMOTE=https://github.com/xh09411-web/open-hands.git
+BRANCH=main
+HEAD=54fe8b2c8
+AHEAD=0 BEHIND=0
+[OK] already synchronized
+FINAL_HEAD=54fe8b2c8
+
+------------------------------------------------------------
+[REPO] Ai-Agent-Skill
+PATH=/root/ai-agent-skill
+REMOTE=https://github.com/xh09411-web/ai-agent-skill.git
+BRANCH=main
+HEAD=5b718cc
+AHEAD=7 BEHIND=1
+[KEEP] diverged; NO reset/rebase/force-push
+FINAL_HEAD=5b718cc
+
+------------------------------------------------------------
+[REPO] Claude Code
+PATH=/root/Claude-code
+REMOTE=https://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@github.com/xh09411-web/Claude-code.git
+BRANCH=main
+HEAD=4e8b484
+AHEAD=0 BEHIND=0
+[OK] already synchronized
+FINAL_HEAD=4e8b484
+
+------------------------------------------------------------
+[REPO] DeepSeek Harness
+PATH=/root/--dsh
+REMOTE=https://xh09411-web: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@github.com/xh09411-web/--dsh.git
+BRANCH=main
+HEAD=b2824692
+AHEAD=0 BEHIND=0
+[OK] already synchronized
+FINAL_HEAD=b2824692
+
+============================================================
+2. DISCOVER OTHER AGENT REPOSITORIES
+============================================================
+/home/xiaye/Ai-agent-skill	https://github.com/xh09411-web/Ai-agent-skill.git
+/home/xiaye/CKA-Agent	https://github.com/Graph-COM/CKA-Agent.git
+/home/xiaye/hermes-007	https://github.com/xh09411-web/hermes-007.git
+/opt/ai-agent-skill-main	https://github.com/xh09411-web/Ai-agent-skill.git
+/opt/army/skills/agent-skills	https://github.com/addyosmani/agent-skills
+/root/.archive/ai-company.bak-before-pull-20260919_183629	git@github.com:xh09411-web/ai-agent-skill.git
+/root/.archive/hermes-repo-single-commit	git@github.com:xh09411-web/hermes-007.git
+/root/.config/opencode/plugins/opencode-cowork-plugins	https://github.com/eren726290/opencode-cowork-plugins.git
+/root/.hermes	git@github.com:xh09411-web/hermes-007.git
+/root/.hermes/skills/harness-evolution/src/SWE-agent	https://github.com/SWE-agent/SWE-agent.git
+/root/.hermes/skills/harness-evolution/src/mini-swe-agent	https://github.com/SWE-agent/mini-swe-agent.git
+/root/.lody/chats/b3639a8e-bec4-448e-a627-83398da5fe1d/_repos/MoizIbnYousaf_ai-agent-skills	https://github.com/MoizIbnYousaf/ai-agent-skills.git
+/root/.lody/chats/b3639a8e-bec4-448e-a627-83398da5fe1d/_repos/dean9703111_ai-agent-skill-for-video-workflow	https://github.com/dean9703111/ai-agent-skill-for-video-workflow.git
+/root/.lody/chats/b3639a8e-bec4-448e-a627-83398da5fe1d/_repos/hoodini_ai-agents-skills	https://github.com/hoodini/ai-agents-skills.git
+/root/.lody/chats/b3639a8e-bec4-448e-a627-83398da5fe1d/_repos/seb1n_awesome-ai-agent-skills	https://github.com/seb1n/awesome-ai-agent-skills.git
+/root/.lody/chats/b3639a8e-bec4-448e-a627-83398da5fe1d/_repos/valenovo_ai-agent-skills	https://github.com/valenovo/ai-agent-skills.git
+/root/AI-Agent-Skill	https://github.com/xh09411-web/Ai-Agent-Skill.git
+/root/AI-NEXUS/openhands-ext/extensions	https://github.com/openhands/extensions.git
+/root/Ai-Agent-Skill-repo	git@github.com:xh09411-web/Ai-Agent-Skill.git
+/root/Ai-Agent-Skill-workspace	git@github.com:xh09411-web/Ai-Agent-Skill.git
+/root/agents	https://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@github.com/xh09411-web/agents.git
+/root/ai-agent-fleet	https://github.com/xh09411-web/ai-agent-fleet.git
+/root/ai-agent-skill	https://github.com/xh09411-web/ai-agent-skill.git
+/root/ai-agent-skill/openwebui-toolkit/agent-skills	https://github.com/addyosmani/agent-skills.git
+/root/ai-agent-skill/red-team/CKA-Agent	https://github.com/Graph-COM/CKA-Agent.git
+/root/ai-agent-skill/red-team/prime-agent	https://github.com/PrimeIntellect-ai/prime-agent.git
+/root/ai-agent-stack	https://github.com/xh09411-web/ai-agent-stack.git
+/root/ai-company	git@github.com:xh09411-web/ai-agent-skill.git
+/root/claude-code-action	https://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@github.com/xh09411-web/claude-code-action.git
+/root/hermes-007	https://github.com/xh09411-web/hermes-007.git
+/root/hermes-007-workspace	git@github.com:xh09411-web/hermes-007.git
+
+============================================================
+3. OPENCODE / CLINE
+============================================================
+
+------------------------------------------------------------
+[REPO] OpenCode
+PATH=/root/.config/opencode/plugins/opencode-cowork-plugins
+REMOTE=https://github.com/eren726290/opencode-cowork-plugins.git
+BRANCH=main
+HEAD=d122195
+AHEAD=0 BEHIND=0
+[OK] already synchronized
+FINAL_HEAD=d122195
+
+============================================================
+4. INSTALL / REPAIR DEPENDENCIES
+============================================================
+
+### Hermes
+
+[NODE] /root/hermes-007
+npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated rcedit@5.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+
+> hermes-agent@1.0.0 postinstall
+> echo '✅ Browser tools ready. Run: python run_agent.py --help'
+
+✅ Browser tools ready. Run: python run_agent.py --help
+
+added 1217 packages in 31s
+
+356 packages are looking for funding
+  run `npm fund` for details
+npm warn install-scripts 6 packages have install scripts not yet covered by allowScripts:
+npm warn install-scripts   electron@40.10.2 (postinstall: node install.js)
+npm warn install-scripts   agent-browser@0.26.0 (postinstall: node scripts/postinstall.js)
+npm warn install-scripts   electron-winstaller@5.4.0 (install: node ./script/select-7z-arch.js)
+npm warn install-scripts   esbuild@0.28.1 (postinstall: node install.js)
+npm warn install-scripts   node-pty@1.1.0 (install: node scripts/prebuild.js || node-gyp rebuild; postinstall: node scripts/post-install.js)
+npm warn install-scripts   unicode-animations@1.0.3 (postinstall: node scripts/postinstall.cjs)
+npm warn install-scripts
+npm warn install-scripts Run `npm install-scripts ls` to review, or `npm install-scripts approve <pkg>` to allow.
+
+[PYTHON] /root/hermes-007
+Using CPython 3.12.13
+Creating virtual environment at: .venv
+Resolved 225 packages in 1ms
+   Building hermes-agent @ file:///root/hermes-007
+Downloading pygments (1.2MiB)
+Downloading uvloop (4.2MiB)
+Downloading pillow (6.8MiB)
+Downloading cryptography (4.3MiB)
+Downloading openai (1.1MiB)
+Downloading pydantic-core (2.0MiB)
+ Downloaded pydantic-core
+ Downloaded uvloop
+ Downloaded cryptography
+ Downloaded pygments
+ Downloaded pillow
+ Downloaded openai
+  × Failed to build `hermes-agent @ file:///root/hermes-007`
+  ├─▶ The build backend returned an error
+  ╰─▶ Call to `setuptools.build_meta.build_editable` failed (exit
+      status: 1)
+
+      [stderr]
+      Traceback (most recent call last):
+        File "<string>", line 14, in <module>
+        File
+      "/root/.cache/uv/builds-v0/.tmpVw3hN2/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 481, in get_requires_for_build_editable
+          return self.get_requires_for_build_wheel(config_settings)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/root/.cache/uv/builds-v0/.tmpVw3hN2/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 333, in get_requires_for_build_wheel
+          return self._get_build_requires(config_settings,
+      requirements=[])
+      
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        File
+      "/root/.cache/uv/builds-v0/.tmpVw3hN2/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 301, in _get_build_requires
+          self.run_setup()
+        File
+      "/root/.cache/uv/builds-v0/.tmpVw3hN2/lib/python3.12/site-packages/setuptools/build_meta.py",
+      line 317, in run_setup
+          exec(code, locals())
+        File "<string>", line 2
+      SyntaxError: from __future__ imports must occur at the
+      beginning of the file
+
+
+hint: Build failures usually indicate a problem with the package or the build environment[WARN] uv sync failed: /root/hermes-007
+
+### OpenHands
+
+### Ai-Agent-Skill
+
+### Claude Code
+
+[NODE] /root/Claude-code
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated glob@7.2.3: Glob versions prior to v9 are no longer supported
+
+added 269 packages in 2s
+
+32 packages are looking for funding
+  run `npm fund` for details
+
+### DeepSeek Harness
+
+[NODE] /root/--dsh
+npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+npm warn deprecated rimraf@2.6.3: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated npmlog@5.0.1: This package is no longer supported.
+npm warn deprecated gauge@3.0.2: This package is no longer supported.
+npm warn deprecated are-we-there-yet@2.0.0: This package is no longer supported.
+npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+npm warn deprecated rcedit@5.0.2: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+> hermes-agent@1.0.0 postinstall
+> echo '✅ Node dependencies installed. Run: python run_agent.py --help'
+
+✅ Node dependencies installed. Run: python run_agent.py --help
+
+added 1341 packages in 34s
+
+293 packages are looking for funding
+  run `npm fund` for details
+
+[PYTHON] /root/--dsh
+Using CPython 3.11.15
+Creating virtual environment at: .venv
+Resolved 259 packages in 2ms
+   Building hermes-agent @ file:///root/--dsh
+Downloading pillow (6.6MiB)
+Downloading pygments (1.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading pydantic-core (2.0MiB)
+Downloading pillow-heif (5.3MiB)
+Downloading firecrawl-anydoc (3.3MiB)
+Downloading uvloop (3.6MiB)
+Downloading nemo-relay (9.3MiB)
+ Downloaded pygments
+ Downloaded pydantic-core
+ Downloaded firecrawl-anydoc
+ Downloaded pillow-heif
+ Downloaded uvloop
+ Downloaded pillow
+ Downloaded cryptography
+ Downloaded nemo-relay
+      Built hermes-agent @ file:///root/--dsh
+Prepared 22 packages in 3.37s
+Installed 64 packages in 59ms
+ + annotated-doc==0.0.4
+ + annotated-types==0.7.0
+ + anyio==4.12.1
+ + certifi==2026.5.20
+ + cffi==2.0.0
+ + charset-normalizer==3.4.4
+ + click==8.4.2
+ + croniter==6.0.0
+ + cryptography==50.0.0
+ + distro==1.9.0
+ + fastapi==0.133.1
+ + fire==0.7.1
+ + firecrawl-anydoc==0.2.4
+ + h11==0.16.0
+ + hermes-agent==0.21.3 (from file:///root/--dsh)
+ + httpcore==1.0.9
+ + httptools==0.7.1
+ + httpx==0.28.1
+ + idna==3.18
+ + jinja2==3.1.6
+ + jiter==0.13.0
+ + markdown==3.10.2
+ + markdown-it-py==4.0.0
+ + markupsafe==3.0.3
+ + mdurl==0.1.2
+ + nemo-relay==0.8.3
+ + openai==2.24.0
+ + packaging==26.0
+ + pathspec==1.1.1
+ + pillow==12.3.0
+ + pillow-heif==1.5.0
+ + prompt-toolkit==3.0.52
+ + psutil==7.2.2
+ + ptyprocess==0.7.0
+ + pycparser==3.0
+ + pydantic==2.13.4
+ + pydantic-core==2.46.4
+ + pygments==2.20.0
+ + pyjwt==2.13.0
+ + python-dateutil==2.9.0.post0
+ + python-dotenv==1.2.2
+ + python-multipart==0.0.32
+ + pytz==2025.2
+ + pyyaml==6.0.3
+ + requests==2.33.0
+ + rich==14.3.3
+ + ruamel-yaml==0.18.17
+ + ruamel-yaml-clib==0.2.15
+ + six==1.17.0
+ + sniffio==1.3.1
+ + snowballstemmer==3.1.1
+ + socksio==1.0.0
+ + starlette==1.3.1
+ + tenacity==9.1.4
+ + termcolor==3.3.0
+ + tqdm==4.67.3
+ + typing-extensions==4.15.0
+ + typing-inspection==0.4.2
+ + urllib3==2.7.0
+ + uvicorn==0.41.0
+ + uvloop==0.22.1
+ + watchfiles==1.1.1
+ + wcwidth==0.6.0
+ + websockets==15.0.1
+
+============================================================
+5. TOOLCHAIN
+============================================================
+/usr/local/bin/node
+v24.21.0
+/usr/local/bin/npm
+11.19.0
+/usr/local/bin/pnpm
+12.4.2
+/root/.local/bin/uv
+uv 0.12.1 (x86_64-unknown-linux-gnu)
+/usr/bin/python3
+Python 3.14.4
+/usr/bin/cargo
+cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball)
+
+============================================================
+6. AGENT RUNTIME INVENTORY
+============================================================
+AGENT              STATE      BINARY
+dsh                AVAILABLE  /usr/local/bin/dsh
+claude             AVAILABLE  /usr/local/bin/claude
+opencode           AVAILABLE  /usr/local/bin/opencode
+openhands          AVAILABLE  /root/.local/bin/openhands
+lody               AVAILABLE  /usr/local/bin/lody
+hermes             CHECK      process/service
+cline              CHECK      process/service
+
+============================================================
+7. LOCAL AGENT / MODEL PORTS
+============================================================
+LISTEN 0      4096                     127.0.0.1:8000       0.0.0.0:*    users:(("docker-proxy",pid=2179,fd=7))                    
+LISTEN 0      4096                     127.0.0.1:8001       0.0.0.0:*    users:(("docker-proxy",pid=2341734,fd=7))                 
+LISTEN 0      512                      127.0.0.1:8088       0.0.0.0:*    users:(("llama-server",pid=1050748,fd=3))                 
+LISTEN 0      4096                       0.0.0.0:3000       0.0.0.0:*    users:(("docker-proxy",pid=2748687,fd=7))                 
+LISTEN 0      511                      127.0.0.1:3080       0.0.0.0:*    users:(("MainThread",pid=3203128,fd=25))                  
+LISTEN 0      2048                     127.0.0.1:4000       0.0.0.0:*    users:(("litellm",pid=3014254,fd=14))                     
+LISTEN 0      4096                          [::]:3000          [::]:*    users:(("docker-proxy",pid=2748693,fd=7))                 
+
+============================================================
+8. BACKEND PROBES
+============================================================
+[HTTP --] http://127.0.0.1:8088
+[HTTP OK] http://127.0.0.1:4000
+[HTTP --] http://127.0.0.1:8080
+[HTTP OK] http://127.0.0.1:3000
+[HTTP --] http://127.0.0.1:8000
+[HTTP OK] http://127.0.0.1:8001
+[HTTP --] http://127.0.0.1:18000
+[HTTP --] http://127.0.0.1:18001
+[HTTP --] http://127.0.0.1:3080
+
+============================================================
+9. SECRET INVENTORY
+============================================================
+SECRET INVENTORY: /root/agent-integration/reports/secret-inventory-20261003-092217.txt
+
+============================================================
+10. BUILD AI-AGENT-SKILL COLLABORATION LAYER
+============================================================
+[OK] Ai-Agent-Skill collaboration structure created
+
+============================================================
+11. UNIFIED MANIFEST
+============================================================
+
+============================================================
+12. FINAL GIT STATE
+============================================================
+
+[hermes]
+PATH=/root/hermes-007
+REMOTE=https://github.com/xh09411-web/hermes-007.git
+BRANCH=master
+HEAD=d000425
+
+[openhands]
+PATH=/root/open-hands
+REMOTE=https://github.com/xh09411-web/open-hands.git
+BRANCH=main
+HEAD=54fe8b2c8
+
+[ai-agent-skill]
+PATH=/root/ai-agent-skill
+REMOTE=https://github.com/xh09411-web/ai-agent-skill.git
+BRANCH=main
+HEAD=5b718cc
+ m openwebui-toolkit/openwebui-extensions
+?? agents/
+?? workflows/
+
+[claude-code]
+PATH=/root/Claude-code
+REMOTE=https://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@github.com/xh09411-web/Claude-code.git
+BRANCH=main
+HEAD=4e8b484
+
+[dsh]
+PATH=/root/--dsh
+REMOTE=https://xh09411-web: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@github.com/xh09411-web/--dsh.git
+BRANCH=main
+HEAD=b2824692
+?? hermes_agent.egg-info/
+
+============================================================
+13. INSTALLED CLI VERSIONS
+============================================================
+
+### dsh
+0.1.5-rc.1
+
+### claude
+2.1.273 (Claude Code)
+
+### opencode
+1.18.30
+
+### openhands
+/root/.local/share/uv/tools/openhands/lib/python3.12/site-packages/openhands/sdk/llm/auth/openai.py:25: AuthlibDeprecationWarning: authlib.jose module is deprecated, please use joserfc instead.
+It will be compatible before version 2.0.0.
+  from authlib.jose import JsonWebKey, jwt
++----------------------------------------------------------------------+
+|  OpenHands SDK v1.21.0                                               |
+
+### lody
+0.93.3
+
+============================================================
+FULL INTEGRATION COMPLETE
+============================================================
+MANIFEST=/root/agent-integration/AGENT-MANIFEST.yaml
+REPORT=/root/agent-integration/reports/integration-20261003-092217.txt
+DISCOVERY=/root/agent-integration/agent-repository-discovery.txt
+SECRET_INVENTORY=/root/agent-integration/reports/secret-inventory-20261003-092217.txt
+
+IMPORTANT:
+- No source repository was merged into Ai-Agent-Skill.
+- No OpenHands source was moved.
+- No Hermes source was moved.
+- No force-push was performed.
+- No destructive reset was performed.
+- Dependency installation followed repository lockfiles where available.
+- Diverged repositories were preserved for manual reconciliation.
+

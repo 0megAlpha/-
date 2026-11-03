@@ -1,0 +1,19 @@
+[Unit]
+Description=Local Qwen3 4B Fast Agent Model
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/llama.cpp
+ExecStart=/opt/llama.cpp/build/bin/llama-server -m /opt/qwen3-4b-runtime/Qwen3-4B-Q4_K_M.gguf --host 127.0.0.1 --port 8089 -c 8192 -np 1 -t 4 -ngl 0 -fa on --jinja --alias qwen3-4b-local --api-key-file /etc/llama-agent-fast/api-keys
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/opt/qwen3-4b-runtime /opt/llama.cpp /etc/llama-agent-fast/api-keys
+
+[Install]
+WantedBy=multi-user.target

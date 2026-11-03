@@ -1,0 +1,13 @@
+[Unit]
+Description=ENI Telegram Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Environment=ENI_HOME=/root/eni_system
+ExecStart=/usr/bin/python3 /root/eni_system/bot/eni-bot.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

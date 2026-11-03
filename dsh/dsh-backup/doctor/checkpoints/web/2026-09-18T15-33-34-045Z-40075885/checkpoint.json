@@ -1,0 +1,54 @@
+{
+  "id": "2026-09-18T15-33-34-045Z-40075885",
+  "profile": "web",
+  "kind": "pre-repair",
+  "createdAt": "2026-09-18T15:33:34.057Z",
+  "valid": false,
+  "files": [
+    {
+      "relativePath": "profile/package.json",
+      "sourcePath": "/root/.dsh/profiles/web/package.json",
+      "present": true,
+      "sha256": "c493dd4245bc24bdbc95c5e938592fd5e552a9985188933a4e1a9b012b3f6c4f"
+    },
+    {
+      "relativePath": "profile/cordis.patch.yml",
+      "sourcePath": "/root/.dsh/profiles/web/cordis.patch.yml",
+      "present": true,
+      "sha256": "59366a4a407199dcdcd56aa8fb74994914dd182f94b1c90ff9ab7b80400a0d7a"
+    },
+    {
+      "relativePath": "profile/cordis.yml",
+      "sourcePath": "/root/.dsh/profiles/web/cordis.yml",
+      "present": true,
+      "sha256": "c300dcf2ebc5f02062d6591268d29d3db6fe45e0cb138f5467276fe2ba06076e"
+    },
+    {
+      "relativePath": "profile/pnpm-workspace.yaml",
+      "sourcePath": "/root/.dsh/profiles/web/pnpm-workspace.yaml",
+      "present": true,
+      "sha256": "da3f5a19412363264712463d0531b46d3eabd85f699ebfb0ebe75280b42258e8"
+    },
+    {
+      "relativePath": "profile/pnpm-lock.yaml",
+      "sourcePath": "/root/.dsh/profiles/web/pnpm-lock.yaml",
+      "present": true,
+      "sha256": "54c58f26c1a5a7be0ec69adcd3d48b0827a6cd95027df96d5cb77e070e17b352"
+    },
+    {
+      "relativePath": "home/settings.yaml",
+      "sourcePath": "/root/.dsh/settings.yaml",
+      "present": false
+    },
+    {
+      "relativePath": "home/settings.yml",
+      "sourcePath": "/root/.dsh/settings.yml",
+      "present": false
+    },
+    {
+      "relativePath": "home/settings.json",
+      "sourcePath": "/root/.dsh/settings.json",
+      "present": false
+    }
+  ]
+}

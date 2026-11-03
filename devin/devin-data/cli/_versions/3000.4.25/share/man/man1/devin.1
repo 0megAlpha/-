@@ -1,0 +1,129 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin 1  "devin 3000.4.25 (7e8e528a)" 
+.SH NAME
+devin \- A fast and minimal agent that lives both in your terminal and in the cloud.
+.SH SYNOPSIS
+\fBdevin\fR [\fB\-\-prompt\-file\fR] [\fB\-\-config\fR] [\fB\-\-permission\-mode\fR] [\fB\-\-sandbox\fR] [\fB\-\-model\fR] [\fB\-p\fR|\fB\-\-print\fR] [\fB\-\-export\fR] [\fB\-c\fR|\fB\-\-continue\fR] [\fB\-r\fR|\fB\-\-resume\fR] [\fB\-\-respect\-workspace\-trust\fR] [\fB\-h\fR|\fB\-\-help\fR] [\fB\-V\fR|\fB\-\-version\fR] [\fIPROMPT\fR] [\fIsubcommands\fR]
+.SH DESCRIPTION
+A fast and minimal agent that lives both in your terminal and in the cloud.
+.SH OPTIONS
+.TP
+\fB\-\-prompt\-file\fR \fI<FILE>\fR
+Load the initial prompt from a file
+.TP
+\fB\-\-config\fR \fI<PATH>\fR
+Configuration file path
+
+Override the default user config file (~/.config/devin/config.json).
+.TP
+\fB\-\-permission\-mode\fR \fI<PERMISSION_MODE>\fR [default: auto]
+Permission mode
+
+Modes: "auto" auto\-approves read\-only tools, "accept\-edits" also auto\-approves workspace edits, "smart" additionally auto\-runs actions a fast model judges safe, "dangerous" auto\-approves all tools.
+.RS
+May also be specified with the \fBDEVIN_PERMISSION_MODE\fR environment variable. 
+.RE
+.TP
+\fB\-\-sandbox\fR
+[Research Preview] Sandbox exec\-tool processes (macOS seatbelt / Linux bwrap+seccomp)
+
+When passed, commands can write only within the workspace and granted `Write(...)` scopes, and can read everything except paths hidden by `Deny(Read(...))` rules.
+.RS
+May also be specified with the \fBDEVIN_SANDBOX\fR environment variable. 
+.RE
+.TP
+\fB\-\-model\fR \fI<MODEL>\fR
+Model to use (e.g. "claude\-sonnet\-4", "claude\-opus\-4.6", "opus", "codex")
+.RS
+May also be specified with the \fBDEVIN_MODEL\fR environment variable. 
+.RE
+.TP
+\fB\-p\fR, \fB\-\-print\fR [\fI<PROMPT>\fR]
+Print response and exit
+
+Runs in non\-interactive mode: processes the prompt and exits. Optionally accepts an inline prompt: \-p "fix the bug"
+.TP
+\fB\-\-export\fR [\fI<PATH>\fR]
+Export conversation to a file
+
+Exports after each turn. Uses a default path if no path is provided.
+.TP
+\fB\-c\fR, \fB\-\-continue\fR
+Continue the most recent conversation
+.TP
+\fB\-r\fR, \fB\-\-resume\fR [\fI<SESSION_ID>\fR]
+Resume a conversation
+
+Provide a session ID to resume a specific session, or omit to select interactively.
+.TP
+\fB\-\-respect\-workspace\-trust\fR [\fI<RESPECT_WORKSPACE_TRUST>\fR]
+Respect workspace trust settings
+
+Defaults to true in every mode. Non\-interactive (print) mode cannot show the trust prompt and fails in an untrusted directory; pass \-\-respect\-workspace\-trust false to skip the check.
+.br
+
+.br
+[\fIpossible values: \fRtrue, false]
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+\fB\-V\fR, \fB\-\-version\fR
+Print version
+.TP
+[\fIPROMPT\fR]
+Your prompt (use \-\- before the prompt)
+
+Starts an interactive session. Use \-p/\-\-print for non\-interactive mode.
+.SH SUBCOMMANDS
+.TP
+devin\-auth(1)
+Authentication related commands
+.TP
+devin\-mcp(1)
+Connect and log in to Model Context Protocol servers
+.TP
+devin\-models(1)
+List the models available to your account
+.TP
+devin\-rules(1)
+Manage agent rules (always\-on context blobs)
+.TP
+devin\-skills(1)
+Manage agent skills (slash commands and agent\-triggered context blobs)
+.TP
+devin\-plugins(1)
+Manage plugins (install, list, info, update, remove)
+.TP
+devin\-cloud(1)
+Manage Devin Cloud resources (environment setup, sandbox sessions, builds)
+.TP
+devin\-list(1)
+List sessions in the current directory
+.TP
+devin\-update(1)
+Check for updates and optionally install them
+.TP
+devin\-version(1)
+Print the current version
+.TP
+devin\-migrate(1)
+Migrate configuration from other tools
+.TP
+devin\-sandbox(1)
+[Research Preview] Process sandboxing for the exec tool
+.TP
+devin\-setup(1)
+Interactive setup wizard
+.TP
+devin\-uninstall(1)
+Uninstall and remove data
+.TP
+devin\-acp(1)
+Run as an ACP (Agent Client Protocol) server over stdio
+.TP
+devin\-help(1)
+Print this message or the help of the given subcommand(s)
+.SH VERSION
+v3000.4.25 (7e8e528a)

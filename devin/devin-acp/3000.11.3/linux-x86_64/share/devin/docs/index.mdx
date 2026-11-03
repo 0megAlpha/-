@@ -1,0 +1,71 @@
+---
+title: "Quickstart"
+description: "Get up and running in 2 minutes with Devin CLI, a local command-line coding agent with deep Devin Cloud integration."
+keywords: ["Devin CLI", "install Devin CLI", "Devin CLI quickstart", "terminal coding agent"]
+icon: "bolt"
+---
+
+import CliInstall from "/snippets/cli-install.mdx";
+
+<Steps>
+  <Step title="Install Devin CLI">
+    <CliInstall />
+  </Step>
+  <Step title="Start coding">
+    That's it! After you restart your terminal, enter a project directory and type `devin` to activate Devin CLI. Also try preloading the session with a prompt for automation:
+
+    ```bash
+    devin -- check out this code and suggest a feasible, helpful feature
+    ```
+
+    <Check>
+      You're ready to go. For must-know tips, see [Essential Commands](/cli/essential-commands).
+    </Check>
+  </Step>
+</Steps>
+
+## What's next?
+
+Devin CLI can implement new features, fix bugs, review code, answer questions, automate tasks, and more.
+
+<CardGroup cols={2}>
+  <Card title="Essential Commands" icon="terminal" href="/cli/essential-commands">
+    Must-know commands and slash commands
+  </Card>
+
+  <Card title="Cloud CLI" icon="cloud" href="/cli/cloud">
+    Create, steer, and resume Devin Cloud sessions from your terminal
+  </Card>
+
+  <Card title="SSH" icon="terminal" href="/cli/ssh">
+    Open a shell on a cloud session's VM and forward ports
+  </Card>
+
+  <Card title="Models" icon="brain" href="/cli/models">
+    Choose the right model for your task
+  </Card>
+
+  <Card title="Extensibility" icon="puzzle-piece" href="/cli/extensibility/index">
+    Connect MCP servers and skills
+  </Card>
+
+  <Card title="Command Reference" icon="book" href="/cli/reference/commands">
+    Explore all commands and flags
+  </Card>
+</CardGroup>
+
+---
+
+## Devin CLI vs. Devin
+
+Devin CLI and [Devin](/get-started/devin-intro) are separate tools designed for different workflows.
+
+**Devin CLI** is a local coding agent that runs directly in your terminal. It works with your local files and environment, giving you fast, interactive assistance right where you code.
+
+**Devin** is our cloud-based AI software engineer that runs in a virtual machine. It includes features like Playbooks, Secrets, Knowledge, and other capabilities that are not available in Devin CLI.
+
+<Info>
+  Devin CLI does not yet support Knowledge, Playbooks, or Secrets from your Devin account. We're actively working on adding support for each of these and plan to roll them out soon.
+</Info>
+
+![Devin CLI overview](/images/cli/d4toverview.png)

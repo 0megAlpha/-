@@ -1,0 +1,64 @@
+[
+  {
+    "name": "openhands",
+    "capabilities": [
+      "code",
+      "terminal",
+      "browser"
+    ],
+    "entrypoint": "openhands",
+    "policy": "sandbox"
+  },
+  {
+    "name": "hermes",
+    "capabilities": [
+      "orchestration"
+    ],
+    "entrypoint": "hermes",
+    "policy": "sandbox"
+  },
+  {
+    "name": "opencode",
+    "capabilities": [
+      "code"
+    ],
+    "entrypoint": "opencode",
+    "policy": "sandbox"
+  },
+  {
+    "name": "dsh",
+    "capabilities": [
+      "code",
+      "web",
+      "sandbox"
+    ],
+    "entrypoint": "dsh",
+    "policy": "sandbox"
+  },
+  {
+    "name": "cline",
+    "capabilities": [
+      "code",
+      "acp"
+    ],
+    "entrypoint": "cline",
+    "policy": "sandbox"
+  },
+  {
+    "name": "cuga",
+    "capabilities": [
+      "browser",
+      "agent"
+    ],
+    "entrypoint": "cuga",
+    "policy": "sandbox"
+  },
+  {
+    "name": "pentestgpt",
+    "capabilities": [
+      "security-research"
+    ],
+    "entrypoint": "pentestgpt",
+    "policy": "sandbox"
+  }
+]

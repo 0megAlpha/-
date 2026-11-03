@@ -1,0 +1,124 @@
+# Secret-backed CI for pull requests from forks.
+#
+# Fork PRs on `pull_request` never receive secrets. This workflow uses
+# `pull_request_target` plus the `external-testing` environment: the job
+# starts automatically on every fork PR update, pauses at the environment gate,
+# and a required reviewer approves via GitHub's "Review deployments" button
+# before secrets are exposed.
+name: External Fork Tests
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: fork-tests-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  AGENT_SETTING_CONFIG: ${{ vars.AGENT_SETTING_CONFIG }}
+  WATSONX_APIKEY: ${{ secrets.WATSONX_APIKEY }}
+  WATSONX_PROJECT_ID: ${{ vars.WATSONX_PROJECT_ID }}
+  WATSONX_URL: ${{ vars.WATSONX_URL }}
+  MODEL_NAME: ${{ secrets.MODEL_NAME }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+  OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+  PYTHONUNBUFFERED: "1"
+  CUGA_THREAD_WORKSPACE_SEED: crm
+
+# Same directory shards as tests.yml (sequential here so the environment
+# gate is one approval). Do not add test_*.py paths; see AGENTS.md.
+
+jobs:
+  unit-tests:
+    name: Unit Tests (fork, external-testing)
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    # Runs sequentially what tests.yml shards in parallel, so this must exceed
+    # the sum of those jobs, not the longest one.
+    timeout-minutes: 35
+    environment: external-testing
+    steps:
+      - name: Checkout fork head
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --all-extras --dev --frozen
+      - run: uv run ruff check && uv run ruff format --check
+      - name: No exception detail in caller-facing responses (#681 / #721)
+        run: uv run python scripts/checks/no_exc_in_responses.py
+      - name: Run unit tests
+        run: |
+          uv run pytest ./src/cuga/backend/tools_env/registry/tests/
+          uv run pytest ./src/cuga/backend/tools_env/registry/mcp_manager/tests/
+          uv run pytest ./src/cuga/backend/cuga_graph/nodes/cuga_lite/executors/tests/
+          uv run pytest ./src/cuga/backend/cuga_graph/nodes/cuga_agent_core/tests/
+          uv run pytest ./src/cuga/backend/cuga_graph/nodes/cuga_lite/tests/
+          uv run pytest ./src/cuga/backend/cuga_graph/nodes/cuga_supervisor/tests/
+          uv run pytest tests/unit tests/integration \
+            -m "not manual and not pgvector and not load and not e2e and not stability"
+          uv run pytest src/cuga/backend/cuga_graph/policy/tests
+          uv run pytest ./src/cuga/sdk_core/tests/ \
+            -m "not manual and not pgvector and not load and not e2e and not stability"
+          uv run pytest tests/system src/system_tests/load/tests/
+          uv run pytest src/system_tests/load/load_test_with_mocked_llm.py -m load --load-test-users 5
+
+  smoke-pip-isolated:
+    name: Wheel install + demo_crm OpenAPI (fork, external-testing)
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: external-testing
+    steps:
+      - name: Checkout fork head
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Isolated wheel smoke (demo_crm → OpenAPI)
+        run: bash scripts/smoke_pip_install_isolated.sh
+
+  stability-tests:
+    name: Stability Tests (Python 3.12, fork, external-testing)
+    if: github.event.pull_request.head.repo.full_name != github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: external-testing
+    env:
+      PYTHONIOENCODING: utf-8
+    steps:
+      - name: Checkout fork head
+        uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@d0cc045d04ccac9d8b7881df0226f9e82c39688e # v6.8.0
+        with:
+          python-version: "3.12"
+          enable-cache: true
+      - run: uv sync --all-extras --dev --frozen
+      - name: Run stability tests
+        run: uv run pytest src/system_tests/e2e -m stability --stability-threshold 87 -n0 --durations=20
+      - name: Upload test logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-logs-python-3.12-fork
+          path: src/system_tests/e2e/logs/
+          retention-days: 7

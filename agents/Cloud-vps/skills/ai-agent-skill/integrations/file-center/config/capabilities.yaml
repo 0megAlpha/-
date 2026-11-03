@@ -1,0 +1,32 @@
+capabilities:
+  inspect:
+    description: Safe metadata/preview inspection
+    trust: low
+  archive_extract:
+    description: Extract common archives into an isolated job directory
+    tools: [bsdtar, 7z, unzip]
+    trust: medium
+  media_transcode:
+    description: FFmpeg media conversion
+    tools: [ffmpeg]
+    trust: medium
+  image_convert:
+    description: Image conversion
+    tools: [magick, convert]
+    trust: medium
+  office_convert:
+    description: Office/PDF conversion
+    tools: [libreoffice, soffice]
+    trust: medium
+  android_repack:
+    description: APK alignment/signing/repackaging when explicitly requested
+    tools: [zipalign, apksigner]
+    trust: high
+  ipa_inspect:
+    description: Inspect/extract IPA for metadata and source/build evidence
+    tools: [unzip]
+    trust: medium
+  ipa_to_apk:
+    description: Not a direct binary conversion; creates a porting assessment job
+    tools: []
+    trust: low

@@ -1,0 +1,8 @@
+title = "Hermes portable snapshot: exact source-label false positives"
+
+[[allowlists]]
+description = "Exact short identifier fragments from public OAuth client-ID variable names, plugin labels, and comments; not credential values"
+regexTarget = "secret"
+regexes = [
+  '''^REDACTED$''',
+]

@@ -1,0 +1,29 @@
+# ═══ 敏感檔（絕對不可 commit）═══
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+keys/
+secrets/
+credentials.json
+*.sqlite3
+webui.db
+
+# ═══ Python ═══
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+dist/
+build/
+.pytest_cache/
+
+# ═══ 執行期資料（本機專用）═══
+workflows/data/
+workflows/state/
+logs/
+*.log
+tmp/

@@ -1,0 +1,10 @@
+{
+  "id": "b0903cbae33f4581a234a3ed2e78a02e",
+  "timestamp": "2026-09-10T09:12:34.673220Z",
+  "command_id": "f6ff089fb6574ae680d30d8656b7e00d",
+  "order": 0,
+  "exit_code": 0,
+  "stdout": "CHUNK_5=3000 WANT=3000\n",
+  "stderr": null,
+  "kind": "BashOutput"
+}

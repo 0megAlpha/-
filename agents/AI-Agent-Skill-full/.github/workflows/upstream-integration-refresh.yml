@@ -1,0 +1,62 @@
+name: Upstream Integration Refresh
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: upstream-integration-refresh
+  cancel-in-progress: true
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check PyYAML
+
+      - name: Discover related repositories
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/discover_agent_repos.py
+
+      - name: Refresh upstream locks
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python tools/refresh_upstreams.py
+
+      - name: Validate integration matrix
+        run: python tools/validate_integration_matrix.py
+
+      - name: Run repository checks
+        run: python tools/verify_repo.py
+
+      - name: Create refresh pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: refresh upstream integration locks"
+          branch: chore/upstream-integration-refresh
+          delete-branch: true
+          title: "chore: refresh upstream integration locks"
+          body: |
+            ## Summary
+            - refreshed discovered agent-related repositories inventory
+            - refreshed runtime/package upstream lock resolutions
+            - regenerated compatibility report
+          labels: automated-update

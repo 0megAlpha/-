@@ -1,0 +1,59 @@
+version: 1
+generated: "20261003-092217"
+
+model:
+  llama: "http://127.0.0.1:8088"
+  litellm: "http://127.0.0.1:4000/v1"
+
+agents:
+  hermes:
+    source: "/root/hermes-007"
+    independent: true
+    integration: "/root/ai-agent-skill/agents/hermes"
+
+  openhands:
+    source: "/root/open-hands"
+    canonical: true
+    independent: true
+    integration: "/root/ai-agent-skill/agents/openhands"
+
+  dsh:
+    source: "/root/--dsh"
+    independent: true
+    integration: "/root/ai-agent-skill/agents/dsh"
+
+  claude-code:
+    source: "/root/Claude-code"
+    independent: true
+    integration: "/root/ai-agent-skill/agents/claude-code"
+
+  opencode:
+    independent: true
+    integration: "/root/ai-agent-skill/agents/opencode"
+
+  cline:
+    independent: true
+    integration: "/root/ai-agent-skill/agents/cline"
+
+  openwebui:
+    independent: true
+    integration: "/root/ai-agent-skill/agents/openwebui"
+
+  lody:
+    independent: true
+    integration: "/root/ai-agent-skill/agents/lody"
+
+  conduit:
+    independent: true
+    integration: "/root/ai-agent-skill/agents/conduit"
+
+integration:
+  root: "/root/agent-integration"
+  skill_layer: "/root/ai-agent-skill"
+  workflow_layer: "/root/ai-agent-skill/workflows"
+
+safety:
+  no_source_merging: true
+  no_force_push: true
+  no_destructive_reset: true
+  no_unknown_delete: true

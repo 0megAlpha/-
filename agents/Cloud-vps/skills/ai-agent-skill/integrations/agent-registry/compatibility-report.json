@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-10-13T02:35:36+00:00",
+  "blocking_issues": [],
+  "warnings": [],
+  "isolated_components": [
+    "cuga",
+    "flowise",
+    "pentestgpt",
+    "xattacker"
+  ]
+}

@@ -1,0 +1,12 @@
+# Merge into ~/.hermes/config.yaml. This provider is tested for narrow prompts only.
+# Full Hermes default toolset currently exceeds the 8,192-token local model context.
+model_provider: local-litellm
+model: my-model
+providers:
+  local-litellm:
+    name: Local LiteLLM
+    api: http://127.0.0.1:4000/v1
+    key_env: OPENAI_API_KEY
+    default_model: my-model
+    models:
+      - my-model

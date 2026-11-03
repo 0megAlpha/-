@@ -1,0 +1,50 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs 1  "drs " 
+.SH NAME
+devin\-cloud\-drs \- Manage Declarative Repo Setup (environment blueprints, sandbox sessions, and builds)
+.SH SYNOPSIS
+\fBdevin cloud drs\fR [\fB\-h\fR|\fB\-\-help\fR] <\fIsubcommands\fR>
+.SH DESCRIPTION
+Manage Declarative Repo Setup (environment blueprints, sandbox sessions, and builds)
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.SH SUBCOMMANDS
+.TP
+devin\-cloud\-drs\-whoami(1)
+Print the current DRS configuration (org, API endpoint, auth status)
+.TP
+devin\-cloud\-drs\-sandbox\-create(1)
+Create a sandbox Devin session for testing repo setup
+.TP
+devin\-cloud\-drs\-run(1)
+Run a shell command inside a sandbox session
+.TP
+devin\-cloud\-drs\-blueprint\-list(1)
+List all environment blueprints for the organization
+.TP
+devin\-cloud\-drs\-blueprint\-create(1)
+Create a new environment blueprint
+.TP
+devin\-cloud\-drs\-blueprint\-write(1)
+Update an existing environment blueprint
+.TP
+devin\-cloud\-drs\-build(1)
+Trigger an environment build and wait for it to finish
+.TP
+devin\-cloud\-drs\-build\-start(1)
+Trigger an environment build without waiting
+.TP
+devin\-cloud\-drs\-build\-wait(1)
+Wait for a previously started build to finish
+.TP
+devin\-cloud\-drs\-build\-logs(1)
+Fetch the log stream for a build job
+.TP
+devin\-cloud\-drs\-secret\-create(1)
+Create an organization\-level secret
+.TP
+devin\-cloud\-drs\-help(1)
+Print this message or the help of the given subcommand(s)

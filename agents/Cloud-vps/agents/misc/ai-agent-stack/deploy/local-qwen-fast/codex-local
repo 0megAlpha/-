@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+set -euo pipefail
+umask 077
+if [[ "$(id -u)" -ne 0 ]]; then
+  echo "codex-local must run as root because the provider credential is root-only." >&2
+  exit 77
+fi
+# Load only the provider credential; never pass unrelated root environment secrets to agent tools.
+OPENAI_API_KEY=$(awk -F= '$1 == "OPENAI_API_KEY" {sub(/^[^=]*=/, ""); print; exit}' /root/.agent.env)
+if [[ -z "$OPENAI_API_KEY" ]]; then
+  echo "OPENAI_API_KEY missing from /root/.agent.env" >&2
+  exit 78
+fi
+export OPENAI_API_KEY
+export HOME=/var/lib/agent-integration/codex-home
+export CODEX_HOME=/var/lib/agent-integration/codex-home
+# Reject caller-supplied options that could weaken the fixed sandbox boundary.
+for arg in "$@"; do
+  case "$arg" in
+    -s|--sandbox|--sandbox=*|-c|--config|--config=*|--dangerously-bypass-approvals-and-sandbox|--yolo)
+      echo "codex-local: option '$arg' is not allowed; sandbox and provider config are fixed" >&2
+      exit 64
+      ;;
+  esac
+done
+exec /usr/bin/codex exec \
+  --ignore-user-config \
+  --skip-git-repo-check \
+  --ephemeral \
+  --sandbox workspace-write \
+  -c 'model="my-model"' \
+  -c 'model_provider="local-litellm"' \
+  -c 'model_providers.local-litellm.name="Local LiteLLM"' \
+  -c 'model_providers.local-litellm.base_url="http://127.0.0.1:4000/v1"' \
+  -c 'model_providers.local-litellm.env_key="OPENAI_API_KEY"' \
+  -c 'model_providers.local-litellm.wire_api="responses"' \
+  -c 'model_providers.local-litellm.requires_openai_auth=false' \
+  "$@"

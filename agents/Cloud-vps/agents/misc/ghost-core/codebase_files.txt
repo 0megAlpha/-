@@ -1,0 +1,8 @@
+./README.md
+./codebase_files.txt
+./codebase_structure.txt
+./modules/adversarial_engine.py
+./modules/ghost_gateway.py
+./modules/metacipher_engine.py
+./modules/outbound_cloaker.py
+./modules/realm_decomposer.py

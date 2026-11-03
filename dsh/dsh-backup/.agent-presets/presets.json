@@ -1,0 +1,12 @@
+{
+  "presets": [
+    {
+      "mode": "roleplay",
+      "id": "default",
+      "name": "酒馆默认",
+      "dir": "tavern-lite",
+      "description": "🎭 无角色卡 | 📚 0本世界书（0条）| ⚙️ 0个预设模块 | 最后更新: 2026/10/3 02:40:14",
+      "createdAt": 1789749997553
+    }
+  ]
+}

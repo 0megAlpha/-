@@ -1,0 +1,13 @@
+agent: claude-code
+source: /root/AI-Agent-Skill/agents/claude-code
+role: coding-agent
+llm_gateway: http://127.0.0.1:4000
+api_protocol: anthropic-messages
+model_alias: my-model
+api_key_env: LITELLM_MASTER_KEY
+integration_layer: /root/AI-Agent-Skill
+
+research_capability:
+  installed: true
+  enabled: false
+  contract: /root/AI-Agent-Skill/research/capability.yaml

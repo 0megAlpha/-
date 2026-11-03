@@ -1,0 +1,8 @@
+instruction_set = "default"
+base_path = "./configurations/instructions"
+
+[plan]
+instructions = ""
+
+[answer]
+instructions = "@format {this.base_path}/{this.instruction_set}/answer.md"

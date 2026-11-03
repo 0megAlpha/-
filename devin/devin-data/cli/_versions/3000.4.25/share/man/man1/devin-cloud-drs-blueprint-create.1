@@ -1,0 +1,21 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-blueprint-create 1  "blueprint-create " 
+.SH NAME
+devin\-cloud\-drs\-blueprint\-create \- Create a new environment blueprint
+.SH SYNOPSIS
+\fBdevin cloud drs blueprint\-create\fR [\fB\-\-repo\fR] [\fB\-\-from\-file\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Create a new environment blueprint
+.PP
+Creates a blueprint optionally scoped to a repository. Pass `\-\-from\-file` to seed it with an initial `environment.yaml`.
+.SH OPTIONS
+.TP
+\fB\-\-repo\fR \fI<REPO>\fR
+Repository to scope the blueprint to (e.g. `owner/repo`); omit for org\-wide
+.TP
+\fB\-\-from\-file\fR \fI<FROM_FILE>\fR
+Path to a YAML file with the initial blueprint contents
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

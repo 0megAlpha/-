@@ -1,0 +1,311 @@
+[
+    {
+        "Id": "bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25",
+        "Created": "2026-09-18T10:57:19.767133024Z",
+        "Path": "bash",
+        "Args": [
+            "start.sh"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 727961,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-18T11:13:39.18210491Z",
+            "FinishedAt": "2026-09-18T11:13:39.044608524Z",
+            "Health": {
+                "Status": "unhealthy",
+                "FailingStreak": 94,
+                "Log": [
+                    {
+                        "Start": "2026-09-19T03:17:28.609625778+08:00",
+                        "End": "2026-09-19T03:17:28.623025468+08:00",
+                        "ExitCode": -1,
+                        "Output": "OCI runtime exec failed: write /tmp/runc-process3481575779: no space left on device"
+                    },
+                    {
+                        "Start": "2026-09-19T03:17:58.624632937+08:00",
+                        "End": "2026-09-19T03:17:58.631914534+08:00",
+                        "ExitCode": -1,
+                        "Output": "OCI runtime exec failed: write /tmp/runc-process3156930483: no space left on device"
+                    },
+                    {
+                        "Start": "2026-09-19T03:18:28.632879965+08:00",
+                        "End": "2026-09-19T03:18:28.640183772+08:00",
+                        "ExitCode": -1,
+                        "Output": "OCI runtime exec failed: write /tmp/runc-process464109404: no space left on device"
+                    },
+                    {
+                        "Start": "2026-09-19T03:18:58.641144484+08:00",
+                        "End": "2026-09-19T03:18:58.651701123+08:00",
+                        "ExitCode": -1,
+                        "Output": "OCI runtime exec failed: write /tmp/runc-process764570637: no space left on device"
+                    },
+                    {
+                        "Start": "2026-09-19T03:19:28.652980183+08:00",
+                        "End": "2026-09-19T03:19:28.668518417+08:00",
+                        "ExitCode": -1,
+                        "Output": "OCI runtime exec failed: write /tmp/runc-process610611963: no space left on device"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:1a6399d237dc392a2313e0ca826020b3fd5d22536357840eb63393d18dc8b924",
+        "ResolvConfPath": "/var/lib/docker/containers/bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25/hostname",
+        "HostsPath": "/var/lib/docker/containers/bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25/hosts",
+        "LogPath": "/var/lib/docker/containers/bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25/bbc55912aee6dccdba0bcd6d0a29cf37b6e6fc7e5eceea9d5f125b7fea40cf25-json.log",
+        "Name": "/open-webui-secure",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "open-webui:/app/backend/data"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {
+                    "max-file": "3",
+                    "max-size": "10m"
+                }
+            },
+            "NetworkMode": "bridge",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "100.126.48.60",
+                        "HostPort": "8081"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "always",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                33,
+                69
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "open-webui",
+                "Source": "/var/lib/docker/volumes/open-webui/_data",
+                "Destination": "/app/backend/data",
+                "Driver": "local",
+                "Mode": "z",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "bbc55912aee6",
+            "Domainname": "",
+            "User": "0:0",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=C.UTF-8",
+                "GPG_KEY=A035C8C19219BA821ECEA86B64E628F8D684696D",
+                "PYTHON_VERSION=3.11.16",
+                "PYTHON_SHA256=91bcdebfdde239a003ae93738a7fce0f9230fee5c4bc2b86f6e6e8c6f98aabe8",
+                "PYTHONUNBUFFERED=1",
+                "ENV=prod",
+                "PORT=8080",
+                "USE_OLLAMA_DOCKER=false",
+                "USE_CUDA_DOCKER=false",
+                "USE_SLIM_DOCKER=false",
+                "USE_CUDA_DOCKER_VER=cu128",
+                "USE_EMBEDDING_MODEL_DOCKER=sentence-transformers/all-MiniLM-L6-v2",
+                "USE_RERANKING_MODEL_DOCKER=",
+                "USE_AUXILIARY_EMBEDDING_MODEL_DOCKER=TaylorAI/bge-micro-v2",
+                "OLLAMA_BASE_URL=/ollama",
+                "OPENAI_API_BASE_URL=",
+                "OPENAI_API_KEY=",
+                "WEBUI_SECRET_KEY=",
+                "SCARF_NO_ANALYTICS=true",
+                "DO_NOT_TRACK=true",
+                "ANONYMIZED_TELEMETRY=false",
+                "WHISPER_MODEL=base",
+                "WHISPER_MODEL_DIR=/app/backend/data/cache/whisper/models",
+                "RAG_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2",
+                "RAG_RERANKING_MODEL=",
+                "AUXILIARY_EMBEDDING_MODEL=TaylorAI/bge-micro-v2",
+                "SENTENCE_TRANSFORMERS_HOME=/app/backend/data/cache/embedding/models",
+                "TIKTOKEN_ENCODING_NAME=cl100k_base",
+                "TIKTOKEN_CACHE_DIR=/app/backend/data/cache/tiktoken",
+                "HF_HOME=/app/backend/data/cache/embedding/models",
+                "HOME=/root",
+                "UV_LINK_MODE=copy",
+                "WEBUI_BUILD_VERSION=0a7c15832fb30b1903753e83f81dc7d27e5b0944",
+                "DOCKER=true"
+            ],
+            "Cmd": [
+                "bash",
+                "start.sh"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "curl --silent --fail http://localhost:${PORT:-8080}/health | jq -ne 'input.status == true' || exit 1"
+                ]
+            },
+            "Image": "ghcr.io/open-webui/open-webui:main",
+            "Volumes": null,
+            "WorkingDir": "/app/backend",
+            "Entrypoint": null,
+            "Labels": {
+                "org.opencontainers.image.created": "2026-09-04T23:44:05.025Z",
+                "org.opencontainers.image.description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+                "org.opencontainers.image.licenses": "NOASSERTION",
+                "org.opencontainers.image.revision": "0a7c15832fb30b1903753e83f81dc7d27e5b0944",
+                "org.opencontainers.image.source": "https://github.com/open-webui/open-webui",
+                "org.opencontainers.image.title": "open-webui",
+                "org.opencontainers.image.url": "https://github.com/open-webui/open-webui",
+                "org.opencontainers.image.version": "main"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "3a2712d942539b4a22e7a6d1a23f3e61d9160f07ceeb20337d6a8e65e9729d21",
+            "SandboxKey": "/var/run/docker/netns/3a2712d94253",
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "100.126.48.60",
+                        "HostPort": "8081"
+                    }
+                ]
+            },
+            "Networks": {
+                "bridge": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "6507c935489e4dd81c7063ef5af3251f67363c67ba4907da63d5739b41e79c65",
+                    "EndpointID": "d5d586a74c26879be55cd7a541e456b36621dc8544d0d885f274d13b795e9015",
+                    "Gateway": "10.0.0.1",
+                    "IPAddress": "10.0.0.10",
+                    "MacAddress": "fa:a0:c9:ae:b0:4e",
+                    "IPPrefixLen": 24,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:c9a05105e74c800ef10dfe635bfd4e5ebe2f3b4d4308480728df1784e7376fdf",
+            "size": 3906,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

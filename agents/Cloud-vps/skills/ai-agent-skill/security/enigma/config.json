@@ -1,0 +1,6 @@
+{
+  "name": "enigma",
+  "mode": "pentest",
+  "agent": "swe-agent",
+  "enabled": true
+}

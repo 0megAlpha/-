@@ -1,0 +1,2 @@
+# Agent Orchestration
+Coordinate plan -> implement -> test -> review -> deploy. Pass bounded artifacts, not shared chat history. Require named workspace/session/provider IDs and explicit checkpoints. Background work stays observable and stoppable.

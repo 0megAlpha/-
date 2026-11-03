@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenCode Programming Agent Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/local/bin/opencode daemon --port 8743
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

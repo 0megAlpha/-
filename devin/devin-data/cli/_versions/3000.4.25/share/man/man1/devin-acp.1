@@ -1,0 +1,34 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-acp 1  "acp " 
+.SH NAME
+devin\-acp \- Run as an ACP (Agent Client Protocol) server over stdio
+.SH SYNOPSIS
+\fBdevin acp\fR [\fB\-\-agent\-type\fR] [\fB\-\-model\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Run as an ACP (Agent Client Protocol) server over stdio
+.SH OPTIONS
+.TP
+\fB\-\-agent\-type\fR \fI<AGENT_TYPE>\fR
+The type of agent to run. When omitted, runs the default agent
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+summarizer: A summarizer agent with no tools. The model outputs the full summary as text and a `PostAgentIteration` cog persists it to `~/.local/share/devin/summaries/<session_id>.md` (i.e. `$XDG_DATA_HOME/devin/summaries/`)
+.IP \(bu 2
+review: A code\-review agent with read\-only + shell tools. Reviews diffs and provides actionable feedback on correctness, style, security, performance, and completeness
+.RE
+.TP
+\fB\-\-model\fR \fI<MODEL>\fR
+Default model for every new ACP session, overriding the enterprise\-configured default. Accepts the same fuzzy names as `/model` (family slug, alias, or partial name), e.g. `\-\-model opus`.
+
+Also read from `DEVIN_MODEL`, so the in\-process ACP server the REPL spawns (a `devin acp` child that inherits the env) picks it up too.
+.RS
+May also be specified with the \fBDEVIN_MODEL\fR environment variable. 
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

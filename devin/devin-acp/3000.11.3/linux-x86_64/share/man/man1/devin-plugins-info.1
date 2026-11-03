@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-plugins-info 1  "info " 
+.SH NAME
+devin\-plugins\-info \- Show a plugin\*(Aqs skills, hooks, rules, and its required/optional/forbidden lists
+.SH SYNOPSIS
+\fBdevin plugins info\fR [\fB\-h\fR|\fB\-\-help\fR] <\fINAME\fR> 
+.SH DESCRIPTION
+Show a plugin\*(Aqs skills, hooks, rules, and its required/optional/forbidden lists
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+<\fINAME\fR>
+The installed plugin name (or a disambiguated `owner/repo` label when several installed plugins share the same name)

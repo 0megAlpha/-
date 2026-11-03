@@ -1,0 +1,12 @@
+[Unit]
+Description=NEVER-STOP Guardian - AI Persistence and Service Protection
+After=network-online.target docker.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/opt/never-stop/bin/never-stop-guardian.sh
+User=root
+Group=root
+Nice=10
+IOSchedulingClass=best-effort

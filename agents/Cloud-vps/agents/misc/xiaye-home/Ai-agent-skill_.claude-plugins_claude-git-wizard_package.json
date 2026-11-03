@@ -1,0 +1,6 @@
+{
+  "name": "claude-git-wizard",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-git-wizard",
+  "main": "index.js"
+}

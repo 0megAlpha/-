@@ -1,0 +1,104 @@
+[2026-10-10 13:35:59.020] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:35:59.021] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-10 13:35:59.104] No commits in repo, skipping baseline capture
+[2026-10-10 13:35:59.163] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-10 13:35:59.277] Failed to capture git baseline (cwd='/root/.lody/chats/72258bf0-2f89-44fe-9eab-0b38baee539a') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-10 13:36:06.290] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:36:06.290] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-10 13:36:06.303] No commits in repo, skipping baseline capture
+[2026-10-10 13:36:06.304] _list_untracked rc=128: fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+
+[2026-10-10 13:36:06.308] Failed to capture git baseline (cwd='/tmp/lody-title-agent-VDbfbD') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-10 13:36:08.201] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:36:08.201] Processing: hook_event=Stop, tool=
+[2026-10-10 13:36:08.202] Stop hook: LLM review disabled or no API credentials
+[2026-10-10 13:37:38.029] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:37:38.029] Processing: hook_event=Stop, tool=
+[2026-10-10 13:37:38.031] Stop hook: LLM review disabled or no API credentials
+[2026-10-10 13:40:07.146] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:40:07.146] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-10 13:40:07.245] No commits in repo, skipping baseline capture
+[2026-10-10 13:40:07.283] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-10 13:40:07.381] Failed to capture git baseline (cwd='/root/.lody/chats/72258bf0-2f89-44fe-9eab-0b38baee539a') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-10 13:40:09.218] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:40:09.218] Processing: hook_event=Stop, tool=
+[2026-10-10 13:40:09.219] Stop hook: LLM review disabled or no API credentials
+[2026-10-10 13:40:36.667] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:40:36.667] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-10 13:40:36.717] No commits in repo, skipping baseline capture
+[2026-10-10 13:40:36.765] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-10 13:40:36.851] Failed to capture git baseline (cwd='/root/.lody/chats/72258bf0-2f89-44fe-9eab-0b38baee539a') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-10 13:40:38.452] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-10 13:40:38.452] Processing: hook_event=Stop, tool=
+[2026-10-10 13:40:38.453] Stop hook: LLM review disabled or no API credentials
+[2026-10-11 00:32:42.504] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 00:32:42.504] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-11 00:32:42.573] No commits in repo, skipping baseline capture
+[2026-10-11 00:32:42.610] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-11 00:32:42.716] Failed to capture git baseline (cwd='/root/.lody/chats/51dc2dcf-002b-4468-9330-a8188eeffff4') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-11 00:32:45.835] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 00:32:45.836] Processing: hook_event=Stop, tool=
+[2026-10-11 00:32:45.837] Stop hook: LLM review disabled or no API credentials
+[2026-10-11 00:32:50.600] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 00:32:50.601] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-11 00:32:50.611] No commits in repo, skipping baseline capture
+[2026-10-11 00:32:50.613] _list_untracked rc=128: fatal: not a git repository (or any parent up to mount point /)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+
+[2026-10-11 00:32:50.618] Failed to capture git baseline (cwd='/tmp/lody-title-agent-gk5sxR') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-11 00:32:52.159] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 00:32:52.160] Processing: hook_event=Stop, tool=
+[2026-10-11 00:32:52.161] Stop hook: LLM review disabled or no API credentials
+[2026-10-11 22:16:18.083] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 22:16:18.084] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-11 22:16:18.211] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-11 22:16:18.238] No commits in repo, skipping baseline capture
+[2026-10-11 22:16:18.348] Failed to capture git baseline (cwd='/root/.lody/chats/a8a22510-94a5-4070-a94a-e5d2017a5261') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-11 22:31:14.605] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.9/hooks/security_reminder_hook.py']
+[2026-10-11 22:31:14.605] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-11 22:31:14.667] No commits in repo, skipping baseline capture
+[2026-10-11 22:31:14.733] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-11 22:31:14.820] Failed to capture git baseline (cwd='/root/.lody/chats/a8a22510-94a5-4070-a94a-e5d2017a5261') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-13 03:52:31.425] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 03:52:31.426] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 03:52:31.597] Captured git baseline: 3b3618cce18b
+[2026-10-13 03:54:46.321] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 03:54:46.322] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 03:54:46.521] Captured git baseline: 3b3618cce18b
+[2026-10-13 03:55:17.785] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 03:55:17.785] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 03:55:18.029] Captured git baseline: 3b3618cce18b
+[2026-10-13 08:08:13.409] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 08:08:13.411] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 08:08:13.585] Captured git baseline: 3b3618cce18b
+[2026-10-13 09:10:53.633] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 09:10:53.637] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 09:10:54.853] Captured git baseline: 3059a3223386
+[2026-10-13 16:18:21.555] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 16:18:21.556] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 16:18:22.460] No commits in repo, skipping baseline capture
+[2026-10-13 16:18:22.478] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-13 16:18:22.810] Failed to capture git baseline (cwd='/root/.lody/chats/a8a22510-94a5-4070-a94a-e5d2017a5261') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-13 16:18:51.955] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 16:18:51.956] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 16:18:52.024] No commits in repo, skipping baseline capture
+[2026-10-13 16:18:52.079] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-13 16:18:52.170] Failed to capture git baseline (cwd='/root/.lody/chats/a8a22510-94a5-4070-a94a-e5d2017a5261') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-13 19:51:37.648] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-13 19:51:37.648] Processing: hook_event=UserPromptSubmit, tool=
+[2026-10-13 19:51:37.693] No commits in repo, skipping baseline capture
+[2026-10-13 19:51:37.705] _list_untracked rc=128: fatal: not a git repository (or any of the parent directories): .git
+
+[2026-10-13 19:51:37.719] Failed to capture git baseline (cwd='/root') — not a git repo, or git invocation failed (check log entries above)
+[2026-10-20 00:15:43.438] Hook called with args: ['/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13/hooks/security_reminder_hook.py']
+[2026-10-20 00:15:43.439] Processing: hook_event=Stop, tool=
+[2026-10-20 00:15:43.440] Stop hook: LLM review disabled or no API credentials

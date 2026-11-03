@@ -1,0 +1,9 @@
+[Unit]
+Description=OMO
+After=network.target
+[Service]
+ExecStart=/usr/local/bin/oh-my-openagent server --port 7777 --host 127.0.0.1
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

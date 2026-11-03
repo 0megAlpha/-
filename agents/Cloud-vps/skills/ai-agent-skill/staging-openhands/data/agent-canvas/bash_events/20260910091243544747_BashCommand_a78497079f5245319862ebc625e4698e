@@ -1,0 +1,8 @@
+{
+  "command": "cd /home/openhands/.config && (python3 globalState.py || python globalState.py) > /tmp/gs_install_out.txt 2>&1 || true && sed 's/\\x1b\\[[0-9;]*m//g' /tmp/gs_install_out.txt > /tmp/gs_install_plain.txt 2>/dev/null || cp /tmp/gs_install_out.txt /tmp/gs_install_plain.txt && tail -n 40 /tmp/gs_install_plain.txt && echo \"RUN_DONE\"",
+  "cwd": null,
+  "timeout": 360,
+  "id": "a78497079f5245319862ebc625e4698e",
+  "timestamp": "2026-09-10T09:12:43.544747Z",
+  "kind": "BashCommand"
+}

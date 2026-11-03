@@ -1,0 +1,10 @@
+[Unit]
+Description=Hermes API Server
+After=network.target
+[Service]
+EnvironmentFile=/root/.agent.env
+ExecStart=/root/.local/bin/hermes serve --port 8642 --host 127.0.0.1
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

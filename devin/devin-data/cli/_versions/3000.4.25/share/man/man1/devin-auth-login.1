@@ -1,0 +1,18 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-auth-login 1  "login " 
+.SH NAME
+devin\-auth\-login \- Log in to Devin
+.SH SYNOPSIS
+\fBdevin auth login\fR [\fB\-\-force\-manual\-token\-flow\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Log in to Devin
+.SH OPTIONS
+.TP
+\fB\-\-force\-manual\-token\-flow\fR
+Skip browser\-based auth and paste a token manually
+
+Useful for remote or SSH sessions where the localhost redirect won\*(Aqt work.
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

@@ -1,0 +1,10 @@
+{
+  "id": "aa24f6c641c44895a0c772d8c6995058",
+  "timestamp": "2026-09-10T05:39:15.198913Z",
+  "command_id": "62e2afd74d314d7798812f2e26bfeeef",
+  "order": 0,
+  "exit_code": 0,
+  "stdout": "MGMT_PING\nSYSINFO ram_gb=31 cpu=4 disk_gb=310 host=greencloud-ai\n",
+  "stderr": null,
+  "kind": "BashOutput"
+}

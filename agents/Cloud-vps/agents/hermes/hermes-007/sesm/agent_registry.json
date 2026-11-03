@@ -1,0 +1,27 @@
+{
+  "agents": [
+    {"name": "hermes", "role": "Manager", "endpoint": "http://localhost:8642", "capabilities": ["planning", "memory", "delegation", "research"]},
+    {"name": "openhands", "role": "Deep Engineering", "endpoint": "http://localhost:18000", "capabilities": ["long-running", "sandbox", "browser", "docker"]},
+    {"name": "opencode", "role": "Terminal Coding", "endpoint": "http://localhost:8743", "capabilities": ["cli", "code-gen", "refactor"]},
+    {"name": "kilo-code", "role": "Architecture & Debug", "capabilities": ["planning", "architecture", "debugging"]},
+    {"name": "goose", "role": "MCP & Automation", "capabilities": ["mcp", "tools", "automation"]},
+    {"name": "aider", "role": "Git-aware Patch", "capabilities": ["git", "patch", "refactor"]},
+    {"name": "crush", "role": "CLI & LSP", "capabilities": ["cli", "lsp", "coding"]},
+    {"name": "continue", "role": "CLI Assistance", "capabilities": ["cli", "coding"]},
+    {"name": "mini-swe-agent", "role": "Issue Repair", "capabilities": ["issue", "reproduce", "patch", "test"]},
+    {"name": "swe-agent", "role": "SWE Environment", "capabilities": ["swe", "benchmark"]},
+    {"name": "claude-code", "role": "Workflow Architect", "capabilities": ["workflow", "architecture"]},
+    {"name": "kimi-code", "role": "Coding Assistant", "capabilities": ["coding", "review"]}
+  ],
+  "selection_rules": {
+    "大型工程": "openhands",
+    "日常編碼": "opencode",
+    "架構設計": "kilo-code",
+    "MCP工具": "goose",
+    "小型修補": "aider",
+    "Issue修復": "mini-swe-agent",
+    "複雜工作流": "claude-code"
+  }
+}
+
+

@@ -1,0 +1,10 @@
+#!/bin/bash
+echo "1. 重建沙盒: nohup bash /root/build-sandboxes.sh >/dev/null 2>&1 &"
+echo "2. 驗證: /opt/verify-agents.sh"
+echo "3. 建構日誌: tail -20 /tmp/build-sandboxes.log"
+echo "4. OpenHands 配置: /root/.openhands/config.toml"
+echo "5. DSH 配置: /root/.dsh/cordis-sandbox.yml"
+echo "6. OpenCode 配置: /root/.opencode/config.json"
+echo "7. Hermes 配置: /opt/army/hermes-agent/.env.sandbox"
+echo "8. OWUI 插件導入: /opt/openwebui-plugins/ 於管理面板 Functions/Tools/Filters 導入"
+echo "9. 免費 API 更新: cd /opt/free-api/FreeDeepseekAPI && git pull"

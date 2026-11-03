@@ -1,0 +1,445 @@
+model_list:
+- model_name: nvidia/*
+  litellm_params:
+    model: openai/*
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nvidia/*
+  litellm_params:
+    model: openai/*
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: openrouter/*
+  litellm_params:
+    model: openrouter/*
+    api_key: ''
+- model_name: groq/*
+  litellm_params:
+    model: groq/*
+    api_key: ''
+- model_name: moonshot/*
+  litellm_params:
+    model: moonshot/*
+    api_key: ''
+- model_name: openai/glm-5.2
+  litellm_params:
+    model: openai/z-ai/glm-5.2
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: glm-5.2
+  litellm_params:
+    model: openai/z-ai/glm-5.2
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nvidia/meta/llama-3.1-8b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.1-8b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nvidia/deepseek-ai/deepseek-v4-flash-0731
+  litellm_params:
+    model: openai/deepseek-ai/deepseek-v4-flash-0731
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nvidia/llama-3.3-nemotron-super-49b-v1.5
+  litellm_params:
+    model: openai/llama-3.3-nemotron-super-49b-v1.5
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-01-ai-yi-large
+  litellm_params:
+    model: openai/01-ai/yi-large
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-adept-fuyu-8b
+  litellm_params:
+    model: openai/adept/fuyu-8b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-ai21labs-jamba-1.5-large-instruct
+  litellm_params:
+    model: openai/ai21labs/jamba-1.5-large-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-aisingapore-sea-lion-7b-instruct
+  litellm_params:
+    model: openai/aisingapore/sea-lion-7b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-baai-bge-m3
+  litellm_params:
+    model: openai/baai/bge-m3
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-bigcode-starcoder2-15b
+  litellm_params:
+    model: openai/bigcode/starcoder2-15b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-databricks-dbrx-instruct
+  litellm_params:
+    model: openai/databricks/dbrx-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-deepseek-ai-deepseek-coder-6.7b-instruct
+  litellm_params:
+    model: openai/deepseek-ai/deepseek-coder-6.7b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-deepseek-ai-deepseek-v4-flash-0731
+  litellm_params:
+    model: openai/deepseek-ai/deepseek-v4-flash-0731
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-codegemma-1.1-7b
+  litellm_params:
+    model: openai/google/codegemma-1.1-7b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-codegemma-7b
+  litellm_params:
+    model: openai/google/codegemma-7b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-diffusiongemma-26b-a4b-it
+  litellm_params:
+    model: openai/google/diffusiongemma-26b-a4b-it
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-gemma-2b
+  litellm_params:
+    model: openai/google/gemma-2b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-gemma-3-12b-it
+  litellm_params:
+    model: openai/google/gemma-3-12b-it
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-gemma-3-4b-it
+  litellm_params:
+    model: openai/google/gemma-3-4b-it
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-gemma-4-31b-it
+  litellm_params:
+    model: openai/google/gemma-4-31b-it
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-google-recurrentgemma-2b
+  litellm_params:
+    model: openai/google/recurrentgemma-2b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-ibm-granite-3.0-3b-a800m-instruct
+  litellm_params:
+    model: openai/ibm/granite-3.0-3b-a800m-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-ibm-granite-3.0-8b-instruct
+  litellm_params:
+    model: openai/ibm/granite-3.0-8b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-ibm-granite-34b-code-instruct
+  litellm_params:
+    model: openai/ibm/granite-34b-code-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-ibm-granite-8b-code-instruct
+  litellm_params:
+    model: openai/ibm/granite-8b-code-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-codellama-70b
+  litellm_params:
+    model: openai/meta/codellama-70b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.1-70b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.1-70b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.1-8b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.1-8b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.2-11b-vision-instruct
+  litellm_params:
+    model: openai/meta/llama-3.2-11b-vision-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.2-1b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.2-1b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.2-3b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.2-3b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.2-90b-vision-instruct
+  litellm_params:
+    model: openai/meta/llama-3.2-90b-vision-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-3.3-70b-instruct
+  litellm_params:
+    model: openai/meta/llama-3.3-70b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama-guard-4-12b
+  litellm_params:
+    model: openai/meta/llama-guard-4-12b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-llama2-70b
+  litellm_params:
+    model: openai/meta/llama2-70b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-meta-muse-glimmer-30b
+  litellm_params:
+    model: openai/meta/muse-glimmer-30b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-microsoft-kosmos-2
+  litellm_params:
+    model: openai/microsoft/kosmos-2
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-microsoft-phi-3-vision-128k-instruct
+  litellm_params:
+    model: openai/microsoft/phi-3-vision-128k-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-microsoft-phi-3.5-moe-instruct
+  litellm_params:
+    model: openai/microsoft/phi-3.5-moe-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-minimaxai-minimax-m3
+  litellm_params:
+    model: openai/minimaxai/minimax-m3
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-codestral-22b-instruct-v0.1
+  litellm_params:
+    model: openai/mistralai/codestral-22b-instruct-v0.1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-mistral-7b-instruct-v0.3
+  litellm_params:
+    model: openai/mistralai/mistral-7b-instruct-v0.3
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-mistral-large
+  litellm_params:
+    model: openai/mistralai/mistral-large
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-mistral-large-2-instruct
+  litellm_params:
+    model: openai/mistralai/mistral-large-2-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-mistral-nemotron
+  litellm_params:
+    model: openai/mistralai/mistral-nemotron
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-mistralai-mixtral-8x22b-v0.1
+  litellm_params:
+    model: openai/mistralai/mixtral-8x22b-v0.1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-moonshotai-kimi-k2.6
+  litellm_params:
+    model: openai/moonshotai/kimi-k2.6
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nv-mistralai-mistral-nemo-12b-instruct
+  litellm_params:
+    model: openai/nv-mistralai/mistral-nemo-12b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-cosmos-reason2-8b
+  litellm_params:
+    model: openai/nvidia/cosmos-reason2-8b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-51b-instruct
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-51b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-70b-instruct
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-70b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-nano-8b-v1
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-nano-8b-v1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-nano-vl-8b-v1
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-nano-vl-8b-v1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-safety-guard-8b-v3
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-safety-guard-8b-v3
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.1-nemotron-ultra-253b-v1
+  litellm_params:
+    model: openai/nvidia/llama-3.1-nemotron-ultra-253b-v1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.3-nemotron-super-49b-v1
+  litellm_params:
+    model: openai/nvidia/llama-3.3-nemotron-super-49b-v1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-llama-3.3-nemotron-super-49b-v1.5
+  litellm_params:
+    model: openai/nvidia/llama-3.3-nemotron-super-49b-v1.5
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-mistral-nemo-minitron-8b-8k-instruct
+  litellm_params:
+    model: openai/nvidia/mistral-nemo-minitron-8b-8k-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-3-nano-30b-a3b
+  litellm_params:
+    model: openai/nvidia/nemotron-3-nano-30b-a3b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-3-nano-omni-30b-a3b-reasoning
+  litellm_params:
+    model: openai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-3-super-120b-a12b
+  litellm_params:
+    model: openai/nvidia/nemotron-3-super-120b-a12b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-3-ultra-550b-a55b
+  litellm_params:
+    model: openai/nvidia/nemotron-3-ultra-550b-a55b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-3.5-lightning-30b-a3b
+  litellm_params:
+    model: openai/nvidia/nemotron-3.5-lightning-30b-a3b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-4-340b-instruct
+  litellm_params:
+    model: openai/nvidia/nemotron-4-340b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-mini-4b-instruct
+  litellm_params:
+    model: openai/nvidia/nemotron-mini-4b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-nano-12b-v2-vl
+  litellm_params:
+    model: openai/nvidia/nemotron-nano-12b-v2-vl
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-nano-3-30b-a3b
+  litellm_params:
+    model: openai/nvidia/nemotron-nano-3-30b-a3b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nemotron-parse
+  litellm_params:
+    model: openai/nvidia/nemotron-parse
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-neva-22b
+  litellm_params:
+    model: openai/nvidia/neva-22b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nvclip
+  litellm_params:
+    model: openai/nvidia/nvclip
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-nvidia-nemotron-nano-9b-v2
+  litellm_params:
+    model: openai/nvidia/nvidia-nemotron-nano-9b-v2
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-nvidia-vila
+  litellm_params:
+    model: openai/nvidia/vila
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-openai-gpt-oss-120b
+  litellm_params:
+    model: openai/openai/gpt-oss-120b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-openai-gpt-oss-20b
+  litellm_params:
+    model: openai/openai/gpt-oss-20b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-poolside-laguna-xs-2.1
+  litellm_params:
+    model: openai/poolside/laguna-xs-2.1
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-stepfun-ai-step-3.7-flash
+  litellm_params:
+    model: openai/stepfun-ai/step-3.7-flash
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-thinkingmachines-inkling
+  litellm_params:
+    model: openai/thinkingmachines/inkling
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-writer-palmyra-creative-122b
+  litellm_params:
+    model: openai/writer/palmyra-creative-122b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-writer-palmyra-fin-70b-32k
+  litellm_params:
+    model: openai/writer/palmyra-fin-70b-32k
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-writer-palmyra-med-70b
+  litellm_params:
+    model: openai/writer/palmyra-med-70b
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-writer-palmyra-med-70b-32k
+  litellm_params:
+    model: openai/writer/palmyra-med-70b-32k
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-z-ai-glm-5.2
+  litellm_params:
+    model: openai/z-ai/glm-5.2
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+- model_name: nv-zyphra-zamba2-7b-instruct
+  litellm_params:
+    model: openai/zyphra/zamba2-7b-instruct
+    api_base: https://integrate.api.nvidia.com/v1
+    api_key: os.environ/NVIDIA_API_KEY
+general_settings:
+  master_key: os.environ/LITELLM_MASTER_KEY

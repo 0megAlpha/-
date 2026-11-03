@@ -1,0 +1,13 @@
+[Unit]
+Description=Block public (eth0) forwarded traffic to Docker containers
+# Docker recreates the DOCKER-USER chain on daemon start, so re-apply after it.
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/bin/bash -c 'iptables -C DOCKER-USER -i eth0 -j DROP 2>/dev/null || iptables -I DOCKER-USER 1 -i eth0 -j DROP'
+
+[Install]
+WantedBy=multi-user.target

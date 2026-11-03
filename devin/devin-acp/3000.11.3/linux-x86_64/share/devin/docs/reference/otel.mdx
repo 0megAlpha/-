@@ -1,0 +1,167 @@
+---
+title: "Devin CLI OpenTelemetry monitoring"
+sidebarTitle: "Monitoring"
+description: "Export Devin CLI usage, tool activity, and agent events to your OpenTelemetry collector over OTLP; configure endpoints, privacy, and metrics."
+keywords: ["Devin CLI", "OpenTelemetry", "OTLP", "monitoring", "metrics", "events"]
+---
+
+Devin CLI can send session metrics and structured agent events to an OpenTelemetry (OTLP) collector you configure. Metrics use the OTLP metrics signal; events use the OTLP logs signal. Use your metrics and logs backend to track adoption, token usage, code changes, tool decisions, and request latency.
+
+Export is opt-in: it requires an endpoint in the `otel` block of your [user configuration file](/cli/reference/configuration/config-file).
+
+## Quick start
+
+Add an OTLP/HTTP collector base URL to `~/.config/devin/config.json` (on Windows, `%APPDATA%\devin\config.json`):
+
+```json
+{
+  "otel": {
+    "endpoint": "http://localhost:4318"
+  }
+}
+```
+
+Then start `devin`. The CLI sends logs to `http://localhost:4318/v1/logs` and metrics to `http://localhost:4318/v1/metrics`. Check your backend for `devin.session.count` after starting a session; submit a prompt and look for a log event with `event.name=user_prompt` to verify the logs signal. Log batches export every 5 seconds and metrics every 60 seconds by default; both are also flushed when the session ends.
+
+To authenticate to a collector, set `headers` in the same block or use `OTEL_EXPORTER_OTLP_HEADERS` in the process environment. Keep credentials out of shared project configuration:
+
+```json
+{
+  "otel": {
+    "endpoint": "https://collector.example.com:4318",
+    "headers": {
+      "Authorization": "Bearer YOUR_TOKEN"
+    }
+  }
+}
+```
+
+## Configure destinations and exporters
+
+The `otel` block accepts these settings in the **user** configuration file:
+
+| Setting | Description |
+| --- | --- |
+| `enabled` | Master switch; defaults to `true`. Set to `false` to stop export. At least one endpoint must also be present in this block to activate export. |
+| `endpoint` | Shared collector base URL. Appends `/v1/logs` or `/v1/metrics` for each signal. |
+| `logs_endpoint`, `metrics_endpoint` | Full signal-specific URLs; no path is appended. Set only one, without `endpoint`, to export only that signal. |
+| `headers` | HTTP headers shared by both signals. |
+| `logs_headers`, `metrics_headers` | Per-signal headers merged with `headers`; the per-signal value wins for duplicate names. |
+| `resource_attributes` | String-valued attributes added to the OTLP resource, such as `team.id` or `deployment.environment`. |
+| `timeout_ms` | Per-request timeout in milliseconds; default `10000`, clamped to `1000`–`60000`. |
+| `log_export_interval_ms` | Log batch interval in milliseconds; default `5000`, clamped to `1000`–`60000`. |
+| `metric_export_interval_ms` | Metric interval in milliseconds; default `60000`, clamped to `1000`–`3600000`. |
+| `disable_user_prompt_logging` | Omit prompt and assistant response text; defaults to `false`. |
+| `disable_tool_logging` | Omit tool input and tool error text; defaults to `false`. |
+
+For separate backends or a logs-only SIEM, specify full URLs and credentials per signal:
+
+```json
+{
+  "otel": {
+    "logs_endpoint": "https://logs.example.com/v1/logs",
+    "metrics_endpoint": "https://metrics.example.com/v1/metrics",
+    "headers": { "X-Team": "platform" },
+    "logs_headers": { "Authorization": "Bearer LOGS_TOKEN" },
+    "metrics_headers": { "Authorization": "Bearer METRICS_TOKEN" },
+    "resource_attributes": {
+      "team.id": "platform",
+      "deployment.environment": "development"
+    },
+    "log_export_interval_ms": 1000,
+    "metric_export_interval_ms": 10000
+  }
+}
+```
+
+Remove either signal-specific endpoint to export only the other signal. If `endpoint` is set, **both** signals have a destination; a signal-specific endpoint replaces only that signal's destination.
+
+### Environment overrides
+
+The CLI supports these OTLP environment variables for each signal:
+
+| Shared variable | Signal-specific overrides | Effect |
+| --- | --- | --- |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | `OTEL_EXPORTER_OTLP_LOGS_ENDPOINT`, `OTEL_EXPORTER_OTLP_METRICS_ENDPOINT` | Shared **base** URL appends `/v1/logs` and `/v1/metrics`; signal-specific URLs are used as-is. |
+| `OTEL_EXPORTER_OTLP_HEADERS` | `OTEL_EXPORTER_OTLP_LOGS_HEADERS`, `OTEL_EXPORTER_OTLP_METRICS_HEADERS` | Comma-separated `name=value` HTTP headers; percent-encode special characters in values. |
+| `OTEL_EXPORTER_OTLP_TIMEOUT` | `OTEL_EXPORTER_OTLP_LOGS_TIMEOUT`, `OTEL_EXPORTER_OTLP_METRICS_TIMEOUT` | Milliseconds per request, clamped to 1–60 seconds. |
+| `OTEL_EXPORTER_OTLP_PROTOCOL` | `OTEL_EXPORTER_OTLP_LOGS_PROTOCOL`, `OTEL_EXPORTER_OTLP_METRICS_PROTOCOL` | Unsupported values trigger a warning and are ignored; see [Limitations](#limitations). |
+
+An environment variable does **not** activate export by itself: `otel.endpoint`, `otel.logs_endpoint`, or `otel.metrics_endpoint` must already be set in the user configuration and `otel.enabled` must not be `false`. Once activated, the endpoint used for a given signal is resolved in this order: signal-specific environment variable, shared environment variable, signal-specific setting, shared setting. A signal-specific environment URL must include its complete `/v1/logs` or `/v1/metrics` path.
+
+Timeouts use the same precedence (signal-specific environment variable, shared environment variable, `timeout_ms`, default). Per-signal settings headers overlay shared settings headers, and environment headers overlay both, matched case-insensitively by header name. A signal-specific environment **headers** variable replaces the shared environment headers variable as a whole rather than combining with it. For example:
+
+```bash
+export OTEL_EXPORTER_OTLP_LOGS_ENDPOINT="https://logs.example.com/v1/logs"
+export OTEL_EXPORTER_OTLP_LOGS_HEADERS="Authorization=Bearer%20YOUR_TOKEN,X-Team=platform"
+```
+
+Export requests use the CLI's [proxy configuration](/cli/reference/configuration/config-file#proxy) and run in the background. A failed collector does not block the interactive agent; pending exports get a short flush window when the CLI exits.
+
+## Security and privacy
+
+Prompt text (`prompt`), assistant response text (`response`), and tool arguments (`tool_input`) are exported **by default**. Tool error text can also be included. Tools may contain file paths, shell commands, URLs, or sensitive values, so configure your collector and access controls accordingly.
+
+To omit prompt and assistant text and tool arguments/errors, set:
+
+```json
+{
+  "otel": {
+    "endpoint": "http://localhost:4318",
+    "disable_user_prompt_logging": true,
+    "disable_tool_logging": true
+  }
+}
+```
+
+You can also set `OTEL_LOG_USER_PROMPTS=0` or `OTEL_LOG_TOOL_DETAILS=0` (the value `false` also works). These environment flags can **disable** content, but cannot override a `disable_*` setting to re-enable it. When disabled, the content attributes are absent, not redacted placeholders. Prompt/response lengths, tool input/result sizes, tool names, usage counters, and error categories can still be exported; `api_error.error` can contain an error message.
+
+Resource attributes include `service.name=devin-local`, `service.version`, `os.type`, `host.arch`, and, when available, `os.version` and the authenticated Devin `user.id`. Custom `resource_attributes` are added to the resource but **not** to each metric data point; they cannot override the built-in identity keys. Add team or cost-center labels there to segment data by resource in a backend that supports resource-aware queries. Avoid high-cardinality values in custom labels.
+
+## Metrics
+
+The meter scope is `ai.devin.local`. Counters use **delta temporality**; if your backend requires cumulative counters, convert them in your collector. Every metric data point has `session.id`, `terminal.type`, and `user.id` when available. `terminal.type` describes the host surface (for example, `cli` or `vscode`).
+
+| Metric | What it measures | Additional attributes |
+| --- | --- | --- |
+| `devin.session.count` | Sessions started. | `start_type` |
+| `devin.token.usage` | Tokens used by model requests. | `model`, `type` (`input`, `output`, `cacheRead`, `cacheCreation`) |
+| `devin.code_edit_tool.decision` | Accepted/rejected code-edit tool calls. | `tool_name`, `decision`, `source` |
+| `devin.lines_of_code.count` | Lines added or removed by successful code-edit tools. | `type` (`added`, `removed`), `model` when known |
+| `devin.commit.count` | Successful `git commit` shell commands. | Shared attributes only |
+| `devin.pull_request.count` | Successful `gh pr create`, `glab mr create`, or matching MCP create tools. | Shared attributes only |
+| `devin.active_time.total` | Seconds spent processing turns, not idle time or typing. | `type=cli` |
+
+These counters describe observed agent activity, not a billing statement. Commit and PR counters detect supported successful tool calls, not every out-of-band VCS change. For usage dashboards, group `devin.token.usage` by `model` and `type`, `devin.session.count` by user/team, and code-activity counters by session. Alert on unusual token volume or `api_error` events; a backend or SIEM must implement alerting and aggregation. Use stable `team.id` or `cost_center` resource attributes for team reporting; derive productivity or ROI estimates in your backend rather than treating these counters as billing data.
+
+## Events
+
+The log instrumentation scope is `ai.devin.local.events`. Each OTLP log record carries `event.name`, `event.timestamp`, `event.sequence`, `session.id`, `terminal.type`, and optional `user.id`; the name is also the log body. A `user_prompt` has a `prompt.id` that correlates the following request, tool, and response events for that turn. `tool_use_id` links `tool_decision` and `tool_result`.
+
+| `event.name` | When emitted | Notable attributes |
+| --- | --- | --- |
+| `session_start` | A session starts. | `start_type` |
+| `user_prompt` | A user submits a prompt. | `prompt.id`, `message.uuid`, `prompt_length`, `prompt` (unless disabled) |
+| `api_request` | A model request succeeds. | `prompt.id`, `model`, `request_id` when available, `duration_ms`, `input_tokens`, `output_tokens`, `cache_read_tokens`, `cache_creation_tokens` |
+| `tool_decision` | A tool call is accepted or rejected. | `prompt.id`, `tool_name`, `tool_use_id`, `tool_source` (`builtin` or `mcp`), `devin.tool_source`, `decision`, `source` |
+| `tool_result` | A tool finishes or is rejected. | `prompt.id`, `tool_name`, `tool_use_id`, `success`, `duration_ms` when available, `tool_input_size_bytes`, `tool_result_size_bytes`, `error_type`, `tool_input` and `error` unless disabled |
+| `assistant_response` | A nonempty model response is received. | `prompt.id`, `model`, `message.uuid`, `response_length`, `response` (unless disabled) |
+| `compaction` | Context is compacted. | `prompt.id`, `summary_length` when available |
+| `api_error` | A model request fails at the end of a turn. | `prompt.id`, `error`, `error_kind`, `model`, `duration_ms`, `retry_after_ms` when available |
+| `session_end` | The session ends. | `reason` |
+
+Use the `success`, duration, and size attributes on `tool_result` to analyze tool usage and latency; correlate with `tool_decision` to audit allow/deny outcomes. `source` on a decision distinguishes `config`, `user_temporary`, `user_reject`, and `user_abort` where known. It does not always distinguish a hook approval from a user approval. For auditing, forward the logs signal to an OTLP-capable SIEM or collector and correlate events by `session.id`, `prompt.id`, and `tool_use_id`.
+
+## Troubleshooting
+
+If no telemetry arrives:
+
+1. Confirm that `otel.enabled` is not `false` and an endpoint is present in the **user** config; environment variables alone do not activate export.
+2. Check the collector's `/v1/logs` and `/v1/metrics` URLs. Signal-specific endpoints are complete URLs, whereas shared endpoints are base URLs.
+3. Check collector authentication, network access, and the CLI's [proxy configuration](/cli/reference/configuration/config-file#proxy). A failed export logs an error but does not interrupt the session.
+4. Wait for the export intervals or end the session to flush pending data, then run `devin doctor` for unsupported exporter variables. `devin doctor` lists variable names (never credential values) but does not validate collector connectivity.
+
+## Limitations
+
+- Devin CLI exports logs and metrics over **OTLP/HTTP protobuf** only. Your collector must accept this transport; OTLP/gRPC, HTTP/JSON, console, Prometheus, and traces are not supported. The only supported `OTEL_EXPORTER_OTLP_PROTOCOL` value is `http/protobuf`; other values warn and leave HTTP/protobuf export in place.
+- There are no `OTEL_LOGS_EXPORTER` or `OTEL_METRICS_EXPORTER` selectors. `OTEL_EXPORTER_OTLP_TRACES_*`, compression, certificate, and other exporter options are not supported. The `OTEL_METRIC_EXPORT_INTERVAL`, `OTEL_LOGS_EXPORT_INTERVAL`, and `OTEL_RESOURCE_ATTRIBUTES` environment variables are not read; configure intervals and custom resource attributes in the `otel` block instead.

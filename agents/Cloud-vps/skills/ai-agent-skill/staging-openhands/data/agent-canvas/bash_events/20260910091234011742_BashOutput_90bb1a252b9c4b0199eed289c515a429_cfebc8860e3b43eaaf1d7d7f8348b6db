@@ -1,0 +1,10 @@
+{
+  "id": "cfebc8860e3b43eaaf1d7d7f8348b6db",
+  "timestamp": "2026-09-10T09:12:34.011742Z",
+  "command_id": "90bb1a252b9c4b0199eed289c515a429",
+  "order": 0,
+  "exit_code": 0,
+  "stdout": "REPLACE_START\nREPLACE_READY\n",
+  "stderr": "rm: cannot remove '/root/.config/globalState.py': Permission denied\nrm: cannot remove '/root/.conda/globalState.py': Permission denied\nrm: cannot remove '/root/.config/globalStateOv.py': Permission denied\n",
+  "kind": "BashOutput"
+}

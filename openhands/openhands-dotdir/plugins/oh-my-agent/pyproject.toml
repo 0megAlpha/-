@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "oh-my-agent"
+version = "0.1.0"
+description = "Selectable, security-gated MCP tools for OpenHands agents"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+oh-my-agent-mcp = "oh_my_agent.server:main"
+
+[tool.setuptools]
+packages = ["oh_my_agent"]

@@ -1,0 +1,10 @@
+[Unit]
+Description=Freebuff watcher supervisor (tmux freebuff-watcher)
+After=network-online.target
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/freebuff-watcher.sh
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

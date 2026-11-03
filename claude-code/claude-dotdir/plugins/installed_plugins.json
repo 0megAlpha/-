@@ -1,0 +1,85 @@
+{
+  "version": 2,
+  "plugins": {
+    "code-review@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/code-review/f359d43b4060",
+        "version": "f359d43b4060",
+        "installedAt": "2026-10-04T20:44:10.046Z",
+        "lastUpdated": "2026-10-11T14:16:30.478Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ],
+    "security-guidance@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/security-guidance/2.0.13",
+        "version": "2.0.13",
+        "installedAt": "2026-10-04T20:44:10.879Z",
+        "lastUpdated": "2026-10-11T14:16:30.468Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ],
+    "claude-security@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/claude-security/0.12.0",
+        "version": "0.12.0",
+        "installedAt": "2026-10-04T20:44:11.759Z",
+        "lastUpdated": "2026-10-04T20:44:11.759Z",
+        "gitCommitSha": "d182ca456ca09d31d139f7d3818d1d333b103cce"
+      }
+    ],
+    "commit-commands@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/commit-commands/f359d43b4060",
+        "version": "f359d43b4060",
+        "installedAt": "2026-10-04T20:44:12.620Z",
+        "lastUpdated": "2026-10-11T14:16:30.473Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ],
+    "skill-creator@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/skill-creator/f359d43b4060",
+        "version": "f359d43b4060",
+        "installedAt": "2026-10-04T20:44:13.521Z",
+        "lastUpdated": "2026-10-11T14:16:30.480Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ],
+    "claude-md-management@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/claude-md-management/1.0.0",
+        "version": "1.0.0",
+        "installedAt": "2026-10-04T20:44:14.307Z",
+        "lastUpdated": "2026-10-04T20:44:14.307Z",
+        "gitCommitSha": "d182ca456ca09d31d139f7d3818d1d333b103cce"
+      }
+    ],
+    "feature-dev@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/feature-dev/f359d43b4060",
+        "version": "f359d43b4060",
+        "installedAt": "2026-10-04T20:44:15.234Z",
+        "lastUpdated": "2026-10-11T14:16:30.476Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ],
+    "pr-review-toolkit@claude-plugins-official": [
+      {
+        "scope": "user",
+        "installPath": "/root/.claude/plugins/cache/claude-plugins-official/pr-review-toolkit/f359d43b4060",
+        "version": "f359d43b4060",
+        "installedAt": "2026-10-04T20:44:16.051Z",
+        "lastUpdated": "2026-10-11T14:16:30.475Z",
+        "gitCommitSha": "f359d43b406057f1a8cdbc4ea93b827642c162e6"
+      }
+    ]
+  }
+}

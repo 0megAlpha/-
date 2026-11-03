@@ -1,0 +1,10 @@
+{
+  "name": "mcp-server-docker-bench",
+  "version": "1.0.0",
+  "description": "MCP Server for mcp-server-docker-bench",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": { "build": "tsc", "start": "node dist/index.js" },
+  "dependencies": { "@modelcontextprotocol/sdk": "^1.0.0" },
+  "devDependencies": { "typescript": "^5.3.0" }
+}

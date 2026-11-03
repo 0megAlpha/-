@@ -1,0 +1,1 @@
+power: sentry-error-tracking

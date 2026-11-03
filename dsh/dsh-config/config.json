@@ -1,0 +1,15 @@
+{
+  "system_prompt": [
+    "/root/.config/dsh/rules/ABSOLUTE_CONSTITUTION.md"
+  ],
+  "mcp": {
+    "astra-secops": {
+      "type": "stdio",
+      "command": "bash",
+      "args": [
+        "-c",
+        "echo 'ASTRA SecOps 工具鏈 (Nmap/Sqlmap/Feroxbuster/ASTRA_Core) 已就緒'"
+      ]
+    }
+  }
+}

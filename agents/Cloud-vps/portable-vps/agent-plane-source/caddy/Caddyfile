@@ -1,0 +1,71 @@
+{
+        auto_https off
+}
+
+:8443 {
+        # 🔒 全局帳密防線
+        basic_auth {
+                xiaye $2b$14$kAfkIJk2pesrjGKC23A2a.UuUGCzg27xEmBr8mxbQB90NSnwZ9dKW
+        }
+
+        # ---------------------------------------------------------
+        # 【OpenHands 入口：注入 X-Forwarded-For 與真實 Host 憑證】
+        # ---------------------------------------------------------
+        handle /openhands* {
+                uri strip_prefix /openhands
+                reverse_proxy 127.0.0.1:8001 {
+                        header_up Host {http.request.host}
+                        header_up X-Real-IP {http.request.remote}
+                        header_up X-Forwarded-For {http.request.remote}
+                }
+        }
+        handle /幹媽的神隊友來了* {
+                uri strip_prefix /幹媽的神隊友來了
+                reverse_proxy 127.0.0.1:8001 {
+                        header_up Host {http.request.host}
+                        header_up X-Real-IP {http.request.remote}
+                        header_up X-Forwarded-For {http.request.remote}
+                }
+        }
+
+        # ---------------------------------------------------------
+        # 【Hermes 入口：比照辦理】
+        # ---------------------------------------------------------
+        handle /hermes* {
+                uri strip_prefix /hermes
+                reverse_proxy 127.0.0.1:8642 {
+                        header_up Host {http.request.host}
+                        header_up X-Real-IP {http.request.remote}
+                        header_up X-Forwarded-For {http.request.remote}
+                }
+        }
+        handle /幹媽的神助理來了* {
+                uri strip_prefix /幹媽的神助理來了
+                reverse_proxy 127.0.0.1:8642 {
+                        header_up Host {http.request.host}
+                        header_up X-Real-IP {http.request.remote}
+                        header_up X-Forwarded-For {http.request.remote}
+                }
+        }
+
+        # 其餘原有英文路由全數維持原樣
+        handle /ceo* {
+                uri strip_prefix /ceo
+                reverse_proxy 127.0.0.1:8010
+        }
+        handle /fe* {
+                uri strip_prefix /fe
+                reverse_proxy 127.0.0.1:8010
+        }
+        handle /n8n* {
+                uri strip_prefix /n8n
+                reverse_proxy 127.0.0.1:5678
+        }
+        handle /sonar* {
+                uri strip_prefix /sonar
+                reverse_proxy 127.0.0.1:9000
+        }
+        handle {
+                reverse_proxy 127.0.0.1:8010
+        }
+}

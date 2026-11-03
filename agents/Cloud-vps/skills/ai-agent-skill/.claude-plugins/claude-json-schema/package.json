@@ -1,0 +1,6 @@
+{
+  "name": "claude-json-schema",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-json-schema",
+  "main": "index.js"
+}

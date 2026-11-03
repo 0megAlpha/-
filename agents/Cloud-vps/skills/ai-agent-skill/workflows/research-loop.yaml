@@ -1,0 +1,78 @@
+# ============================================================
+# research-loop.yaml — 自治研究循環
+# 借鑑 Sakana AI Scientist / AlphaEvolve 的閉環，但加入本專案的
+# 「驗證閘不可移除」與「樣本不足不升版」兩條硬規則。
+# ============================================================
+name: research-loop
+version: 2
+owner: Hermes（AI Manager）
+
+stages:
+  - id: idea_generation
+    agent: hermes
+    action: generate_hypotheses
+    outputs: [hypotheses]
+    count: 5
+    description: >
+      先查 Engineering Memory：過去是否已試過類似假設？
+      已失敗的假設不得原樣重提（避免燒錢重做）。
+
+  - id: literature
+    agent: goose
+    action: fetch_and_summarize
+    inputs: [hypotheses]
+    outputs: [literature_notes]
+    tools: [firecrawl, web_search]
+    description: 取證優先，不憑記憶下結論。
+
+  - id: experiment_design
+    agent: claude-code
+    action: design_experiment
+    inputs: [hypotheses, literature_notes]
+    outputs: [experiment_spec, metric_definition]
+
+  - id: experiment_run
+    agent: openhands
+    action: execute_experiment
+    inputs: [experiment_spec]
+    outputs: [raw_results]
+    isolation: docker
+    timeout_sec: 3600
+    on_crash: restart_with_checkpoint
+
+  - id: analysis
+    agent: kilo-code
+    action: analyze_results
+    inputs: [raw_results]
+    outputs: [conclusion, error_bars]
+    required: true
+    description: 必須回報誤差範圍；只給單點數值視為不合格。
+
+  - id: peer_review
+    agent: claude-code
+    action: critical_review
+    inputs: [conclusion]
+    outputs: [rejection_reasons]
+    role: adversarial          # 專職找漏洞，不是寫賀詞
+    on_reject: route_to idea_generation
+
+  - id: write_up
+    agent: hermes
+    action: document_finding
+    inputs: [conclusion, peer_review]
+    outputs: [finding_record]
+    memory_write: true
+
+promotion_rules:                 # 結論要能變成 production 行為，必須過這關
+  min_trials: 20                 # 與 SESM MIN_TRIALS 一致
+  require_baseline_comparison: true
+  require_error_bars: true
+  forbid_single_run_claims: true
+  on_promote:
+    - run full software-development workflow against the new finding
+    - if regression detected → auto rollback to previous version
+
+budget:
+  max_tokens_per_cycle: 2000000
+  max_cost_usd_per_cycle: 15
+  on_exceed: halt_and_report_to_ceo

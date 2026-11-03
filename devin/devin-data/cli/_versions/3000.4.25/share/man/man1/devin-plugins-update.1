@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-plugins-update 1  "update " 
+.SH NAME
+devin\-plugins\-update \- Re\-fetch and re\-install a plugin (or all plugins) at the latest HEAD
+.SH SYNOPSIS
+\fBdevin plugins update\fR [\fB\-h\fR|\fB\-\-help\fR] [\fINAME\fR] 
+.SH DESCRIPTION
+Re\-fetch and re\-install a plugin (or all plugins) at the latest HEAD
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+[\fINAME\fR]
+The plugin to update; omit to update all installed plugins

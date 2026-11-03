@@ -1,0 +1,5 @@
+[Unit]
+Description=OpenHands Watchdog
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/openhands-watchdog.sh

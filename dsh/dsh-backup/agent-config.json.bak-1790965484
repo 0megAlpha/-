@@ -1,0 +1,16 @@
+{
+  "agent_name": "dsh",
+  "unified_core": "/root/.agent-core/agent_core.py",
+  "capabilities": [
+    "iterative_thinking",
+    "sandbox_execution",
+    "persistent_memory",
+    "web_search",
+    "plugin_marketplace"
+  ],
+  "llm": {
+    "base_url": "http://127.0.0.1:4000/v1",
+    "model": "deepseek-free",
+    "api_key": "sk-my-secret-key"
+  }
+}

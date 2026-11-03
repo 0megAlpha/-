@@ -1,0 +1,7 @@
+{
+  "provider": "deepseek_web",
+  "repo": "https://github.com/ForgetMeAI/FreeDeepseekAPI.git",
+  "install_path": "/opt/free-api/FreeDeepseekAPI",
+  "port": 8082,
+  "config": { "auto_login": false, "session_persistence": true, "rate_limit": 10 }
+}

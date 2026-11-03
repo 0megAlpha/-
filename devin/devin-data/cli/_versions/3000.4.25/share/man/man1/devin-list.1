@@ -1,0 +1,28 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-list 1  "list " 
+.SH NAME
+devin\-list \- List sessions in the current directory
+.SH SYNOPSIS
+\fBdevin list\fR [\fB\-\-format\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+List sessions in the current directory
+.SH OPTIONS
+.TP
+\fB\-\-format\fR \fI<FORMAT>\fR [default: interactive]
+Output format
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+interactive: Interactive session picker (default)
+.IP \(bu 2
+json: JSON output
+.IP \(bu 2
+csv: CSV output
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

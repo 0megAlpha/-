@@ -1,0 +1,1 @@
+power: swagger-contract-testing

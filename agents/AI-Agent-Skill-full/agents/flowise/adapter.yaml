@@ -1,0 +1,8 @@
+name: flowise
+kind: integration
+source: registry-only
+capabilities: [chat, tools]
+research_capability:
+  installed: true
+  enabled: false
+  contract: /root/ai-agent-skill/research/capability.yaml

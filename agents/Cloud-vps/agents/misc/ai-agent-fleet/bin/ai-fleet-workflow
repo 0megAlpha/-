@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+set -e
+REPO="${AI_FLEET_REPO:-$HOME/ai-agent-workflows}"
+case "${1:-list}" in
+    list) 
+        printf '%b%s%b\n' "\033[0;36m" "Available Workflows:" "\033[0m"
+        find "$REPO/workflows" -maxdepth 1 -type f -name "*.yaml" -printf '  - %f\n' | sort 
+        ;;
+    show) 
+        if [ -z "${2:-}" ]; then
+            echo "Usage: ai-fleet-workflow show <workflow-file>"
+            exit 1
+        fi
+        cat "$REPO/workflows/${2}" 
+        ;;
+    roles) 
+        cat "$REPO/agents/ROLES.md" 
+        ;;
+    claude) 
+        cat "$REPO/skills/CLAUDE_WORKFLOW_ARCHITECT.md" 
+        ;;
+    *) 
+        echo "Usage: ai-fleet-workflow [list|show FILE|roles|claude]"
+        exit 2
+        ;;
+esac

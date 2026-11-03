@@ -1,0 +1,15 @@
+id: ai-agent-skill
+name: "Ai-Agent-Skill"
+repository: "/root/ai-agent-skill"
+kind: "integration-layer"
+
+integration:
+  llm_gateway: "http://127.0.0.1:4000/v1"
+  skill_layer: "/root/ai-agent-skill"
+  integration_root: "/root/agent-integration"
+
+policy:
+  source_repo_separate: true
+  copy_source_into_ai_agent_skill: false
+  force_push: false
+  destructive_reset: false

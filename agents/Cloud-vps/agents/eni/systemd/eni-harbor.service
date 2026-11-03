@@ -1,0 +1,11 @@
+[Unit]
+Description=ENI Harbor MCP (300+ tools unified)
+After=network.target
+[Service]
+Environment=FASTMCP_HOST=0.0.0.0
+Environment=FASTMCP_PORT=8743
+ExecStart=/usr/bin/python3 /root/.mcp_harbor/mcp_server.py
+Restart=always
+RestartSec=3
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,47 @@
+{
+  "project": "agent-system",
+  "llm": {
+    "model_env": "LITELLM_MODEL",
+    "base_url_env": "LITELLM_BASE_URL",
+    "api_key_env": "LITELLM_MASTER_KEY",
+    "timeout_env": "LLM_TIMEOUT"
+  },
+  "agents": {
+    "researcher": { "class": "researcher.ResearcherAgent", "desc": "網路/文件資料檢索" },
+    "scraper": { "class": "scraper.ScraperAgent", "desc": "網頁抓取與解析" },
+    "processor": { "class": "processor.ProcessorAgent", "desc": "資料清洗與格式轉化" },
+    "planner": { "class": "planner.PlannerAgent", "desc": "任務規劃與拆解" },
+    "coder": { "class": "coder.CoderAgent", "desc": "程式碼生成與修改" },
+    "verifier": { "class": "verifier.VerifierAgent", "desc": "驗證與測試執行" },
+    "memory": { "class": "memory.MemoryAgent", "desc": "記憶與狀態管理" },
+    "notifier": { "class": "notifier.NotifierAgent", "desc": "Telegram 通知" }
+  },
+  "pipelines": {
+    "default": {
+      "description": "research -> scrape -> process -> plan -> code -> verify -> notify",
+      "stages": [
+        { "id": "research", "agent": "researcher", "task": "task_research",
+          "inputs": { "query": "pipeline.query" } },
+        { "id": "scrape", "agent": "scraper", "task": "task_scrape",
+          "inputs": { "query": "research.result" } },
+        { "id": "process", "agent": "processor", "task": "task_process",
+          "inputs": { "raw": "scrape.result" } },
+        { "id": "plan", "agent": "planner", "task": "task_plan",
+          "inputs": { "context": "process.result" } },
+        { "id": "code", "agent": "coder", "task": "task_code",
+          "inputs": { "plan": "plan.result" } },
+        { "id": "verify", "agent": "verifier", "task": "task_verify",
+          "inputs": { "artifact": "code.result" } },
+        { "id": "notify", "agent": "notifier", "task": "task_notify",
+          "inputs": { "summary": "verify.result" } }
+      ]
+    },
+    "research_only": {
+      "description": "只跑研究鏈（無 LLM 也行，mock 模式）",
+      "stages": [
+        { "id": "research", "agent": "researcher", "task": "task_research",
+          "inputs": { "query": "pipeline.query" } }
+      ]
+    }
+  }
+}

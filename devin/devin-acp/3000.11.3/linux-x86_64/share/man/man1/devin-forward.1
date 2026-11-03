@@ -1,0 +1,24 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-forward 1  "forward " 
+.SH NAME
+devin\-forward \- Forward ports from a cloud Devin session\*(Aqs box to localhost
+.SH SYNOPSIS
+\fBdevin forward\fR [\fB\-\-gateway\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fISESSION\fR> <\fIPORTS\fR> 
+.SH DESCRIPTION
+Forward ports from a cloud Devin session\*(Aqs box to localhost
+.PP
+Opens a tunnel to the Devin SSH gateway and forwards each port so a dev server running on the box can be opened at http://localhost:<port>. Runs until Ctrl\-C.
+.SH OPTIONS
+.TP
+\fB\-\-gateway\fR \fI<GATEWAY>\fR
+SSH gateway host (defaults to the ssh. host of your Devin API)
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+<\fISESSION\fR>
+Session id or session URL
+.TP
+<\fIPORTS\fR>
+Ports on the box to forward, as `<port>` or `<local>:<port>` (e.g. `3000` or `8080:3000`)

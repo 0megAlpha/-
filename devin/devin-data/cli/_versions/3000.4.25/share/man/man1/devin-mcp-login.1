@@ -1,0 +1,28 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-mcp-login 1  "login " 
+.SH NAME
+devin\-mcp\-login \- Authenticate with an MCP server via OAuth
+.SH SYNOPSIS
+\fBdevin mcp login\fR [\fB\-\-scopes\fR] [\fB\-\-oauth\-client\-id\fR] [\fB\-\-oauth\-client\-secret\fR] [\fB\-\-oauth\-resource\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fINAME\fR> 
+.SH DESCRIPTION
+Authenticate with an MCP server via OAuth
+.SH OPTIONS
+.TP
+\fB\-\-scopes\fR \fI<SCOPE,SCOPE>\fR
+OAuth scopes to request (comma\-separated)
+.TP
+\fB\-\-oauth\-client\-id\fR \fI<ID>\fR
+Pre\-registered OAuth client ID for servers that don\*(Aqt support dynamic client registration (e.g. GitHub)
+.TP
+\fB\-\-oauth\-client\-secret\fR \fI<SECRET>\fR
+OAuth client secret (for confidential clients)
+.TP
+\fB\-\-oauth\-resource\fR \fI<RESOURCE>\fR
+Override the RFC 8707 `resource` parameter sent in OAuth requests (default: the MCP server URL). Pass an empty string to omit the parameter for providers that reject it (e.g. Microsoft Entra)
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+<\fINAME\fR>
+Server name to authenticate with

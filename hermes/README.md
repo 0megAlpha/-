@@ -1,16 +1,15 @@
 # hermes
 
-最後更新：2026-11-03 14:09:08
+最後更新：2026-11-03 19:37:06
+模組數量：153
 
 ## 模組清單
+- 007-hermes-export
 - AGENTS.md
 - CONTRIBUTING.es.md
 - CONTRIBUTING.md
 - Dockerfile
 - LICENSE
-- README.es.md
-- README.ur-pk.md
-- README.zh-CN.md
 - SECURITY.es.md
 - SECURITY.md
 - SOUL.md
@@ -38,10 +37,13 @@
 - ghost-core-deploy.UaldTq
 - hermes
 - hermes-007
+- hermes-007-migration
 - hermes-007-smoke
 - hermes-agent
+- hermes-agents-skill
 - hermes-dotfiles
 - hermes-main
+- hermes-repo
 - hermes-ultimate
 - hermes_bootstrap.py
 - hermes_cli

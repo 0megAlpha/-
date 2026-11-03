@@ -1,0 +1,17 @@
+# repository<TAB>branch<TAB>verified_commit
+All-in	feat/iphone-first-hent-cockpit-20261010	dd08a8acaab74345f062bf716dc8fbff8039f9f3
+Ai-Agent-Skill	migration-vps-update-20261026	7ccd02797e6d
+open-hands	migration-vps-20261025	a8613dba85c18cde6d9f910ceaedc6b4896a589d
+open-hands	upstream-v1.33.0	e7627196460f0982dcf5fc9d32ea890093fc65ad
+ai-agent-stack	portable-20260924	bedcf0a09b16577868f2a336d2944e7b9a74bbd1
+ai-agent-fleet	main	78d07f06282c
+Cloud-vps	migration-agent-deployments-20261026	-
+Cloud-vps	migration-vps-clean-20261026	f3fc34cbacaead4255fa92361cb715461ddfdc24
+hermes-007	migration-vps-update-20261026	b928ab708c7971adea3256caf793189774ef2b3b
+hermes-007	migration-vps-pending-20261026	151cd9e0f37a1176e96241a0a6c0f09dd23a3d85
+hermes-007	migration-vps-portable-20261029	277e10b89dcbc0f85ea8d4a580812cc399b06114
+hermes-007	upstream-v0.22.5	76545af266caefc175ca19444247b4e23e581a5c
+-oh-my-agent-	main	f824560ec40f
+-DARPA-AIxCC-	main	3556c7404c04
+agents	main	601e897b8815
+claude-code-action	main	6d9a9a8837dc

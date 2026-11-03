@@ -1,0 +1,8 @@
+{
+  "command": "printf '%s' 'ICAgICAgICByYWlzZSBTeXN0ZW1FeGl0KDEpCg==' > /tmp/mgmt_gs_parts/$(printf '%03d' 78) && echo CHUNK_79=$(wc -c </tmp/mgmt_gs_parts/$(printf '%03d' 78)) WANT=40",
+  "cwd": null,
+  "timeout": 120,
+  "id": "1702617fc7b449cd8ad347845ae697bb",
+  "timestamp": "2026-09-10T05:45:45.964080Z",
+  "kind": "BashCommand"
+}

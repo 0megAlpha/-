@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    # Keep vector storage private to the VPS; mobile/agent clients should use
+    # the authenticated API gateway or the private overlay, never public Qdrant.
+    ports:
+      - "127.0.0.1:6333:6333"
+      - "127.0.0.1:6334:6334"
+    volumes:
+      - qdrant-data:/qdrant/storage
+    restart: always
+
+volumes:
+  qdrant-data:
