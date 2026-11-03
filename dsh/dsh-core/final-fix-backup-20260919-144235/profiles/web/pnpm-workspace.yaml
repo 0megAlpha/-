@@ -1,0 +1,23 @@
+packages:
+  - '.'
+nodeLinker: hoisted
+shamefullyHoist: true
+publicHoistPattern:
+  - '*'
+allowBuilds:
+  dsh-purge: true
+  dsh-infinite-gen-4: true
+  dsh-plugin-hub: true
+  dsh-audio-dagou: true
+  dsh-auto-continue: true
+  mindgarden: true
+  dsh-opencode-zen-free-provider: true
+  '@yejiming/dsh-data-agent': true
+  esbuild: true
+  sharp: true
+  '@google/genai': true
+  cpu-features: true
+  protobufjs: true
+  ssh2: true
+  node-pty: true
+  'dsh-jev@https://codeload.github.com/noetion/dsh-jev/tar.gz/48fef197d8a9ccec7881955aa8a4891df823d75c': true

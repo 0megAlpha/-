@@ -1,0 +1,13 @@
+{
+  "name": "dsh-profile-lody-acp",
+  "private": true,
+  "dependencies": {},
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base"
+      ],
+      "patchReload": "startup"
+    }
+  }
+}

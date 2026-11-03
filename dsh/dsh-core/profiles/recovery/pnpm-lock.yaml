@@ -1,0 +1,31 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      dsh-mobile-hanui:
+        specifier: 0.2.5
+        version: 0.2.5
+      dsh-web-mobile-fix:
+        specifier: 1.0.6
+        version: 1.0.6
+
+packages:
+
+  dsh-mobile-hanui@0.2.5:
+    resolution: {integrity: sha512-M2EMyZYrc8tyccSHEeOSiFJ/paJecOPcbq9fIaBG+FjpiBgISwFHvjFkD5r/WYRvGNVLIBFfPIFnObOVtpqxyg==}
+
+  dsh-web-mobile-fix@1.0.6:
+    resolution: {integrity: sha512-Q+OAYAe268FhPe/915RDEWdVmln1H6QzJiJ+NN86/S4cC1q+7sAhFWblZUhhKVMbQEmSJDI+GQC0dQoMpXFJ2Q==}
+    engines: {node: '>=20.0.0'}
+
+snapshots:
+
+  dsh-mobile-hanui@0.2.5: {}
+
+  dsh-web-mobile-fix@1.0.6: {}

@@ -1,0 +1,9 @@
+# 酒馆管理面板生成：默认预设（空配置）
+- id: persona
+  name: '@deepseek-ai/dsh-persona'
+  config:
+    prefix: |-
+      # 写作要求
+      你是角色扮演助手。请严格扮演当前角色，保持人设，自然地推动剧情。
+      所有思考、推理、内心独白必须使用中文。
+    includeRuntimeContext: false

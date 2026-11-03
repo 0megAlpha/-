@@ -1,0 +1,5 @@
+version: "2026.10.09"
+status: "INSTALLED-BUT-NOT-RUNTIME-VERIFIED"
+source: "/root/AI-Agent-Skill/skills"
+target_agent: "OpenHands"
+existing_dsh_plugins_preserved: true

@@ -1,0 +1,69 @@
+{
+  "unit": {
+    "name": "workspace",
+    "version": 2
+  },
+  "global": {
+    "initialized": true,
+    "workspaceIds": [
+      "69fc4d98-4a89-42d5-8ce6-57908e623c4d",
+      "fb5e9176-3d60-4bd2-9cb2-6c01962a7424",
+      "20f8a8ed-55ed-4754-8917-75c48df949d9",
+      "cfde3a53-0510-42fc-962d-544bcec6b3ab"
+    ],
+    "archivedSessionIds": []
+  },
+  "tables": {
+    "workspaces": {
+      "69fc4d98-4a89-42d5-8ce6-57908e623c4d": {
+        "path": "/root/.lody/chats/adb12131-c49e-4636-b05d-0a3b742bb9ff",
+        "title": "adb12131-c49e-4636-b05d-0a3b742bb9ff",
+        "sessionIds": [
+          "192b8205-a45e-498b-b865-c3d9a4d1bfd6",
+          "0c3c5a2b-06db-473c-b813-e81ff64d03b5",
+          "98018727-fec1-4ccc-8992-ff07168f8923",
+          "85975adf-0b99-45e5-887a-f3135830b3ef",
+          "9be74a93-b754-4333-9c5a-28c14c1ca50c",
+          "dd464301-4042-4cd1-883b-427fcbabd698"
+        ],
+        "createdAt": "2026-09-16T19:01:43.846Z",
+        "updatedAt": "2026-09-16T19:01:43.846Z"
+      },
+      "fb5e9176-3d60-4bd2-9cb2-6c01962a7424": {
+        "path": "/root/.lody/chats/dbb07b36-c193-4e10-921b-debf524782c5",
+        "title": "dbb07b36-c193-4e10-921b-debf524782c5",
+        "sessionIds": [
+          "782995e5-db6c-4b21-8964-74327e8ecca3",
+          "beb2c111-d69f-4ab9-b506-7947f226f20d"
+        ],
+        "createdAt": "2026-09-15T13:18:02.939Z",
+        "updatedAt": "2026-09-15T13:18:02.939Z"
+      },
+      "20f8a8ed-55ed-4754-8917-75c48df949d9": {
+        "path": "/root/.lody/chats/bad786fa-b508-48e3-ac59-fd7d98a08cd6",
+        "title": "bad786fa-b508-48e3-ac59-fd7d98a08cd6",
+        "sessionIds": [
+          "9b5efb44-8ff7-4790-aed4-82004f77d52b",
+          "4c6f03ad-f19d-4f06-835b-dc2a6fe61b6d",
+          "34c27703-28ae-4710-999d-5220d0c68eba",
+          "dd29c9e1-fdfb-4973-9add-92e1acfd01b2",
+          "a916effa-9d7f-44d5-ab18-2d6d26c65e46"
+        ],
+        "createdAt": "2026-09-15T06:47:15.944Z",
+        "updatedAt": "2026-09-15T06:47:15.944Z"
+      },
+      "cfde3a53-0510-42fc-962d-544bcec6b3ab": {
+        "path": "/root/.lody/chats/cae8fa44-e5cb-4707-8165-d8244b6a8238",
+        "title": "cae8fa44-e5cb-4707-8165-d8244b6a8238",
+        "sessionIds": [
+          "6f8e7ef0-0b74-423b-a529-f529e01472b1",
+          "538a32f3-9efd-4095-a51a-0e432cbefb5c",
+          "e48581ae-0d3c-45ae-befc-dbe6d3cac5d9",
+          "fa83f0a3-0f2b-4281-901f-ab1e01d1ce24"
+        ],
+        "createdAt": "2026-09-14T07:10:36.676Z",
+        "updatedAt": "2026-09-14T07:10:36.676Z"
+      }
+    }
+  }
+}

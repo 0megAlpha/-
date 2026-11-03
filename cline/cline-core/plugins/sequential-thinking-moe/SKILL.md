@@ -1,0 +1,1 @@
+skill: sequential-thinking-moe

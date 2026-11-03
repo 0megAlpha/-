@@ -1,0 +1,6 @@
+extensions:
+  eni-harbor:
+    name: eni-harbor
+    type: streamable-http
+    uri: http://127.0.0.1:8743/mcp
+    enabled: true

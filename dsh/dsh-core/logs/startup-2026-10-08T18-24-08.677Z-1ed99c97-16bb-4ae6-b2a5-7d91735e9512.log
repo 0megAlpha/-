@@ -1,0 +1,1734 @@
+WARNING: Raw diagnostics may contain configuration or credential values from plugin errors. Review before sharing.
+
+{
+  timestamp: '2026-10-08T18:24:08.677Z',
+  dshVersion: '0.2.0-rc.2',
+  nodeVersion: 'v24.21.0',
+  platform: 'linux',
+  arch: 'x64',
+  profile: 'web',
+  error: StartupError: dsh: startup failed: 2 required plugins did not activate
+  
+  Failed plugins (1):
+    typert-loader
+      Package: @deepseek-ai/dsh-typert-loader
+      AggregateError: typert-loader: 14 typert contributor(s) failed to register:
+        - Cannot read properties of undefined (reading 'parse')
+        - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+        - Cannot read properties of undefined (reading 'parse')
+          at Object.apply [as callback] (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:344:33)
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+          at async Fiber._reload (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:1356:5)
+          at async Promise.allSettled (index 0)
+          at async Proxy.await (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis-plugin-loader/lib/index.js:158:4)
+          at async boot (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4084:3)
+          at async runProfile (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/profile-boot-BZ2ZjNWi.js:271:15)
+          at async runCli (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:215:5)
+          at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+          at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)
+          at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)
+          at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      TypeError: Cannot read properties of undefined (reading 'parse')
+          at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+          at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+          at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+          at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+          at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+          at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+          at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+  
+  Plugins waiting for services (45):
+    Plugin                             Missing services
+    agent-loop (required)              agents, sessions, tools, systemPrompt, sessionProjections
+    connection (required)              webRuntime
+    session-log-deepseek               sessions
+    session-title-llm                  sessionTitle, sessions
+    plugin-package-inventory-deepseek  agents
+    deepseek-account                   authorization
+    session-query-sqlite               sessions
+    session-telemetry-otel             sessions
+    sandbox-policy                     sessionProjections
+    bash-sandbox                       sandboxPolicy
+    permission                         shell, approval, sessions, sessionProjections
+    command-feedback                   commands
+    goal-round-driver                  agents, goals, sessions
+    token-meter                        sessionProjections
+    subagent-spawn-in-process          subagents
+    subagent-fork-in-process           subagents
+    ptc-runtime                        fs, sandboxPolicy
+    timeout-policy                     tools
+    spill-policy                       tools
+    session-checkpoint-policy          sessions, tools
+    image-offload                      agents, sessions
+    web-search-deepseek                web
+    web-fetch-http                     web
+    mcp-resources                      tools
+    fs-sandbox                         sandboxPolicy
+    session-log-download               commands, connection
+    open-in-app                        webServer, connection
+    file-reference-local               agents
+    session-stats                      sessionProjections
+    session-turn-outline               sessionProjections
+    directory-picker                   webServer
+    terminal-controller                sandboxPolicy
+    workspace-files                    fs, sandboxPolicy, sessions
+    account-controller                 deepseekAccount, agents
+    workspace-controller               workspaceRegistry
+    cordis-inspect-providers           cordisInspect, tools
+    web-runtime                        webServer
+    client-hmr                         webServer
+    file-upload                        agents, commands, connection
+    ui-deliverables                    systemPrompt, connection, sessionQuery, sessionController, workspaceFiles, fs, sandboxPolicy
+    agent-preset-registry              sessionProjections
+    preset-standard                    agentPresets
+    preset-ptc                         agentPresets
+    preset-minimal                     agentPresets
+    preset-cordis                      agentPresets
+      at auditStartupEntries (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4012:31)
+      ... 3 lines matching cause stack trace ...
+      at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23 {
+    [stack]: [Getter/Setter],
+    [message]: 'dsh: startup failed: 2 required plugins did not activate\n' +
+      '\n' +
+      'Failed plugins (1):\n' +
+      '  typert-loader\n' +
+      '    Package: @deepseek-ai/dsh-typert-loader\n' +
+      '    AggregateError: typert-loader: 14 typert contributor(s) failed to register:\n' +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      '      - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory\n' +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      "      - Cannot read properties of undefined (reading 'parse')\n" +
+      '        at Object.apply [as callback] (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:344:33)\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      '        at async Fiber._reload (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:1356:5)\n' +
+      '        at async Promise.allSettled (index 0)\n' +
+      '        at async Proxy.await (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis-plugin-loader/lib/index.js:158:4)\n' +
+      '        at async boot (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4084:3)\n' +
+      '        at async runProfile (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/profile-boot-BZ2ZjNWi.js:271:15)\n' +
+      '        at async runCli (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:215:5)\n' +
+      '        at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      '    Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory\n' +
+      '        at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)\n' +
+      '        at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)\n' +
+      '        at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      "    TypeError: Cannot read properties of undefined (reading 'parse')\n" +
+      '        at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)\n' +
+      '        at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)\n' +
+      '        at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)\n' +
+      '        at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)\n' +
+      '        at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)\n' +
+      '        at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41\n' +
+      '        at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n' +
+      '\n' +
+      'Plugins waiting for services (45):\n' +
+      '  Plugin                             Missing services\n' +
+      '  agent-loop (required)              agents, sessions, tools, systemPrompt, sessionProjections\n' +
+      '  connection (required)              webRuntime\n' +
+      '  session-log-deepseek               sessions\n' +
+      '  session-title-llm                  sessionTitle, sessions\n' +
+      '  plugin-package-inventory-deepseek  agents\n' +
+      '  deepseek-account                   authorization\n' +
+      '  session-query-sqlite               sessions\n' +
+      '  session-telemetry-otel             sessions\n' +
+      '  sandbox-policy                     sessionProjections\n' +
+      '  bash-sandbox                       sandboxPolicy\n' +
+      '  permission                         shell, approval, sessions, sessionProjections\n' +
+      '  command-feedback                   commands\n' +
+      '  goal-round-driver                  agents, goals, sessions\n' +
+      '  token-meter                        sessionProjections\n' +
+      '  subagent-spawn-in-process          subagents\n' +
+      '  subagent-fork-in-process           subagents\n' +
+      '  ptc-runtime                        fs, sandboxPolicy\n' +
+      '  timeout-policy                     tools\n' +
+      '  spill-policy                       tools\n' +
+      '  session-checkpoint-policy          sessions, tools\n' +
+      '  image-offload                      agents, sessions\n' +
+      '  web-search-deepseek                web\n' +
+      '  web-fetch-http                     web\n' +
+      '  mcp-resources                      tools\n' +
+      '  fs-sandbox                         sandboxPolicy\n' +
+      '  session-log-download               commands, connection\n' +
+      '  open-in-app                        webServer, connection\n' +
+      '  file-reference-local               agents\n' +
+      '  session-stats                      sessionProjections\n' +
+      '  session-turn-outline               sessionProjections\n' +
+      '  directory-picker                   webServer\n' +
+      '  terminal-controller                sandboxPolicy\n' +
+      '  workspace-files                    fs, sandboxPolicy, sessions\n' +
+      '  account-controller                 deepseekAccount, agents\n' +
+      '  workspace-controller               workspaceRegistry\n' +
+      '  cordis-inspect-providers           cordisInspect, tools\n' +
+      '  web-runtime                        webServer\n' +
+      '  client-hmr                         webServer\n' +
+      '  file-upload                        agents, commands, connection\n' +
+      '  ui-deliverables                    systemPrompt, connection, sessionQuery, sessionController, workspaceFiles, fs, sandboxPolicy\n' +
+      '  agent-preset-registry              sessionProjections\n' +
+      '  preset-standard                    agentPresets\n' +
+      '  preset-ptc                         agentPresets\n' +
+      '  preset-minimal                     agentPresets\n' +
+      '  preset-cordis                      agentPresets',
+    [cause]: AggregateError: Plugin activation failures
+        at new StartupError (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:3874:49)
+        at auditStartupEntries (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4012:31)
+        at async boot (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4086:3)
+        at async runProfile (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/profile-boot-BZ2ZjNWi.js:271:15)
+        at async runCli (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:215:5)
+        at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23 {
+      [stack]: [Getter/Setter],
+      [message]: 'Plugin activation failures',
+      [errors]: [
+        AggregateError: typert-loader: 14 typert contributor(s) failed to register:
+          - Cannot read properties of undefined (reading 'parse')
+          - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+          - Cannot read properties of undefined (reading 'parse')
+            at Object.apply [as callback] (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:344:33)
+            at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+            at async Fiber._reload (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:1356:5)
+            at async Promise.allSettled (index 0)
+            at async Proxy.await (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis-plugin-loader/lib/index.js:158:4)
+            at async boot (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4084:3)
+            at async runProfile (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/profile-boot-BZ2ZjNWi.js:271:15)
+            at async runCli (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:215:5)
+            at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23 {
+          [stack]: [Getter/Setter],
+          [message]: 'typert-loader: 14 typert contributor(s) failed to register:\n' +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            '  - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory\n' +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')\n" +
+            "  - Cannot read properties of undefined (reading 'parse')",
+          [errors]: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+                at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)
+                at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)
+                at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: 'typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory'
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 14
+          ]
+        },
+        [length]: 1
+      ]
+    },
+    [entries]: [
+      {
+        id: 'session-log-deepseek',
+        module: '@deepseek-ai/dsh-session-log-deepseek',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sessions', [length]: 1 ] }
+      },
+      {
+        id: 'typert-loader',
+        module: '@deepseek-ai/dsh-typert-loader',
+        required: false,
+        fiberState: 3,
+        outcome: {
+          kind: 'failed',
+          error: AggregateError: typert-loader: 14 typert contributor(s) failed to register:
+            - Cannot read properties of undefined (reading 'parse')
+            - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+            - Cannot read properties of undefined (reading 'parse')
+              at Object.apply [as callback] (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:344:33)
+              at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+              at async Fiber._reload (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:1356:5)
+              at async Promise.allSettled (index 0)
+              at async Proxy.await (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis-plugin-loader/lib/index.js:158:4)
+              at async boot (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-app-boot/lib/index.js:4084:3)
+              at async runProfile (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/profile-boot-BZ2ZjNWi.js:271:15)
+              at async runCli (file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:215:5)
+              at async file:///usr/lib/node_modules/@deepseek-ai/dsh/lib/bin.js:252:23 {
+            [stack]: [Getter/Setter],
+            [message]: 'typert-loader: 14 typert contributor(s) failed to register:\n' +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              '  - typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory\n' +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')\n" +
+              "  - Cannot read properties of undefined (reading 'parse')",
+            [errors]: [
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+                  at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)
+                  at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)
+                  at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: 'typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory'
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              TypeError: Cannot read properties of undefined (reading 'parse')
+                  at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                  at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                  at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                  at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                  at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                  at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                  at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+                [stack]: [Getter/Setter],
+                [message]: "Cannot read properties of undefined (reading 'parse')"
+              },
+              [length]: 14
+            ]
+          }
+        }
+      },
+      {
+        id: 'session-title-llm',
+        module: '@deepseek-ai/dsh-session-title-first-prompt-llm',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionTitle', 'sessions', [length]: 2 ]
+        }
+      },
+      {
+        id: 'plugin-package-inventory-deepseek',
+        module: '@deepseek-ai/dsh-plugin-package-inventory-deepseek',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agents', [length]: 1 ] }
+      },
+      {
+        id: 'deepseek-account',
+        module: '@deepseek-ai/dsh-deepseek-account-platform',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'authorization', [length]: 1 ] }
+      },
+      {
+        id: 'session-query-sqlite',
+        module: '@deepseek-ai/dsh-session-query-sqlite',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sessions', [length]: 1 ] }
+      },
+      {
+        id: 'session-telemetry-otel',
+        module: '@deepseek-ai/dsh-session-telemetry-otel',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sessions', [length]: 1 ] }
+      },
+      {
+        id: 'sandbox-policy',
+        module: '@deepseek-ai/dsh-sandbox-policy',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionProjections', [length]: 1 ]
+        }
+      },
+      {
+        id: 'bash-sandbox',
+        module: '@deepseek-ai/dsh-bash-sandbox',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sandboxPolicy', [length]: 1 ] }
+      },
+      {
+        id: 'permission',
+        module: '@deepseek-ai/dsh-permission-presets',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [
+            'shell',
+            'approval',
+            'sessions',
+            'sessionProjections',
+            [length]: 4
+          ]
+        }
+      },
+      {
+        id: 'command-feedback',
+        module: '@deepseek-ai/dsh-command-feedback',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'commands', [length]: 1 ] }
+      },
+      {
+        id: 'goal-round-driver',
+        module: '@deepseek-ai/dsh-goal-round-driver',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'agents', 'goals', 'sessions', [length]: 3 ]
+        }
+      },
+      {
+        id: 'token-meter',
+        module: '@deepseek-ai/dsh-token-meter',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionProjections', [length]: 1 ]
+        }
+      },
+      {
+        id: 'subagent-spawn-in-process',
+        module: '@deepseek-ai/dsh-subagent-spawn-in-process',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'subagents', [length]: 1 ] }
+      },
+      {
+        id: 'subagent-fork-in-process',
+        module: '@deepseek-ai/dsh-subagent-fork-in-process',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'subagents', [length]: 1 ] }
+      },
+      {
+        id: 'ptc-runtime',
+        module: '@deepseek-ai/dsh-ptc-runtime-node',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'fs', 'sandboxPolicy', [length]: 2 ]
+        }
+      },
+      {
+        id: 'timeout-policy',
+        module: '@deepseek-ai/dsh-tool-call-timeout-policy',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'tools', [length]: 1 ] }
+      },
+      {
+        id: 'spill-policy',
+        module: '@deepseek-ai/dsh-spill-policy',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'tools', [length]: 1 ] }
+      },
+      {
+        id: 'session-checkpoint-policy',
+        module: '@deepseek-ai/dsh-session-checkpoint-policy',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessions', 'tools', [length]: 2 ]
+        }
+      },
+      {
+        id: 'image-offload',
+        module: '@deepseek-ai/dsh-compaction-image-offload',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'agents', 'sessions', [length]: 2 ]
+        }
+      },
+      {
+        id: 'web-search-deepseek',
+        module: '@deepseek-ai/dsh-web-search-deepseek',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'web', [length]: 1 ] }
+      },
+      {
+        id: 'web-fetch-http',
+        module: '@deepseek-ai/dsh-web-fetch-http',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'web', [length]: 1 ] }
+      },
+      {
+        id: 'mcp-resources',
+        module: '@deepseek-ai/dsh-mcp-resources',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'tools', [length]: 1 ] }
+      },
+      {
+        id: 'agent-loop',
+        module: '@deepseek-ai/dsh-agent-loop',
+        required: true,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [
+            'agents',
+            'sessions',
+            'tools',
+            'systemPrompt',
+            'sessionProjections',
+            [length]: 5
+          ]
+        }
+      },
+      {
+        id: 'fs-sandbox',
+        module: '@deepseek-ai/dsh-fs-sandbox',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sandboxPolicy', [length]: 1 ] }
+      },
+      {
+        id: 'session-log-download',
+        module: '@deepseek-ai/dsh-session-log-export',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'commands', 'connection', [length]: 2 ]
+        }
+      },
+      {
+        id: 'open-in-app',
+        module: '@deepseek-ai/dsh-host-open-in-app',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'webServer', 'connection', [length]: 2 ]
+        }
+      },
+      {
+        id: 'file-reference-local',
+        module: '@deepseek-ai/dsh-file-reference-local',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agents', [length]: 1 ] }
+      },
+      {
+        id: 'session-stats',
+        module: '@deepseek-ai/dsh-session-stats',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionProjections', [length]: 1 ]
+        }
+      },
+      {
+        id: 'session-turn-outline',
+        module: '@deepseek-ai/dsh-session-turn-outline',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionProjections', [length]: 1 ]
+        }
+      },
+      {
+        id: 'directory-picker',
+        module: '@deepseek-ai/dsh-host-directory-picker-auto',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'webServer', [length]: 1 ] }
+      },
+      {
+        id: 'terminal-controller',
+        module: '@deepseek-ai/dsh-api-terminal-controller',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'sandboxPolicy', [length]: 1 ] }
+      },
+      {
+        id: 'workspace-files',
+        module: '@deepseek-ai/dsh-api-workspace-files',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'fs', 'sandboxPolicy', 'sessions', [length]: 3 ]
+        }
+      },
+      {
+        id: 'account-controller',
+        module: '@deepseek-ai/dsh-api-account-controller',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'deepseekAccount', 'agents', [length]: 2 ]
+        }
+      },
+      {
+        id: 'workspace-controller',
+        module: '@deepseek-ai/dsh-api-workspace-controller',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'workspaceRegistry', [length]: 1 ]
+        }
+      },
+      {
+        id: 'cordis-inspect-providers',
+        module: '@deepseek-ai/dsh-tool-cordis/host',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'cordisInspect', 'tools', [length]: 2 ]
+        }
+      },
+      {
+        id: 'web-runtime',
+        module: '@deepseek-ai/dsh-web-app',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'webServer', [length]: 1 ] }
+      },
+      {
+        id: 'client-hmr',
+        module: '@deepseek-ai/dsh-client-hmr',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'webServer', [length]: 1 ] }
+      },
+      {
+        id: 'connection',
+        module: '@deepseek-ai/dsh-client-connection',
+        required: true,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'webRuntime', [length]: 1 ] }
+      },
+      {
+        id: 'file-upload',
+        module: '@deepseek-ai/dsh-client-file-upload',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'agents', 'commands', 'connection', [length]: 3 ]
+        }
+      },
+      {
+        id: 'ui-deliverables',
+        module: '@deepseek-ai/dsh-client-ui-deliverables',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [
+            'systemPrompt',
+            'connection',
+            'sessionQuery',
+            'sessionController',
+            'workspaceFiles',
+            'fs',
+            'sandboxPolicy',
+            [length]: 7
+          ]
+        }
+      },
+      {
+        id: 'agent-preset-registry',
+        module: '@deepseek-ai/dsh-agent-preset-registry',
+        required: false,
+        fiberState: 0,
+        outcome: {
+          kind: 'pending',
+          missing: [ 'sessionProjections', [length]: 1 ]
+        }
+      },
+      {
+        id: 'preset-standard',
+        module: '@deepseek-ai/dsh-agent-preset',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agentPresets', [length]: 1 ] }
+      },
+      {
+        id: 'preset-ptc',
+        module: '@deepseek-ai/dsh-agent-preset',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agentPresets', [length]: 1 ] }
+      },
+      {
+        id: 'preset-minimal',
+        module: '@deepseek-ai/dsh-agent-preset',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agentPresets', [length]: 1 ] }
+      },
+      {
+        id: 'preset-cordis',
+        module: '@deepseek-ai/dsh-agent-preset',
+        required: false,
+        fiberState: 0,
+        outcome: { kind: 'pending', missing: [ 'agentPresets', [length]: 1 ] }
+      },
+      [length]: 46
+    ],
+    [startup]: {
+      configurationPath: '/root/.dsh/profiles/web/cordis.yml',
+      messages: [
+        {
+          ts: 1791483847536,
+          name: 'root',
+          type: 'warn',
+          args: [ 'patch: entry "dsh-purge" not found', [length]: 1 ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+                at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)
+                at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)
+                at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95 {
+              [stack]: [Getter/Setter],
+              [message]: 'typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory'
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848590,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41 {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            Error: typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory
+                at requireStrictCodec (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:211:48)
+                at requireInvocation (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:185:3)
+                at validateTypertManifest (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:116:89)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:273:95
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: 'typert-loader: @deepseek-ai/dsh-llm invocation "@deepseek-ai/dsh-llm#llm/discoverModels" parameter codec has no create() factory'
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848638,
+          name: 'typert-loader',
+          type: 'error',
+          args: [
+            TypeError: Cannot read properties of undefined (reading 'parse')
+                at validateCodec (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:565:26)
+                at validateInvocation (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:531:2)
+                at DescriptorStore.validate (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:73:4)
+                at Proxy.register (file:///root/.dsh/profiles/web/node_modules/@deepseek-ai/dsh-typert-registry/lib/index.js:417:19)
+                at Object.apply (file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/cordis/lib/index.js:120:36)
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-typert-loader/lib/index.js:300:41
+                at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+              [stack]: [Getter/Setter],
+              [message]: "Cannot read properties of undefined (reading 'parse')"
+            },
+            [length]: 1
+          ]
+        },
+        {
+          ts: 1791483848675,
+          name: 'hmr',
+          type: 'warn',
+          args: [
+            'config reload at %C failed',
+            '/root/.dsh/profiles/web/package.json',
+            [length]: 2
+          ]
+        },
+        {
+          ts: 1791483848675,
+          name: 'hmr',
+          type: 'warn',
+          args: [
+            Error: HMR is disposed
+                at file:///usr/lib/node_modules/@deepseek-ai/dsh/node_modules/@deepseek-ai/dsh-hmr/lib/index.js:282:29 {
+              [stack]: [Getter/Setter],
+              [message]: 'HMR is disposed'
+            },
+            [length]: 1
+          ]
+        },
+        [length]: 30
+      ]
+    }
+  }
+}

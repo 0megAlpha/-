@@ -1,0 +1,14 @@
+agent: cline
+source: npm:@cline/cli@3.0.62
+role: coding-agent
+api_protocol: openai-compatible
+provider_config: /root/.cline/data/settings/providers.json
+provider_name: openai-compatible
+provider_status: configured-not-e2e-verified
+shared_gateway: not-applied
+integration_layer: /root/AI-Agent-Skill
+
+research_capability:
+  installed: true
+  enabled: false
+  contract: /root/AI-Agent-Skill/research/capability.yaml

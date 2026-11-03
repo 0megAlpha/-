@@ -1,0 +1,12 @@
+allowBuilds:
+  cpu-features: true
+  protobufjs: true
+  ssh2: true
+  esbuild: true
+  sharp: true
+  better-sqlite3: true
+  bcrypt: true
+  node-pty: true
+  sqlite3: true
+  '@google/genai': true
+  unrs-resolver: true
