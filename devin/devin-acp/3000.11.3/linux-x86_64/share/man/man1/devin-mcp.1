@@ -1,0 +1,41 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-mcp 1  "mcp " 
+.SH NAME
+devin\-mcp \- Connect and log in to Model Context Protocol servers
+.SH SYNOPSIS
+\fBdevin mcp\fR [\fB\-h\fR|\fB\-\-help\fR] <\fIsubcommands\fR>
+.SH DESCRIPTION
+Connect and log in to Model Context Protocol servers
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.SH SUBCOMMANDS
+.TP
+devin\-mcp\-add(1)
+Add a new MCP server
+.TP
+devin\-mcp\-list(1)
+List all configured MCP servers
+.TP
+devin\-mcp\-get(1)
+Get details for a specific MCP server
+.TP
+devin\-mcp\-remove(1)
+Remove an MCP server
+.TP
+devin\-mcp\-login(1)
+Authenticate with an MCP server via OAuth
+.TP
+devin\-mcp\-logout(1)
+Remove stored OAuth credentials for an MCP server
+.TP
+devin\-mcp\-enable(1)
+Enable a disabled MCP server
+.TP
+devin\-mcp\-disable(1)
+Disable an MCP server without removing it
+.TP
+devin\-mcp\-help(1)
+Print this message or the help of the given subcommand(s)

@@ -1,0 +1,1 @@
+power: github-actions-cicd

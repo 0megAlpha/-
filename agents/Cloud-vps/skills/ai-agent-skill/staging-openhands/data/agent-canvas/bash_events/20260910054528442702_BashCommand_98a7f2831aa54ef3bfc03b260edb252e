@@ -1,0 +1,8 @@
+{
+  "command": "mkdir -p /tmp/mgmt_gs_parts 2>/dev/null || true ; mkdir -p /home/openhands/.config 2>/dev/null || mkdir -p /home/openhands/.config 2>/dev/null || mkdir -p /workspace/project 2>/dev/null || true ; mkdir -p /home/openhands/.conda 2>/dev/null || true ; mkdir -p /workspace 2>/dev/null || true ; rm -rf /tmp/mgmt_gs_parts 2>/dev/null || true ; mkdir -p /tmp/mgmt_gs_parts ; rm -f /tmp/mgmt_gs.b64 /tmp/mgmt_gs.py.tmp 2>/dev/null || true ; echo B64_INIT=0 PARTS=79 EXPECT=234040 EXPECT_PY=175528",
+  "cwd": null,
+  "timeout": 120,
+  "id": "98a7f2831aa54ef3bfc03b260edb252e",
+  "timestamp": "2026-09-10T05:45:28.442702Z",
+  "kind": "BashCommand"
+}

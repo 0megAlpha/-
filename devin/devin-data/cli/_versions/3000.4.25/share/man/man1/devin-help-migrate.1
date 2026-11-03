@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-help-migrate 1  "migrate " 
+.SH NAME
+devin\-help\-migrate \- Migrate configuration from other tools
+.SH SYNOPSIS
+\fBdevin help migrate\fR [\fIsubcommands\fR]
+.SH DESCRIPTION
+Migrate configuration from other tools
+.SH SUBCOMMANDS
+.TP
+devin\-help\-migrate\-hooks(1)
+Migrate Windsurf hooks (.windsurf/hooks.json) to Devin hooks (.devin/hooks.v1.json)
+.TP
+devin\-help\-migrate\-workflows(1)
+Migrate workflow files into skills and remove the originals

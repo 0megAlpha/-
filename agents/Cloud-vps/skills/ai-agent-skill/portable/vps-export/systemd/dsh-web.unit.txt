@@ -1,0 +1,22 @@
+# /etc/systemd/system/dsh-web.service
+[Unit]
+Description=DeepSeek Harness Web UI
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Environment=HOME=/root
+Environment=DSH_HOME=/root/.dsh
+Environment=DEEPSEEK_BASE_URL=https://integrate.api.nvidia.com/v1
+Environment=DSH_PERMISSION_MODE=danger-full-access
+WorkingDirectory=/root/.dsh/profiles/web
+ExecStart=/usr/local/bin/dsh web --port 3080
+Restart=always
+RestartSec=15
+StandardOutput=append:/var/log/dsh-web.log
+StandardError=append:/var/log/dsh-web.log
+
+[Install]
+WantedBy=multi-user.target

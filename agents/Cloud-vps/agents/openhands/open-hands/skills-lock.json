@@ -1,0 +1,437 @@
+{
+  "version": 1,
+  "skills": {
+    "add-javadoc": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/add-javadoc/SKILL.md",
+      "computedHash": "35392dba336aed8cbad0de5a4cae833bf522224860673758db50662d3d6048de"
+    },
+    "add-skill": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/add-skill/SKILL.md",
+      "computedHash": "cb8db70d40a78f413b907c7250ab7a13654b28985396076160c27d2cb7f8e5f6"
+    },
+    "agent-canvas-environment": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/agent-canvas-environment/SKILL.md",
+      "computedHash": "42374acbc17297166f597c5a7ec91e652f972b060e72a4bb9105ffe6dce323e9"
+    },
+    "agent-creator": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/agent-creator/SKILL.md",
+      "computedHash": "4521002ea1455738d5668c78d103aeff11f04ede5de4de474c8c425f2b03f412"
+    },
+    "agent-memory": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/agent-memory/SKILL.md",
+      "computedHash": "9a2d9eac94b54d0bc709ee79659acf67414b32c495c751dca607966e5b390d41"
+    },
+    "agent-readiness-report": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/onboarding/skills/agent-readiness-report/SKILL.md",
+      "computedHash": "5e6621c2a1a2d1c06dee8698a2a743df0e95125f7b8f357a30b841975751b672"
+    },
+    "agent-sdk-builder": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/agent-sdk-builder/SKILL.md",
+      "computedHash": "e4375df3f938743b4234a905c36fa2e273f959ec912e0ae47b31ade350d8b779"
+    },
+    "azure-devops": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/azure-devops/SKILL.md",
+      "computedHash": "50f47d48e90353c2106893d73316edb14df5aacf437c5cc91f71c753c816ee9e"
+    },
+    "bitbucket": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/bitbucket/SKILL.md",
+      "computedHash": "4f70b0e3007182cb3a02c8d7569b1b14d5ce44fbbd9dd1c8d392a8423216353d"
+    },
+    "bitbucket-cloud": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/bitbucket-cloud/SKILL.md",
+      "computedHash": "4f0be2c4eceee4e598d16b9dfa4c3239c58d89f5cdad96a0c69b1740df0ebf22"
+    },
+    "bitbucket-data-center": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/bitbucket-data-center/SKILL.md",
+      "computedHash": "6deecae8f49c527df09e518ffc0282507c68e7cbea4170a87951e9209e54e1f3"
+    },
+    "canvas-extension-api": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/canvas-extension-api/SKILL.md",
+      "computedHash": "a6b3377e85dc85a00118f8043518693ffda115da484873325742d1deb989158b"
+    },
+    "code-review": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/code-review/SKILL.md",
+      "computedHash": "c614b5a5d21d03a4546f887fe0e00afdaf639554d096395481be99c870d7f0b2"
+    },
+    "code-simplifier": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/code-simplifier/SKILL.md",
+      "computedHash": "048749e2d4a8930613ef127abedb95ec1e5ef6698f4423faf4f774dddbfbaa5f"
+    },
+    "datadog": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/datadog/SKILL.md",
+      "computedHash": "2a2fc13388c14da9e90513c08808fa8776141517f5432cd2cabef20d826c85c5"
+    },
+    "deno": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/deno/SKILL.md",
+      "computedHash": "3589472484d6385c7d68bd8c71865229d0b8591734527c762a511f3a754e63bc"
+    },
+    "discord": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/discord/SKILL.md",
+      "computedHash": "cd6ff59f6e2eaeeda2a85e8c423b36a9036857d31c111998eb42c62929410d02"
+    },
+    "docker": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/docker/SKILL.md",
+      "computedHash": "c40dcef462d9982c91a63e401f077465040b7c0b85432c0405b44433630a0dca"
+    },
+    "evidence-based-citations": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/evidence-based-citations/SKILL.md",
+      "computedHash": "ab87733b1232d2eae9c8d69ce92dc16ec6ef4f21a2188a9c1428a15f4241e86f"
+    },
+    "flarglebargle": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/flarglebargle/SKILL.md",
+      "computedHash": "8ff60d7c5d03660f1a380ff9a5c55682f133fd1ecec8ed4684dfa3886c66d5f6"
+    },
+    "frontend-design": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/frontend-design/SKILL.md",
+      "computedHash": "85127f395015a17c2ac5505e1d77f979f2a4f007be4fca11cd1ee4fddf2902e4"
+    },
+    "github": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github/SKILL.md",
+      "computedHash": "6237d99044775d400965a96067cfa7914131b83ee183d17f20aed5ad5304c4f3"
+    },
+    "github-actions": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-actions/SKILL.md",
+      "computedHash": "6d2191c2ae042c908ed0517c76621ba41389e0263e1d9d4f34b791cd8412590b"
+    },
+    "github-agents-md-maintainer": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-agents-md-maintainer/SKILL.md",
+      "computedHash": "822682b2fb4408561a313a7b1012f817d19648a6a28f80f33c94a801a76ff95b"
+    },
+    "github-delivery-watchdog": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-delivery-watchdog/SKILL.md",
+      "computedHash": "0662d01cec55c929b74c13bb6732e0ee2d777f8cee8771eff51d06da55466d6f"
+    },
+    "github-issue-to-pr": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-issue-to-pr/SKILL.md",
+      "computedHash": "011d90c3b5beca24f80201fbbd47b0cff433231d9ae9e8ea4f171485ca937524"
+    },
+    "github-issue-triage": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-issue-triage/SKILL.md",
+      "computedHash": "08b6dfe489245b0dfe2d5e8bdf478f90858931971ee59b6faf318b61d1a069b9"
+    },
+    "github-pr-review": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-pr-review/SKILL.md",
+      "computedHash": "f41566fac542ca9bac299bf31fa2fd6d6dc748e918e36c2e0650560f3c82db61"
+    },
+    "github-pr-reviewer": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-pr-reviewer/SKILL.md",
+      "computedHash": "0af2216ec72a4025c358175928ba265efc579f8130d98a923e77b9b8ed7b3ef3"
+    },
+    "github-repo-monitor": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-repo-monitor/SKILL.md",
+      "computedHash": "cbc52c83edb6f1892f7f6447b9b82cc39ba45785f736978bb448143b0d7b3979"
+    },
+    "github-stale-ci-pr-closer": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/github-stale-ci-pr-closer/SKILL.md",
+      "computedHash": "beab33854ae7414820fed8349222b376bb7764e381d3b95966defa804a8c1b10"
+    },
+    "gitlab": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/gitlab/SKILL.md",
+      "computedHash": "95dc642591a33e0e0799929de0f392226996dbb1a6c1e8c2a1e9aa40a0c0204c"
+    },
+    "gitlab-issue-to-mr": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/gitlab-issue-to-mr/SKILL.md",
+      "computedHash": "a57cf52a153d2aa3178fa8247e32b3ae519e669cfbe57585033711cacb8f81f2"
+    },
+    "improve-agent-readiness": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/onboarding/skills/improve-agent-readiness/SKILL.md",
+      "computedHash": "a02a6ce36b148de56e3d0fcbfc5d598655dc81060dc31bfc2a1fcc4bb1b42960"
+    },
+    "incident-retrospective": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/incident-retrospective/SKILL.md",
+      "computedHash": "f300a60e748fd24c15b8f05dc43ad66d7a5771123874f55021e0833569091acf"
+    },
+    "iterate": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/iterate/SKILL.md",
+      "computedHash": "f2e9d8bb86925bf374ec10600643c028d46fb79eb5de971521b73e00b93d369a"
+    },
+    "jira-issue-to-pr": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/jira-issue-to-pr/SKILL.md",
+      "computedHash": "65439873def1e9d14e96477d6c440a2ff235b71d98e9482fee03a3bd81f1a8a2"
+    },
+    "jupyter": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/jupyter/SKILL.md",
+      "computedHash": "4505361fd5bf09d90bdb99e0229c9f9320947aa9d52c9a822ae161024cf5376a"
+    },
+    "kubernetes": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/kubernetes/SKILL.md",
+      "computedHash": "e8ac5330defb2573dd768c3834514fc8ac0c6769315c9d6be8c57567b2df8dde"
+    },
+    "learn-from-code-review": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/learn-from-code-review/SKILL.md",
+      "computedHash": "592948d24154f38a81a60dbef13e962c9983c32e31a8ef333b9fa4f9d2c090b8"
+    },
+    "linear": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/linear/SKILL.md",
+      "computedHash": "e438b6c3edcf532d7cdfa8864b81b031431a8869951e4e9963732689a53044c2"
+    },
+    "linear-triage": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/linear-triage/SKILL.md",
+      "computedHash": "861f25db7900d990048b80921059a8a95953784a26e0510c636f41ace20ebf25"
+    },
+    "magic-word": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/magic-test/skills/magic-word/SKILL.md",
+      "computedHash": "dd218dd51838ecfdf81147548915e8b5a3bde5ad81037af784e110f1adc774c1"
+    },
+    "news-digest": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/news-digest/SKILL.md",
+      "computedHash": "1817c1d885c01da3f9e83113236d9a511fc824facb1130e213790cc3d7c9df7a"
+    },
+    "notion": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/notion/SKILL.md",
+      "computedHash": "f556e71497ac6bb9a743719c2e5be543d74abcdf7882d83bdff86b4db0e1cd5d"
+    },
+    "npm": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/npm/SKILL.md",
+      "computedHash": "b616d49e3d42f8fe48ad6cbe566e3bb6e8e29ad98839f2a847992f88ab989305"
+    },
+    "openhands-api": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/openhands-api/SKILL.md",
+      "computedHash": "a50a2635b23c8e31f5ddf86df8a8dc97d15171f901b4768a960c290157cc4ea8"
+    },
+    "openhands-automation": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/openhands-automation/SKILL.md",
+      "computedHash": "1daceddba33644efb870e774a204dcc04d44b8fd74e3108c1e6aec961b9ac2e4"
+    },
+    "openhands-enterprise-troubleshooting": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/openhands-enterprise-troubleshooting/SKILL.md",
+      "computedHash": "7c441d93b3f7b773f599af00caa27cd0315ce7c67ab7b9672e8dc62ef1677eee"
+    },
+    "openhands-sdk": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/openhands-sdk/SKILL.md",
+      "computedHash": "35479e36a8bcfa4d3b2e4a6f0616206fb4fec845ff108ceaed1d497633cac975"
+    },
+    "pdflatex": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/pdflatex/SKILL.md",
+      "computedHash": "446cb6b56017a66ab13bf83735fcdc15b01f1cd9e0551275084a4e78fef39e54"
+    },
+    "plain-english-content": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/plain-english-content/SKILL.md",
+      "computedHash": "6a0e49b7828c87f11256c5077c027a7ecf13d2681372ca6bf86e941bdb86a0fd"
+    },
+    "prd": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/prd/SKILL.md",
+      "computedHash": "ae261046eb452e82101f8ac6aae7c161700b363dfefa1b570de30797f827726d"
+    },
+    "qa-changes": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/qa-changes/SKILL.md",
+      "computedHash": "4e9b9919bb4d382a7237849e64812a01260e2072d64142a1ec5a6ddc19f5f9a1"
+    },
+    "release-notes": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/release-notes/SKILL.md",
+      "computedHash": "5e207f0eb4f45ff83a5965e8ff71b19bdc528a6b593748c9ea1ed2a817dba207"
+    },
+    "research-brief": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/research-brief/SKILL.md",
+      "computedHash": "48260c8d97b8980e74bb788483faf09e3850a5d58fd243eb4e0d4805f5fb56a3"
+    },
+    "security": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/security/SKILL.md",
+      "computedHash": "befe47711f0e6fccbf1050ee45b82852c21b20a39a32889fe8a781716c6048e4"
+    },
+    "setup-agents-md": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/onboarding/skills/setup-agents-md/SKILL.md",
+      "computedHash": "8902789e6580ff6d795b3ff7a3322b4cbd1049ef987cd2f28f45f152ae894c34"
+    },
+    "setup-openhands": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/onboarding/skills/setup-openhands/SKILL.md",
+      "computedHash": "21ac2d8ba3fe3b8ab1775cd724717fcc3540ea46f25d1d1d124eceb40d14a092"
+    },
+    "setup-pr-review": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "plugins/onboarding/skills/setup-pr-review/SKILL.md",
+      "computedHash": "2adff33ef8e610657e81145be363f985e17088cde7258deab3ff40f4a63c7b0d"
+    },
+    "skill-creator": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "cc4645636b0e0067d374c41e5f7fe0393cfa6250faad8eacdacc6e16dd6005f7"
+    },
+    "slack-channel-monitor": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/slack-channel-monitor/SKILL.md",
+      "computedHash": "79922965c7f56d116748d038f544e7d35bb27b43c8ac61bb136dcffcb098cb39"
+    },
+    "slack-standup-digest": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/slack-standup-digest/SKILL.md",
+      "computedHash": "2a85961c15d64233f9bc05ff1fa41aae4b497d0486ea372ca22efcab696a291b"
+    },
+    "spark-version-upgrade": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/spark-version-upgrade/SKILL.md",
+      "computedHash": "0f7eafb1cb6b4d3dd79ece35f6984e1843559faa8749ddd154923b39078fce14"
+    },
+    "ssh": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/ssh/SKILL.md",
+      "computedHash": "fce12f5956e18506381eb81278e10cb34c4f2221a68ca9e2bcdeb729f9b6f7f5"
+    },
+    "swift-linux": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/swift-linux/SKILL.md",
+      "computedHash": "0cf28d4835ca2be9c3fa8568831a23404d37f2d089d848fa5115dc3fcfbc22ab"
+    },
+    "technical-writing": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/technical-writing/SKILL.md",
+      "computedHash": "8b187674dfbb9e03ef6733c81058c640466a790868edd4cceebb0da1abf9ef78"
+    },
+    "theme-factory": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/theme-factory/SKILL.md",
+      "computedHash": "bf7fe9af33cc575ac49062237b0cf578f51aa01be21ae27645ac24eb6edf38ac"
+    },
+    "ticket-to-code-change": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/ticket-to-code-change/SKILL.md",
+      "computedHash": "0d9b1a1cdd63d3e00c2abcee8789981aa66c1be9dfa042608033bb31ce6a06a8"
+    },
+    "upstream-fork-sync": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/upstream-fork-sync/SKILL.md",
+      "computedHash": "b027516c2d25cf2b8763b547600289a8795fbf0d81592bef6280308966638882"
+    },
+    "uv": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/uv/SKILL.md",
+      "computedHash": "97270dae801bd12504ce00974ea5b5d781ee4d997aa501f1a8e0ba0476e9ddb5"
+    },
+    "vercel": {
+      "source": "openhands/extensions",
+      "sourceType": "github",
+      "skillPath": "skills/vercel/SKILL.md",
+      "computedHash": "706ddd15e55f52f0b06f2a213cdad11a625373bc770ae606185f0666ebdfb406"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-mcp-enable 1  "enable " 
+.SH NAME
+devin\-mcp\-enable \- Enable a disabled MCP server
+.SH SYNOPSIS
+\fBdevin mcp enable\fR [\fB\-s\fR|\fB\-\-scope\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fINAME\fR> 
+.SH DESCRIPTION
+Enable a disabled MCP server
+.SH OPTIONS
+.TP
+\fB\-s\fR, \fB\-\-scope\fR \fI<SCOPE>\fR [default: local]
+Configuration scope
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+local: Local project config, not committed (.devin/mcp_config.local.json)
+.IP \(bu 2
+project: Project\-level config (.devin/mcp_config.json)
+.IP \(bu 2
+user: User\-level config (~/.config/devin/mcp_config.json)
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+<\fINAME\fR>
+Server name

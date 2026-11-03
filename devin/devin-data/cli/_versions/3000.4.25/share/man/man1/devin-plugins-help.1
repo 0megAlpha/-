@@ -1,0 +1,31 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-plugins-help 1  "help " 
+.SH NAME
+devin\-plugins\-help \- Print this message or the help of the given subcommand(s)
+.SH SYNOPSIS
+\fBdevin plugins help\fR [\fIsubcommands\fR]
+.SH DESCRIPTION
+Print this message or the help of the given subcommand(s)
+.SH SUBCOMMANDS
+.TP
+devin\-plugins\-help\-install(1)
+Install a plugin from a source (auto\-installs its required plugins)
+.TP
+devin\-plugins\-help\-list(1)
+List installed plugins with their version and blocked status
+.TP
+devin\-plugins\-help\-info(1)
+Show a plugin\*(Aqs skills, hooks, rules, and its required/optional/forbidden lists
+.TP
+devin\-plugins\-help\-update(1)
+Re\-fetch and re\-install a plugin (or all plugins) at the latest HEAD
+.TP
+devin\-plugins\-help\-remove(1)
+Remove an installed plugin (auto\-installed requireds are left in place)
+.TP
+devin\-plugins\-help\-prune(1)
+Prune plugin requirements from repos that no longer exist on disk, then garbage\-collect any plugin content no live scope still requires
+.TP
+devin\-plugins\-help\-help(1)
+Print this message or the help of the given subcommand(s)

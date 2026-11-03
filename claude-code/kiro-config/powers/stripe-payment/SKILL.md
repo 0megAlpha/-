@@ -1,0 +1,1 @@
+power: stripe-payment

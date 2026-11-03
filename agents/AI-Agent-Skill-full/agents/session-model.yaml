@@ -1,0 +1,12 @@
+version: 1
+session_identity:
+  required: [agent_id, workspace_id, session_id, provider_id, model_id]
+isolation:
+  conversation_history: per-session
+  browser_storage: per-agent-session
+  terminal_process_group: per-session
+  credentials: provider-side-only
+  files: workspace-scoped
+collaboration:
+  allowed: explicit-artifact-handoff
+  forbidden: implicit-shared-chat-history

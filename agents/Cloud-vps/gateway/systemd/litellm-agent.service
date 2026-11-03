@@ -1,0 +1,12 @@
+[Unit]
+Description=LiteLLM Agent Gateway
+After=network.target llama-agent.service
+[Service]
+Type=simple
+User=root
+Environment=HOME=/root
+ExecStart=/usr/local/bin/litellm --config /root/litellm_config.yaml --host 127.0.0.1 --port 4000
+Restart=always
+RestartSec=5
+[Install]
+WantedBy=multi-user.target

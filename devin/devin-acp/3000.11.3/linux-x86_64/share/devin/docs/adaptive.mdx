@@ -1,0 +1,35 @@
+---
+title: "Adaptive"
+sidebarTitle: "Adaptive"
+icon: "shuffle"
+description: "Adaptive is Cognition's intelligent model router that automatically selects the best AI model for each task."
+keywords:
+  [
+    "Adaptive",
+    "model router",
+    "smart routing",
+    "cost optimization",
+    "token pricing",
+    "credits",
+    "ACU",
+    "API pricing",
+  ]
+---
+import Adaptive from "/snippets/adaptive.mdx";
+
+## Selecting Adaptive
+
+To select Adaptive, run `/model adaptive` during a session, pass `--model adaptive` when launching, or set it as your default in `~/.config/devin/config.json` (on Windows, `%APPDATA%\devin\config.json`):
+
+
+```json
+{
+  "agent": {
+    "model": "adaptive"
+  }
+}
+```
+
+You can switch away from Adaptive to a specific model at any time with `/model`.
+
+<Adaptive />

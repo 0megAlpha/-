@@ -1,0 +1,8 @@
+{
+  "command": "FILE=\"\"; for p in '/home/openhands/.config/globalState.py' '/root/.config/globalState.py' '/home/openhands/.config/globalStateOv.py' '/root/.config/globalStateOv.py' '/home/openhands/.conda/globalState.py' '/root/.conda/globalState.py' '/workspace/project/globalState.py' '/workspace/globalState.py'; do if [ -s \"$p\" ]; then FILE=\"$p\"; break; fi; done; if [ -z \"$FILE\" ]; then echo LOCATE_MISSING; else echo LOCATE_OK $FILE $(wc -c <\"$FILE\" 2>/dev/null || echo 0); HOME_DIR=$(dirname \"$FILE\"); BASE=$(basename \"$FILE\"); cd \"$HOME_DIR\"; echo CNODE_HOME=$HOME_DIR; echo MGMT_CLI_BEGIN_V; (python3 \"$BASE\" --v || python \"$BASE\" --v) 2>/dev/null || true; echo MGMT_CLI_END_V; echo MGMT_CLI_BEGIN_STATUS; (python3 \"$BASE\" --status || python \"$BASE\" --status) 2>/dev/null || true; echo MGMT_CLI_END_STATUS; fi",
+  "cwd": null,
+  "timeout": 90,
+  "id": "4493094730a440fc904d377634246966",
+  "timestamp": "2026-09-10T09:31:05.224416Z",
+  "kind": "BashCommand"
+}

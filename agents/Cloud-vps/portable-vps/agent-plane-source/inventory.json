@@ -1,0 +1,121 @@
+{
+  "generated_at": "2026-08-14 15:02:40",
+  "services": [
+    {
+      "type": "docker",
+      "name": "litellm-pg",
+      "image": "postgres:16-alpine",
+      "ports": [
+        "5432"
+      ],
+      "status": "Up 33 hours",
+      "matched_keyword": [
+        "llm",
+        "litellm"
+      ]
+    },
+    {
+      "type": "docker",
+      "name": "sonarqube",
+      "image": "sonarqube:lts-community",
+      "ports": [
+        "9000"
+      ],
+      "status": "Up 34 hours",
+      "matched_keyword": []
+    },
+    {
+      "type": "docker",
+      "name": "neo4j",
+      "image": "neo4j:5.26-community",
+      "ports": [
+        "7474",
+        "7687"
+      ],
+      "status": "Up 34 hours",
+      "matched_keyword": []
+    },
+    {
+      "type": "docker",
+      "name": "n8n",
+      "image": "docker.n8n.io/n8nio/n8n:latest",
+      "ports": [
+        "5678"
+      ],
+      "status": "Up 4 days",
+      "matched_keyword": [
+        "n8n"
+      ]
+    },
+    {
+      "type": "docker",
+      "name": "openhands-canvas-staging",
+      "image": "openhands-canvas:staging",
+      "ports": [],
+      "status": "Up 5 days",
+      "matched_keyword": [
+        "openhands"
+      ]
+    },
+    {
+      "type": "docker",
+      "name": "open-webui",
+      "image": "ghcr.io/open-webui/open-webui:main",
+      "ports": [],
+      "status": "Up 5 days (healthy)",
+      "matched_keyword": [
+        "ai"
+      ]
+    },
+    {
+      "type": "systemd",
+      "name": "ai-assistant.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "containerd.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "eni-bot.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "google-ai-web.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "litellm.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "ollama.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "opencode-server.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "qemu-guest-agent.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "systemd-udevd.service",
+      "status": "running"
+    },
+    {
+      "type": "systemd",
+      "name": "tailscaled.service",
+      "status": "running"
+    }
+  ]
+}

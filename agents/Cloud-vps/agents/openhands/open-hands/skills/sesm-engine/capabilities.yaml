@@ -1,0 +1,23 @@
+version: "2026.10.09"
+capabilities:
+  hyperagents_mutation:
+    layer: outer-loop
+    gate: dgm_sandbox_verify
+  statem_hard_lock:
+    layer: inner-loop
+    gate: immutable_run_id_and_policy_checksum
+  dgm_godel_sandbox_verification:
+    layer: verification
+    gate: tests_static_analysis_artifact_diff
+  symbolic_learning:
+    layer: rule_extraction
+    gate: reviewed_rule_diff
+  live_swe_runtime_tool_manufacture:
+    layer: tool_factory
+    gate: workspace_only_and_tests
+  lora_runtime_weight_finetune_interface:
+    layer: model_adapter
+    gate: explicit_artifact_and_rollback
+  p2p_survival_protocol:
+    layer: agent_handshake_failover
+    gate: mutual_identity_and_capability_manifest

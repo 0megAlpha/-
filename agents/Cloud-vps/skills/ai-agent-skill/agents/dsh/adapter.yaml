@@ -1,0 +1,13 @@
+agent: dsh
+source: /root/--dsh
+role: agent-harness
+llm_gateway: http://127.0.0.1:4000/v1
+api_protocol: openai-chat-completions
+model_alias: my-model
+api_key_env: LITELLM_MASTER_KEY
+integration_layer: /root/ai-agent-skill
+
+research_capability:
+  installed: true
+  enabled: false
+  contract: /root/ai-agent-skill/research/capability.yaml

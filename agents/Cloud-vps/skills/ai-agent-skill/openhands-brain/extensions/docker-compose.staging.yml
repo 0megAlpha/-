@@ -1,0 +1,43 @@
+# open-hands Agent Canvas — STAGING compose
+# Blue/Green：staging 跑 :8000，不碰 production :3000
+# Rollback：刪除本 staging container 即可，production openhands-app- 不受影響
+#
+# 使用方式（build 完成後）：
+#   docker compose -f staging-openhands/docker-compose.staging.yml up -d
+#   docker compose -f staging-openhands/docker-compose.staging.yml logs -f
+#   docker compose -f staging-openhands/docker-compose.staging.yml down
+
+services:
+  openhands-canvas:
+    image: openhands-canvas:staging
+    container_name: openhands-canvas-staging
+    restart: unless-stopped
+    network_mode: host
+    # 提高 fd 上限（預設 1024 曾導致 uvicorn accept() Too many open files / Errno 24）
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    environment:
+      # 統一入口（Agent Canvas ingress proxy）
+      - PORT=8000
+      # Agent Server 內部 port（host network 下避免與 18000/18001 衝突需檢查）
+      - AGENT_SERVER_PORT=18000
+      - AUTOMATION_PORT=18001
+      # ===== LiteLLM 綁定（與 production 相同閘道）=====
+      - LLM_MODEL=openai/glm-5.2
+      - LLM_API_KEY=REDACTED
+      - LLM_BASE_URL=http://localhost:4000/v1
+      # ===== 本機模式（不連官方 cloud）=====
+      - AUTOMATION_AGENT_SERVER_URL=http://127.0.0.1:18000
+      # ===== 資料儲存（不連官方 S3/cloud）=====
+      - FILE_STORE=local
+      - LOCAL_STORAGE_PATH=/home/openhands/.openhands/storage
+      - AUTOMATION_WORKSPACE_BASE=/home/openhands/.openhands/workspaces
+      # ===== Telemetry 關閉 =====
+      - VITE_POSTHOG_API_KEY=
+      # ===== 持久化路徑 =====
+      - OH_SECRET_KEY=
+    volumes:
+      - /root/ai-company/staging-openhands/data:/home/openhands/.openhands
+      - /root/openhands/workspace:/projects

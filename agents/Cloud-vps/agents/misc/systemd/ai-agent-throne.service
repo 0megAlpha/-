@@ -1,0 +1,32 @@
+[Unit]
+Description=AGENT//THRONE mobile AI operations HUD
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/ai-agent-skill/portal
+ExecStart=/usr/bin/python3 /root/ai-agent-skill/portal/server.py
+Restart=on-failure
+RestartSec=3
+Environment=AGENT_THRONE_HOST=127.0.0.1
+Environment=AGENT_THRONE_PORT=8787
+User=root
+NoNewPrivileges=true
+UMask=0077
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=read-only
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+ProtectKernelLogs=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadOnlyPaths=/root/ai-agent-skill /root/open-hands /root/007-hermes /root/opencode /root/AI-Agent-Skill/agents/claude-code /root/agents /root/--dsh
+CapabilityBoundingSet=
+AmbientCapabilities=
+
+[Install]
+WantedBy=multi-user.target

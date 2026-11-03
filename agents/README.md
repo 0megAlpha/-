@@ -1,16 +1,20 @@
 # agents
 
-最後更新：2026-11-03 14:09:08
+最後更新：2026-11-03 19:37:06
+模組數量：54
 
 ## 模組清單
 - -DARPA-AIxCC-
 - -oh-my-agent-
 - AI-Agent-Skill
+- AI-Agent-Skill-full
 - Ai-Agent-Skill-workspace
 - Ai-agent-skill
 - All-in
 - All-in-root
 - CKA-Agent
+- Cloud-vps
+- Cloud-vps-deploy
 - DARPA-AIxCC
 - DGM
 - HyperAgents
@@ -21,14 +25,17 @@
 - afc-crs
 - afc-crs-all-you-need-is-a-fuzzing-brain
 - agent-fleet-secure-workflow
+- agent-integration
 - agent-introspection-debugging
 - agent-plane
 - agent-self-evaluation
 - agent-skills
 - agent-sort
+- agent-system
 - agentic-security-review
 - agentic-tdd
 - agents
+- agents-dotdir
 - ai-agent-fleet
 - ai-agent-stack
 - brainstorming
@@ -39,6 +46,7 @@
 - hoodini_ai-agents-skills
 - mini-swe-agent
 - oh-my-agent
+- portable-export
 - public-skills
 - seb1n_awesome-ai-agent-skills
 - sentinelx-cloud-core

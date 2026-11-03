@@ -1,0 +1,28 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-migrate-workflows 1  "workflows " 
+.SH NAME
+devin\-migrate\-workflows \- Migrate workflow files into skills and remove the originals
+.SH SYNOPSIS
+\fBdevin migrate workflows\fR [\fB\-\-scope\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Migrate workflow files into skills and remove the originals
+.SH OPTIONS
+.TP
+\fB\-\-scope\fR \fI<SCOPE>\fR [default: all]
+Which workflows to migrate: all (default), workspace, or global
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+all: Migrate both workspace and global workflows
+.IP \(bu 2
+workspace: Migrate only workspace\-level workflows
+.IP \(bu 2
+global: Migrate only global workflows from ~/.codeium/
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

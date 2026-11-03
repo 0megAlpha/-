@@ -1,0 +1,71 @@
+{{- if .Values.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: openhands-service
+  labels:
+    app: openhands
+spec:
+  ports:
+  - name: openhands
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: openhands
+  type: ClusterIP
+{{- end }}
+{{- if and .Values.enabled (index .Values "runtime-api") (index .Values "runtime-api" "enabled") }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oh-main-runtime-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 5000
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: runtime-api
+    app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+{{- if and .Values.enabled .Values.postgresql.enabled }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oh-main-postgresql
+spec:
+  type: ClusterIP
+  sessionAffinity: None
+  ports:
+    - name: tcp-postgresql
+      port: 5432
+      targetPort: tcp-postgresql
+      nodePort: null
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: postgresql
+    app.kubernetes.io/component: primary
+{{- end }}
+{{- if and .Values.enabled (index .Values "litellm-helm") (index .Values "litellm-helm" "enabled") }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: oh-main-lite-llm
+spec:
+  type: ClusterIP
+  internalTrafficPolicy: Cluster
+  sessionAffinity: None
+  ports:
+  - name: http
+    port: 4000
+    targetPort: http
+  selector:
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/name: litellm
+{{- end }}

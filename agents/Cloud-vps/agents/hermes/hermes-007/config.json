@@ -1,0 +1,28 @@
+{
+  "agent_name": "hermes",
+  "capabilities": [
+    "iterative_thinking",
+    "self_reflection",
+    "red_team_testing",
+    "sandbox_execution",
+    "persistent_memory",
+    "web_search"
+  ],
+  "llm": {
+    "base_url": "http://127.0.0.1:4000/v1",
+    "model": "my-model",
+    "api_key": "sk-REDACTED"
+  },
+  "sandbox": {
+    "enabled": true,
+    "image": "agent-sandbox:latest"
+  },
+  "memory": {
+    "enabled": true,
+    "path": "/root/.agent-core/memory/files"
+  },
+  "search": {
+    "enabled": true,
+    "provider": "duckduckgo"
+  }
+}

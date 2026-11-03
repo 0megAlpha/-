@@ -1,0 +1,28 @@
+{
+  "name": "openhands-invariant-server",
+  "image": "ghcr.io/invariantlabs-ai/server:openhands",
+  "cmd": [
+    "rye",
+    "run",
+    "uvicorn",
+    "server.main:app",
+    "--host",
+    "0.0.0.0"
+  ],
+  "entrypoint": null,
+  "env_keys": [
+    "PATH"
+  ],
+  "ports": {
+    "8000/tcp": [
+      {
+        "HostIp": "",
+        "HostPort": "33601"
+      }
+    ]
+  },
+  "restart": "no",
+  "network": "bridge",
+  "mounts": [],
+  "status": "running"
+}

@@ -1,0 +1,15 @@
+- id: sandbox-executor
+  name: '@deepseek-ai/dsh-sandbox-executor'
+  config:
+    container_image: 'dsh-sandbox:latest'
+    workspace_mount: '/opt/dsh-sandbox/workspace'
+    timeout_seconds: 120
+    auto_test: true
+    test_framework: 'pytest'
+- id: code-validator
+  name: '@deepseek-ai/dsh-code-validator'
+  config:
+    lint_enabled: true
+    lint_tools: ['black', 'ruff', 'mypy']
+    security_scan: true
+    sandbox_isolation: true

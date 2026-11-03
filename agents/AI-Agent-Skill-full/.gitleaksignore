@@ -1,0 +1,4 @@
+# Reviewed documentation/code false positives in the vendored MIT marketplace; see docs/SECURITY-SCAN-EXCEPTIONS.md.
+agents/marketplace/plugins/code-documentation/commands/doc-generate.md:curl-auth-header:555
+agents/marketplace/plugins/documentation-generation/commands/doc-generate.md:curl-auth-header:555
+agents/marketplace/plugins/plugin-eval/src/plugin_eval/layers/static.py:generic-api-key:383

@@ -1,0 +1,8 @@
+version: "2026.10.09"
+source_repo: "https://github.com/xh09411-web/Ai-Agent-Skill.git"
+source_path: "/root/AI-Agent-Skill/skills"
+installed_to: "/root/.openhands/skills"
+repo_local_path: "/root/open-hands/.agents/skills"
+status: "INSTALLED"
+runtime_loaded: false
+runtime_execution_verified: false

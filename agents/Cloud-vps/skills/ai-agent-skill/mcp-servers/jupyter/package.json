@@ -1,0 +1,6 @@
+{
+  "name": "@modelcontextprotocol/server-jupyter",
+  "version": "1.0.0",
+  "description": "Official MCP server jupyter",
+  "main": "index.js"
+}

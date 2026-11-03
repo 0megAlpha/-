@@ -1,0 +1,25 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-plugins-remove 1  "remove " 
+.SH NAME
+devin\-plugins\-remove \- Remove an installed plugin (auto\-installed requireds are left in place)
+.SH SYNOPSIS
+\fBdevin plugins remove\fR [\fB\-\-force\fR] [\fB\-\-local\fR] [\fB\-y\fR|\fB\-\-yes\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fINAME\fR> 
+.SH DESCRIPTION
+Remove an installed plugin (auto\-installed requireds are left in place)
+.SH OPTIONS
+.TP
+\fB\-\-force\fR
+Remove even if another installed plugin or a governance config still requires it. A governance\-required plugin is reinstalled on the next session in the requiring scope
+.TP
+\fB\-\-local\fR
+Remove from this machine only. Fails for plugins that are in your personal plugins
+.TP
+\fB\-y\fR, \fB\-\-yes\fR
+Skip the interactive cloud\-removal confirmation
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+<\fINAME\fR>
+The installed plugin name (or a disambiguated `owner/repo` label when several installed plugins share the same name)

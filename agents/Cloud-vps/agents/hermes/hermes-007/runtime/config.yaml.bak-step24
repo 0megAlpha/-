@@ -1,0 +1,4 @@
+model_provider: litellm
+litellm:
+  base_url: http://localhost:4001
+  model: qwen3-coder

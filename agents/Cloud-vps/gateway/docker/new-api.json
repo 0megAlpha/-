@@ -1,0 +1,30 @@
+{
+  "name": "new-api",
+  "image": "calciumion/new-api:latest",
+  "cmd": null,
+  "entrypoint": [
+    "/new-api"
+  ],
+  "env_keys": [
+    "PATH",
+    "TZ"
+  ],
+  "ports": {
+    "3000/tcp": [
+      {
+        "HostIp": "",
+        "HostPort": "3001"
+      }
+    ]
+  },
+  "restart": "always",
+  "network": "bridge",
+  "mounts": [
+    {
+      "src": "/root/data",
+      "dst": "/data",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

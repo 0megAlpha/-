@@ -1,0 +1,1 @@
+power: aws-lambda-managed

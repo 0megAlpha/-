@@ -1,0 +1,19 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-rm 1  "rm " 
+.SH NAME
+devin\-rm \- Delete a session by id or name
+.SH SYNOPSIS
+\fBdevin rm\fR [\fB\-\-force\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fITARGET\fR> 
+.SH DESCRIPTION
+Delete a session by id or name
+.SH OPTIONS
+.TP
+\fB\-\-force\fR
+Skip the confirmation prompt
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help
+.TP
+<\fITARGET\fR>
+Session id or name, or an unambiguous id prefix

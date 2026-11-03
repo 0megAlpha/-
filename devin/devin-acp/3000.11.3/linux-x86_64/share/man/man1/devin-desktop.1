@@ -1,0 +1,18 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-desktop 1  "desktop " 
+.SH NAME
+devin\-desktop \- Open Devin Desktop
+.SH SYNOPSIS
+\fBdevin desktop\fR [\fB\-h\fR|\fB\-\-help\fR] [\fIARGS\fR] 
+.SH DESCRIPTION
+Open Devin Desktop
+.PP
+Launches the Devin Desktop app matching this CLI\*(Aqs channel (e.g. `devin\-insiders desktop` opens Devin Desktop Insiders), forwarding any extra arguments to its launcher.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+[\fIARGS\fR]
+Arguments forwarded to the Devin Desktop launcher (e.g. paths)

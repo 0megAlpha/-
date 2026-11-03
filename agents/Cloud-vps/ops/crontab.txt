@@ -1,0 +1,11 @@
+0 * * * * pgrep sshd || sv up sshd
+# AI Agent 背景任務
+0 2 * * * opencode --background --task 'Review code and optimize' >> /root/.hermes/logs/auto-code.log 2>&1
+0 */6 * * * opencode --background --task 'Check dependencies and security' >> /root/.hermes/logs/auto-deps.log 2>&1
+0 3 * * * python3 /root/.hermes/apollo/memory_core.py --optimize >> /root/.hermes/logs/auto-memory.log 2>&1
+0 4 * * 0 opencode --background --task 'Analyze past week and generate new skills' >> /root/.hermes/logs/skill-evolution.log 2>&1
+*/15 * * * * curl -sf http://localhost:8642/health && curl -sf http://localhost:3000/health || echo 'ALERT down' >> /root/.hermes/logs/alerts.log 2>&1
+0 */6 * * * /root/backup-openhands.sh >> /root/openhands-backup.log 2>&1
+* * * * * /usr/local/bin/agent-watchdog.sh >/dev/null 2>&1
+0 3 * * * /usr/local/bin/agent-backup.sh >/dev/null 2>&1
+20 3 * * * /usr/local/sbin/openhands-backup.sh

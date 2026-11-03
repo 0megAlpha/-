@@ -1,0 +1,24 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-run 1  "run " 
+.SH NAME
+devin\-cloud\-drs\-run \- Run a shell command inside a sandbox session
+.SH SYNOPSIS
+\fBdevin cloud drs run\fR <\fB\-\-devin\-id\fR> <\fB\-\-command\fR> [\fB\-\-timeout\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Run a shell command inside a sandbox session
+.PP
+Executes the command on the remote sandbox and blocks until it completes (or the timeout is reached).
+.SH OPTIONS
+.TP
+\fB\-\-devin\-id\fR \fI<DEVIN_ID>\fR
+Devin session ID (e.g. `devin\-abc123...`)
+.TP
+\fB\-\-command\fR \fI<COMMAND>\fR
+Shell command to execute
+.TP
+\fB\-\-timeout\fR \fI<TIMEOUT>\fR [default: 600]
+Timeout in seconds (server\-side)
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

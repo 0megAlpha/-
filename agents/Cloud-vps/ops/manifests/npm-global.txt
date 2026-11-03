@@ -1,0 +1,29 @@
+/usr/lib
+├── @anthropic-ai/claude-code@2.1.296
+├── @biomejs/biome@2.5.15
+├── @charmland/crush@0.98.1
+├── @colbymchenry/codegraph@1.6.2
+├── @continuedev/cli@1.5.47
+├── @deepseek-ai/dsh@0.2.0-rc.2
+├── @kilocode/cli@7.8.8
+├── @openai/codex@0.162.1
+├── @wonderwhy-er/desktop-commander@0.2.52
+├── 9router@0.5.95
+├── bb-browser@0.14.2
+├── better-sqlite3@13.0.3
+├── corepack@0.36.0
+├── dsh1024@0.5.0
+├── freebuff@0.0.137
+├── lody@0.104.0
+├── n8n@2.42.7
+├── node-gyp@13.1.0
+├── npm@11.19.0
+├── oh-my-opencode@4.19.4
+├── opencode-ai@1.19.0
+├── promptfoo@0.124.1
+├── root@1.0.0 -> ./../../root
+├── skills@1.7.2
+├── sql.js@1.14.2
+├── systray2@2.1.4
+└── tweakcc@4.4.0
+

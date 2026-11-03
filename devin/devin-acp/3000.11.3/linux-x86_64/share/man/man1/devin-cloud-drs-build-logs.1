@@ -1,0 +1,18 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-build-logs 1  "build-logs " 
+.SH NAME
+devin\-cloud\-drs\-build\-logs \- Fetch the log stream for a build job
+.SH SYNOPSIS
+\fBdevin cloud drs build\-logs\fR <\fB\-\-build\-job\-id\fR> [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Fetch the log stream for a build job
+.PP
+Outputs NDJSON log lines from the snapshot builder. Useful for diagnosing `partial` or `failed` builds.
+.SH OPTIONS
+.TP
+\fB\-\-build\-job\-id\fR \fI<BUILD_JOB_ID>\fR
+Build job ID to fetch logs for
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

@@ -1,0 +1,8 @@
+[Unit]
+Description=ENI free-API watchdog (resurrect dead proxies)
+After=network.target
+[Service]
+ExecStart=/root/freeapi/watchdog.sh
+Restart=always
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "oh-my-agent",
+  "version": "0.1.0",
+  "description": "Selectable OpenHands control plugin for provider probing, Free Claude Code model routing, Mem0 memory, StateM task intake, and evidence-gated evolution candidates.",
+  "author": {"name": "xh09411-web"},
+  "homepage": "https://github.com/xh09411-web/open-hands/tree/main/extensions/plugins/oh-my-agent",
+  "repository": "https://github.com/xh09411-web/open-hands",
+  "keywords": ["openhands", "agent-plugin", "mcp", "free-claude-code", "mem0", "statem", "sandbox", "promotion-gate", "evolution"],
+  "extensions": {"dev.openhands": {"entry_command": "oh-my-agent-mcp"}}
+}

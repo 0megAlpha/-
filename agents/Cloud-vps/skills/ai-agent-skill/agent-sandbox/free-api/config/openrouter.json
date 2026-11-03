@@ -1,0 +1,12 @@
+{
+  "provider": "openrouter",
+  "base_url": "https://openrouter.ai/api/v1",
+  "api_key_env": "OPENROUTER_API_KEY",
+  "free_models": [
+    "meta-llama/llama-3.3-70b-instruct:free",
+    "nvidia/nemotron-70b-instruct:free",
+    "google/gemma-2-27b-it:free",
+    "mistralai/mistral-7b-instruct:free"
+  ],
+  "config": { "free_only": true, "max_tokens": 4096, "temperature": 0.7 }
+}

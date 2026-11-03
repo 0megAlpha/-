@@ -1,0 +1,10 @@
+annotated-types==0.8.0
+pydantic==2.14.1
+pydantic_core==2.50.1
+PyYAML==6.0.3
+-e git+https://github.com/pensados/sentinelx-cloud-core.git@55acee08e9b102f8a37f162f9950d40d8ef647b2#egg=sentinelx_cloud_core
+sentinelx-cloud-protocol @ git+https://github.com/pensados/sentinelx-cloud-protocol.git@00169f8fddbab11082f7ff0f24ef5c7e321c9a47
+structlog==26.1.0
+typing-inspection==0.4.4
+typing_extensions==4.16.0
+websockets==17.2

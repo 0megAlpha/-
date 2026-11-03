@@ -1,0 +1,5 @@
+open-webui-secure	ghcr.io/open-webui/open-webui:main	Up About a minute (healthy)
+open-terminal	ghcr.io/open-webui/open-terminal	Up 4 days
+agent-plane-caddy	caddy:latest	Up 6 days
+conduit	matrixconduit/matrix-conduit:latest	Up 6 days
+openhands-canvas-staging	openhands-canvas:staging	Up 4 days

@@ -1,0 +1,44 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "mcp-server-filesystem",
+      "args": ["/root/projects", "/root/ai-company", "/root/AI-Agent-Skill", "/root/agent-platform"]
+    },
+    "git": {
+      "command": "uvx",
+      "args": ["--with", "mcp<2", "mcp-server-git", "--repository", "/root/ai-company"]
+    },
+    "github": {
+      "command": "mcp-server-github"
+    },
+    "fetch": {
+      "command": "mcp-fetch"
+    },
+    "sqlite": {
+      "command": "mcp-sqlite"
+    },
+    "kubernetes": {
+      "command": "mcp-server-kubernetes"
+    },
+    "postgres": {
+      "command": "mcp-server-postgres",
+      "args": ["postgresql://coolify:OCMuMZtuP60qLcr56E0Uknlk7VQDOhLF44DKlUz2mfk=@localhost:5432/coolify"]
+    },
+    "docker": {
+      "command": "docker-mcp"
+    },
+    "semgrep": {
+      "command": "mcp-server-semgrep"
+    },
+    "aws": {
+      "command": "aws-mcp"
+    },
+    "context7": {
+      "command": "context7-mcp"
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
+    }
+  }
+}

@@ -1,0 +1,106 @@
+version: 1
+gateway:
+  service: litellm.service
+  endpoint: http://127.0.0.1:4000/v1
+  anthropic_endpoint: http://127.0.0.1:4000
+  openhands_bridge: http://host.docker.internal:4001/v1
+  key_env: LITELLM_MASTER_KEY
+  default_model: my-model
+  auth_required: true
+  database_dependency_compatibility: prisma installed in isolated venv
+  external_inference_e2e: failed-for-current-config
+  inference_failure_notes:
+  - NVIDIA_API_KEY and DEEPSEEK_API_KEY are present but contain non-ASCII characters;
+    LiteLLM inference logs raised UnicodeEncodeError.
+  - my-model local llama.cpp endpoint is healthy but CPU-only inference is slow; a
+    one-token direct probe returned HTTP 200 with no user-visible content.
+  - Claude Code Anthropic Messages request through LiteLLM timed out; no successful
+    coding-task E2E is established.
+models:
+  my-model:
+    provider: local-llama.cpp
+    status: configured-and-discoverable-inference-slow
+    last_probe: direct local chat endpoint HTTP 200 after 17.1s at max_tokens=1; visible
+      content empty
+  deepseek-free:
+    provider: deepseek
+    key_env: DEEPSEEK_API_KEY
+    status: configured-catalog-only-inference-blocked
+    failure_reason: provider credential value contains non-ASCII characters; do not
+      expose or copy value
+  nvidia/meta/llama-3.1-8b-instruct:
+    provider: nvidia-nim
+    key_env: NVIDIA_API_KEY
+    status: configured-catalog-only-inference-blocked
+    failure_reason: provider credential value contains non-ASCII characters; do not
+      expose or copy value
+  nvidia/deepseek-ai/deepseek-r1:
+    provider: nvidia-nim
+    key_env: NVIDIA_API_KEY
+    status: configured-catalog-only-inference-blocked
+    failure_reason: provider credential value contains non-ASCII characters; do not
+      expose or copy value
+  nvidia/qwen/qwen3-32b:
+    provider: nvidia-nim
+    key_env: NVIDIA_API_KEY
+    status: configured-catalog-only-inference-blocked
+    failure_reason: provider credential value contains non-ASCII characters; do not
+      expose or copy value
+agents:
+  hermes:
+    protocol: openai-compatible
+    endpoint: http://127.0.0.1:4000/v1
+    model: my-model
+    status: config-updated-catalog-verified
+  dsh:
+    protocol: openai-compatible
+    endpoint: http://127.0.0.1:4000/v1
+    model: my-model
+    status: config-updated-catalog-verified
+  opencode:
+    protocol: openai-compatible
+    endpoint: http://127.0.0.1:4000/v1
+    model: litellm/my-model
+    status: config-updated-catalog-verified
+  claude-code:
+    protocol: anthropic-messages
+    endpoint: http://127.0.0.1:4000
+    model: my-model
+    status: route-configured-inference-failed
+    failure_reason: Anthropic Messages request through LiteLLM timed out; no E2E success
+  openhands:
+    protocol: openai-compatible
+    endpoint: http://host.docker.internal:4001/v1
+    model: openai/my-model
+    host_settings_updated: true
+    bridge_network_verified: true
+    live_container_settings_verified: true
+  openwebui:
+    protocol: openai-compatible
+    existing_connections_preserved: true
+    shared_gateway_connection: not-applied
+    reason: existing 14 provider connections preserved; shared gateway connection
+      remains pending
+  cline:
+    protocol: acp
+    adapter_status: existing-provider-configured-shared-gateway-not-applied
+  lody:
+    protocol: local-tool-runtime
+    llm_gateway_override: not-applied
+    agent_config_env: empty
+    status: agent-config-present-provider-e2e-blocked
+  conduit:
+    protocol: messaging-only
+    llm_gateway_not-applicable: true
+  flowise:
+    status: manual-startup
+    llm_gateway_override: not-applied
+  cuga:
+    status: manual-only-or-not-running
+    llm_gateway_override: not-applied
+  pentestgpt:
+    status: manual-authorized-targets-only
+    llm_gateway_override: not-applied
+  xattacker:
+    status: manual-only-never-auto-start
+    llm_gateway_override: not-applied

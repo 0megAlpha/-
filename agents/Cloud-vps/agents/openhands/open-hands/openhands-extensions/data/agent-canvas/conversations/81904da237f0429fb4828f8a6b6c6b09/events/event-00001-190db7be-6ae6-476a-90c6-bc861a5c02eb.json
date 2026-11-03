@@ -1,0 +1,1 @@
+{"id":"190db7be-6ae6-476a-90c6-bc861a5c02eb","timestamp":"2026-08-08T15:50:56.997468","source":"user","parent_id":"6c6444db-c320-4a57-85ec-07c4e6262e82","llm_message":{"role":"user","content":[{"cache_prompt":false,"type":"text","text":"Reply with exactly: LLM-TASK-OK"}],"thinking_blocks":[]},"activated_skills":[],"extended_content":[],"kind":"MessageEvent"}

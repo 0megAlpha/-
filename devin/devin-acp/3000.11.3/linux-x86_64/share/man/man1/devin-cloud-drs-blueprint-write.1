@@ -1,0 +1,21 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-blueprint-write 1  "blueprint-write " 
+.SH NAME
+devin\-cloud\-drs\-blueprint\-write \- Update an existing environment blueprint
+.SH SYNOPSIS
+\fBdevin cloud drs blueprint\-write\fR <\fB\-\-blueprint\-id\fR> <\fB\-\-from\-file\fR> [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Update an existing environment blueprint
+.PP
+Replaces the contents of the blueprint with the given YAML file.
+.SH OPTIONS
+.TP
+\fB\-\-blueprint\-id\fR \fI<BLUEPRINT_ID>\fR
+Blueprint ID to update
+.TP
+\fB\-\-from\-file\fR \fI<FROM_FILE>\fR
+Path to a YAML file with the new contents
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

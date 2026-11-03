@@ -1,0 +1,6 @@
+{
+  "name": "claude-docker-connector",
+  "version": "1.0.0",
+  "description": "Claude Code plugin claude-docker-connector",
+  "main": "index.js"
+}

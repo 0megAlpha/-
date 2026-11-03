@@ -1,0 +1,90 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-mcp-add 1  "add " 
+.SH NAME
+devin\-mcp\-add \- Add a new MCP server
+.SH SYNOPSIS
+\fBdevin mcp add\fR [\fB\-t\fR|\fB\-\-transport\fR] [\fB\-s\fR|\fB\-\-scope\fR] [\fB\-\-url\fR] [\fB\-\-command\fR] [\fB\-e\fR|\fB\-\-env\fR] [\fB\-H\fR|\fB\-\-header\fR] [\fB\-\-scopes\fR] [\fB\-\-oauth\-client\-id\fR] [\fB\-\-oauth\-client\-secret\fR] [\fB\-\-oauth\-resource\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fINAME\fR> [\fIPOSITIONAL_URL\fR] [\fIARGS\fR] 
+.SH DESCRIPTION
+Add a new MCP server.
+.PP
+Transport is inferred automatically when \-\-transport is omitted: \- If a URL is provided (positional or \-\-url) → HTTP \- If \-\-command is provided or trailing args (after \-\-) are present → stdio
+.PP
+For stdio servers, \-\-command is optional when trailing args are provided; the first trailing arg becomes the command and the rest become its arguments.
+.SH OPTIONS
+.TP
+\fB\-t\fR, \fB\-\-transport\fR \fI<TRANSPORT>\fR
+Transport type (inferred when omitted: URL → http, trailing args → stdio)
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+stdio: Standard input/output (local process)
+.IP \(bu 2
+sse: Server\-Sent Events (HTTP streaming)
+.IP \(bu 2
+http: HTTP request/response
+.RE
+.TP
+\fB\-s\fR, \fB\-\-scope\fR \fI<SCOPE>\fR [default: local]
+Configuration scope
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+local: Local project config, not committed (.devin/mcp_config.local.json)
+.IP \(bu 2
+project: Project\-level config (.devin/mcp_config.json)
+.IP \(bu 2
+user: User\-level config (~/.config/devin/mcp_config.json)
+.RE
+.TP
+\fB\-\-url\fR \fI<URL>\fR
+URL for HTTP/SSE transports (alternative to positional URL)
+.TP
+\fB\-\-command\fR \fI<COMMAND>\fR
+Command for stdio transport (optional when trailing args are provided)
+.TP
+\fB\-e\fR, \fB\-\-env\fR \fI<KEY=VALUE>\fR
+Environment variables
+
+Format: KEY=value. Can be specified multiple times.
+.TP
+\fB\-H\fR, \fB\-\-header\fR \fI<HEADER: VALUE>\fR
+HTTP headers
+
+Format: "Header: value". Can be specified multiple times.
+.TP
+\fB\-\-scopes\fR \fI<SCOPE,SCOPE>\fR
+OAuth scopes to request (comma\-separated)
+
+Only used for HTTP/SSE servers that support OAuth.
+.TP
+\fB\-\-oauth\-client\-id\fR \fI<ID>\fR
+Pre\-registered OAuth client ID for servers that don\*(Aqt support dynamic client registration (e.g. GitHub)
+.TP
+\fB\-\-oauth\-client\-secret\fR \fI<SECRET>\fR
+OAuth client secret (for confidential clients)
+.TP
+\fB\-\-oauth\-resource\fR \fI<RESOURCE>\fR
+Override the RFC 8707 `resource` parameter sent in OAuth requests (default: the MCP server URL). Pass an empty string to omit the parameter for providers that reject it (e.g. Microsoft Entra)
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+<\fINAME\fR>
+Server name
+.TP
+[\fIPOSITIONAL_URL\fR]
+URL (positional, for HTTP/SSE transports)
+
+Can also be provided via \-\-url. When both are given, \-\-url takes precedence.
+.TP
+[\fIARGS\fR]
+Arguments for stdio command
+
+Pass arguments after \-\- at the end of the command. When \-\-command is omitted, the first argument is used as the command.

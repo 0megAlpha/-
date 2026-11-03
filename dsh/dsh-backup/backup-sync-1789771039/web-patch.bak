@@ -1,0 +1,16 @@
+# ENI's Optimized Patch Layer for LO
+- insert:
+    - id: dsh-infinite-gen-4
+      name: 'dsh-infinite-gen-4'
+    - id: dsh-pentester
+      name: 'dsh-pentester'
+      config:
+        verbose: true
+    - id: api-relay-audit
+      name: 'dsh-api-relay-audit'
+    - id: dsh-data-agent
+      name: '@yejiming/dsh-data-agent'
+    - id: dsh-better-reasoning-effort
+      name: 'dsh-better-reasoning-effort'
+    - id: upstream-radar
+      name: 'upstream-radar/dsh'

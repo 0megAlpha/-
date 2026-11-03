@@ -1,0 +1,48 @@
+version: 1
+purpose: portable-runtime-sources
+rules:
+- source_repos_are_independent
+- clone_at_pinned_commit
+- do_not_copy_private_credentials_memory_or_workspace
+runtimes:
+  claude-code:
+    remote: git@github.com:xh09411-web/Claude-code.git
+    branch: main
+    commit: 9d48d05f10be37e7ce155120970998994500041d
+  opencode:
+    remote: git@github.com:anomalyco/opencode.git
+    branch: dev
+    commit: bd23808adfdbd7f0fe693b8f0d3afd59ee214e81
+  dsh:
+    remote: git@github.com:xh09411-web/--dsh.git
+    branch: main
+    commit: dd2c8aeab98cc3c547c694e6092397612fb1e809
+  cuga:
+    remote: git@github.com:xh09411-web/-cuga-agent-.git
+    branch: main
+    commit: 3ccbfe1fff36aac79adaadd894981faef2bf0d3e
+  pentestgpt:
+    remote: git@github.com:xh09411-web/-PentestGPT-.git
+    branch: main
+    commit: 5860f2eebeafd23dc68ea2fcf556f995bcae2c59
+  oh-my-agent:
+    remote: https://github.com/xh09411-web/-oh-my-agent-.git
+    branch: main
+    commit: f824560ec40fff7e732e6dea5e49680069b0b373
+  flowise:
+    remote: git@github.com:xh09411-web/flowise-LLM.git
+    branch: main
+    commit: 9291856d1ea4a4ceea9f8fef8ce14f4f6c81e8eb
+  codex:
+    remote: https://github.com/openai/codex.git
+    branch: main
+    commit: 12cca49c81c8aa6a37a5cc4e39964ee3b70f9458
+  cline:
+    package: npm/@cline/cli
+    package_version: 0.0.13
+    runtime_version: 3.0.62
+  pi:
+    package: npm/@earendil-works/pi-coding-agent
+    version: 1.2.0
+  aider:
+    runtime: installed-system-package

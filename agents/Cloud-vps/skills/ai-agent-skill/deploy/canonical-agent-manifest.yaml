@@ -1,0 +1,69 @@
+schema_version: 1
+generated_at: "2026-10-15"
+status: "inventory-and-integration-baseline; not a claim of completed deployment"
+privacy:
+  github_repositories_private:
+    - "xh09411-web/open-hands"
+    - "xh09411-web/hermes-007"
+    - "xh09411-web/Ai-Agent-Skill"
+  public_push_allowed: false
+  secret_policy: "No tokens, keys, cookies, environment secrets, private memory or runtime state in Git."
+runtime_policy:
+  openhands:
+    count: 1
+    role: "canonical integrated OpenHands core and conversation UI"
+    deployment_repo: "xh09411-web/open-hands"
+    current_observed_instances:
+      - "openhands"
+      - "openhands-canvas-browsermcp-canary-20261014"
+      - "openhands-canvas-mcp-canary-20261013"
+      - "openhands-canvas-canary-20261012"
+      - "openhands-canvas-staging"
+      - "stoic_colden"
+      - "affectionate_chatelet"
+    target: "one verified production runtime; retire duplicates only after state migration and cutover tests"
+  hermes:
+    role: "user's separate Hermes agent"
+    deployment_repo: "xh09411-web/hermes-007"
+    upstream_references:
+      - "NousResearch/hermes-agent"
+      - "vectorize-io/hindsight"
+  user_built_agents:
+    - id: "dsh"
+      evidence: "dsh-agent.service and /root/--dsh"
+      deployment_repo: "xh09411-web/--dsh"
+      reusable_capabilities_repo: "xh09411-web/Ai-Agent-Skill"
+    - id: "cuga"
+      evidence: "/root/-cuga-agent-"
+      deployment_repo: "xh09411-web/-cuga-agent-"
+      reusable_capabilities_repo: "xh09411-web/Ai-Agent-Skill"
+repositories:
+  open-hands:
+    url: "https://github.com/xh09411-web/open-hands"
+    visibility: private
+    default_branch: main
+    owns: ["deployment configuration", "sandbox and workspace configuration", "AGENTS.md", "Compose/systemd/reverse-proxy templates", "CI/CD", "minimal reviewed patches"]
+    excludes: ["full upstream source mirror", "reusable cross-agent skill catalog", "secrets and runtime state"]
+  hermes-007:
+    url: "https://github.com/xh09411-web/hermes-007"
+    visibility: private
+    default_branch: master
+    owns: ["Hermes deployment and configuration", "gateway configuration", "memory policy", "Hermes-specific plugins and workflows"]
+    excludes: ["full upstream source mirror", "secrets and runtime state"]
+  AI-AGENT-SKILL:
+    url: "https://github.com/xh09411-web/Ai-Agent-Skill"
+    visibility: private
+    default_branch: main
+    owns: ["all other agent reusable skills, prompts, SOPs and policies", "plugins, tools, function schemas and adapters", "agent integration manifests and test suites", "OpenHands/extensions skill references"]
+    excludes: ["live credentials", "runtime state and private conversation memory", "unreviewed upstream source dumps"]
+connectors:
+  policy: "Track each connector separately; user account access is not inferred from package presence."
+  required_fields: ["owner_agent", "provider", "auth_mode_reference", "required_scopes", "read_test", "write_test_if_authorized", "health_check", "secret_reference_only", "rollback"]
+ports:
+  policy: "Bind internal services to loopback or Tailscale only unless explicitly reviewed."
+  known_openhands:
+    final_candidate_backend: "127.0.0.1:8009"
+    existing_core_backend: "127.0.0.1:3000"
+    current_tailnet_https: "100.x.x.x:8445"
+    legacy_tailnet_https: "100.x.x.x:8444"
+    note: "8445 currently proxies Agent Canvas candidate, not yet certified as the final integrated OpenHands UI."

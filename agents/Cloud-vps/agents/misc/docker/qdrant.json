@@ -1,0 +1,38 @@
+{
+  "name": "qdrant",
+  "image": "qdrant/qdrant:latest",
+  "cmd": [
+    "./entrypoint.sh"
+  ],
+  "entrypoint": null,
+  "env_keys": [
+    "DIR",
+    "PATH",
+    "RUN_MODE",
+    "TZ"
+  ],
+  "ports": {
+    "6333/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "6333"
+      }
+    ],
+    "6334/tcp": [
+      {
+        "HostIp": "127.0.0.1",
+        "HostPort": "6334"
+      }
+    ]
+  },
+  "restart": "always",
+  "network": "all-in_default",
+  "mounts": [
+    {
+      "src": "/var/lib/docker/volumes/all-in_qdrant-data/_data",
+      "dst": "/qdrant/storage",
+      "rw": true
+    }
+  ],
+  "status": "running"
+}

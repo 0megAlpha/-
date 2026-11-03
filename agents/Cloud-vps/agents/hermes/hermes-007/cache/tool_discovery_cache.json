@@ -1,0 +1,1277 @@
+{
+"/root/--dsh/tools/annotate_preview_tool.py": [
+1790739010255723339,
+3949,
+true
+],
+"/root/--dsh/tools/ansi_strip.py": [
+1790739010255723339,
+4341,
+false
+],
+"/root/--dsh/tools/apply_layout_tool.py": [
+1790739010255723339,
+2338,
+true
+],
+"/root/--dsh/tools/approval.py": [
+1790739010255723339,
+67573,
+false
+],
+"/root/--dsh/tools/approval_context.py": [
+1790739010255723339,
+15470,
+false
+],
+"/root/--dsh/tools/approval_detection.py": [
+1790739010255723339,
+86311,
+false
+],
+"/root/--dsh/tools/approval_floors.py": [
+1790739010255723339,
+9677,
+false
+],
+"/root/--dsh/tools/approval_gateway_wait.py": [
+1790739010255723339,
+10382,
+false
+],
+"/root/--dsh/tools/approval_human_wait.py": [
+1790739010255723339,
+8416,
+false
+],
+"/root/--dsh/tools/approval_prompt.py": [
+1790739010255723339,
+17632,
+false
+],
+"/root/--dsh/tools/approval_smart.py": [
+1790739010255723339,
+7282,
+false
+],
+"/root/--dsh/tools/arg_coercion.py": [
+1790739010255723339,
+9068,
+false
+],
+"/root/--dsh/tools/async_delegation.py": [
+1790739010255723339,
+57061,
+false
+],
+"/root/--dsh/tools/audio_container.py": [
+1790739010255723339,
+2674,
+false
+],
+"/root/--dsh/tools/binary_extensions.py": [
+1790739010256712001,
+2274,
+false
+],
+"/root/--dsh/tools/blueprints.py": [
+1790739010256712001,
+9210,
+false
+],
+"/root/--dsh/tools/bot_failure_reasons.py": [
+1790739010256712001,
+3516,
+false
+],
+"/root/--dsh/tools/bot_live_delivery.py": [
+1790739010256712001,
+8824,
+false
+],
+"/root/--dsh/tools/bot_mode_dm.py": [
+1790739010256712001,
+36315,
+false
+],
+"/root/--dsh/tools/bot_mode_probe.py": [
+1790739010256712001,
+15640,
+false
+],
+"/root/--dsh/tools/bot_relay.py": [
+1790739010256712001,
+25577,
+false
+],
+"/root/--dsh/tools/browser_camofox.py": [
+1790739010256712001,
+28442,
+false
+],
+"/root/--dsh/tools/browser_camofox_state.py": [
+1790739010256712001,
+1569,
+false
+],
+"/root/--dsh/tools/browser_cdp_tool.py": [
+1790739010257712069,
+22494,
+true
+],
+"/root/--dsh/tools/browser_dialog_tool.py": [
+1790739010257712069,
+5405,
+true
+],
+"/root/--dsh/tools/browser_extension_router.py": [
+1790739010257712069,
+6355,
+false
+],
+"/root/--dsh/tools/browser_lightpanda.py": [
+1790739010257712069,
+13121,
+false
+],
+"/root/--dsh/tools/browser_supervisor.py": [
+1790739010257712069,
+27604,
+false
+],
+"/root/--dsh/tools/browser_supervisor_dialogs.py": [
+1790739010257712069,
+15371,
+false
+],
+"/root/--dsh/tools/browser_supervisor_frames.py": [
+1790739010257712069,
+8335,
+false
+],
+"/root/--dsh/tools/browser_tool.py": [
+1790739010258712136,
+68391,
+true
+],
+"/root/--dsh/tools/browser_tool_cdp.py": [
+1790739010258712136,
+6380,
+false
+],
+"/root/--dsh/tools/browser_tool_cloud.py": [
+1790739010258712136,
+12296,
+false
+],
+"/root/--dsh/tools/browser_tool_eval_policy.py": [
+1790739010258712136,
+8639,
+false
+],
+"/root/--dsh/tools/browser_tool_install.py": [
+1790739010258712136,
+16032,
+false
+],
+"/root/--dsh/tools/browser_tool_lifecycle.py": [
+1790739010258712136,
+31734,
+false
+],
+"/root/--dsh/tools/browser_tool_lightpanda_fallback.py": [
+1790739010258712136,
+10117,
+false
+],
+"/root/--dsh/tools/browser_tool_origin.py": [
+1790739010258712136,
+2913,
+false
+],
+"/root/--dsh/tools/browser_tool_real_profile.py": [
+1790739010259712203,
+16182,
+false
+],
+"/root/--dsh/tools/browser_tool_session.py": [
+1790739010259712203,
+30546,
+false
+],
+"/root/--dsh/tools/browser_tool_snapshot.py": [
+1790739010259712203,
+5350,
+false
+],
+"/root/--dsh/tools/browser_tool_vision.py": [
+1790739010259712203,
+7148,
+false
+],
+"/root/--dsh/tools/browser_use_cli.py": [
+1790739010259712203,
+42365,
+true
+],
+"/root/--dsh/tools/browser_vault_tool.py": [
+1790739010259712203,
+36662,
+true
+],
+"/root/--dsh/tools/budget_config.py": [
+1790739010260712270,
+5663,
+false
+],
+"/root/--dsh/tools/checkpoint_manager.py": [
+1790739010260712270,
+62250,
+false
+],
+"/root/--dsh/tools/clarify_gateway.py": [
+1790739010260712270,
+14074,
+false
+],
+"/root/--dsh/tools/clarify_tool.py": [
+1790739010260712270,
+15373,
+true
+],
+"/root/--dsh/tools/close_preview_tool.py": [
+1790739010260712270,
+2574,
+false
+],
+"/root/--dsh/tools/close_terminal_tool.py": [
+1790739010260712270,
+2058,
+true
+],
+"/root/--dsh/tools/code_execution_env.py": [
+1790739010260712270,
+14168,
+false
+],
+"/root/--dsh/tools/code_execution_rpc.py": [
+1790739010260712270,
+8696,
+false
+],
+"/root/--dsh/tools/code_execution_tool.py": [
+1790739010261712337,
+48947,
+true
+],
+"/root/--dsh/tools/code_kernel.py": [
+1790739010261712337,
+38065,
+false
+],
+"/root/--dsh/tools/code_kernel_remote.py": [
+1790739010261712337,
+18877,
+false
+],
+"/root/--dsh/tools/computer_use/tool.py": [
+1790739010263712472,
+55968,
+false
+],
+"/root/--dsh/tools/computer_use_tool.py": [
+1790739010263712472,
+1104,
+true
+],
+"/root/--dsh/tools/connectors/tool.py": [
+1790739010265309360,
+6000,
+true
+],
+"/root/--dsh/tools/credential_files.py": [
+1790739010265309360,
+17937,
+false
+],
+"/root/--dsh/tools/cronjob_job_args.py": [
+1790739010265309360,
+20317,
+false
+],
+"/root/--dsh/tools/cronjob_prompt_scan.py": [
+1790739010265309360,
+7861,
+false
+],
+"/root/--dsh/tools/cronjob_tools.py": [
+1790739010265712606,
+59797,
+true
+],
+"/root/--dsh/tools/daemon_pool.py": [
+1790739010265712606,
+3091,
+false
+],
+"/root/--dsh/tools/debug_helpers.py": [
+1790739010265712606,
+2187,
+false
+],
+"/root/--dsh/tools/delegate_tool.py": [
+1790739010265712606,
+42947,
+true
+],
+"/root/--dsh/tools/delegate_tool_child_run.py": [
+1790739010265712606,
+52313,
+false
+],
+"/root/--dsh/tools/delegate_tool_config.py": [
+1790739010265712606,
+30272,
+false
+],
+"/root/--dsh/tools/delegate_tool_dispatch.py": [
+1790739010266712674,
+26030,
+false
+],
+"/root/--dsh/tools/delegate_tool_progress.py": [
+1790739010266712674,
+22709,
+false
+],
+"/root/--dsh/tools/delegate_tool_registry.py": [
+1790739010266712674,
+15610,
+false
+],
+"/root/--dsh/tools/delegate_tool_results.py": [
+1790739010266712674,
+20948,
+false
+],
+"/root/--dsh/tools/delegate_tool_tasks.py": [
+1790739010266712674,
+8343,
+false
+],
+"/root/--dsh/tools/delegate_tool_toolsets.py": [
+1790739010266712674,
+5882,
+false
+],
+"/root/--dsh/tools/delegation_live_log.py": [
+1790739010266712674,
+13884,
+false
+],
+"/root/--dsh/tools/delegation_output_schema.py": [
+1790739010266712674,
+5722,
+false
+],
+"/root/--dsh/tools/desktop_ui.py": [
+1790739010266712674,
+2770,
+false
+],
+"/root/--dsh/tools/discord_tool.py": [
+1790739010267712741,
+31472,
+true
+],
+"/root/--dsh/tools/drive_preview_tool.py": [
+1790739010267712741,
+7035,
+true
+],
+"/root/--dsh/tools/env_passthrough.py": [
+1790739010267712741,
+6801,
+false
+],
+"/root/--dsh/tools/env_probe.py": [
+1790739010267712741,
+11447,
+false
+],
+"/root/--dsh/tools/fal_common.py": [
+1790739010269712875,
+7548,
+false
+],
+"/root/--dsh/tools/feishu_doc_tool.py": [
+1790739010269712875,
+3603,
+true
+],
+"/root/--dsh/tools/feishu_drive_tool.py": [
+1790739010269712875,
+8198,
+true
+],
+"/root/--dsh/tools/feishu_lark.py": [
+1790739010270712942,
+3248,
+false
+],
+"/root/--dsh/tools/file_operations.py": [
+1790739010270712942,
+77971,
+false
+],
+"/root/--dsh/tools/file_operations_common.py": [
+1790739010270712942,
+10396,
+false
+],
+"/root/--dsh/tools/file_operations_lint.py": [
+1790739010270712942,
+13701,
+false
+],
+"/root/--dsh/tools/file_operations_search.py": [
+1790739010270712942,
+49937,
+false
+],
+"/root/--dsh/tools/file_state.py": [
+1790739010270712942,
+9941,
+false
+],
+"/root/--dsh/tools/file_tools.py": [
+1790739010271713009,
+69167,
+true
+],
+"/root/--dsh/tools/file_tools_paths.py": [
+1790739010271713009,
+8884,
+false
+],
+"/root/--dsh/tools/file_tools_read_tracking.py": [
+1790739010271713009,
+14800,
+false
+],
+"/root/--dsh/tools/file_tools_write_guards.py": [
+1790739010271713009,
+27294,
+false
+],
+"/root/--dsh/tools/focus_pane_tool.py": [
+1790739010271713009,
+2635,
+true
+],
+"/root/--dsh/tools/fuzzy_match.py": [
+1790739010271713009,
+28350,
+false
+],
+"/root/--dsh/tools/homeassistant_tool.py": [
+1790739010272713077,
+14025,
+true
+],
+"/root/--dsh/tools/hook_output_spill.py": [
+1790739010272713077,
+4878,
+false
+],
+"/root/--dsh/tools/image_generation_catalog.py": [
+1790739010272713077,
+19998,
+false
+],
+"/root/--dsh/tools/image_generation_tool.py": [
+1790739010272713077,
+42959,
+true
+],
+"/root/--dsh/tools/image_source.py": [
+1790739010272713077,
+14590,
+false
+],
+"/root/--dsh/tools/interpreter_shutdown.py": [
+1790739010272713077,
+1225,
+false
+],
+"/root/--dsh/tools/interrupt.py": [
+1790739010272713077,
+5346,
+false
+],
+"/root/--dsh/tools/kanban_tools.py": [
+1790739010273713144,
+52053,
+true
+],
+"/root/--dsh/tools/kanban_tools_schemas.py": [
+1790739010273713144,
+22730,
+false
+],
+"/root/--dsh/tools/kanban_toolset_context.py": [
+1790739010273713144,
+1013,
+false
+],
+"/root/--dsh/tools/lazy_deps.py": [
+1790739010273713144,
+37081,
+false
+],
+"/root/--dsh/tools/managed_gateway_auth.py": [
+1790739010273713144,
+2896,
+false
+],
+"/root/--dsh/tools/managed_tool_gateway.py": [
+1790739010273713144,
+16998,
+false
+],
+"/root/--dsh/tools/mcp_dashboard_oauth.py": [
+1790739010273713144,
+5665,
+false
+],
+"/root/--dsh/tools/mcp_death_supervisor.py": [
+1790739010273713144,
+9357,
+false
+],
+"/root/--dsh/tools/mcp_oauth.py": [
+1790739010274713211,
+62454,
+false
+],
+"/root/--dsh/tools/mcp_oauth_device.py": [
+1790739010274713211,
+10484,
+false
+],
+"/root/--dsh/tools/mcp_oauth_manager.py": [
+1790739010274713211,
+24165,
+false
+],
+"/root/--dsh/tools/mcp_oauth_provider.py": [
+1790739010274713211,
+23499,
+false
+],
+"/root/--dsh/tools/mcp_schema_cache.py": [
+1790739010274713211,
+5176,
+false
+],
+"/root/--dsh/tools/mcp_tool_agent.py": [
+1790739010274713211,
+14029,
+false
+],
+"/root/--dsh/tools/mcp_tool_common.py": [
+1790739010275713278,
+5746,
+false
+],
+"/root/--dsh/tools/mcp_tool_config.py": [
+1790739010275713278,
+17406,
+false
+],
+"/root/--dsh/tools/mcp_tool_content.py": [
+1790739010275713278,
+11131,
+false
+],
+"/root/--dsh/tools/mcp_tool_discovery.py": [
+1790739010275713278,
+33379,
+false
+],
+"/root/--dsh/tools/mcp_tool_errors.py": [
+1790739010275713278,
+22663,
+false
+],
+"/root/--dsh/tools/mcp_tool_handlers.py": [
+1790739010275713278,
+38361,
+false
+],
+"/root/--dsh/tools/mcp_tool_health.py": [
+1790739010275713278,
+15881,
+false
+],
+"/root/--dsh/tools/mcp_tool_lifecycle.py": [
+1790739010276713346,
+17268,
+false
+],
+"/root/--dsh/tools/mcp_tool_loop.py": [
+1790739010276713346,
+13304,
+false
+],
+"/root/--dsh/tools/mcp_tool_registration.py": [
+1790739010276713346,
+29181,
+false
+],
+"/root/--dsh/tools/mcp_tool_sampling.py": [
+1790739010276713346,
+18432,
+false
+],
+"/root/--dsh/tools/mcp_tool_schema.py": [
+1790739010276713346,
+13351,
+false
+],
+"/root/--dsh/tools/mcp_tool_scope.py": [
+1790739010276713346,
+3012,
+false
+],
+"/root/--dsh/tools/mcp_tool_server_run.py": [
+1790739010276713346,
+25073,
+false
+],
+"/root/--dsh/tools/mcp_tool_transport.py": [
+1790739010277713413,
+36501,
+false
+],
+"/root/--dsh/tools/memory_tool.py": [
+1790739010277713413,
+20728,
+true
+],
+"/root/--dsh/tools/memory_tool_store.py": [
+1790739010277713413,
+25023,
+false
+],
+"/root/--dsh/tools/microsoft_graph_auth.py": [
+1790739010277713413,
+7438,
+false
+],
+"/root/--dsh/tools/microsoft_graph_client.py": [
+1790739010277713413,
+10886,
+false
+],
+"/root/--dsh/tools/neutts_synth.py": [
+1790739010281713682,
+3134,
+false
+],
+"/root/--dsh/tools/open_preview_tool.py": [
+1790739010281713682,
+3857,
+false
+],
+"/root/--dsh/tools/openrouter_client.py": [
+1790739010281713682,
+1588,
+false
+],
+"/root/--dsh/tools/osv_check.py": [
+1790739010281713682,
+10592,
+false
+],
+"/root/--dsh/tools/patch_parser.py": [
+1790739010281713682,
+20376,
+false
+],
+"/root/--dsh/tools/path_security.py": [
+1790739010281713682,
+1508,
+false
+],
+"/root/--dsh/tools/plugin_guard.py": [
+1790739010281713682,
+12489,
+false
+],
+"/root/--dsh/tools/preview_tool.py": [
+1790739010281713682,
+3536,
+true
+],
+"/root/--dsh/tools/process_registry.py": [
+1790739010282713749,
+126811,
+true
+],
+"/root/--dsh/tools/process_registry_checkpoint.py": [
+1790739010282713749,
+6124,
+false
+],
+"/root/--dsh/tools/process_registry_notifications.py": [
+1790739010282713749,
+20702,
+false
+],
+"/root/--dsh/tools/process_registry_results.py": [
+1790739010282713749,
+4596,
+false
+],
+"/root/--dsh/tools/project_tools.py": [
+1790739010282713749,
+6450,
+true
+],
+"/root/--dsh/tools/pty_query_responder.py": [
+1790739010282713749,
+4710,
+false
+],
+"/root/--dsh/tools/react_to_message_tool.py": [
+1790739010282713749,
+6337,
+true
+],
+"/root/--dsh/tools/read_extract.py": [
+1790739010283713816,
+25190,
+false
+],
+"/root/--dsh/tools/read_preview_tool.py": [
+1790739010283713816,
+3265,
+false
+],
+"/root/--dsh/tools/read_terminal_tool.py": [
+1790739010283713816,
+3277,
+true
+],
+"/root/--dsh/tools/read_window_tool.py": [
+1790739010283713816,
+2617,
+true
+],
+"/root/--dsh/tools/schema_sanitizer.py": [
+1790739010283713816,
+19659,
+false
+],
+"/root/--dsh/tools/self_repo_guard.py": [
+1790739010283713816,
+21200,
+false
+],
+"/root/--dsh/tools/send_message_senders.py": [
+1790739010284713883,
+35757,
+false
+],
+"/root/--dsh/tools/send_message_targets.py": [
+1790739010284713883,
+11099,
+false
+],
+"/root/--dsh/tools/send_message_tool.py": [
+1790739010284713883,
+39570,
+false
+],
+"/root/--dsh/tools/session_search_tool.py": [
+1790739010284713883,
+42775,
+true
+],
+"/root/--dsh/tools/shell_heredoc.py": [
+1790739010284713883,
+8788,
+false
+],
+"/root/--dsh/tools/skill_ledger.py": [
+1790739010284713883,
+18674,
+false
+],
+"/root/--dsh/tools/skill_linter.py": [
+1790739010284713883,
+11153,
+false
+],
+"/root/--dsh/tools/skill_manager_batch.py": [
+1790739010285713950,
+10419,
+false
+],
+"/root/--dsh/tools/skill_manager_guards.py": [
+1790739010285713950,
+15423,
+false
+],
+"/root/--dsh/tools/skill_manager_tool.py": [
+1790739010285713950,
+47898,
+true
+],
+"/root/--dsh/tools/skill_provenance.py": [
+1790739010285713950,
+1885,
+false
+],
+"/root/--dsh/tools/skill_usage.py": [
+1790739010285713950,
+37165,
+false
+],
+"/root/--dsh/tools/skillevaluator_scan.py": [
+1790739010285713950,
+7363,
+false
+],
+"/root/--dsh/tools/skills_ast_audit.py": [
+1790739010285713950,
+4142,
+false
+],
+"/root/--dsh/tools/skills_guard.py": [
+1790739010286714018,
+54241,
+false
+],
+"/root/--dsh/tools/skills_hub.py": [
+1790739010286714018,
+17714,
+false
+],
+"/root/--dsh/tools/skills_hub_clawhub.py": [
+1790739010286714018,
+27377,
+false
+],
+"/root/--dsh/tools/skills_hub_github.py": [
+1790739010286714018,
+27053,
+false
+],
+"/root/--dsh/tools/skills_hub_install.py": [
+1790739010286714018,
+14728,
+false
+],
+"/root/--dsh/tools/skills_hub_models.py": [
+1790739010286714018,
+14518,
+false
+],
+"/root/--dsh/tools/skills_hub_official.py": [
+1790739010287714085,
+19213,
+false
+],
+"/root/--dsh/tools/skills_hub_search.py": [
+1790739010287714085,
+9604,
+false
+],
+"/root/--dsh/tools/skills_hub_skillssh.py": [
+1790739010287714085,
+17634,
+false
+],
+"/root/--dsh/tools/skills_hub_sources.py": [
+1790739010287714085,
+20944,
+false
+],
+"/root/--dsh/tools/skills_sync.py": [
+1790739010287714085,
+23443,
+false
+],
+"/root/--dsh/tools/skills_sync_bundled_ops.py": [
+1790739010287714085,
+10119,
+false
+],
+"/root/--dsh/tools/skills_sync_client.py": [
+1790739010287714085,
+27585,
+false
+],
+"/root/--dsh/tools/skills_sync_client_org.py": [
+1790739010287714085,
+14522,
+false
+],
+"/root/--dsh/tools/skills_sync_client_wire.py": [
+1790739010288714152,
+17291,
+false
+],
+"/root/--dsh/tools/skills_sync_optional.py": [
+1790739010288714152,
+11390,
+false
+],
+"/root/--dsh/tools/skills_tool.py": [
+1790739010288714152,
+37587,
+true
+],
+"/root/--dsh/tools/skills_tool_dedup.py": [
+1790739010288714152,
+3721,
+false
+],
+"/root/--dsh/tools/skills_tool_plugin.py": [
+1790739010288714152,
+8474,
+false
+],
+"/root/--dsh/tools/skills_tool_setup.py": [
+1790739010288714152,
+7277,
+false
+],
+"/root/--dsh/tools/slash_confirm.py": [
+1790739010288714152,
+4839,
+false
+],
+"/root/--dsh/tools/spill_safety.py": [
+1790739010288714152,
+3063,
+false
+],
+"/root/--dsh/tools/subagent_worktree.py": [
+1790739010288714152,
+9397,
+false
+],
+"/root/--dsh/tools/terminal_hints.py": [
+1790739010288714152,
+8388,
+false
+],
+"/root/--dsh/tools/terminal_scope.py": [
+1790739010289714219,
+9966,
+false
+],
+"/root/--dsh/tools/terminal_tool.py": [
+1790739010289714219,
+69162,
+true
+],
+"/root/--dsh/tools/terminal_tool_backends.py": [
+1790739010289714219,
+19440,
+false
+],
+"/root/--dsh/tools/terminal_tool_background.py": [
+1790739010289714219,
+13652,
+false
+],
+"/root/--dsh/tools/terminal_tool_config.py": [
+1790739010289714219,
+4896,
+false
+],
+"/root/--dsh/tools/terminal_tool_guards.py": [
+1790739010289714219,
+11524,
+false
+],
+"/root/--dsh/tools/terminal_tool_lifecycle.py": [
+1790739010289714219,
+13516,
+false
+],
+"/root/--dsh/tools/terminal_tool_result.py": [
+1790739010290714286,
+15042,
+false
+],
+"/root/--dsh/tools/terminal_tool_sudo.py": [
+1790739010290714286,
+22501,
+false
+],
+"/root/--dsh/tools/thread_context.py": [
+1790739010290714286,
+3382,
+false
+],
+"/root/--dsh/tools/threat_patterns.py": [
+1790739010290714286,
+10008,
+false
+],
+"/root/--dsh/tools/tip_tool.py": [
+1790739010290714286,
+3224,
+true
+],
+"/root/--dsh/tools/tirith_security.py": [
+1790739010290714286,
+25813,
+false
+],
+"/root/--dsh/tools/todo_tool.py": [
+1790739010290714286,
+13102,
+true
+],
+"/root/--dsh/tools/tool_backend_helpers.py": [
+1790739010290714286,
+12545,
+false
+],
+"/root/--dsh/tools/tool_output_limits.py": [
+1790739010290714286,
+2710,
+false
+],
+"/root/--dsh/tools/tool_output_truncate.py": [
+1790739010291714354,
+1448,
+false
+],
+"/root/--dsh/tools/tool_result_storage.py": [
+1790739010291714354,
+14718,
+false
+],
+"/root/--dsh/tools/tool_search.py": [
+1790739010291714354,
+31572,
+false
+],
+"/root/--dsh/tools/tool_search_catalog.py": [
+1790739010291714354,
+13445,
+false
+],
+"/root/--dsh/tools/tool_search_validation.py": [
+1790739010291714354,
+8609,
+false
+],
+"/root/--dsh/tools/tour_tool.py": [
+1790739010291714354,
+6592,
+true
+],
+"/root/--dsh/tools/transcription_audio.py": [
+1790739010291714354,
+14540,
+false
+],
+"/root/--dsh/tools/transcription_cloud.py": [
+1790739010292714421,
+23384,
+false
+],
+"/root/--dsh/tools/transcription_command.py": [
+1790739010292714421,
+14307,
+false
+],
+"/root/--dsh/tools/transcription_common.py": [
+1790739010292714421,
+3926,
+false
+],
+"/root/--dsh/tools/transcription_local.py": [
+1790739010292714421,
+15792,
+false
+],
+"/root/--dsh/tools/transcription_tools.py": [
+1790739010292714421,
+31228,
+false
+],
+"/root/--dsh/tools/tts_command_provider.py": [
+1790739010293714488,
+15551,
+false
+],
+"/root/--dsh/tools/tts_streaming.py": [
+1790739010293714488,
+15214,
+false
+],
+"/root/--dsh/tools/tts_text_normalize.py": [
+1790739010293714488,
+10598,
+false
+],
+"/root/--dsh/tools/tts_tool.py": [
+1790739010293714488,
+37085,
+true
+],
+"/root/--dsh/tools/tts_tool_delivery.py": [
+1790739010293714488,
+19944,
+false
+],
+"/root/--dsh/tools/tts_tool_lifecycle.py": [
+1790739010293714488,
+8070,
+false
+],
+"/root/--dsh/tools/tts_tool_local.py": [
+1790739010293714488,
+9524,
+false
+],
+"/root/--dsh/tools/tts_tool_openai.py": [
+1790739010293714488,
+7872,
+false
+],
+"/root/--dsh/tools/tts_tool_plugins.py": [
+1790739010294714555,
+4576,
+false
+],
+"/root/--dsh/tools/tts_tool_providers.py": [
+1790739010294714555,
+30918,
+false
+],
+"/root/--dsh/tools/tts_tool_speaker.py": [
+1790739010294714555,
+16419,
+false
+],
+"/root/--dsh/tools/url_safety.py": [
+1790739010294714555,
+26140,
+false
+],
+"/root/--dsh/tools/video_generation_tool.py": [
+1790739010294714555,
+17307,
+true
+],
+"/root/--dsh/tools/vision_tools.py": [
+1790739010295714623,
+52617,
+true
+],
+"/root/--dsh/tools/vision_tools_image_prep.py": [
+1790739010295714623,
+14703,
+false
+],
+"/root/--dsh/tools/voice_client_config.py": [
+1790739010295714623,
+10553,
+false
+],
+"/root/--dsh/tools/voice_live.py": [
+1790739010295714623,
+9340,
+false
+],
+"/root/--dsh/tools/voice_mode.py": [
+1790739010295714623,
+73194,
+false
+],
+"/root/--dsh/tools/voice_mode_transcript.py": [
+1790739010295714623,
+5532,
+false
+],
+"/root/--dsh/tools/wake_word.py": [
+1790739010295714623,
+37291,
+false
+],
+"/root/--dsh/tools/wake_word_engines.py": [
+1790739010296714690,
+12022,
+false
+],
+"/root/--dsh/tools/web_result_cache.py": [
+1790739010298714824,
+13511,
+false
+],
+"/root/--dsh/tools/web_tools.py": [
+1790739010298714824,
+28375,
+true
+],
+"/root/--dsh/tools/web_tools_extract.py": [
+1790739010298714824,
+11497,
+false
+],
+"/root/--dsh/tools/web_tools_rescue.py": [
+1790739010298714824,
+6197,
+false
+],
+"/root/--dsh/tools/web_tools_truncate.py": [
+1790739010298714824,
+8375,
+false
+],
+"/root/--dsh/tools/website_policy.py": [
+1790739010299714891,
+8873,
+false
+],
+"/root/--dsh/tools/working_diff.py": [
+1790739010299714891,
+4440,
+false
+],
+"/root/--dsh/tools/write_approval.py": [
+1790739010299714891,
+12417,
+false
+],
+"/root/--dsh/tools/x_search_tool.py": [
+1790739010299714891,
+14979,
+true
+],
+"/root/--dsh/tools/xai_http.py": [
+1790739010299714891,
+10544,
+false
+],
+"/root/--dsh/tools/xai_video_tools.py": [
+1790739010299714891,
+4599,
+true
+],
+"/root/--dsh/tools/yuanbao_tools.py": [
+1790739010299714891,
+21901,
+true
+]
+}

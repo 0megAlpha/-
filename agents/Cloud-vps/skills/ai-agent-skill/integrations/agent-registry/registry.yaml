@@ -1,0 +1,30 @@
+agents:
+  - name: openhands
+    source: /root/open-hands
+    role: canonical-engineering-runtime
+  - name: hermes
+    source: /root/007-hermes
+    role: independent-orchestrator
+  - name: dsh
+    source: /root/--dsh
+    role: harness-runtime
+  - name: opencode
+    source: /root/opencode
+    role: coding-runtime
+  - name: cline
+    role: acp-coding-runtime
+  - name: cuga
+    source: /root/-cuga-agent-
+    role: browser-agent
+  - name: pentestgpt
+    source: /root/-PentestGPT-
+    role: authorized-security-research
+  - name: claude-code
+    source: /root/AI-Agent-Skill/agents/claude-code
+    role: coding-runtime
+  - name: aixcc-sesm
+    source: /root/-DARPA-AIxCC-
+    role: security-research-evolution
+  - name: oh-my-agent
+    source: /root/-oh-my-agent-
+    role: meta-evolution

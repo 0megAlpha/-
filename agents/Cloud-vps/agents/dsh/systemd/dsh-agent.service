@@ -1,0 +1,14 @@
+[Unit]
+Description=DeepSeek Harness Agent
+After=network.target litellm-agent.service
+[Service]
+Type=simple
+User=root
+Environment=HOME=/root
+Environment=DSH_HOME=/root/.dsh
+WorkingDirectory=/root
+ExecStart=/usr/local/bin/dsh --profile web
+Restart=always
+RestartSec=10
+[Install]
+WantedBy=multi-user.target

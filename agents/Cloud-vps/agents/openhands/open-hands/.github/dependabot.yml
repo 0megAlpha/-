@@ -1,0 +1,25 @@
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "automation"
+
+  - package-ecosystem: "pip"
+    directory: "/extensions/plugins/oh-my-agent"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "automation"
+
+  - package-ecosystem: "pip"
+    directory: "/extensions/self-evolving-engineering"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "dependencies"
+      - "automation"

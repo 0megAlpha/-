@@ -1,0 +1,83 @@
+# ============================================================
+# deployment.yaml — 出貨與回滾
+# 對應「define-to-ship」與「plan once, verify always」兩條原則。
+# ============================================================
+name: deployment
+version: 2
+owner: Hermes（AI Manager）
+
+principles:
+  - plan once, verify always     # 計畫只做一次，驗證每一步都做
+  - define to ship                # 沒有明確的成功定義就不出貨
+  - from output to delivery       # 產出 → 驗證 → 上架 一路打通
+
+preflight:                       # 任何一步不過就不往下走
+  - id: tests_green
+    check: exit_code == 0
+    blocking: true
+  - id: typecheck_clean
+    blocking: true
+  - id: security_gates
+    tools: [gitleaks, semgrep]
+    blocking: true
+    rule: 無 ERROR 級發現；有則中止並輸出 security_report.md
+  - id: no_secrets_in_repo
+    check: git ls-files | grep -E '\.env$|\.pem$|\.key$'
+    expect: empty
+    blocking: true
+  - id: backup_exists
+    blocking: true
+  - id: rollback_plan_written
+    blocking: true
+
+stages:
+  - id: build
+    agent: opencode
+    action: build_artifact
+    outputs: [image_or_bundle, checksum]
+
+  - id: stage_deploy
+    agent: opencode
+    action: deploy
+    target: staging
+    human_gate: true
+
+  - id: smoke_test
+    agent: mini-swe-agent
+    action: smoke_test
+    target: staging
+    blocking: true
+    on_fail: rollback
+
+  - id: prod_deploy
+    agent: opencode
+    action: deploy
+    target: production
+    human_gate: true              # CEO 最終批准：不可自動化
+    description: 只有 CEO 明確批准才進這一步。
+
+  - id: verify_prod
+    agent: openhands
+    action: post_deploy_check
+    blocking: true
+    window_sec: 600                # 上線後觀察 10 分鐘
+
+  - id: memory_writeback
+    agent: hermes
+    action: record_deployment
+    memory_write: true
+
+rollback:
+  trigger:
+    - smoke_test_failed
+    - post_deploy_check_failed
+    - ceo_command
+  method: restore_previous_image_by_checksum
+  max_attempts: 3
+  on_rollback_fail: halt_and_page_ceo     # 絕不自動繼續嘗試
+
+notification:
+  - channel: telegram
+    event: [prod_deploy_done, rollback_done, smoke_test_failed]
+  - channel: github_pr
+    event: [stage_deploy_done]

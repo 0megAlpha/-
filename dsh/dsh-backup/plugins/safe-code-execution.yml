@@ -1,0 +1,12 @@
+name: safe-code-execution
+version: 1.0.0
+description: 在隔離沙盒中安全執行和測試程式碼
+capabilities:
+  - code_execution
+  - automated_testing
+  - linting
+  - security_scan
+sandbox:
+  image: dsh-sandbox:latest
+  mount: /opt/dsh-sandbox/workspace
+  timeout: 120

@@ -1,0 +1,7 @@
+{
+  "module": "rag-context-compressor",
+  "version": "1.0.0",
+  "protocol": "json-rpc-2.0",
+  "enabled": true,
+  "settings": { "timeout": 30000, "retry_count": 3, "fallback_enabled": true }
+}

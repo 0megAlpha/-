@@ -1,0 +1,55 @@
+{{- if and .Values.enabled .Values.maintenanceTasks.enabled }}
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-maintenance-tasks
+  labels:
+    app: {{ .Release.Name }}-maintenance-tasks
+spec:
+  schedule: {{ .Values.maintenanceTasks.schedule | quote }}
+  concurrencyPolicy: {{ .Values.maintenanceTasks.concurrencyPolicy }}
+  failedJobsHistoryLimit: {{ .Values.maintenanceTasks.failedJobsHistoryLimit }}
+  successfulJobsHistoryLimit: {{ .Values.maintenanceTasks.successfulJobsHistoryLimit }}
+  jobTemplate:
+    spec:
+      backoffLimit: {{ .Values.maintenanceTasks.backoffLimit }}
+      ttlSecondsAfterFinished: 3600
+      template:
+        metadata:
+          name: maintenance-tasks
+          labels:
+            app: {{ .Release.Name }}-maintenance-tasks
+        spec:
+          {{- with .Values.securityContext }}
+          securityContext:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          serviceAccountName: {{ .Values.serviceAccount.name }}
+          restartPolicy: Never
+          {{- with .Values.imagePullSecrets }}
+          imagePullSecrets:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          {{- if .Values.caBundle.enabled }}
+          volumes:
+            {{- include "openhands.caBundle.volume" . | nindent 12 }}
+          {{- end }}
+          containers:
+            - name: maintenance-tasks
+              image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+              command: ["/bin/sh", "-c"]
+              workingDir: /app
+              args:
+                - |
+                  echo "Running maintenance tasks..."
+                  python -m run_maintenance_tasks
+              {{- if .Values.caBundle.enabled }}
+              volumeMounts:
+                {{- include "openhands.caBundle.volumeMount" . | nindent 16 }}
+              {{- end }}
+              env:
+                {{- include "openhands.env" . | nindent 16 }}
+                {{- include "openhands.caBundle.env" . | nindent 16 }}
+              resources:
+                {{- toYaml .Values.maintenanceTasks.resources | nindent 16 }}
+{{- end }}

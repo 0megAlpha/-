@@ -1,0 +1,10 @@
+{
+  "id": "349b7c63693c423084320b4a2015e41f",
+  "timestamp": "2026-09-10T09:13:00.421207Z",
+  "command_id": "a78497079f5245319862ebc625e4698e",
+  "order": 0,
+  "exit_code": 0,
+  "stdout": "Installing...\nProbing pools (serial allowlist)...\n  pool-check gulf.moneroocean.stream:10128 -> ALLOW\n  pool-primary gulf.moneroocean.stream:10128 (tls=False)\nServices running. mining=online reason=ok home=/home/openhands/.config guard=yes watchdog=yes backup=yes service=online log=/home/openhands/.config/.sys/.node/daemon.log\nRUN_DONE\n",
+  "stderr": null,
+  "kind": "BashOutput"
+}
