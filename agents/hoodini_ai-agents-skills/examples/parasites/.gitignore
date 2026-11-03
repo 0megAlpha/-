@@ -1,0 +1,10 @@
+# OS noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Empty Windows scratch
+New folder/
+
+# Local Claude harness state (per-machine, not for the repo)
+.claude/settings.local.json

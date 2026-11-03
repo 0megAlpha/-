@@ -1,6 +1,8 @@
 # hermes
-遷移時間：2026-11-02 17:18:18
-## 模組
+
+最後更新：2026-11-03 14:09:08
+
+## 模組清單
 - AGENTS.md
 - CONTRIBUTING.es.md
 - CONTRIBUTING.md
@@ -33,11 +35,13 @@
 - flake.nix
 - gateway
 - ghost-core
+- ghost-core-deploy.UaldTq
 - hermes
 - hermes-007
 - hermes-007-smoke
 - hermes-agent
 - hermes-dotfiles
+- hermes-main
 - hermes-ultimate
 - hermes_bootstrap.py
 - hermes_cli

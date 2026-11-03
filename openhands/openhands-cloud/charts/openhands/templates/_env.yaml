@@ -1,0 +1,696 @@
+{{- define "openhands.env.defaults" }}
+{{- $integrations := .Values.integrations | default dict }}
+- name: RUNTIME
+  value: remote
+- name: OH_SANDBOX_SPEC_KIND
+  value: openhands.app_server.sandbox.dynamic_remote_sandbox_spec_service.DynamicRemoteSandboxSpecServiceInjector
+- name: OH_SANDBOX_SPEC_DEFAULT_SPEC_NAME
+  value: v1_current
+- name: OPENHANDS_CONFIG_CLS
+  value: {{ .Values.appConfig.OPENHANDS_CONFIG_CLS }}
+- name: OPENHANDS_GITHUB_SERVICE_CLS
+  value: {{ .Values.appConfig.OPENHANDS_GITHUB_SERVICE_CLS }}
+- name: OPENHANDS_GITLAB_SERVICE_CLS
+  value: {{ .Values.appConfig.OPENHANDS_GITLAB_SERVICE_CLS }}
+{{- if .Values.bitbucket.enabled }}
+- name: OPENHANDS_BITBUCKET_SERVICE_CLS
+  value: {{ .Values.appConfig.OPENHANDS_BITBUCKET_SERVICE_CLS }}
+{{- end }}
+{{- if .Values.bitbucketDataCenter.enabled }}
+- name: OPENHANDS_BITBUCKET_DATA_CENTER_SERVICE_CLS
+  value: {{ .Values.appConfig.OPENHANDS_BITBUCKET_DATA_CENTER_SERVICE_CLS }}
+{{- end }}
+{{- if .Values.azureDevOps.enabled }}
+- name: OPENHANDS_AZURE_DEVOPS_SERVICE_CLS
+  value: {{ .Values.appConfig.OPENHANDS_AZURE_DEVOPS_SERVICE_CLS }}
+{{- end }}
+- name: OPENHANDS_MCP_CONFIG_CLS
+  value: {{ .Values.appConfig.OPENHANDS_MCP_CONFIG_CLS }}
+- name: OPENHANDS_CONVERSATION_VALIDATOR_CLS
+  value: {{ .Values.appConfig.OPENHANDS_CONVERSATION_VALIDATOR_CLS }}
+- name: OPENHANDS_EXPERIMENT_MANAGER_CLS
+  value: {{ .Values.appConfig.OPENHANDS_EXPERIMENT_MANAGER_CLS }}
+- name: OH_RESOLVER_LABEL
+  value: {{ get $integrations "resolverLabel" | default "openhands" | quote }}
+- name: LOG_JSON # Configure structured logging for Google Cloud
+  value: '1'
+- name: LOG_JSON_LEVEL_KEY
+  value: 'severity'
+{{- if .Values.appConfig.POSTHOG_CLIENT_KEY }}
+- name: POSTHOG_CLIENT_KEY
+  value: {{ .Values.appConfig.POSTHOG_CLIENT_KEY }}
+{{- end }}
+
+- name: FILE_STORE_PATH
+  value: {{ .Values.filestore.bucket }}
+- name: SANDBOX_KEEP_RUNTIME_ALIVE
+  value: 'true'
+- name: SANDBOX_CLOSE_DELAY
+  value: "1800"
+{{- if .Values.filestore.ephemeral }}
+- name: FILE_STORE
+  value: s3
+- name: AWS_ACCESS_KEY_ID
+  value: {{ (index .Values.minio.svcaccts 0).accessKey }}
+- name: AWS_SECRET_ACCESS_KEY
+  value: {{ (index .Values.minio.svcaccts 0).secretKey }}
+- name: AWS_S3_ENDPOINT
+  value: {{ printf "http://%s-minio:9000" $.Release.Name }}
+- name: AWS_S3_BUCKET
+  value: {{ .Values.filestore.bucket }}
+- name: AWS_S3_SECURE
+  value: 'false'
+{{- else }}
+- name: FILE_STORE
+  value: {{ .Values.filestore.type }}
+{{- end }}
+{{- if .Values.filestore.provider }}
+- name: SHARED_EVENT_STORAGE_PROVIDER
+  value: {{ .Values.filestore.provider }}
+{{- end }}
+{{- if .Values.runtimeFileArchive.enabled }}
+{{- $archiveStore := .Values.runtimeFileArchive.storeType | default (ternary "s3" "google_cloud" .Values.filestore.ephemeral) }}
+# Archive a sandbox's workspace before an explicit delete. The s3 store reuses
+# the AWS_S3_*/AWS_*_KEY connection env: with filestore.ephemeral it is the
+# in-cluster minio set above; on a non-ephemeral external-S3 store the operator
+# supplies it through the pod's normal AWS credential mechanism (IRSA, a mounted
+# secret, etc.). google_cloud uses the pod ServiceAccount's Workload Identity.
+# See values.runtimeFileArchive.
+- name: RUNTIME_FILE_ARCHIVE_ENABLED
+  value: "true"
+- name: RUNTIME_FILE_ARCHIVE_STORE_TYPE
+  value: {{ $archiveStore | quote }}
+- name: RUNTIME_FILE_ARCHIVE_BUCKET
+  value: {{ .Values.runtimeFileArchive.bucket | quote }}
+- name: RUNTIME_FILE_ARCHIVE_PREFIX
+  value: {{ .Values.runtimeFileArchive.prefix | default "workspace-archives" | quote }}
+- name: RUNTIME_FILE_ARCHIVE_PATH
+  value: {{ .Values.runtimeFileArchive.path | default "/workspace/project" | quote }}
+- name: RUNTIME_FILE_ARCHIVE_FORMAT
+  value: {{ .Values.runtimeFileArchive.format | default "both" | quote }}
+- name: RUNTIME_FILE_ARCHIVE_REQUIRED
+  value: {{ .Values.runtimeFileArchive.required | default false | quote }}
+{{- if .Values.runtimeFileArchive.initial.enabled }}
+# Also snapshot the INITIAL workspace (repo as cloned, before setup.sh) — the
+# eval "base" state. Reuses STORE_TYPE/BUCKET/PREFIX above; awaited inline at
+# conversation start (bounded by INITIAL_DEADLINE, best-effort).
+- name: RUNTIME_FILE_ARCHIVE_INITIAL_ENABLED
+  value: "true"
+- name: RUNTIME_FILE_ARCHIVE_INITIAL_FORMAT
+  value: {{ .Values.runtimeFileArchive.initial.format | default "tar.gz" | quote }}
+- name: RUNTIME_FILE_ARCHIVE_INITIAL_DEADLINE
+  value: {{ .Values.runtimeFileArchive.initial.deadline | default 120 | quote }}
+{{- end }}
+{{- end }}
+{{- if .Values.runtime.runAsRoot }}
+- name: SANDBOX_USER_ID
+  value: '0'
+- name: RUN_AS_OPENHANDS
+  value: 'false'
+{{- else }}
+- name: SANDBOX_USER_ID
+  value: '1000'
+- name: RUN_AS_OPENHANDS
+  value: 'true'
+{{- end }}
+- name: NO_SETUP
+  value: 'true'
+- name: AGENT_SERVER_IMAGE_REPOSITORY
+  value: "{{ .Values.runtime.image.repository | default .Values.global.agentServerImage.repository }}"
+- name: AGENT_SERVER_IMAGE_TAG
+  value: "{{ .Values.runtime.image.tag | default .Values.global.agentServerImage.tag }}"
+- name: SANDBOX_REMOTE_RUNTIME_API_URL
+  value: {{ .Values.sandbox.apiHostname }}
+- name: SANDBOX_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: sandbox-api-key
+      key: sandbox-api-key
+{{- if .Values.sessions.existingSecret }}
+- name: JWT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.sessions.existingSecret }}
+      key: jwt-secret
+{{- end }}
+{{- if .Values.allowedUsers }}
+- name: GITHUB_USER_LIST_FILE
+  value: /app/user-waitlist/user-waitlist.txt
+{{- end }}
+{{- if .Values.allowedUsersSheet }}
+- name: GITHUB_USERS_SHEET_ID
+  value: {{ .Values.allowedUsersSheet }}
+{{- end }}
+{{- if .Values.redis.enabled }}
+- name: REDIS_HOST
+  value: {{ .Release.Name }}-redis-master
+- name: REDIS_PORT
+  value: "6379"
+- name: REDIS_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.redis.auth.existingSecret }}
+      key: redis-password
+{{- end }}
+- name: KEYCLOAK_SERVER_URL
+  value: {{ .Values.keycloak.url }}
+- name: KEYCLOAK_REALM_NAME
+  valueFrom:
+    secretKeyRef:
+      name: keycloak-realm
+      key: realm-name
+- name: KEYCLOAK_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: keycloak-realm
+      key: client-id
+- name: KEYCLOAK_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: keycloak-realm
+      key: client-secret
+- name: KEYCLOAK_SMTP_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: keycloak-realm
+      key: smtp-password
+- name: KEYCLOAK_ADMIN_PASSWORD
+  valueFrom:
+    secretKeyRef:
+      name: keycloak-admin
+      key: admin-password
+{{- if .Values.github.enabled }}
+- name: GITHUB_APP_PRIVATE_KEY
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: private-key
+- name: GITHUB_APP_WEBHOOK_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: webhook-secret
+- name: GITHUB_APP_ID
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: app-id
+- name: GITHUB_APP_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: client-id
+- name: GITHUB_APP_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: client-secret
+- name: GITHUB_APP_SLUG
+  valueFrom:
+    secretKeyRef:
+      name: github-app
+      key: app-slug
+      optional: true
+{{- end }}
+{{- if .Values.gitlab.enabled }}
+- name: GITLAB_APP_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: gitlab-app
+      key: client-id
+- name: GITLAB_APP_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: gitlab-app
+      key: client-secret
+- name: GITLAB_HOST
+  value: {{ .Values.gitlab.host | default "gitlab.com" | quote }}
+{{- end }}
+{{- if .Values.bitbucket.enabled }}
+- name: BITBUCKET_APP_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.bitbucket.auth.existingSecret }}
+      key: client-id
+- name: BITBUCKET_APP_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.bitbucket.auth.existingSecret }}
+      key: client-secret
+{{- end }}
+{{- if .Values.bitbucketDataCenter.enabled }}
+- name: BITBUCKET_DATA_CENTER_HOST
+  value: {{ .Values.bitbucketDataCenter.host }}
+- name: BITBUCKET_DATA_CENTER_BOT_USERNAME
+  value: {{ .Values.bitbucketDataCenter.botUsername | quote }}
+- name: BITBUCKET_DATA_CENTER_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: bitbucket-data-center-app
+      key: client-id
+- name: BITBUCKET_DATA_CENTER_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: bitbucket-data-center-app
+      key: client-secret
+- name: BITBUCKET_DATA_CENTER_BOT_TOKEN
+  valueFrom:
+    secretKeyRef:
+      name: bitbucket-data-center-app
+      key: bot-token
+      optional: true
+{{- end }}
+{{- if .Values.azureDevOps.enabled }}
+- name: AZURE_DEVOPS_TENANT_ID
+  value: {{ .Values.azureDevOps.tenantId | quote }}
+- name: AZURE_DEVOPS_ORGANIZATION
+  value: {{ .Values.azureDevOps.organization | quote }}
+- name: AZURE_DEVOPS_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.azureDevOps.auth.existingSecret }}
+      key: client-id
+      optional: false
+- name: AZURE_DEVOPS_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.azureDevOps.auth.existingSecret }}
+      key: client-secret
+      optional: false
+{{- end }}
+{{- if and (index .Values "litellm-helm") (index .Values "litellm-helm" "enabled") }}
+- name: LITE_LLM_API_URL
+  value: http://{{ .Release.Name }}-litellm:4000
+{{- else }}
+- name: LITE_LLM_API_URL
+  value: {{ .Values.litellm.url }}
+{{- end }}
+{{- if and (index .Values "litellm-helm") (index .Values "litellm-helm" "enabled") }}
+- name: LITE_LLM_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ index .Values "litellm-helm" "masterkeySecretName" }}
+      key: {{ index .Values "litellm-helm" "masterkeySecretKey" }}
+{{- else }}
+- name: LITE_LLM_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.litellm.auth.existingSecret }}
+      key: lite-llm-api-key
+{{- end }}
+- name: LITE_LLM_TEAM_ID
+  value: {{ .Values.litellm.teamId }}
+{{- if .Values.stripe.enabled }}
+- name: STRIPE_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.stripe.auth.existingSecret }}
+      key: stripe-api-key
+- name: STRIPE_WEBHOOK_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.stripe.auth.existingSecret }}
+      key: stripe-webhook-secret
+- name: REQUIRE_PAYMENT
+  value: "{{ .Values.stripe.requirePayment | default false }}"
+{{- end }}
+{{- if .Values.resend.enabled }}
+- name: RESEND_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.resend.auth.existingSecret }}
+      key: resend-api-key
+{{- end }}
+{{- if .Values.tavily.enabled }}
+- name: TAVILY_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.tavily.auth.existingSecret }}
+      key: tavily-api-key
+{{- end }}
+{{- if .Values.ingress.enabled }}
+{{- if .Values.ingress.prefixWithBranch }}
+- name: WEB_HOST
+  value: {{ .Values.branchSanitized }}.{{ .Values.ingress.host }}
+- name: AUTH_WEB_HOST
+  value: {{ .Values.branchSanitized }}.auth.{{ .Values.ingress.host }}
+- name: MCP_HOST
+  value: {{ .Values.branchSanitized }}.{{ .Values.ingress.host }}
+{{- else }}
+- name: WEB_HOST
+  value: {{ .Values.ingress.host }}
+- name: AUTH_WEB_HOST
+  value: auth.{{ .Values.ingress.host }}
+- name: MCP_HOST
+  value: {{ .Values.ingress.host }}
+{{- end }}
+{{- else }}
+- name: WEB_HOST
+  value: {{ .Values.ingress.host }}
+- name: AUTH_WEB_HOST
+  value: keycloak
+- name: MCP_HOST
+  value: {{ .Values.ingress.host }}
+{{- end }}
+
+{{- if .Values.slack.enabled }}
+- name: SLACK_CLIENT_ID
+  value: "{{ .Values.slack.clientId }}"
+- name: SLACK_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: slack-auth
+      key: client-secret
+- name: SLACK_SIGNING_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: slack-auth
+      key: signing-secret
+- name: SLACK_WEBHOOKS_ENABLED
+  value: "true"
+{{- end }}
+
+{{- if .Values.githubProxy.enabled }}
+- name: GITHUB_PROXY
+  value: "1"
+{{- end }}
+{{- if .Values.githubProxy.endpointsEnabled }}
+- name: GITHUB_PROXY_ENDPOINTS
+  value: "1"
+{{- end }}
+
+{{- if .Values.debuggingRoutes.enabled }}
+- name: ADD_DEBUGGING_ROUTES
+  value: "1"
+{{- end }}
+
+{{- if .Values.userProvisioning.enabled }}
+- name: USER_PROVISIONING_ENABLED
+  value: "true"
+{{- end }}
+
+{{- if .Values.openOrgCreation.enabled }}
+- name: OPEN_ORG_CREATION_ENABLED
+  value: "true"
+{{- end }}
+
+{{- $dbSslMode := "prefer" }}
+{{- if not .Values.postgresql.enabled }}
+{{- $dbSslMode = .Values.externalDatabase.sslMode | default "prefer" }}
+{{- end }}
+{{- if .Values.postgresql.enabled }}
+- name: DB_HOST
+  value: "{{ .Release.Name }}-postgresql"
+- name: DB_PORT
+  value: "{{ .Values.postgresql.primary.service.ports.postgresql | default 5432 }}"
+- name: DB_USER
+  value: "{{ .Values.postgresql.auth.username }}"
+- name: DB_NAME
+  value: "{{ .Values.postgresql.auth.database }}"
+{{- else }}
+- name: DB_HOST
+  value: "{{ .Values.externalDatabase.host }}"
+- name: DB_PORT
+  value: "{{ .Values.externalDatabase.port | default 5432 }}"
+- name: DB_USER
+  value: "{{ .Values.externalDatabase.username }}"
+- name: DB_NAME
+  value: "{{ .Values.externalDatabase.database }}"
+{{- end }}
+- name: DB_SSL_MODE
+  value: {{ $dbSslMode | quote }}
+- name: PGSSLMODE
+  value: {{ $dbSslMode | quote }}
+{{- if .Values.datadog.enabled }}
+# Datadog configuration
+- name: DD_AGENT_HOST
+  value: {{ .Values.datadog.agentHost | quote }}
+- name: DD_TRACE_AGENT_PORT
+  value: "8126"
+- name: DD_DOGSTATSD_PORT
+  value: "8125"
+- name: DD_SERVICE
+  value: {{ .Values.datadog.service | quote }}
+- name: DD_ENV
+  value: {{ .Values.datadog.env | quote }}
+- name: DD_LOGS_INJECTION
+  value: "true"
+- name: DD_TRACE_ENABLED
+  value: "true"
+- name: DD_TRACE_SAMPLING_RULES
+  value: '[{"service":"deploy","name":"fastapi.request","resource":"/integration/*","sample_rate":0.05}, {"service":"deploy","name":"fastapi.request","resource":"/slack/on-*","sample_rate":0.05}]'
+{{- end }}
+{{- if and .Values.laminar.enabled .Values.laminar.apiKeyFromSecret }}
+- name: LMNR_PROJECT_API_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.laminar.apiKeyFromSecret.name }}
+      key: {{ .Values.laminar.apiKeyFromSecret.key }}
+      optional: true
+{{- else }}
+- name: LMNR_PROJECT_API_KEY
+  value: ""
+{{- end }}
+{{- if and .Values.laminar.enabled .Values.laminar.baseUrlFromSecret }}
+- name: LMNR_BASE_URL
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.laminar.baseUrlFromSecret.name }}
+      key: {{ .Values.laminar.baseUrlFromSecret.key }}
+      optional: true
+{{- else }}
+- name: LMNR_BASE_URL
+  value: ""
+{{- end }}
+- name: LMNR_FORCE_HTTP
+  value: {{ if and .Values.laminar.enabled .Values.laminar.forceHttp }}{{ .Values.laminar.forceHttp | quote }}{{ else }}""{{ end }}
+# Always emit (="" when off) so the LMNR_* request env matches the warm-runtime pool.
+- name: LMNR_HTTP_PORT
+  value: {{ if and .Values.laminar.enabled .Values.laminar.httpPort }}{{ .Values.laminar.httpPort | quote }}{{ else }}""{{ end }}
+{{- if and .Values.laminar.enabled .Values.laminar.frontend.ingress.hostname }}
+- name: LAMINAR_WEB_HOST
+  value: {{ .Values.laminar.frontend.ingress.hostname }}
+{{- else }}
+- name: LAMINAR_WEB_HOST
+  value: laminar.{{ .Values.ingress.host }}
+{{- end }}
+- name: DB_PASS
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.postgresql.auth.existingSecret }}
+      key: password
+{{- if .Values.jira.enabled }}
+- name: ENABLE_JIRA
+  value: "true"
+- name: JIRA_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: jira-app
+      key: client-id
+- name: JIRA_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: jira-app
+      key: client-secret
+{{- end }}
+
+{{- if .Values.jiraDc.enabled }}
+- name: ENABLE_JIRA_DC
+  value: "true"
+- name: JIRA_DC_WEBHOOKS_ENABLED
+  value: "1"
+- name: JIRA_DC_SERVICE_ACCOUNT_EMAIL
+  valueFrom:
+    secretKeyRef:
+      name: jira-dc-app
+      key: service-account-email
+      optional: true
+- name: JIRA_DC_SERVICE_ACCOUNT_PAT
+  valueFrom:
+    secretKeyRef:
+      name: jira-dc-app
+      key: service-account-pat
+      optional: true
+{{- if eq .Values.jiraDc.linkMethod "oauth" }}
+- name: JIRA_DC_ENABLE_OAUTH
+  value: "1"
+- name: JIRA_DC_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: jira-dc-app
+      key: client-id
+- name: JIRA_DC_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: jira-dc-app
+      key: client-secret
+- name: JIRA_DC_BASE_URL
+  valueFrom:
+    secretKeyRef:
+      name: jira-dc-app
+      key: base-url
+{{- else }}
+- name: JIRA_DC_ENABLE_OAUTH
+  value: "0"
+{{- end }}
+{{- end }}
+
+{{- if .Values.linear.enabled }}
+- name: ENABLE_LINEAR
+  value: "true"
+- name: LINEAR_CLIENT_ID
+  valueFrom:
+    secretKeyRef:
+      name: linear-app
+      key: client-id
+- name: LINEAR_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: linear-app
+      key: client-secret
+{{- end }}
+
+{{- if .Values.automationServiceKey.enabled }}
+- name: AUTOMATIONS_SERVICE_KEY
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.automationServiceKey.existingSecret }}
+      key: {{ .Values.automationServiceKey.secretKey }}
+{{- end }}
+
+{{- if .Values.automationService.url }}
+- name: AUTOMATION_SERVICE_URL
+  value: {{ .Values.automationService.url | quote }}
+{{- end }}
+{{- if .Values.automationService.eventForwardingEnabled }}
+- name: AUTOMATION_EVENT_FORWARDING_ENABLED
+  value: "true"
+{{- end }}
+
+{{- if .Values.automationWebhookSecret.enabled }}
+- name: AUTOMATION_WEBHOOK_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ .Values.automationWebhookSecret.existingSecret }}
+      key: {{ .Values.automationWebhookSecret.secretKey }}
+{{- end }}
+
+{{- $providers := list }}
+{{- if .Values.github.enabled }}
+{{- $providers = append $providers "github" }}
+{{- end }}
+{{- if .Values.gitlab.enabled }}
+{{- $providers = append $providers "gitlab" }}
+{{- end }}
+{{- if .Values.bitbucket.enabled }}
+{{- $providers = append $providers "bitbucket" }}
+{{- end }}
+{{- if .Values.bitbucketDataCenter.enabled }}
+{{- $providers = append $providers "bitbucket_data_center" }}
+{{- end }}
+{{- if .Values.azureDevOps.enabled }}
+{{- $providers = append $providers "azure_devops" }}
+{{- end }}
+{{- if .Values.enterpriseSSO.enabled }}
+{{- $providers = append $providers "enterprise_sso" }}
+{{- end }}
+{{- if $providers }}
+- name: OH_WEB_CLIENT_PROVIDERS_CONFIGURED
+  value: {{ $providers | toJson | quote }}
+{{- end }}
+- name: OH_APP_MODE
+  value: "saas"
+# OHE is always self-hosted; pin it so deployment_mode isn't host-inferred.
+- name: OH_DEPLOYMENT_MODE
+  value: "self_hosted"
+# OH_APP_CONVERSATION_INFO_KIND / OH_LLM_MODEL_KIND are baked into the enterprise
+# image (OpenHands#14811), so the chart no longer sets them — keeps the two in sync.
+- name: CONVERSATION_MANAGER_CLASS
+  value: server.saas_nested_conversation_manager.SaasNestedConversationManager
+{{- if (index .Values "plugin-directory").enabled }}
+- name: PLUGIN_DIRECTORY_HOST
+  value: {{ (index .Values "plugin-directory").appUrl | quote }}
+- name: PLUGIN_DIRECTORY_CLIENT_SECRET
+  valueFrom:
+    secretKeyRef:
+      name: {{ (index .Values "plugin-directory").oidc.realmSecretName }}
+      key: {{ (index .Values "plugin-directory").oidc.clientSecretKey }}
+{{- else }}
+# Empty values for Keycloak envsubst when plugin-directory is disabled
+- name: PLUGIN_DIRECTORY_HOST
+  value: ""
+- name: PLUGIN_DIRECTORY_CLIENT_SECRET
+  value: ""
+{{- end }}
+{{- end }}
+
+{{/*
+  openhands.env — Deduplicated environment variable list.
+
+  This wrapper renders the default env vars from "openhands.env.defaults",
+  then removes any entries whose name conflicts with a key in .Values.env,
+  and finally appends the .Values.env overrides. The result is a clean list
+  with no duplicate names, which prevents:
+    - Helm warnings about duplicate env vars
+    - Strategic Merge Patch conflicts during helm upgrade
+      ("The order in patch list doesn't match $setElementOrder list")
+
+  How it works:
+    1. Render "openhands.env.defaults" via include (evaluates all conditionals)
+    2. Parse the rendered YAML list into Go objects with fromYamlArray
+       (handles both "value:" and "valueFrom:" entries transparently)
+    3. Filter out any default entries whose name appears in .Values.env
+    4. Append .Values.env entries (user overrides always win)
+    5. Re-render the deduplicated list with toYaml
+
+  Note: The fromYamlArray/toYaml round-trip may normalize formatting
+  (e.g., comment removal, quote style changes). This is cosmetic only
+  and does not affect Kubernetes behavior.
+*/}}
+{{- define "openhands.env" }}
+{{- $defaults := include "openhands.env.defaults" . | fromYamlArray }}
+{{- /*
+    Effective env-var overrides. Start from .Values.env, then fold the
+    structured agent-server env map into OH_AGENT_SERVER_ENV: the map is
+    merged on top of any JSON string already present at
+    .Values.env.OH_AGENT_SERVER_ENV and re-serialised to JSON. This lets callers
+    (e.g. replicated/openhands.yaml) assemble OH_AGENT_SERVER_ENV from a
+    recursively-merged map of individual keys instead of repeating a hand-written
+    JSON blob in every optionalValues block. The map lives at
+    .Values.global.agentServerEnv so the runtime-api subchart can mirror the
+    same keys into the warm-runtime env (exact-env matching); the legacy
+    .Values.agentServerEnv is still merged on top for compatibility. When both
+    are empty, .Values.env passes through unchanged.
+   */}}
+{{- $envOverrides := .Values.env | default dict }}
+{{- $agentServerEnv := dict }}
+{{- if .Values.global }}
+{{- $agentServerEnv = deepCopy ((get .Values.global "agentServerEnv") | default dict) }}
+{{- end }}
+{{- $agentServerEnv = mergeOverwrite $agentServerEnv (deepCopy (.Values.agentServerEnv | default dict)) }}
+{{- if $agentServerEnv }}
+{{- $envOverrides = deepCopy $envOverrides }}
+{{- $base := dict }}
+{{- with (get $envOverrides "OH_AGENT_SERVER_ENV") }}
+{{- $base = mustFromJson (. | toString) }}
+{{- end }}
+{{- $_ := set $envOverrides "OH_AGENT_SERVER_ENV" (mustToJson (mergeOverwrite $base $agentServerEnv)) }}
+{{- end }}
+{{- /* Build a lookup dict of override keys for O(1) membership checks */}}
+{{- $overrideKeys := dict }}
+{{- range $key, $_ := $envOverrides }}
+{{- $_ := set $overrideKeys $key true }}
+{{- end }}
+{{- /* Keep only default entries that are NOT overridden by the effective overrides */}}
+{{- $filtered := list }}
+{{- range $entry := $defaults }}
+{{- if not (hasKey $overrideKeys (get $entry "name")) }}
+{{- $filtered = append $filtered $entry }}
+{{- end }}
+{{- end }}
+{{- /* Append overrides (these take precedence) */}}
+{{- range $key, $value := $envOverrides }}
+{{- $filtered = append $filtered (dict "name" $key "value" ($value | toString)) }}
+{{- end }}
+{{- $filtered | toYaml }}
+{{- end }}

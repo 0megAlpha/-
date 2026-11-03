@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git pull:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(copilot-sdk\\): Enhance skill with official GitHub SDK documentation\n\nMajor updates based on official GitHub Copilot SDK docs:\n\n- Update model references from gpt-5 to gpt-4.1 \\(official\\)\n- Add complete project setup instructions with tsx runner\n- Update Quick Start with simpler sendAndWait pattern\n- Add proper SessionEvent type imports for streaming\n- Update Custom Tools to use JSON Schema \\(official pattern\\)\n- Add \"How Tools Work\" explanation section\n- Add complete Interactive CLI Assistant example\n- Add MCP Server Integration section \\(GitHub MCP\\)\n- Add Custom Agents section for specialized personas\n- Add System Message customization section\n- Add External CLI Server section \\(server mode connection\\)\n- Update Session Configuration with new options\n- Update Resources with official tutorial links\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push)",
+      "Bash(gh repo view:*)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh api:*)",
+      "Bash(xargs curl -s)",
+      "Bash(gh repo fork:*)",
+      "Bash(git remote add:*)",
+      "Bash(git fetch:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run skill:validate:*)",
+      "Bash(npm run build:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(skills\\): Add GitHub Copilot SDK skill\n\nAdd comprehensive skill for building agentic applications with the\nGitHub Copilot SDK. This skill covers:\n\n- Installation for Node.js, Python, Go, and .NET\n- Quick start examples with sendAndWait pattern\n- Streaming responses with proper event handling\n- Custom tools definition \\(JSON Schema, Pydantic, Go structs\\)\n- MCP Server integration \\(GitHub MCP\\)\n- Custom agents for specialized AI personas\n- System message customization\n- External CLI server connection\n- Session persistence and management\n- Error handling and best practices\n- Interactive CLI assistant examples\n\nBased on official GitHub Copilot SDK documentation from\nhttps://github.com/github/copilot-sdk\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(dir:*)",
+      "mcp__obsidian__list_directory",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(skills\\): Add honest-agent skill for objective AI feedback\n\nAdd new skill that configures multiple AI coding agents to be honest,\nobjective, and non-sycophantic. The skill provides a one-time setup\nthat updates instruction files across 12+ AI coding agents including:\n\n- Claude Code \\(.claude/CLAUDE.md\\)\n- GitHub Copilot \\(.github/copilot-instructions.md\\)\n- Cursor \\(.cursorrules\\)\n- Windsurf \\(.windsurfrules\\)\n- Cline \\(.clinerules\\)\n- JetBrains AI, Zed AI, Continue.dev, and more\n\nThe skill instructs agents to:\n- Never tell users what they want to hear\n- Contradict when they disagree\n- Challenge flawed assumptions\n- Provide direct, unfiltered feedback\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat\\(skills\\): Add local-llm-router skill for air-gapped networks\n\nAdd comprehensive skill for intelligent routing of AI coding queries\nto local LLMs in closed/air-gapped networks with Serena MCP integration.\n\nKey features:\n- Service discovery for Ollama, LM Studio, Jan, OpenWebUI, LocalAI\n- Task classification \\(coding, reasoning, analysis, documentation\\)\n- Comprehensive model capability matrix \\(30+ models with specs\\)\n- Serena MCP integration as primary tool for semantic code understanding\n- Context management with automatic compaction and model handoff\n- Multi-level fallback strategy for graceful degradation\n- Security module for air-gapped deployment \\(network isolation, audit logging\\)\n- OS detection with WSL/container support\n- Coding agent detection \\(Qwen CLI, OpenCode, Aider, etc.\\)\n\nTarget audience: Defense forces and organizations in closed networks.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nrefactor\\(honest-agent\\): Remove unverified agents and redundancy\n\n- Remove unverified agent paths \\(Codex CLI, Qwen, Amazon Q, JetBrains AI, Zed\\)\n- Keep only 7 verified agents with documented instruction file formats\n- Remove redundant duplicate templates \\(reduced from 220 to 105 lines\\)\n- Fix overclaiming in README \\(was \"12+ agents\", now \"7 verified agents\"\\)\n- Remove platform-specific bash command, use generic detection guidance\n- Add actual documentation URLs for supported agents\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix\\(local-llm-router\\): Update with leading 2024-2025 models\n\nCritical fixes:\n- Replace incorrect model names \\(qwen3-coder-30b, llama-4-maverick\\)\n- Add DeepSeek-V3 \\(685B MoE\\) - best overall open model\n- Add DeepSeek-R1 and distill variants \\(70B/32B/14B/8B\\)\n- Add Qwen2.5-Coder-32B - best coding model\n- Add Phi-4, Gemma-2, Mistral-Small-24B\n- Add Llama-3.2 and Llama-3.3 variants\n\nNew services added:\n- vLLM \\(localhost:8000\\) - production deployment\n- llama.cpp \\(localhost:8080\\) - direct inference\n- Kobold.cpp \\(localhost:5001\\) - alternative backend\n- GPT4All \\(localhost:4891\\) - local GUI\n\nUpdated model-matrix.md with:\n- Correct VRAM requirements\n- Ollama pull commands\n- Quick selection guide\n- Hardware recommendations\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(git commit:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfix\\(honest-agent\\): Add critical APPEND-ONLY safety instructions\n\nEmphasize that the skill must NEVER overwrite existing instruction files.\nAdded multiple safety reminders throughout the skill:\n\n- New \"CRITICAL: APPEND ONLY - NEVER REPLACE\" section at top\n- Step 3 now explicitly states to READ first, then APPEND\n- Step 4 clarifies to use Edit tool for appending, not Write for overwriting\n- Example interaction shows correct behavior \\(reading first, appending\\)\n- Added \"WRONG approach\" section showing what NOT to do\n\nThis prevents accidental destruction of existing CLAUDE.md configurations.\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(test:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)"
+    ]
+  }
+}

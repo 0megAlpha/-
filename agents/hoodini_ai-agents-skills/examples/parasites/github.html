@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GitHub Desktop — A New Chapter for Builders</title>
+  <meta name="description" content="The new GitHub Desktop. Native speed. Branches, PRs and reviews at your fingertips. Copilot inside." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- preload first + key frames so the loader doesn't stall -->
+  <link rel="preload" as="image" href="github/frame-001.jpg" />
+  <link rel="preload" as="image" href="github/frame-073.jpg" />
+  <link rel="preload" as="image" href="github/frame-145.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+  <!-- Loader -->
+  <div class="loader" aria-live="polite">
+    <div class="loader-title">GITHUB DESKTOP</div>
+    <div class="loader-script">loading the new build…</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-progress">0%</div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">PARALLAX <span class="slash">// showcase</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="github.html" class="active">GitHub Desktop</a>
+      <a href="lion.html">Marcus</a>
+      <a href="hope.html">Hope</a>
+    </div>
+  </nav>
+
+  <!-- Scrub section -->
+  <section class="scrub" id="scrub">
+    <div class="scrub-pin">
+      <canvas class="bg-canvas" aria-hidden="true"></canvas>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+
+      <div class="scene-stack">
+        <!-- Scene 1: Hero -->
+        <div class="scene" data-start="0.00" data-end="0.20" data-fade="0.30">
+          <div class="scene-inner">
+            <span class="kicker">— A New Chapter —</span>
+            <h1 class="huge">GitHub<br />Desktop</h1>
+            <p class="script">the new build. native. fast. yours.</p>
+          </div>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene align-left align-bottom" data-start="0.22" data-end="0.40">
+          <div class="scene-inner">
+            <span class="kicker">01 — Workflow</span>
+            <h2 class="huge smaller">Where<br />Code Lives.</h2>
+            <p class="script cream">branches, PRs, reviews — at your fingertips.</p>
+          </div>
+        </div>
+
+        <!-- Scene 3 -->
+        <div class="scene align-right align-top" data-start="0.42" data-end="0.60">
+          <div class="scene-inner">
+            <span class="kicker">02 — Performance</span>
+            <h2 class="huge smaller">Built<br />For Flow.</h2>
+            <p class="script">native speed. zero friction. all platforms.</p>
+          </div>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene align-left" data-start="0.62" data-end="0.80">
+          <div class="scene-inner">
+            <span class="kicker">03 — Intelligence</span>
+            <h2 class="huge smaller">Copilot<br />Inside.</h2>
+            <p class="script accent">an AI that finally ships with you.</p>
+          </div>
+        </div>
+
+        <!-- Scene 5: CTA (final frame) -->
+        <div class="scene" data-start="0.82" data-end="1.00" data-fade="0.18">
+          <div class="scene-inner">
+            <span class="kicker">— Now Available —</span>
+            <h2 class="huge smaller">Ready?</h2>
+            <p class="script">macOS · Windows · Linux.</p>
+            <div class="end-actions">
+              <a class="cta solid" href="https://desktop.github.com/" target="_blank" rel="noopener">Download for macOS</a>
+              <a class="cta" href="https://desktop.github.com/" target="_blank" rel="noopener">Windows</a>
+              <a class="cta" href="https://desktop.github.com/" target="_blank" rel="noopener">Linux</a>
+              <a class="cta" href="lion.html">Next: Marcus →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">SCROLL TO PLAY</div>
+      <div class="frame-counter">001 / 145</div>
+    </div>
+  </section>
+
+  <script src="parallax.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = new ParallaxPage({
+        folder: 'github',
+        frameCount: 145,
+        prefix: 'frame-',
+        // 145 frames is ~5× the old count, so widen the scroll budget so
+        // a full pass still feels like a deliberate journey, not a flick.
+        scrollBudget: 4200,
+      });
+      page.start();
+    });
+  </script>
+</body>
+</html>

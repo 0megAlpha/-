@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parallax Showcase — Two Stories, Scrolled Into Life</title>
+  <meta name="description" content="A scroll-driven parallax showcase: GitHub Desktop reimagined, and a moment with Marcus the white lion of the Negev." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="github/frame-073.jpg" />
+  <link rel="preload" as="image" href="lion/frame-088.jpg" />
+  <link rel="preload" as="image" href="hope/frame-121.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="hub-wrap">
+  <div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">PARALLAX <span class="slash">// showcase</span></a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Home</a>
+      <a href="github.html">GitHub Desktop</a>
+      <a href="lion.html">Marcus</a>
+      <a href="hope.html">Hope</a>
+    </div>
+  </nav>
+
+  <main class="hub-main">
+    <div class="hub-eyebrow">Three Stories · One Scroll</div>
+
+    <h1 class="hub-title">
+      Scroll<br />into the frame.
+      <span class="script">three short films, one page each.</span>
+    </h1>
+
+    <p class="hub-lead">
+      Each landing page below is a short AI-generated film, broken into hundreds of frames.
+      As you scroll, the frame moves with you — pause and it pauses, scroll back and time runs backwards.
+      Pick a story.
+    </p>
+
+    <div class="hub-cards">
+      <a href="github.html" class="hub-card github">
+        <div class="hub-card-bg" style="background-image: url('github/frame-073.jpg');"></div>
+        <span class="dot"></span>
+        <span class="hub-card-arrow">Enter →</span>
+        <div class="hub-card-content">
+          <span class="kicker">01 — Product</span>
+          <h2>GitHub<br />Desktop</h2>
+          <p class="script">the new build, told in one scroll.</p>
+        </div>
+      </a>
+
+      <a href="lion.html" class="hub-card lion">
+        <div class="hub-card-bg" style="background-image: url('lion/frame-088.jpg');"></div>
+        <span class="dot"></span>
+        <span class="hub-card-arrow">Enter →</span>
+        <div class="hub-card-content">
+          <span class="kicker">02 — Wild</span>
+          <h2>Meet<br />Marcus</h2>
+          <p class="script">a moment with the king of the Negev.</p>
+        </div>
+      </a>
+
+      <a href="hope.html" class="hub-card hope">
+        <div class="hub-card-bg" style="background-image: url('hope/frame-121.jpg');"></div>
+        <span class="dot"></span>
+        <span class="hub-card-arrow">Enter →</span>
+        <div class="hub-card-content">
+          <span class="kicker">03 — Speed</span>
+          <h2>Meet<br />Hope</h2>
+          <p class="script" style="color: var(--amber);">the fastest heart in the desert.</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>© Parallax Showcase</span>
+    <span class="script">scroll = time.</span>
+    <span>Built with Anton + Caveat</span>
+  </footer>
+</body>
+</html>

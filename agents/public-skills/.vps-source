@@ -1,0 +1,4 @@
+source=/opt/never-stop/backups/migration-core-20261005-021258/custom/openhands-brain/extensions/data/cache/skills/public-skills
+remote=https://github.com/OpenHands/extensions
+commit=75924ab2dd9b1efe7eecff6aaa8034cca099354e
+date=2026-11-03 14:08:58
