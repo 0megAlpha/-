@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Marcus — The White Lion of the Negev</title>
+  <meta name="description" content="A moment with Marcus, the white lion of Midbarium, Be'er Sheva. A scroll-driven short story." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Caveat:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="lion/frame-001.jpg" />
+  <link rel="preload" as="image" href="lion/frame-073.jpg" />
+  <link rel="preload" as="image" href="lion/frame-145.jpg" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="scroll-progress"><div class="scroll-progress-bar"></div></div>
+
+  <!-- Loader -->
+  <div class="loader" aria-live="polite">
+    <div class="loader-title">MARCUS</div>
+    <div class="loader-script">summoning the king of the Negev…</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-progress">0%</div>
+  </div>
+
+  <!-- Nav -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">PARALLAX <span class="slash">// showcase</span></a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="github.html">GitHub Desktop</a>
+      <a href="lion.html" class="active">Marcus</a>
+      <a href="hope.html">Hope</a>
+    </div>
+  </nav>
+
+  <!-- Scrub section -->
+  <section class="scrub" id="scrub">
+    <div class="scrub-pin">
+      <canvas class="bg-canvas" aria-hidden="true"></canvas>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+
+      <div class="scene-stack">
+        <!-- Scene 1: Hero -->
+        <div class="scene" data-start="0.00" data-end="0.20" data-fade="0.30">
+          <div class="scene-inner">
+            <span class="kicker">— A True Story —</span>
+            <h1 class="huge">Meet<br />Marcus.</h1>
+            <p class="script">the white lion of the Negev.</p>
+          </div>
+        </div>
+
+        <!-- Scene 2 -->
+        <div class="scene align-left align-bottom" data-start="0.22" data-end="0.40">
+          <div class="scene-inner">
+            <span class="kicker">Chapter 01</span>
+            <h2 class="huge smaller">Born<br />of the Desert.</h2>
+            <p class="script cream">a coat like snow over a land that burns.</p>
+          </div>
+        </div>
+
+        <!-- Scene 3 -->
+        <div class="scene align-right align-top" data-start="0.42" data-end="0.60">
+          <div class="scene-inner">
+            <span class="kicker">Chapter 02</span>
+            <h2 class="huge smaller">Midbarium.<br />Be'er Sheva.</h2>
+            <p class="script">where wilderness meets wonder.</p>
+          </div>
+        </div>
+
+        <!-- Scene 4 -->
+        <div class="scene align-left" data-start="0.62" data-end="0.80">
+          <div class="scene-inner">
+            <span class="kicker">Chapter 03</span>
+            <h2 class="huge smaller">I Crossed<br />the Fence.</h2>
+            <p class="script cream">and knelt with food in my hands.</p>
+          </div>
+        </div>
+
+        <!-- Scene 5: Final (CTA) -->
+        <div class="scene" data-start="0.82" data-end="1.00" data-fade="0.18">
+          <div class="scene-inner">
+            <span class="kicker">— The Last Frame —</span>
+            <h2 class="huge smaller">And the<br />King Ate.</h2>
+            <p class="script">a moment frozen in time.</p>
+            <div class="end-actions">
+              <a class="cta gold" href="https://www.midbarium.co.il/" target="_blank" rel="noopener">Visit Midbarium</a>
+              <a class="cta" href="https://maps.google.com/?q=Midbarium+Be%27er+Sheva" target="_blank" rel="noopener">Open in Maps</a>
+              <a class="cta" href="hope.html">Next: Hope →</a>
+              <a class="cta" href="index.html">← Back to showcase</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-hint">SCROLL TO ENTER</div>
+      <div class="frame-counter">001 / 145</div>
+    </div>
+  </section>
+
+  <script src="parallax.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const page = new ParallaxPage({
+        folder: 'lion',
+        frameCount: 145,
+        prefix: 'frame-',
+        scrollBudget: 4200,
+      });
+      page.start();
+    });
+  </script>
+</body>
+</html>

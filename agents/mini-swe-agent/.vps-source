@@ -1,0 +1,4 @@
+source=/root/.hermes/skills/harness-evolution/src/mini-swe-agent
+remote=https://github.com/SWE-agent/mini-swe-agent.git
+commit=04d809ceab9df28f9adaed044884180159172930
+date=2026-11-03 14:09:02
