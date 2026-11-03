@@ -1,0 +1,10 @@
+smart_approve:
+  always_allow: []
+  ask_before:
+  - edit
+  - extensionmanager__manage_extensions
+  - read_image
+  - shell
+  - todo__todo_write
+  - write
+  never_allow: []

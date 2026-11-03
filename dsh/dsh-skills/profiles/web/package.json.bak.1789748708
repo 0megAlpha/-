@@ -1,0 +1,50 @@
+{
+  "name": "dsh-profile-web",
+  "private": true,
+  "dependencies": {
+    "@howmp/dsh-pentest": "https://github.com/howmp/dsh-pentest/releases/latest/download/dsh-pentest.tar.gz",
+    "@yejiming/dsh-data-agent": "file:/tmp/dsh-data-agent.tgz",
+    "dsh-better-reasoning-effort": "^0.3.10",
+    "dsh-bridge": "0.1.0-rc.17",
+    "dsh-codex-subscription": "^2.1.0",
+    "dsh-cost-meter": "^1.7.27",
+    "dsh-deepseek-balance": "^0.1.0",
+    "dsh-hermes-memory": "^1.1.10",
+    "dsh-mcp-bridge": "^0.1.3",
+    "dsh-mmx-bridge": "^1.0.9",
+    "dsh-mobile-hanui": "^0.2.5",
+    "dsh-pentester": "^4.0.0",
+    "dsh-skill-studio": "^0.2.1",
+    "dsh-skills-marketplace": "^1.1.0",
+    "dsh-streaming-mcp-bridge": "^0.1.1",
+    "dsh-web-mobile-fix": "^1.0.6",
+    "upstream-radar": "^0.45.0"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "dsh-hermes-memory",
+        "dsh-better-reasoning-effort",
+        "dsh-bridge",
+        "dsh-codex-subscription",
+        "dsh-deepseek-balance",
+        "dsh-mcp-bridge",
+        "dsh-streaming-mcp-bridge",
+        "upstream-radar",
+        "@yejiming/dsh-data-agent",
+        "dsh-cost-meter",
+        "@howmp/dsh-pentest",
+        "dsh-kimicode-swarm",
+        "dsh-mmx-bridge",
+        "dsh-mobile-hanui",
+        "dsh-pentester",
+        "dsh-skill-studio",
+        "dsh-skills-marketplace",
+        "dsh-web-mobile-fix"
+      ],
+      "patchReload": "live"
+    }
+  }
+}

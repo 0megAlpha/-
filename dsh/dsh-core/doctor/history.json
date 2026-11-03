@@ -1,0 +1,29 @@
+[
+  {
+    "id": "d6bfa1ae-1a11-4ca1-afd9-cf047b1bff50",
+    "phase": "failed",
+    "startedAt": "2026-09-18T15:33:34.044Z",
+    "profile": "web",
+    "results": [
+      {
+        "actionId": "e8a79e2b-02d2-4f0d-9d95-d8853a46caee",
+        "ok": true,
+        "message": "Prepare Doctor recovery state"
+      }
+    ],
+    "checkpointId": "2026-09-18T15-33-34-045Z-40075885",
+    "verification": {
+      "structural": "failed",
+      "liveProbe": "not-requested",
+      "summary": {
+        "errors": 0,
+        "warnings": 3,
+        "info": 3
+      },
+      "blocking": 1,
+      "message": "1 blocking issue(s) remain."
+    },
+    "finishedAt": "2026-09-18T15:33:34.133Z",
+    "error": "verification failed; pre-repair checkpoint restored"
+  }
+]

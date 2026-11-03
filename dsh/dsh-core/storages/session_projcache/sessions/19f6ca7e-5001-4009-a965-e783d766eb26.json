@@ -1,0 +1,236 @@
+{
+  "version": 7,
+  "record": {
+    "identity": {
+      "formatVersion": 3,
+      "createdAt": 1792523503310,
+      "cwd": "/root/.lody/chats/5f328e4f-29ff-4b19-8208-74e93786d431",
+      "isSeeded": false,
+      "inheritedEventCount": 0
+    },
+    "rows": {
+      "title": {
+        "ver": 1,
+        "seq": 43,
+        "val": "Hey Use the available Lody"
+      },
+      "titleInput": {
+        "ver": 3,
+        "seq": 43,
+        "val": {
+          "first": {
+            "seq": 8,
+            "text": "Hey\n\nUse the available Lody MCP tools when relevant; rely on their tool descriptions for complete, current capabilities and usage guidance."
+          },
+          "count": 3,
+          "lastSeq": 30
+        }
+      },
+      "llmRetry": {
+        "ver": 1,
+        "seq": 43,
+        "val": {}
+      },
+      "sandboxMode": {
+        "ver": 1,
+        "seq": 43,
+        "val": "workspace-write"
+      },
+      "goal": {
+        "ver": 6,
+        "seq": 43,
+        "val": {
+          "current": null,
+          "seenGoalIds": [],
+          "failure": null
+        }
+      },
+      "plan": {
+        "ver": 3,
+        "seq": 43,
+        "val": {
+          "active": false,
+          "wanted": null,
+          "running": null,
+          "activeAtLastHeader": false
+        }
+      },
+      "tokenUsage": {
+        "ver": 2,
+        "seq": 43,
+        "val": {
+          "totals": {
+            "uncachedInputTokens": 41477,
+            "outputTokens": 2648,
+            "cacheReadTokens": 121728,
+            "cacheWriteTokens": 0
+          },
+          "last": {
+            "turn": 3,
+            "step": 3,
+            "buckets": {
+              "uncachedInputTokens": 661,
+              "outputTokens": 929,
+              "cacheReadTokens": 42112,
+              "cacheWriteTokens": 0
+            }
+          }
+        }
+      },
+      "contextPressure": {
+        "ver": 4,
+        "seq": 43,
+        "val": {
+          "surfaceTokens": 27164,
+          "contextWindow": 1000000,
+          "pressureTokens": 42773,
+          "sampledSurfaceTokens": 26101
+        }
+      },
+      "contextBreakdown": {
+        "ver": 4,
+        "seq": 43,
+        "val": {
+          "nodes": [
+            {
+              "seq": 7,
+              "heuristicTokens": 1229,
+              "system": true
+            },
+            {
+              "seq": 8,
+              "heuristicTokens": 43,
+              "system": false
+            },
+            {
+              "seq": 9,
+              "heuristicTokens": 721,
+              "system": false
+            },
+            {
+              "seq": 10,
+              "heuristicTokens": 132,
+              "system": false
+            },
+            {
+              "seq": 15,
+              "heuristicTokens": 149,
+              "system": false
+            },
+            {
+              "seq": 22,
+              "heuristicTokens": 8877,
+              "system": false
+            },
+            {
+              "seq": 23,
+              "heuristicTokens": 1202,
+              "system": false
+            },
+            {
+              "seq": 30,
+              "heuristicTokens": 46,
+              "system": false
+            },
+            {
+              "seq": 31,
+              "heuristicTokens": 94,
+              "system": false
+            },
+            {
+              "seq": 33,
+              "heuristicTokens": 12621,
+              "system": false
+            },
+            {
+              "seq": 36,
+              "heuristicTokens": 472,
+              "system": false
+            },
+            {
+              "seq": 38,
+              "heuristicTokens": 515,
+              "system": false
+            },
+            {
+              "seq": 41,
+              "heuristicTokens": 1063,
+              "system": false
+            }
+          ],
+          "breakdown": {
+            "systemTokens": 1229,
+            "toolsTokens": 17099,
+            "messageTokens": 25935
+          }
+        }
+      },
+      "todos": {
+        "ver": 2,
+        "seq": 43,
+        "val": null
+      },
+      "turnBoundary": {
+        "ver": 2,
+        "seq": 43,
+        "val": {
+          "openTurnStartSeq": null,
+          "lastStepStartSeq": 40,
+          "lastStepBoundary": {
+            "kind": "end",
+            "seq": 42
+          },
+          "lastTurn": 3
+        }
+      },
+      "agentPreset": {
+        "ver": 1,
+        "seq": 43,
+        "val": "standard"
+      },
+      "subagentCatalog": {
+        "ver": 2,
+        "seq": 43,
+        "val": {
+          "inheritedEventCount": 0
+        }
+      },
+      "subagentTiming": {
+        "ver": 2,
+        "seq": 43,
+        "val": {
+          "descriptorSeen": false,
+          "settledMs": 0
+        }
+      },
+      "subagent": {
+        "ver": 2,
+        "seq": 43,
+        "val": {}
+      },
+      "subagentModelSelectionPolicy": {
+        "ver": 1,
+        "seq": 43,
+        "val": null
+      },
+      "permissions": {
+        "ver": 2,
+        "seq": 43,
+        "val": {
+          "preset": "workspace-write",
+          "sandbox": "workspace-write",
+          "approval": "ask",
+          "seeded": false
+        }
+      },
+      "inbox": {
+        "ver": 1,
+        "seq": 43,
+        "val": {
+          "next-turn": [],
+          "next-step": []
+        }
+      }
+    }
+  }
+}

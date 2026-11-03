@@ -1,0 +1,185 @@
+{
+  "version": 7,
+  "record": {
+    "identity": {
+      "formatVersion": 3,
+      "createdAt": 1793383502684,
+      "cwd": "/root/.lody/chats/1b68abf4-9346-4377-b811-723abeed69d7",
+      "isSeeded": false,
+      "inheritedEventCount": 0
+    },
+    "rows": {
+      "title": {
+        "ver": 1,
+        "seq": 23,
+        "val": "你好 Use the available Lody"
+      },
+      "titleInput": {
+        "ver": 3,
+        "seq": 23,
+        "val": {
+          "first": {
+            "seq": 13,
+            "text": "你好\n\nUse the available Lody MCP tools when relevant; rely on their tool descriptions for complete, current capabilities and usage guidance."
+          },
+          "count": 1,
+          "lastSeq": 13
+        }
+      },
+      "llmRetry": {
+        "ver": 1,
+        "seq": 23,
+        "val": {}
+      },
+      "sandboxMode": {
+        "ver": 1,
+        "seq": 23,
+        "val": "danger-full-access"
+      },
+      "goal": {
+        "ver": 6,
+        "seq": 23,
+        "val": {
+          "current": null,
+          "seenGoalIds": [],
+          "failure": null
+        }
+      },
+      "plan": {
+        "ver": 3,
+        "seq": 23,
+        "val": {
+          "active": true,
+          "wanted": null,
+          "running": null,
+          "activeAtLastHeader": true
+        }
+      },
+      "tokenUsage": {
+        "ver": 2,
+        "seq": 23,
+        "val": {
+          "totals": {
+            "uncachedInputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          },
+          "last": null
+        }
+      },
+      "contextPressure": {
+        "ver": 4,
+        "seq": 23,
+        "val": {
+          "surfaceTokens": 7549,
+          "contextWindow": 1000000
+        }
+      },
+      "contextBreakdown": {
+        "ver": 4,
+        "seq": 23,
+        "val": {
+          "nodes": [
+            {
+              "seq": 12,
+              "heuristicTokens": 1688,
+              "system": true
+            },
+            {
+              "seq": 13,
+              "heuristicTokens": 43,
+              "system": false
+            },
+            {
+              "seq": 14,
+              "heuristicTokens": 721,
+              "system": false
+            },
+            {
+              "seq": 15,
+              "heuristicTokens": 106,
+              "system": false
+            },
+            {
+              "seq": 16,
+              "heuristicTokens": 4991,
+              "system": false
+            }
+          ],
+          "breakdown": {
+            "systemTokens": 1688,
+            "toolsTokens": 17229,
+            "messageTokens": 5861
+          }
+        }
+      },
+      "todos": {
+        "ver": 2,
+        "seq": 23,
+        "val": null
+      },
+      "turnBoundary": {
+        "ver": 2,
+        "seq": 23,
+        "val": {
+          "openTurnStartSeq": null,
+          "lastStepStartSeq": 11,
+          "lastStepBoundary": {
+            "kind": "end",
+            "seq": 22
+          },
+          "lastTurn": 1
+        }
+      },
+      "agentPreset": {
+        "ver": 1,
+        "seq": 23,
+        "val": "data-agent"
+      },
+      "subagentCatalog": {
+        "ver": 2,
+        "seq": 23,
+        "val": {
+          "inheritedEventCount": 0
+        }
+      },
+      "subagentTiming": {
+        "ver": 2,
+        "seq": 23,
+        "val": {
+          "descriptorSeen": false,
+          "settledMs": 0
+        }
+      },
+      "subagent": {
+        "ver": 2,
+        "seq": 23,
+        "val": {}
+      },
+      "subagentModelSelectionPolicy": {
+        "ver": 1,
+        "seq": 23,
+        "val": null
+      },
+      "permissions": {
+        "ver": 2,
+        "seq": 23,
+        "val": {
+          "preset": "danger-full-access",
+          "sandbox": "danger-full-access",
+          "approval": "never",
+          "seeded": false
+        }
+      },
+      "inbox": {
+        "ver": 1,
+        "seq": 23,
+        "val": {
+          "next-turn": [],
+          "next-step": []
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "updatedAt": 1790966269966,
+  "userId": null,
+  "flagsPayload": {
+    "featureFlags": {
+      "ext-cline-pass": true,
+      "code-onboarding-github": false,
+      "code-cloud-agents": false
+    },
+    "featureFlagPayloads": {}
+  }
+}

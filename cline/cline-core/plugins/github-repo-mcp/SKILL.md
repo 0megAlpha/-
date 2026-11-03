@@ -1,0 +1,1 @@
+skill: github-repo-mcp

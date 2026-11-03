@@ -1,0 +1,1 @@
+skill: autogen-docs-readme

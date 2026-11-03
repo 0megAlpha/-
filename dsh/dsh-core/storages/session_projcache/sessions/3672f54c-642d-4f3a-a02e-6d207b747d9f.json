@@ -1,0 +1,396 @@
+{
+  "version": 7,
+  "record": {
+    "identity": {
+      "formatVersion": 3,
+      "createdAt": 1792426531108,
+      "cwd": "/root/ai-agent-stack",
+      "isSeeded": false,
+      "inheritedEventCount": 0
+    },
+    "rows": {
+      "title": {
+        "ver": 1,
+        "seq": 154,
+        "val": "Greeting and MCP tools introduction"
+      },
+      "titleInput": {
+        "ver": 3,
+        "seq": 154,
+        "val": {
+          "first": {
+            "seq": 11,
+            "text": "Hi\n\nUse the available Lody MCP tools when relevant; rely on their tool descriptions for complete, current capabilities and usage guidance."
+          },
+          "count": 12,
+          "lastSeq": 151
+        }
+      },
+      "llmRetry": {
+        "ver": 1,
+        "seq": 154,
+        "val": {}
+      },
+      "sandboxMode": {
+        "ver": 1,
+        "seq": 154,
+        "val": "danger-full-access"
+      },
+      "goal": {
+        "ver": 6,
+        "seq": 154,
+        "val": {
+          "current": null,
+          "seenGoalIds": [],
+          "failure": null
+        }
+      },
+      "plan": {
+        "ver": 3,
+        "seq": 154,
+        "val": {
+          "active": false,
+          "wanted": null,
+          "running": null,
+          "activeAtLastHeader": false
+        }
+      },
+      "tokenUsage": {
+        "ver": 2,
+        "seq": 154,
+        "val": {
+          "totals": {
+            "uncachedInputTokens": 657347,
+            "outputTokens": 10545,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          },
+          "last": {
+            "turn": 12,
+            "step": 1,
+            "buckets": {
+              "uncachedInputTokens": 41953,
+              "outputTokens": 381,
+              "cacheReadTokens": 0,
+              "cacheWriteTokens": 0
+            }
+          }
+        }
+      },
+      "contextPressure": {
+        "ver": 4,
+        "seq": 154,
+        "val": {
+          "surfaceTokens": 12982,
+          "contextWindow": 1000000,
+          "pressureTokens": 41953,
+          "sampledSurfaceTokens": 12865
+        }
+      },
+      "contextBreakdown": {
+        "ver": 4,
+        "seq": 154,
+        "val": {
+          "nodes": [
+            {
+              "seq": 10,
+              "heuristicTokens": 1223,
+              "system": true
+            },
+            {
+              "seq": 11,
+              "heuristicTokens": 43,
+              "system": false
+            },
+            {
+              "seq": 12,
+              "heuristicTokens": 721,
+              "system": false
+            },
+            {
+              "seq": 13,
+              "heuristicTokens": 106,
+              "system": false
+            },
+            {
+              "seq": 19,
+              "heuristicTokens": 65,
+              "system": false
+            },
+            {
+              "seq": 26,
+              "heuristicTokens": 18,
+              "system": false
+            },
+            {
+              "seq": 27,
+              "heuristicTokens": 43,
+              "system": false
+            },
+            {
+              "seq": 29,
+              "heuristicTokens": 699,
+              "system": false
+            },
+            {
+              "seq": 32,
+              "heuristicTokens": 113,
+              "system": false
+            },
+            {
+              "seq": 39,
+              "heuristicTokens": 11,
+              "system": false
+            },
+            {
+              "seq": 40,
+              "heuristicTokens": 38,
+              "system": false
+            },
+            {
+              "seq": 42,
+              "heuristicTokens": 64,
+              "system": false
+            },
+            {
+              "seq": 45,
+              "heuristicTokens": 40,
+              "system": false
+            },
+            {
+              "seq": 52,
+              "heuristicTokens": 16,
+              "system": false
+            },
+            {
+              "seq": 53,
+              "heuristicTokens": 111,
+              "system": false
+            },
+            {
+              "seq": 60,
+              "heuristicTokens": 23,
+              "system": false
+            },
+            {
+              "seq": 61,
+              "heuristicTokens": 195,
+              "system": false
+            },
+            {
+              "seq": 68,
+              "heuristicTokens": 15,
+              "system": false
+            },
+            {
+              "seq": 69,
+              "heuristicTokens": 63,
+              "system": false
+            },
+            {
+              "seq": 71,
+              "heuristicTokens": 1970,
+              "system": false
+            },
+            {
+              "seq": 74,
+              "heuristicTokens": 407,
+              "system": false
+            },
+            {
+              "seq": 81,
+              "heuristicTokens": 20,
+              "system": false
+            },
+            {
+              "seq": 82,
+              "heuristicTokens": 163,
+              "system": false
+            },
+            {
+              "seq": 89,
+              "heuristicTokens": 137,
+              "system": false
+            },
+            {
+              "seq": 90,
+              "heuristicTokens": 383,
+              "system": false
+            },
+            {
+              "seq": 97,
+              "heuristicTokens": 66,
+              "system": false
+            },
+            {
+              "seq": 98,
+              "heuristicTokens": 295,
+              "system": false
+            },
+            {
+              "seq": 105,
+              "heuristicTokens": 20,
+              "system": false
+            },
+            {
+              "seq": 106,
+              "heuristicTokens": 1248,
+              "system": false
+            },
+            {
+              "seq": 108,
+              "heuristicTokens": 34,
+              "system": false
+            },
+            {
+              "seq": 111,
+              "heuristicTokens": 45,
+              "system": false
+            },
+            {
+              "seq": 113,
+              "heuristicTokens": 2086,
+              "system": false
+            },
+            {
+              "seq": 116,
+              "heuristicTokens": 39,
+              "system": false
+            },
+            {
+              "seq": 118,
+              "heuristicTokens": 1130,
+              "system": false
+            },
+            {
+              "seq": 121,
+              "heuristicTokens": 352,
+              "system": false
+            },
+            {
+              "seq": 128,
+              "heuristicTokens": 20,
+              "system": false
+            },
+            {
+              "seq": 129,
+              "heuristicTokens": 144,
+              "system": false
+            },
+            {
+              "seq": 131,
+              "heuristicTokens": 113,
+              "system": false
+            },
+            {
+              "seq": 134,
+              "heuristicTokens": 45,
+              "system": false
+            },
+            {
+              "seq": 136,
+              "heuristicTokens": 22,
+              "system": false
+            },
+            {
+              "seq": 139,
+              "heuristicTokens": 37,
+              "system": false
+            },
+            {
+              "seq": 141,
+              "heuristicTokens": 180,
+              "system": false
+            },
+            {
+              "seq": 144,
+              "heuristicTokens": 190,
+              "system": false
+            },
+            {
+              "seq": 151,
+              "heuristicTokens": 112,
+              "system": false
+            },
+            {
+              "seq": 152,
+              "heuristicTokens": 117,
+              "system": false
+            }
+          ],
+          "breakdown": {
+            "systemTokens": 1223,
+            "toolsTokens": 17099,
+            "messageTokens": 11759
+          }
+        }
+      },
+      "todos": {
+        "ver": 2,
+        "seq": 154,
+        "val": null
+      },
+      "turnBoundary": {
+        "ver": 2,
+        "seq": 154,
+        "val": {
+          "openTurnStartSeq": null,
+          "lastStepStartSeq": 150,
+          "lastStepBoundary": {
+            "kind": "end",
+            "seq": 153
+          },
+          "lastTurn": 12
+        }
+      },
+      "agentPreset": {
+        "ver": 1,
+        "seq": 154,
+        "val": "standard"
+      },
+      "subagentCatalog": {
+        "ver": 2,
+        "seq": 154,
+        "val": {
+          "inheritedEventCount": 0
+        }
+      },
+      "subagentTiming": {
+        "ver": 2,
+        "seq": 154,
+        "val": {
+          "descriptorSeen": false,
+          "settledMs": 0
+        }
+      },
+      "subagent": {
+        "ver": 2,
+        "seq": 154,
+        "val": {}
+      },
+      "subagentModelSelectionPolicy": {
+        "ver": 1,
+        "seq": 154,
+        "val": null
+      },
+      "permissions": {
+        "ver": 2,
+        "seq": 154,
+        "val": {
+          "preset": "danger-full-access",
+          "sandbox": "danger-full-access",
+          "approval": "never",
+          "seeded": false
+        }
+      },
+      "inbox": {
+        "ver": 1,
+        "seq": 154,
+        "val": {
+          "next-turn": [],
+          "next-step": []
+        }
+      }
+    }
+  }
+}
