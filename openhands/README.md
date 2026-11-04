@@ -1,12 +1,14 @@
 # openhands
-最後更新：2026-11-04 08:15:26
-模組數量：15
+最後更新：2026-11-04 08:59:30
+模組數量：17
 
 ## 模組清單
 - core
 - extensions
 - open-hands
 - open-hands-workspace
+- openhands-backups
+- openhands-canary
 - openhands-cloud
 - openhands-config
 - openhands-core
