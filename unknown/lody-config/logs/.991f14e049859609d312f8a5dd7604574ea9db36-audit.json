@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/root/.lody/logs/.991f14e049859609d312f8a5dd7604574ea9db36-audit.json",
+    "files": [
+        {
+            "date": 1790784103715,
+            "name": "/root/.lody/logs/mcp-http-2026-10-01.log",
+            "hash": "2518203650fedf3c09f390620a105d230164a5e2721332bfc765a64b452d5128"
+        },
+        {
+            "date": 1790957900713,
+            "name": "/root/.lody/logs/mcp-http-2026-10-03.log",
+            "hash": "fbf406970c38d7360fd772050f7e80bf6d3bebace9e6cae7567085f18e65bf1b"
+        },
+        {
+            "date": 1791174121212,
+            "name": "/root/.lody/logs/mcp-http-2026-10-05.log",
+            "hash": "c0b63e9200f734e704127d6bf67b28bc9e4752fb7fadee2f20706ad8e849b2a6"
+        }
+    ],
+    "hashType": "sha256"
+}

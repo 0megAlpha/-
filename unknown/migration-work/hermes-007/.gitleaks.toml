@@ -1,0 +1,13 @@
+title = "Hermes portable package: precise public OAuth false-positive allowlist"
+
+[[allowlists]]
+description = "Public OAuth client identifiers and source-level API-key variable labels; these are not credential values"
+regexTarget = "secret"
+regexes = [
+  '''78257093-7e40-4613-99e0-527b14b39113''',
+  '''b1a00492-073a-47ea-816f-4c329264a828''',
+  '''f0304373b74a44d2b584a3fb70ca9e56''',
+  '''Iv1\.b507a08c87ecfe98''',
+  '''self\.api_key''',
+  '''ELEVENLABS_API_KEY''',
+]

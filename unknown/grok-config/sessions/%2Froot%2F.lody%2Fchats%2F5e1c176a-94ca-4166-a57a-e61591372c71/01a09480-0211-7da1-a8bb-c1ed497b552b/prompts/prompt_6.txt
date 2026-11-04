@@ -1,0 +1,5249 @@
+<user_query>
+【最高優先級總任務 — 不得偏離】
+
+你現在不要再只做唯讀盤點，也不要只給建議。
+請把這台 greencloud-ai VPS 實際整理、修復、安裝、部署、驗證、版本化，最後把乾淨且安全的內容推送回正確 GitHub repositories，再從 repositories 拉回驗證，形成真正可持續維護的 source-of-truth。
+
+==============================
+一、最重要的 Repository 分工
+==============================
+
+【1. OpenHands】
+GitHub：
+xh09411-web/open-hands
+
+用途：
+OpenHands = Coding / Software Engineering Agent Runtime。
+負責實際執行 coding、修改程式碼、測試、Debug、Software Engineering、部署等工作。
+
+要求：
+- OpenHands 本身的修改只推送到 xh09411-web/open-hands。
+- 不得把 OpenHands 整個專案塞進 AI-Agent-Skill。
+- OpenHands 必須能使用 AI-Agent-Skill 提供的可重用 Skills / 能力。
+- 保持 OpenHands 與 AI-Agent-Skill 的依賴關係清楚。
+- 先盤點目前本機 /root/open-hands 與 /root/openhands 的差異、remote、branch、history、working tree，再決定哪一份是真正使用中的 source。
+- 不得因為存在兩份 repo 就直接刪除任何一份。
+
+【2. 007-Hermes】
+GitHub：
+xh09411-web/hermes-007
+
+用途：
+007-Hermes = Agent Runtime / Memory / Learning / Tools / Skills 能力層。
+負責 Agent 的記憶、學習、工具整合與能力支援。
+
+要求：
+- Hermes 的修改只推送到 xh09411-web/hermes-007。
+- 不得把 Hermes 整個專案塞進 AI-Agent-Skill。
+- Hermes 必須能使用 AI-Agent-Skill 提供的可重用 Skills / 能力。
+- 保持 Hermes 與 AI-Agent-Skill 的依賴關係清楚。
+- 不得破壞目前正常 Hermes Gateway。
+
+【3. AI-Agent-Skill】
+GitHub：
+xh09411-web/Ai-Agent-Skill
+
+用途：
+AI-Agent-Skill = 共用、可重用、可版本化的 Agent Skills / Packages / Capability Library。
+
+這是共用能力層。
+
+要求：
+- 所有真正屬於「共用 Agent Skill、Skill package、工具能力、可重用能力、相關文件、安裝/部署腳本」的乾淨內容，整理後推送到這個 repository。
+- OpenHands 與 007-Hermes 可以依賴 / 使用這個 repository 的 Skills。
+- 不得把 OpenHands、Hermes、Ghost-Goat 整個專案搬進來。
+- 不得刪除 AI-Agent-Skill 現有任何部署、Skill、套件、腳本、資料。
+- 在任何修改前，先完整盤點 AI-Agent-Skill 現有內容。
+- 先把盤點結果記錄下來。
+- 任何疑似舊部署、未知用途、看似多餘的東西，一律先保留，不准直接刪除。
+
+【4. Ghost-Goat】
+GitHub：
+xh09411-web/Ghost-Goat
+
+用途：
+Ghost-Goat = Ghost / Red-Team / Adaptive Testing / Failure Analysis / Evolution / Evaluation Framework。
+
+要求：
+- Ghost-Goat 永遠保持獨立。
+- 不得併入 OpenHands、007-Hermes、AI-Agent-Skill。
+- 不得把 Ghost-Goat 的核心程式碼混入其他 repository。
+- 如果發現 Ghost-Goat 相關內容，只做正確 repository mapping 與盤點。
+
+==============================
+二、GitHub 更新與隱私安全
+==============================
+
+所有 repository 操作前：
+
+1. 檢查：
+- git remote
+- branch
+- upstream
+- working tree
+- commit history
+- tags
+- untracked files
+- large files
+- submodules
+- GitHub repository 對應關係
+
+2. 使用 Gitleaks 掃描：
+- working tree
+- staged content
+- Git history
+
+必要時搭配 Trivy / Semgrep / OSV-Scanner。
+
+3. 以下絕對禁止 push：
+- API keys
+- access tokens
+- OAuth tokens
+- passwords
+- private keys
+- SSH keys
+- certificates containing private material
+- .env
+- secrets files
+- credentials
+- cookies
+- session tokens
+- webhook secrets
+- database credentials
+- internal authentication material
+- 任何真實敏感 IP / infrastructure secret（若不屬於公開文件）
+- Open WebUI credentials/database
+- Hermes auth material
+- Lody credentials
+- Cline credentials
+- provider credentials
+
+如果發現敏感資訊：
+- 不要輸出內容
+- 不要複製到新的 repository
+- 不要 commit
+- 不要 push
+- 只回報「發現敏感檔案 / 路徑」，不要顯示 secret 本身。
+- 必要時建立 .gitignore / secret exclusion。
+- 如果歷史 commit 已含 secret，不要自行破壞 history；先建立安全處理方案並回報。
+
+GitHub 更新要求：
+
+【OpenHands】
+只把 OpenHands 自己應該保存的乾淨程式碼 / 文件 / config / deployment code 推送到：
+xh09411-web/open-hands
+
+【Hermes】
+只把 Hermes 自己應該保存的乾淨程式碼 / 文件 / config / deployment code 推送到：
+xh09411-web/hermes-007
+
+【AI-Agent-Skill】
+只把共用 Skills / packages / capability / safe scripts / documents 推送到：
+xh09411-web/Ai-Agent-Skill
+
+【Ghost-Goat】
+不要因本任務而混入其他 repository。
+
+上游 / 原作者隱私要求：
+
+我的目標不是把私有 VPS 狀態暴露給原作者。
+如果需要讓 upstream 收到乾淨的 Skill / package 更新：
+
+- 只提交乾淨、可公開、與上游有關的內容。
+- 不提交我的 VPS 部署資料。
+- 不提交我的 API key / token / IP / credentials。
+- 不提交我的私有 infrastructure config。
+- 不提交我的私人 logs。
+- 不提交 Open WebUI database。
+- 不提交 Hermes / Lody authentication。
+- 不提交內部主機資訊。
+
+如果 repository 是 fork：
+- 可以使用乾淨 branch / commit / PR 提供可公開更新。
+- 不得假裝能讓 GitHub upstream「完全不知道有更新」。
+- 實際目標是：上游只能看到安全、乾淨、可公開的 Skill / package 更新，不看到我的私有部署內容。
+
+==============================
+三、AI-Agent-Skill：先盤點，絕對不要刪
+==============================
+
+完整盤點：
+- 所有 directories
+- Skills
+- packages
+- scripts
+- deployment files
+- configuration
+- documentation
+- integrations
+- dependencies
+- existing deployment artifacts
+- Git history
+- branches
+- remote
+- current working tree
+
+建立清楚的 inventory。
+
+任何「看起來沒用」的內容：
+- 不刪
+- 不移
+- 不覆蓋
+
+先標記：
+UNKNOWN / LEGACY / ACTIVE / DEPLOYED / DUPLICATE / REQUIRED
+
+最後把完整盤點結果回報給我。
+
+==============================
+四、安裝與能力層
+==============================
+
+不要只盤點。
+
+凡是本架構真正需要、目前 VPS 又缺少的：
+- package
+- CLI
+- runtime
+- MCP
+- Skill
+- dependency
+- development tool
+- security tool
+- deployment tool
+
+在安全確認後直接安裝。
+
+原則：
+
+- 已安裝且正常 → 不重裝。
+- 已安裝但損壞 → 修復。
+- 缺少且真正需要 → 安裝。
+- 不必要 → 不安裝。
+- 不為了湊數安裝 Agent。
+- 不安裝本機 LLM。
+- 模型目前使用 API。
+- 官方來源優先。
+- 不繞過簽章、安全驗證或供應鏈保護。
+
+確認並整合：
+
+AI Coding：
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+MCP：
+- filesystem
+- git
+- fetch
+- sequential-thinking
+- playwright
+- context7
+- github
+
+Development：
+- Git
+- GitHub CLI
+- Docker
+- Node.js / npm
+- Python / uv
+
+Security：
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+
+Platform：
+- OpenHands
+- Hermes
+- Open WebUI
+- Lody
+- Tailscale
+
+Skills：
+- 盤點目前已有 Skills
+- 確認實際可用
+- 補真正缺少且有價值的 coding / DevOps / testing / security / GitHub / deployment Skills
+- 不重複安裝
+- 不刪除既有有效 Skills
+
+==============================
+五、Cline
+==============================
+
+保留目前：
+
+Cline 3.0.61
+NVIDIA Provider
+DeepSeek V4 Pro 0813
+Extra High reasoning
+
+不要自行換 provider。
+
+Cline = Controller。
+
+架構：
+
+Lody
+ ↓
+Cline Controller
+ ↓
+MCP / VPS / GitHub
+ ↓
+OpenCode / Codex / Aider / 其他 Coding Executor
+ ↓
+Test / Security / Deployment / Validation
+
+Cline 不得被硬綁死成唯一 Coding Executor。
+
+==============================
+六、OpenHands 修復與部署
+==============================
+
+目前已確認：
+- OpenHands 實際沒有正常運行。
+- watchdog 指向不存在的 container。
+- 8000 / 8001 / 8010 等相關 routing 必須重新確認。
+- 存在 /root/open-hands 與 /root/openhands 兩份 repository。
+- caddy-openhands.service 與 agent-plane-caddy 存在衝突。
+
+要求：
+
+1. 先確認真正應使用的 OpenHands repository。
+2. 不刪任何一份。
+3. 建立 backup / rollback point。
+4. 修復真正應該使用的部署。
+5. 修復 watchdog。
+6. 解決 Caddy routing conflict。
+7. 不破壞 agent-plane-caddy。
+8. 不破壞 Tailscale。
+9. 不破壞 Lody。
+10. OpenHands 必須實際啟動。
+11. 實際測試 API / UI / coding execution。
+12. 確認 OpenHands 能使用 AI-Agent-Skill。
+
+==============================
+七、007-Hermes
+==============================
+
+保持目前 Hermes Gateway 正常。
+
+修復：
+- systemd drop-in 語法問題
+- 任何真正影響可靠性的問題
+
+驗證：
+- service active
+- API /health
+- restart recovery
+- 與 AI-Agent-Skill 的能力整合
+
+不要破壞 Hermes。
+
+==============================
+八、LiteLLM
+==============================
+
+目前 LiteLLM 已知：
+- systemd broken
+- /root/ai-company/.venv 不存在
+- status=203/EXEC
+- 4000 沒有 listener
+
+先判斷實際架構是否需要 LiteLLM。
+
+如果需要：
+- 安全重建必要 runtime
+- 修復 service
+- 驗證 API
+
+如果目前架構不需要：
+- 停止無限 crash-loop
+- 保留設定與資料
+- 不直接刪 litellm-pg
+- 不刪資料
+
+不要為了修而修。
+
+==============================
+九、Open WebUI
+==============================
+
+Open WebUI 必須保留。
+
+完成：
+- package / image / dependency 狀態確認
+- 更新到合理、穩定版本
+- 保留 data volume
+- 保留使用者資料
+- 保留設定
+- 更新後驗證
+- 不暴露 credentials
+- 不把 database 推到 GitHub
+
+確認：
+Open WebUI 可以作為 general AI / model gateway。
+
+不要讓 Open WebUI 取代 Lody。
+
+==============================
+十、Conduit
+==============================
+
+最終架構：
+
+iPhone
+ ↓
+Conduit
+ ↓
+Open WebUI / Hermes / API
+ ↓
+AI services
+
+另一條：
+
+iPhone
+ ↓
+Lody
+ ↓
+Cline Controller
+ ↓
+Coding Executors
+ ↓
+VPS / GitHub
+
+Conduit 的目標是讓我不用再手動搬 SSH 指令與輸出。
+
+確認必要 endpoints、Tailscale、reverse proxy、authentication。
+
+==============================
+十一、Port / Network 安全
+==============================
+
+不要「看到 Port 就關」。
+
+先完整盤點：
+- listening ports
+- Docker published ports
+- systemd services
+- reverse proxy routes
+- Tailscale Serve
+- localhost-only services
+- LAN-only services
+- public-facing services
+
+每個 port 分類：
+
+PUBLIC_REQUIRED
+TAILSCALE_REQUIRED
+LAN_REQUIRED
+LOCALHOST_ONLY
+INTERNAL_DOCKER
+UNUSED
+DANGEROUS / UNNECESSARY
+
+只有在確認：
+- 沒有 service dependency
+- 沒有 Caddy dependency
+- 沒有 Docker dependency
+- 沒有 Lody dependency
+- 沒有 Conduit dependency
+- 沒有 Open WebUI dependency
+- 沒有 Hermes dependency
+- 沒有 OpenHands dependency
+- 沒有 SSH/Tailscale dependency
+
+之後才關閉 UNUSED / DANGEROUS ports。
+
+絕對不要關：
+- SSH 正在使用的入口
+- Tailscale
+- Lody 必要 endpoint
+- Conduit 必要 endpoint
+- Open WebUI 必要 endpoint
+- Hermes 必要 endpoint
+- agent-plane-caddy 必要 listener
+
+每次關閉前建立 rollback。
+
+關閉後驗證：
+- SSH
+- Tailscale
+- Lody
+- Cline
+- Hermes
+- Open WebUI
+- OpenHands
+- Conduit
+
+==============================
+十二、系統雜物整理
+==============================
+
+先盤點：
+- old containers
+- unused images
+- dead systemd services
+- crash-loop services
+- stale backups
+- duplicate configs
+- old logs
+- temporary files
+- old deployment artifacts
+
+但是：
+
+【不要直接刪除。】
+
+先分類：
+KEEP
+ACTIVE
+LEGACY
+SAFE_TO_REMOVE
+UNKNOWN
+
+所有 UNKNOWN 一律保留。
+
+如果有可以安全清理的項目：
+- 先建立 rollback / backup
+- 清理前列出清單
+- 清理後驗證
+
+如果刪除可能影響現有部署，停止並回報。
+
+==============================
+十三、Deployment / Rollback
+==============================
+
+所有重大修改：
+
+backup
+ ↓
+change
+ ↓
+test
+ ↓
+validate
+ ↓
+commit
+ ↓
+push
+ ↓
+fresh pull / checkout
+ ↓
+re-test
+
+必須建立 rollback point。
+
+不要在沒有 backup 的情況下做破壞性修改。
+
+==============================
+十四、Git Push 前後流程
+==============================
+
+每個 repository 分別處理。
+
+OpenHands：
+本機 OpenHands
+→ 整理
+→ secrets scan
+→ commit
+→ push
+→ 從 xh09411-web/open-hands 拉回
+→ 驗證
+
+Hermes：
+本機 Hermes
+→ 整理
+→ secrets scan
+→ commit
+→ push
+→ 從 xh09411-web/hermes-007 拉回
+→ 驗證
+
+AI-Agent-Skill：
+現有 AI-Agent-Skill
+→ 完整盤點
+→ 不刪任何現有部署
+→ 加入新的共用 Skills / packages / safe deployment scripts
+→ secrets scan
+→ commit
+→ push
+→ fresh pull
+→ 驗證
+
+Ghost-Goat：
+保持獨立，不因本任務混入。
+
+==============================
+十五、最終功能驗證
+==============================
+
+實際執行，不只看設定檔。
+
+必須驗證：
+
+1. Cline → NVIDIA → DeepSeek V4 Pro 0813
+2. Cline MCP
+3. Cline filesystem
+4. Cline Git
+5. Cline GitHub
+6. Cline Playwright
+7. Cline Context7
+8. Cline Sequential Thinking
+9. OpenHands
+10. OpenHands 使用 AI-Agent-Skill
+11. Hermes
+12. Hermes 使用 AI-Agent-Skill
+13. Open WebUI
+14. Conduit
+15. Lody
+16. Tailscale
+17. SSH
+18. GitHub
+19. Gitleaks
+20. Semgrep
+21. OSV-Scanner
+22. Trivy
+23. Docker
+24. persistent execution
+25. restart recovery
+
+至少完成一次真正的：
+
+Controller
+→ inspect
+→ code
+→ test
+→ security scan
+→ git status
+→ commit
+→ validation
+
+工作流。
+
+==============================
+十六、Project State
+==============================
+
+建立：
+
+/root/agent-platform/PROJECT_STATE.md
+
+包含：
+
+- Architecture
+- Repository mapping
+- OpenHands
+- Hermes
+- AI-Agent-Skill
+- Ghost-Goat
+- Agents
+- MCP
+- Skills
+- Installed packages
+- Services
+- Ports
+- Tailscale
+- Open WebUI
+- Conduit
+- GitHub state
+- Security state
+- Deployment state
+- Validation results
+- Rollback points
+- Known issues
+- External credentials required
+- Execution log
+- Audit log
+
+==============================
+十七、最終回報
+==============================
+
+完成後不要只說「完成」。
+
+請給我：
+
+【A】已修復
+【B】已安裝
+【C】已部署
+【D】已驗證
+【E】已推送到 OpenHands repo
+【F】已推送到 Hermes repo
+【G】已推送到 AI-Agent-Skill repo
+【H】Ghost-Goat 狀態
+【I】哪些 AI-Agent-Skill 原有部署被保留
+【J】AI-Agent-Skill 完整盤點
+【K】哪些 ports 關閉
+【L】哪些 ports 保留以及原因
+【M】哪些雜物可以整理但尚未刪除
+【N】哪些敏感資訊被排除
+【O】哪些項目因需要外部帳號/API key 才能完成
+【P】所有 rollback points
+【Q】最後如何從 iPhone / Conduit / Lody 使用
+
+最重要：
+
+不要因為任務很大而退回「只做盤點」。
+
+可以安全執行的就直接執行。
+需要外部授權才停。
+有風險就先 backup。
+不確定就保留，不刪除。
+敏感資訊不 push。
+三個核心 repository 分開維護。
+Ghost-Goat 永遠獨立。
+
+最終目標不是報告，而是：
+
+【一套已安裝、已修復、已部署、已驗證、可持續更新、可從 iPhone 控制的 AI Agent 開發環境。】
+
+==============================
+十八、預定安裝 / 能力清單
+==============================
+
+以下是最後要檢查並安裝/啟用的能力清單。
+已有且正常的不重裝。
+
+Coding / Agent：
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+MCP：
+- filesystem
+- git
+- fetch
+- sequential-thinking
+- playwright
+- context7
+- github
+
+Development：
+- Git
+- GitHub CLI
+- Docker
+- Node.js
+- npm
+- Python
+- uv
+
+Security：
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+
+Platform：
+- OpenHands
+- 007-Hermes
+- Open WebUI
+- Lody
+- Tailscale
+
+Skills：
+- 現有 AI-Agent-Skill 全部保留
+- 現有 38 個已安裝 Skills 全部先盤點
+- 補充真正缺少的 coding / DevOps / GitHub / testing / security / deployment / agent-orchestration Skills
+- 不重複
+- 不亂裝
+- 不刪除現有部署
+
+最後再做一次：
+
+Gitleaks
+→ Git diff
+→ Git status
+→ repository mapping
+→ push safety check
+→ push
+→ fresh pull
+→ deployment validation
+
+完成後才宣布整體任務完成。
+
+總目標：
+把 greencloud-ai 建成可長期運作的 AI Agent 軟體開發工作環境，讓我最後可以從 iPhone 的 Conduit / Open WebUI 使用它，而不需要人工在 SSH 與 AI 之間搬運指令。
+
+執行原則：
+1. 先保護現有正常服務與設定，任何修改前建立可回滾備份。
+2. 不要刪除專案、資料庫、Git history、API credentials 或現有 Agent。
+3. 不要修改或重裝 Lody；Lody 是控制平面。
+4. 不要破壞 SSH、Tailscale、Nginx、agent-plane-caddy、Hermes 或目前已正常運作的服務。
+5. 不要繞過任何安全驗證，不使用非官方 binary。
+6. Ghost-Goat 必須保持獨立，不能把它併入 OpenHands、Hermes 或 AI-Agent-Skill。
+7. GitHub 是長期 source of truth；任何要 push 的內容先檢查 remote、branch、working tree、secret、history，再決定。
+8. 不要把 API key、token、password、private key 輸出到報告或 commit。
+9. 能自動完成的事情直接完成，不要每一步都停下來問我。
+10. 如果某項真的需要我提供外部 API key / 帳號授權，才停下來告訴我。
+
+請依照以下順序實際執行：
+
+PHASE 1 — 建立可回滾狀態
+- 備份即將修改的 systemd、Caddy、Docker compose/config、Agent/MCP、Open WebUI、Hermes、Lody 相關設定。
+- 建立清楚的 rollback point。
+- 記錄修改前狀態。
+
+PHASE 2 — 修復目前已確認的故障
+A. LiteLLM
+- 判斷目前 LiteLLM 是否仍值得保留。
+- 如果需要，修復失效的 /root/ai-company/.venv 與 systemd ExecStart。
+- 如果目前架構不需要 LiteLLM，採取安全方式停止無限 crash-loop，但不要刪除設定或資料庫。
+- 最終必須有明確可驗證的狀態。
+
+B. OpenHands
+- 查明 /root/open-hands、/root/openhands、現有 image、watchdog、Caddy routing 的實際關係。
+- 修復真正應該使用的 OpenHands 部署。
+- 不要因為存在兩份 repository 就直接刪除其中一份。
+- 讓 OpenHands 能正常啟動並可驗證。
+- 修復 watchdog，使其對正確的部署目標工作。
+- 解決與 agent-plane-caddy 的衝突，但不要破壞目前正常的 Caddy/Tailscale 入口。
+
+C. Hermes
+- 修正已確認的 systemd drop-in 語法問題。
+- 驗證 Hermes API /health。
+- 保持現有 Hermes 功能。
+
+PHASE 3 — Cline / MCP / Agent 能力
+- 保留目前已成功設定的 Cline 3.0.61。
+- 保留 NVIDIA → DeepSeek V4 Pro 0813 的目前測試設定，不要自行換 provider。
+- 保留 Extra High reasoning。
+- 驗證 Cline MCP：
+  filesystem
+  git
+  fetch
+  sequential-thinking
+  playwright
+  context7
+  github
+- 檢查 plugins 是否有實際啟用價值。
+- 將真正有用、穩定且與目前架構相容的能力整合進 Agent 工作流。
+- 不要為了「湊數」安裝大量沒有用途的 Agent。
+
+PHASE 4 — Skills
+- 整理目前已安裝的 Skills。
+- 保留 Cline / Universal / 其他實際需要的 Skills。
+- 確認 Skills 能被實際使用，而不是只存在於磁碟。
+- 對目前 AI coding、DevOps、GitHub、security、testing、deployment 最有價值的能力補齊。
+- 不要重複安裝已有能力。
+- 不要刪除既有有效 Skills。
+
+PHASE 5 — Security / Development Toolchain
+確認並整合目前已有：
+- Git
+- GitHub CLI
+- Docker
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+- Playwright
+- MCP
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+讓 Agent 能夠實際利用這些工具進行：
+- coding
+- code review
+- testing
+- dependency security
+- secret scanning
+- container scanning
+- deployment validation
+- rollback
+
+PHASE 6 — GitHub / Repository Source of Truth
+實際盤點並建立正確對應：
+
+/root/ai-company
+/root/AI-Agent-Skill
+/root/ai-agent-skills
+/root/ai-agent-stack
+/root/ai-agent-fleet
+/root/.hermes
+/root/agent-platform
+/root/projects
+/root/open-hands
+/root/openhands
+
+以及 GitHub：
+xh09411-web/Ghost-Goat
+xh09411-web/open-hands
+xh09411-web/hermes-007
+xh09411-web/Ai-Agent-Skill
+xh09411-web/skill-link-nexus
+
+要求：
+- 找出真正的主 repository。
+- 不要假設 ai-company、ai-agent-stack、ai-agent-fleet 是正確名稱。
+- Ghost-Goat 保持獨立。
+- 清楚建立本機 repo ↔ GitHub repo mapping。
+- 檢查 branch、remote、upstream、working tree、未提交修改。
+- 用 Gitleaks 掃描 working tree 與 Git history。
+- 不得把 secrets、.env、private keys、database、credentials 推上 GitHub。
+- 只有確認安全且屬於 source-of-truth 的內容才 push。
+- 必要時建立清楚 commit。
+- push 前再次驗證。
+- 不要覆蓋遠端未知的有效工作。
+
+PHASE 7 — Agent 架構
+建立清楚且可替換的架構：
+
+Lody
+ ↓
+Cline Controller
+ ↓
+MCP / VPS / GitHub
+ ↓
+OpenCode / Codex / Aider / 其他 Coding Executor
+ ↓
+Test / Security / Deploy / Validate
+
+Cline 不應被硬綁死成唯一 Coding Executor。
+未來可以替換 OpenCode、Codex、Goose、Kilo、Kimi、Gemini CLI 等，而不破壞控制層。
+
+PHASE 8 — Open WebUI / Conduit
+在上述底層完成且驗證後：
+- 確認 Open WebUI 正常。
+- 確認 Hermes 正常。
+- 確認必要 API / MCP / Agent endpoints。
+- 確認 Tailscale 私有入口。
+- 讓 Conduit 可以作為 iPhone 端入口使用。
+- 不要讓 Open WebUI 取代 Lody；兩者角色要清楚：
+  Lody = Agent control / execution
+  Open WebUI = AI gateway / general chat / model access
+  Conduit = iPhone mobile gateway/interface
+
+PHASE 9 — 最終驗證
+實際執行，而不是只檢查設定檔：
+
+1. Cline 能呼叫模型。
+2. Cline 能使用 MCP。
+3. Cline 能讀寫允許的 VPS project。
+4. GitHub CLI/API 正常。
+5. OpenHands 正常。
+6. Hermes /health 正常。
+7. Open WebUI 正常。
+8. Tailscale 入口正常。
+9. Security scans 正常。
+10. Agent 能完成一次實際 coding → test → git status → validation workflow。
+11. 不會因 iPhone App 切到背景而遺失 VPS 上正在執行的工作。
+12. 所有重要服務都有持久化與自動恢復策略。
+
+最後建立一份簡潔的：
+`/root/agent-platform/PROJECT_STATE.md`
+
+內容必須包含：
+- Architecture
+- Services
+- Agents
+- MCP
+- Skills
+- GitHub repository mapping
+- Deployment state
+- Security state
+- Validation results
+- Rollback points
+- Remaining external credentials required
+- Execution/audit log
+
+不要只回報「建議怎麼做」。
+請實際執行能安全執行的項目，完成後再回報：
+1. 已完成
+2. 修復了什麼
+3. 新增/啟用什麼能力
+4. 哪些 Git 內容已安全 push
+5. 哪些服務已驗證
+6. 哪些項目因外部帳號/API key 才需要我介入
+7. 最後如何從 Conduit/Open WebUI 使用整套環境
+補充要求：不要只做盤點、修復與 Git push。凡是本次架構真正需要但 VPS 尚未安裝的套件、CLI、MCP、Skills、runtime、依賴與支援工具，請在安全確認後直接安裝並配置。
+
+原則：
+- 已安裝且正常的不要重裝。
+- 缺少的直接安裝。
+- 安裝後必須驗證版本與實際可用性。
+- 不要為了湊數安裝沒有實際用途的 Agent。
+- 不要安裝本機 LLM；目前模型走 API。
+- 不要破壞既有 Lody、SSH、Tailscale、Nginx、Hermes、Open WebUI 等正常服務。
+- 需要外部 API key / 帳號授權的才停下來讓我提供。
+- 官方套件優先，不繞過簽章或安全驗證。
+- 能透過 GitHub source-of-truth 管理的設定、Skills、腳本與專案內容，要整理進正確 repository 並安全 commit/push。
+- push 前一定做 secrets 掃描與 Git history 檢查。
+- 最終我要的是「已安裝 + 已配置 + 已驗證 + 已部署」，不是「建議清單」。
+
+目標：
+把昨天與今天已討論、確認值得使用的 AI Agent、
+Open WebUI、OpenHands、Hermes、Coding Agent、
+MCP、Plugin、Skill、Search、Automation、
+Developer Tool 全部合併。
+
+要求：
+以下列出的項目 = 我要安裝 / 啟用 / 整合。
+不要自行刪除。
+不要自行換成其他方案。
+如果某項需要 API Key / 帳號 / 授權，
+保留安裝與整合項目，缺少憑證時只標記待填入。
+
+第三方項目不是因為非官方就刪除；
+但正式安裝前必須做 source / dependency /
+network / permission / security review。
+
+根據你提供的清單和 2026 年 9 月的最新生態，以下是針對你需求（VPS 已跑 n8n、OpenHands、LiteLLM、Ollama、Coolify、k3s 等）的精選建議。我會避開你已知的常見工具（Cursor、Claude Code、Codex CLI 等），專注於「更強、可協作、可擴展」的 agent 與技能套件，並特別強化 Open WebUI、Hermes、OpenCode、OpenHands、Cline 的安裝建議。
+
+## Requirement Analysis
+
+你需要：
+1. **更強的編程 agent**（能協作、可擴展、非主流但熱門）
+2. **Open WebUI 的神級套件/skills/MCP**（編程相關）
+3. **Hermes、OpenCode、OpenHands、Cline 的強化技能/插件**
+4. **Cline 作為終端部署代理的完整配置建議**
+5. **可離線安裝、熱門、官方或高評價非官方皆可**
+
+## Verified Facts
+
+- **OpenCode** 是目前 GitHub stars 最高的開源編程 agent（206.8k stars，MIT 許可），支援 skills（SKILL.md）和 plugins（JS/TS 事件鉤子）。[1][2]
+- **Cline** 67.9k stars（Apache 2.0），支援 MCP 市場、SKILL.md、多 agent 團隊、排程 agent、Slack/Telegram 整合，CLI 可 headless 運行 。[3]
+- **OpenHands** 87.4k stars，v1.17.0（2026-09-09）已將 skills 改為 allow-list 機制，支援 Agent Canvas 作為控制中樞 。[4]
+- **Open WebUI** 有社區維護的 plugins 倉庫（Classic298/open-webui-plugins），包含 MCP App Bridge、工具、filters、pipes 等 。[5]
+- **Agent Skills** 標準（SKILL.md）已被多個 agent 採用（Claude Code、Codex、OpenCode、Cline 等），可跨 agent 重用 。[6][7][8]
+- **Oh-My-OpenCode** 是 OpenCode 的擴展框架，提供 LSP/AST/MCP 工具、背景 agent、預構建 agents 。[2][9]
+- **Beanie Plugin** 為 OpenCode 的電池included 插件，整合 8 項生產力功能（agent 編排、MCP 工具聚合、skill 發現等）。[9]
+
+## Assumptions
+
+- 你的 VPS 已有 Docker、k3s、nginx、redis，可部署新服務。
+- 你偏好 BYOK（自帶 API key）和自托管，避免 vendor lock-in。
+- 你需要 agent 能協作（多 agent 編排），而非單一 agent 孤島。
+
+## Risks
+
+- **Open WebUI plugins** 多為社區維護，安全掃描等級不一，需審慎選擇（優先選 A 級、stars 高、最近更新者）。
+- **Cline 終端部署** 若開啟 auto-approve，需確保 VPS 有 fail2ban、tailscale、權限隔離，避免 agent 誤操作。
+- **多 agent 編排** 會增加 token 成本和複雜度，需監控（建議用 v7 router / observability 追蹤）。
+
+## Alternatives Comparison
+
+| Agent/Framework | 類型 | 協作能力 | 自托管 | 技能生態 | 適合場景 |
+|---|---|---|---|---|---|
+| **OpenCode** | CLI/Desktop | 多 agent 團隊（--team-name） | ✅ | SKILL.md + plugins（40+ 社區插件）[2] | 主力編程 agent，可被 Hermes 調度 [10] |
+| **Cline** | VS Code/CLI/Desktop | 多 agent 團隊、排程 agent | ✅ | SKILL.md + MCP 市場（150+ 伺服器）[11] | 終端部署代理，可接 Slack/Telegram [3] |
+| **OpenHands** | Web/CLI | Agent Canvas 編排 automations | ✅ | skills allow-list（v1.16+）[12] | 自動化工作流（GitHub/Slack/Linear）[4] |
+| **LangGraph** | Python 庫 | 狀態圖多 agent | ✅ | 自定義 tools | 生產級狀態化多 agent [13] |
+| **CrewAI** | Python 庫 | 角色為基礎的 crew | ✅ | 自定義 tools | 快速原型多 agent [14] |
+| **Sim** | 視覺化編排 | 生產圖、可視化 | ✅ | 自定義 | 視覺化多 agent 編排 [15] |
+| **agent-swarm** | MIT 自托管 | 持久記憶、Slack/GitHub/Linear | ✅ | 自定義 | 生產級任務委派 [16] |
+
+## Recommended Solution
+
+### 1. 更強的編程 Agent（非主流但熱門）
+
+| Agent | 為何更強 | 安裝方式 | 協作特性 |
+|---|---|---|---|
+| **OpenCode** | 206.8k stars，最高星開源 agent，支援 build/plan 雙 agent、subagent、plugins [1] | `curl -fsSL https://opencode.ai/install | bash` 或 `brew install anomalyco/tap/opencode` | `--team-name` 多 agent、`@general` 子 agent |
+| **Cline** | 67.9k stars，MCP 市場、排程 agent、Slack/Telegram 整合、headless CLI [3] | VS Code 擴展：`saoudrizwan.claude-dev`；CLI：`npm i -g cline` | `--team-name`、`cline schedule create`、`cline connect slack` |
+| **OpenHands Agent Canvas** | 87.4k stars，自托管控制中樞，可編排 OpenHands/Claude Code/Codex [4] | `npm install -g @openhands/agent-canvas` 或 Docker | Automations（Slack/GitHub/Linear webhook） |
+| **Oh-My-OpenCode** | OpenCode 擴展框架，背景 agent、LSP/AST/MCP 工具、預構建 agents [2] | 見 [9] Beanie Plugin 整合 | 聚合 MCP 工具、skill 發現 |
+| **agent-swarm** | MIT 自托管，持久記憶、Slack/GitHub/Linear 原生整合 [16] | `git clone` + `docker-compose` | 任務委派、持久會話 |
+
+### 2. Open WebUI 神級套件（編程相關）
+
+| 套件名稱 | 功能 | 安裝方式 | 來源 |
+|---|---|---|---|
+| **MCP App Bridge** | 渲染 MCP Apps 為 Rich UI，連接 MCP 伺服器、調用工具 [5] | 從 Classic298/open-webui-plugins 複製到 `~/.open-webui/plugins/` | [5] |
+| **Code Interpreter Pipe** | 執行 Python/Node.js 代碼，返回結果（類似 Jupyter） | 需啟用 `ENABLE_CODE_INTERPRETER=true` | Open WebUI 內建 |
+| **Git Tools Plugin** | GitHub/GitLab API 整合，PR 審查、Issue 分解 | 從 open-webui-plugins 複製 | [5] |
+| **MCP Server Bridge** | 連接任意 MCP 伺服器（資料庫、CI/CD、雲端） | 配置 `mcp.json` 指向 `stdio` 或 `http+sse` | [7] |
+| **Agent Skills Loader** | 載入 SKILL.md 技能包（編程、文檔、自動化） | `npx skills add <repo> --skill <name>` | [8] |
+
+**安裝步驟（Open WebUI plugins）**：
+```bash
+# 1. 進入 Open WebUI 容器或主機
+docker exec -it open-webui bash
+
+# 2. 克隆 plugins 倉庫
+git clone https://github.com/Classic298/open-webui-plugins.git /tmp/plugins
+
+# 3. 複製需要的插件到 plugins 目錄
+cp -r /tmp/plugins/code-interpreter /app/backend/data/plugins/
+cp -r /tmp/plugins/mcp-app-bridge /app/backend/data/plugins/
+
+# 4. 重啟 Open WebUI
+docker restart open-webui
+```
+
+**推薦技能包（SKILL.md）**：
+- **microsoft/skills**：Azure、MCP Builder、Deep Wiki 等[6]
+- **anthropic-agent-skills**：文檔生成（docx/pdf/pptx/xlsx）、Playwright 測試、MCP 伺服器生成[17]
+- **cloudflare/skills**：1000+ SaaS 整合（GitHub/Linear/Slack/Stripe/Jira/Notion）[18]
+- **aivrar/portable-hermes-agent**：Hermes 調度 OpenCode 的 skill[10]
+
+### 3. Hermes + OpenCode + OpenHands + Cline 技能/插件
+
+#### Hermes Skills
+- **opencode skill**：讓 Hermes 調度 OpenCode 執行編程任務[10][19]
+  ```bash
+  npx skills add aivrar/portable-hermes-agent --skill opencode
+  ```
+- **hermes-skills AGENTS.md**：Hermes 自定義指令（Next.js 設計系統等）[20]
+
+#### OpenCode Plugins（高評價）
+| Plugin | 功能 | 安裝 |
+|---|---|---|
+| **oh-my-opencode** | 背景 agent、LSP/AST/MCP 工具、Claude Code 兼容 [2] | 見 [2] Ecosystem |
+| **Beanie Plugin** | 8 合一（agent 編排、MCP 工具聚合、skill 發現、自配置）[9] | 添加到 `opencode.json` |
+| **opencode-supermemory** | 跨會話持久記憶（Supermemory） | [2] |
+| **opencode-notificator** | 桌面通知（權限/完成/錯誤事件） | [2] |
+| **opencode-skillful** | 懶載入 prompts、skill 發現 | [2] |
+
+#### OpenHands Skills（v1.17.0 allow-list）
+- **PR Design Document Skill**（#17221，2026-09-10）[4]
+- **安裝路徑**：`~/.openhands/skills/` 或 `.openhands/skills/`
+- **啟用方式**：在 Agent Canvas 設定中選取 allow-list
+
+#### Cline Plugins / MCP
+- **官方 MCP 市場**：150+ 社區審計伺服器（資料庫、Issue 追蹤、CI/CD、本地開發工具）[11]
+- **安裝方式**：VS Code 中 `Ctrl+Shift+M` 開啟 MCP 市場，搜尋 `halopsa` 或其他[21]
+- **推薦 MCP 伺服器**：
+  - `@modelcontextprotocol/server-postgres`：PostgreSQL 查詢
+  - `@modelcontextprotocol/server-github`：GitHub API（PR/Issue）
+  - `@modelcontextprotocol/server-linear`：Linear Issue 管理
+  - `@modelcontextprotocol/server-firecrawl`：網頁爬取（Firecrawl）
+  - `tavily/mcp-server`：搜尋引擎（Tavily）
+
+## Implementation
+
+### Cline 終端部署配置（VPS）
+
+```bash
+# 1. 安裝 Cline CLI
+npm i -g cline
+
+# 2. 配置 MCP 伺服器（cline_mcp_settings.json）
+mkdir -p ~/.cline
+cat > ~/.cline/cline_mcp_settings.json << 'EOF'
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your_github_token"
+      }
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-linear"],
+      "env": {
+        "LINEAR_API_KEY": "your_linear_api_key"
+      }
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp-server"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your_firecrawl_key"
+      }
+    }
+  }
+}
+EOF
+
+# 3. 安裝 SKILL.md 技能（編程相關）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add anthropic-agent-skills --skill document-skills
+npx skills add cloudflare/skills --skill saas-integrations
+
+# 4. 創建排程 agent（每日 PR 摘要）
+cline schedule create "PR summary" \
+  --cron "0 9 * * MON-FRI" \
+  --prompt "List all open PRs and their review status" \
+  --workspace /path/to/repo
+
+# 5. 連接 Slack（可選）
+cline connect slack --bot-token $SLACK_TOKEN --signing-secret $SECRET --base-url $URL
+
+# 6. Headless 模式（CI/CD）
+cline --json "Run tests and fix any failures" | jq -r 'select(.type == "agent_event") | .event.text'
+```
+
+### Open WebUI + MCP + Skills 整合
+
+```bash
+# 1. 安裝 Open WebUI plugins（Docker）
+docker exec -it open-webui bash
+cd /app/backend/data/plugins
+git clone https://github.com/Classic298/open-webui-plugins.git tmp
+cp -r tmp/mcp-app-bridge .
+cp -r tmp/code-interpreter .
+rm -rf tmp
+
+# 2. 配置 MCP 伺服器（Open WebUI）
+cat > /app/backend/data/mcp.json << 'EOF'
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://user:pass@localhost:5432/db"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}
+EOF
+
+# 3. 安裝 Agent Skills（SKILL.md）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add aivrar/portable-hermes-agent --skill opencode
+
+# 4. 重啟 Open WebUI
+docker restart open-webui
+```
+
+### OpenHands Agent Canvas 部署（VPS）
+
+```bash
+# 1. 安裝 Agent Canvas（npm）
+npm install -g @openhands/agent-canvas
+agent-canvas --backend-only  # 或 Docker 模式
+
+# 2. Docker 模式（推薦）
+export PROJECTS_PATH="$HOME/projects"
+mkdir -p "$PROJECTS_PATH" "$HOME/.openhands"
+
+docker run -d --name agent-canvas \
+  -p 8000:8000 \
+  -v "$HOME/.openhands:/home/openhands/.openhands" \
+  -v "${PROJECTS_PATH}:/projects" \
+  ghcr.io/openhands/agent-canvas:1.17.0
+
+# 3. 啟用 skills（allow-list）
+# 編輯 ~/.openhands/config.json，添加：
+{
+  "skills": {
+    "allowList": ["pr-design-document", "mcp-builder", "document-skills"]
+  }
+}
+
+# 4. 創建 Automation（GitHub Issue 分解）
+# 在 Agent Canvas UI 中：Automations → New → GitHub Webhook → Decompose Issue
+```
+
+### Oh-My-OpenCode + Beanie Plugin
+
+```bash
+# 1. 安裝 Oh-My-OpenCode
+git clone https://github.com/your-org/oh-my-opencode.git ~/.opencode/plugins/oh-my-opencode
+
+# 2. 安裝 Beanie Plugin（opencode.json）
+cat >> ~/.config/opencode/opencode.json << 'EOF'
+{
+  "plugins": [
+    "beanie@git+https://github.com/beremaran/opencode-beanie-plugin.git",
+    "oh-my-opencode@git+https://github.com/your-org/oh-my-opencode.git"
+  ]
+}
+EOF
+
+# 3. 重啟 OpenCode
+opencode --reload
+```
+
+## Security Considerations
+
+- **Cline auto-approve**：僅在受控環境（VPS 有 fail2ban、tailscale、權限隔離）開啟。
+- **MCP 伺服器**：優先選官方或高 star 社區版本，檢查 `mcp.json` 中的 env 變數（避免洩露 token）。
+- **Open WebUI plugins**：從可信來源（Classic298/open-webui-plugins）複製，避免未知第三方。
+- **Agent Skills**：使用 `npx skills add` 時，檢查 GitHub repo 的 stars、last commit、security scan grade（優先 A 級）。[10][19]
+- **VPS 隔離**：建議用 Docker 或 k3s namespace 隔離 agent 運行環境，避免直接訪問主機 file system。
+
+## Deployment Considerations
+
+- **Docker Compose**：將 Cline、OpenCode、OpenHands、Open WebUI 整合到同一 `docker-compose.yml`，共用 redis、postgres。
+- **k3s**：若用 k3s，可部署為 StatefulSet（持久化 `~/.openhands`、`~/.cline`、`~/.opencode`）。
+- **nginx reverse proxy**：為 Agent Canvas（8000）、Open WebUI（3000）、Cline Webhook（8080）配置 subdomain。
+- **監控**：用 v7 router / observability 追蹤 agent token 使用、錯誤率、延遲。
+- **備份**：定期備份 `~/.openhands/skills/`、`~/.cline/skills/`、`~/.opencode/skills/` 到 Git repo。
+
+## Optimization Suggestions
+
+1. **Token 效率**：
+   - 用 OpenCode 的 `plan` agent 先分析，再調用 `build` agent 執行（減少無謂 token）。
+   - Cline 的 `Plan mode` 先確認策略，再切換 `Act mode`。
+
+2. **協作編排**：
+   - 用 **OpenHands Automations** 觸發 Cline/OpenCode（GitHub webhook → Agent Canvas → Cline CLI）。
+   - 用 **LangGraph** 或 **CrewAI** 編排多 agent（若需要更複雜的狀態圖）。
+
+3. **技能重用**：
+   - 將 SKILL.md 放在統一 repo（如 `your-org/agent-skills`），symlink 到各 agent 目錄：
+     ```bash
+     ln -s ~/agent-skills/.github/skills/mcp-builder ~/.openhands/skills/
+     ln -s ~/agent-skills/.github/skills/mcp-builder ~/.cline/skills/
+     ln -s ~/agent-skills/.opencode/skills/mcp-builder ~/.opencode/skills/
+     ```
+
+4. **離線優先**：
+   - 用 Ollama 跑本地模型（Llama 3.1、Qwen 2.5），配置 LiteLLM 作為 router。
+   - Open WebUI 啟用 `ENABLE_CODE_INTERPRETER`，本地執行 Python/Node.js。
+
+5. **熱門但非官方**：
+   - **Beanie Plugin**（OpenCode）：8 合一功能，高評價 。[9]
+   - **Oh-My-OpenCode**：背景 agent、LSP/AST/MCP 工具 。[2]
+   - **aivrar/portable-hermes-agent**：Hermes 調度 OpenCode 的 skill（A 級安全掃描）。[10]
+
+***
+
+**總結推薦安裝清單**（直接可執行）：
+
+```bash
+# OpenCode
+curl -fsSL https://opencode.ai/install | bash
+
+# Cline CLI
+npm i -g cline
+
+# OpenHands Agent Canvas
+npm install -g @openhands/agent-canvas
+
+# Open WebUI Plugins
+docker exec -it open-webui bash -c "
+  cd /app/backend/data/plugins &&
+  git clone https://github.com/Classic298/open-webui-plugins.git tmp &&
+  cp -r tmp/mcp-app-bridge tmp/code-interpreter . &&
+  rm -rf tmp
+"
+
+# Agent Skills（通用）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add anthropic-agent-skills --skill document-skills
+npx skills add aivrar/portable-hermes-agent --skill opencode
+```
+
+這些工具在 2026 年 9 月均為活躍維護、stars 高、評價好，且可與你現有的 VPS 服務（n8n、LiteLLM、Ollama、Coolify、k3s）無縫整合。
+
+來源
+[1] anomalyco/opencode: The open source coding agent. - GitHub https://github.com/anomalyco/opencode
+[2] Ecosystem - OpenCode https://opencode.ai/docs/ecosystem/
+[3] cline/cline: Autonomous coding agent as an SDK ... https://github.com/cline/cline
+[4] GitHub - OpenHands/OpenHands: OpenHands: AI-Driven ... https://github.com/OpenHands/OpenHands
+[5] Classic298/open-webui-plugins - GitHub https://github.com/Classic298/open-webui-plugins
+[6] GitHub - microsoft/skills: Skills, MCP servers, Custom Agents, Agents ... https://github.com/microsoft/skills
+[7] Agent Plugins — the portable agent-extension standard https://trending.md/en/agent/knowledge/agent-plugins/
+[8] How to Install AI Agent Skills | Setup Guides https://www.agensi.io/learn/installation
+[9] Beanie — OpenCode 插件详情 · OpenDock https://www.opendock.net/zh/plugins/beremaran--opencode-beanie-plugin/
+[10] opencode — Skill for Claude Code and Codex by aivrar https://agentmods.dev/skills/aivrar/portable-hermes-agent/opencode
+[11] Cline launches official MCP extension registry and hot-plugging for instant PostgreSQL, Linear, and GitHub tool access — AICoder https://aicoder.com/news/news-20260829-cline-dev-mcp-registry-instant-discovery
+[12] OpenHands v1.16.0 replaced its all-on skill catalog with an explicit allow-list. https://mindpattern.ai/s/2026-08-28-openhands-v1-16-0-replaced-its-all-on-skill-catalog-with-an-explicit-allow-list
+[13] Best Open-Source AI Agent Frameworks in 2026: 15 Frameworks ... https://resources.rework.com/tools/ai-agents/best-open-source-ai-agent-frameworks-2026
+[14] Best AI Agents in 2026: Top Tools, Frameworks, and Enterprise ... https://www.simpliaxis.com/resources/best-ai-agents
+[15] Best Multi-Agent Frameworks for Production in 2026 - Sim AI https://www.sim.ai/library/best-multi-agent-frameworks-2026
+[16] Open Source AI Orchestration: Best OSS Picks for 2026 https://www.agent-swarm.dev/blog/open-source-ai-orchestration
+[17] Agent Toolkit — August 23, 2026 - AI Automation Library https://library.mikesailab.com/library/News/Bookmarks/Agent-Toolkit/August_2026/agent-toolkit-2026-08-23/agent-toolkit-2026-08-23
+[18] 50 OpenCode Skills Worth Installing in 2026: The Definitive ... https://www.linkedin.com/pulse/50-opencode-skills-worth-installing-2026-definitive-parvez-mohammed-g5x3f
+[19] opencode — Skill for Claude Code and Codex by AtlasOmnia https://agentmods.dev/skills/atlasomnia/hermes-custom-pack/opencode
+[20] How yehyakin/hermes-skills configures Codex and OpenCode https://agentmods.dev/instructions/yehyakin/hermes-skills/agents-md
+[21] Which AI agent? Install MSP Skills in Claude, ChatGPT, Codex, or ... https://msp-skills.compoundingteams.com/which-agent/
+[22] AI Coding Agents: 15 Best Tools Reviewed for 2026 https://monday.com/blog/ai-agents/ai-coding-agent/
+[23] The Best Cursor Alternatives in 2026 by Coding Workflow - DataCamp https://www.datacamp.com/blog/best-cursor-alternatives
+[24] Cursor Alternatives (2026): We Tested 10 Tools and the $0 One ... https://www.morphllm.com/comparisons/cursor-alternatives
+[25] Best AI Coding Agent Orchestrators in 2026: 11 Tools Compared https://openalternative.co/blog/best-ai-coding-agent-orchestrators
+[26] AI Coding Assistants 2026: Complete Guide to the Best Tools https://www.progressiverobot.com/2026/08/13/ai-coding-assistants-compared/
+[27] Best AI Coding Agents in 2026: Tested, Ranked, Priced https://codexpedite.dev/articles/the-10-best-ai-coding-agents-in-2026-benchmarks-pricing-and-real-world-fit
+[28] Best Cursor Alternatives in 2026 https://startupstash.com/cursor-alternatives/
+[29] Best Model-Agnostic Coding Agents 2026 | Omid Saffari https://omidsaffari.com/blog/best-model-agnostic-coding-agents-2026
+[30] Open Source Cursor Alternatives: What's Left Standing (2026) https://cursor-alternatives.com/blog/open-source-cursor-alternatives/
+[31] Best AI Coding Tools — 2026 Ranked - Value Add VC https://valueaddvc.com/blog/ai-coding-tools-ranked-2026-cursor-copilot-windsurf-devin-and-claude-code-compared
+[32] Best AI Coding Agents 2026 (Claude Code vs Cursor) https://aiengineerinsights.com/blog/best-ai-coding-agents/
+[33] Best AI Coding Agents (2026) - The Rundown AI https://www.therundown.ai/best-ai-tools/best-ai-coding-agents
+[34] Best AI Coding Agents 2026: Ranked After Testing 10+ - Levelop https://levelop.dev/blog/the-best-ai-coding-agents-in-2026-a-practical-ranking-for-working-developers
+[35] Best AI Coding Tools in 2026: Cursor, Copilot & Claude Code https://listicles.net/best-ai-coding-tools/
+[36] Best AI Coding Assistants in 2026: Which One for Which Job https://www.toolsura.com/blog/best-ai-coding-assistants-2026/
+[37] OpenHands/OpenHands at apidog.com https://github.com/OpenHands/OpenHands?ref=apidog.com
+[38] Release v1.16.0 · OpenHands/OpenHands https://github.com/OpenHands/OpenHands/releases/tag/v1.16.0
+[39] Cline Review 2026 : agent IA de codage open source https://www.promptquorum.com/fr/power-local-llm/cline-review
+[40] Cline Review 2026: agente de codificação IA open source https://www.promptquorum.com/pt/power-local-llm/cline-review
+[41] Cline (Desktop) http://canmyagentuse.com/harnesses/cline
+[42] Build software better, together https://github.cszszs.workers.dev/topics/claude-ai
+[43] Cline Review 2026: agente de codificación IA open source https://www.promptquorum.com/es/power-local-llm/cline-review
+[44] OpenHands Switched Off 48 of 59 Skills — but Not for Existing Users https://agenccy.ai/news/openhands-turned-off-48-of-59-bundled-skills-but-not-for-you/
+[45] coderabbitai/skills https://shadowgraph.io/coderabbitai/skills
+[46] Cline VS Code SEO Skills & Setup Guide (2026) https://seoskillsai.com/cline
+[47] Agent Plugins 1.0: Write Once, Run on Every AI Coder | Articles | o ... https://o-mega.ai/articles/agent-plugins-1-0-one-skill-every-ai-coder-2026
+[48] OpenHands changelog — v1.16.0, Aug 27, 2026 · What's New https://whatsnew.fyi/product/openhands
+[49] Best AI agent frameworks (2026) - Dataiku https://www.dataiku.com/blog/ai-agent-frameworks
+[50] Best AI Agent Orchestration Platforms 2026: Coding vs Workflow https://nimbalyst.com/blog/best-ai-agent-orchestration-platforms-2026/
+[51] 10 best AI agent orchestration platforms and tools in 2026 - Gumloop https://www.gumloop.com/blog/ai-agent-orchestration-platform
+[52] "Best Multi-Agent Frameworks in 2026: 11 Frameworks for ... https://resources.rework.com/tools/ai-agents/best-multi-agent-frameworks-2026
+[53] The 20 Best AI Agent Frameworks and Tools for Devel… https://www.startuphub.ai/ai-news/insights/2026/best-ai-agent-frameworks-2026
+[54] Best AI Agent Frameworks in 2026 (Tested and Ranked) | ModelRefs https://modelrefs.com/tools/best-ai-agent-frameworks/
+[55] The Top AI Agent Frameworks in 2026: 100 Picks Tested & Ranked https://www.aitop10.ai/articles/top-ai-agent-frameworks-46
+[56] 11 Top AI Agent Frameworks in 2026 https://autogpt.net/top-ai-agent-frameworks/
+[57] OpenCode skills and plugins - tomrochette.com https://tomrochette.com/agents/opencode-skills-and-plugins/
+[58] AI Agent Frameworks – Investigation Report (August 2026) https://www.linkedin.com/pulse/ai-agent-frameworks-investigation-report-august-2026-chaudhuri-7yvxf
+[59] A curated list of awesome Agent Skills frameworks, libraries ... - GitHub https://github.com/uhub/awesome-agent-skills
+[60] Plugins - OpenCode https://opencode.ai/docs/plugins/
+[61] deepseek-harness · GitHub Topics · GitHub https://github.com/topics/deepseek-harness
+
+============================================================
+一、OPEN WEBUI
+============================================================
+
+安裝 / 保留 / 啟用：
+
+- Open WebUI
+- Web Search
+- URL Fetching
+- Knowledge
+- RAG
+- Memory
+- File Upload
+- Image Generation
+- Voice
+- Multi-model
+- Model Switching
+- Tool Calling
+- Agentic Search
+- Skills
+- MCP
+- OpenAPI
+- API Keys
+- RBAC
+- Automations
+- Task Management
+- Folders / Tags
+- Code / Data capabilities
+- Workspace
+- Prompts
+- Models
+- Connections
+- Pipelines compatibility where existing functionality requires it
+
+Open WebUI 使用：
+
+ghcr.io/open-webui/open-webui
+
+保留現有資料：
+
+/root/ai-company/open-webui
+
+
+============================================================
+二、OPEN WEBUI OPEN TERMINAL
+============================================================
+
+安裝：
+
+- Open WebUI Open Terminal
+
+啟用：
+
+- persistent workspace
+- API authentication
+- Docker isolation
+- CPU limits
+- RAM limits
+- restart policy
+- internal/private connectivity
+
+用途：
+
+- shell
+- Python
+- Node.js
+- Git
+- npm
+- pnpm
+- uv
+- build
+- compile
+- test
+- coding
+- file operations
+- agent execution
+
+
+============================================================
+三、OPEN WEBUI COMPUTER / COMPUTER USE
+============================================================
+
+安裝 / 啟用：
+
+- Open WebUI Computer capability
+- computer interaction
+- browser interaction
+- file interaction
+- terminal interaction
+- approval workflow
+- agent task execution
+
+
+============================================================
+四、OPEN WEBUI MCP
+============================================================
+
+安裝 / 啟用：
+
+- Native MCP
+- Streamable HTTP MCP
+- MCP authentication
+- MCP management
+- MCPO
+- MCP App Bridge
+
+============================================================
+五、OPEN WEBUI KNOWLEDGE
+============================================================
+
+安裝 / 啟用：
+
+- Knowledge
+- RAG
+- document ingestion
+- document retrieval
+- source citations
+- persistent knowledge bases
+
+安裝：
+
+- oikb
+
+用於：
+
+- GitHub repositories
+- local project directories
+- engineering documentation
+- Ghost-Goat
+- AI-Agent documentation
+
+
+============================================================
+六、WEB SEARCH
+============================================================
+
+安裝 / 啟用：
+
+- Native Open WebUI Web Search
+- SearXNG
+- DuckDuckGo Search
+- Exa
+- Tavily
+- Firecrawl
+- Brave Search
+- Jina
+- Perplexity Search
+
+用途：
+
+- normal search
+- AI research
+- deep research
+- web crawling
+- documentation retrieval
+- agent research
+- fallback search
+
+
+============================================================
+七、FIRECRAWL
+============================================================
+
+安裝 / 整合：
+
+- Firecrawl
+- Firecrawl MCP
+
+功能：
+
+- search
+- crawl
+- scrape
+- extract
+- documentation extraction
+- research
+
+
+============================================================
+八、SEARXNG
+============================================================
+
+安裝：
+
+- self-hosted SearXNG
+
+整合：
+
+- Open WebUI
+- Hermes
+- MCP
+- research agents
+
+
+============================================================
+九、LITELLM
+============================================================
+
+保留 / 安裝 / 啟用：
+
+- LiteLLM
+
+功能：
+
+- model gateway
+- routing
+- fallback
+- model aliases
+- rate limits
+- budget
+- usage
+- logging
+- provider abstraction
+
+整合：
+
+- Open WebUI
+- Hermes
+- OpenHands
+- OpenCode
+- Kilo
+- Cline
+- Aider
+- Claude Code
+- Codex
+- Gemini CLI
+- Goose
+- other OpenAI-compatible clients
+
+
+============================================================
+十、HERMES AGENT
+============================================================
+
+安裝 / 保留：
+
+- Hermes Agent
+
+啟用：
+
+- persistent agent
+- memory
+- learning
+- skills
+- web search
+- MCP
+- terminal
+- subagents
+- delegation
+- coding
+- long-running execution
+
+
+============================================================
+十一、HERMES OFFICIAL SKILLS
+============================================================
+
+安裝：
+
+AUTONOMOUS AGENTS
+
+- OpenHands
+- Antigravity CLI
+- Blackbox
+- Grok
+
+
+MCP
+
+- FastMCP
+- MCPO / mcporter
+- MCP OAuth Remote Gateway
+
+
+RESEARCH
+
+- SearXNG Search
+- DuckDuckGo Search
+- QMD
+- GitNexus Explorer
+- Domain Intel
+- Parallel CLI
+
+
+SOFTWARE DEVELOPMENT
+
+- AST-grep
+- Code Wiki
+- Grill Me
+- REST / GraphQL Debug
+- Subagent-Driven Development
+
+
+SECURITY
+
+- OSS Forensics
+- Web Pentest
+
+
+WEB DEVELOPMENT
+
+- Page Agent
+- Publish Site
+
+
+============================================================
+十二、HERMES SUPPORTING TOOLS
+============================================================
+
+安裝 / 啟用：
+
+- FastMCP
+- mcporter
+- QMD
+- GitNexus
+- ast-grep
+- shell tools
+- browser automation
+- web research tools
+- code analysis tools
+
+
+============================================================
+十三、OPENHANDS
+============================================================
+
+安裝 / 保留：
+
+- OpenHands
+
+目前已知最新版本：
+
+1.17.0
+
+功能：
+
+- autonomous software engineering
+- coding
+- repository manipulation
+- terminal
+- browser
+- testing
+- deployment
+- agent execution
+- long-running development
+
+
+============================================================
+十四、OPENCODE
+============================================================
+
+安裝：
+
+- OpenCode
+
+目前已知：
+
+v1.18.30
+
+啟用：
+
+- terminal agent
+- MCP
+- skills
+- multi-model
+- coding
+- repository workflow
+- autonomous coding
+
+
+============================================================
+十五、KILO CODE
+============================================================
+
+安裝：
+
+- Kilo Code
+
+目前已知：
+
+v7.6.0
+
+啟用：
+
+- CLI
+- agent
+- worktrees
+- PR workflow
+- MCP
+- Skills
+- Modes
+- Marketplace
+- coding workflow
+
+
+============================================================
+十六、CLINE
+============================================================
+
+安裝：
+
+- Cline
+
+啟用：
+
+- coding agent
+- terminal
+- MCP
+- browser
+- file editing
+- human approval
+- autonomous coding
+
+
+============================================================
+十七、AIDER
+============================================================
+
+安裝：
+
+- Aider
+
+目前已知：
+
+v0.86.0
+
+啟用：
+
+- Git-aware coding
+- focused editing
+- repository modification
+- model switching
+- coding fallback
+
+
+============================================================
+十八、CLAUDE CODE
+============================================================
+
+安裝 / 保留：
+
+- Claude Code
+
+啟用：
+
+- coding
+- terminal
+- Git
+- MCP
+- Skills
+- repository workflow
+
+
+============================================================
+十九、CODEX CLI
+============================================================
+
+安裝：
+
+- OpenAI Codex CLI
+
+啟用：
+
+- coding
+- terminal
+- MCP
+- repository work
+- code review
+- agent execution
+
+
+============================================================
+二十、GEMINI CLI
+============================================================
+
+安裝：
+
+- Google Gemini CLI
+
+啟用：
+
+- terminal agent
+- MCP
+- coding
+- research
+- Google ecosystem
+
+
+============================================================
+二十一、GOOSE
+============================================================
+
+保留：
+
+Goose 1.45.0
+
+Binary：
+
+/root/.local/bin/goose
+
+ACP：
+
+goose acp
+
+NVIDIA：
+
+https://integrate.api.nvidia.com/v1
+
+Model：
+
+deepseek-ai/deepseek-v4-pro-0813
+
+不要：
+
+goose --acp=true
+
+不要：
+
+- bypass signature verification
+- unofficial binary
+- destroy existing verified configuration
+
+
+============================================================
+二十二、GITHUB
+============================================================
+
+安裝 / 啟用：
+
+- Git
+- GitHub CLI (gh)
+- GitHub MCP
+- GitHub integration
+- GitHub Actions integration
+- repository management
+- PR management
+- Issues
+- Releases
+- CI/CD
+
+
+============================================================
+二十三、MCP SERVERS
+============================================================
+
+安裝 / 整合：
+
+- GitHub MCP
+- Filesystem MCP
+- Playwright MCP
+- Context7 MCP
+- Firecrawl MCP
+- SearXNG
+- FastMCP
+- Ghost-Goat MCP
+- Hermes MCP
+- OpenHands MCP
+- project-specific MCP
+
+
+============================================================
+二十四、CONTEXT7
+============================================================
+
+安裝 / 整合：
+
+- Context7 MCP
+
+用途：
+
+- current documentation
+- library documentation
+- framework documentation
+- API documentation
+- coding agent reference
+
+
+============================================================
+二十五、PLAYWRIGHT
+============================================================
+
+安裝：
+
+- Playwright MCP
+
+功能：
+
+- browser automation
+- E2E testing
+- UI testing
+- web application testing
+- dashboard testing
+- Open WebUI testing
+- Ghost-Goat testing
+
+
+============================================================
+二十六、GHOST-GOAT
+============================================================
+
+保留 / 安裝 / 發展：
+
+Ghost-Goat
+
+用途：
+
+- red-team framework
+- agent testing
+- agent evolution
+- security testing
+- validation
+- optimization
+- rollback
+- audit
+
+建立：
+
+- Ghost-Goat MCP
+- Ghost-Goat Skills
+- Ghost-Goat knowledge base
+- Ghost-Goat testing workflows
+- Ghost-Goat audit records
+
+
+============================================================
+二十七、GHOST-GOAT SKILLS
+============================================================
+
+安裝 / 建立：
+
+- Ghost-Goat Engineering
+- VPS Safe Operations
+- Agent Orchestration
+- Rollback First
+- Deployment Validation
+- Plugin Security Review
+- GitHub Workflow
+- Code Review
+- MCP Development
+- Research Workflow
+- Incident Response
+- Security Audit
+- Red-Team Testing
+- Agent Evaluation
+- Regression Testing
+- Supply Chain Review
+
+
+============================================================
+二十八、OPEN WEBUI COMMUNITY EXTENSIONS
+============================================================
+
+安裝：
+
+- Inline Visualizer
+- MCP App Bridge
+- Cost / Usage tracking
+- Budget / Rate Limit controls
+- Context / Compaction
+- PII / Redaction
+- Audit / Event / Webhook extensions
+
+要求：
+
+所有 Community Tool / Function 必須：
+
+- source review
+- dependency review
+- network review
+- secret review
+- filesystem review
+- subprocess review
+- GitHub issue review
+- security advisory review
+- maintenance review
+
+通過才正式啟用。
+
+
+============================================================
+二十九、PLUGIN / TOOL / FUNCTION SECURITY
+============================================================
+
+啟用安全策略：
+
+- admin-only plugin management
+- trusted source policy
+- plugin whitelist
+- MCP whitelist
+- Skill whitelist
+- version pinning
+- dependency review
+- network review
+- permission review
+- rollback records
+- audit logs
+
+禁止：
+
+- unknown author
+- obfuscated source
+- curl | bash
+- unknown pip installer
+- unknown npm installer
+- unknown external POST
+- secret harvesting
+- unrestricted filesystem
+- unrestricted root shell
+- arbitrary Docker socket
+- unexplained telemetry
+
+
+============================================================
+三十、N8N
+============================================================
+
+保留 / 啟用：
+
+n8n
+
+功能：
+
+- automation
+- webhooks
+- scheduled workflows
+- GitHub workflows
+- agent workflows
+- notifications
+- deployment automation
+- API workflows
+
+
+============================================================
+三十一、CODING SYSTEM TOOLS
+============================================================
+
+安裝：
+
+- git
+- git-lfs
+- gh
+- curl
+- wget
+- jq
+- yq
+- ripgrep
+- fd
+- fzf
+- tmux
+- btop
+- htop
+- ncdu
+- rsync
+- unzip
+- zip
+- tar
+- xz-utils
+- ca-certificates
+- build-essential
+- pkg-config
+- cmake
+- make
+- gcc
+- g++
+- python3
+- python3-venv
+- pipx
+- Node.js
+- npm
+- pnpm
+- uv
+- shellcheck
+- shfmt
+
+
+============================================================
+三十二、PYTHON / NODE DEVELOPMENT
+============================================================
+
+安裝：
+
+Python：
+
+- Python 3
+- venv
+- pipx
+- uv
+
+Node：
+
+- Node.js
+- npm
+- pnpm
+
+Developer:
+
+- build-essential
+- gcc
+- g++
+- cmake
+- make
+- pkg-config
+
+
+============================================================
+三十三、OBSERVABILITY
+============================================================
+
+安裝 / 啟用：
+
+- btop
+- htop
+- ncdu
+- sysstat
+- jq
+
+監控：
+
+- CPU
+- RAM
+- swap
+- disk
+- Docker
+- Open WebUI
+- Open Terminal
+- OpenHands
+- Hermes
+- OpenCode
+- Kilo
+- Cline
+- LiteLLM
+- n8n
+- Tailscale
+- nginx
+- Caddy
+
+
+============================================================
+三十四、PERSISTENT EXECUTION
+============================================================
+
+啟用：
+
+- systemd
+- Docker restart policies
+- tmux
+- persistent volumes
+- persistent workspaces
+- background agents
+
+要求：
+
+iPhone 關閉 App
+iPhone 切換 App
+Termius disconnect
+SSH disconnect
+網路短暫斷線
+
+都不能殺掉 VPS 上正在執行的 Agent 工作。
+
+
+============================================================
+三十五、AI AGENT ORCHESTRATION
+============================================================
+
+啟用：
+
+Planner
+Researcher
+Coder
+Tester
+Reviewer
+Security Reviewer
+Deployer
+Validator
+Rollback
+
+支援：
+
+- multi-agent
+- subagents
+- delegation
+- parallel work
+- code review
+- test
+- security review
+- deployment
+- rollback
+
+
+============================================================
+三十六、MODEL PROVIDERS
+============================================================
+
+整合：
+
+- NVIDIA NIM
+- DeepSeek
+- OpenAI
+- Anthropic
+- Google
+- OpenRouter
+- other OpenAI-compatible providers
+
+目前保留：
+
+deepseek-ai/deepseek-v4-pro-0813
+
+
+============================================================
+三十七、API MANAGEMENT
+============================================================
+
+啟用：
+
+- API keys
+- provider management
+- model listing
+- model aliases
+- usage tracking
+- cost tracking
+- rate limits
+- fallback
+- health checks
+
+
+============================================================
+三十八、DOCUMENT / KNOWLEDGE STACK
+============================================================
+
+整合：
+
+- Open WebUI Knowledge
+- RAG
+- oikb
+- QMD
+- GitNexus
+- local document search
+- GitHub repository knowledge
+- project documentation
+- Skills
+
+
+============================================================
+三十九、WEB / RESEARCH STACK
+============================================================
+
+整合：
+
+- Open WebUI Web Search
+- SearXNG
+- DuckDuckGo
+- Exa
+- Tavily
+- Firecrawl
+- Brave
+- Jina
+- Perplexity
+- Hermes research skills
+- Context7
+- QMD
+- GitNexus
+
+
+============================================================
+四十、SECURITY STACK
+============================================================
+
+整合：
+
+- Ghost-Goat
+- OSS Forensics
+- Web Pentest
+- Plugin Security Review
+- MCP Security Review
+- Supply Chain Review
+- Dependency Review
+- Code Review
+- Secret Review
+- Network Review
+- Audit Log
+- Rollback
+
+
+============================================================
+四十一、VISUAL / UI / DASHBOARD
+============================================================
+
+安裝 / 啟用：
+
+- Inline Visualizer
+- MCP App Bridge
+- Playwright MCP
+- Open WebUI visualization
+- browser testing
+
+用於：
+
+- Agent Dashboard
+- Ghost-Goat Dashboard
+- monitoring
+- charts
+- diagrams
+- interactive visualizations
+- UI testing
+
+
+============================================================
+四十二、AUTOMATION
+============================================================
+
+整合：
+
+- n8n
+- Open WebUI Automations
+- GitHub Actions
+- Webhooks
+- MCP
+- Agent workflows
+- scheduled tasks
+
+
+============================================================
+四十三、SOURCE OF TRUTH
+============================================================
+
+GitHub：
+
+PRIMARY SOURCE OF TRUTH
+
+追蹤：
+
+- architecture
+- repositories
+- versions
+- deployment
+- Skills
+- integrations
+- provenance
+- optimization
+- validation
+- rollback
+- audit
+
+
+============================================================
+四十四、最終 Skill 集合
+============================================================
+
+安裝 / 建立：
+
+ENGINEERING:
+
+- Ghost-Goat Engineering
+- Code Review
+- GitHub Workflow
+- Deployment Validation
+- MCP Development
+
+OPERATIONS:
+
+- VPS Safe Operations
+- Rollback First
+- Incident Response
+- Persistent Agent Operations
+
+AGENT:
+
+- Agent Orchestration
+- Subagent Development
+- Autonomous Coding
+- Research Workflow
+- Agent Evaluation
+- Regression Testing
+
+SECURITY:
+
+- Plugin Security Review
+- MCP Security Review
+- OSS Forensics
+- Web Pentest
+- Supply Chain Review
+- Security Audit
+
+KNOWLEDGE:
+
+- RAG
+- QMD
+- GitNexus
+- Documentation Research
+
+WEB:
+
+- Page Agent
+- Browser Testing
+- REST / GraphQL Debug
+
+CODE:
+
+- AST-grep
+- Code Wiki
+- Grill Me
+- Subagent-Driven Development
+
+
+============================================================
+四十五、最終整合清單
+============================================================
+
+OPEN WEBUI
+OPEN TERMINAL
+OPEN WEBUI COMPUTER
+HERMES
+OPENHANDS
+OPENCODE
+KILO CODE
+CLINE
+AIDER
+CLAUDE CODE
+CODEX CLI
+GEMINI CLI
+GOOSE
+LITELLM
+NVIDIA NIM
+DEEPSEEK
+GITHUB CLI
+GITHUB MCP
+FILESYSTEM MCP
+PLAYWRIGHT MCP
+CONTEXT7 MCP
+FIRECRAWL MCP
+SEARXNG
+FIRECRAWL
+EXA
+TAVILY
+BRAVE SEARCH
+JINA
+PERPLEXITY SEARCH
+DUCKDUCKGO
+MCPO
+FASTmcp
+MCPORTER
+MCP APP BRIDGE
+OIKB
+QMD
+GITNEXUS
+N8N
+INLINE VISUALIZER
+COST / USAGE TRACKING
+CONTEXT / COMPACTION
+PII / REDACTION
+AUDIT / WEBHOOK
+GHOST-GOAT
+GHOST-GOAT MCP
+GHOST-GOAT SKILLS
+
+
+============================================================
+四十六、最終要求
+============================================================
+
+以上全部視為：
+
+INSTALL
++
+ENABLE
++
+INTEGRATE
++
+VALIDATE
+
+不要再把清單拆成：
+「可以考慮」
+「以後再裝」
+「可選」
+「先裝」
+「第二階段」
+
+本文件的目的就是建立：
+
+FINAL TARGET STATE
+
+如果某個項目因：
+- API key
+- OAuth
+- license
+- upstream unavailable
+- version incompatibility
+- dependency conflict
+
+無法立即啟用：
+
+保留該項目，
+明確記錄原因，
+不要偷偷刪除。
+
+所有實際安裝前：
+做 source / security / dependency / permission review。
+
+所有完成項：
+做 version / process / service / port / health / integration /
+persistence / rollback validation。
+
+============================================================
+END
+============================================================【最高優先級總任務 — 不得偏離】
+
+你現在不要再只做唯讀盤點，也不要只給建議。
+請把這台 greencloud-ai VPS 實際整理、修復、安裝、部署、驗證、版本化，最後把乾淨且安全的內容推送回正確 GitHub repositories，再從 repositories 拉回驗證，形成真正可持續維護的 source-of-truth。
+
+==============================
+一、最重要的 Repository 分工
+==============================
+
+【1. OpenHands】
+GitHub：
+xh09411-web/open-hands
+
+用途：
+OpenHands = Coding / Software Engineering Agent Runtime。
+負責實際執行 coding、修改程式碼、測試、Debug、Software Engineering、部署等工作。
+
+要求：
+- OpenHands 本身的修改只推送到 xh09411-web/open-hands。
+- 不得把 OpenHands 整個專案塞進 AI-Agent-Skill。
+- OpenHands 必須能使用 AI-Agent-Skill 提供的可重用 Skills / 能力。
+- 保持 OpenHands 與 AI-Agent-Skill 的依賴關係清楚。
+- 先盤點目前本機 /root/open-hands 與 /root/openhands 的差異、remote、branch、history、working tree，再決定哪一份是真正使用中的 source。
+- 不得因為存在兩份 repo 就直接刪除任何一份。
+
+【2. 007-Hermes】
+GitHub：
+xh09411-web/hermes-007
+
+用途：
+007-Hermes = Agent Runtime / Memory / Learning / Tools / Skills 能力層。
+負責 Agent 的記憶、學習、工具整合與能力支援。
+
+要求：
+- Hermes 的修改只推送到 xh09411-web/hermes-007。
+- 不得把 Hermes 整個專案塞進 AI-Agent-Skill。
+- Hermes 必須能使用 AI-Agent-Skill 提供的可重用 Skills / 能力。
+- 保持 Hermes 與 AI-Agent-Skill 的依賴關係清楚。
+- 不得破壞目前正常 Hermes Gateway。
+
+【3. AI-Agent-Skill】
+GitHub：
+xh09411-web/Ai-Agent-Skill
+
+用途：
+AI-Agent-Skill = 共用、可重用、可版本化的 Agent Skills / Packages / Capability Library。
+
+這是共用能力層。
+
+要求：
+- 所有真正屬於「共用 Agent Skill、Skill package、工具能力、可重用能力、相關文件、安裝/部署腳本」的乾淨內容，整理後推送到這個 repository。
+- OpenHands 與 007-Hermes 可以依賴 / 使用這個 repository 的 Skills。
+- 不得把 OpenHands、Hermes、Ghost-Goat 整個專案搬進來。
+- 不得刪除 AI-Agent-Skill 現有任何部署、Skill、套件、腳本、資料。
+- 在任何修改前，先完整盤點 AI-Agent-Skill 現有內容。
+- 先把盤點結果記錄下來。
+- 任何疑似舊部署、未知用途、看似多餘的東西，一律先保留，不准直接刪除。
+
+【4. Ghost-Goat】
+GitHub：
+xh09411-web/Ghost-Goat
+
+用途：
+Ghost-Goat = Ghost / Red-Team / Adaptive Testing / Failure Analysis / Evolution / Evaluation Framework。
+
+要求：
+- Ghost-Goat 永遠保持獨立。
+- 不得併入 OpenHands、007-Hermes、AI-Agent-Skill。
+- 不得把 Ghost-Goat 的核心程式碼混入其他 repository。
+- 如果發現 Ghost-Goat 相關內容，只做正確 repository mapping 與盤點。
+
+==============================
+二、GitHub 更新與隱私安全
+==============================
+
+所有 repository 操作前：
+
+1. 檢查：
+- git remote
+- branch
+- upstream
+- working tree
+- commit history
+- tags
+- untracked files
+- large files
+- submodules
+- GitHub repository 對應關係
+
+2. 使用 Gitleaks 掃描：
+- working tree
+- staged content
+- Git history
+
+必要時搭配 Trivy / Semgrep / OSV-Scanner。
+
+3. 以下絕對禁止 push：
+- API keys
+- access tokens
+- OAuth tokens
+- passwords
+- private keys
+- SSH keys
+- certificates containing private material
+- .env
+- secrets files
+- credentials
+- cookies
+- session tokens
+- webhook secrets
+- database credentials
+- internal authentication material
+- 任何真實敏感 IP / infrastructure secret（若不屬於公開文件）
+- Open WebUI credentials/database
+- Hermes auth material
+- Lody credentials
+- Cline credentials
+- provider credentials
+
+如果發現敏感資訊：
+- 不要輸出內容
+- 不要複製到新的 repository
+- 不要 commit
+- 不要 push
+- 只回報「發現敏感檔案 / 路徑」，不要顯示 secret 本身。
+- 必要時建立 .gitignore / secret exclusion。
+- 如果歷史 commit 已含 secret，不要自行破壞 history；先建立安全處理方案並回報。
+
+GitHub 更新要求：
+
+【OpenHands】
+只把 OpenHands 自己應該保存的乾淨程式碼 / 文件 / config / deployment code 推送到：
+xh09411-web/open-hands
+
+【Hermes】
+只把 Hermes 自己應該保存的乾淨程式碼 / 文件 / config / deployment code 推送到：
+xh09411-web/hermes-007
+
+【AI-Agent-Skill】
+只把共用 Skills / packages / capability / safe scripts / documents 推送到：
+xh09411-web/Ai-Agent-Skill
+
+【Ghost-Goat】
+不要因本任務而混入其他 repository。
+
+上游 / 原作者隱私要求：
+
+我的目標不是把私有 VPS 狀態暴露給原作者。
+如果需要讓 upstream 收到乾淨的 Skill / package 更新：
+
+- 只提交乾淨、可公開、與上游有關的內容。
+- 不提交我的 VPS 部署資料。
+- 不提交我的 API key / token / IP / credentials。
+- 不提交我的私有 infrastructure config。
+- 不提交我的私人 logs。
+- 不提交 Open WebUI database。
+- 不提交 Hermes / Lody authentication。
+- 不提交內部主機資訊。
+
+如果 repository 是 fork：
+- 可以使用乾淨 branch / commit / PR 提供可公開更新。
+- 不得假裝能讓 GitHub upstream「完全不知道有更新」。
+- 實際目標是：上游只能看到安全、乾淨、可公開的 Skill / package 更新，不看到我的私有部署內容。
+
+==============================
+三、AI-Agent-Skill：先盤點，絕對不要刪
+==============================
+
+完整盤點：
+- 所有 directories
+- Skills
+- packages
+- scripts
+- deployment files
+- configuration
+- documentation
+- integrations
+- dependencies
+- existing deployment artifacts
+- Git history
+- branches
+- remote
+- current working tree
+
+建立清楚的 inventory。
+
+任何「看起來沒用」的內容：
+- 不刪
+- 不移
+- 不覆蓋
+
+先標記：
+UNKNOWN / LEGACY / ACTIVE / DEPLOYED / DUPLICATE / REQUIRED
+
+最後把完整盤點結果回報給我。
+
+==============================
+四、安裝與能力層
+==============================
+
+不要只盤點。
+
+凡是本架構真正需要、目前 VPS 又缺少的：
+- package
+- CLI
+- runtime
+- MCP
+- Skill
+- dependency
+- development tool
+- security tool
+- deployment tool
+
+在安全確認後直接安裝。
+
+原則：
+
+- 已安裝且正常 → 不重裝。
+- 已安裝但損壞 → 修復。
+- 缺少且真正需要 → 安裝。
+- 不必要 → 不安裝。
+- 不為了湊數安裝 Agent。
+- 不安裝本機 LLM。
+- 模型目前使用 API。
+- 官方來源優先。
+- 不繞過簽章、安全驗證或供應鏈保護。
+
+確認並整合：
+
+AI Coding：
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+MCP：
+- filesystem
+- git
+- fetch
+- sequential-thinking
+- playwright
+- context7
+- github
+
+Development：
+- Git
+- GitHub CLI
+- Docker
+- Node.js / npm
+- Python / uv
+
+Security：
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+
+Platform：
+- OpenHands
+- Hermes
+- Open WebUI
+- Lody
+- Tailscale
+
+Skills：
+- 盤點目前已有 Skills
+- 確認實際可用
+- 補真正缺少且有價值的 coding / DevOps / testing / security / GitHub / deployment Skills
+- 不重複安裝
+- 不刪除既有有效 Skills
+
+==============================
+五、Cline
+==============================
+
+保留目前：
+
+Cline 3.0.61
+NVIDIA Provider
+DeepSeek V4 Pro 0813
+Extra High reasoning
+
+不要自行換 provider。
+
+Cline = Controller。
+
+架構：
+
+Lody
+ ↓
+Cline Controller
+ ↓
+MCP / VPS / GitHub
+ ↓
+OpenCode / Codex / Aider / 其他 Coding Executor
+ ↓
+Test / Security / Deployment / Validation
+
+Cline 不得被硬綁死成唯一 Coding Executor。
+
+==============================
+六、OpenHands 修復與部署
+==============================
+
+目前已確認：
+- OpenHands 實際沒有正常運行。
+- watchdog 指向不存在的 container。
+- 8000 / 8001 / 8010 等相關 routing 必須重新確認。
+- 存在 /root/open-hands 與 /root/openhands 兩份 repository。
+- caddy-openhands.service 與 agent-plane-caddy 存在衝突。
+
+要求：
+
+1. 先確認真正應使用的 OpenHands repository。
+2. 不刪任何一份。
+3. 建立 backup / rollback point。
+4. 修復真正應該使用的部署。
+5. 修復 watchdog。
+6. 解決 Caddy routing conflict。
+7. 不破壞 agent-plane-caddy。
+8. 不破壞 Tailscale。
+9. 不破壞 Lody。
+10. OpenHands 必須實際啟動。
+11. 實際測試 API / UI / coding execution。
+12. 確認 OpenHands 能使用 AI-Agent-Skill。
+
+==============================
+七、007-Hermes
+==============================
+
+保持目前 Hermes Gateway 正常。
+
+修復：
+- systemd drop-in 語法問題
+- 任何真正影響可靠性的問題
+
+驗證：
+- service active
+- API /health
+- restart recovery
+- 與 AI-Agent-Skill 的能力整合
+
+不要破壞 Hermes。
+
+==============================
+八、LiteLLM
+==============================
+
+目前 LiteLLM 已知：
+- systemd broken
+- /root/ai-company/.venv 不存在
+- status=203/EXEC
+- 4000 沒有 listener
+
+先判斷實際架構是否需要 LiteLLM。
+
+如果需要：
+- 安全重建必要 runtime
+- 修復 service
+- 驗證 API
+
+如果目前架構不需要：
+- 停止無限 crash-loop
+- 保留設定與資料
+- 不直接刪 litellm-pg
+- 不刪資料
+
+不要為了修而修。
+
+==============================
+九、Open WebUI
+==============================
+
+Open WebUI 必須保留。
+
+完成：
+- package / image / dependency 狀態確認
+- 更新到合理、穩定版本
+- 保留 data volume
+- 保留使用者資料
+- 保留設定
+- 更新後驗證
+- 不暴露 credentials
+- 不把 database 推到 GitHub
+
+確認：
+Open WebUI 可以作為 general AI / model gateway。
+
+不要讓 Open WebUI 取代 Lody。
+
+==============================
+十、Conduit
+==============================
+
+最終架構：
+
+iPhone
+ ↓
+Conduit
+ ↓
+Open WebUI / Hermes / API
+ ↓
+AI services
+
+另一條：
+
+iPhone
+ ↓
+Lody
+ ↓
+Cline Controller
+ ↓
+Coding Executors
+ ↓
+VPS / GitHub
+
+Conduit 的目標是讓我不用再手動搬 SSH 指令與輸出。
+
+確認必要 endpoints、Tailscale、reverse proxy、authentication。
+
+==============================
+十一、Port / Network 安全
+==============================
+
+不要「看到 Port 就關」。
+
+先完整盤點：
+- listening ports
+- Docker published ports
+- systemd services
+- reverse proxy routes
+- Tailscale Serve
+- localhost-only services
+- LAN-only services
+- public-facing services
+
+每個 port 分類：
+
+PUBLIC_REQUIRED
+TAILSCALE_REQUIRED
+LAN_REQUIRED
+LOCALHOST_ONLY
+INTERNAL_DOCKER
+UNUSED
+DANGEROUS / UNNECESSARY
+
+只有在確認：
+- 沒有 service dependency
+- 沒有 Caddy dependency
+- 沒有 Docker dependency
+- 沒有 Lody dependency
+- 沒有 Conduit dependency
+- 沒有 Open WebUI dependency
+- 沒有 Hermes dependency
+- 沒有 OpenHands dependency
+- 沒有 SSH/Tailscale dependency
+
+之後才關閉 UNUSED / DANGEROUS ports。
+
+絕對不要關：
+- SSH 正在使用的入口
+- Tailscale
+- Lody 必要 endpoint
+- Conduit 必要 endpoint
+- Open WebUI 必要 endpoint
+- Hermes 必要 endpoint
+- agent-plane-caddy 必要 listener
+
+每次關閉前建立 rollback。
+
+關閉後驗證：
+- SSH
+- Tailscale
+- Lody
+- Cline
+- Hermes
+- Open WebUI
+- OpenHands
+- Conduit
+
+==============================
+十二、系統雜物整理
+==============================
+
+先盤點：
+- old containers
+- unused images
+- dead systemd services
+- crash-loop services
+- stale backups
+- duplicate configs
+- old logs
+- temporary files
+- old deployment artifacts
+
+但是：
+
+【不要直接刪除。】
+
+先分類：
+KEEP
+ACTIVE
+LEGACY
+SAFE_TO_REMOVE
+UNKNOWN
+
+所有 UNKNOWN 一律保留。
+
+如果有可以安全清理的項目：
+- 先建立 rollback / backup
+- 清理前列出清單
+- 清理後驗證
+
+如果刪除可能影響現有部署，停止並回報。
+
+==============================
+十三、Deployment / Rollback
+==============================
+
+所有重大修改：
+
+backup
+ ↓
+change
+ ↓
+test
+ ↓
+validate
+ ↓
+commit
+ ↓
+push
+ ↓
+fresh pull / checkout
+ ↓
+re-test
+
+必須建立 rollback point。
+
+不要在沒有 backup 的情況下做破壞性修改。
+
+==============================
+十四、Git Push 前後流程
+==============================
+
+每個 repository 分別處理。
+
+OpenHands：
+本機 OpenHands
+→ 整理
+→ secrets scan
+→ commit
+→ push
+→ 從 xh09411-web/open-hands 拉回
+→ 驗證
+
+Hermes：
+本機 Hermes
+→ 整理
+→ secrets scan
+→ commit
+→ push
+→ 從 xh09411-web/hermes-007 拉回
+→ 驗證
+
+AI-Agent-Skill：
+現有 AI-Agent-Skill
+→ 完整盤點
+→ 不刪任何現有部署
+→ 加入新的共用 Skills / packages / safe deployment scripts
+→ secrets scan
+→ commit
+→ push
+→ fresh pull
+→ 驗證
+
+Ghost-Goat：
+保持獨立，不因本任務混入。
+
+==============================
+十五、最終功能驗證
+==============================
+
+實際執行，不只看設定檔。
+
+必須驗證：
+
+1. Cline → NVIDIA → DeepSeek V4 Pro 0813
+2. Cline MCP
+3. Cline filesystem
+4. Cline Git
+5. Cline GitHub
+6. Cline Playwright
+7. Cline Context7
+8. Cline Sequential Thinking
+9. OpenHands
+10. OpenHands 使用 AI-Agent-Skill
+11. Hermes
+12. Hermes 使用 AI-Agent-Skill
+13. Open WebUI
+14. Conduit
+15. Lody
+16. Tailscale
+17. SSH
+18. GitHub
+19. Gitleaks
+20. Semgrep
+21. OSV-Scanner
+22. Trivy
+23. Docker
+24. persistent execution
+25. restart recovery
+
+至少完成一次真正的：
+
+Controller
+→ inspect
+→ code
+→ test
+→ security scan
+→ git status
+→ commit
+→ validation
+
+工作流。
+
+==============================
+十六、Project State
+==============================
+
+建立：
+
+/root/agent-platform/PROJECT_STATE.md
+
+包含：
+
+- Architecture
+- Repository mapping
+- OpenHands
+- Hermes
+- AI-Agent-Skill
+- Ghost-Goat
+- Agents
+- MCP
+- Skills
+- Installed packages
+- Services
+- Ports
+- Tailscale
+- Open WebUI
+- Conduit
+- GitHub state
+- Security state
+- Deployment state
+- Validation results
+- Rollback points
+- Known issues
+- External credentials required
+- Execution log
+- Audit log
+
+==============================
+十七、最終回報
+==============================
+
+完成後不要只說「完成」。
+
+請給我：
+
+【A】已修復
+【B】已安裝
+【C】已部署
+【D】已驗證
+【E】已推送到 OpenHands repo
+【F】已推送到 Hermes repo
+【G】已推送到 AI-Agent-Skill repo
+【H】Ghost-Goat 狀態
+【I】哪些 AI-Agent-Skill 原有部署被保留
+【J】AI-Agent-Skill 完整盤點
+【K】哪些 ports 關閉
+【L】哪些 ports 保留以及原因
+【M】哪些雜物可以整理但尚未刪除
+【N】哪些敏感資訊被排除
+【O】哪些項目因需要外部帳號/API key 才能完成
+【P】所有 rollback points
+【Q】最後如何從 iPhone / Conduit / Lody 使用
+
+最重要：
+
+不要因為任務很大而退回「只做盤點」。
+
+可以安全執行的就直接執行。
+需要外部授權才停。
+有風險就先 backup。
+不確定就保留，不刪除。
+敏感資訊不 push。
+三個核心 repository 分開維護。
+Ghost-Goat 永遠獨立。
+
+最終目標不是報告，而是：
+
+【一套已安裝、已修復、已部署、已驗證、可持續更新、可從 iPhone 控制的 AI Agent 開發環境。】
+
+==============================
+十八、預定安裝 / 能力清單
+==============================
+
+以下是最後要檢查並安裝/啟用的能力清單。
+已有且正常的不重裝。
+
+Coding / Agent：
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+MCP：
+- filesystem
+- git
+- fetch
+- sequential-thinking
+- playwright
+- context7
+- github
+
+Development：
+- Git
+- GitHub CLI
+- Docker
+- Node.js
+- npm
+- Python
+- uv
+
+Security：
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+
+Platform：
+- OpenHands
+- 007-Hermes
+- Open WebUI
+- Lody
+- Tailscale
+
+Skills：
+- 現有 AI-Agent-Skill 全部保留
+- 現有 38 個已安裝 Skills 全部先盤點
+- 補充真正缺少的 coding / DevOps / GitHub / testing / security / deployment / agent-orchestration Skills
+- 不重複
+- 不亂裝
+- 不刪除現有部署
+
+最後再做一次：
+
+Gitleaks
+→ Git diff
+→ Git status
+→ repository mapping
+→ push safety check
+→ push
+→ fresh pull
+→ deployment validation
+
+完成後才宣布整體任務完成。
+
+總目標：
+把 greencloud-ai 建成可長期運作的 AI Agent 軟體開發工作環境，讓我最後可以從 iPhone 的 Conduit / Open WebUI 使用它，而不需要人工在 SSH 與 AI 之間搬運指令。
+
+執行原則：
+1. 先保護現有正常服務與設定，任何修改前建立可回滾備份。
+2. 不要刪除專案、資料庫、Git history、API credentials 或現有 Agent。
+3. 不要修改或重裝 Lody；Lody 是控制平面。
+4. 不要破壞 SSH、Tailscale、Nginx、agent-plane-caddy、Hermes 或目前已正常運作的服務。
+5. 不要繞過任何安全驗證，不使用非官方 binary。
+6. Ghost-Goat 必須保持獨立，不能把它併入 OpenHands、Hermes 或 AI-Agent-Skill。
+7. GitHub 是長期 source of truth；任何要 push 的內容先檢查 remote、branch、working tree、secret、history，再決定。
+8. 不要把 API key、token、password、private key 輸出到報告或 commit。
+9. 能自動完成的事情直接完成，不要每一步都停下來問我。
+10. 如果某項真的需要我提供外部 API key / 帳號授權，才停下來告訴我。
+
+請依照以下順序實際執行：
+
+PHASE 1 — 建立可回滾狀態
+- 備份即將修改的 systemd、Caddy、Docker compose/config、Agent/MCP、Open WebUI、Hermes、Lody 相關設定。
+- 建立清楚的 rollback point。
+- 記錄修改前狀態。
+
+PHASE 2 — 修復目前已確認的故障
+A. LiteLLM
+- 判斷目前 LiteLLM 是否仍值得保留。
+- 如果需要，修復失效的 /root/ai-company/.venv 與 systemd ExecStart。
+- 如果目前架構不需要 LiteLLM，採取安全方式停止無限 crash-loop，但不要刪除設定或資料庫。
+- 最終必須有明確可驗證的狀態。
+
+B. OpenHands
+- 查明 /root/open-hands、/root/openhands、現有 image、watchdog、Caddy routing 的實際關係。
+- 修復真正應該使用的 OpenHands 部署。
+- 不要因為存在兩份 repository 就直接刪除其中一份。
+- 讓 OpenHands 能正常啟動並可驗證。
+- 修復 watchdog，使其對正確的部署目標工作。
+- 解決與 agent-plane-caddy 的衝突，但不要破壞目前正常的 Caddy/Tailscale 入口。
+
+C. Hermes
+- 修正已確認的 systemd drop-in 語法問題。
+- 驗證 Hermes API /health。
+- 保持現有 Hermes 功能。
+
+PHASE 3 — Cline / MCP / Agent 能力
+- 保留目前已成功設定的 Cline 3.0.61。
+- 保留 NVIDIA → DeepSeek V4 Pro 0813 的目前測試設定，不要自行換 provider。
+- 保留 Extra High reasoning。
+- 驗證 Cline MCP：
+  filesystem
+  git
+  fetch
+  sequential-thinking
+  playwright
+  context7
+  github
+- 檢查 plugins 是否有實際啟用價值。
+- 將真正有用、穩定且與目前架構相容的能力整合進 Agent 工作流。
+- 不要為了「湊數」安裝大量沒有用途的 Agent。
+
+PHASE 4 — Skills
+- 整理目前已安裝的 Skills。
+- 保留 Cline / Universal / 其他實際需要的 Skills。
+- 確認 Skills 能被實際使用，而不是只存在於磁碟。
+- 對目前 AI coding、DevOps、GitHub、security、testing、deployment 最有價值的能力補齊。
+- 不要重複安裝已有能力。
+- 不要刪除既有有效 Skills。
+
+PHASE 5 — Security / Development Toolchain
+確認並整合目前已有：
+- Git
+- GitHub CLI
+- Docker
+- Gitleaks
+- Semgrep
+- OSV-Scanner
+- Trivy
+- Playwright
+- MCP
+- Cline
+- OpenCode
+- Codex
+- Aider
+- Kilo
+- Goose
+
+讓 Agent 能夠實際利用這些工具進行：
+- coding
+- code review
+- testing
+- dependency security
+- secret scanning
+- container scanning
+- deployment validation
+- rollback
+
+PHASE 6 — GitHub / Repository Source of Truth
+實際盤點並建立正確對應：
+
+/root/ai-company
+/root/AI-Agent-Skill
+/root/ai-agent-skills
+/root/ai-agent-stack
+/root/ai-agent-fleet
+/root/.hermes
+/root/agent-platform
+/root/projects
+/root/open-hands
+/root/openhands
+
+以及 GitHub：
+xh09411-web/Ghost-Goat
+xh09411-web/open-hands
+xh09411-web/hermes-007
+xh09411-web/Ai-Agent-Skill
+xh09411-web/skill-link-nexus
+
+要求：
+- 找出真正的主 repository。
+- 不要假設 ai-company、ai-agent-stack、ai-agent-fleet 是正確名稱。
+- Ghost-Goat 保持獨立。
+- 清楚建立本機 repo ↔ GitHub repo mapping。
+- 檢查 branch、remote、upstream、working tree、未提交修改。
+- 用 Gitleaks 掃描 working tree 與 Git history。
+- 不得把 secrets、.env、private keys、database、credentials 推上 GitHub。
+- 只有確認安全且屬於 source-of-truth 的內容才 push。
+- 必要時建立清楚 commit。
+- push 前再次驗證。
+- 不要覆蓋遠端未知的有效工作。
+
+PHASE 7 — Agent 架構
+建立清楚且可替換的架構：
+
+Lody
+ ↓
+Cline Controller
+ ↓
+MCP / VPS / GitHub
+ ↓
+OpenCode / Codex / Aider / 其他 Coding Executor
+ ↓
+Test / Security / Deploy / Validate
+
+Cline 不應被硬綁死成唯一 Coding Executor。
+未來可以替換 OpenCode、Codex、Goose、Kilo、Kimi、Gemini CLI 等，而不破壞控制層。
+
+PHASE 8 — Open WebUI / Conduit
+在上述底層完成且驗證後：
+- 確認 Open WebUI 正常。
+- 確認 Hermes 正常。
+- 確認必要 API / MCP / Agent endpoints。
+- 確認 Tailscale 私有入口。
+- 讓 Conduit 可以作為 iPhone 端入口使用。
+- 不要讓 Open WebUI 取代 Lody；兩者角色要清楚：
+  Lody = Agent control / execution
+  Open WebUI = AI gateway / general chat / model access
+  Conduit = iPhone mobile gateway/interface
+
+PHASE 9 — 最終驗證
+實際執行，而不是只檢查設定檔：
+
+1. Cline 能呼叫模型。
+2. Cline 能使用 MCP。
+3. Cline 能讀寫允許的 VPS project。
+4. GitHub CLI/API 正常。
+5. OpenHands 正常。
+6. Hermes /health 正常。
+7. Open WebUI 正常。
+8. Tailscale 入口正常。
+9. Security scans 正常。
+10. Agent 能完成一次實際 coding → test → git status → validation workflow。
+11. 不會因 iPhone App 切到背景而遺失 VPS 上正在執行的工作。
+12. 所有重要服務都有持久化與自動恢復策略。
+
+最後建立一份簡潔的：
+`/root/agent-platform/PROJECT_STATE.md`
+
+內容必須包含：
+- Architecture
+- Services
+- Agents
+- MCP
+- Skills
+- GitHub repository mapping
+- Deployment state
+- Security state
+- Validation results
+- Rollback points
+- Remaining external credentials required
+- Execution/audit log
+
+不要只回報「建議怎麼做」。
+請實際執行能安全執行的項目，完成後再回報：
+1. 已完成
+2. 修復了什麼
+3. 新增/啟用什麼能力
+4. 哪些 Git 內容已安全 push
+5. 哪些服務已驗證
+6. 哪些項目因外部帳號/API key 才需要我介入
+7. 最後如何從 Conduit/Open WebUI 使用整套環境
+補充要求：不要只做盤點、修復與 Git push。凡是本次架構真正需要但 VPS 尚未安裝的套件、CLI、MCP、Skills、runtime、依賴與支援工具，請在安全確認後直接安裝並配置。
+
+原則：
+- 已安裝且正常的不要重裝。
+- 缺少的直接安裝。
+- 安裝後必須驗證版本與實際可用性。
+- 不要為了湊數安裝沒有實際用途的 Agent。
+- 不要安裝本機 LLM；目前模型走 API。
+- 不要破壞既有 Lody、SSH、Tailscale、Nginx、Hermes、Open WebUI 等正常服務。
+- 需要外部 API key / 帳號授權的才停下來讓我提供。
+- 官方套件優先，不繞過簽章或安全驗證。
+- 能透過 GitHub source-of-truth 管理的設定、Skills、腳本與專案內容，要整理進正確 repository 並安全 commit/push。
+- push 前一定做 secrets 掃描與 Git history 檢查。
+- 最終我要的是「已安裝 + 已配置 + 已驗證 + 已部署」，不是「建議清單」。
+
+目標：
+把昨天與今天已討論、確認值得使用的 AI Agent、
+Open WebUI、OpenHands、Hermes、Coding Agent、
+MCP、Plugin、Skill、Search、Automation、
+Developer Tool 全部合併。
+
+要求：
+以下列出的項目 = 我要安裝 / 啟用 / 整合。
+不要自行刪除。
+不要自行換成其他方案。
+如果某項需要 API Key / 帳號 / 授權，
+保留安裝與整合項目，缺少憑證時只標記待填入。
+
+第三方項目不是因為非官方就刪除；
+但正式安裝前必須做 source / dependency /
+network / permission / security review。
+
+根據你提供的清單和 2026 年 9 月的最新生態，以下是針對你需求（VPS 已跑 n8n、OpenHands、LiteLLM、Ollama、Coolify、k3s 等）的精選建議。我會避開你已知的常見工具（Cursor、Claude Code、Codex CLI 等），專注於「更強、可協作、可擴展」的 agent 與技能套件，並特別強化 Open WebUI、Hermes、OpenCode、OpenHands、Cline 的安裝建議。
+
+## Requirement Analysis
+
+你需要：
+1. **更強的編程 agent**（能協作、可擴展、非主流但熱門）
+2. **Open WebUI 的神級套件/skills/MCP**（編程相關）
+3. **Hermes、OpenCode、OpenHands、Cline 的強化技能/插件**
+4. **Cline 作為終端部署代理的完整配置建議**
+5. **可離線安裝、熱門、官方或高評價非官方皆可**
+
+## Verified Facts
+
+- **OpenCode** 是目前 GitHub stars 最高的開源編程 agent（206.8k stars，MIT 許可），支援 skills（SKILL.md）和 plugins（JS/TS 事件鉤子）。[1][2]
+- **Cline** 67.9k stars（Apache 2.0），支援 MCP 市場、SKILL.md、多 agent 團隊、排程 agent、Slack/Telegram 整合，CLI 可 headless 運行 。[3]
+- **OpenHands** 87.4k stars，v1.17.0（2026-09-09）已將 skills 改為 allow-list 機制，支援 Agent Canvas 作為控制中樞 。[4]
+- **Open WebUI** 有社區維護的 plugins 倉庫（Classic298/open-webui-plugins），包含 MCP App Bridge、工具、filters、pipes 等 。[5]
+- **Agent Skills** 標準（SKILL.md）已被多個 agent 採用（Claude Code、Codex、OpenCode、Cline 等），可跨 agent 重用 。[6][7][8]
+- **Oh-My-OpenCode** 是 OpenCode 的擴展框架，提供 LSP/AST/MCP 工具、背景 agent、預構建 agents 。[2][9]
+- **Beanie Plugin** 為 OpenCode 的電池included 插件，整合 8 項生產力功能（agent 編排、MCP 工具聚合、skill 發現等）。[9]
+
+## Assumptions
+
+- 你的 VPS 已有 Docker、k3s、nginx、redis，可部署新服務。
+- 你偏好 BYOK（自帶 API key）和自托管，避免 vendor lock-in。
+- 你需要 agent 能協作（多 agent 編排），而非單一 agent 孤島。
+
+## Risks
+
+- **Open WebUI plugins** 多為社區維護，安全掃描等級不一，需審慎選擇（優先選 A 級、stars 高、最近更新者）。
+- **Cline 終端部署** 若開啟 auto-approve，需確保 VPS 有 fail2ban、tailscale、權限隔離，避免 agent 誤操作。
+- **多 agent 編排** 會增加 token 成本和複雜度，需監控（建議用 v7 router / observability 追蹤）。
+
+## Alternatives Comparison
+
+| Agent/Framework | 類型 | 協作能力 | 自托管 | 技能生態 | 適合場景 |
+|---|---|---|---|---|---|
+| **OpenCode** | CLI/Desktop | 多 agent 團隊（--team-name） | ✅ | SKILL.md + plugins（40+ 社區插件）[2] | 主力編程 agent，可被 Hermes 調度 [10] |
+| **Cline** | VS Code/CLI/Desktop | 多 agent 團隊、排程 agent | ✅ | SKILL.md + MCP 市場（150+ 伺服器）[11] | 終端部署代理，可接 Slack/Telegram [3] |
+| **OpenHands** | Web/CLI | Agent Canvas 編排 automations | ✅ | skills allow-list（v1.16+）[12] | 自動化工作流（GitHub/Slack/Linear）[4] |
+| **LangGraph** | Python 庫 | 狀態圖多 agent | ✅ | 自定義 tools | 生產級狀態化多 agent [13] |
+| **CrewAI** | Python 庫 | 角色為基礎的 crew | ✅ | 自定義 tools | 快速原型多 agent [14] |
+| **Sim** | 視覺化編排 | 生產圖、可視化 | ✅ | 自定義 | 視覺化多 agent 編排 [15] |
+| **agent-swarm** | MIT 自托管 | 持久記憶、Slack/GitHub/Linear | ✅ | 自定義 | 生產級任務委派 [16] |
+
+## Recommended Solution
+
+### 1. 更強的編程 Agent（非主流但熱門）
+
+| Agent | 為何更強 | 安裝方式 | 協作特性 |
+|---|---|---|---|
+| **OpenCode** | 206.8k stars，最高星開源 agent，支援 build/plan 雙 agent、subagent、plugins [1] | `curl -fsSL https://opencode.ai/install | bash` 或 `brew install anomalyco/tap/opencode` | `--team-name` 多 agent、`@general` 子 agent |
+| **Cline** | 67.9k stars，MCP 市場、排程 agent、Slack/Telegram 整合、headless CLI [3] | VS Code 擴展：`saoudrizwan.claude-dev`；CLI：`npm i -g cline` | `--team-name`、`cline schedule create`、`cline connect slack` |
+| **OpenHands Agent Canvas** | 87.4k stars，自托管控制中樞，可編排 OpenHands/Claude Code/Codex [4] | `npm install -g @openhands/agent-canvas` 或 Docker | Automations（Slack/GitHub/Linear webhook） |
+| **Oh-My-OpenCode** | OpenCode 擴展框架，背景 agent、LSP/AST/MCP 工具、預構建 agents [2] | 見 [9] Beanie Plugin 整合 | 聚合 MCP 工具、skill 發現 |
+| **agent-swarm** | MIT 自托管，持久記憶、Slack/GitHub/Linear 原生整合 [16] | `git clone` + `docker-compose` | 任務委派、持久會話 |
+
+### 2. Open WebUI 神級套件（編程相關）
+
+| 套件名稱 | 功能 | 安裝方式 | 來源 |
+|---|---|---|---|
+| **MCP App Bridge** | 渲染 MCP Apps 為 Rich UI，連接 MCP 伺服器、調用工具 [5] | 從 Classic298/open-webui-plugins 複製到 `~/.open-webui/plugins/` | [5] |
+| **Code Interpreter Pipe** | 執行 Python/Node.js 代碼，返回結果（類似 Jupyter） | 需啟用 `ENABLE_CODE_INTERPRETER=true` | Open WebUI 內建 |
+| **Git Tools Plugin** | GitHub/GitLab API 整合，PR 審查、Issue 分解 | 從 open-webui-plugins 複製 | [5] |
+| **MCP Server Bridge** | 連接任意 MCP 伺服器（資料庫、CI/CD、雲端） | 配置 `mcp.json` 指向 `stdio` 或 `http+sse` | [7] |
+| **Agent Skills Loader** | 載入 SKILL.md 技能包（編程、文檔、自動化） | `npx skills add <repo> --skill <name>` | [8] |
+
+**安裝步驟（Open WebUI plugins）**：
+```bash
+# 1. 進入 Open WebUI 容器或主機
+docker exec -it open-webui bash
+
+# 2. 克隆 plugins 倉庫
+git clone https://github.com/Classic298/open-webui-plugins.git /tmp/plugins
+
+# 3. 複製需要的插件到 plugins 目錄
+cp -r /tmp/plugins/code-interpreter /app/backend/data/plugins/
+cp -r /tmp/plugins/mcp-app-bridge /app/backend/data/plugins/
+
+# 4. 重啟 Open WebUI
+docker restart open-webui
+```
+
+**推薦技能包（SKILL.md）**：
+- **microsoft/skills**：Azure、MCP Builder、Deep Wiki 等[6]
+- **anthropic-agent-skills**：文檔生成（docx/pdf/pptx/xlsx）、Playwright 測試、MCP 伺服器生成[17]
+- **cloudflare/skills**：1000+ SaaS 整合（GitHub/Linear/Slack/Stripe/Jira/Notion）[18]
+- **aivrar/portable-hermes-agent**：Hermes 調度 OpenCode 的 skill[10]
+
+### 3. Hermes + OpenCode + OpenHands + Cline 技能/插件
+
+#### Hermes Skills
+- **opencode skill**：讓 Hermes 調度 OpenCode 執行編程任務[10][19]
+  ```bash
+  npx skills add aivrar/portable-hermes-agent --skill opencode
+  ```
+- **hermes-skills AGENTS.md**：Hermes 自定義指令（Next.js 設計系統等）[20]
+
+#### OpenCode Plugins（高評價）
+| Plugin | 功能 | 安裝 |
+|---|---|---|
+| **oh-my-opencode** | 背景 agent、LSP/AST/MCP 工具、Claude Code 兼容 [2] | 見 [2] Ecosystem |
+| **Beanie Plugin** | 8 合一（agent 編排、MCP 工具聚合、skill 發現、自配置）[9] | 添加到 `opencode.json` |
+| **opencode-supermemory** | 跨會話持久記憶（Supermemory） | [2] |
+| **opencode-notificator** | 桌面通知（權限/完成/錯誤事件） | [2] |
+| **opencode-skillful** | 懶載入 prompts、skill 發現 | [2] |
+
+#### OpenHands Skills（v1.17.0 allow-list）
+- **PR Design Document Skill**（#17221，2026-09-10）[4]
+- **安裝路徑**：`~/.openhands/skills/` 或 `.openhands/skills/`
+- **啟用方式**：在 Agent Canvas 設定中選取 allow-list
+
+#### Cline Plugins / MCP
+- **官方 MCP 市場**：150+ 社區審計伺服器（資料庫、Issue 追蹤、CI/CD、本地開發工具）[11]
+- **安裝方式**：VS Code 中 `Ctrl+Shift+M` 開啟 MCP 市場，搜尋 `halopsa` 或其他[21]
+- **推薦 MCP 伺服器**：
+  - `@modelcontextprotocol/server-postgres`：PostgreSQL 查詢
+  - `@modelcontextprotocol/server-github`：GitHub API（PR/Issue）
+  - `@modelcontextprotocol/server-linear`：Linear Issue 管理
+  - `@modelcontextprotocol/server-firecrawl`：網頁爬取（Firecrawl）
+  - `tavily/mcp-server`：搜尋引擎（Tavily）
+
+## Implementation
+
+### Cline 終端部署配置（VPS）
+
+```bash
+# 1. 安裝 Cline CLI
+npm i -g cline
+
+# 2. 配置 MCP 伺服器（cline_mcp_settings.json）
+mkdir -p ~/.cline
+cat > ~/.cline/cline_mcp_settings.json << 'EOF'
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "your_github_token"
+      }
+    },
+    "linear": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-linear"],
+      "env": {
+        "LINEAR_API_KEY": "your_linear_api_key"
+      }
+    },
+    "firecrawl": {
+      "command": "npx",
+      "args": ["-y", "firecrawl-mcp-server"],
+      "env": {
+        "FIRECRAWL_API_KEY": "your_firecrawl_key"
+      }
+    }
+  }
+}
+EOF
+
+# 3. 安裝 SKILL.md 技能（編程相關）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add anthropic-agent-skills --skill document-skills
+npx skills add cloudflare/skills --skill saas-integrations
+
+# 4. 創建排程 agent（每日 PR 摘要）
+cline schedule create "PR summary" \
+  --cron "0 9 * * MON-FRI" \
+  --prompt "List all open PRs and their review status" \
+  --workspace /path/to/repo
+
+# 5. 連接 Slack（可選）
+cline connect slack --bot-token $SLACK_TOKEN --signing-secret $SECRET --base-url $URL
+
+# 6. Headless 模式（CI/CD）
+cline --json "Run tests and fix any failures" | jq -r 'select(.type == "agent_event") | .event.text'
+```
+
+### Open WebUI + MCP + Skills 整合
+
+```bash
+# 1. 安裝 Open WebUI plugins（Docker）
+docker exec -it open-webui bash
+cd /app/backend/data/plugins
+git clone https://github.com/Classic298/open-webui-plugins.git tmp
+cp -r tmp/mcp-app-bridge .
+cp -r tmp/code-interpreter .
+rm -rf tmp
+
+# 2. 配置 MCP 伺服器（Open WebUI）
+cat > /app/backend/data/mcp.json << 'EOF'
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-postgres"],
+      "env": {
+        "DATABASE_URL": "postgresql://user:pass@localhost:5432/db"
+      }
+    },
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"]
+    }
+  }
+}
+EOF
+
+# 3. 安裝 Agent Skills（SKILL.md）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add aivrar/portable-hermes-agent --skill opencode
+
+# 4. 重啟 Open WebUI
+docker restart open-webui
+```
+
+### OpenHands Agent Canvas 部署（VPS）
+
+```bash
+# 1. 安裝 Agent Canvas（npm）
+npm install -g @openhands/agent-canvas
+agent-canvas --backend-only  # 或 Docker 模式
+
+# 2. Docker 模式（推薦）
+export PROJECTS_PATH="$HOME/projects"
+mkdir -p "$PROJECTS_PATH" "$HOME/.openhands"
+
+docker run -d --name agent-canvas \
+  -p 8000:8000 \
+  -v "$HOME/.openhands:/home/openhands/.openhands" \
+  -v "${PROJECTS_PATH}:/projects" \
+  ghcr.io/openhands/agent-canvas:1.17.0
+
+# 3. 啟用 skills（allow-list）
+# 編輯 ~/.openhands/config.json，添加：
+{
+  "skills": {
+    "allowList": ["pr-design-document", "mcp-builder", "document-skills"]
+  }
+}
+
+# 4. 創建 Automation（GitHub Issue 分解）
+# 在 Agent Canvas UI 中：Automations → New → GitHub Webhook → Decompose Issue
+```
+
+### Oh-My-OpenCode + Beanie Plugin
+
+```bash
+# 1. 安裝 Oh-My-OpenCode
+git clone https://github.com/your-org/oh-my-opencode.git ~/.opencode/plugins/oh-my-opencode
+
+# 2. 安裝 Beanie Plugin（opencode.json）
+cat >> ~/.config/opencode/opencode.json << 'EOF'
+{
+  "plugins": [
+    "beanie@git+https://github.com/beremaran/opencode-beanie-plugin.git",
+    "oh-my-opencode@git+https://github.com/your-org/oh-my-opencode.git"
+  ]
+}
+EOF
+
+# 3. 重啟 OpenCode
+opencode --reload
+```
+
+## Security Considerations
+
+- **Cline auto-approve**：僅在受控環境（VPS 有 fail2ban、tailscale、權限隔離）開啟。
+- **MCP 伺服器**：優先選官方或高 star 社區版本，檢查 `mcp.json` 中的 env 變數（避免洩露 token）。
+- **Open WebUI plugins**：從可信來源（Classic298/open-webui-plugins）複製，避免未知第三方。
+- **Agent Skills**：使用 `npx skills add` 時，檢查 GitHub repo 的 stars、last commit、security scan grade（優先 A 級）。[10][19]
+- **VPS 隔離**：建議用 Docker 或 k3s namespace 隔離 agent 運行環境，避免直接訪問主機 file system。
+
+## Deployment Considerations
+
+- **Docker Compose**：將 Cline、OpenCode、OpenHands、Open WebUI 整合到同一 `docker-compose.yml`，共用 redis、postgres。
+- **k3s**：若用 k3s，可部署為 StatefulSet（持久化 `~/.openhands`、`~/.cline`、`~/.opencode`）。
+- **nginx reverse proxy**：為 Agent Canvas（8000）、Open WebUI（3000）、Cline Webhook（8080）配置 subdomain。
+- **監控**：用 v7 router / observability 追蹤 agent token 使用、錯誤率、延遲。
+- **備份**：定期備份 `~/.openhands/skills/`、`~/.cline/skills/`、`~/.opencode/skills/` 到 Git repo。
+
+## Optimization Suggestions
+
+1. **Token 效率**：
+   - 用 OpenCode 的 `plan` agent 先分析，再調用 `build` agent 執行（減少無謂 token）。
+   - Cline 的 `Plan mode` 先確認策略，再切換 `Act mode`。
+
+2. **協作編排**：
+   - 用 **OpenHands Automations** 觸發 Cline/OpenCode（GitHub webhook → Agent Canvas → Cline CLI）。
+   - 用 **LangGraph** 或 **CrewAI** 編排多 agent（若需要更複雜的狀態圖）。
+
+3. **技能重用**：
+   - 將 SKILL.md 放在統一 repo（如 `your-org/agent-skills`），symlink 到各 agent 目錄：
+     ```bash
+     ln -s ~/agent-skills/.github/skills/mcp-builder ~/.openhands/skills/
+     ln -s ~/agent-skills/.github/skills/mcp-builder ~/.cline/skills/
+     ln -s ~/agent-skills/.opencode/skills/mcp-builder ~/.opencode/skills/
+     ```
+
+4. **離線優先**：
+   - 用 Ollama 跑本地模型（Llama 3.1、Qwen 2.5），配置 LiteLLM 作為 router。
+   - Open WebUI 啟用 `ENABLE_CODE_INTERPRETER`，本地執行 Python/Node.js。
+
+5. **熱門但非官方**：
+   - **Beanie Plugin**（OpenCode）：8 合一功能，高評價 。[9]
+   - **Oh-My-OpenCode**：背景 agent、LSP/AST/MCP 工具 。[2]
+   - **aivrar/portable-hermes-agent**：Hermes 調度 OpenCode 的 skill（A 級安全掃描）。[10]
+
+***
+
+**總結推薦安裝清單**（直接可執行）：
+
+```bash
+# OpenCode
+curl -fsSL https://opencode.ai/install | bash
+
+# Cline CLI
+npm i -g cline
+
+# OpenHands Agent Canvas
+npm install -g @openhands/agent-canvas
+
+# Open WebUI Plugins
+docker exec -it open-webui bash -c "
+  cd /app/backend/data/plugins &&
+  git clone https://github.com/Classic298/open-webui-plugins.git tmp &&
+  cp -r tmp/mcp-app-bridge tmp/code-interpreter . &&
+  rm -rf tmp
+"
+
+# Agent Skills（通用）
+npx skills add microsoft/skills --skill mcp-builder
+npx skills add anthropic-agent-skills --skill document-skills
+npx skills add aivrar/portable-hermes-agent --skill opencode
+```
+
+這些工具在 2026 年 9 月均為活躍維護、stars 高、評價好，且可與你現有的 VPS 服務（n8n、LiteLLM、Ollama、Coolify、k3s）無縫整合。
+
+來源
+[1] anomalyco/opencode: The open source coding agent. - GitHub https://github.com/anomalyco/opencode
+[2] Ecosystem - OpenCode https://opencode.ai/docs/ecosystem/
+[3] cline/cline: Autonomous coding agent as an SDK ... https://github.com/cline/cline
+[4] GitHub - OpenHands/OpenHands: OpenHands: AI-Driven ... https://github.com/OpenHands/OpenHands
+[5] Classic298/open-webui-plugins - GitHub https://github.com/Classic298/open-webui-plugins
+[6] GitHub - microsoft/skills: Skills, MCP servers, Custom Agents, Agents ... https://github.com/microsoft/skills
+[7] Agent Plugins — the portable agent-extension standard https://trending.md/en/agent/knowledge/agent-plugins/
+[8] How to Install AI Agent Skills | Setup Guides https://www.agensi.io/learn/installation
+[9] Beanie — OpenCode 插件详情 · OpenDock https://www.opendock.net/zh/plugins/beremaran--opencode-beanie-plugin/
+[10] opencode — Skill for Claude Code and Codex by aivrar https://agentmods.dev/skills/aivrar/portable-hermes-agent/opencode
+[11] Cline launches official MCP extension registry and hot-plugging for instant PostgreSQL, Linear, and GitHub tool access — AICoder https://aicoder.com/news/news-20260829-cline-dev-mcp-registry-instant-discovery
+[12] OpenHands v1.16.0 replaced its all-on skill catalog with an explicit allow-list. https://mindpattern.ai/s/2026-08-28-openhands-v1-16-0-replaced-its-all-on-skill-catalog-with-an-explicit-allow-list
+[13] Best Open-Source AI Agent Frameworks in 2026: 15 Frameworks ... https://resources.rework.com/tools/ai-agents/best-open-source-ai-agent-frameworks-2026
+[14] Best AI Agents in 2026: Top Tools, Frameworks, and Enterprise ... https://www.simpliaxis.com/resources/best-ai-agents
+[15] Best Multi-Agent Frameworks for Production in 2026 - Sim AI https://www.sim.ai/library/best-multi-agent-frameworks-2026
+[16] Open Source AI Orchestration: Best OSS Picks for 2026 https://www.agent-swarm.dev/blog/open-source-ai-orchestration
+[17] Agent Toolkit — August 23, 2026 - AI Automation Library https://library.mikesailab.com/library/News/Bookmarks/Agent-Toolkit/August_2026/agent-toolkit-2026-08-23/agent-toolkit-2026-08-23
+[18] 50 OpenCode Skills Worth Installing in 2026: The Definitive ... https://www.linkedin.com/pulse/50-opencode-skills-worth-installing-2026-definitive-parvez-mohammed-g5x3f
+[19] opencode — Skill for Claude Code and Codex by AtlasOmnia https://agentmods.dev/skills/atlasomnia/hermes-custom-pack/opencode
+[20] How yehyakin/hermes-skills configures Codex and OpenCode https://agentmods.dev/instructions/yehyakin/hermes-skills/agents-md
+[21] Which AI agent? Install MSP Skills in Claude, ChatGPT, Codex, or ... https://msp-skills.compoundingteams.com/which-agent/
+[22] AI Coding Agents: 15 Best Tools Reviewed for 2026 https://monday.com/blog/ai-agents/ai-coding-agent/
+[23] The Best Cursor Alternatives in 2026 by Coding Workflow - DataCamp https://www.datacamp.com/blog/best-cursor-alternatives
+[24] Cursor Alternatives (2026): We Tested 10 Tools and the $0 One ... https://www.morphllm.com/comparisons/cursor-alternatives
+[25] Best AI Coding Agent Orchestrators in 2026: 11 Tools Compared https://openalternative.co/blog/best-ai-coding-agent-orchestrators
+[26] AI Coding Assistants 2026: Complete Guide to the Best Tools https://www.progressiverobot.com/2026/08/13/ai-coding-assistants-compared/
+[27] Best AI Coding Agents in 2026: Tested, Ranked, Priced https://codexpedite.dev/articles/the-10-best-ai-coding-agents-in-2026-benchmarks-pricing-and-real-world-fit
+[28] Best Cursor Alternatives in 2026 https://startupstash.com/cursor-alternatives/
+[29] Best Model-Agnostic Coding Agents 2026 | Omid Saffari https://omidsaffari.com/blog/best-model-agnostic-coding-agents-2026
+[30] Open Source Cursor Alternatives: What's Left Standing (2026) https://cursor-alternatives.com/blog/open-source-cursor-alternatives/
+[31] Best AI Coding Tools — 2026 Ranked - Value Add VC https://valueaddvc.com/blog/ai-coding-tools-ranked-2026-cursor-copilot-windsurf-devin-and-claude-code-compared
+[32] Best AI Coding Agents 2026 (Claude Code vs Cursor) https://aiengineerinsights.com/blog/best-ai-coding-agents/
+[33] Best AI Coding Agents (2026) - The Rundown AI https://www.therundown.ai/best-ai-tools/best-ai-coding-agents
+[34] Best AI Coding Agents 2026: Ranked After Testing 10+ - Levelop https://levelop.dev/blog/the-best-ai-coding-agents-in-2026-a-practical-ranking-for-working-developers
+[35] Best AI Coding Tools in 2026: Cursor, Copilot & Claude Code https://listicles.net/best-ai-coding-tools/
+[36] Best AI Coding Assistants in 2026: Which One for Which Job https://www.toolsura.com/blog/best-ai-coding-assistants-2026/
+[37] OpenHands/OpenHands at apidog.com https://github.com/OpenHands/OpenHands?ref=apidog.com
+[38] Release v1.16.0 · OpenHands/OpenHands https://github.com/OpenHands/OpenHands/releases/tag/v1.16.0
+[39] Cline Review 2026 : agent IA de codage open source https://www.promptquorum.com/fr/power-local-llm/cline-review
+[40] Cline Review 2026: agente de codificação IA open source https://www.promptquorum.com/pt/power-local-llm/cline-review
+[41] Cline (Desktop) http://canmyagentuse.com/harnesses/cline
+[42] Build software better, together https://github.cszszs.workers.dev/topics/claude-ai
+[43] Cline Review 2026: agente de codificación IA open source https://www.promptquorum.com/es/power-local-llm/cline-review
+[44] OpenHands Switched Off 48 of 59 Skills — but Not for Existing Users https://agenccy.ai/news/openhands-turned-off-48-of-59-bundled-skills-but-not-for-you/
+[45] coderabbitai/skills https://shadowgraph.io/coderabbitai/skills
+[46] Cline VS Code SEO Skills & Setup Guide (2026) https://seoskillsai.com/cline
+[47] Agent Plugins 1.0: Write Once, Run on Every AI Coder | Articles | o ... https://o-mega.ai/articles/agent-plugins-1-0-one-skill-every-ai-coder-2026
+[48] OpenHands changelog — v1.16.0, Aug 27, 2026 · What's New https://whatsnew.fyi/product/openhands
+[49] Best AI agent frameworks (2026) - Dataiku https://www.dataiku.com/blog/ai-agent-frameworks
+[50] Best AI Agent Orchestration Platforms 2026: Coding vs Workflow https://nimbalyst.com/blog/best-ai-agent-orchestration-platforms-2026/
+[51] 10 best AI agent orchestration platforms and tools in 2026 - Gumloop https://www.gumloop.com/blog/ai-agent-orchestration-platform
+[52] "Best Multi-Agent Frameworks in 2026: 11 Frameworks for ... https://resources.rework.com/tools/ai-agents/best-multi-agent-frameworks-2026
+[53] The 20 Best AI Agent Frameworks and Tools for Devel… https://www.startuphub.ai/ai-news/insights/2026/best-ai-agent-frameworks-2026
+[54] Best AI Agent Frameworks in 2026 (Tested and Ranked) | ModelRefs https://modelrefs.com/tools/best-ai-agent-frameworks/
+[55] The Top AI Agent Frameworks in 2026: 100 Picks Tested & Ranked https://www.aitop10.ai/articles/top-ai-agent-frameworks-46
+[56] 11 Top AI Agent Frameworks in 2026 https://autogpt.net/top-ai-agent-frameworks/
+[57] OpenCode skills and plugins - tomrochette.com https://tomrochette.com/agents/opencode-skills-and-plugins/
+[58] AI Agent Frameworks – Investigation Report (August 2026) https://www.linkedin.com/pulse/ai-agent-frameworks-investigation-report-august-2026-chaudhuri-7yvxf
+[59] A curated list of awesome Agent Skills frameworks, libraries ... - GitHub https://github.com/uhub/awesome-agent-skills
+[60] Plugins - OpenCode https://opencode.ai/docs/plugins/
+[61] deepseek-harness · GitHub Topics · GitHub https://github.com/topics/deepseek-harness
+
+============================================================
+一、OPEN WEBUI
+============================================================
+
+安裝 / 保留 / 啟用：
+
+- Open WebUI
+- Web Search
+- URL Fetching
+- Knowledge
+- RAG
+- Memory
+- File Upload
+- Image Generation
+- Voice
+- Multi-model
+- Model Switching
+- Tool Calling
+- Agentic Search
+- Skills
+- MCP
+- OpenAPI
+- API Keys
+- RBAC
+- Automations
+- Task Management
+- Folders / Tags
+- Code / Data capabilities
+- Workspace
+- Prompts
+- Models
+- Connections
+- Pipelines compatibility where existing functionality requires it
+
+Open WebUI 使用：
+
+ghcr.io/open-webui/open-webui
+
+保留現有資料：
+
+/root/ai-company/open-webui
+
+
+============================================================
+二、OPEN WEBUI OPEN TERMINAL
+============================================================
+
+安裝：
+
+- Open WebUI Open Terminal
+
+啟用：
+
+- persistent workspace
+- API authentication
+- Docker isolation
+- CPU limits
+- RAM limits
+- restart policy
+- internal/private connectivity
+
+用途：
+
+- shell
+- Python
+- Node.js
+- Git
+- npm
+- pnpm
+- uv
+- build
+- compile
+- test
+- coding
+- file operations
+- agent execution
+
+
+============================================================
+三、OPEN WEBUI COMPUTER / COMPUTER USE
+============================================================
+
+安裝 / 啟用：
+
+- Open WebUI Computer capability
+- computer interaction
+- browser interaction
+- file interaction
+- terminal interaction
+- approval workflow
+- agent task execution
+
+
+============================================================
+四、OPEN WEBUI MCP
+============================================================
+
+安裝 / 啟用：
+
+- Native MCP
+- Streamable HTTP MCP
+- MCP authentication
+- MCP management
+- MCPO
+- MCP App Bridge
+
+============================================================
+五、OPEN WEBUI KNOWLEDGE
+============================================================
+
+安裝 / 啟用：
+
+- Knowledge
+- RAG
+- document ingestion
+- document retrieval
+- source citations
+- persistent knowledge bases
+
+安裝：
+
+- oikb
+
+用於：
+
+- GitHub repositories
+- local project directories
+- engineering documentation
+- Ghost-Goat
+- AI-Agent documentation
+
+
+============================================================
+六、WEB SEARCH
+============================================================
+
+安裝 / 啟用：
+
+- Native Open WebUI Web Search
+- SearXNG
+- DuckDuckGo Search
+- Exa
+- Tavily
+- Firecrawl
+- Brave Search
+- Jina
+- Perplexity Search
+
+用途：
+
+- normal search
+- AI research
+- deep research
+- web crawling
+- documentation retrieval
+- agent research
+- fallback search
+
+
+============================================================
+七、FIRECRAWL
+============================================================
+
+安裝 / 整合：
+
+- Firecrawl
+- Firecrawl MCP
+
+功能：
+
+- search
+- crawl
+- scrape
+- extract
+- documentation extraction
+- research
+
+
+============================================================
+八、SEARXNG
+============================================================
+
+安裝：
+
+- self-hosted SearXNG
+
+整合：
+
+- Open WebUI
+- Hermes
+- MCP
+- research agents
+
+
+============================================================
+九、LITELLM
+============================================================
+
+保留 / 安裝 / 啟用：
+
+- LiteLLM
+
+功能：
+
+- model gateway
+- routing
+- fallback
+- model aliases
+- rate limits
+- budget
+- usage
+- logging
+- provider abstraction
+
+整合：
+
+- Open WebUI
+- Hermes
+- OpenHands
+- OpenCode
+- Kilo
+- Cline
+- Aider
+- Claude Code
+- Codex
+- Gemini CLI
+- Goose
+- other OpenAI-compatible clients
+
+
+============================================================
+十、HERMES AGENT
+============================================================
+
+安裝 / 保留：
+
+- Hermes Agent
+
+啟用：
+
+- persistent agent
+- memory
+- learning
+- skills
+- web search
+- MCP
+- terminal
+- subagents
+- delegation
+- coding
+- long-running execution
+
+
+============================================================
+十一、HERMES OFFICIAL SKILLS
+============================================================
+
+安裝：
+
+AUTONOMOUS AGENTS
+
+- OpenHands
+- Antigravity CLI
+- Blackbox
+- Grok
+
+
+MCP
+
+- FastMCP
+- MCPO / mcporter
+- MCP OAuth Remote Gateway
+
+
+RESEARCH
+
+- SearXNG Search
+- DuckDuckGo Search
+- QMD
+- GitNexus Explorer
+- Domain Intel
+- Parallel CLI
+
+
+SOFTWARE DEVELOPMENT
+
+- AST-grep
+- Code Wiki
+- Grill Me
+- REST / GraphQL Debug
+- Subagent-Driven Development
+
+
+SECURITY
+
+- OSS Forensics
+- Web Pentest
+
+
+WEB DEVELOPMENT
+
+- Page Agent
+- Publish Site
+
+
+============================================================
+十二、HERMES SUPPORTING TOOLS
+============================================================
+
+安裝 / 啟用：
+
+- FastMCP
+- mcporter
+- QMD
+- GitNexus
+- ast-grep
+- shell tools
+- browser automation
+- web research tools
+- code analysis tools
+
+
+============================================================
+十三、OPENHANDS
+============================================================
+
+安裝 / 保留：
+
+- OpenHands
+
+目前已知最新版本：
+
+1.17.0
+
+功能：
+
+- autonomous software engineering
+- coding
+- repository manipulation
+- terminal
+- browser
+- testing
+- deployment
+- agent execution
+- long-running development
+
+
+============================================================
+十四、OPENCODE
+============================================================
+
+安裝：
+
+- OpenCode
+
+目前已知：
+
+v1.18.30
+
+啟用：
+
+- terminal agent
+- MCP
+- skills
+- multi-model
+- coding
+- repository workflow
+- autonomous coding
+
+
+============================================================
+十五、KILO CODE
+============================================================
+
+安裝：
+
+- Kilo Code
+
+目前已知：
+
+v7.6.0
+
+啟用：
+
+- CLI
+- agent
+- worktrees
+- PR workflow
+- MCP
+- Skills
+- Modes
+- Marketplace
+- coding workflow
+
+
+============================================================
+十六、CLINE
+============================================================
+
+安裝：
+
+- Cline
+
+啟用：
+
+- coding agent
+- terminal
+- MCP
+- browser
+- file editing
+- human approval
+- autonomous coding
+
+
+============================================================
+十七、AIDER
+============================================================
+
+安裝：
+
+- Aider
+
+目前已知：
+
+v0.86.0
+
+啟用：
+
+- Git-aware coding
+- focused editing
+- repository modification
+- model switching
+- coding fallback
+
+
+============================================================
+十八、CLAUDE CODE
+============================================================
+
+安裝 / 保留：
+
+- Claude Code
+
+啟用：
+
+- coding
+- terminal
+- Git
+- MCP
+- Skills
+- repository workflow
+
+
+============================================================
+十九、CODEX CLI
+============================================================
+
+安裝：
+
+- OpenAI Codex CLI
+
+啟用：
+
+- coding
+- terminal
+- MCP
+- repository work
+- code review
+- agent execution
+
+
+============================================================
+二十、GEMINI CLI
+============================================================
+
+安裝：
+
+- Google Gemini CLI
+
+啟用：
+
+- terminal agent
+- MCP
+- coding
+- research
+- Google ecosystem
+
+
+============================================================
+二十一、GOOSE
+============================================================
+
+保留：
+
+Goose 1.45.0
+
+Binary：
+
+/root/.local/bin/goose
+
+ACP：
+
+goose acp
+
+NVIDIA：
+
+https://integrate.api.nvidia.com/v1
+
+Model：
+
+deepseek-ai/deepseek-v4-pro-0813
+
+不要：
+
+goose --acp=true
+
+不要：
+
+- bypass signature verification
+- unofficial binary
+- destroy existing verified configuration
+
+
+============================================================
+二十二、GITHUB
+============================================================
+
+安裝 / 啟用：
+
+- Git
+- GitHub CLI (gh)
+- GitHub MCP
+- GitHub integration
+- GitHub Actions integration
+- repository management
+- PR management
+- Issues
+- Releases
+- CI/CD
+
+
+============================================================
+二十三、MCP SERVERS
+============================================================
+
+安裝 / 整合：
+
+- GitHub MCP
+- Filesystem MCP
+- Playwright MCP
+- Context7 MCP
+- Firecrawl MCP
+- SearXNG
+- FastMCP
+- Ghost-Goat MCP
+- Hermes MCP
+- OpenHands MCP
+- project-specific MCP
+
+
+============================================================
+二十四、CONTEXT7
+============================================================
+
+安裝 / 整合：
+
+- Context7 MCP
+
+用途：
+
+- current documentation
+- library documentation
+- framework documentation
+- API documentation
+- coding agent reference
+
+
+============================================================
+二十五、PLAYWRIGHT
+============================================================
+
+安裝：
+
+- Playwright MCP
+
+功能：
+
+- browser automation
+- E2E testing
+- UI testing
+- web application testing
+- dashboard testing
+- Open WebUI testing
+- Ghost-Goat testing
+
+
+============================================================
+二十六、GHOST-GOAT
+============================================================
+
+保留 / 安裝 / 發展：
+
+Ghost-Goat
+
+用途：
+
+- red-team framework
+- agent testing
+- agent evolution
+- security testing
+- validation
+- optimization
+- rollback
+- audit
+
+建立：
+
+- Ghost-Goat MCP
+- Ghost-Goat Skills
+- Ghost-Goat knowledge base
+- Ghost-Goat testing workflows
+- Ghost-Goat audit records
+
+
+============================================================
+二十七、GHOST-GOAT SKILLS
+============================================================
+
+安裝 / 建立：
+
+- Ghost-Goat Engineering
+- VPS Safe Operations
+- Agent Orchestration
+- Rollback First
+- Deployment Validation
+- Plugin Security Review
+- GitHub Workflow
+- Code Review
+- MCP Development
+- Research Workflow
+- Incident Response
+- Security Audit
+- Red-Team Testing
+- Agent Evaluation
+- Regression Testing
+- Supply Chain Review
+
+
+============================================================
+二十八、OPEN WEBUI COMMUNITY EXTENSIONS
+============================================================
+
+安裝：
+
+- Inline Visualizer
+- MCP App Bridge
+- Cost / Usage tracking
+- Budget / Rate Limit controls
+- Context / Compaction
+- PII / Redaction
+- Audit / Event / Webhook extensions
+
+要求：
+
+所有 Community Tool / Function 必須：
+
+- source review
+- dependency review
+- network review
+- secret review
+- filesystem review
+- subprocess review
+- GitHub issue review
+- security advisory review
+- maintenance review
+
+通過才正式啟用。
+
+
+============================================================
+二十九、PLUGIN / TOOL / FUNCTION SECURITY
+============================================================
+
+啟用安全策略：
+
+- admin-only plugin management
+- trusted source policy
+- plugin whitelist
+- MCP whitelist
+- Skill whitelist
+- version pinning
+- dependency review
+- network review
+- permission review
+- rollback records
+- audit logs
+
+禁止：
+
+- unknown author
+- obfuscated source
+- curl | bash
+- unknown pip installer
+- unknown npm installer
+- unknown external POST
+- secret harvesting
+- unrestricted filesystem
+- unrestricted root shell
+- arbitrary Docker socket
+- unexplained telemetry
+
+
+============================================================
+三十、N8N
+============================================================
+
+保留 / 啟用：
+
+n8n
+
+功能：
+
+- automation
+- webhooks
+- scheduled workflows
+- GitHub workflows
+- agent workflows
+- notifications
+- deployment automation
+- API workflows
+
+
+============================================================
+三十一、CODING SYSTEM TOOLS
+============================================================
+
+安裝：
+
+- git
+- git-lfs
+- gh
+- curl
+- wget
+- jq
+- yq
+- ripgrep
+- fd
+- fzf
+- tmux
+- btop
+- htop
+- ncdu
+- rsync
+- unzip
+- zip
+- tar
+- xz-utils
+- ca-certificates
+- build-essential
+- pkg-config
+- cmake
+- make
+- gcc
+- g++
+- python3
+- python3-venv
+- pipx
+- Node.js
+- npm
+- pnpm
+- uv
+- shellcheck
+- shfmt
+
+
+============================================================
+三十二、PYTHON / NODE DEVELOPMENT
+============================================================
+
+安裝：
+
+Python：
+
+- Python 3
+- venv
+- pipx
+- uv
+
+Node：
+
+- Node.js
+- npm
+- pnpm
+
+Developer:
+
+- build-essential
+- gcc
+- g++
+- cmake
+- make
+- pkg-config
+
+
+============================================================
+三十三、OBSERVABILITY
+============================================================
+
+安裝 / 啟用：
+
+- btop
+- htop
+- ncdu
+- sysstat
+- jq
+
+監控：
+
+- CPU
+- RAM
+- swap
+- disk
+- Docker
+- Open WebUI
+- Open Terminal
+- OpenHands
+- Hermes
+- OpenCode
+- Kilo
+- Cline
+- LiteLLM
+- n8n
+- Tailscale
+- nginx
+- Caddy
+
+
+============================================================
+三十四、PERSISTENT EXECUTION
+============================================================
+
+啟用：
+
+- systemd
+- Docker restart policies
+- tmux
+- persistent volumes
+- persistent workspaces
+- background agents
+
+要求：
+
+iPhone 關閉 App
+iPhone 切換 App
+Termius disconnect
+SSH disconnect
+網路短暫斷線
+
+都不能殺掉 VPS 上正在執行的 Agent 工作。
+
+
+============================================================
+三十五、AI AGENT ORCHESTRATION
+============================================================
+
+啟用：
+
+Planner
+Researcher
+Coder
+Tester
+Reviewer
+Security Reviewer
+Deployer
+Validator
+Rollback
+
+支援：
+
+- multi-agent
+- subagents
+- delegation
+- parallel work
+- code review
+- test
+- security review
+- deployment
+- rollback
+
+
+============================================================
+三十六、MODEL PROVIDERS
+============================================================
+
+整合：
+
+- NVIDIA NIM
+- DeepSeek
+- OpenAI
+- Anthropic
+- Google
+- OpenRouter
+- other OpenAI-compatible providers
+
+目前保留：
+
+deepseek-ai/deepseek-v4-pro-0813
+
+
+============================================================
+三十七、API MANAGEMENT
+============================================================
+
+啟用：
+
+- API keys
+- provider management
+- model listing
+- model aliases
+- usage tracking
+- cost tracking
+- rate limits
+- fallback
+- health checks
+
+
+============================================================
+三十八、DOCUMENT / KNOWLEDGE STACK
+============================================================
+
+整合：
+
+- Open WebUI Knowledge
+- RAG
+- oikb
+- QMD
+- GitNexus
+- local document search
+- GitHub repository knowledge
+- project documentation
+- Skills
+
+
+============================================================
+三十九、WEB / RESEARCH STACK
+============================================================
+
+整合：
+
+- Open WebUI Web Search
+- SearXNG
+- DuckDuckGo
+- Exa
+- Tavily
+- Firecrawl
+- Brave
+- Jina
+- Perplexity
+- Hermes research skills
+- Context7
+- QMD
+- GitNexus
+
+
+============================================================
+四十、SECURITY STACK
+============================================================
+
+整合：
+
+- Ghost-Goat
+- OSS Forensics
+- Web Pentest
+- Plugin Security Review
+- MCP Security Review
+- Supply Chain Review
+- Dependency Review
+- Code Review
+- Secret Review
+- Network Review
+- Audit Log
+- Rollback
+
+
+============================================================
+四十一、VISUAL / UI / DASHBOARD
+============================================================
+
+安裝 / 啟用：
+
+- Inline Visualizer
+- MCP App Bridge
+- Playwright MCP
+- Open WebUI visualization
+- browser testing
+
+用於：
+
+- Agent Dashboard
+- Ghost-Goat Dashboard
+- monitoring
+- charts
+- diagrams
+- interactive visualizations
+- UI testing
+
+
+============================================================
+四十二、AUTOMATION
+============================================================
+
+整合：
+
+- n8n
+- Open WebUI Automations
+- GitHub Actions
+- Webhooks
+- MCP
+- Agent workflows
+- scheduled tasks
+
+
+============================================================
+四十三、SOURCE OF TRUTH
+============================================================
+
+GitHub：
+
+PRIMARY SOURCE OF TRUTH
+
+追蹤：
+
+- architecture
+- repositories
+- versions
+- deployment
+- Skills
+- integrations
+- provenance
+- optimization
+- validation
+- rollback
+- audit
+
+
+============================================================
+四十四、最終 Skill 集合
+============================================================
+
+安裝 / 建立：
+
+ENGINEERING:
+
+- Ghost-Goat Engineering
+- Code Review
+- GitHub Workflow
+- Deployment Validation
+- MCP Development
+
+OPERATIONS:
+
+- VPS Safe Operations
+- Rollback First
+- Incident Response
+- Persistent Agent Operations
+
+AGENT:
+
+- Agent Orchestration
+- Subagent Development
+- Autonomous Coding
+- Research Workflow
+- Agent Evaluation
+- Regression Testing
+
+SECURITY:
+
+- Plugin Security Review
+- MCP Security Review
+- OSS Forensics
+- Web Pentest
+- Supply Chain Review
+- Security Audit
+
+KNOWLEDGE:
+
+- RAG
+- QMD
+- GitNexus
+- Documentation Research
+
+WEB:
+
+- Page Agent
+- Browser Testing
+- REST / GraphQL Debug
+
+CODE:
+
+- AST-grep
+- Code Wiki
+- Grill Me
+- Subagent-Driven Development
+
+
+============================================================
+四十五、最終整合清單
+============================================================
+
+OPEN WEBUI
+OPEN TERMINAL
+OPEN WEBUI COMPUTER
+HERMES
+OPENHANDS
+OPENCODE
+KILO CODE
+CLINE
+AIDER
+CLAUDE CODE
+CODEX CLI
+GEMINI CLI
+GOOSE
+LITELLM
+NVIDIA NIM
+DEEPSEEK
+GITHUB CLI
+GITHUB MCP
+FILESYSTEM MCP
+PLAYWRIGHT MCP
+CONTEXT7 MCP
+FIRECRAWL MCP
+SEARXNG
+FIRECRAWL
+EXA
+TAVILY
+BRAVE SEARCH
+JINA
+PERPLEXITY SEARCH
+DUCKDUCKGO
+MCPO
+FASTmcp
+MCPORTER
+MCP APP BRIDGE
+OIKB
+QMD
+GITNEXUS
+N8N
+INLINE VISUALIZER
+COST / USAGE TRACKING
+CONTEXT / COMPACTION
+PII / REDACTION
+AUDIT / WEBHOOK
+GHOST-GOAT
+GHOST-GOAT MCP
+GHOST-GOAT SKILLS
+
+
+============================================================
+四十六、最終要求
+============================================================
+
+以上全部視為：
+
+INSTALL
++
+ENABLE
++
+INTEGRATE
++
+VALIDATE
+
+不要再把清單拆成：
+「可以考慮」
+「以後再裝」
+「可選」
+「先裝」
+「第二階段」
+
+本文件的目的就是建立：
+
+FINAL TARGET STATE
+
+如果某個項目因：
+- API key
+- OAuth
+- license
+- upstream unavailable
+- version incompatibility
+- dependency conflict
+
+無法立即啟用：
+
+保留該項目，
+明確記錄原因，
+不要偷偷刪除。
+
+所有實際安裝前：
+做 source / security / dependency / permission review。
+
+所有完成項：
+做 version / process / service / port / health / integration /
+persistence / rollback validation。
+
+============================================================
+END
+============================================================【角色定義｜VPS 執行代理】
+
+你現在是這台 VPS 上的「主執行代理」，不是單純的聊天助手或顧問。
+
+你的工作環境：
+- VPS：greencloud-ai
+- OS：Ubuntu 26.04 LTS x86_64
+- 你可以直接使用 VPS 的 Terminal、檔案系統、Git、GitHub CLI、Docker、systemd、網路工具與已配置的 MCP。
+- 你的任務是直接檢查、修改、安裝、修復、部署、驗證，而不是只提供操作建議。
+
+核心原則：
+1. 先讀取 VPS 現況，再執行操作。
+2. 優先使用現有環境與既有設定，不要無理由重裝。
+3. 不要破壞 Lody、SSH、Tailscale、Caddy/Nginx、Conduit、Open WebUI、Hermes、OpenHands、Cline 或目前正常工作的服務。
+4. 不要洩漏、輸出、提交或推送任何 API Key、Token、密碼、私鑰或其他 Secret。
+5. 所有重要修改先建立可回滾的備份。
+6. GitHub Repository 是長期 Source of Truth；VPS 上的修改完成後，要依 Repository 邊界整理並驗證。
+7. OpenHands、007-Hermes、AI-Agent-Skill、Ghost-Goat 必須保持清楚分離，不得混成單一專案。
+8. Ghost-Goat 是獨立的 Red-Team / Evolution / Evaluation Repository，未經明確要求不得推送或改動其 Repository。
+9. 能自行判斷並安全執行的工作直接執行，不要把已經明確授權的工作重新丟回給我。
+10. 如果遇到真正無法自行決定的外部帳號、API Key、付費服務或會造成不可逆破壞的操作，才停止並明確指出需要我決定的唯一事項。
+11. 每完成一個階段都要實際驗證結果，不要以「應該可以」代替測試。
+12. 最終回報必須列出：完成項目、實際驗證結果、未完成項目、原因、備份/回滾位置，以及 GitHub 同步狀態。
+
+執行模式：
+- 直接 Act / Execute。
+- 不要只產生 Plan。
+- 不要只做 Read-only Audit。
+- 不要因為任務很大就停止。
+- 將大型工作拆成安全階段並持續執行。
+- 除非涉及上述真正需要人工決策的事項，否則不要要求我逐步確認。
+</user_query>

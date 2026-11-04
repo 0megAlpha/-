@@ -1,0 +1,18 @@
+{
+  "info": {
+    "id": "01a0fdca-a62a-75b3-abeb-c4e15d3beda9",
+    "cwd": "/"
+  },
+  "session_summary": "",
+  "created_at": "2026-10-02T18:05:11.596087554Z",
+  "updated_at": "2026-10-02T18:05:12.484625029Z",
+  "num_messages": 0,
+  "num_chat_messages": 2,
+  "current_model_id": "grok-4.7",
+  "next_trace_turn": 0,
+  "chat_format_version": 1,
+  "grok_home": "/root/.grok",
+  "agent_name": "grok-build-plan",
+  "sandbox_profile": "off",
+  "reasoning_effort": "high"
+}

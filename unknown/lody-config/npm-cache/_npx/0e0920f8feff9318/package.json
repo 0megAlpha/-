@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "cline": "^3.0.61"
+  },
+  "_npx": {
+    "packages": [
+      "cline@3.0.61"
+    ]
+  }
+}

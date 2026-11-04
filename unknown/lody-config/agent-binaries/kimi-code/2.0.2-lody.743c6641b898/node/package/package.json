@@ -1,0 +1,17 @@
+{
+  "name": "@moonshot-ai/kimi-code",
+  "version": "2.0.2",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "kimi": "dist/main.mjs"
+  },
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "lodyRuntime": {
+    "version": "2.0.2-lody.743c6641b898",
+    "sourceCommit": "743c6641b89870dbd0596d1726ae4d34d42844e2",
+    "dirty": false
+  }
+}

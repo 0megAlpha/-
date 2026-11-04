@@ -1,0 +1,1 @@
+s/-----BEGIN ([A-Z ]*)PRIVATE KEY-----.*?-----END \1PRIVATE KEY-----/[REDACTED PRIVATE KEY]/gs;

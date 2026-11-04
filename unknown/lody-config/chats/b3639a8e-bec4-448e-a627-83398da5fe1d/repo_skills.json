@@ -1,0 +1,1020 @@
+{
+ "MoizIbnYousaf/ai-agent-skills": [
+  {
+   "dir": "share-a-library",
+   "name": "share-a-library",
+   "desc": "Use when a managed library is ready to publish to GitHub and hand to teammates as an install command. Run the GitHub publishing steps, then return the exact shareable install command.",
+   "category": "skills"
+  },
+  {
+   "dir": "browse-and-evaluate",
+   "name": "browse-and-evaluate",
+   "desc": "Use when exploring the ai-agent-skills catalog to find, compare, and evaluate skills before installing. Always use --fields to limit output size and --dry-run before committing to an install.",
+   "category": "skills"
+  },
+  {
+   "dir": "code-documentation",
+   "name": "code-documentation",
+   "desc": "Writing effective code documentation - API docs, README files, inline comments, and technical guides. Use for documenting codebases, APIs, or writing developer guides.",
+   "category": "skills"
+  },
+  {
+   "dir": "content-research-writer",
+   "name": "content-research-writer",
+   "desc": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing process from solo effort to collaborative partnership.",
+   "category": "skills"
+  },
+  {
+   "dir": "review-a-skill",
+   "name": "review-a-skill",
+   "desc": "Use when evaluating whether a skill belongs in a library. Preview content, check frontmatter, validate structure, and decide whether to keep, curate, or remove.",
+   "category": "skills"
+  },
+  {
+   "dir": "build-workspace-docs",
+   "name": "build-workspace-docs",
+   "desc": "Use when regenerating README.md and WORK_AREAS.md in a managed library workspace. Always dry-run first to preview changes.",
+   "category": "skills"
+  },
+  {
+   "dir": "verification-agent",
+   "name": "verification-agent",
+   "desc": "> Verify claims, quotations, citations and references against live primary sources, and produce a reproducible audit record instead of an assertion. Use when asked to: check whether a quotation, verse, statistic, date, attribution or citation is accurate; veri",
+   "category": "skills"
+  },
+  {
+   "dir": "install-from-remote-library",
+   "name": "install-from-remote-library",
+   "desc": "Use when installing skills from a shared ai-agent-skills library repo. Inspect with `--list` first, prefer `--collection`, and preview with `--dry-run` before installing.",
+   "category": "skills"
+  },
+  {
+   "dir": "curate-a-team-library",
+   "name": "curate-a-team-library",
+   "desc": "Use when building a managed team skills library for a real stack. Map work to shelves, browse before curating, write meaningful `whyHere` notes, and create a starter pack once the first pass is solid.",
+   "category": "skills"
+  },
+  {
+   "dir": "best-practices",
+   "name": "best-practices",
+   "desc": ">- Transforms vague prompts into optimized Claude Code prompts. Adds verification, specific context, constraints, and proper phasing. Invoke with /best-practices.",
+   "category": "skills"
+  },
+  {
+   "dir": "update-installed-skills",
+   "name": "update-installed-skills",
+   "desc": "Use when syncing or updating previously installed skills to their latest version. Always dry-run updates before applying, and check for breaking changes.",
+   "category": "skills"
+  },
+  {
+   "dir": "ask-questions-if-underspecified",
+   "name": "ask-questions-if-underspecified",
+   "desc": "Clarify requirements before implementing. Do not use automatically, only when invoked explicitly.",
+   "category": "skills"
+  },
+  {
+   "dir": "backend-development",
+   "name": "backend-development",
+   "desc": "Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, database schemas, or backend system architecture.",
+   "category": "skills"
+  },
+  {
+   "dir": "llm-application-dev",
+   "name": "llm-application-dev",
+   "desc": "Building applications with Large Language Models - prompt engineering, RAG patterns, and LLM integration. Use for AI-powered features, chatbots, or LLM-based automation.",
+   "category": "skills"
+  },
+  {
+   "dir": "database-design",
+   "name": "database-design",
+   "desc": "Database schema design, optimization, and migration patterns for PostgreSQL, MySQL, and NoSQL databases. Use for designing schemas, writing migrations, or optimizing queries.",
+   "category": "skills"
+  },
+  {
+   "dir": "audit-library-health",
+   "name": "audit-library-health",
+   "desc": "Use when checking the overall health of a skills library. Run doctor, validate, check for stale skills, and verify generated docs are in sync.",
+   "category": "skills"
+  },
+  {
+   "dir": "changelog-generator",
+   "name": "changelog-generator",
+   "desc": "Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns hours of manual changelog writing into minutes of automated g",
+   "category": "skills"
+  },
+  {
+   "dir": "migrate-skills-between-libraries",
+   "name": "migrate-skills-between-libraries",
+   "desc": "Use when moving skills between library workspaces or upgrading from a personal library to a team library. Export from one workspace, import into another.",
+   "category": "skills"
+  }
+ ],
+ "dean9703111/ai-agent-skill-for-video-workflow": [
+  {
+   "dir": "Skill Development",
+   "name": "Skill Development",
+   "desc": "This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill structure, progressive disclosure, or skill development best prac",
+   "category": ".agents"
+  },
+  {
+   "dir": "srt-enhancer",
+   "name": "SRT Enhancer",
+   "desc": "This skill should be used when the user asks to \"enhance srt subtitles\", \"optimize srt with original script\", \"fix srt typos from markdown\", \"compare srt with origin.md\", \"improve subtitle accuracy\", \"add spaces to srt\", \"優化 srt 逐字稿\", \"比對原稿修正字幕\", or needs to r",
+   "category": ".agent"
+  },
+  {
+   "dir": "srt-card-annotator",
+   "name": "SRT Card Annotator",
+   "desc": "This skill should be used when the user asks to \"add reference cards to srt\", \"annotate srt with cards\", \"insert cards into subtitles\", \"generate srt with card annotations\", \"add 字卡 to srt\", or needs to add contextual reference cards below subtitle text blocks",
+   "category": ".agent"
+  },
+  {
+   "dir": "audio-to-srt",
+   "name": "Audio to SRT Converter",
+   "desc": "This skill should be used when the user asks to \"convert audio to srt\", \"generate subtitles from audio\", \"create srt from mp3/wav/m4a/flac\", \"transcribe audio to subtitles\", or needs to generate SRT subtitle files from audio files (MP3, WAV, M4A, FLAC, etc.) w",
+   "category": ".agent"
+  },
+  {
+   "dir": "srt-social-summary",
+   "name": "SRT Social Summary",
+   "desc": "This skill should be used when the user asks to \"generate social media summary from srt\", \"create platform-specific descriptions\", \"generate Facebook post from transcript\", \"create YouTube description from srt\", \"write Thread post from subtitles\", \"生成影片介紹\", \"根",
+   "category": ".agent"
+  }
+ ],
+ "seb1n/awesome-ai-agent-skills": [
+  {
+   "dir": "query-optimization",
+   "name": "query-optimization",
+   "desc": "Diagnose and optimize existing slow SQL queries using execution plans, indexing strategies, query rewriting, and ORM tuning. Use when the user provides a query, performance symptom, or EXPLAIN plan; use sql-query-generation when creating a new query from requi",
+   "category": "database"
+  },
+  {
+   "dir": "database-migration",
+   "name": "database-migration",
+   "desc": "Create, execute, and roll back versioned database schema migrations using tools like Alembic, Prisma Migrate, Flyway, and Knex. Use when the user requests database migration or provides relevant inputs for this workflow.",
+   "category": "database"
+  },
+  {
+   "dir": "database-seeding",
+   "name": "database-seeding",
+   "desc": "Populate databases with realistic, reproducible test data for development, testing, and staging environments. Use when the user requests database seeding or provides relevant inputs for this workflow.",
+   "category": "database"
+  },
+  {
+   "dir": "database-schema-design",
+   "name": "database-schema-design",
+   "desc": "Design normalized database schemas with tables, relationships, indexes, and constraints for any application domain. Use when the user requests database schema design or provides relevant inputs for this workflow.",
+   "category": "database"
+  },
+  {
+   "dir": "database-backup",
+   "name": "database-backup",
+   "desc": "Create, schedule, and verify database backups with support for full, incremental, and point-in-time recovery strategies. Use when the user requests database backup or provides relevant inputs for this workflow.",
+   "category": "database"
+  },
+  {
+   "dir": "crm-data-enrichment",
+   "name": "crm-data-enrichment",
+   "desc": "Enrich CRM records with firmographic and contact data, filling gaps in company and person profiles to improve segmentation, routing, and outreach quality. Use when the user requests crm data enrichment or provides relevant inputs for this workflow.",
+   "category": "sales"
+  },
+  {
+   "dir": "competitive-battlecard-creation",
+   "name": "competitive-battlecard-creation",
+   "desc": "Build sales battlecards with feature comparisons, objection handling scripts, positioning statements, and win themes for competitive deal scenarios. Use when the user requests competitive battlecard creation or provides relevant inputs for this workflow.",
+   "category": "sales"
+  },
+  {
+   "dir": "sales-email-sequences",
+   "name": "sales-email-sequences",
+   "desc": "Design multi-touch outbound email sequences with personalized messaging, timing cadences, and conversion-aware copy for prospecting or re-engagement. Use when the user needs a coordinated sales campaign across several touches; use email-drafting for a single m",
+   "category": "sales"
+  },
+  {
+   "dir": "proposal-generation",
+   "name": "proposal-generation",
+   "desc": "Create tailored sales proposals and RFP responses that address prospect needs, articulate solution value, and include pricing, timelines, and social proof. Use when the user requests proposal generation or provides relevant inputs for this workflow.",
+   "category": "sales"
+  },
+  {
+   "dir": "lead-scoring",
+   "name": "lead-scoring",
+   "desc": "Score and prioritize leads based on firmographic fit and behavioral engagement signals, producing ranked tiers for sales team focus. Use when the user requests lead scoring or provides relevant inputs for this workflow.",
+   "category": "sales"
+  },
+  {
+   "dir": "pdf-processing",
+   "name": "pdf-processing",
+   "desc": "Inspect, extract, OCR, create, merge, split, reorder, rotate, annotate, fill, redact, compress, secure, and verify PDF documents while preserving source files and visual fidelity. Use when working with one or more .pdf files; converting documents to or from PD",
+   "category": "documents-and-files"
+  },
+  {
+   "dir": "spreadsheet-analysis",
+   "name": "spreadsheet-analysis",
+   "desc": "Inspect, profile, clean, reconcile, analyze, visualize, and verify spreadsheet data while preserving formulas, formatting, types, and source files. Use when working with .xlsx, .xlsm, .xls, .ods, .csv, or .tsv files; answering questions from a workbook; auditi",
+   "category": "documents-and-files"
+  },
+  {
+   "dir": "literature-review",
+   "name": "literature-review",
+   "desc": "Conduct a structured literature review on a given topic by defining a search strategy, applying inclusion and exclusion criteria, extracting key findings, and synthesizing results into a coherent academic review. Use when the user requests literature review or",
+   "category": "research-and-knowledge"
+  },
+  {
+   "dir": "fact-checking",
+   "name": "fact-checking",
+   "desc": "Verify the accuracy of claims and statements by extracting individual assertions, identifying authoritative sources, cross-referencing evidence, and assigning confidence-scored verdicts. Use when the user requests fact checking or provides relevant inputs for ",
+   "category": "research-and-knowledge"
+  },
+  {
+   "dir": "knowledge-graph-creation",
+   "name": "knowledge-graph-creation",
+   "desc": "Build structured knowledge graphs from unstructured text by extracting entities, mapping relationships, generating graph triples, and visualizing the result. Use when the user requests knowledge graph creation or provides relevant inputs for this workflow.",
+   "category": "research-and-knowledge"
+  },
+  {
+   "dir": "summarization",
+   "name": "summarization",
+   "desc": "Summarize text using extractive, abstractive, hierarchical, and multi-document techniques, producing concise outputs at configurable detail levels. Use when the user requests summarization or provides relevant inputs for this workflow.",
+   "category": "research-and-knowledge"
+  },
+  {
+   "dir": "deep-research",
+   "name": "deep-research",
+   "desc": "Conduct in-depth, multi-step research on a given topic by decomposing queries, finding diverse sources, cross-referencing findings, and synthesizing a comprehensive report. Use when the user requests deep research or provides relevant inputs for this workflow.",
+   "category": "research-and-knowledge"
+  },
+  {
+   "dir": "kubernetes-deployment",
+   "name": "kubernetes-deployment",
+   "desc": "Deploy, manage, and scale applications on Kubernetes clusters using manifests, Helm charts, and autoscaling configurations. Use when the user requests kubernetes deployment or provides relevant inputs for this workflow.",
+   "category": "devops-and-infrastructure"
+  },
+  {
+   "dir": "ci-cd",
+   "name": "ci-cd",
+   "desc": "Set up a continuous integration and continuous delivery (CI/CD) pipeline for a software project, automating builds, tests, and deployments across environments. Use when the user requests ci cd or provides relevant inputs for this workflow.",
+   "category": "devops-and-infrastructure"
+  },
+  {
+   "dir": "cloud-monitoring",
+   "name": "cloud-monitoring",
+   "desc": "Monitor cloud infrastructure and applications using metrics, logs, and traces to provide real-time observability into performance, health, and reliability. Use when the user requests cloud monitoring or provides relevant inputs for this workflow.",
+   "category": "devops-and-infrastructure"
+  },
+  {
+   "dir": "docker-compose-setup",
+   "name": "docker-compose-setup",
+   "desc": "Set up and orchestrate multi-container Docker applications using docker-compose, including service configuration, networking, volumes, and environment management. Use when the user requests docker compose setup or provides relevant inputs for this workflow.",
+   "category": "devops-and-infrastructure"
+  },
+  {
+   "dir": "infrastructure-as-code",
+   "name": "infrastructure-as-code",
+   "desc": "Define, deploy, and manage cloud infrastructure as code using tools like Terraform, Pulumi, CloudFormation, and CDK, ensuring consistency, repeatability, and version control. Use when the user requests infrastructure as code or provides relevant inputs for thi",
+   "category": "devops-and-infrastructure"
+  },
+  {
+   "dir": "dependency-scanning",
+   "name": "dependency-scanning",
+   "desc": "Scan project dependencies for known vulnerabilities, generate software bills of materials, and enforce license compliance across the software supply chain. Use when the user requests dependency scanning or provides relevant inputs for this workflow.",
+   "category": "security"
+  },
+  {
+   "dir": "threat-modeling",
+   "name": "threat-modeling",
+   "desc": "Conduct structured threat modeling for software systems using established methodologies to identify, prioritize, and mitigate security threats before they are exploited. Use when the user requests threat modeling or provides relevant inputs for this workflow.",
+   "category": "security"
+  },
+  {
+   "dir": "security-audit",
+   "name": "security-audit",
+   "desc": "Perform a broad, authorized security audit across application, infrastructure, identity, dependencies, and operations. Use when the user needs a scoped security posture review; use the SAST, DAST, dependency-scanning, or threat-modeling skill when the request ",
+   "category": "security"
+  },
+  {
+   "dir": "static-application-security-testing",
+   "name": "static-application-security-testing",
+   "desc": "Analyze source code for security vulnerabilities using static analysis tools, custom rules, and CI-integrated scanning pipelines. Use when the user requests static application security testing or provides relevant inputs for this workflow.",
+   "category": "security"
+  },
+  {
+   "dir": "dynamic-application-security-testing",
+   "name": "dynamic-application-security-testing",
+   "desc": "Perform dynamic security testing against running web applications and APIs to discover vulnerabilities through active probing and fuzzing. Use when the user requests dynamic application security testing or provides relevant inputs for this workflow.",
+   "category": "security"
+  },
+  {
+   "dir": "translation",
+   "name": "translation",
+   "desc": "Translate text between languages with cultural adaptation, terminology consistency, and support for multiple document types including technical docs, marketing copy, and UI strings. Use when the user requests translation or provides relevant inputs for this wo",
+   "category": "writing-and-content"
+  },
+  {
+   "dir": "copywriting",
+   "name": "copywriting",
+   "desc": "Write compelling, persuasive marketing and sales copy using proven frameworks like AIDA, PAS, BAB, and 4Ps, with tone and voice customization, CTA optimization, and A/B variant generation. Use when the user requests copywriting or provides relevant inputs for ",
+   "category": "writing-and-content"
+  },
+  {
+   "dir": "technical-writing",
+   "name": "technical-writing",
+   "desc": "Write clear, concise, and accurate technical documentation including API references, user guides, tutorials, changelogs, and architecture docs, tailored to the target audience. Use when the user requests technical writing or provides relevant inputs for this w",
+   "category": "writing-and-content"
+  },
+  {
+   "dir": "blog-post-writing",
+   "name": "blog-post-writing",
+   "desc": "Write high-quality, SEO-optimized blog posts in multiple formats including how-to guides, listicles, opinion pieces, and case studies, with structured outlines, hooks, and calls-to-action. Use when the user requests blog post writing or provides relevant input",
+   "category": "writing-and-content"
+  },
+  {
+   "dir": "proofreading",
+   "name": "proofreading",
+   "desc": "Proofread and correct text for grammar, spelling, punctuation, style, clarity, and consistency, with support for multiple style guides and readability analysis. Use when the user requests proofreading or provides relevant inputs for this workflow.",
+   "category": "writing-and-content"
+  },
+  {
+   "dir": "seo-optimization",
+   "name": "seo-optimization",
+   "desc": "Optimize a webpage for search engines by analyzing on-page elements, improving technical performance, and implementing structured data for maximum visibility. Use when the user requests seo optimization or provides relevant inputs for this workflow.",
+   "category": "marketing-and-seo"
+  },
+  {
+   "dir": "keyword-research",
+   "name": "keyword-research",
+   "desc": "Conduct comprehensive keyword research to identify high-value search terms, map search intent, and uncover content gaps for SEO and content marketing. Use when the user requests keyword research or provides relevant inputs for this workflow.",
+   "category": "marketing-and-seo"
+  },
+  {
+   "dir": "content-strategy",
+   "name": "content-strategy",
+   "desc": "Develop and execute a content strategy that maps content to audience needs, funnel stages, and business goals through editorial planning and performance analysis. Use when the user requests content strategy or provides relevant inputs for this workflow.",
+   "category": "marketing-and-seo"
+  },
+  {
+   "dir": "social-media-posting",
+   "name": "social-media-posting",
+   "desc": "Create, adapt, and schedule social media content across platforms with platform-specific formatting, engagement hooks, and strategic posting cadence. Use when the user requests social media posting or provides relevant inputs for this workflow.",
+   "category": "marketing-and-seo"
+  },
+  {
+   "dir": "analytics-reporting",
+   "name": "analytics-reporting",
+   "desc": "Generate comprehensive marketing analytics reports by collecting KPIs, analyzing trends, and delivering actionable insights with attribution modeling and funnel analysis. Use when the user requests analytics reporting or provides relevant inputs for this workf",
+   "category": "marketing-and-seo"
+  },
+  {
+   "dir": "hyperparameter-tuning",
+   "name": "hyperparameter-tuning",
+   "desc": "Optimize machine learning model hyperparameters using grid search, random search, Bayesian optimization, and Hyperband to maximize model performance within a compute budget. Use when the user requests hyperparameter tuning or provides relevant inputs for this ",
+   "category": "ai-ml-operations"
+  },
+  {
+   "dir": "ml-pipeline-creation",
+   "name": "ml-pipeline-creation",
+   "desc": "Design, implement, and validate reproducible machine-learning pipelines spanning data preparation, training, evaluation, registry, and deployment gates. Use when the user requests an ML pipeline, needs to turn model scripts into an orchestrated workflow, or pr",
+   "category": "ai-ml-operations"
+  },
+  {
+   "dir": "data-labeling",
+   "name": "data-labeling",
+   "desc": "Set up and manage data labeling workflows using manual annotation tools, semi-automated pipelines, active learning, and programmatic weak supervision. Use when the user requests data labeling or provides relevant inputs for this workflow.",
+   "category": "ai-ml-operations"
+  },
+  {
+   "dir": "model-deployment",
+   "name": "model-deployment",
+   "desc": "Deploy trained machine learning models as production-ready services using REST APIs, containers, serverless functions, and orchestration platforms. Use when the user requests model deployment or provides relevant inputs for this workflow.",
+   "category": "ai-ml-operations"
+  },
+  {
+   "dir": "model-training",
+   "name": "model-training",
+   "desc": "Train machine learning models end-to-end, covering data loading, preprocessing, architecture selection, training loops, validation, and checkpointing. Use when the user requests model training or provides relevant inputs for this workflow.",
+   "category": "ai-ml-operations"
+  },
+  {
+   "dir": "webhook-setup",
+   "name": "webhook-setup",
+   "desc": "Set up webhook receivers with signature verification, idempotent event processing, retry handling, and dead letter queues for reliable event-driven integrations. Use when the user requests webhook setup or provides relevant inputs for this workflow.",
+   "category": "api-and-integration"
+  },
+  {
+   "dir": "api-design",
+   "name": "api-design",
+   "desc": "Design RESTful APIs with proper resource modeling, HTTP method semantics, status codes, pagination, versioning, and documentation. Use when the user requests api design or provides relevant inputs for this workflow.",
+   "category": "api-and-integration"
+  },
+  {
+   "dir": "graphql-api-design",
+   "name": "graphql-api-design",
+   "desc": "Design GraphQL APIs with well-structured schemas, efficient resolvers, pagination, and performance patterns like DataLoader and federation. Use when the user requests graphql api design or provides relevant inputs for this workflow.",
+   "category": "api-and-integration"
+  },
+  {
+   "dir": "api-integration",
+   "name": "api-integration",
+   "desc": "Integrate with external APIs using REST clients, webhook consumers, SDK wrappers, and polling patterns with proper authentication, error handling, and retry logic. Use when the user requests api integration or provides relevant inputs for this workflow.",
+   "category": "api-and-integration"
+  },
+  {
+   "dir": "oauth-2-0-setup",
+   "name": "oauth-2-0-setup",
+   "desc": "Implement OAuth 2.0 authentication flows including authorization code with PKCE, client credentials, and device code for secure API integration. Use when the user requests oauth 2 0 setup or provides relevant inputs for this workflow.",
+   "category": "api-and-integration"
+  },
+  {
+   "dir": "meeting-transcription",
+   "name": "meeting-transcription",
+   "desc": "Transcribe meeting audio with speaker diarization, generate structured summaries with action items, decisions, and follow-ups, and support multiple audio formats and languages. Use when the user requests meeting transcription or provides relevant inputs for th",
+   "category": "communication"
+  },
+  {
+   "dir": "report-generation",
+   "name": "report-generation",
+   "desc": "Generate professional reports — sprint retrospectives, financial summaries, analytics dashboards, and incident postmortems — from structured data with templates, charts, and multi-format output. Use when the user requests report generation or provides relevant",
+   "category": "communication"
+  },
+  {
+   "dir": "email-drafting",
+   "name": "email-drafting",
+   "desc": "Draft a professional, audience-aware email or reply with calibrated tone and a clear call to action. Use when the user needs one message, response, follow-up, support note, or meeting request; use sales-email-sequences for a coordinated multi-touch outbound ca",
+   "category": "communication"
+  },
+  {
+   "dir": "presentation-creation",
+   "name": "presentation-creation",
+   "desc": "Create polished, audience-tailored presentations from outlines or documents, with support for Marp, reveal.js, Google Slides, and PPTX output formats. Use when the user requests presentation creation or provides relevant inputs for this workflow.",
+   "category": "communication"
+  },
+  {
+   "dir": "chatbot-conversation-design",
+   "name": "chatbot-conversation-design",
+   "desc": "Design structured, engaging chatbot conversations with robust intent handling, slot filling, disambiguation, error recovery, and graceful fallback strategies. Use when the user requests chatbot conversation design or provides relevant inputs for this workflow.",
+   "category": "communication"
+  },
+  {
+   "dir": "customer-feedback-analysis",
+   "name": "customer-feedback-analysis",
+   "desc": "Analyze NPS, CSAT, and qualitative customer feedback to extract themes, identify trends, and generate actionable insight reports. Use when the user requests customer feedback analysis or provides relevant inputs for this workflow.",
+   "category": "customer-success"
+  },
+  {
+   "dir": "knowledge-base-article-writing",
+   "name": "knowledge-base-article-writing",
+   "desc": "Write clear, searchable help center articles and FAQ entries based on support data, product documentation, and common customer questions. Use when the user requests knowledge base article writing or provides relevant inputs for this workflow.",
+   "category": "customer-success"
+  },
+  {
+   "dir": "churn-analysis",
+   "name": "churn-analysis",
+   "desc": "Identify at-risk customer accounts by analyzing usage patterns, engagement signals, and support history to generate churn risk scores and intervention recommendations. Use when the user requests churn analysis or provides relevant inputs for this workflow.",
+   "category": "customer-success"
+  },
+  {
+   "dir": "onboarding-playbook-creation",
+   "name": "onboarding-playbook-creation",
+   "desc": "Design structured customer onboarding workflows with phased checklists, email templates, success milestones, and ownership assignments. Use when the user requests onboarding playbook creation or provides relevant inputs for this workflow.",
+   "category": "customer-success"
+  },
+  {
+   "dir": "ticket-triage",
+   "name": "ticket-triage",
+   "desc": "Classify, prioritize, and route incoming support tickets by extracting intent and entities, assigning severity, and generating initial responses. Use when the user requests ticket triage or provides relevant inputs for this workflow.",
+   "category": "customer-success"
+  },
+  {
+   "dir": "human-in-the-loop",
+   "name": "human-in-the-loop",
+   "desc": "Design and verify auditable human oversight, approval gates, escalation paths, and safe state transitions for AI agent workflows. Use when deciding which agent actions require review, adding approve/reject or dual-control flows, preventing unauthorized autonom",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "multi-agent-orchestration",
+   "name": "multi-agent-orchestration",
+   "desc": "Design and operate bounded multi-agent workflows with task decomposition, dependency graphs, ownership, handoff contracts, shared-state controls, approvals, recovery, and synthesis. Use when a task contains genuinely independent workstreams, specialized roles,",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "tool-schema-design",
+   "name": "tool-schema-design",
+   "desc": "Design and validate model-facing tool definitions with clear names, action-oriented descriptions, bounded JSON Schema parameters, explicit side effects, safe defaults, idempotency, errors, and realistic tests. Use when creating function-calling tools, MCP tool",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "mcp-server-building",
+   "name": "mcp-server-building",
+   "desc": "Design, implement, harden, and verify Model Context Protocol (MCP) servers with precise tool contracts, least-privilege authorization, safe transports, structured errors, and interoperability tests. Use when creating a new MCP server, exposing an API or data s",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "agent-observability",
+   "name": "agent-observability",
+   "desc": "Design privacy-aware observability for AI agents using traces, spans, structured events, metrics, cost attribution, dashboards, alerts, and investigation workflows. Use when instrumenting an agent, debugging intermittent tool or model failures, defining servic",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "agent-evaluation",
+   "name": "agent-evaluation",
+   "desc": "Design reproducible evaluations for AI agents with representative task sets, explicit rubrics, appropriate graders, baselines, regression gates, and failure analysis. Use when defining agent quality, comparing prompts or models, validating a release, measuring",
+   "category": "agent-engineering"
+  },
+  {
+   "dir": "task-automation",
+   "name": "task-automation",
+   "desc": "Automate repetitive tasks and workflows using scripting, file watchers, scheduled jobs, CI triggers, and API polling to eliminate manual toil. Use when the user requests task automation or provides relevant inputs for this workflow.",
+   "category": "productivity-and-workflow"
+  },
+  {
+   "dir": "project-management",
+   "name": "project-management",
+   "desc": "\"Manages software projects end-to-end — decomposing work into tasks, tracking progress across sprints, generating status reports, and integrating with tools like Jira, Linear, GitHub Issues, and Trello. Use when the user requests project management or provides",
+   "category": "productivity-and-workflow"
+  },
+  {
+   "dir": "note-taking",
+   "name": "note-taking",
+   "desc": "Capture, organize, and retrieve notes efficiently using structured formats, tagging, and file management for meetings, ideas, research, and daily logs. Use when the user requests note taking or provides relevant inputs for this workflow.",
+   "category": "productivity-and-workflow"
+  },
+  {
+   "dir": "file-organization",
+   "name": "file-organization",
+   "desc": "\"Automatically organizes files in a directory into a clean structure based on configurable rules — by file type, date, project, or priority — with support for duplicate detection, naming conventions, and archival strategies. Use when the user requests file org",
+   "category": "productivity-and-workflow"
+  },
+  {
+   "dir": "meeting-scheduler",
+   "name": "meeting-scheduler",
+   "desc": "\"Schedules meetings with internal and external stakeholders by parsing natural language requests, resolving time zones, checking calendar availability, proposing optimal slots, and managing invitations and RSVPs. Use when the user requests meeting scheduler or",
+   "category": "productivity-and-workflow"
+  },
+  {
+   "dir": "skill-supply-chain-audit",
+   "name": "skill-supply-chain-audit",
+   "desc": "Audit agent skills, plugins, prompts, manifests, scripts, dependencies, and bundled assets for provenance, prompt-injection, permission, execution, exfiltration, persistence, and update risk. Use when evaluating a third-party skill before installing, enabling,",
+   "category": "agent-security"
+  },
+  {
+   "dir": "agent-red-teaming",
+   "name": "agent-red-teaming",
+   "desc": "Plan, execute, document, and retest authorized security assessments of AI agents and multi-agent workflows using safe adversarial cases, synthetic identities, canaries, and evidence-based findings. Use when defining red-team rules of engagement, assessing prom",
+   "category": "agent-security"
+  },
+  {
+   "dir": "prompt-injection-defense",
+   "name": "prompt-injection-defense",
+   "desc": "Threat-model and harden AI agents, RAG systems, assistants, and tool-using workflows against direct, indirect, stored, cross-agent, and multimodal prompt injection. Use when reviewing an agent architecture, isolating untrusted content, constraining tools and e",
+   "category": "agent-security"
+  },
+  {
+   "dir": "context-injection",
+   "name": "context-injection",
+   "desc": "\"Place trusted contextual information into prompts or agent state using explicit boundaries, provenance, and templates. Use when relevant context has already been selected and must be inserted safely; use context-retrieval to find it or context-optimization to",
+   "category": "context-engineering"
+  },
+  {
+   "dir": "context-optimization",
+   "name": "context-optimization",
+   "desc": "\"Optimize a complete candidate context package by deduplicating, filtering, ordering, and allocating its token budget. Use when retrieved or assembled material is noisy or exceeds the useful context budget; use context-ranking for scoring chunks and context-co",
+   "category": "context-engineering"
+  },
+  {
+   "dir": "context-retrieval",
+   "name": "context-retrieval",
+   "desc": "\"Retrieve relevant information from a knowledge base using semantic, keyword, or hybrid search to ground a query. Use when the task starts with a corpus or index that must be searched; use context-ranking when candidate chunks already exist and only need order",
+   "category": "context-engineering"
+  },
+  {
+   "dir": "context-compression",
+   "name": "context-compression",
+   "desc": "\"Compress selected context to a target token budget while preserving decisions, evidence, constraints, and unresolved questions. Use when relevant material is already selected but too long; use context-optimization when selection, deduplication, and ordering a",
+   "category": "context-engineering"
+  },
+  {
+   "dir": "context-ranking",
+   "name": "context-ranking",
+   "desc": "\"Rank an existing set of context chunks by relevance, diversity, freshness, and utility. Use when retrieval has already produced candidates that must be scored or reranked; use context-retrieval when the source corpus still needs to be searched.\"",
+   "category": "context-engineering"
+  },
+  {
+   "dir": "user-flow-mapping",
+   "name": "user-flow-mapping",
+   "desc": "Visualize and map user flows with Mermaid diagrams, decision points, error states, and conversion metrics to optimize user journeys. Use when the user requests user flow mapping or provides relevant inputs for this workflow.",
+   "category": "design-and-ui-ux"
+  },
+  {
+   "dir": "logo-design",
+   "name": "logo-design",
+   "desc": "Design professional, scalable logos with complete brand identity deliverables including color palettes, typography, format variations, and usage guidelines. Use when the user requests logo design or provides relevant inputs for this workflow.",
+   "category": "design-and-ui-ux"
+  },
+  {
+   "dir": "accessibility-testing",
+   "name": "accessibility-testing",
+   "desc": "Audit web interfaces against WCAG 2.1 AA/AAA standards, identify violations, and produce actionable remediation reports with code fixes. Use when the user requests accessibility testing or provides relevant inputs for this workflow.",
+   "category": "design-and-ui-ux"
+  },
+  {
+   "dir": "wireframing",
+   "name": "wireframing",
+   "desc": "Create text-based wireframes at low, mid, and high fidelity with component inventories, interaction annotations, and responsive breakpoint specifications. Use when the user requests wireframing or provides relevant inputs for this workflow.",
+   "category": "design-and-ui-ux"
+  },
+  {
+   "dir": "frontend-design",
+   "name": "frontend-design",
+   "desc": "Design and build production-ready frontend interfaces with design systems, responsive layouts, accessible components, and dark mode support. Use when the user requests frontend design or provides relevant inputs for this workflow.",
+   "category": "design-and-ui-ux"
+  },
+  {
+   "dir": "contract-review",
+   "name": "contract-review",
+   "desc": "Analyze contracts for risks, obligations, key clauses, and generate structured risk reports with severity ratings. Use when the user requests contract review or provides relevant inputs for this workflow.",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "terms-of-service-generation",
+   "name": "terms-of-service-generation",
+   "desc": "Draft Terms of Service documents for web applications, SaaS platforms, and digital marketplaces. Use when the user requests terms of service generation or provides relevant inputs for this workflow.",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "eu-ai-act-readiness",
+   "name": "eu-ai-act-readiness",
+   "desc": "Build a preliminary, evidence-based EU AI Act readiness assessment across AI-system inventory, territorial scope, operator roles, prohibited-practice screening, risk classification, transparency, high-risk controls, general-purpose AI obligations, governance, ",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "privacy-policy-drafting",
+   "name": "privacy-policy-drafting",
+   "desc": "Draft privacy-policy language and a review checklist tailored to a business model, data practices, and relevant jurisdictions. Use when the user requests a privacy policy or needs to map disclosures for GDPR, CCPA, or similar frameworks; do not use it to guara",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "license-analysis",
+   "name": "license-analysis",
+   "desc": "Analyze open-source license compatibility, obligations, and compliance risks across project dependencies. Use when the user requests license analysis or provides relevant inputs for this workflow.",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "compliance-checklist-generation",
+   "name": "compliance-checklist-generation",
+   "desc": "Build evidence-oriented readiness checklists for frameworks such as SOC 2, HIPAA, PCI DSS, and GDPR, with gaps and remediation priorities. Use when the user needs an internal readiness assessment or control-mapping plan; do not use it to certify compliance or ",
+   "category": "legal-and-compliance"
+  },
+  {
+   "dir": "exploratory-data-analysis",
+   "name": "exploratory-data-analysis",
+   "desc": "Perform systematic exploratory data analysis to understand dataset structure, distributions, relationships, and anomalies before modeling. Use when a dataset is new, its quality is unknown, or the user requests open-ended profiling; use data-analysis instead f",
+   "category": "data-and-analytics"
+  },
+  {
+   "dir": "sql-query-generation",
+   "name": "sql-query-generation",
+   "desc": "Generate SQL queries from natural-language requirements using SELECT, JOIN, GROUP BY, window functions, CTEs, and subqueries. Use when the user needs a new query from a business question or schema; use query-optimization when an existing query or execution pla",
+   "category": "data-and-analytics"
+  },
+  {
+   "dir": "data-cleaning",
+   "name": "data-cleaning",
+   "desc": "Clean and preprocess datasets by handling missing values, removing duplicates, correcting types, resolving outliers, and enforcing validation schemas. Use when the user requests data cleaning or provides relevant inputs for this workflow.",
+   "category": "data-and-analytics"
+  },
+  {
+   "dir": "data-visualization",
+   "name": "data-visualization",
+   "desc": "Create clear, effective charts and dashboards from structured data using matplotlib, seaborn, and plotly. Use when the user requests data visualization or provides relevant inputs for this workflow.",
+   "category": "data-and-analytics"
+  },
+  {
+   "dir": "data-analysis",
+   "name": "data-analysis",
+   "desc": "Analyze datasets to answer defined questions through statistical methods, trend identification, hypothesis testing, and correlation analysis. Use when the user needs evidence-backed findings or decisions from data; use exploratory-data-analysis instead for ope",
+   "category": "data-and-analytics"
+  },
+  {
+   "dir": "budget-planning",
+   "name": "budget-planning",
+   "desc": "Create and manage budgets with variance analysis and departmental allocation. Use when the user requests budget planning or provides relevant inputs for this workflow.",
+   "category": "finance-and-accounting"
+  },
+  {
+   "dir": "expense-categorization",
+   "name": "expense-categorization",
+   "desc": "Classify expenses by category, department, and tax deductibility from transaction data. Use when the user requests expense categorization or provides relevant inputs for this workflow.",
+   "category": "finance-and-accounting"
+  },
+  {
+   "dir": "financial-modeling",
+   "name": "financial-modeling",
+   "desc": "Build financial projections, P&L statements, DCF models, and valuation analyses from assumptions and historical data. Use when the user requests financial modeling or provides relevant inputs for this workflow.",
+   "category": "finance-and-accounting"
+  },
+  {
+   "dir": "financial-report-generation",
+   "name": "financial-report-generation",
+   "desc": "Generate balance sheets, cash flow statements, P&L reports, and executive financial summaries. Use when the user requests financial report generation or provides relevant inputs for this workflow.",
+   "category": "finance-and-accounting"
+  },
+  {
+   "dir": "invoice-processing",
+   "name": "invoice-processing",
+   "desc": "Extract, validate, and categorize invoice data against purchase orders and GL codes. Use when the user requests invoice processing or provides relevant inputs for this workflow.",
+   "category": "finance-and-accounting"
+  },
+  {
+   "dir": "refactoring",
+   "name": "refactoring",
+   "desc": "\"Improve code quality and maintainability through systematic identification of code smells and application of proven refactoring patterns. Use when the user requests refactoring or provides relevant inputs for this workflow.\"",
+   "category": "code-and-development"
+  },
+  {
+   "dir": "code-documentation",
+   "name": "code-documentation",
+   "desc": "\"Automatically generate clear, comprehensive documentation for codebases — including API references, inline docstrings, README files, and usage guides. Use when the user requests code documentation or provides relevant inputs for this workflow.\"",
+   "category": "code-and-development"
+  },
+  {
+   "dir": "testing",
+   "name": "testing",
+   "desc": "Generate, execute, and analyze tests for codebases, covering unit, integration, and end-to-end testing with coverage reporting. Use when the user requests testing or provides relevant inputs for this workflow.",
+   "category": "code-and-development"
+  },
+  {
+   "dir": "code-review",
+   "name": "code-review",
+   "desc": "Perform thorough code reviews on files or pull requests, checking for bugs, security vulnerabilities, performance issues, and style violations. Use when the user requests code review or provides relevant inputs for this workflow.",
+   "category": "code-and-development"
+  },
+  {
+   "dir": "debugging",
+   "name": "debugging",
+   "desc": "Systematically diagnose and fix software bugs by analyzing error messages, stack traces, logs, and runtime behavior across multiple languages. Use when the user requests debugging or provides relevant inputs for this workflow.",
+   "category": "code-and-development"
+  },
+  {
+   "dir": "version-control",
+   "name": "version-control",
+   "desc": "\"Manage Git repositories and collaborative workflows — branching strategies, commit hygiene, conflict resolution, pull requests, hooks, and .gitignore management. Use when the user requests version control or provides relevant inputs for this workflow.\"",
+   "category": "code-and-development"
+  }
+ ],
+ "valenovo/ai-agent-skills": [
+  {
+   "dir": "china-weather-agent-skill",
+   "name": "china-weather",
+   "desc": "使用中国国家级公开天气数据查询中国天气。支持国家气象中心/中央气象台 nmc.cn、中国气象局天气页面 weather.cma.cn、中国天气网 weather.com.cn 的公开天气信息，覆盖城市实况、7 天预报、预警、空气质量、近期小时观测、未来逐小时预报、全国实况/预报地图、实况排行、雷达/卫星图层、全国预警列表、交通/环境/灾害/台风海洋/农业/数值预报等官方产品页；当用户需要判断未来具体时段是否下雨、出行、通勤、骑行、航班/高铁安排或天气风险时，按需返回可访问来源的数据、来源和发布时间。",
+   "category": ""
+  },
+  {
+   "dir": "baidu-api-search",
+   "name": "baidu-api-search",
+   "desc": "面向 Agent 的百度 API 搜索 Skill。用于中文“查一下/搜索/联网查/最近/最新/热点”等场景，调用百度百科和百度 AI Search API，保留原始结果、去重并生成 research pack。",
+   "category": "baidu-search-skill"
+  }
+ ],
+ "hoodini/ai-agents-skills": [
+  {
+   "dir": "analytics-metrics",
+   "name": "analytics-metrics",
+   "desc": "Build data visualization and analytics dashboards. Use when creating charts, KPI displays, metrics dashboards, or data visualization components. Triggers on analytics, dashboard, charts, metrics, KPI, data visualization, Recharts.",
+   "category": "skills"
+  },
+  {
+   "dir": "aws-account-management",
+   "name": "aws-account-management",
+   "desc": "Manage AWS accounts, organizations, IAM, and billing. Use when setting up AWS Organizations, managing IAM policies, controlling costs, or implementing multi-account strategies. Triggers on AWS Organizations, AWS IAM, AWS billing, Cost Explorer, SCPs, multi-acc",
+   "category": "skills"
+  },
+  {
+   "dir": "aws-harness",
+   "name": "aws-harness",
+   "desc": "Build a new AI agent on AWS and deploy it easily, OR wrap and deploy an agent you already have, using the Amazon Bedrock AgentCore harness. Explains what an \"agent harness\" is (the runtime scaffolding around a model - agent loop, tool execution, memory, identi",
+   "category": "skills"
+  },
+  {
+   "dir": "aws-strands",
+   "name": "aws-strands",
+   "desc": "Build AI agents with the Strands Agents SDK - the open-source framework (the agent \"brain\") for writing agent logic, tools, and multi-agent systems in Python. Model-agnostic, AWS Bedrock by default. Covers Agent, the @tool decorator, model providers (BedrockMo",
+   "category": "skills"
+  },
+  {
+   "dir": "bun",
+   "name": "bun",
+   "desc": "Build fast applications with Bun JavaScript runtime. Use when creating Bun projects, using Bun APIs, bundling, testing, or optimizing Node.js alternatives. Triggers on Bun, Bun runtime, bun.sh, bunx, Bun serve, Bun test, JavaScript runtime.",
+   "category": "skills"
+  },
+  {
+   "dir": "cinematic-scrub-landing",
+   "name": "cinematic-scrub-landing",
+   "desc": "Build a premium cinematic landing page with mouse-scrub video hero and brand-driven narrative-arc sections. Use whenever the user provides a hero video plus a product / subject / brand and wants a landing page, promo site, product showcase, marketing page, or ",
+   "category": "skills"
+  },
+  {
+   "dir": "cloudflare",
+   "name": "cloudflare",
+   "desc": "Build and deploy on Cloudflare's edge platform. Use when creating Workers, Pages, D1 databases, R2 storage, AI inference, or KV storage. Triggers on Cloudflare, Workers, Cloudflare Pages, D1, R2, KV, Cloudflare AI, Durable Objects, edge computing.",
+   "category": "skills"
+  },
+  {
+   "dir": "copilot-docs",
+   "name": "copilot-docs",
+   "desc": "Configure GitHub Copilot with custom instructions. Use when setting up .github/copilot-instructions.md, customizing Copilot behavior, or creating repository-specific AI guidance. Triggers on Copilot instructions, copilot-instructions.md, GitHub Copilot config.",
+   "category": "skills"
+  },
+  {
+   "dir": "copilot-sdk",
+   "name": "copilot-sdk",
+   "desc": "Build agentic applications with GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or creating custom agents. Triggers on Copilot SDK, GitHub SDK, age",
+   "category": "skills"
+  },
+  {
+   "dir": "director",
+   "name": "director",
+   "desc": "\"Award-winning director's brain for making films/videos with AI. Runs a gated, interrogation-first process: lock the IDEA and the SCRIPT (the story) in words before generating a single pixel, then plan shots/camera/light/sound, then generate and edit. Use when",
+   "category": "skills"
+  },
+  {
+   "dir": "fal-ai",
+   "name": "fal-ai",
+   "desc": "Generate images, videos, and audio with fal.ai serverless AI. Use when building AI image generation, video generation, image editing, or real-time AI features. Triggers on fal.ai, fal, AI image generation, Flux, SDXL, real-time AI, serverless AI.",
+   "category": "skills"
+  },
+  {
+   "dir": "figma",
+   "name": "figma",
+   "desc": "Integrate with Figma API for design automation and code generation. Use when extracting design tokens, generating React/CSS code from Figma components, syncing design systems, building Figma plugins, or automating design-to-code workflows. Triggers on Figma AP",
+   "category": "skills"
+  },
+  {
+   "dir": "github-trending",
+   "name": "github-trending",
+   "desc": "Fetch and display GitHub trending repositories and developers. Use when building dashboards showing trending repos, discovering popular projects, or tracking GitHub trends. Triggers on GitHub trending, trending repos, popular repositories, GitHub discover.",
+   "category": "skills"
+  },
+  {
+   "dir": "google-workspace-cli",
+   "name": "google-workspace-cli",
+   "desc": "Interact with all Google Workspace APIs via the gws CLI. Use when managing Drive files, sending/reading Gmail, creating Calendar events, reading/writing Sheets/Docs/Slides, managing Chat spaces, contacts, Admin users/groups, Vault eDiscovery, Classroom, Apps S",
+   "category": "skills"
+  },
+  {
+   "dir": "honest-agent",
+   "name": "honest-agent",
+   "desc": "Detect installed AI coding agents and append honest-feedback rules to their instruction files. Scans for config files (CLAUDE.md, copilot-instructions.md, .cursorrules, etc.), adapts output format per agent, and appends directives that disable sycophancy and e",
+   "category": "skills"
+  },
+  {
+   "dir": "image-master",
+   "name": "image-master",
+   "desc": "\"Master prompt-engineer for photoreal, artifact-free AI still images on ANY tool (Reve, Midjourney, Flux, GPT-image, Imagen, Nano Banana, Stable Diffusion). Builds prompts that hit National-Geographic-grade realism — true skin/fur texture (no plastic), correct",
+   "category": "skills"
+  },
+  {
+   "dir": "langchain",
+   "name": "langchain",
+   "desc": "Build LLM applications with LangChain and LangGraph. Use when creating RAG pipelines, agent workflows, chains, or complex LLM orchestration. Triggers on LangChain, LangGraph, LCEL, RAG, retrieval, agent chain.",
+   "category": "skills"
+  },
+  {
+   "dir": "local-llm-router",
+   "name": "local-llm-router",
+   "desc": "Route AI coding queries to local LLMs in air-gapped networks. Integrates Serena MCP for semantic code understanding. Use when working offline, with local models (Ollama, LM Studio, Jan, OpenWebUI), or in secure/closed environments. Triggers on local LLM, Ollam",
+   "category": "skills"
+  },
+  {
+   "dir": "mermaid-diagrams",
+   "name": "mermaid-diagrams",
+   "desc": "Create diagrams and visualizations using Mermaid syntax. Use when generating flowcharts, sequence diagrams, class diagrams, entity-relationship diagrams, Gantt charts, or any visual documentation. Triggers on Mermaid, flowchart, sequence diagram, class diagram",
+   "category": "skills"
+  },
+  {
+   "dir": "meta-ads",
+   "name": "meta-ads",
+   "desc": "Pull, analyze, manage, and CREATE Meta ads (Facebook, Instagram, Messenger, Threads, Click-to-WhatsApp) via the Marketing API. Use when the user mentions Meta/FB/IG ads, Ads Manager, ROAS, CPA, CPM, CTR, ad spend, campaign or ad set performance, creative fatig",
+   "category": "skills"
+  },
+  {
+   "dir": "mobile-responsiveness",
+   "name": "mobile-responsiveness",
+   "desc": "Build responsive, mobile-first web applications. Use when implementing responsive layouts, touch interactions, mobile navigation, or optimizing for various screen sizes. Triggers on responsive design, mobile-first, breakpoints, touch events, viewport.",
+   "category": "skills"
+  },
+  {
+   "dir": "mongodb",
+   "name": "mongodb",
+   "desc": "Work with MongoDB databases using best practices. Use when designing schemas, writing queries, building aggregation pipelines, or optimizing performance. Triggers on MongoDB, Mongoose, NoSQL, aggregation pipeline, document database, MongoDB Atlas.",
+   "category": "skills"
+  },
+  {
+   "dir": "nano-banana-pro",
+   "name": "nano-banana-pro",
+   "desc": "Generate images with Google's Nano Banana Pro (Gemini 3 Pro Image). Use when generating AI images via Gemini API, creating professional visuals, or building image generation features. Triggers on Nano Banana Pro, Gemini 3 Pro Image, gemini-3-pro-image-preview,",
+   "category": "skills"
+  },
+  {
+   "dir": "owasp-security",
+   "name": "owasp-security",
+   "desc": "Implement secure coding practices following OWASP Top 10. Use when preventing security vulnerabilities, implementing authentication, securing APIs, or conducting security reviews. Triggers on OWASP, security, XSS, SQL injection, CSRF, authentication security, ",
+   "category": "skills"
+  },
+  {
+   "dir": "parallax-landing-page",
+   "name": "parallax-landing-page",
+   "desc": "Build a scroll-driven cinematic landing page from a short video. The user provides a 5–15 second video (often AI-generated); this skill extracts every frame at HD JPEG quality, then produces a single-hero HTML page where the user's scroll gesture scrubs the fr",
+   "category": "skills"
+  },
+  {
+   "dir": "railway",
+   "name": "railway",
+   "desc": "Deploy applications on Railway platform. Use when deploying containerized apps, setting up databases, configuring private networking, or managing Railway projects. Triggers on Railway, railway.app, deploy container, Railway database.",
+   "category": "skills"
+  },
+  {
+   "dir": "shabbat-times",
+   "name": "shabbat-times",
+   "desc": "Access Jewish calendar data and Shabbat times via Hebcal API. Use when building apps with Shabbat times, Jewish holidays, Hebrew dates, or Zmanim. Triggers on Shabbat times, Hebcal, Jewish calendar, Hebrew date, Zmanim.",
+   "category": "skills"
+  },
+  {
+   "dir": "ux-design-systems",
+   "name": "ux-design-systems",
+   "desc": "Build consistent design systems with tokens, components, and theming. Use when creating component libraries, implementing design tokens, building theme systems, or ensuring design consistency. Triggers on design system, design tokens, component library, themin",
+   "category": "skills"
+  },
+  {
+   "dir": "vercel",
+   "name": "vercel",
+   "desc": "Deploy and configure applications on Vercel. Use when deploying Next.js apps, configuring serverless functions, setting up edge functions, or managing Vercel projects. Triggers on Vercel, deploy, serverless, edge function, Next.js deployment.",
+   "category": "skills"
+  },
+  {
+   "dir": "video-edit",
+   "name": "video-edit",
+   "desc": "Edit any video into a captioned showcase — transcribe (any language, defaults to large-v3), present a transcript_review.txt for the user to fix mishears BEFORE rendering, then build a HyperFrames composition with liquid-glass caption pills, liquid blob backgro",
+   "category": "skills"
+  },
+  {
+   "dir": "video-to-landing-page",
+   "name": "video-to-landing-page",
+   "desc": "Turn any video into a cinematic scroll-driven landing page — Apple-style hero where scrolling progresses the visible frame through the video. Use when the user provides a video file and asks for \"a landing page from this video\", \"scroll-frame website\", \"Apple-",
+   "category": "skills"
+  },
+  {
+   "dir": "web-accessibility",
+   "name": "web-accessibility",
+   "desc": "Build accessible web applications following WCAG guidelines. Use when implementing ARIA patterns, keyboard navigation, screen reader support, or ensuring accessibility compliance. Triggers on accessibility, a11y, WCAG, ARIA, screen reader, keyboard navigation.",
+   "category": "skills"
+  },
+  {
+   "dir": "x-twitter-scraper",
+   "name": "x-twitter-scraper",
+   "desc": "X (Twitter) data extraction and scraping. Use when asked to scrape tweets, extract followers, search Twitter/X users, download media from tweets, monitor X accounts, or analyze Twitter engagement. Triggers on twitter, x.com, tweet, follower, following, retweet",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-decks",
+   "name": "yuv-decks",
+   "desc": "Build cinematic, narrative-driven presentation decks in Yuval Avidani's signature style using @open-slide/core. The user describes a topic and audience; this skill scaffolds an open-slide project, drafts the 4-act narrative arc (Boarding → Ascent → Cruise → De",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-design-system",
+   "name": "yuv-design-system",
+   "desc": "Yuval Avidani's YUV.AI brand and design system. Apply ONLY when YUV.AI-branded output is requested — presentations, decks, keynotes, portfolio, brand site, profile, speaker bio, brand assets, or any prompt mentioning YUV.AI / \"my brand\" / \"my deck\" / \"my site\"",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-pilot",
+   "name": "yuv-pilot",
+   "desc": "Top-of-pyramid orchestrator for Yuval Avidani's YUV.AI brand work. Apply when (a) the user wants YUV.AI output and the medium is ambiguous or multi-medium, (b) the user is planning a launch or cross-channel campaign for YUV.AI, or (c) explicitly invokes /yuv-p",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-reel-covers",
+   "name": "yuv-reel-covers",
+   "desc": "> Generate unified, on-brand Instagram Reel covers for Yuval (YUV.AI Neon Phoenix system) — the signature look is a giant Hebrew headline BEHIND the subject cutout + a punch line IN FRONT (depth effect), on rich black with a dim neural-net field, series-colore",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-video-director",
+   "name": "yuv-video-director",
+   "desc": "> Yuval's all-in-one AI video pipeline. Turns an idea/script into a finished, on-brand MP4 by orchestrating HyperFrames (HTML→deterministic video render), Lottie (branded motion graphics), ManimCE (math / neural-network / concept animations), and a transcribe→",
+   "category": "skills"
+  },
+  {
+   "dir": "yuv-viral-video",
+   "name": "yuv-viral-video",
+   "desc": "Edit any selfie or screen-share footage into a viral short-form video in YUV.AI's signature style — Apple-style liquid-glass cards (real CSS backdrop-filter), dark-mode polish, MrBeast-paced cuts, video-title karaoke captions, premium GSAP motion graphics, no ",
+   "category": "skills"
+  },
+  {
+   "dir": "skill-template",
+   "name": "skill-name",
+   "desc": "Brief description of what this skill enables. Include trigger keywords that should activate this skill. Triggers on keyword1, keyword2, keyword3.",
+   "category": "templates"
+  }
+ ]
+}

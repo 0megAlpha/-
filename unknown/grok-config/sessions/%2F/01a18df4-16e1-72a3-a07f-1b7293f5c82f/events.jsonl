@@ -1,0 +1,2 @@
+{"ts":"2026-10-30T17:55:46.759Z","type":"mcp_config_resolved","servers":[{"name":"codegraph","transport":"stdio","source":"local"}],"disabled":[]}
+{"ts":"2026-10-30T17:55:46.780Z","type":"mcp_server_starting","server_name":"codegraph","transport":"stdio","target":"codegraph serve --mcp","timeout_sec":30}

@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "prompt_mode": "extend",
+  "audience": "primary",
+  "include_browser_verification": true,
+  "agents_md_files": [],
+  "persona_summaries": [],
+  "build_timestamp_utc": "2026-10-03T12:33:25.350740611+00:00",
+  "memory_enabled": false,
+  "os_name": "linux",
+  "shell_path": "/bin/bash",
+  "working_directory": "/",
+  "current_date": "2026-10-03",
+  "is_non_interactive": false,
+  "system_prompt_label": "Grok 4.7"
+}

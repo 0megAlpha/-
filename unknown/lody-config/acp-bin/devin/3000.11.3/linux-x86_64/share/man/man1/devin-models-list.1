@@ -1,0 +1,26 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-models-list 1  "list " 
+.SH NAME
+devin\-models\-list \- List available models, organized by model family
+.SH SYNOPSIS
+\fBdevin models list\fR [\fB\-\-format\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+List available models, organized by model family
+.SH OPTIONS
+.TP
+\fB\-\-format\fR \fI<FORMAT>\fR [default: text]
+Output format
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+text: Human\-readable, organized by model family
+.IP \(bu 2
+json: Machine\-readable JSON (for scripts)
+.RE
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

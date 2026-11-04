@@ -1,0 +1,154 @@
+{
+ "amazon-location-service": {
+  "desc": "Integrates Amazon Location Service APIs for AWS applications. Use this skill when users want to add maps (interactive MapLibre or static images); geocode addresses to coordinates or reverse geocode coordinates to addresses; calculate routes, travel times, or service areas; find places and businesses",
+  "size": 12795
+ },
+ "amplify-workflow": {
+  "desc": "'Build and deploy full-stack web and mobile apps with AWS Amplify Gen2 (TypeScript code-first). Covers auth (Cognito), data (AppSync/DynamoDB including schema modeling, enum types, relationships, authorization rules), storage (S3), functions, APIs, and AI (Amplify AI Kit with Bedrock). Supports Reac",
+  "size": 12877
+ },
+ "attorney-assist": {
+  "desc": "Connects the user with a LegalZoom attorney for legal consultation. Use when a user asks about attorneys, lawyers, or legal help, or when contract review reveals high risks or low-confidence findings.",
+  "size": 17142
+ },
+ "building-pydantic-ai-agents": {
+  "desc": "Build AI agents with Pydantic AI — tools, capabilities (including on-demand loading), structured output, streaming, testing, and multi-agent patterns. Use when the user mentions Pydantic AI, imports pydantic_ai, or asks to build an AI agent, add tools/capabilities, defer capability loading, stream o",
+  "size": 12390
+ },
+ "cline-session-history": {
+  "desc": "Search and browse Cline session history. Use when the user asks to find, list, inspect, or export Cline sessions by time period, prompt content, status, model, provider, source, mode, workspace, or other criteria. Also use when the user wants to read a session transcript or export sessions to a dire",
+  "size": 5610
+ },
+ "convex-design": {
+  "desc": "\"Design and build reactive, type-safe, production-grade backends on Convex. Covers schema, queries/mutations/actions, indexes, auth, file storage, scheduling, real-time multiplayer, mobile backends, and LLM/agent workflows on Convex's one-platform stack.\"",
+  "size": 46783
+ },
+ "cosmosdb-best-practices": {
+  "desc": "| Azure Cosmos DB performance optimization and best practices guidelines for NoSQL, partitioning, queries, SDK usage, and vector search. Use when writing, reviewing, or refactoring code that interacts with Azure Cosmos DB, designing data models, optimizing queries, or implementing high-performance d",
+  "size": 10212
+ },
+ "data-analyst": {
+  "desc": "Act as an interactive data analyst for ClickHouse-backed analytics. Use when the user asks questions about internal data, metrics, dashboards, telemetry, active users, revenue, funnels, trends, distributions, or wants an analyst-style conversation, ad hoc SQL, charts, or a data export against ClickH",
+  "size": 9628
+ },
+ "dataproc-skills": {
+  "desc": "Skills to interact with your Dataproc clusters and jobs.",
+  "size": 9638
+ },
+ "desktop-commander-overview": {
+  "desc": "Use for Desktop Commander MCP capabilities — persistent shells and REPLs, long-running processes, filesystem beyond the workspace, structured files (.xlsx, .docx, .pdf, images) and large local data files such as CSVs, ripgrep search at scale, SSH, or cross-turn state.",
+  "size": 12240
+ },
+ "dr-bedrock": {
+  "desc": "Troubleshoot local AWS Bedrock authentication and region configuration for the Cline CLI as Dr. Bedrock. Use when users report Bedrock CLI errors, AWS profile/default-chain issues, credential_process/SSO/IAM credential failures, missing region, AccessDenied, model access, or provider config problems",
+  "size": 17776
+ },
+ "dsql": {
+  "desc": "\"Build with Aurora DSQL — manage schemas, execute queries, handle migrations, diagnose query plans, load data, and develop applications with a serverless, distributed SQL database. Covers IAM auth, multi-tenant patterns, MySQL-to-DSQL and PostgreSQL-to-DSQL schema conversion, FK replacement code gen",
+  "size": 20410
+ },
+ "endor-setup": {
+  "desc": "\"Use when user asks to setup endorctl, install endorctl, run endorctl scan, scan for vulnerabilities, run endor scan or run Endor Labs scan or when any endorctl command fails with 'command not found', 'no such file or directory', authentication errors, 'unauthorized', '403', 'tenant not found', EOF ",
+  "size": 18774
+ },
+ "exa-search": {
+  "desc": "\"Deep research powered by Exa. Use for lead generation, literature reviews, deep dives, competitive analysis, or any query where one search falls short, including phrases like 'research this', 'find everything about', 'find me all', or 'deep dive on'.\"",
+  "size": 14278
+ },
+ "find-skills": {
+  "desc": "Helps users discover and install agent skills when they ask questions like \"how do I do X\", \"find a skill for X\", \"is there a skill that can...\", or express interest in extending capabilities. This skill should be used when the user is looking for functionality that might exist as an installable ski",
+  "size": 5456
+ },
+ "firestore-data": {
+  "desc": "Handles NoSQL document operations and collection hierarchy exploration. Use for CRUD tasks and data retrieval. Provides flexible document manipulation and structured querying.",
+  "size": 8242
+ },
+ "frontend-design": {
+  "desc": "Create distinctive, production-grade frontend interfaces with high design quality. Use this skill when the user asks to build web components, pages, or applications. Generates creative, polished code that avoids generic AI aesthetics.",
+  "size": 4237
+ },
+ "gcp-to-aws": {
+  "desc": "\"Migrate workloads from Google Cloud Platform to AWS — including AI and agentic workloads regardless of cloud provider. Triggers on: migrate from GCP, GCP to AWS, move off Google Cloud, migrate Terraform to AWS, migrate Cloud SQL to RDS, migrate GKE to EKS, migrate Cloud Run to Fargate, Google Cloud",
+  "size": 29594
+ },
+ "knowledge-catalog-discovery": {
+  "desc": "Use these skills when you need to discover and explore data assets in the Knowledge Catalog. It allows you to search for entries, lookup specific metadata, and explore aspect types to understand your data platform's assets.",
+  "size": 4075
+ },
+ "linear-sdk-scripting": {
+  "desc": "Perform actions in Linear (read, create, update, search issues, projects, comments, teams, cycles, labels, etc.) by writing and running small Node scripts against the official @linear/sdk TypeScript SDK with a personal API key. Use this when the user wants to do Linear work from the terminal without",
+  "size": 9523
+ },
+ "math-olympiad": {
+  "desc": "\"Solve competition math problems (IMO, Putnam, USAMO, AIME) with adversarial verification that catches the errors self-verification misses. Activates when asked to 'solve this IMO problem', 'prove this olympiad inequality', 'verify this competition proof', 'find a counterexample', 'is this proof cor",
+  "size": 19808
+ },
+ "mintlify": {
+  "desc": "Comprehensive reference for building Mintlify documentation sites. Use when creating pages, configuring docs.json, adding components, setting up navigation, or working with API references. Routes to detailed reference files for all components and configuration options.",
+  "size": 8638
+ },
+ "oracledb": {
+  "desc": "Use these skills to manage and monitor Oracle databases by executing SQL statements, exploring schema metadata, analyzing query performance, monitoring active sessions and resource consumption, and managing storage and object health.",
+  "size": 2380
+ },
+ "playground": {
+  "desc": "Creates interactive HTML playgrounds — self-contained single-file explorers that let users configure something visually through controls, see a live preview, and copy out a prompt. Use when the user asks to make a playground, explorer, or interactive tool for a topic.",
+  "size": 3852
+ },
+ "review-team": {
+  "desc": "Use when the user asks for a code review by a fleet of specialized reviewer agents, wants multiple independent reviewer perspectives, or asks to run reviewers in single-pass or iterative fix-until-clean mode. Launches focused subagents for correctness, security, architecture, conventions, simplicity",
+  "size": 3983
+ },
+ "sap-fiori-add-visual-filter": {
+  "desc": "Add visual filters (chart-based) to SAP Fiori Elements filter bar/value help using CAP or ABAP RAP. argument-hint: field name (e.g., Category, Status)",
+  "size": 6166
+ },
+ "save-to-spotify": {
+  "desc": "Create polished audio content and save to Spotify. Produces episodes with TTS narration, a rich timeline (chapters plus in-player images, external links, and Spotify entity cards), and a cover image. Also use for raw media saves, show/episode management, and timeline navigation.",
+  "size": 10697
+ },
+ "searching-sourcegraph": {
+  "desc": "Use when the user needs to search or navigate code with Sourcegraph MCP tools. Provides disciplined search workflows for finding implementations, understanding systems, debugging issues, fixing bugs, and reviewing code.",
+  "size": 6205
+ },
+ "sentry-cli": {
+  "desc": "Guide for using the Sentry CLI to interact with Sentry from the command line. Use when the user asks about viewing issues, events, projects, organizations, making API calls, or authenticating with Sentry via CLI.",
+  "size": 22980
+ },
+ "session-report": {
+  "desc": "Generate an explorable HTML report of Claude Code session usage (tokens, cache, subagents, skills, expensive prompts) from ~/.claude/projects transcripts.",
+  "size": 3136
+ },
+ "site-specification": {
+  "desc": "Extract comprehensive site specifications from simple descriptions. Use when analyzing a user's theme request to determine site type, audience, tone, layout requirements, and typography.",
+  "size": 10977
+ },
+ "skill-creator": {
+  "desc": "Create new skills, modify and improve existing skills, and measure skill performance. Use when users want to create a skill from scratch, edit, or optimize an existing skill, run evals to test a skill, benchmark skill performance with variance analysis, or optimize a skill's description for better t",
+  "size": 32987
+ },
+ "spanner-data": {
+  "desc": "Use these skills when you need to explore the database structure, discover schema objects like tables and graphs, and execute custom SQL queries to interact with your data.",
+  "size": 2740
+ },
+ "teamcity-cli": {
+  "desc": "Use when working with TeamCity CI/CD or when a user provides a TeamCity build URL — drives the `teamcity` CLI for builds, logs, jobs, queues, agents, pools, projects, and pipelines.",
+  "size": 4405
+ },
+ "ui5-typescript-conversion": {
+  "desc": "A skill for converting UI5 (SAPUI5/OpenUI5) projects to TypeScript.",
+  "size": 26334
+ },
+ "use-railway": {
+  "desc": "> Operate Railway infrastructure: sign up for or sign in to a Railway account, create projects, provision services and databases, manage object storage buckets, deploy code, configure environments and variables, manage domains, troubleshoot failures, check status and metrics, set up Railway agent to",
+  "size": 26962
+ },
+ "vibe-prospecting": {
+  "desc": "\"Find company & contact data. Turn your agent into a prospecting platform. Get contact information, roles, tech stack, business events, website changes, intent data. Build lead lists, research prospects, identify talent. 150M+ companies, 800M+ professionals, 50+ data sources.\"",
+  "size": 20363
+ },
+ "windsor-ai-business-data": {
+  "desc": "Query Windsor.ai business data across marketing, sales, CRM, ecommerce, finance, and analytics connectors. Use when users need dashboards, reports, data visualization, schema exploration, or connector-backed test data from Windsor.ai. disable-model-invocation: false",
+  "size": 4097
+ }
+}

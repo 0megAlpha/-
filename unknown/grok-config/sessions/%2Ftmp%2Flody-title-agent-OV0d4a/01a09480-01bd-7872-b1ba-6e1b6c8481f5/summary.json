@@ -1,0 +1,20 @@
+{
+  "info": {
+    "id": "01a09480-01bd-7872-b1ba-6e1b6c8481f5",
+    "cwd": "/tmp/lody-title-agent-OV0d4a"
+  },
+  "session_summary": "",
+  "created_at": "2026-09-12T07:23:32.163666511Z",
+  "updated_at": "2026-09-12T07:23:44.253214706Z",
+  "num_messages": 15,
+  "num_chat_messages": 13,
+  "current_model_id": "grok-4.6",
+  "next_trace_turn": 1,
+  "chat_format_version": 1,
+  "request_id": "9a3f8dd6-fd81-489a-a813-7103e6af6eed",
+  "grok_home": "/root/.grok",
+  "last_active_at": "2026-09-12T07:23:44.253214706Z",
+  "agent_name": "grok-build-plan",
+  "sandbox_profile": "off",
+  "reasoning_effort": "low"
+}

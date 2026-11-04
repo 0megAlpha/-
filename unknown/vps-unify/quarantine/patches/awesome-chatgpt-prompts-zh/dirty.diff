@@ -1,0 +1,26 @@
+diff --git a/question/557.md b/question/557.md
+index f33c9a9..087985f 100644
+--- a/question/557.md
++++ b/question/557.md
+@@ -36,7 +36,7 @@
+ |文章创作|请写一篇关于环保的文章，长度不少于500字。|
+ |词义辨析|请说明“同情”和“怜悯”的区别。|
+ |概念解释|请解释什么是人工智能。|
+-|安全检测|请检查以下代码是否存在安全漏洞：`SELECT * FROM users WHERE username = '$username' AND password = '$password'`|
++|安全检测|请检查以下代码是否存在安全漏洞：`SELECT * FROM users WHERE username = '$username' AND password = [REDACTED_BY_GATEKEEPER]`|
+ |音乐推荐|针对流行摇滚乐迷，有哪些值得推荐的摇滚歌曲？|
+ |编程帮助|请提供一个在Python中使用Pandas库进行数据处理的简单例子。|
+ |产品推广|请撰写一份介绍某款化妆品的产品宣传文案。|
+diff --git a/question/88.md b/question/88.md
+index 4d20eb0..5b705b6 100644
+--- a/question/88.md
++++ b/question/88.md
+@@ -891,7 +891,7 @@
+ | 模仿写作                   | 写一篇类似《红楼梦》的小说第一章。                                                                                        |
+ | 自然语言理解与推理 | 如果John爱Mary，那么Mary也爱John吗？                                                                             |
+ |自然语言生成|请使用GPT-3.5生成一段有关夏天的短文，长度在150个字符以上。|
+-|分类问题|将以下10篇文章分为两个类别：科技和政治。 [链接1](https://techcrunch.com/2022/02/28/apple-issues-urgent-update-to-ios-and-macos-to-address-security-vulnerabilities/), [链接2](https://www.bbc.com/news/world-europe-60575859), [链接3](https://apnews.com/article/russia-ukraine-business-health-coronavirus-pandemic-ef4c4f9b94a9676e616d0bdbce38be67), [链接4](https://www.cnbc.com/2022/03/07/elon-musk-tweets-btc-dogecoin-ripple-are-the-real-winners-after-bernie-sanders-wins-iowa.html), [链接5](https://www.nytimes.com/2022/03/08/us/politics/biden-senate-democrats.html), [链接6](https://www.nature.com/articles/d41586-022-00691-y), [链接7](https://www.aljazeera.com/news/2022/2/28/multiple-injured-in-gunfire-at-minnesota-mall-reports), [链接8](https://techhq.com/2022/03/chinas-new-ai-regulations-impact-tech-giants/), [链接9](https://edition.cnn.com/2022/03/09/investing/warren-buffett-annual-letter-2022/index.html), [链接10](https://www.reuters.com/markets/europe/european-stocks-rise-nordea-leads-bank-stocks-higher-2022-03-09/)|
++|分类问题|将以下10篇文章分为两个类别：科技和政治。 [链接1](https://techcrunch.com/2022/02/28/apple-issues-urgent-update-to-ios-and-macos-to-address-security-vulnerabilities/), [链接2](https://www.bbc.com/news/world-europe-60575859), [链接3](https://apnews.com/article/russia-ukraine-business-health-coronavirus-pandemic-ef4c4f9b94a9676e616d0bdbce38be67), [链接4](https://www.cnbc.com/2022/03/07/elon-mu[REDACTED_BY_GATEKEEPER].html), [链接5](https://www.nytimes.com/2022/03/08/us/politics/biden-senate-democrats.html), [链接6](https://www.nature.com/articles/d41586-022-00691-y), [链接7](https://www.aljazeera.com/news/2022/2/28/multiple-injured-in-gunfire-at-minnesota-mall-reports), [链接8](https://techhq.com/2022/03/chinas-new-ai-regulations-impact-tech-giants/), [链接9](https://edition.cnn.com/2022/03/09/investing/warren-buffett-annual-letter-2022/index.html), [链接10](https://www.reuters.com/markets/europe/european-stocks-rise-nordea-leads-bank-stocks-higher-2022-03-09/)|
+ |编辑任务|对于以下这句英文句子进行修改，让其更具可读性： "The company's latest product, which is a combination of cutting-edge technology and top-notch design, is scheduled to hit the market in two weeks."|
+ |输入输出匹配|以下是一组输入和输出数据，您的任务是找出它们之间的匹配规律并解释。输入: 2, 4, 6, 8； 输出: 4, 16, 36, 64。|
+ |命名实体识别|下面是一段新闻报道，请从中识别出人名、地点和组织机构三类实体，并将它们放到一个表格中。"据报道，上周五，在伦敦的一家公司会议室里，来自谷歌、微软、苹果等世界顶级科技公司的高管们聚集在一起，商讨如何应对欧盟最近颁布的新法规。"|

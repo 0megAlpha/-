@@ -1,0 +1,4 @@
+{"ts":"2026-10-05T04:30:23.551Z","type":"mcp_config_resolved","servers":[{"name":"codegraph","transport":"stdio","source":"local"}],"disabled":[]}
+{"ts":"2026-10-05T04:30:23.616Z","type":"mcp_server_starting","server_name":"codegraph","transport":"stdio","target":"codegraph serve --mcp","timeout_sec":30}
+{"ts":"2026-10-05T04:30:23.912Z","type":"mcp_server_failed","server_name":"codegraph","transport":"stdio","target":"codegraph serve --mcp","error_type":"handshake_failed","error_message":"MCP server 'codegraph' handshake failed: connection closed: initialize response","duration_ms":295,"timeout_sec":30}
+{"ts":"2026-10-05T04:30:23.912Z","type":"mcp_init_completed","total_servers":1,"succeeded":0,"failed":1,"auth_required":0,"total_tools":0,"duration_ms":296,"is_reinit":false,"failed_servers":["codegraph"]}

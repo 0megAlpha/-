@@ -1,0 +1,66 @@
+2026-10-20T18:13:31.901Z [DEBUG] [mcp] [http-transport] installed Undici global dispatcher allowH2=false proxyEnv=false diagnostics=false
+2026-10-20T18:13:31.902Z [DEBUG] [mcp] [trace-span] start name=startup.loro_sqlite_store workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.905Z [DEBUG] [mcp] [trace-span] end name=startup.loro_sqlite_store status=ok durationMs=3 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.905Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Initializing local-first Loro repo: storageDb=/root/.lody/loro-repo/jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr/repo.sqlite3
+2026-10-20T18:13:31.905Z [DEBUG] [mcp] [trace-span] start name=startup.loro_repo_create workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.934Z [DEBUG] [mcp] [trace-span] end name=startup.loro_repo_create status=ok durationMs=29 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.934Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] LoroRepo created in 29ms
+2026-10-20T18:13:31.935Z [DEBUG] [mcp] [trace-span] start name=startup.loro_meta_join workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.935Z [DEBUG] [mcp] [trace-span] end name=startup.loro_meta_join status=ok durationMs=1 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:31.936Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: detached
+2026-10-20T18:13:31.936Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams auto-reconnect watchdog enabled (interval=30000ms)
+2026-10-20T18:13:32.523Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams transport status: connected
+2026-10-20T18:13:32.523Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: connecting (was detached)
+2026-10-20T18:13:32.524Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Joining Loro presence room
+2026-10-20T18:13:32.525Z [INFO] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Remote Streams transport attached
+2026-10-20T18:13:32.545Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence room status: joined
+2026-10-20T18:13:32.545Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence subscription established
+2026-10-20T18:13:32.552Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: joined (was connecting)
+2026-10-20T18:13:32.554Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room ready in 2ms (reason=meta-room-joined)
+2026-10-20T18:13:32.554Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta pending writes synced in 29ms (reason=create:attach-remote)
+2026-10-20T18:13:41.552Z [DEBUG] [mcp] [http-transport] installed Undici global dispatcher allowH2=false proxyEnv=false diagnostics=false
+2026-10-20T18:13:41.553Z [DEBUG] [mcp] [trace-span] start name=startup.loro_sqlite_store workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.555Z [DEBUG] [mcp] [trace-span] end name=startup.loro_sqlite_store status=ok durationMs=2 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.555Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Initializing local-first Loro repo: storageDb=/root/.lody/loro-repo/jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr/repo.sqlite3
+2026-10-20T18:13:41.555Z [DEBUG] [mcp] [trace-span] start name=startup.loro_repo_create workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.572Z [DEBUG] [mcp] [trace-span] end name=startup.loro_repo_create status=ok durationMs=17 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.572Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] LoroRepo created in 17ms
+2026-10-20T18:13:41.572Z [DEBUG] [mcp] [trace-span] start name=startup.loro_meta_join workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.573Z [DEBUG] [mcp] [trace-span] end name=startup.loro_meta_join status=ok durationMs=0 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:13:41.573Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: detached
+2026-10-20T18:13:41.573Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams auto-reconnect watchdog enabled (interval=30000ms)
+2026-10-20T18:13:42.328Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams transport status: connected
+2026-10-20T18:13:42.328Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: connecting (was detached)
+2026-10-20T18:13:42.329Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Joining Loro presence room
+2026-10-20T18:13:42.330Z [INFO] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Remote Streams transport attached
+2026-10-20T18:13:42.353Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence room status: joined
+2026-10-20T18:13:42.353Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence subscription established
+2026-10-20T18:13:42.357Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: joined (was connecting)
+2026-10-20T18:13:42.359Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room ready in 1ms (reason=meta-room-joined)
+2026-10-20T18:13:42.360Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta pending writes synced in 30ms (reason=create:attach-remote)
+2026-10-20T18:14:46.989Z [DEBUG] [mcp] [http-transport] installed Undici global dispatcher allowH2=false proxyEnv=false diagnostics=false
+2026-10-20T18:14:46.989Z [DEBUG] [mcp] [trace-span] start name=startup.loro_sqlite_store workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:46.992Z [DEBUG] [mcp] [trace-span] end name=startup.loro_sqlite_store status=ok durationMs=2 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:46.992Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Initializing local-first Loro repo: storageDb=/root/.lody/loro-repo/jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr/repo.sqlite3
+2026-10-20T18:14:46.992Z [DEBUG] [mcp] [trace-span] start name=startup.loro_repo_create workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:47.019Z [DEBUG] [mcp] [trace-span] end name=startup.loro_repo_create status=ok durationMs=27 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:47.019Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] LoroRepo created in 27ms
+2026-10-20T18:14:47.019Z [DEBUG] [mcp] [trace-span] start name=startup.loro_meta_join workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:47.019Z [DEBUG] [mcp] [trace-span] end name=startup.loro_meta_join status=ok durationMs=0 workspaceId=jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr
+2026-10-20T18:14:47.019Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: detached
+2026-10-20T18:14:47.020Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams auto-reconnect watchdog enabled (interval=30000ms)
+2026-10-20T18:14:49.037Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro streams transport status: connected
+2026-10-20T18:14:49.038Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: connecting (was detached)
+2026-10-20T18:14:49.039Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Joining Loro presence room
+2026-10-20T18:14:49.039Z [INFO] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Remote Streams transport attached
+2026-10-20T18:14:49.072Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room status: joined (was connecting)
+2026-10-20T18:14:49.074Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta room ready in 2ms (reason=meta-room-joined)
+2026-10-20T18:14:49.074Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta pending writes synced in 34ms (reason=create:attach-remote)
+2026-10-20T18:14:49.078Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence room status: joined
+2026-10-20T18:14:49.079Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro presence subscription established
+2026-10-20T18:14:54.026Z [DEBUG] [mcp] [loro-streams-diag] HTTP 404 from Streams API: GET https://control-c.streams-api-x.loro.dev/ds/lody/jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr%3As%3A1d14f795-ce60-4c44-a857-dd2b2d905117/bootstrap
+2026-10-20T18:14:54.137Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Loro meta pending writes synced in 0ms (reason=session.create:1d14f795-ce60-4c44-a857-dd2b2d905117:meta)
+2026-10-20T18:14:54.919Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Unloaded doc session-f95f0776-9334-416e-8cdc-3f8e58294260 and invalidated its local room
+2026-10-20T18:14:54.920Z [DEBUG] [mcp] [jh75ms0s3g4xqxf8g2ea7p8avs8dgfqr] Unloaded doc session-1d14f795-ce60-4c44-a857-dd2b2d905117 and invalidated its local room
+2026-10-21T13:26:41.788Z [INFO] [mcp-http-host] shutting down (SIGTERM)
+2026-10-21T13:45:02.875Z [INFO] [mcp-http-host] listening on 127.0.0.1:38243

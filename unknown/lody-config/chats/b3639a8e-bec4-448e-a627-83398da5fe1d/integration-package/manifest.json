@@ -1,0 +1,1178 @@
+[
+ {
+  "name": "share-a-library",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when a managed library is ready to publish to GitHub and hand to teammates as an install command. Run the GitHub publishing steps, then return the exact shareable install command.",
+  "recommended": false
+ },
+ {
+  "name": "browse-and-evaluate",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when exploring the ai-agent-skills catalog to find, compare, and evaluate skills before installing. Always use --fields to limit output size and --dry-run before committing to an install.",
+  "recommended": false
+ },
+ {
+  "name": "code-documentation",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Writing effective code documentation - API docs, README files, inline comments, and technical guides. Use for documenting codebases, APIs, or writing developer guides.",
+  "recommended": true
+ },
+ {
+  "name": "content-research-writer",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Assists in writing high-quality content by conducting research, adding citations, improving hooks, iterating on outlines, and providing real-time feedback on each section. Transforms your writing proc",
+  "recommended": false
+ },
+ {
+  "name": "review-a-skill",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when evaluating whether a skill belongs in a library. Preview content, check frontmatter, validate structure, and decide whether to keep, curate, or remove.",
+  "recommended": true
+ },
+ {
+  "name": "build-workspace-docs",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when regenerating README.md and WORK_AREAS.md in a managed library workspace. Always dry-run first to preview changes.",
+  "recommended": false
+ },
+ {
+  "name": "verification-agent",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "> Verify claims, quotations, citations and references against live primary sources, and produce a reproducible audit record instead of an assertion. Use when asked to: check whether a quotation, verse",
+  "recommended": true
+ },
+ {
+  "name": "install-from-remote-library",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when installing skills from a shared ai-agent-skills library repo. Inspect with `--list` first, prefer `--collection`, and preview with `--dry-run` before installing.",
+  "recommended": false
+ },
+ {
+  "name": "curate-a-team-library",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when building a managed team skills library for a real stack. Map work to shelves, browse before curating, write meaningful `whyHere` notes, and create a starter pack once the first pass is solid.",
+  "recommended": false
+ },
+ {
+  "name": "best-practices",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": ">- Transforms vague prompts into optimized Claude Code prompts. Adds verification, specific context, constraints, and proper phasing. Invoke with /best-practices.",
+  "recommended": false
+ },
+ {
+  "name": "update-installed-skills",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when syncing or updating previously installed skills to their latest version. Always dry-run updates before applying, and check for breaking changes.",
+  "recommended": false
+ },
+ {
+  "name": "ask-questions-if-underspecified",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Clarify requirements before implementing. Do not use automatically, only when invoked explicitly.",
+  "recommended": true
+ },
+ {
+  "name": "backend-development",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, database schemas, or backend system architecture.",
+  "recommended": false
+ },
+ {
+  "name": "llm-application-dev",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Building applications with Large Language Models - prompt engineering, RAG patterns, and LLM integration. Use for AI-powered features, chatbots, or LLM-based automation.",
+  "recommended": false
+ },
+ {
+  "name": "database-design",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Database schema design, optimization, and migration patterns for PostgreSQL, MySQL, and NoSQL databases. Use for designing schemas, writing migrations, or optimizing queries.",
+  "recommended": false
+ },
+ {
+  "name": "audit-library-health",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when checking the overall health of a skills library. Run doctor, validate, check for stale skills, and verify generated docs are in sync.",
+  "recommended": false
+ },
+ {
+  "name": "changelog-generator",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Automatically creates user-facing changelogs from git commits by analyzing commit history, categorizing changes, and transforming technical commits into clear, customer-friendly release notes. Turns h",
+  "recommended": true
+ },
+ {
+  "name": "migrate-skills-between-libraries",
+  "category": "skills",
+  "repo": "MoizIbnYousaf/ai-agent-skills",
+  "desc": "Use when moving skills between library workspaces or upgrading from a personal library to a team library. Export from one workspace, import into another.",
+  "recommended": false
+ },
+ {
+  "name": "Skill Development",
+  "category": ".agents",
+  "repo": "dean9703111/ai-agent-skill-for-video-workflow",
+  "desc": "This skill should be used when the user wants to \"create a skill\", \"add a skill to plugin\", \"write a new skill\", \"improve skill description\", \"organize skill content\", or needs guidance on skill struc",
+  "recommended": false
+ },
+ {
+  "name": "SRT Enhancer",
+  "category": ".agent",
+  "repo": "dean9703111/ai-agent-skill-for-video-workflow",
+  "desc": "This skill should be used when the user asks to \"enhance srt subtitles\", \"optimize srt with original script\", \"fix srt typos from markdown\", \"compare srt with origin.md\", \"improve subtitle accuracy\", ",
+  "recommended": true
+ },
+ {
+  "name": "SRT Card Annotator",
+  "category": ".agent",
+  "repo": "dean9703111/ai-agent-skill-for-video-workflow",
+  "desc": "This skill should be used when the user asks to \"add reference cards to srt\", \"annotate srt with cards\", \"insert cards into subtitles\", \"generate srt with card annotations\", \"add 字卡 to srt\", or needs ",
+  "recommended": true
+ },
+ {
+  "name": "Audio to SRT Converter",
+  "category": ".agent",
+  "repo": "dean9703111/ai-agent-skill-for-video-workflow",
+  "desc": "This skill should be used when the user asks to \"convert audio to srt\", \"generate subtitles from audio\", \"create srt from mp3/wav/m4a/flac\", \"transcribe audio to subtitles\", or needs to generate SRT s",
+  "recommended": true
+ },
+ {
+  "name": "SRT Social Summary",
+  "category": ".agent",
+  "repo": "dean9703111/ai-agent-skill-for-video-workflow",
+  "desc": "This skill should be used when the user asks to \"generate social media summary from srt\", \"create platform-specific descriptions\", \"generate Facebook post from transcript\", \"create YouTube description",
+  "recommended": true
+ },
+ {
+  "name": "query-optimization",
+  "category": "database",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Diagnose and optimize existing slow SQL queries using execution plans, indexing strategies, query rewriting, and ORM tuning. Use when the user provides a query, performance symptom, or EXPLAIN plan; u",
+  "recommended": false
+ },
+ {
+  "name": "database-migration",
+  "category": "database",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create, execute, and roll back versioned database schema migrations using tools like Alembic, Prisma Migrate, Flyway, and Knex. Use when the user requests database migration or provides relevant input",
+  "recommended": false
+ },
+ {
+  "name": "database-seeding",
+  "category": "database",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Populate databases with realistic, reproducible test data for development, testing, and staging environments. Use when the user requests database seeding or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "database-schema-design",
+  "category": "database",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design normalized database schemas with tables, relationships, indexes, and constraints for any application domain. Use when the user requests database schema design or provides relevant inputs for th",
+  "recommended": false
+ },
+ {
+  "name": "database-backup",
+  "category": "database",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create, schedule, and verify database backups with support for full, incremental, and point-in-time recovery strategies. Use when the user requests database backup or provides relevant inputs for this",
+  "recommended": false
+ },
+ {
+  "name": "crm-data-enrichment",
+  "category": "sales",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Enrich CRM records with firmographic and contact data, filling gaps in company and person profiles to improve segmentation, routing, and outreach quality. Use when the user requests crm data enrichmen",
+  "recommended": false
+ },
+ {
+  "name": "competitive-battlecard-creation",
+  "category": "sales",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Build sales battlecards with feature comparisons, objection handling scripts, positioning statements, and win themes for competitive deal scenarios. Use when the user requests competitive battlecard c",
+  "recommended": false
+ },
+ {
+  "name": "sales-email-sequences",
+  "category": "sales",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design multi-touch outbound email sequences with personalized messaging, timing cadences, and conversion-aware copy for prospecting or re-engagement. Use when the user needs a coordinated sales campai",
+  "recommended": false
+ },
+ {
+  "name": "proposal-generation",
+  "category": "sales",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create tailored sales proposals and RFP responses that address prospect needs, articulate solution value, and include pricing, timelines, and social proof. Use when the user requests proposal generati",
+  "recommended": false
+ },
+ {
+  "name": "lead-scoring",
+  "category": "sales",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Score and prioritize leads based on firmographic fit and behavioral engagement signals, producing ranked tiers for sales team focus. Use when the user requests lead scoring or provides relevant inputs",
+  "recommended": false
+ },
+ {
+  "name": "pdf-processing",
+  "category": "documents-and-files",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Inspect, extract, OCR, create, merge, split, reorder, rotate, annotate, fill, redact, compress, secure, and verify PDF documents while preserving source files and visual fidelity. Use when working wit",
+  "recommended": true
+ },
+ {
+  "name": "spreadsheet-analysis",
+  "category": "documents-and-files",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Inspect, profile, clean, reconcile, analyze, visualize, and verify spreadsheet data while preserving formulas, formatting, types, and source files. Use when working with .xlsx, .xlsm, .xls, .ods, .csv",
+  "recommended": true
+ },
+ {
+  "name": "literature-review",
+  "category": "research-and-knowledge",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Conduct a structured literature review on a given topic by defining a search strategy, applying inclusion and exclusion criteria, extracting key findings, and synthesizing results into a coherent acad",
+  "recommended": false
+ },
+ {
+  "name": "fact-checking",
+  "category": "research-and-knowledge",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Verify the accuracy of claims and statements by extracting individual assertions, identifying authoritative sources, cross-referencing evidence, and assigning confidence-scored verdicts. Use when the ",
+  "recommended": true
+ },
+ {
+  "name": "knowledge-graph-creation",
+  "category": "research-and-knowledge",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Build structured knowledge graphs from unstructured text by extracting entities, mapping relationships, generating graph triples, and visualizing the result. Use when the user requests knowledge graph",
+  "recommended": false
+ },
+ {
+  "name": "summarization",
+  "category": "research-and-knowledge",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Summarize text using extractive, abstractive, hierarchical, and multi-document techniques, producing concise outputs at configurable detail levels. Use when the user requests summarization or provides",
+  "recommended": false
+ },
+ {
+  "name": "deep-research",
+  "category": "research-and-knowledge",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Conduct in-depth, multi-step research on a given topic by decomposing queries, finding diverse sources, cross-referencing findings, and synthesizing a comprehensive report. Use when the user requests ",
+  "recommended": true
+ },
+ {
+  "name": "kubernetes-deployment",
+  "category": "devops-and-infrastructure",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Deploy, manage, and scale applications on Kubernetes clusters using manifests, Helm charts, and autoscaling configurations. Use when the user requests kubernetes deployment or provides relevant inputs",
+  "recommended": false
+ },
+ {
+  "name": "ci-cd",
+  "category": "devops-and-infrastructure",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Set up a continuous integration and continuous delivery (CI/CD) pipeline for a software project, automating builds, tests, and deployments across environments. Use when the user requests ci cd or prov",
+  "recommended": true
+ },
+ {
+  "name": "cloud-monitoring",
+  "category": "devops-and-infrastructure",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Monitor cloud infrastructure and applications using metrics, logs, and traces to provide real-time observability into performance, health, and reliability. Use when the user requests cloud monitoring ",
+  "recommended": false
+ },
+ {
+  "name": "docker-compose-setup",
+  "category": "devops-and-infrastructure",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Set up and orchestrate multi-container Docker applications using docker-compose, including service configuration, networking, volumes, and environment management. Use when the user requests docker com",
+  "recommended": true
+ },
+ {
+  "name": "infrastructure-as-code",
+  "category": "devops-and-infrastructure",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Define, deploy, and manage cloud infrastructure as code using tools like Terraform, Pulumi, CloudFormation, and CDK, ensuring consistency, repeatability, and version control. Use when the user request",
+  "recommended": false
+ },
+ {
+  "name": "dependency-scanning",
+  "category": "security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Scan project dependencies for known vulnerabilities, generate software bills of materials, and enforce license compliance across the software supply chain. Use when the user requests dependency scanni",
+  "recommended": false
+ },
+ {
+  "name": "threat-modeling",
+  "category": "security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Conduct structured threat modeling for software systems using established methodologies to identify, prioritize, and mitigate security threats before they are exploited. Use when the user requests thr",
+  "recommended": false
+ },
+ {
+  "name": "security-audit",
+  "category": "security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Perform a broad, authorized security audit across application, infrastructure, identity, dependencies, and operations. Use when the user needs a scoped security posture review; use the SAST, DAST, dep",
+  "recommended": false
+ },
+ {
+  "name": "static-application-security-testing",
+  "category": "security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Analyze source code for security vulnerabilities using static analysis tools, custom rules, and CI-integrated scanning pipelines. Use when the user requests static application security testing or prov",
+  "recommended": false
+ },
+ {
+  "name": "dynamic-application-security-testing",
+  "category": "security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Perform dynamic security testing against running web applications and APIs to discover vulnerabilities through active probing and fuzzing. Use when the user requests dynamic application security testi",
+  "recommended": false
+ },
+ {
+  "name": "translation",
+  "category": "writing-and-content",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Translate text between languages with cultural adaptation, terminology consistency, and support for multiple document types including technical docs, marketing copy, and UI strings. Use when the user ",
+  "recommended": true
+ },
+ {
+  "name": "copywriting",
+  "category": "writing-and-content",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Write compelling, persuasive marketing and sales copy using proven frameworks like AIDA, PAS, BAB, and 4Ps, with tone and voice customization, CTA optimization, and A/B variant generation. Use when th",
+  "recommended": false
+ },
+ {
+  "name": "technical-writing",
+  "category": "writing-and-content",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Write clear, concise, and accurate technical documentation including API references, user guides, tutorials, changelogs, and architecture docs, tailored to the target audience. Use when the user reque",
+  "recommended": true
+ },
+ {
+  "name": "blog-post-writing",
+  "category": "writing-and-content",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Write high-quality, SEO-optimized blog posts in multiple formats including how-to guides, listicles, opinion pieces, and case studies, with structured outlines, hooks, and calls-to-action. Use when th",
+  "recommended": false
+ },
+ {
+  "name": "proofreading",
+  "category": "writing-and-content",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Proofread and correct text for grammar, spelling, punctuation, style, clarity, and consistency, with support for multiple style guides and readability analysis. Use when the user requests proofreading",
+  "recommended": false
+ },
+ {
+  "name": "seo-optimization",
+  "category": "marketing-and-seo",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Optimize a webpage for search engines by analyzing on-page elements, improving technical performance, and implementing structured data for maximum visibility. Use when the user requests seo optimizati",
+  "recommended": false
+ },
+ {
+  "name": "keyword-research",
+  "category": "marketing-and-seo",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Conduct comprehensive keyword research to identify high-value search terms, map search intent, and uncover content gaps for SEO and content marketing. Use when the user requests keyword research or pr",
+  "recommended": false
+ },
+ {
+  "name": "content-strategy",
+  "category": "marketing-and-seo",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Develop and execute a content strategy that maps content to audience needs, funnel stages, and business goals through editorial planning and performance analysis. Use when the user requests content st",
+  "recommended": false
+ },
+ {
+  "name": "social-media-posting",
+  "category": "marketing-and-seo",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create, adapt, and schedule social media content across platforms with platform-specific formatting, engagement hooks, and strategic posting cadence. Use when the user requests social media posting or",
+  "recommended": false
+ },
+ {
+  "name": "analytics-reporting",
+  "category": "marketing-and-seo",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Generate comprehensive marketing analytics reports by collecting KPIs, analyzing trends, and delivering actionable insights with attribution modeling and funnel analysis. Use when the user requests an",
+  "recommended": false
+ },
+ {
+  "name": "hyperparameter-tuning",
+  "category": "ai-ml-operations",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Optimize machine learning model hyperparameters using grid search, random search, Bayesian optimization, and Hyperband to maximize model performance within a compute budget. Use when the user requests",
+  "recommended": false
+ },
+ {
+  "name": "ml-pipeline-creation",
+  "category": "ai-ml-operations",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design, implement, and validate reproducible machine-learning pipelines spanning data preparation, training, evaluation, registry, and deployment gates. Use when the user requests an ML pipeline, need",
+  "recommended": false
+ },
+ {
+  "name": "data-labeling",
+  "category": "ai-ml-operations",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Set up and manage data labeling workflows using manual annotation tools, semi-automated pipelines, active learning, and programmatic weak supervision. Use when the user requests data labeling or provi",
+  "recommended": false
+ },
+ {
+  "name": "model-deployment",
+  "category": "ai-ml-operations",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Deploy trained machine learning models as production-ready services using REST APIs, containers, serverless functions, and orchestration platforms. Use when the user requests model deployment or provi",
+  "recommended": false
+ },
+ {
+  "name": "model-training",
+  "category": "ai-ml-operations",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Train machine learning models end-to-end, covering data loading, preprocessing, architecture selection, training loops, validation, and checkpointing. Use when the user requests model training or prov",
+  "recommended": false
+ },
+ {
+  "name": "webhook-setup",
+  "category": "api-and-integration",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Set up webhook receivers with signature verification, idempotent event processing, retry handling, and dead letter queues for reliable event-driven integrations. Use when the user requests webhook set",
+  "recommended": false
+ },
+ {
+  "name": "api-design",
+  "category": "api-and-integration",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design RESTful APIs with proper resource modeling, HTTP method semantics, status codes, pagination, versioning, and documentation. Use when the user requests api design or provides relevant inputs for",
+  "recommended": true
+ },
+ {
+  "name": "graphql-api-design",
+  "category": "api-and-integration",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design GraphQL APIs with well-structured schemas, efficient resolvers, pagination, and performance patterns like DataLoader and federation. Use when the user requests graphql api design or provides re",
+  "recommended": false
+ },
+ {
+  "name": "api-integration",
+  "category": "api-and-integration",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Integrate with external APIs using REST clients, webhook consumers, SDK wrappers, and polling patterns with proper authentication, error handling, and retry logic. Use when the user requests api integ",
+  "recommended": false
+ },
+ {
+  "name": "oauth-2-0-setup",
+  "category": "api-and-integration",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Implement OAuth 2.0 authentication flows including authorization code with PKCE, client credentials, and device code for secure API integration. Use when the user requests oauth 2 0 setup or provides ",
+  "recommended": true
+ },
+ {
+  "name": "meeting-transcription",
+  "category": "communication",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Transcribe meeting audio with speaker diarization, generate structured summaries with action items, decisions, and follow-ups, and support multiple audio formats and languages. Use when the user reque",
+  "recommended": false
+ },
+ {
+  "name": "report-generation",
+  "category": "communication",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Generate professional reports — sprint retrospectives, financial summaries, analytics dashboards, and incident postmortems — from structured data with templates, charts, and multi-format output. Use w",
+  "recommended": false
+ },
+ {
+  "name": "email-drafting",
+  "category": "communication",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Draft a professional, audience-aware email or reply with calibrated tone and a clear call to action. Use when the user needs one message, response, follow-up, support note, or meeting request; use sal",
+  "recommended": false
+ },
+ {
+  "name": "presentation-creation",
+  "category": "communication",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create polished, audience-tailored presentations from outlines or documents, with support for Marp, reveal.js, Google Slides, and PPTX output formats. Use when the user requests presentation creation ",
+  "recommended": false
+ },
+ {
+  "name": "chatbot-conversation-design",
+  "category": "communication",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design structured, engaging chatbot conversations with robust intent handling, slot filling, disambiguation, error recovery, and graceful fallback strategies. Use when the user requests chatbot conver",
+  "recommended": false
+ },
+ {
+  "name": "customer-feedback-analysis",
+  "category": "customer-success",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Analyze NPS, CSAT, and qualitative customer feedback to extract themes, identify trends, and generate actionable insight reports. Use when the user requests customer feedback analysis or provides rele",
+  "recommended": false
+ },
+ {
+  "name": "knowledge-base-article-writing",
+  "category": "customer-success",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Write clear, searchable help center articles and FAQ entries based on support data, product documentation, and common customer questions. Use when the user requests knowledge base article writing or p",
+  "recommended": false
+ },
+ {
+  "name": "churn-analysis",
+  "category": "customer-success",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Identify at-risk customer accounts by analyzing usage patterns, engagement signals, and support history to generate churn risk scores and intervention recommendations. Use when the user requests churn",
+  "recommended": false
+ },
+ {
+  "name": "onboarding-playbook-creation",
+  "category": "customer-success",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design structured customer onboarding workflows with phased checklists, email templates, success milestones, and ownership assignments. Use when the user requests onboarding playbook creation or provi",
+  "recommended": false
+ },
+ {
+  "name": "ticket-triage",
+  "category": "customer-success",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Classify, prioritize, and route incoming support tickets by extracting intent and entities, assigning severity, and generating initial responses. Use when the user requests ticket triage or provides r",
+  "recommended": false
+ },
+ {
+  "name": "human-in-the-loop",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design and verify auditable human oversight, approval gates, escalation paths, and safe state transitions for AI agent workflows. Use when deciding which agent actions require review, adding approve/r",
+  "recommended": false
+ },
+ {
+  "name": "multi-agent-orchestration",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design and operate bounded multi-agent workflows with task decomposition, dependency graphs, ownership, handoff contracts, shared-state controls, approvals, recovery, and synthesis. Use when a task co",
+  "recommended": true
+ },
+ {
+  "name": "tool-schema-design",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design and validate model-facing tool definitions with clear names, action-oriented descriptions, bounded JSON Schema parameters, explicit side effects, safe defaults, idempotency, errors, and realist",
+  "recommended": true
+ },
+ {
+  "name": "mcp-server-building",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design, implement, harden, and verify Model Context Protocol (MCP) servers with precise tool contracts, least-privilege authorization, safe transports, structured errors, and interoperability tests. U",
+  "recommended": true
+ },
+ {
+  "name": "agent-observability",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design privacy-aware observability for AI agents using traces, spans, structured events, metrics, cost attribution, dashboards, alerts, and investigation workflows. Use when instrumenting an agent, de",
+  "recommended": false
+ },
+ {
+  "name": "agent-evaluation",
+  "category": "agent-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design reproducible evaluations for AI agents with representative task sets, explicit rubrics, appropriate graders, baselines, regression gates, and failure analysis. Use when defining agent quality, ",
+  "recommended": true
+ },
+ {
+  "name": "task-automation",
+  "category": "productivity-and-workflow",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Automate repetitive tasks and workflows using scripting, file watchers, scheduled jobs, CI triggers, and API polling to eliminate manual toil. Use when the user requests task automation or provides re",
+  "recommended": false
+ },
+ {
+  "name": "project-management",
+  "category": "productivity-and-workflow",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Manages software projects end-to-end — decomposing work into tasks, tracking progress across sprints, generating status reports, and integrating with tools like Jira, Linear, GitHub Issues, and Trell",
+  "recommended": false
+ },
+ {
+  "name": "note-taking",
+  "category": "productivity-and-workflow",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Capture, organize, and retrieve notes efficiently using structured formats, tagging, and file management for meetings, ideas, research, and daily logs. Use when the user requests note taking or provid",
+  "recommended": false
+ },
+ {
+  "name": "file-organization",
+  "category": "productivity-and-workflow",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Automatically organizes files in a directory into a clean structure based on configurable rules — by file type, date, project, or priority — with support for duplicate detection, naming conventions, ",
+  "recommended": false
+ },
+ {
+  "name": "meeting-scheduler",
+  "category": "productivity-and-workflow",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Schedules meetings with internal and external stakeholders by parsing natural language requests, resolving time zones, checking calendar availability, proposing optimal slots, and managing invitation",
+  "recommended": false
+ },
+ {
+  "name": "skill-supply-chain-audit",
+  "category": "agent-security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Audit agent skills, plugins, prompts, manifests, scripts, dependencies, and bundled assets for provenance, prompt-injection, permission, execution, exfiltration, persistence, and update risk. Use when",
+  "recommended": true
+ },
+ {
+  "name": "agent-red-teaming",
+  "category": "agent-security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Plan, execute, document, and retest authorized security assessments of AI agents and multi-agent workflows using safe adversarial cases, synthetic identities, canaries, and evidence-based findings. Us",
+  "recommended": false
+ },
+ {
+  "name": "prompt-injection-defense",
+  "category": "agent-security",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Threat-model and harden AI agents, RAG systems, assistants, and tool-using workflows against direct, indirect, stored, cross-agent, and multimodal prompt injection. Use when reviewing an agent archite",
+  "recommended": true
+ },
+ {
+  "name": "context-injection",
+  "category": "context-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Place trusted contextual information into prompts or agent state using explicit boundaries, provenance, and templates. Use when relevant context has already been selected and must be inserted safely;",
+  "recommended": false
+ },
+ {
+  "name": "context-optimization",
+  "category": "context-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Optimize a complete candidate context package by deduplicating, filtering, ordering, and allocating its token budget. Use when retrieved or assembled material is noisy or exceeds the useful context b",
+  "recommended": true
+ },
+ {
+  "name": "context-retrieval",
+  "category": "context-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Retrieve relevant information from a knowledge base using semantic, keyword, or hybrid search to ground a query. Use when the task starts with a corpus or index that must be searched; use context-ran",
+  "recommended": true
+ },
+ {
+  "name": "context-compression",
+  "category": "context-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Compress selected context to a target token budget while preserving decisions, evidence, constraints, and unresolved questions. Use when relevant material is already selected but too long; use contex",
+  "recommended": false
+ },
+ {
+  "name": "context-ranking",
+  "category": "context-engineering",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Rank an existing set of context chunks by relevance, diversity, freshness, and utility. Use when retrieval has already produced candidates that must be scored or reranked; use context-retrieval when ",
+  "recommended": false
+ },
+ {
+  "name": "user-flow-mapping",
+  "category": "design-and-ui-ux",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Visualize and map user flows with Mermaid diagrams, decision points, error states, and conversion metrics to optimize user journeys. Use when the user requests user flow mapping or provides relevant i",
+  "recommended": false
+ },
+ {
+  "name": "logo-design",
+  "category": "design-and-ui-ux",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design professional, scalable logos with complete brand identity deliverables including color palettes, typography, format variations, and usage guidelines. Use when the user requests logo design or p",
+  "recommended": false
+ },
+ {
+  "name": "accessibility-testing",
+  "category": "design-and-ui-ux",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Audit web interfaces against WCAG 2.1 AA/AAA standards, identify violations, and produce actionable remediation reports with code fixes. Use when the user requests accessibility testing or provides re",
+  "recommended": false
+ },
+ {
+  "name": "wireframing",
+  "category": "design-and-ui-ux",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create text-based wireframes at low, mid, and high fidelity with component inventories, interaction annotations, and responsive breakpoint specifications. Use when the user requests wireframing or pro",
+  "recommended": false
+ },
+ {
+  "name": "frontend-design",
+  "category": "design-and-ui-ux",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Design and build production-ready frontend interfaces with design systems, responsive layouts, accessible components, and dark mode support. Use when the user requests frontend design or provides rele",
+  "recommended": false
+ },
+ {
+  "name": "contract-review",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Analyze contracts for risks, obligations, key clauses, and generate structured risk reports with severity ratings. Use when the user requests contract review or provides relevant inputs for this workf",
+  "recommended": false
+ },
+ {
+  "name": "terms-of-service-generation",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Draft Terms of Service documents for web applications, SaaS platforms, and digital marketplaces. Use when the user requests terms of service generation or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "eu-ai-act-readiness",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Build a preliminary, evidence-based EU AI Act readiness assessment across AI-system inventory, territorial scope, operator roles, prohibited-practice screening, risk classification, transparency, high",
+  "recommended": false
+ },
+ {
+  "name": "privacy-policy-drafting",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Draft privacy-policy language and a review checklist tailored to a business model, data practices, and relevant jurisdictions. Use when the user requests a privacy policy or needs to map disclosures f",
+  "recommended": false
+ },
+ {
+  "name": "license-analysis",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Analyze open-source license compatibility, obligations, and compliance risks across project dependencies. Use when the user requests license analysis or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "compliance-checklist-generation",
+  "category": "legal-and-compliance",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Build evidence-oriented readiness checklists for frameworks such as SOC 2, HIPAA, PCI DSS, and GDPR, with gaps and remediation priorities. Use when the user needs an internal readiness assessment or c",
+  "recommended": false
+ },
+ {
+  "name": "exploratory-data-analysis",
+  "category": "data-and-analytics",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Perform systematic exploratory data analysis to understand dataset structure, distributions, relationships, and anomalies before modeling. Use when a dataset is new, its quality is unknown, or the use",
+  "recommended": false
+ },
+ {
+  "name": "sql-query-generation",
+  "category": "data-and-analytics",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Generate SQL queries from natural-language requirements using SELECT, JOIN, GROUP BY, window functions, CTEs, and subqueries. Use when the user needs a new query from a business question or schema; us",
+  "recommended": true
+ },
+ {
+  "name": "data-cleaning",
+  "category": "data-and-analytics",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Clean and preprocess datasets by handling missing values, removing duplicates, correcting types, resolving outliers, and enforcing validation schemas. Use when the user requests data cleaning or provi",
+  "recommended": false
+ },
+ {
+  "name": "data-visualization",
+  "category": "data-and-analytics",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create clear, effective charts and dashboards from structured data using matplotlib, seaborn, and plotly. Use when the user requests data visualization or provides relevant inputs for this workflow.",
+  "recommended": true
+ },
+ {
+  "name": "data-analysis",
+  "category": "data-and-analytics",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Analyze datasets to answer defined questions through statistical methods, trend identification, hypothesis testing, and correlation analysis. Use when the user needs evidence-backed findings or decisi",
+  "recommended": false
+ },
+ {
+  "name": "budget-planning",
+  "category": "finance-and-accounting",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Create and manage budgets with variance analysis and departmental allocation. Use when the user requests budget planning or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "expense-categorization",
+  "category": "finance-and-accounting",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Classify expenses by category, department, and tax deductibility from transaction data. Use when the user requests expense categorization or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "financial-modeling",
+  "category": "finance-and-accounting",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Build financial projections, P&L statements, DCF models, and valuation analyses from assumptions and historical data. Use when the user requests financial modeling or provides relevant inputs for this",
+  "recommended": false
+ },
+ {
+  "name": "financial-report-generation",
+  "category": "finance-and-accounting",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Generate balance sheets, cash flow statements, P&L reports, and executive financial summaries. Use when the user requests financial report generation or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "invoice-processing",
+  "category": "finance-and-accounting",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Extract, validate, and categorize invoice data against purchase orders and GL codes. Use when the user requests invoice processing or provides relevant inputs for this workflow.",
+  "recommended": false
+ },
+ {
+  "name": "refactoring",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Improve code quality and maintainability through systematic identification of code smells and application of proven refactoring patterns. Use when the user requests refactoring or provides relevant i",
+  "recommended": true
+ },
+ {
+  "name": "code-documentation",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Automatically generate clear, comprehensive documentation for codebases — including API references, inline docstrings, README files, and usage guides. Use when the user requests code documentation or",
+  "recommended": true
+ },
+ {
+  "name": "testing",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Generate, execute, and analyze tests for codebases, covering unit, integration, and end-to-end testing with coverage reporting. Use when the user requests testing or provides relevant inputs for this ",
+  "recommended": true
+ },
+ {
+  "name": "code-review",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Perform thorough code reviews on files or pull requests, checking for bugs, security vulnerabilities, performance issues, and style violations. Use when the user requests code review or provides relev",
+  "recommended": false
+ },
+ {
+  "name": "debugging",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "Systematically diagnose and fix software bugs by analyzing error messages, stack traces, logs, and runtime behavior across multiple languages. Use when the user requests debugging or provides relevant",
+  "recommended": true
+ },
+ {
+  "name": "version-control",
+  "category": "code-and-development",
+  "repo": "seb1n/awesome-ai-agent-skills",
+  "desc": "\"Manage Git repositories and collaborative workflows — branching strategies, commit hygiene, conflict resolution, pull requests, hooks, and .gitignore management. Use when the user requests version co",
+  "recommended": true
+ },
+ {
+  "name": "china-weather",
+  "category": "",
+  "repo": "valenovo/ai-agent-skills",
+  "desc": "使用中国国家级公开天气数据查询中国天气。支持国家气象中心/中央气象台 nmc.cn、中国气象局天气页面 weather.cma.cn、中国天气网 weather.com.cn 的公开天气信息，覆盖城市实况、7 天预报、预警、空气质量、近期小时观测、未来逐小时预报、全国实况/预报地图、实况排行、雷达/卫星图层、全国预警列表、交通/环境/灾害/台风海洋/农业/数值预报等官方产品页；当用户需要判断未来具",
+  "recommended": false
+ },
+ {
+  "name": "baidu-api-search",
+  "category": "baidu-search-skill",
+  "repo": "valenovo/ai-agent-skills",
+  "desc": "面向 Agent 的百度 API 搜索 Skill。用于中文“查一下/搜索/联网查/最近/最新/热点”等场景，调用百度百科和百度 AI Search API，保留原始结果、去重并生成 research pack。",
+  "recommended": true
+ },
+ {
+  "name": "analytics-metrics",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build data visualization and analytics dashboards. Use when creating charts, KPI displays, metrics dashboards, or data visualization components. Triggers on analytics, dashboard, charts, metrics, KPI,",
+  "recommended": false
+ },
+ {
+  "name": "aws-account-management",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Manage AWS accounts, organizations, IAM, and billing. Use when setting up AWS Organizations, managing IAM policies, controlling costs, or implementing multi-account strategies. Triggers on AWS Organiz",
+  "recommended": false
+ },
+ {
+  "name": "aws-harness",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build a new AI agent on AWS and deploy it easily, OR wrap and deploy an agent you already have, using the Amazon Bedrock AgentCore harness. Explains what an \"agent harness\" is (the runtime scaffolding",
+  "recommended": false
+ },
+ {
+  "name": "aws-strands",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build AI agents with the Strands Agents SDK - the open-source framework (the agent \"brain\") for writing agent logic, tools, and multi-agent systems in Python. Model-agnostic, AWS Bedrock by default. C",
+  "recommended": false
+ },
+ {
+  "name": "bun",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build fast applications with Bun JavaScript runtime. Use when creating Bun projects, using Bun APIs, bundling, testing, or optimizing Node.js alternatives. Triggers on Bun, Bun runtime, bun.sh, bunx, ",
+  "recommended": false
+ },
+ {
+  "name": "cinematic-scrub-landing",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build a premium cinematic landing page with mouse-scrub video hero and brand-driven narrative-arc sections. Use whenever the user provides a hero video plus a product / subject / brand and wants a lan",
+  "recommended": false
+ },
+ {
+  "name": "cloudflare",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build and deploy on Cloudflare's edge platform. Use when creating Workers, Pages, D1 databases, R2 storage, AI inference, or KV storage. Triggers on Cloudflare, Workers, Cloudflare Pages, D1, R2, KV, ",
+  "recommended": false
+ },
+ {
+  "name": "copilot-docs",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Configure GitHub Copilot with custom instructions. Use when setting up .github/copilot-instructions.md, customizing Copilot behavior, or creating repository-specific AI guidance. Triggers on Copilot i",
+  "recommended": false
+ },
+ {
+  "name": "copilot-sdk",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build agentic applications with GitHub Copilot SDK. Use when embedding AI agents in apps, creating custom tools, implementing streaming responses, managing sessions, connecting to MCP servers, or crea",
+  "recommended": false
+ },
+ {
+  "name": "director",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "\"Award-winning director's brain for making films/videos with AI. Runs a gated, interrogation-first process: lock the IDEA and the SCRIPT (the story) in words before generating a single pixel, then pla",
+  "recommended": false
+ },
+ {
+  "name": "fal-ai",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Generate images, videos, and audio with fal.ai serverless AI. Use when building AI image generation, video generation, image editing, or real-time AI features. Triggers on fal.ai, fal, AI image genera",
+  "recommended": false
+ },
+ {
+  "name": "figma",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Integrate with Figma API for design automation and code generation. Use when extracting design tokens, generating React/CSS code from Figma components, syncing design systems, building Figma plugins, ",
+  "recommended": false
+ },
+ {
+  "name": "github-trending",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Fetch and display GitHub trending repositories and developers. Use when building dashboards showing trending repos, discovering popular projects, or tracking GitHub trends. Triggers on GitHub trending",
+  "recommended": false
+ },
+ {
+  "name": "google-workspace-cli",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Interact with all Google Workspace APIs via the gws CLI. Use when managing Drive files, sending/reading Gmail, creating Calendar events, reading/writing Sheets/Docs/Slides, managing Chat spaces, conta",
+  "recommended": false
+ },
+ {
+  "name": "honest-agent",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Detect installed AI coding agents and append honest-feedback rules to their instruction files. Scans for config files (CLAUDE.md, copilot-instructions.md, .cursorrules, etc.), adapts output format per",
+  "recommended": false
+ },
+ {
+  "name": "image-master",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "\"Master prompt-engineer for photoreal, artifact-free AI still images on ANY tool (Reve, Midjourney, Flux, GPT-image, Imagen, Nano Banana, Stable Diffusion). Builds prompts that hit National-Geographic",
+  "recommended": false
+ },
+ {
+  "name": "langchain",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build LLM applications with LangChain and LangGraph. Use when creating RAG pipelines, agent workflows, chains, or complex LLM orchestration. Triggers on LangChain, LangGraph, LCEL, RAG, retrieval, age",
+  "recommended": false
+ },
+ {
+  "name": "local-llm-router",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Route AI coding queries to local LLMs in air-gapped networks. Integrates Serena MCP for semantic code understanding. Use when working offline, with local models (Ollama, LM Studio, Jan, OpenWebUI), or",
+  "recommended": false
+ },
+ {
+  "name": "mermaid-diagrams",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Create diagrams and visualizations using Mermaid syntax. Use when generating flowcharts, sequence diagrams, class diagrams, entity-relationship diagrams, Gantt charts, or any visual documentation. Tri",
+  "recommended": false
+ },
+ {
+  "name": "meta-ads",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Pull, analyze, manage, and CREATE Meta ads (Facebook, Instagram, Messenger, Threads, Click-to-WhatsApp) via the Marketing API. Use when the user mentions Meta/FB/IG ads, Ads Manager, ROAS, CPA, CPM, C",
+  "recommended": false
+ },
+ {
+  "name": "mobile-responsiveness",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build responsive, mobile-first web applications. Use when implementing responsive layouts, touch interactions, mobile navigation, or optimizing for various screen sizes. Triggers on responsive design,",
+  "recommended": false
+ },
+ {
+  "name": "mongodb",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Work with MongoDB databases using best practices. Use when designing schemas, writing queries, building aggregation pipelines, or optimizing performance. Triggers on MongoDB, Mongoose, NoSQL, aggregat",
+  "recommended": false
+ },
+ {
+  "name": "nano-banana-pro",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Generate images with Google's Nano Banana Pro (Gemini 3 Pro Image). Use when generating AI images via Gemini API, creating professional visuals, or building image generation features. Triggers on Nano",
+  "recommended": false
+ },
+ {
+  "name": "owasp-security",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Implement secure coding practices following OWASP Top 10. Use when preventing security vulnerabilities, implementing authentication, securing APIs, or conducting security reviews. Triggers on OWASP, s",
+  "recommended": false
+ },
+ {
+  "name": "parallax-landing-page",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build a scroll-driven cinematic landing page from a short video. The user provides a 5–15 second video (often AI-generated); this skill extracts every frame at HD JPEG quality, then produces a single-",
+  "recommended": false
+ },
+ {
+  "name": "railway",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Deploy applications on Railway platform. Use when deploying containerized apps, setting up databases, configuring private networking, or managing Railway projects. Triggers on Railway, railway.app, de",
+  "recommended": false
+ },
+ {
+  "name": "shabbat-times",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Access Jewish calendar data and Shabbat times via Hebcal API. Use when building apps with Shabbat times, Jewish holidays, Hebrew dates, or Zmanim. Triggers on Shabbat times, Hebcal, Jewish calendar, H",
+  "recommended": false
+ },
+ {
+  "name": "ux-design-systems",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build consistent design systems with tokens, components, and theming. Use when creating component libraries, implementing design tokens, building theme systems, or ensuring design consistency. Trigger",
+  "recommended": false
+ },
+ {
+  "name": "vercel",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Deploy and configure applications on Vercel. Use when deploying Next.js apps, configuring serverless functions, setting up edge functions, or managing Vercel projects. Triggers on Vercel, deploy, serv",
+  "recommended": false
+ },
+ {
+  "name": "video-edit",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Edit any video into a captioned showcase — transcribe (any language, defaults to large-v3), present a transcript_review.txt for the user to fix mishears BEFORE rendering, then build a HyperFrames comp",
+  "recommended": false
+ },
+ {
+  "name": "video-to-landing-page",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Turn any video into a cinematic scroll-driven landing page — Apple-style hero where scrolling progresses the visible frame through the video. Use when the user provides a video file and asks for \"a la",
+  "recommended": false
+ },
+ {
+  "name": "web-accessibility",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build accessible web applications following WCAG guidelines. Use when implementing ARIA patterns, keyboard navigation, screen reader support, or ensuring accessibility compliance. Triggers on accessib",
+  "recommended": false
+ },
+ {
+  "name": "x-twitter-scraper",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "X (Twitter) data extraction and scraping. Use when asked to scrape tweets, extract followers, search Twitter/X users, download media from tweets, monitor X accounts, or analyze Twitter engagement. Tri",
+  "recommended": false
+ },
+ {
+  "name": "yuv-decks",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Build cinematic, narrative-driven presentation decks in Yuval Avidani's signature style using @open-slide/core. The user describes a topic and audience; this skill scaffolds an open-slide project, dra",
+  "recommended": false
+ },
+ {
+  "name": "yuv-design-system",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Yuval Avidani's YUV.AI brand and design system. Apply ONLY when YUV.AI-branded output is requested — presentations, decks, keynotes, portfolio, brand site, profile, speaker bio, brand assets, or any p",
+  "recommended": false
+ },
+ {
+  "name": "yuv-pilot",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Top-of-pyramid orchestrator for Yuval Avidani's YUV.AI brand work. Apply when (a) the user wants YUV.AI output and the medium is ambiguous or multi-medium, (b) the user is planning a launch or cross-c",
+  "recommended": false
+ },
+ {
+  "name": "yuv-reel-covers",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "> Generate unified, on-brand Instagram Reel covers for Yuval (YUV.AI Neon Phoenix system) — the signature look is a giant Hebrew headline BEHIND the subject cutout + a punch line IN FRONT (depth effec",
+  "recommended": false
+ },
+ {
+  "name": "yuv-video-director",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "> Yuval's all-in-one AI video pipeline. Turns an idea/script into a finished, on-brand MP4 by orchestrating HyperFrames (HTML→deterministic video render), Lottie (branded motion graphics), ManimCE (ma",
+  "recommended": false
+ },
+ {
+  "name": "yuv-viral-video",
+  "category": "skills",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Edit any selfie or screen-share footage into a viral short-form video in YUV.AI's signature style — Apple-style liquid-glass cards (real CSS backdrop-filter), dark-mode polish, MrBeast-paced cuts, vid",
+  "recommended": false
+ },
+ {
+  "name": "skill-name",
+  "category": "templates",
+  "repo": "hoodini/ai-agents-skills",
+  "desc": "Brief description of what this skill enables. Include trigger keywords that should activate this skill. Triggers on keyword1, keyword2, keyword3.",
+  "recommended": false
+ }
+]

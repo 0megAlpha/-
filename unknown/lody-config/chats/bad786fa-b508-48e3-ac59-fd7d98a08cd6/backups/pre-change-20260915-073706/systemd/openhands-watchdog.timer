@@ -1,0 +1,8 @@
+[Unit]
+Description=Watchdog every 5min
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=5min
+Unit=openhands-watchdog.service
+[Install]
+WantedBy=timers.target

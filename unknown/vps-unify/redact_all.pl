@@ -1,0 +1,10 @@
+s/sk-[A-Za-z0-9_-]{20,}/sk-REDACTED/g;
+s/github_pat_[A-Za-z0-9_]{20,}/github_pat_REDACTED/g;
+s/gh[pousr]_[A-Za-z0-9]{30,}/ghp_REDACTED/g;
+s/AKIA[0-9A-Z]{16}/AKIAREDACTED/g;
+s/AIza[0-9A-Za-z_-]{35}/AIzaREDACTED/g;
+s/xox[baprs]-[A-Za-z0-9-]{10,}/xox-REDACTED/g;
+s/\b[0-9]{8,10}:[A-Za-z0-9_-]{35}\b/TELEGRAM_TOKEN_REDACTED/g;
+s/(Bearer\s+)[A-Za-z0-9._~+\/-]{20,}/${1}REDACTED/gi;
+s/\b100\.(?:6[4-9]|[7-9][0-9]|1[01][0-9]|12[0-7])\.\d{1,3}\.\d{1,3}\b/100.x.x.x/g;
+s/\Q$ENV{PUBIP}\E/x.x.x.x/g if $ENV{PUBIP};

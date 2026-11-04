@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily AI Company capacity check
+[Timer]
+OnCalendar=*-*-* 08:00:00
+Persistent=true
+[Install]
+WantedBy=timers.target

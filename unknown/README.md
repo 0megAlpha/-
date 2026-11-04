@@ -1,6 +1,6 @@
 # unknown
-最後更新：2026-11-04 08:15:26
-模組數量：127
+最後更新：2026-11-04 08:59:30
+模組數量：137
 
 ## 模組清單
 - 2.2.3
@@ -29,6 +29,7 @@
 - codehealth-mcp
 - commands
 - composio
+- composio-config
 - composio-tool-integration
 - conduit-src
 - config-gc
@@ -63,10 +64,12 @@
 - git-workflow
 - google-workspace
 - grill-me
+- grok-config
 - growth-log
 - gstack
 - handoff
 - harness-evolution
+- hermes-repo-backup
 - hookify-rules
 - hooks
 - hud
@@ -77,12 +80,16 @@
 - iterative-retrieval
 - lib
 - living-docs-governance
+- lody-config
 - loki
 - loop-design-check
 - mcp-builder
 - mcp-configs
 - mcp-servers
+- mem0-config
+- migration-work
 - obra-superpowers
+- openclaw-config
 - openhands-extensions
 - otel
 - plan-canvas
@@ -93,6 +100,7 @@
 - plugins
 - product-lens
 - production-audit
+- projects
 - prometheus
 - prompts
 - receiving-code-review
@@ -126,7 +134,9 @@
 - verification-before-completion
 - verification-loop
 - vps-bridge
+- vps-unify
 - windows-desktop-e2e
 - workflow-runner
+- workspace
 - writing-plans
 - www

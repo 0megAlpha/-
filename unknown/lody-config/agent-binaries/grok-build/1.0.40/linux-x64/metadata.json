@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "runtimeName": "grok-build",
+  "runtimeVersion": "1.0.40",
+  "platformArch": "linux-x64",
+  "command": "grok",
+  "archiveSha256": "129b5ca9646ae014fd572f7ee4ebe812d9881549a4fb0a705c8aad59b2f1cb45",
+  "archiveSize": 56793870,
+  "installedAt": "2026-10-05T04:22:38.569Z"
+}

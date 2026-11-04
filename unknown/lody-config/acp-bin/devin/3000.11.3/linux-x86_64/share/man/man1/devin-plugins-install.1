@@ -1,0 +1,24 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-plugins-install 1  "install " 
+.SH NAME
+devin\-plugins\-install \- Install a plugin from a source (auto\-installs its required plugins)
+.SH SYNOPSIS
+\fBdevin plugins install\fR [\fB\-y\fR|\fB\-\-yes\fR] [\fB\-\-local\fR] [\fB\-h\fR|\fB\-\-help\fR] <\fISOURCE\fR> 
+.SH DESCRIPTION
+Install a plugin from a source (auto\-installs its required plugins).
+.PP
+A source is a GitHub `owner/repo`, a git URL, or a local path. Append `#path/to/plugin` when the plugin is below a git repository\*(Aqs root.
+.SH OPTIONS
+.TP
+\fB\-y\fR, \fB\-\-yes\fR
+Skip the interactive trust prompt
+.TP
+\fB\-\-local\fR
+Install on this machine only, without adding the plugin to your personal plugins
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)
+.TP
+<\fISOURCE\fR>
+The plugin source (e.g. `acme/review\-tools`, `acme/plugins#plugins/review`, a git URL, or `./path`)

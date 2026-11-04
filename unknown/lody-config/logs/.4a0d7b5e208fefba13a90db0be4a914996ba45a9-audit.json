@@ -1,0 +1,45 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "/root/.lody/logs/.4a0d7b5e208fefba13a90db0be4a914996ba45a9-audit.json",
+    "files": [
+        {
+            "date": 1793203220996,
+            "name": "/root/.lody/logs/2026-10-29.log",
+            "hash": "2dec67917a57ba5c883ee603d0317487d1c31c0283d7a10a0ad062a9586618f6"
+        },
+        {
+            "date": 1793289621937,
+            "name": "/root/.lody/logs/2026-10-30.log",
+            "hash": "175b550cb4843156bdb8d03a79ffac88c86f6bc5a4eea942c9e8a152739472c0"
+        },
+        {
+            "date": 1793376010981,
+            "name": "/root/.lody/logs/2026-10-31.log",
+            "hash": "b3a06990e8eb99d28b2aad377bbe57aa4135f37a2b4b36edd865743404fbc4ce"
+        },
+        {
+            "date": 1793462423851,
+            "name": "/root/.lody/logs/2026-11-01.log",
+            "hash": "c5d72dd7be87bf9e611743843a4b12054278d5da9be7e0edf9fe7fa21808badb"
+        },
+        {
+            "date": 1793548824829,
+            "name": "/root/.lody/logs/2026-11-02.log",
+            "hash": "6c710c7611e3af1517de681c4beb3245776575d8864ea619b9c823e4f327a302"
+        },
+        {
+            "date": 1793635225741,
+            "name": "/root/.lody/logs/2026-11-03.log",
+            "hash": "3ac308f51c7a5a5f24dee4effec75ccd59f3c3bb52f43ab971b1c725169949ad"
+        },
+        {
+            "date": 1793721626667,
+            "name": "/root/.lody/logs/2026-11-04.log",
+            "hash": "4dc9b95a67edfe112b5578a34205358c89e90958894dcb5dbf126356d25d99cf"
+        }
+    ],
+    "hashType": "sha256"
+}

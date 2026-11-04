@@ -1,0 +1,88 @@
+[CONFLICT] hermes-agent 與最新上游不相容，已回退 3068d1c177ec8a72d98082c802caa3a6e5f8f481，請檢查 patches/hermes-agent
+[OK] extensions d057809 -> d057809
+[CONFLICT] sentinelx-cloud-core 與最新上游不相容，已回退 55acee08e9b102f8a37f162f9950d40d8ef647b2，請檢查 patches/sentinelx-cloud-core
+[OK] gstack 25dbe34 -> 25dbe34
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[FAIL clone] opencode
+[OK] openhands 852132d -> 852132d
+[DEPS WARN] llama.cpp requirements 有衝突
+[OK] llama.cpp 5aeac37 -> 5aeac37
+[OK] superpowers-zh 2d72919 -> 2d72919
+[DEPS WARN] afc-crs-all-you-need-is-a-fuzzing-brain requirements 有衝突
+[OK] afc-crs-all-you-need-is-a-fuzzing-brain 4442cb9 -> 4442cb9
+[OK] prime-agent 7cbffa7 -> 7cbffa7
+[OK] ecc 76aaa77d -> 76aaa77d
+[OK] praisonai f21e9c2 -> f21e9c2
+[OK] modelingtoolkit.jl e49d891 -> e49d891
+[OK] extensions d057809 -> d057809
+[OK] extensions d057809 -> d057809
+[OK] pysr 02650ca -> 02650ca
+[OK] open-webui-plugins c350b14 -> c350b14
+[OK] skills 5c99c03 -> 5c99c03
+[OK] jshookmcp 6856cd9 -> 6856cd9
+[OK] agent-skills aeac41d -> aeac41d
+[OK] dsh-pojia-mode 434953b -> 434953b
+[DEPS WARN] open-webui-extensions requirements 有衝突
+[OK] open-webui-extensions 5bdf5c3 -> 5bdf5c3
+[OK] ai-agent-skills 6d95c78 -> 6d95c78
+[OK] agent-skills aeac41d -> aeac41d
+[OK] conduit 3f95de1 -> 3f95de1
+[OK] skills 5c99c03 -> 5c99c03
+[OK] gstack 25dbe34 -> 25dbe34
+[OK] open-steps 4fa744b -> 4fa744b
+[DEPS WARN] openwebui-extensions requirements 有衝突
+[OK] openwebui-extensions 76e9d99 -> 76e9d99
+[OK] mini-swe-agent 04d809c -> 04d809c
+[OK] ajar da99a69 -> da99a69
+[OK] statem 8c3309a -> 8c3309a
+[OK] superpowers bb92a77 -> bb92a77
+[OK] awesome-ai-agent-skills 75865a5 -> 75865a5
+[DEPS WARN] basilisk requirements 有衝突
+[OK] basilisk a7d0e6e -> a7d0e6e
+[OK] awesome-chatgpt-prompts de07aba -> de07aba
+[OK] extensions d057809 -> d057809
+[OK] openhands 852132d -> 852132d
+[DEPS WARN] sparkle requirements 有衝突
+[OK] sparkle ff694fd -> ff694fd
+[OK] swe-agent 3ea751c -> 3ea751c
+[OK] fable-method 9924067 -> 9924067
+[OK] pentestgpt e8b1bb7 -> e8b1bb7
+[CONFLICT] freedeepseekapi 與最新上游不相容，已回退 31386b18cd485e5c6677bc0f46ac0ae3d92fbfd5，請檢查 patches/freedeepseekapi
+[CONFLICT] freedeepseekapi 與最新上游不相容，已回退 31386b18cd485e5c6677bc0f46ac0ae3d92fbfd5，請檢查 patches/freedeepseekapi
+[CONFLICT] ai-agents-skills 與最新上游不相容，已回退 f7a43d8f852550a4f834240dc874cf9f56e7eec7，請檢查 patches/ai-agents-skills
+[CONFLICT] freeqwenapi 與最新上游不相容，已回退 50ce57d40cb9b019f90b890180c9855cacc11bf4，請檢查 patches/freeqwenapi
+[CONFLICT] freeqwenapi 與最新上游不相容，已回退 50ce57d40cb9b019f90b890180c9855cacc11bf4，請檢查 patches/freeqwenapi
+remote: Your account is suspended. Please visit https://support.github.com for more information.
+fatal: unable to access 'https://github.com/Sliverkiss/mimocode2api/': The requested URL returned error: 403
+[FAIL clone] mimocode2api
+[OK] hyperagent-public-skills aac7e07 -> aac7e07
+[DEPS WARN] astaroth requirements 有衝突
+[OK] astaroth 6353a96 -> 6353a96
+[OK] ai-prompt-injection-cheatsheet c580fb9 -> c580fb9
+[OK] ai-prompt-injection-cheatsheet c580fb9 -> c580fb9
+[OK] ai-agent-skills 6d95c78 -> 6d95c78
+[OK] cka-agent 938becd -> 938becd
+[DEPS WARN] bitdecoding requirements 有衝突
+[OK] bitdecoding ae0d836 -> ae0d836
+[OK] awesome-claude-code-toolkit ebdf1d5 -> ebdf1d5
+[OK] awesome-chatgpt-prompts-zh a708531 -> a708531
+[OK] andrej-karpathy-skills 2c60614 -> 2c60614
+[DEPS WARN] hyperagents requirements 有衝突
+[OK] hyperagents 59a68f6 -> 59a68f6
+[OK] opencode-cowork-plugins d122195 -> d122195
+[OK] ai-agent-skill-for-video-workflow d226b01 -> d226b01
+[OK] live-swe-agent 8d7dd86 -> 8d7dd86
+[DEPS WARN] dgm requirements 有衝突
+[OK] dgm a565fd2 -> a565fd2
+[CONFLICT] nvm 與最新上游不相容，已回退 65ded65d46c16481dbbe8e93f8ba9e6b35f20740，請檢查 patches/nvm
+[OK] statemachine 2944b64 -> 2944b64
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+[FAIL clone] xattacker

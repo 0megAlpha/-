@@ -1,0 +1,17 @@
+[Unit]
+Description=LiteLLM API Gateway (AI Company)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/ai-company
+ExecStart=/root/ai-company/.venv/bin/litellm --config /root/ai-company/config/litellm.yaml --port 4000 --num_workers 1
+Restart=always
+RestartSec=5
+KillSignal=SIGINT
+TimeoutStopSec=20
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,157 @@
+===== [1/6] 健康檢查 =====
+ 19:54:14 up 21 days,  3:51, 50 users,  load average: 1.57, 2.37, 2.64
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       4.8Gi       3.2Gi        12Mi        23Gi        26Gi
+Swap:           33Gi        17Gi        16Gi
+/dev/vda1       310G  248G   62G  81% /
+/dev/vda1      40015360 4072913 35942447   11% /
+process: 359  pty: 2
+===== [2/6] 上次整合狀態 =====
+報告: /root/vps-unify/report-20261018-1929.txt
+===== [4/8] 去敏 =====
+!! 仍有疑似密鑰的檔案:
+===== [5/8] 產生 README / INVENTORY / 腳本 =====
+===== [6/8] commit =====
+整合腳本目前沒在跑
+本地 HEAD: 24de778c  遠端: 
+===== [3/6] repo 可見度 =====
+OK: 私有
+===== [4/6] 整合 (背景執行，斷線不會中斷) =====
+[10s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[20s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[30s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[40s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[50s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[60s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[70s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[80s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[90s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[100s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[110s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[120s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[130s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[140s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[150s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[160s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[170s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[180s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[190s] ===== [2/8] 分類 / 備份 bundle / 整合 =====
+[200s] ===== [3/8] 服務 / 容器 / 套件盤點 =====
+[210s] ===== [4/8] 去敏 =====
+[220s] ===== [4/8] 去敏 =====
+[230s] ===== [4/8] 去敏 =====
+[240s] ===== [4/8] 去敏 =====
+[250s] ===== [4/8] 去敏 =====
+[260s] ===== [4/8] 去敏 =====
+[270s] ===== [4/8] 去敏 =====
+[280s] ===== [4/8] 去敏 =====
+[290s] ===== [4/8] 去敏 =====
+[300s] ===== [4/8] 去敏 =====
+[310s] ===== [4/8] 去敏 =====
+[320s] ===== [4/8] 去敏 =====
+[330s] ===== [4/8] 去敏 =====
+[340s] ===== [4/8] 去敏 =====
+[350s] ===== [4/8] 去敏 =====
+[360s] ===== [4/8] 去敏 =====
+[370s] ===== [4/8] 去敏 =====
+[380s] ===== [4/8] 去敏 =====
+[390s] ===== [4/8] 去敏 =====
+[400s] ===== [4/8] 去敏 =====
+[410s] ===== [4/8] 去敏 =====
+[420s] ===== [4/8] 去敏 =====
+[430s] ===== [4/8] 去敏 =====
+[440s] ===== [4/8] 去敏 =====
+[450s] ===== [4/8] 去敏 =====
+[460s] ===== [4/8] 去敏 =====
+[470s] ===== [4/8] 去敏 =====
+[480s] ===== [4/8] 去敏 =====
+[490s] ===== [4/8] 去敏 =====
+[500s] ===== [4/8] 去敏 =====
+[510s] ===== [4/8] 去敏 =====
+[520s] ===== [4/8] 去敏 =====
+[530s] ===== [4/8] 去敏 =====
+[540s] ===== [4/8] 去敏 =====
+[550s] ===== [4/8] 去敏 =====
+[560s] ===== [4/8] 去敏 =====
+[570s] ===== [4/8] 去敏 =====
+[580s] ===== [4/8] 去敏 =====
+[590s] ===== [4/8] 去敏 =====
+[600s] ===== [4/8] 去敏 =====
+[610s] ===== [4/8] 去敏 =====
+[620s] ===== [4/8] 去敏 =====
+[630s] ===== [4/8] 去敏 =====
+[640s] ===== [4/8] 去敏 =====
+[650s] ===== [4/8] 去敏 =====
+[660s] ===== [4/8] 去敏 =====
+[670s] ===== [4/8] 去敏 =====
+[680s] ===== [4/8] 去敏 =====
+[690s] ===== [4/8] 去敏 =====
+[700s] ===== [4/8] 去敏 =====
+[710s] ===== [4/8] 去敏 =====
+[720s] ===== [4/8] 去敏 =====
+[730s] ===== [4/8] 去敏 =====
+[740s] ===== [4/8] 去敏 =====
+[750s] ===== [4/8] 去敏 =====
+[760s] ===== [4/8] 去敏 =====
+[770s] ===== [4/8] 去敏 =====
+[780s] ===== [4/8] 去敏 =====
+[790s] ===== [4/8] 去敏 =====
+[800s] ===== [4/8] 去敏 =====
+[810s] ===== [4/8] 去敏 =====
+[820s] ===== [4/8] 去敏 =====
+[830s] ===== [4/8] 去敏 =====
+[840s] ===== [4/8] 去敏 =====
+[850s] ===== [4/8] 去敏 =====
+[860s] ===== [4/8] 去敏 =====
+[870s] ===== [4/8] 去敏 =====
+[880s] ===== [4/8] 去敏 =====
+[890s] ===== [4/8] 去敏 =====
+[900s] ===== [4/8] 去敏 =====
+[910s] ===== [6/8] commit =====
+[920s] ===== [6/8] commit =====
+[930s] ===== [6/8] commit =====
+[940s] ===== [6/8] commit =====
+[950s] ===== [6/8] commit =====
+[960s] ===== [6/8] commit =====
+[970s] ===== [8/8] 完成 =====
+===== [5/6] 強化版上游同步腳本 =====
+!! 疑似密鑰殘留，不推送:
+/root/Cloud-vps/agents/claude-code/claude-code/docs/reference/SLOP-PATTERNS.md
+/root/Cloud-vps/agents/claude-code/claude-code/__tests__/slop-patterns.test.js
+/root/Cloud-vps/agents/misc/ecc/tests/hooks/governance-capture.test.js
+/root/Cloud-vps/agents/misc/ecc/tests/lib/memory-vault.test.js
+/root/Cloud-vps/agents/misc/ecc/examples/unified-memory/conformance.cjs
+/root/Cloud-vps/agents/misc/google-ai/openhands-cloud/replicated/config.yaml
+/root/Cloud-vps/agents/hermes/hermes-007/tests/gateway/test_platform_base.py
+/root/Cloud-vps/agents/hermes/hermes-007/runtime/tests/gateway/test_platform_base.py
+/root/Cloud-vps/agents/hermes/hermes-007/cache/uv/archive-v0/9DXqKBG5Gd9HVHCx/PIL/ImageFont.py
+/root/Cloud-vps/agents/hermes/hermes-007/cache/uv/archive-v0/iJlbBhPXvcpD4v-e/google/auth/transport/_mtls_helper.py
+/root/Cloud-vps/agents/dsh/--dsh/tests/gateway/test_platform_base.py
+/root/Cloud-vps/agents/openhands/open-hands/skills/gstack/test/telemetry.test.ts
+/root/Cloud-vps/agents/openhands/open-hands/skills/gstack/test/redact-engine.test.ts
+/root/Cloud-vps/agents/openhands/open-hands/skills/gstack/test/brain-sync.test.ts
+/root/Cloud-vps/agents/openhands/open-hands/skills/gstack/lib/redact-patterns.ts
+/root/Cloud-vps/skills/ai-agent-skill/v6-skills/skills/ECC/tests/hooks/governance-capture.test.js
+/root/Cloud-vps/skills/ai-agent-skill/v6-skills/skills/ECC/tests/lib/memory-vault.test.js
+/root/Cloud-vps/skills/ai-agent-skill/agents/claude-code/docs/reference/SLOP-PATTERNS.md
+/root/Cloud-vps/skills/ai-agent-skill/agents/claude-code/__tests__/slop-patterns.test.js
+/root/Cloud-vps/skills/ai-agent-skill/skills/gstack/test/telemetry.test.ts
+/root/Cloud-vps/skills/ai-agent-skill/skills/gstack/test/redact-engine.test.ts
+/root/Cloud-vps/skills/ai-agent-skill/skills/gstack/test/brain-sync.test.ts
+/root/Cloud-vps/skills/ai-agent-skill/skills/gstack/lib/redact-patterns.ts
+/root/Cloud-vps/skills/ai-agent-skill/claude-code/core/docs/reference/SLOP-PATTERNS.md
+/root/Cloud-vps/skills/ai-agent-skill/claude-code/core/__tests__/slop-patterns.test.js
+/root/Cloud-vps/skills/ai-agent-skill/tools/aider-chat-rebuilt-20261012/lib/python3.12/site-packages/PIL/ImageFont.py
+/root/Cloud-vps/skills/gpt-oss/docs/gpt-oss.svg
+/root/Cloud-vps/skills/gpt-oss/docs/gpt-oss-20b.svg
+/root/Cloud-vps/skills/gpt-oss/docs/gpt-oss-120b.svg
+上游同步已在背景執行，結果: grep -E '^\[' /root/vps-unify/sync.out
+===== [6/6] 驗證 =====
+❌ 未同步 本地=72a10dbb 遠端=
+自有:49 上游:66 重複略過:8 隔離:1
+agents/ 分類:
+claude-code conduit dsh hermes lody misc opencode openhands openwebui 
+最近 20 個 commit 疑似密鑰行數: 141
+--- 對外監聽 port (lockdown 尚未套用) ---
+0.0.0.0:22 0.0.0.0:2222 0.0.0.0:3001 0.0.0.0:33601 0.0.0.0:631 0.0.0.0:8743 0.0.0.0:8888 10.0.0.1:4001 100.126.48.60%tailscale0:443 100.126.48.60%tailscale0:54844 100.126.48.60:18088 100.126.48.60:18089 100.126.48.60:6168 100.126.48.60:80 100.126.48.60:8081 100.126.48.60:8444 100.126.48.60:8445 100.126.48.60:8470 100.126.48.60:8501 100.126.48.60:8643 [::]:22 [::]:2222 [::]:3001 [::]:33601 [::]:631 [fd7a:115c:a1e0::9b34:303d]%tailscale0:443 [fd7a:115c:a1e0::9b34:303d]%tailscale0:61116 
+完整報告: /root/vps-unify/report-20261018-1954.txt

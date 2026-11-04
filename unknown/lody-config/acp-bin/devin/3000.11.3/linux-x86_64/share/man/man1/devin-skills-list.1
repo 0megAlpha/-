@@ -1,0 +1,29 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-skills-list 1  "list " 
+.SH NAME
+devin\-skills\-list \- List all available skills
+.SH SYNOPSIS
+\fBdevin skills list\fR [\fB\-\-trigger\fR] [\fB\-\-json\fR] [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+List all available skills
+.SH OPTIONS
+.TP
+\fB\-\-trigger\fR \fI<TRIGGER>\fR
+Filter by trigger type
+.br
+
+.br
+\fIPossible values:\fR
+.RS 14
+.IP \(bu 2
+user: User\-invocable skills (slash commands)
+.IP \(bu 2
+model: Model\-invocable skills
+.RE
+.TP
+\fB\-\-json\fR
+Output as JSON
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

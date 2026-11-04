@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "runtimeName": "codex",
+  "runtimeVersion": "0.159.2",
+  "platformArch": "linux-x64",
+  "command": "bin/codex",
+  "archiveSha256": "fbca2d1e23dc9f827fe6eb19cbca2942140f99a48769f62355d647f5d75ee91e",
+  "archiveSize": 115217118,
+  "installedAt": "2026-10-05T04:22:30.233Z"
+}

@@ -1,0 +1,15 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-sandbox-setup 1  "setup " 
+.SH NAME
+devin\-sandbox\-setup \- [Research Preview] Print the sandbox prerequisites for the current platform
+.SH SYNOPSIS
+\fBdevin sandbox setup\fR [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+[Research Preview] Print the sandbox prerequisites for the current platform
+.PP
+On Linux, `\-\-sandbox` requires bubblewrap (bwrap) and socat. macOS sandboxing (seatbelt) works out of the box. On Windows, install and run Devin inside WSL 2 to use sandbox mode.
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help (see a summary with \*(Aq\-h\*(Aq)

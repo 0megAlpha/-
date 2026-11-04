@@ -1,0 +1,15 @@
+[Unit]
+Description=Hermes Agent Gateway (含Apollo Memory)
+After=network.target docker.service
+
+[Service]
+Type=simple
+User=root
+Environment="HERMES_HOME=/root/.hermes"
+Environment="APOLLO_MEMORY_ENABLED=true"
+ExecStart=/usr/local/bin/hermes gateway
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

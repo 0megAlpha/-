@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "runtimeName": "claude-code",
+  "runtimeVersion": "2.1.258",
+  "platformArch": "linux-x64",
+  "command": "claude",
+  "archiveSha256": "ea9bfd7a1cfe218b9c9451450401d654711787bf1972b8a22d3b5f7b495a73f8",
+  "archiveSize": 83414920,
+  "installedAt": "2026-09-02T01:59:07.893Z"
+}

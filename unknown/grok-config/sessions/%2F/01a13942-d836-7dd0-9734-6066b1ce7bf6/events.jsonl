@@ -1,0 +1,4 @@
+{"ts":"2026-10-14T07:14:04.638Z","type":"mcp_config_resolved","servers":[{"name":"codegraph","transport":"stdio","source":"local"}],"disabled":[]}
+{"ts":"2026-10-14T07:14:04.673Z","type":"mcp_server_starting","server_name":"codegraph","transport":"stdio","target":"codegraph serve --mcp","timeout_sec":30}
+{"ts":"2026-10-14T07:14:04.946Z","type":"mcp_server_connected","server_name":"codegraph","transport":"stdio","tool_count":1,"duration_ms":272,"tools":["codegraph_explore"]}
+{"ts":"2026-10-14T07:14:04.946Z","type":"mcp_init_completed","total_servers":1,"succeeded":1,"failed":0,"auth_required":0,"total_tools":1,"duration_ms":273,"is_reinit":false}

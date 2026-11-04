@@ -1,0 +1,12 @@
+[core]
+enable_browser = true          # 启用浏览器工具
+enable_security_analyzer = true # 启用安全分析器
+
+[security]
+# 提示注入防护
+block_risky_actions = true     # 阻止高风险操作
+require_confirmation = true    # 高风险操作需确认
+
+[llm]
+# 使用经过红队测试的模型
+model = "anthropic/claude-sonnet-4-5-20250929"

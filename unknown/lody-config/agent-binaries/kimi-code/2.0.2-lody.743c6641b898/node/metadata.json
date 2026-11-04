@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "runtimeName": "kimi-code",
+  "runtimeVersion": "2.0.2-lody.743c6641b898",
+  "platformArch": "node",
+  "command": "package/dist/main.mjs",
+  "minNodeVersion": "22.19.0",
+  "archiveSha256": "c0ca71aff7439d80fd8b985e796a9451b99d85e6e352a029aaa203c4591d5c21",
+  "archiveSize": 3254472,
+  "installedAt": "2026-10-05T04:22:35.664Z"
+}

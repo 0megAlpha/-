@@ -1,0 +1,21 @@
+{
+  admin off
+}
+
+openhands.205.189.160.125.nip.io:8443 {
+  tls internal
+  encode gzip
+  basicauth / {
+    xiaye $2a$14$WSAOU9cul.GUSgoUU6GneOELjjeXnHYjRGzUfuEeqmVjT1/u0Q7/2
+  }
+  reverse_proxy 127.0.0.1:8000
+}
+
+vscode.205.189.160.125.nip.io:8443 {
+  tls internal
+  encode gzip
+  basicauth / {
+    xiaye $2a$14$WSAOU9cul.GUSgoUU6GneOELjjeXnHYjRGzUfuEeqmVjT1/u0Q7/2
+  }
+  reverse_proxy 127.0.0.1:8001
+}

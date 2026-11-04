@@ -1,0 +1,94 @@
+{
+  "app_name": "Hermes Ultimate 2026",
+  "version": "2.0.0-latest",
+  "mode": "browser",
+  "interface": "web",
+  "llm_config": {
+    "default_provider": "anthropic",
+    "default_model": "claude-opus-4-1-20250805",
+    "temperature": 0.7,
+    "max_tokens": 4000,
+    "timeout": 300,
+    "providers": {
+      "openai": {
+        "api_key": "<REDACTED>",
+        "model": "gpt-4o",
+        "enabled": true
+      },
+      "anthropic": {
+        "api_key": "<REDACTED>",
+        "model": "claude-opus-4-1-20250805",
+        "enabled": true
+      },
+      "openrouter": {
+        "api_key": "<REDACTED>",
+        "models": [
+          "deepseek/deepseek-r1",
+          "qwen/qwen-2.5-coder-32b"
+        ],
+        "enabled": true
+      }
+    }
+  },
+  "memory_config": {
+    "enabled": true,
+    "type": "persistent",
+    "location": "./memory",
+    "max_history": 1000,
+    "auto_summarize": true,
+    "retention_days": 30
+  },
+  "plugin_config": {
+    "auto_load": true,
+    "plugin_directory": "./plugins",
+    "max_plugins": 50,
+    "safe_mode": false,
+    "plugin_isolation": true
+  },
+  "browser_interface": {
+    "port": 8787,
+    "host": "0.0.0.0",
+    "https": false,
+    "websocket_enabled": true,
+    "real_time_updates": true,
+    "conversation_ui": true
+  },
+  "integrations": {
+    "openhands": {
+      "enabled": true,
+      "api_url": "http://localhost:3000",
+      "sandbox": true
+    },
+    "lody": {
+      "enabled": true,
+      "server": "LODY_SERVER",
+      "user_id": "default"
+    },
+    "conduit": {
+      "enabled": true,
+      "server": "CONDUIT_SERVER",
+      "sync_interval": 10
+    },
+    "github": {
+      "enabled": true,
+      "token": "GITHUB_TOKEN",
+      "auto_push": true
+    }
+  },
+  "security": {
+    "enable_sandboxing": true,
+    "code_execution_allowed": true,
+    "file_access_allowed": true,
+    "network_access_allowed": true,
+    "firewall_rules": "tailscale_only"
+  },
+  "features": {
+    "multi_agent": true,
+    "state_machine": true,
+    "self_critique": true,
+    "auto_recovery": true,
+    "checkpoint_enabled": true,
+    "plugin_marketplace": true,
+    "skill_browser": true
+  }
+}

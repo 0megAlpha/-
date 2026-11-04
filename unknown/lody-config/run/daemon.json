@@ -1,0 +1,7 @@
+{
+  "pid": 2392,
+  "socketPath": "/root/.lody/run/lody-probe.sock",
+  "controlSocketPath": "/root/.lody/run/lody-control.sock",
+  "version": "0.103.0",
+  "startedAt": "2026-10-27T11:05:19.385Z"
+}

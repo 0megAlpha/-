@@ -1,0 +1,16 @@
+.ie \n(.g .ds Aq \(aq
+.el .ds Aq '
+.TH devin-cloud-drs-build-wait 1  "build-wait " 
+.SH NAME
+devin\-cloud\-drs\-build\-wait \- Wait for a previously started build to finish
+.SH SYNOPSIS
+\fBdevin cloud drs build\-wait\fR <\fB\-\-build\-job\-id\fR> [\fB\-h\fR|\fB\-\-help\fR] 
+.SH DESCRIPTION
+Wait for a previously started build to finish
+.SH OPTIONS
+.TP
+\fB\-\-build\-job\-id\fR \fI<BUILD_JOB_ID>\fR
+Build job ID returned by `build\-start`
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+Print help

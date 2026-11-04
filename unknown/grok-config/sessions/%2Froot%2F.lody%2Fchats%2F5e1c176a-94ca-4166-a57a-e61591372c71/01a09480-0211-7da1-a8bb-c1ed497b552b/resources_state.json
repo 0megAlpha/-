@@ -1,0 +1,74 @@
+{
+  "state": {
+    "grok_build.ReportedTaskCompletions": {
+      "reported": [
+        "01a09489-ad7f-7641-b49a-366485141ab6",
+        "01a0948a-78dc-7733-af8e-cae6061e2319",
+        "01a0949b-6f3c-72a2-93b4-4af44e9e3d60",
+        "01a094e7-38df-7541-9438-0862913752cd",
+        "01a09480-2e42-7690-9103-ddf65e6e0d9e",
+        "01a0948a-78e9-7c83-8f1f-144d797e0c07",
+        "01a0948a-78f7-7a82-8e2c-8117ce967a2a",
+        "01a0948c-9530-73e2-b0a6-0e6ffdd67bdd",
+        "01a094e7-738e-7e83-b0b1-f85abf160935",
+        "01a09489-ad88-72e0-9a03-381e14032741",
+        "01a0949b-ed69-7be3-9859-b27086161bc9",
+        "01a099ee-195e-7c42-ad79-4e26608d7e6b",
+        "01a0949b-b34b-7052-a1df-e61ebb45a2f5",
+        "01a09489-ad67-7d82-abaa-5f9d96f20b6d",
+        "01a09489-ada0-7353-8580-30f9b8568c2d",
+        "01a0948f-9d1d-78d3-8d2f-46b1a5f268e0",
+        "call-0cfaba68-fdda-44c7-8c81-cae1dd9e73d4-14"
+      ]
+    }
+  },
+  "params": {
+    "grok_build.Grep": {
+      "max_output_bytes": null,
+      "max_chars_per_line": null
+    },
+    "grok_build.AskUserQuestion": {
+      "timeout_enabled": true,
+      "timeout_secs": 1800,
+      "non_interactive": null
+    },
+    "grok_build.ReadFile": {
+      "cursor_rules_on_read": false
+    },
+    "grok_build.Bash": {
+      "timeout_secs": null,
+      "max_timeout_secs": 36000.0,
+      "output_byte_limit": null,
+      "cmd_prefix": null,
+      "enabled_background": true,
+      "auto_background_on_timeout": true,
+      "foreground_block_budget_ms": null,
+      "max_block_until_ms": null,
+      "allow_background_operator": true,
+      "surface_bg_completion_reminders": true
+    },
+    "grok_build.SearchReplace": {
+      "skip_read_before_edit": false,
+      "empty_old_string_does_not_override": false,
+      "unicode_normalized_fallback": false,
+      "include_user_edit_hint": true
+    },
+    "grok_build.ListDir": {
+      "max_output_chars": null
+    },
+    "grok_build.WebFetch": {
+      "cache_ttl_secs": null,
+      "max_cache_entries": null,
+      "timeout_secs": null,
+      "max_content_length": null,
+      "max_markdown_length": null,
+      "context_window_tokens": 500000,
+      "allowed_domains": null,
+      "proxy_endpoint": null,
+      "allow_local": null
+    },
+    "grok_build.UseTool": {
+      "native_tool_correction": true
+    }
+  }
+}

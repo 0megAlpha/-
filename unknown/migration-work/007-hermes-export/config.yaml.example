@@ -1,0 +1,29 @@
+model_provider: local-litellm
+api_server:
+  key: CHANGE_ME
+  enabled: true
+  host: 127.0.0.1
+  port: 8643
+_config_version: 51
+mcp_servers:
+  codegraph:
+    command: codegraph
+    args:
+    - serve
+    - --mcp
+    timeout: 120
+    connect_timeout: 60
+    enabled: true
+platform_toolsets:
+  cli:
+  - hermes-cli
+  - mcp-codegraph
+model: my-model
+providers:
+  local-litellm:
+    name: Local LiteLLM
+    api: http://127.0.0.1:4000/v1
+    key_env: OPENAI_API_KEY
+    default_model: my-model
+    models:
+    - my-model

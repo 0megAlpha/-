@@ -1,0 +1,37 @@
+#!/usr/bin/env node
+const { spawn, spawnSync } = require('child_process');
+const args = process.argv.slice(2);
+let command;
+let commandIndex = -1;
+for (let i = 0; i < args.length; i++) {
+  if (['-c', '-C', '--git-dir', '--work-tree', '--namespace', '--config-env'].includes(args[i])) { i++; continue; }
+  if (!args[i].startsWith('-')) { command = args[i]; commandIndex = i; break; }
+}
+// Git applies only one insteadOf rewrite; an existing equal/longer prefix
+// can bypass the managed transport entirely. Do not silently borrow credentials
+// in that configuration. Non-network commands remain usable for repairing it.
+if (['fetch', 'clone', 'pull', 'push', 'ls-remote', 'submodule'].includes(command) ||
+    !['status', 'diff', 'log', 'show', 'rev-parse', 'config', 'credential', 'add', 'commit', 'branch', 'checkout', 'switch', 'restore', 'reset', 'merge', 'rebase', 'tag', 'worktree', 'remote', 'init'].includes(command)) {
+  const config = spawnSync("/usr/bin/git", [...args.slice(0, commandIndex), 'config', '--null', '--get-regexp', '^url\..*\.(insteadof|pushinsteadof)$'], { env: process.env, encoding: 'utf8' });
+  const conflict = (config.stdout || '').split('\0').some(record => {
+    const separator = record.indexOf('\n');
+    const key = record.slice(0, separator);
+    const value = record.slice(separator + 1);
+    return !key.startsWith('url.lody-github::') && /(?:github\.com|ssh\.github\.com)[/:]/i.test(key + ' ' + value);
+  });
+  if (conflict) {
+    console.error('[Lody] A custom GitHub URL rewrite bypasses credential selection. Remove the conflicting url.*.insteadOf/pushInsteadOf configuration before this network command.');
+    process.exit(1);
+  }
+}
+// Local operations can download objects or run LFS/smudge filters, but do not
+// write remote refs. Credential subprocesses inherit the enclosing operation.
+// A nested push always overrides read; aliases/unknown commands stay conservative.
+const readCommands = ['fetch', 'clone', 'pull', 'ls-remote', 'submodule', 'status', 'diff', 'log', 'show', 'rev-parse', 'config', 'add', 'commit', 'branch', 'checkout', 'switch', 'restore', 'reset', 'merge', 'rebase', 'tag', 'worktree', 'remote', 'init'];
+const operation = command === 'credential'
+  ? (process.env.LODY_GIT_OPERATION === 'read' ? 'read' : 'write')
+  : (readCommands.includes(command) ? 'read' : 'write');
+const env = { ...process.env, LODY_GIT_OPERATION: operation };
+const child = spawn("/usr/bin/git", args, { env, stdio: 'inherit', windowsHide: true });
+child.on('error', () => process.exit(1));
+child.on('exit', code => process.exit(code ?? 1));

@@ -1,0 +1,83 @@
+{
+  "fetched_at": "2026-10-25T15:45:46.699635708Z",
+  "grok_version": "1.0.40",
+  "auth_method": "session",
+  "origin": "https://cli-chat-proxy.grok.com/v1/models",
+  "identity": "957acee7b3a56d4c0d7c3128964595d84a590e97217f4a8fb9974d5d2a9c5cd8",
+  "etag": "W/\"17625950737982762246\"",
+  "models": {
+    "grok-4.7": {
+      "info": {
+        "id": "grok-4.7",
+        "model": "grok-4.7",
+        "model_family": "xai",
+        "base_url": "https://cli-chat-proxy.grok.com/v1",
+        "name": "Grok 4.7",
+        "description": "SpaceXAI's latest frontier model",
+        "max_completion_tokens": null,
+        "temperature": null,
+        "top_p": null,
+        "api_backend": "responses",
+        "auth_scheme": "bearer",
+        "extra_headers": {},
+        "context_window": 256000,
+        "auto_compact_threshold_percent": 80,
+        "system_prompt_label": "Grok 4.7",
+        "use_concise": false,
+        "agent_type": "grok-build-plan",
+        "inference_idle_timeout_secs": null,
+        "max_retries": null,
+        "subagent_rate_limit_max_attempts": null,
+        "hidden": false,
+        "supported_in_api": true,
+        "reasoning_effort": "high",
+        "supports_reasoning_effort": true,
+        "reasoning_efforts": [
+          {
+            "id": "xhigh",
+            "value": "xhigh",
+            "label": "Extra High",
+            "description": "Maximum reasoning for the hardest tasks.",
+            "default": false
+          },
+          {
+            "id": "high",
+            "value": "high",
+            "label": "High",
+            "description": "Thorough reasoning and quality. Recommended.",
+            "default": true
+          },
+          {
+            "id": "medium",
+            "value": "medium",
+            "label": "Medium",
+            "description": "Strong quality with a faster turnaround.",
+            "default": false
+          },
+          {
+            "id": "low",
+            "value": "low",
+            "label": "Low",
+            "description": "Fastest responses. Best for simple tasks.",
+            "default": false
+          }
+        ],
+        "supports_backend_search": true,
+        "compactions_remaining": 1,
+        "compaction_at_tokens": true,
+        "show_model_fingerprint": false,
+        "stream_tool_calls": null,
+        "laziness_detector": {
+          "enabled": false,
+          "max_nudges_per_session": 0,
+          "idle_threshold_ms": null,
+          "min_confidence": null,
+          "include_reasoning": null
+        }
+      },
+      "api_key": null,
+      "env_key": null,
+      "api_base_url": null
+    }
+  }
+}
