@@ -1,7 +1,6 @@
 # unknown
-
-最後更新：2026-11-03 22:22:52
-模組數量：126
+最後更新：2026-11-04 08:15:26
+模組數量：127
 
 ## 模組清單
 - 2.2.3
@@ -84,6 +83,7 @@
 - mcp-configs
 - mcp-servers
 - obra-superpowers
+- openhands-extensions
 - otel
 - plan-canvas
 - plan-once-verify-always
