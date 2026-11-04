@@ -1,87 +1,85 @@
-# ============================================================
-# LiteLLM 聚合配置 — 所有 Agent 共用入口 :4000
-# 空 Key 的模型會被 LiteLLM 跳過，不影響其他模型
-# ============================================================
-
 model_list:
 
-  # ── 免費層：OpenRouter ──
-  - model_name: "free-qwen-coder"
-    litellm_params:
-      model: "openrouter/qwen/qwen3-coder:free"
-      api_key: "${OPENROUTER_API_KEY:-}"
-  - model_name: "free-llama"
-    litellm_params:
-      model: "openrouter/meta-llama/llama-3.3-70b-instruct:free"
-      api_key: "${OPENROUTER_API_KEY:-}"
-  - model_name: "free-gemma"
-    litellm_params:
-      model: "openrouter/google/gemma-3-27b-it:free"
-      api_key: "${OPENROUTER_API_KEY:-}"
+  # ============================================================
+  # 零 Key 免费层（无需注册，直接可用）
+  # ============================================================
 
-  # ── 免費層：Z.AI（glm-4.5-flash FREE tier）──
-  - model_name: "glm-free"
+  # Pollinations：完全 keyless，OpenAI 兼容端点
+  - model_name: "pollinations-free"
+    litellm_params:
+      model: "openai/openai"
+      api_base: "https://text.pollinations.ai/openai"
+      api_key: "not-needed"
+
+  # Kilo Gateway：匿名可访问免费模型，每 IP 200 次/小时
+  # 免费模型包含 z-ai/glm-5:free
+  - model_name: "kilo-glm-5-free"
+    litellm_params:
+      model: "openai/z-ai/glm-5:free"
+      api_base: "https://api.kilo.ai/api/openrouter"
+      api_key: "not-needed"
+
+  - model_name: "kilo-minimax-free"
+    litellm_params:
+      model: "openai/minimax/minimax-m2.1:free"
+      api_base: "https://api.kilo.ai/api/openrouter"
+      api_key: "not-needed"
+
+  # ============================================================
+  # 免费但需注册（无审查 GLM 5.3 的真正免费入口）
+  # ============================================================
+
+  # Abliteration.ai：GLM-5.3 衍生的无审查模型
+  # 注册后送 1 credit 免费预览，无需信用卡
+  # 模型 ID：abliterated-model-large-v2（基于 GLM-5.3）
+  - model_name: "abliteration-glm53-uncensored"
+    litellm_params:
+      model: "openai/abliterated-model-large-v2"
+      api_base: "https://api.abliteration.ai/v1"
+      api_key: "${ABLITERATION_AI_API_KEY:-}"
+
+  # ============================================================
+  # 免费层（需免费注册，但无付费）
+  # ============================================================
+
+  - model_name: "groq-llama"
+    litellm_params:
+      model: "groq/llama-3.3-70b-versatile"
+      api_key: "${GROQ_API_KEY:-}"
+
+  - model_name: "gemini-flash"
+    litellm_params:
+      model: "gemini/gemini-2.5-flash"
+      api_key: "${GEMINI_API_KEY:-}"
+
+  - model_name: "zai-glm-flash"
     litellm_params:
       model: "zai/glm-4.5-flash"
       api_key: "${ZAI_API_KEY:-}"
 
-  # ── DeepSeek（低價主力）──
+  - model_name: "cerebras-llama"
+    litellm_params:
+      model: "cerebras/llama3.3-70b"
+      api_key: "${CEREBRAS_API_KEY:-}"
+
+  # ============================================================
+  # 主力付费层（Key 留空则自动跳过）
+  # ============================================================
+
   - model_name: "deepseek-chat"
     litellm_params:
       model: "deepseek/deepseek-chat"
       api_key: "${DEEPSEEK_API_KEY:-}"
-  - model_name: "deepseek-reasoner"
-    litellm_params:
-      model: "deepseek/deepseek-reasoner"
-      api_key: "${DEEPSEEK_API_KEY:-}"
 
-  # ── GLM 正式層（bigmodel / zai）──
-  - model_name: "glm-5.3"
+  - model_name: "zai-glm-5.3"
     litellm_params:
-      model: "bigmodel/glm-5.3"
-      api_key: "${BIGMODEL_API_KEY:-}"
-  - model_name: "glm-5.3-flash"
-    litellm_params:
-      model: "bigmodel/glm-5.3-flash"
-      api_key: "${BIGMODEL_API_KEY:-}"
+      model: "zai/glm-5.3"
+      api_key: "${ZAI_API_KEY:-}"
 
-  # ── Qwen（DashScope）──
-  - model_name: "qwen-turbo"
-    litellm_params:
-      model: "dashscope/qwen-turbo"
-      api_key: "${DASHSCOPE_API_KEY:-}"
   - model_name: "qwen-plus"
     litellm_params:
       model: "dashscope/qwen-plus"
       api_key: "${DASHSCOPE_API_KEY:-}"
-
-  # ── HuggingFace（免費層有限速）──
-  - model_name: "hf-qwen"
-    litellm_params:
-      model: "huggingface/Qwen/Qwen2.5-72B-Instruct"
-      api_key: "${HUGGINGFACE_API_KEY:-}"
-  - model_name: "hf-llama"
-    litellm_params:
-      model: "huggingface/meta-llama/Llama-3.3-70B-Instruct"
-      api_key: "${HUGGINGFACE_API_KEY:-}"
-
-  # ── 無審查可選層：Zro（需 ZRO_API_KEY，非免費）──
-  - model_name: "zro-dolly1"
-    litellm_params:
-      model: "openai/dolly1-security"
-      api_base: "https://zro.moonmath.ai/v1"
-      api_key: "${ZRO_API_KEY:-}"
-  - model_name: "zro-dolly2"
-    litellm_params:
-      model: "openai/dolly2-security"
-      api_base: "https://zro.moonmath.ai/v1"
-      api_key: "${ZRO_API_KEY:-}"
-
-  # ── 本地無限層：Ollama ──
-  - model_name: "ollama-local"
-    litellm_params:
-      model: "ollama/llama3.2"
-      api_base: "http://localhost:11434"
 
 litellm_settings:
   drop_params: true
@@ -93,10 +91,11 @@ router_settings:
   allowed_fails: 2
   cooldown_time: 30
   fallbacks:
-    - free-qwen-coder: ["free-llama", "free-gemma", "glm-free"]
-    - deepseek-chat: ["free-qwen-coder", "glm-free", "ollama-local"]
-    - glm-5.3: ["glm-5.3-flash", "glm-free", "free-qwen-coder"]
-    - qwen-plus: ["qwen-turbo", "free-qwen-coder", "glm-free"]
+    - pollinations-free: ["kilo-glm-5-free", "kilo-minimax-free"]
+    - kilo-glm-5-free: ["pollinations-free", "kilo-minimax-free"]
+    - abliteration-glm53-uncensored: ["kilo-glm-5-free", "pollinations-free"]
+    - groq-llama: ["pollinations-free", "kilo-glm-5-free"]
+    - gemini-flash: ["groq-llama", "pollinations-free"]
 
 general_settings:
   master_key: "${LITELLM_MASTER_KEY:-sk-local-dev-key}"
