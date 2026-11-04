@@ -1,0 +1,103 @@
+# ============================================================
+# LiteLLM 聚合配置 — 所有 Agent 共用入口 :4000
+# 空 Key 的模型會被 LiteLLM 跳過，不影響其他模型
+# ============================================================
+
+model_list:
+
+  # ── 免費層：OpenRouter ──
+  - model_name: "free-qwen-coder"
+    litellm_params:
+      model: "openrouter/qwen/qwen3-coder:free"
+      api_key: "${OPENROUTER_API_KEY:-}"
+  - model_name: "free-llama"
+    litellm_params:
+      model: "openrouter/meta-llama/llama-3.3-70b-instruct:free"
+      api_key: "${OPENROUTER_API_KEY:-}"
+  - model_name: "free-gemma"
+    litellm_params:
+      model: "openrouter/google/gemma-3-27b-it:free"
+      api_key: "${OPENROUTER_API_KEY:-}"
+
+  # ── 免費層：Z.AI（glm-4.5-flash FREE tier）──
+  - model_name: "glm-free"
+    litellm_params:
+      model: "zai/glm-4.5-flash"
+      api_key: "${ZAI_API_KEY:-}"
+
+  # ── DeepSeek（低價主力）──
+  - model_name: "deepseek-chat"
+    litellm_params:
+      model: "deepseek/deepseek-chat"
+      api_key: "${DEEPSEEK_API_KEY:-}"
+  - model_name: "deepseek-reasoner"
+    litellm_params:
+      model: "deepseek/deepseek-reasoner"
+      api_key: "${DEEPSEEK_API_KEY:-}"
+
+  # ── GLM 正式層（bigmodel / zai）──
+  - model_name: "glm-5.3"
+    litellm_params:
+      model: "bigmodel/glm-5.3"
+      api_key: "${BIGMODEL_API_KEY:-}"
+  - model_name: "glm-5.3-flash"
+    litellm_params:
+      model: "bigmodel/glm-5.3-flash"
+      api_key: "${BIGMODEL_API_KEY:-}"
+
+  # ── Qwen（DashScope）──
+  - model_name: "qwen-turbo"
+    litellm_params:
+      model: "dashscope/qwen-turbo"
+      api_key: "${DASHSCOPE_API_KEY:-}"
+  - model_name: "qwen-plus"
+    litellm_params:
+      model: "dashscope/qwen-plus"
+      api_key: "${DASHSCOPE_API_KEY:-}"
+
+  # ── HuggingFace（免費層有限速）──
+  - model_name: "hf-qwen"
+    litellm_params:
+      model: "huggingface/Qwen/Qwen2.5-72B-Instruct"
+      api_key: "${HUGGINGFACE_API_KEY:-}"
+  - model_name: "hf-llama"
+    litellm_params:
+      model: "huggingface/meta-llama/Llama-3.3-70B-Instruct"
+      api_key: "${HUGGINGFACE_API_KEY:-}"
+
+  # ── 無審查可選層：Zro（需 ZRO_API_KEY，非免費）──
+  - model_name: "zro-dolly1"
+    litellm_params:
+      model: "openai/dolly1-security"
+      api_base: "https://zro.moonmath.ai/v1"
+      api_key: "${ZRO_API_KEY:-}"
+  - model_name: "zro-dolly2"
+    litellm_params:
+      model: "openai/dolly2-security"
+      api_base: "https://zro.moonmath.ai/v1"
+      api_key: "${ZRO_API_KEY:-}"
+
+  # ── 本地無限層：Ollama ──
+  - model_name: "ollama-local"
+    litellm_params:
+      model: "ollama/llama3.2"
+      api_base: "http://localhost:11434"
+
+litellm_settings:
+  drop_params: true
+  num_retries: 2
+  request_timeout: 180
+
+router_settings:
+  routing_strategy: "simple-shuffle"
+  allowed_fails: 2
+  cooldown_time: 30
+  fallbacks:
+    - free-qwen-coder: ["free-llama", "free-gemma", "glm-free"]
+    - deepseek-chat: ["free-qwen-coder", "glm-free", "ollama-local"]
+    - glm-5.3: ["glm-5.3-flash", "glm-free", "free-qwen-coder"]
+    - qwen-plus: ["qwen-turbo", "free-qwen-coder", "glm-free"]
+
+general_settings:
+  master_key: "${LITELLM_MASTER_KEY:-sk-local-dev-key}"
+  disable_spend_logs: true
