@@ -498,6 +498,256 @@ description: 新 repo 快速上手：架構圖、建置指令、測試入口、�
 ---
 ## Procedure
 1. 讀 README/Makefile/package.json 建立建置心智模型
+2. 追蹤 main 入口到核心模組
+3. 產出：onboarding 筆記 + 首個可跑範例
+EOF
+cat > ~/.hermes/skills/ci-debug/SKILL.md <<'EOF'
+---
+name: ci-debug
+description: CI 失敗排查：本機復現、日誌分段、快取問題
+---
+## Procedure
+1. 本地執行相同命令復現
+2. 分段日誌定位第一個紅燈
+3. 檢查 runner 環境差異（OS/版本/金鑰）
+EOF
+cat > ~/.hermes/skills/release-checklist/SKILL.md <<'EOF'
+---
+name: release-checklist
+description: 發佈檢查清單：版本號、changelog、標籤、artifact 驗證
+---
+## Procedure
+1. 版本號語義化；changelog 完整
+2. 建立 signed tag
+3. 建構 artifact 並校驗雜湊
+4. 發佈後驗證安裝路徑
+EOF
+```
+
+**63-66｜事件分診 / 日誌分析 / git bisect / 合併衝突**
+```bash
+mkdir -p ~/.hermes/skills/{incident-triage,log-analysis,git-bisect-guide,merge-conflict}
+cat > ~/.hermes/skills/incident-triage/SKILL.md <<'EOF'
+---
+name: incident-triage
+description: 事件分診：影響面、時間線、假設排序、止血動作
+---
+## Procedure
+1. 定義影響面（用戶數、功能面）
+2. 拉時間線：deploy→告警→復原
+3. 假設排序（最可能×最快驗證）
+4. 先止血再根治
+EOF
+cat > ~/.hermes/skills/log-analysis/SKILL.md <<'EOF'
+---
+name: log-analysis
+description: 分散日誌分析：grep/awk 模式、異常聚類、關聯 ID 追蹤
+---
+## Procedure
+1. 以 request-id 串全鏈路
+2. 統計異常碼分布找聚類
+3. 輸出：時間線 + 根因候選
+EOF
+cat > ~/.hermes/skills/git-bisect-guide/SKILL.md <<'EOF'
+---
+name: git-bisect-guide
+description: git bisect 二分定位引入問題的 commit
+---
+## Procedure
+1. `git bisect start`；標記 good/bad
+2. 自動腳本：`git bisect run ./test.sh`
+3. 收斂後 `git bisect reset`，分析該 commit
+EOF
+cat > ~/.hermes/skills/merge-conflict/SKILL.md <<'EOF'
+---
+name: merge-conflict
+description: 合併衝突解決策略：三方比對、保留語意、驗證
+---
+## Procedure
+1. `git mergetool` 三方檢視
+2. 理解雙方意圖再合併，非機械取一邊
+3. 解完跑測試驗證
+EOF
+```
+
+**67-70｜Monorepo / API client 生成 / DB migration / 記憶維護**
+```bash
+mkdir -p ~/.hermes/skills/{monorepo-nav,api-client-gen,db-migration,skill-authoring}
+cat > ~/.hermes/skills/monorepo-nav/SKILL.md <<'EOF'
+---
+name: monorepo-nav
+description: Monorepo 導航：workspace 拓撲、依賴圖、影響範圍分析
+---
+## Procedure
+1. 盤點 packages/apps 結構
+2. 建依賴圖；改動→影響範圍
+3. 建置快取策略建議
+EOF
+cat > ~/.hermes/skills/api-client-gen/SKILL.md <<'EOF'
+---
+name: api-client-gen
+description: 由 OpenAPI 產生型別安全 client（openapi-typescript / orval）
+---
+## Procedure
+1. `npx openapi-typescript spec.yaml -o schema.ts`
+2. 或 `npx orval` 產生 hooks client
+3. 驗證型別與 runtime 行為一致
+EOF
+cat > ~/.hermes/skills/db-migration/SKILL.md <<'EOF'
+---
+name: db-migration
+description: 資料庫遷移：擴張收縮法、零停機、回滾演練
+---
+## Procedure
+1. 新欄位先加後用；舊欄位先停寫再刪
+2. 大表：分批 backfill + 進度追蹤
+3. 遷移前後資料量校驗
+EOF
+cat > ~/.hermes/skills/skill-authoring/SKILL.md <<'EOF'
+---
+name: skill-authoring
+description: 撰寫高品質 Hermes SKILL.md：觸發精準、步驟可驗證
+---
+## Procedure
+1. description 寫「何時用」而非「是什麼」
+2. Procedure 每步可機械執行
+3. 收尾定義產出格式
+EOF
+```
+
+
+---
+
+# 二、DeepSeek Harness（DSH）— 70 項
+
+DSH 是 DeepSeek AI 2026-08 開源的 agent harness（MIT），核心理念「Everything is a Plugin」：模型、工具、技能、session、沙箱、agent loop 全是可替換的外掛。開發者預覽版，迭代快。套件來源：官方倉庫、`dsh-external/hub` 目錄、GitHub `dsh-plugin` topic（本清單逐條取自官方 awesome 目錄，2026-09）。
+
+## 2-1. 核心執行環境（6 項）
+
+**01｜官方 npx 一鍵（含 Web UI）**
+```bash
+npx @deepseek-ai/dsh web
+```
+
+**02｜原始碼安裝**
+```bash
+git clone https://github.com/deepseek-ai/deepseek-harness.git
+cd deepseek-harness
+pnpm install
+pnpm run build
+pnpm dsh web
+```
+
+**03｜外掛安裝語法（GitHub/本機/npm spec 皆可）**
+```bash
+dsh plugin --profile web add "github:owner/repo#ref"
+dsh plugin add <npm-套件名>
+# 管理介面：Web UI → Settings → Plugins
+```
+
+**04｜Windows 桌面啟動器（零命令列視窗）**
+```bash
+npm i -g dsh-desktop-launcher
+```
+
+**05｜系統匣守護（Win）**
+```bash
+npm i -g dsh-tray
+```
+
+**06｜DSHBox — 直接在 Android 手機跑 DSH（Debian 沙箱 + Node + DSH，免 root 免 Termux）**
+> 下載 APK：https://github.com/topics/dshbox 或搜尋「DSHBox」release 頁安裝
+
+## 2-2. 多 Agent 協作與編排（14 項）
+
+**07｜多 Agent 團隊編排**
+```bash
+dsh plugin --profile web add "github:NanmiCoder/dsh-agent-teams"
+```
+**08｜可靠待辦面板（三態驗證）** `dsh plugin add dsh-todo-guard`
+**09｜任務管理引擎（Linear 式 issue store）** `dsh plugin add fakechris/dsh-track`
+**10｜多 Agent 協作套件（team_call/team_message 等）** `dsh plugin add dsh-collaboration`
+**11｜計畫優先預設（research→plan→verify）** `dsh plugin add dsh-plans`
+**12｜多模型小隊 + DAG 執行** `dsh plugin add dsh-agent-team-gui`
+**13｜執行紀律套件（重試攔截/反思/經驗轉技能）** `dsh plugin add cleverer-dsh`
+**14｜平行 git worktree 蟲群** `dsh plugin add february2015/dsh-taskswarm`
+**15｜批次平行子代理分派（swarm_batch）** `dsh plugin add hongyue0721/dsh-kimicode-swarm`
+**16｜自進化引擎（外掛候選自動評測收錄）** `dsh plugin add timwhitez/dsh-self-evolving`
+**17｜模型高可用容錯 + 子代理編排** `dsh plugin add Saktawdi/dsh-ha-orchestrator`
+**18｜常駐背景子代理** `dsh plugin add dsh-background-agents`
+**19｜跨 session 團隊房間** `dsh plugin add dsh-team-rooms`
+**20｜單發子代理（可掛任意 preset/外部 CLI）** `dsh plugin add bpc-oss/dsh-routed-subagent`
+
+## 2-3. Context / 搜尋 / 記憶（12 項）
+
+**21｜Context 洞察面板** `dsh plugin add dsh-context`
+**22｜工具輸出壓縮（省 context）** `dsh plugin add dsh-compressor`
+**23｜Context 即時圓環圖** `dsh plugin add context-vista`
+**24｜Context 健檢（AGENTS.md/技能/工具 token 成本）** `dsh plugin add dsh-context-doctor`
+**25｜增量檔案掛載（不重送已讀行）** `dsh plugin add dsh-file-mount`
+**26｜多引擎增強搜尋（含 GitHub/YouTube/Reddit）** `dsh plugin add dsh-web-search-pro`
+**27｜免費網搜（10 引擎 fallback）** `dsh plugin add dsh-free-web-search`
+**28｜大型 MCP 工具目錄漸進式閘道** `dsh plugin add dsh-mcp-lens`
+**29｜跨 session 長期記憶引擎（SQLite+離線語意搜尋）** `dsh plugin add dsh-mneme`
+**30｜分層長期記憶（USER.md+MEMORY.md+Fibonacci 上限）** `dsh plugin add dsh-hme`
+**31｜記憶保險庫（remember/recall/forget）** `dsh plugin add dsh-memory-vault`
+**32｜共用 Markdown 記憶（自動擷取注入）** `dsh plugin add zilliztech/memsearch`
+
+## 2-4. Git / 工程協作（12 項）
+
+**33｜結構化 Git 工具（含破壞指令防護）** `dsh plugin add dsh-tool-git`
+**34｜Git 狀態抽屜（commit DAG 圖）** `dsh plugin add dsh-git-status`
+**35｜測試執行器（auto-detect Vitest/Jest/pytest）** `dsh plugin add dsh-test-runner`
+**36｜LSP 動作（診斷/重構/補全/改名）** `dsh plugin add dsh-lsp-actions`
+**37｜Codex 式 diff 審查浮窗（stage/commit/push）** `dsh plugin add dsh-plugin-diff-review`
+**38｜快照回捲（git-first /rewind）** `dsh plugin add dsh-checkpoint-rewind`
+**39｜增量 diff 審查循環** `dsh plugin add dsh-review-loop`
+**40｜工程紀律環（需求質問+紅綠證據+對抗審查）** `dsh plugin add dsh-doublecheck`
+**41｜規格驅動開發技能包（Keel 龍骨）** `dsh plugin --profile web add "github:JohnXu22786/spec-driven"`
+**42｜全端工程工作流（垂直切片規畫+證據檢查）** `dsh plugin add dsh-fullstack-expert`
+**43｜GitHub Action（PR 審查/CI 診斷/issue→PR）** `dsh plugin --profile web add "github:deepseek-harness-action"`
+**44｜任務隔離 git worktree** `dsh plugin --profile web add "github:JohnXu22786/worktree-mgr"`
+
+## 2-5. 手機/行動開發（8 項）
+
+**45｜ADB 裝置操作（logcat/apk 安裝/效能快照）** `dsh plugin add dsh-adb`
+**46｜DSHBox（Android APK，見 06）** — 與 45 搭配在手機上開發
+**47｜手機 client 外掛** `dsh plugin add dsh-mobile`
+**48｜行動版/PWA 版面適配 + LAN WebSocket 修正** `dsh plugin add dsh-mobileweb-adapter`
+**49｜手機派工指揮中心（PWA + E2E 加密中繼）** `dsh plugin add dsh-dispatch`
+**50｜第三方手機遠端 client（LAN/QR 連線）** 搜尋安裝 `harness-remote`
+**51｜SSH 多主機遠端工作區** `dsh plugin add dsh-remote`
+**52｜LAN 存取綁定 + 金鑰登入閘道** `dsh plugin --profile web add "github:xgone/dsh-remote"`
+
+## 2-6. 安全 / 紅隊 / 防護（10 項）
+
+**53｜提示注入/越獄/金鑰洩漏偵測閘門（Aho-Corasick 規則庫）** `dsh plugin add dsh-defend`
+**54｜外掛安裝前靜態稽核（dsh-vet/v1 報告）** `dsh plugin add dsh-vet`
+**55｜供應鏈毒化掃描（JS-X-Ray 反混淆）** `dsh plugin add zoahdev/dsh-poison-guard`
+**56｜金鑰去汙（工具輸出/日誌遮罩）** `dsh plugin add dsh-secret-scrub`
+**57｜執行前護欄（危險指令否決）** `dsh plugin add dsh-safeguard`
+**58｜宣告式 allow/deny/ask 權限規則** `dsh plugin add dsh-permission-rules`
+**59｜PII 遮罩中介層** `dsh plugin add dsh-mask`
+**60｜機密檔案存取封鎖 + 稽核** `dsh plugin --profile web add "github:JohnXu22786/secret-guard"`
+**61｜破壞指令攔截（rm -rf / push --force）** `dsh plugin --profile web add "github:JohnXu22786/safety-net"`
+**62｜加密憑證庫（AES-256-GCM + Argon2id）** `dsh plugin add dsh-encrypt`
+
+## 2-7. 市場 / 管理 / IDE / 觀測（8 項）
+
+**63｜外掛中心（一鍵裝卸、500+ 外掛索引）** `dsh plugin add dsh-plugin-hub`
+**64｜設定備份/匯出/遷移（整包 ZIP）** `dsh plugin add dsh-config-manager`
+**65｜一鍵備份還原 ~/.dsh** `dsh plugin add dsh-backup`
+**66｜環境健檢（node/pnpm/金鑰/工作區）** `dsh plugin add zoahdev/dsh-firstrun`
+**67｜VS Code 側欄 client（diff 審查/審批卡）** 安裝 `dsh-vscode` 擴充
+**68｜用量/成本儀表板（官方計費、峰谷電價）** `dsh plugin add dsh-usage`
+**69｜OTel GenAI tracing（span tree per turn）** `dsh plugin add loongsuite/dsh-plugin`
+**70｜事件/事件流稽核面板** `dsh plugin add dsh-event-auditor`
+
+> 加碼推薦（同目錄可查）：`dsh-claude-move`（Claude Code/Codex/Hermes 遷移精靈）、`dsh-skill-mover`（14 平台技能搬遷）、`dsh-movein`、`hermes-dsh-collab`（Hermes×DSH 協作）、`dsh-eval`（評測平台）。
+
+
+---
+
 # 三、OpenWebUI — 70 項
 
 OpenWebUI 的可掛載面：**Tools（給模型新能力）/ Functions（改變 WebUI 本身：Pipe、Filter、Action、Event）/ Skills（SKILL.md，模型可 view_skill 載入）/ MCP 工具伺服器 / 內建工具類別開關**。安裝主體：
@@ -748,3 +998,27 @@ pip install apktool-jadx || true
 # 或手動：jadx（GitHub 下載）、apktool、frida → pip install frida frida-tools
 
 # Flutter / React Native 工具鏈
+git clone https://github.com/flutter/flutter.git -b stable && export PATH="$PATH:$PWD/flutter/bin"
+npm i -g eas-cli react-native-cli
+
+# iOS（macOS）：Xcode Command Line Tools + fastlane + CocoaPods
+xcode-select --install
+gem install fastlane
+gem install cocoapods
+```
+
+搭配掛載：DSH 的 `dsh-adb` + DSHBox（手機跑 agent 幫你寫手機程式）、Hermes WebUI（手機瀏覽器操作）、OpenWebUI PWA、`android-dev`/`flutter-dev`/`ios-dev` skills。
+
+---
+
+# 七、協作開發組合（多 agent 協同作業流）
+
+1. **Hermes × DSH**：`dsh plugin --profile web add hermes-dsh-collab`（dispatch 模板 + 模型分層路由 + 品質閘門 + git 單寫者規則）
+2. **DSH 多機**：`dsh-collaboration`（team_call/team_message/team_status）+ `dsh-team-rooms`（跨 session 訊息匯流排）
+3. **OpenHands 全自動 issue→PR**：`github-issue-to-pr` + `github-pr-reviewer` + `iterate` + Resolver Action
+4. **OpenWebUI 團隊入口**：Channels + OAuth/LDAP + Rate Limit Filter + Langfuse 觀測
+5. **跨平台記憶互通**：`dsh-skill-mover`（14 平台技能搬遷）、`dsh-claude-move`（Claude Code/Codex/Hermes→DSH）、OpenHands `add-skill`、Hermes USER.md 觀測層
+
+---
+
+*資料截至 2026-09-24；DSH 為開發者預覽版，API 可能破壞性變更，安裝外掛前建議先跑 `dsh-vet`。*
