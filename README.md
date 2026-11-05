@@ -34,3 +34,9 @@ git clone --recurse-submodules --branch vps-mirror/inventory-2026-11 https://git
 ## Safety
 
 No credentials, .env files, private keys, tokens, databases, runtime sessions or logs are included. Submodules preserve the upstream repositories and pinned commits, but do not include VPS-local modifications. This is a partial upstream-source mirror, not yet a complete VPS-local mirror.
+
+
+## Deployment records
+
+- [Uploaded Agent deployment guide](docs/source/Agent部署.md) — source-preserved upload; installation steps and third-party plugin compatibility remain to be verified on this VPS.
+- [Deployment status and handoff](docs/DEPLOYMENT-STATUS-2026-11-05.md) — verified GitHub write, VPS sync blockers, security notes, and remaining work.
