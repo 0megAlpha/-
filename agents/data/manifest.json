@@ -1,0 +1,28 @@
+{
+  "agent": "data",
+  "skills": [
+    "jupyter",
+    "mlops",
+    "pdf",
+    "pdflatex",
+    "pdflatex.md",
+    "pptx",
+    "prisma-client-api",
+    "supabase-postgres-best-practices"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "data.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

@@ -1,38 +1,14 @@
-# 敏感
-*.key
-*.pem
 .env
-.env.*
-auth.json
-credentials*.json
-# 运行时
-node_modules/
+*.log
+logs/
+openhands-data/
+mimocode2api-data/
+reverse-apis/*/node_modules/
+reverse-apis/*/auth_done
+wordlists/
+workspace/phish/
+workspace/implant/
+*.pid
 __pycache__/
 .venv/
 venv/
-*.pyc
-.pytest_cache/
-.ruff_cache/
-# 本地数据
-wordlists/
-data/
-logs/
-# 备份
-.git-bak-*/
-# npx 垃圾
-unknown/
-**/unknown/
-.aider-desk/ .augment/ .bob/ .claude/ .codeartsdoer/ .codebuddy/
-.codemaker/ .codestudio/ .commandcode/ .continue/ .cortex/ .crush/
-.devin/ .forge/ .fx/ .goose/ .grok/ .hermes/ .inferencesh/ .jazz/
-.junie/ .iflow/ .kimchi/ .kiro/ .kode/ .lingma/ .mcpjam/ .minimax/
-.vibe/ .moxby/ .mux/ .ona/ .posit/ .qoder/ .qwen/ .reasonix/
-.rovodev/ .roo/ .tabnine/ .terramind/ .tinycloud/ .trae/ .windsurf/
-.zcode/ .zencoder/ .neovate/ .pochi/ .adal/ .agents/ skills/
-# playwright
-playwright-artifacts-*/
-playwright_chromiumdev_profile-*/
-playwright_firefoxdev_profile-*/
-# 系统
-.DS_Store
-Thumbs.db
