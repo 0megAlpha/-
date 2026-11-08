@@ -1,0 +1,34 @@
+{
+  "agent": "github",
+  "skills": [
+    "git-guardrails-claude-code",
+    "github",
+    "github-actions",
+    "github-agents-md-maintainer",
+    "github-comment-cleanup",
+    "github-delivery-watchdog",
+    "github-issue-to-pr",
+    "github-issue-triage",
+    "github-pr-review",
+    "github-pr-reviewer",
+    "github-repo-monitor",
+    "github-stale-ci-pr-closer",
+    "github.md",
+    "upstream-fork-sync"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "github.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

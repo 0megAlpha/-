@@ -1,0 +1,6 @@
+# Workspace → Tools 导入 URL
+https://raw.githubusercontent.com/Skyzi000/open-webui-extensions/main/tools/sub_agent.py
+https://raw.githubusercontent.com/Skyzi000/open-webui-extensions/main/tools/parallel_tools.py
+https://raw.githubusercontent.com/Skyzi000/open-webui-extensions/main/tools/multi_model_council.py
+https://raw.githubusercontent.com/Classic298/open-webui-plugins/main/keep-reasoning-content/keep_reasoning_content.py
+https://raw.githubusercontent.com/Classic298/open-webui-plugins/main/vision-bridge/vision_bridge.py

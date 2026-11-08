@@ -1,0 +1,25 @@
+{
+  "agent": "writing",
+  "skills": [
+    "plain-english-content",
+    "prd",
+    "simplified-technical-english",
+    "spec-driven-dev.md",
+    "technical-writing"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "writing.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

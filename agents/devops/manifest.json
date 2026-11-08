@@ -1,0 +1,31 @@
+{
+  "agent": "devops",
+  "skills": [
+    "deno",
+    "docker",
+    "docker-orchestration",
+    "docker.md",
+    "kubernetes",
+    "kubernetes.md",
+    "npm",
+    "ssh",
+    "ssh.md",
+    "uv",
+    "vercel"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "devops.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

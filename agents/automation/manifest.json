@@ -1,0 +1,23 @@
+{
+  "agent": "automation",
+  "skills": [
+    "incident-retrospective",
+    "release-notes",
+    "upcoming-release"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "automation.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

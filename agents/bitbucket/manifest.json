@@ -1,0 +1,25 @@
+{
+  "agent": "bitbucket",
+  "skills": [
+    "bitbucket",
+    "bitbucket-cloud",
+    "bitbucket-data-center",
+    "bitbucket.md",
+    "bitbucket_data_center.md"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "bitbucket.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

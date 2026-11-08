@@ -1,0 +1,23 @@
+{
+  "agent": "gitlab",
+  "skills": [
+    "gitlab",
+    "gitlab-issue-to-mr",
+    "gitlab.md"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "gitlab.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

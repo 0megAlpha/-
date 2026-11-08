@@ -1,0 +1,32 @@
+{
+  "agent": "integrations",
+  "skills": [
+    "azure-devops",
+    "composio",
+    "composio-skills",
+    "composio-tool-integration",
+    "datadog",
+    "discord",
+    "jira-issue-to-pr",
+    "linear",
+    "linear-triage",
+    "notion",
+    "slack-channel-monitor",
+    "slack-standup-digest"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "integrations.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

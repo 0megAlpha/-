@@ -1,0 +1,1 @@
+{"register_interval_seconds":600,"scan_interval_seconds":300,"otp_poll_interval_seconds":5,"otp_timeout_seconds":120,"token_bucket_rate_per_sec":0.3}

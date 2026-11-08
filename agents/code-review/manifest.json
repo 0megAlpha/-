@@ -1,0 +1,25 @@
+{
+  "agent": "code-review",
+  "skills": [
+    "code-review",
+    "code-review.md",
+    "comment-cleanup",
+    "learn-from-code-review",
+    "qa-changes"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "code-review.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

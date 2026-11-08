@@ -1,0 +1,24 @@
+{
+  "agent": "creative",
+  "skills": [
+    "creative",
+    "email",
+    "smart-home",
+    "social-media"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "creative.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "agent": "memory",
+  "skills": [
+    "agent_memory.md",
+    "apollo-memory",
+    "engineering-memory",
+    "evolution-tree",
+    "hermes-episodic-memory-writer"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "memory.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

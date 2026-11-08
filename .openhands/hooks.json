@@ -1,0 +1,4 @@
+{
+  "pre_tool_use": [{"matcher": "terminal", "hooks": [{"command": ".openhands/hooks/veto.sh", "timeout": 30}]}],
+  "stop": [{"matcher": "*", "hooks": [{"command": ".openhands/hooks/quality_gate.sh", "timeout": 180}]}]
+}

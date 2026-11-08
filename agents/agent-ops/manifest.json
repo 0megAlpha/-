@@ -1,0 +1,43 @@
+{
+  "agent": "agent-ops",
+  "skills": [
+    "add-javadoc",
+    "add-skill",
+    "agent-browser",
+    "agent-builder.md",
+    "agent-canvas-environment",
+    "agent-creator",
+    "agent-fleet-secure-workflow",
+    "agent-memory",
+    "agent-orchestrator.md",
+    "agent-readiness-report",
+    "agent-sdk-builder",
+    "agent-skills",
+    "magic-word",
+    "openhands-api",
+    "openhands-automation",
+    "openhands-enterprise-troubleshooting",
+    "openhands-sdk",
+    "setup-agents-md",
+    "setup-openhands",
+    "setup-pr-review",
+    "show-me",
+    "skill-creator",
+    "skill-optimizer"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "agent-ops.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

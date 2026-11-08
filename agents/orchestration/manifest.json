@@ -1,0 +1,23 @@
+{
+  "agent": "orchestration",
+  "skills": [
+    "cc-suite",
+    "gstack",
+    "superpowers"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "orchestration.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "agent": "mobile",
+  "skills": [
+    "apple",
+    "swift-linux",
+    "swift-linux.md"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "mobile.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

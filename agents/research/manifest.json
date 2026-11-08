@@ -1,0 +1,27 @@
+{
+  "agent": "research",
+  "skills": [
+    "evidence-based-citations",
+    "firecrawl",
+    "firecrawl-web-research",
+    "news-digest",
+    "research",
+    "research-brief",
+    "sequential-thinking"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "research.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}

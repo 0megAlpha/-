@@ -1,0 +1,23 @@
+{
+  "agent": "frontend",
+  "skills": [
+    "frontend-design",
+    "theme-factory",
+    "ui-ux-pro-max"
+  ],
+  "entrypoint": "run.sh",
+  "shared": {
+    "mcp": "../../shared/mcp-servers",
+    "hooks": "../../shared/hooks",
+    "litellm": "../../shared/litellm/config.yaml",
+    "memory": "../../shared/memory"
+  },
+  "collaboration": {
+    "publishes": [
+      "frontend.result"
+    ],
+    "subscribes": [
+      "shared.broadcast"
+    ]
+  }
+}
