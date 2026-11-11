@@ -24,6 +24,7 @@
 | MagicPath | UI prototyping | personal account available; no team reported |
 | Exa | search MCP | container restarting at inspection |
 | TinyFish / Firecrawl / Tavily / Parallel | research/browser connectors | available as ChatGPT tools; not VPS-hosted credentials |
-| Lody service | local agent service | lody-agent systemd service reported running; Conduit app API not yet verified |
+| Lody | mobile coding-agent control | lody-agent.service active and CLI 0.103.0 installed; CLI is not authenticated yet, device authorization pending |
+| Conduit | native Open WebUI / Hermes / OpenAI-compatible client | Open WebUI 0.13.3 healthy on existing port 3000; mobile pairing is user-side and not yet completed |
 
 Connector presence is not equivalent to authenticated account linkage. Re-check each provider before automating account-level operations.
