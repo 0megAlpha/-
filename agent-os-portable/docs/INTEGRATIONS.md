@@ -1,30 +1,31 @@
 # Integration registry
 
-| Tool | Role | Local integration state |
+| Tool | Role | State at inspection |
 |---|---|---|
-| OpenHands | coding/runtime agent | existing container running |
-| LiteLLM | model router | existing container running |
-| Dify | workflow UI | existing deployment; some containers restarting |
-| LangGraph | primary stateful orchestration | installed in system Python; pinned in this project |
-| AutoGen / Magentic-One | optional multi-agent patterns | AutoGen modules present in system Python |
-| Aider | terminal coding assistant | install in isolated project venv |
-| Playwright | browser automation | existing CLI/package present; Python dependency declared |
-| pytest / Ruff | test and lint | existing tools present |
-| Semgrep / Trivy / Gitleaks | security scanning | existing CLI tools present |
-| GitHub | version control | OAuth connected as 0megAlpha |
-| Notion | operations record | workspace connected |
-| Vercel | web deployment | no connected teams/projects returned |
-| Shellway | remote workstation execution | device reported offline at latest check |
-| SentinelX | remote agent/security | no enrolled hosts; Free plan |
-| Termalin | remote host operations | Free plan; host listing requires Pro |
-| ButlerBrain | persistent memory | trial ended / upgrade required in prior record |
-| Simplified | content workflow | workspace connected per operations record |
-| Searcherries | SEO analytics | GitHub project exists; GA4/Search Console not connected |
-| Replit | app workspace | no apps returned in prior record |
-| MagicPath | UI prototyping | personal account available; no team reported |
-| Exa | search MCP | container restarting at inspection |
-| TinyFish / Firecrawl / Tavily / Parallel | research/browser connectors | available as ChatGPT tools; not VPS-hosted credentials |
-| Lody | mobile coding-agent control | lody-agent.service active and CLI 0.103.0 installed; CLI is not authenticated yet, device authorization pending |
-| Conduit | native Open WebUI / Hermes / OpenAI-compatible client | Open WebUI 0.13.3 healthy on existing port 3000; mobile pairing is user-side and not yet completed |
+| OpenHands | coding/runtime agent | Existing container running; REST adapter for 0.47.0 tested |
+| LiteLLM | model router | Existing container running; API config issue requires diagnosis |
+| Dify | workflow UI | Existing deployment; agent backend and local sandbox restarting |
+| LangGraph | orchestration | Installed and pinned in project |
+| AutoGen / Magentic-One | multi-agent patterns | AutoGen modules present in system Python |
+| Aider | terminal coding assistant | Installed in isolated project environment |
+| Playwright | browser automation | Package installed; browser test setup available |
+| pytest / Ruff | test and lint | Installed |
+| Semgrep / Trivy / Gitleaks | security scanning | Tool availability found; full scans pending |
+| GitHub | version control | Authenticated as 0megAlpha; destination 0megAlpha/- |
+| Notion | operations record | Workspace connected |
+| Vercel | deployment | Team scope requires approval; projects not verified |
+| Shellway | remote workstation | Device offline |
+| SentinelX | remote agent/security | Enrollment pending; no connected host |
+| Termalin | remote host operations | Pro-only host listing unavailable on current plan |
+| ButlerBrain | persistent memory | Connector tools available; account access to verify |
+| Simplified | content workflow | Connector available; workspace access to verify |
+| Searcherries | SEO analytics | Account and data-source access to verify |
+| Replit | app workspace | No apps returned in prior check |
+| MagicPath | UI prototyping | Connector available; project access to verify |
+| Exa | search MCP | VPS container restarting at inspection |
+| TinyFish / Firecrawl / Tavily / Parallel | research/browser | ChatGPT connectors available; not equivalent to VPS credentials |
+| Lody | mobile coding-agent control | systemd service exists; CLI device authorization required |
+| Conduit | mobile client | Open WebUI healthy on existing port 3000; client pairing not completed |
 
-Connector presence is not equivalent to authenticated account linkage. Re-check each provider before automating account-level operations.
+## Version compatibility
+OpenHands web server 0.47.0; SDK/tools 1.61.0 in .venv-openhands. Aider's certifi/psutil pins conflict with OpenHands tools, so they remain in separate environments.
