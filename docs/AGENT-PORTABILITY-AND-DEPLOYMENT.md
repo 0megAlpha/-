@@ -56,8 +56,8 @@ Do not claim that a capability is installed because its connector is available i
 - Host OS capability probe: Ubuntu 26.04, systemd, Docker 29.1.3, Compose v5.6.0, Podman 5.7.0.
 - Existing Docker inventory: 30 containers returned. Existing OpenHands 0.47.0 and Runtime 0.47.0 are running. Existing Dify 1.19.0 components, LiteLLM, Open WebUI, Qdrant, PostgreSQL and Redis services are present.
 - Existing Compose/container port mappings were observed. No new listener or port mapping was created by this reconciliation.
-- Root filesystem usage reported 90%; approximately 296.7 GB used of 332.1 GB. Inode usage reported 18%.
-- A large log file was observed under `/opt`; it must be attributed to its owning process, checked for secrets and active writes, and backed up/rotated before any truncation or deletion.
+- Root filesystem usage reported 90%; approximately 296.7 GB used of 332.1 GB. Inode usage reported 18%. A non-privileged second pass measured `/home/xiaye/.cache` at 7.0 GB, `/home/xiaye/vps-mirror-workspace` at 18 GB, `/opt/agents` at 14 GB and `/opt/vvvkey.log` at 96 MB. The cache contains uv, pip, Playwright and other package/browser caches; the large mirror and Agent trees contain Git packfiles and root-owned content. None is safe to mass-delete without privileged ownership and dependency review.
+- A large root-owned log file `/opt/vvvkey.log` (about 96 MB) was observed under `/opt`; it must be attributed to its owning process, checked for secrets and active writes, and backed up/rotated before any truncation or deletion.
 - `/home/xiaye/vps-mirror-workspace` has fetch and push remotes that both point to `0megAlpha/-`. Git status cannot be completed under the current SSH user because parts of the mirror are root-owned.
 - Several directories under `/home/xiaye` and `/opt` are root-owned or contain unreadable paths. Full recursive size and Git scans therefore remain incomplete.
 - Gateway reports the managed SSH key as verified, but sudo access is still `action_required`; the server capability probe reports password/policy-required privilege escalation. No sudo command was retried after that state.
@@ -93,3 +93,14 @@ It also contains multiple OpenHands snapshots under `openhands/`. Their names al
 - `blocked`: access, permissions, authorization or compatibility prevented completion.
 
 Never promote a row to a later status without evidence.
+
+
+## Second-pass Git observations
+
+- `/home/xiaye/vps-mirror-workspace`: both fetch/push remotes point to `0megAlpha/-`; status inspection fails because root-owned files and Git objects are present.
+- `/home/xiaye/hermes-007`: branch `master`, HEAD `e6f0042db752885c072a782fd7ede1b17350e7c3`, 22 commits behind `origin/master`; staged deletion of `.env.example`, modified `.gitignore`, and untracked replacement `.env.example` plus two secrets-guide directories. Do not push until the staged deletion and duplicate untracked path are resolved and content is reviewed.
+- `/home/xiaye/Claude-code`: branch `main`, HEAD `18399889f65b8f6b1b787e0f2af6e3cf725a4d5d`, one modified `.gitignore`; no untracked files in this status snapshot.
+- `/home/xiaye/CKA-Agent`: HEAD `938becd7011e834ed9cf89140e9fdddc12a2866c`; modified `.gitignore` and `config/config.yml`; untracked `config/config.yml.bak`. Review the config for secrets and local settings before migration.
+- `/home/xiaye/Ai-agent-skill` and `/home/xiaye/All-in`: Git status is blocked by Git safe.directory ownership checks.
+- `/home/xiaye/openhands-extensions`: Git status reports `fatal: bad object HEAD`; repair/ref verification is required before any update or push.
+- Prior account repository search for `xh09411-web` returned GitHub 422 (resource unavailable or no permission). This does not prove those repositories never existed; historical private source remains unreconciled.
