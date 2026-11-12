@@ -1,0 +1,36 @@
+name: software-factory
+version: 1
+description: Bounded plan -> execute -> verify -> review -> publish workflow.
+limits:
+  max_review_cycles: 3
+  require_human_approval_before_merge: true
+  require_secret_scan_before_push: true
+  require_tests_before_merge: true
+steps:
+  - id: inventory
+    owner: langgraph
+    action: inspect_repository
+  - id: plan
+    owner: langgraph
+    action: generate_acceptance_criteria
+  - id: execute
+    owner: openhands
+    action: implement_in_selected_workspace
+    constraints:
+      - no_production_service_restart
+      - no_port_publication
+      - no_secret_output
+  - id: verify
+    owner: quality
+    commands: [pytest, ruff, playwright, semgrep, gitleaks, trivy]
+  - id: revise
+    owner: langgraph
+    condition: verification_failed
+    max_cycles: 3
+  - id: approve
+    owner: human
+    condition: verification_passed
+  - id: publish
+    owner: git
+    condition: explicit_approval
+    mode: normal_fast_forward

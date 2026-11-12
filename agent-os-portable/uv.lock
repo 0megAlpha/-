@@ -1,0 +1,162 @@
+version = 1
+revision = 5
+requires-python = "==3.12.*"
+
+[[package]]
+name = "aider-chat"
+version = "0.86.2"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohappyeyeballs" },
+    { name = "aiohttp" },
+    { name = "aiosignal" },
+    { name = "annotated-doc" },
+    { name = "annotated-types" },
+    { name = "anyio" },
+    { name = "asgiref" },
+    { name = "attrs" },
+    { name = "backoff" },
+    { name = "beautifulsoup4" },
+    { name = "certifi" },
+    { name = "cffi" },
+    { name = "charset-normalizer" },
+    { name = "click" },
+    { name = "configargparse" },
+    { name = "diff-match-patch" },
+    { name = "diskcache" },
+    { name = "distro" },
+    { name = "fastapi" },
+    { name = "fastuuid" },
+    { name = "filelock" },
+    { name = "flake8" },
+    { name = "frozenlist" },
+    { name = "fsspec" },
+    { name = "gitdb" },
+    { name = "gitpython" },
+    { name = "grep-ast" },
+    { name = "h11" },
+    { name = "hf-xet" },
+    { name = "httpcore" },
+    { name = "httpx" },
+    { name = "huggingface-hub" },
+    { name = "idna" },
+    { name = "importlib-metadata" },
+    { name = "importlib-resources" },
+    { name = "jinja2" },
+    { name = "jiter" },
+    { name = "json5" },
+    { name = "jsonschema" },
+    { name = "jsonschema-specifications" },
+    { name = "litellm" },
+    { name = "markdown-it-py" },
+    { name = "markupsafe" },
+    { name = "mccabe" },
+    { name = "mdurl" },
+    { name = "mixpanel" },
+    { name = "mslex" },
+    { name = "multidict" },
+    { name = "networkx" },
+    { name = "numpy" },
+    { name = "openai" },
+    { name = "orjson" },
+    { name = "oslex" },
+    { name = "packaging" },
+    { name = "pathspec" },
+    { name = "pexpect" },
+    { name = "pillow" },
+    { name = "posthog" },
+    { name = "prompt-toolkit" },
+    { name = "propcache" },
+    { name = "psutil" },
+    { name = "ptyprocess" },
+    { name = "pycodestyle" },
+    { name = "pycparser" },
+    { name = "pydantic" },
+    { name = "pydantic-core" },
+    { name = "pydub" },
+    { name = "pyflakes" },
+    { name = "pygments" },
+    { name = "pypandoc" },
+    { name = "pyperclip" },
+    { name = "python-dateutil" },
+    { name = "python-dotenv" },
+    { name = "pyyaml" },
+    { name = "referencing" },
+    { name = "regex" },
+    { name = "requests" },
+    { name = "rich" },
+    { name = "rpds-py" },
+    { name = "scipy" },
+    { name = "shellingham" },
+    { name = "shtab" },
+    { name = "six" },
+    { name = "smmap" },
+    { name = "sniffio" },
+    { name = "socksio" },
+    { name = "sounddevice" },
+    { name = "soundfile" },
+    { name = "soupsieve" },
+    { name = "starlette" },
+    { name = "tiktoken" },
+    { name = "tokenizers" },
+    { name = "tqdm" },
+    { name = "tree-sitter" },
+    { name = "tree-sitter-c-sharp" },
+    { name = "tree-sitter-embedded-template" },
+    { name = "tree-sitter-language-pack" },
+    { name = "tree-sitter-yaml" },
+    { name = "typer" },
+    { name = "typer-slim" },
+    { name = "typing-extensions" },
+    { name = "typing-inspection" },
+    { name = "urllib3" },
+    { name = "watchfiles" },
+    { name = "wcwidth" },
+    { name = "yarl" },
+    { name = "zipp" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/39/45/71111a018c653b7e743216188fb73cd640a86abbda56b7e430f65cd45d23/aider_chat-0.86.2.tar.gz", hash = "sha256:f38a9d322f5609f0c13af82d50c6a11170185b3fdf26956e4a7e89ba19819159", size = 1318421, upload-time = "2026-02-12T00:42:54.835Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/75/f7/e20749d9a510673e7adf910b005e3efe4ceaf9c194f1dd40d6931a3f34b9/aider_chat-0.86.2-py3-none-any.whl", hash = "sha256:64f6a0c66c9f4633ad9f479bca3e64ebcba02b9da03c6b604b74a44736b2416e", size = 377009, upload-time = "2026-02-12T00:42:52.678Z" },
+]
+
+[[package]]
+name = "aiofiles"
+version = "25.1.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/c3/534eac40372d8ee36ef40df62ec129bee4fdb5ad9706e58a29be53b2c970/aiofiles-25.1.0.tar.gz", hash = "sha256:a8d728f0a29de45dc521f18f07297428d56992a742f0cd2701ba86e44d23d5b2", size = 46354, upload-time = "2025-10-09T20:51:04.358Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/bc/8a/340a1555ae33d7354dbca4faa54948d76d89a27ceef032c8c3bc661d003e/aiofiles-25.1.0-py3-none-any.whl", hash = "sha256:abe311e527c862958650f9438e859c1fa7568a141b22abcd015e120e86a85695", size = 14668, upload-time = "2025-10-09T20:51:03.174Z" },
+]
+
+[[package]]
+name = "aiohappyeyeballs"
+version = "2.6.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/26/30/f84a107a9c4331c14b2b586036f40965c128aa4fee4dda5d3d51cb14ad54/aiohappyeyeballs-2.6.1.tar.gz", hash = "sha256:c3f9d0113123803ccadfdf3f0faa505bc78e6a72d1cc4806cbd719826e943558", size = 22760, upload-time = "2025-03-12T01:42:48.764Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/0f/15/5bf3b99495fb160b63f95972b81750f18f7f4e02ad051373b669d17d44f2/aiohappyeyeballs-2.6.1-py3-none-any.whl", hash = "sha256:f349ba8f4b75cb25c99c5c2d84e997e485204d2902a9597802b0371f09331fb8", size = 15265, upload-time = "2025-03-12T01:42:47.083Z" },
+]
+
+[[package]]
+name = "aiohttp"
+version = "3.13.3"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohappyeyeballs" },
+    { name = "aiosignal" },
+    { name = "attrs" },
+    { name = "frozenlist" },
+    { name = "multidict" },
+    { name = "propcache" },
+    { name = "yarl" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/50/42/32cf8e7704ceb4481406eb87161349abb46a57fee3f008ba9cb610968646/aiohttp-3.13.3.tar.gz", hash = "sha256:a949eee43d3782f2daae4f4a2819b2cb9b0c5d3b7f7a927067cc84dafdbb9f88", size = 7844556, upload-time = "2026-01-03T17:33:05.204Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a0/be/4fc11f202955a69e0db803a12a062b8379c970c7c84f4882b6da17337cc1/aiohttp-3.13.3-cp312-cp312-macosx_10_13_universal2.whl", hash = "sha256:b903a4dfee7d347e2d87697d0713be59e0b87925be030c9178c5faa58ea58d5c", size = 739732, upload-time = "2026-01-03T17:30:14.23Z" },
+    { url = "https://files.pythonhosted.org/packages/97/2c/621d5b851f94fa0bb7430d6089b3aa970a9d9b75196bc93bb624b0db237a/aiohttp-3.13.3-cp312-cp312-macosx_10_13_x86_64.whl", hash = "sha256:a45530014d7a1e09f4a55f4f43097ba0fd155089372e105e4bff4ca76cb1b168", size = 494293, upload-time = "2026-01-03T17:30:15.96Z" },
+    { url = "https://files.pythonhosted.org/packages/5d/43/4be01406b78e1be8320bb8316dc9c42dbab553d281c40364e0f862d5661c/aiohttp-3.13.3-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:27234ef6d85c914f9efeb77ff616dbf4ad2380be0cda40b4db086ffc7ddd1b7d", size = 493533, upload-time = "2026-01-03T17:30:17.431Z" },
+    { url = "https://files.pythonhosted.org/packages/8d/a8/5a35dc56a06a2c90d4742cbf35294396907027f80eea696637945a106f25/aiohttp-3.13.3-cp312-cp312-manylinux2014_aarch64.manylinux_2_17_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:d32764c6c9aafb7fb55366a224756387cd50bfa720f32b88e0e6fa45b27dcf29", size = 1737839, upload-time = "2026-01-03T17:30:19.422Z" },
+    { url = "https://files.pythonhosted.org/packages/bf/62/4b9eeb331da56530bf2e198a297e5303e1c1ebdceeb00fe9b568a65c5a0c/aiohttp-3.13.3-cp312-cp312-manylinux2014_armv7l.manylinux_2_17_armv7l.manylinux_2_31_armv7l.whl", hash = "sha256:b1a6102b4d3ebc07dad44fbf07b45bb600300f15b552ddf1851b5390202ea2e3", size = 1703932, upload-time = "2026-01-03T17:30:21.756Z" },
+    { url = "https://files.pythonhosted.org/packages/7c/f6/af16887b5d419e6a367095994c0b1332d154f647e7dc2bd50e61876e8e3d/aiohttp-3.13.3-cp312-cp312-manylinux2014_ppc64le.manylinux_2_17_ppc64le.manylinux_2_28_ppc64le.whl", hash = "sha256:c014c7ea7fb775dd015b2d3137378b7be0249a448a1612268b5a90c2d81de04d", size = 1771906, upload-time = "2026-01-03T17:30:23.932Z" },
+    { url = "https://files.pythonhosted.org/packages/ce/83/397c634b1bcc24292fa1e0c7822800f9f6569e32934bdeef09dae7992dfb/aiohttp-3.13.3-cp312-cp312-manylinux2014
