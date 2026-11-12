@@ -1,42 +1,51 @@
-# VPS Agent Mirror
+# Portable Agent Workspace
 
-Private aggregation repository for the VPS Agent ecosystem.
+Repository: `0megAlpha/-`
+Canonical branch: `vps-mirror/full-tree`
+GitHub visibility currently reported by GitHub: **Public**.
 
-## Full upstream source repositories (Git submodules)
+This repository is the sole destination for portable Agent source, shared skills, plugins, MCP adapters, tools, functions, workflows, manifests, deployment templates and verification records.
 
-These folders are pinned to verified upstream commits. Clone with `--recurse-submodules` to download their complete source trees and Git history.
+## Architecture
 
-| Folder | Upstream | Pinned HEAD |
-|---|---|---|
-| `hermes/` | https://github.com/NousResearch/hermes-agent | `c7c7e0fa92f40c8f526e4a52c0966c128245ffd3` |
-| `openhands/core/` | https://github.com/OpenHands/OpenHands | `cdd6a69248ce8f99b41ff4c47bdf68dee95024e5` |
-| `openhands/software-agent-sdk/` | https://github.com/OpenHands/software-agent-sdk | `98849457621881ae2414719b82b8bc1cf535b4ab` |
-| `openhands/extensions/` | https://github.com/OpenHands/extensions | `6fb2b67680b9a5b41452a148e5705f99c7df1a75` |
-| `CKA-Agent/` | https://github.com/Graph-COM/CKA-Agent | `938becd7011e834ed9cf89140e9fdddc12a2866c` |
+- `openhands/`: primary software-engineering Agent, runtime integration and OpenHands-specific extensions.
+- `hermes/`: Hermes Agent source and Hermes-specific integration.
+- `agents/`: standalone Agent definitions and shared capability collections. Each Agent must have one canonical directory.
+- `agents/Ai-agent-skill/`: shared framework-neutral Skills, Plugins, MCP adapters, Tools and Workflows. This is a shared capability library, not a second runtime.
+- Existing top-level Agent directories such as `aider/`, `claude-code/`, `cline/`, `continue/`, `crush/`, `deepseek/`, `devin/`, `goose/`, `opencode/`, `openwebui/` and `swe-agent/` must be reconciled before any duplicate directory is added.
 
-## VPS-local mirrors still pending
+## Verified Git submodules
 
-- `Ai-agent-skill`: one commit ahead / 24 behind; modified `push.sh`; seven untracked paths. Its configured private origin is not accessible with the currently stored Gateway credential.
-- `Claude-code`: clean local checkout, but configured private origin is not accessible with the currently stored Gateway credential.
-- `Google-AI`: 2,563 staged paths including submodule/gitlink state; not migrated yet.
-- `hermes-007`: local branch is 22 commits behind upstream; two untracked secrets-guide directories must be reviewed before inclusion. Upstream fetch has now completed.
-- `openhands-extensions`: local working tree clean; fetch from origin completed and updated 31 remote-tracking refs.
-- `CKA-Agent`: upstream fetch completed with no ref changes; local config modification and backup remain uncommitted.
-- `All-in`, `agent-plane`, `sentinelx-cloud-core`: root-owned; require complete source inventory and safe snapshot.
-- OpenHands integrated and v1.25.0 deployment snapshots remain separate from upstream core.
+Only these two submodules are currently declared in `.gitmodules`:
 
-## Browser clone
+| Path | Upstream |
+|---|---|
+| `openhands/core/` | https://github.com/OpenHands/OpenHands |
+| `openhands/software-agent-sdk/` | https://github.com/OpenHands/software-agent-sdk |
+
+Other source folders are not automatically submodules. Do not describe them as submodules unless the Git tree contains the corresponding gitlink and `.gitmodules` entry.
+
+## Clone
 
 ```bash
-git clone --recurse-submodules --branch vps-mirror/inventory-2026-11 https://github.com/0megAlpha/-.git
+git clone --recurse-submodules --branch vps-mirror/full-tree https://github.com/0megAlpha/-.git
 ```
 
-## Safety
+## Security and portability
 
-No credentials, .env files, private keys, tokens, databases, runtime sessions or logs are included. Submodules preserve the upstream repositories and pinned commits, but do not include VPS-local modifications. This is a partial upstream-source mirror, not yet a complete VPS-local mirror.
+- Never commit live API keys, tokens, cookies, private keys, SSH material, `.env` files, database dumps, private sessions, runtime memory databases, sensitive logs or private model weights.
+- Keep environment-variable names and sanitized example values only.
+- Preserve upstream LICENSE and NOTICE files.
+- Record source URL, upstream version/commit, license, install location and test evidence for every integrated capability.
+- Shared capability code has one canonical copy; Agent-specific adapters reference it instead of vendoring duplicates.
+- Keep original Git history; no force push or history rewrite.
 
+## Status
 
-## Deployment records
+This is an active migration and integration workspace, not a claim that every VPS asset has already been installed or validated. The requirements, blockers and current inventory are recorded in:
 
-- [Uploaded Agent deployment guide](docs/source/Agent部署.md) — source-preserved upload; installation steps and third-party plugin compatibility remain to be verified on this VPS.
-- [Deployment status and handoff](docs/DEPLOYMENT-STATUS-2026-11-05.md) — verified GitHub write, VPS sync blockers, security notes, and remaining work.
+- [Conversation-wide Agent requirements](docs/CONVERSATION-WIDE-AGENT-REQUIREMENTS.md)
+- [Agent portability and VPS reconciliation](docs/AGENT-PORTABILITY-AND-DEPLOYMENT.md)
+- [Deployment status handoff](docs/DEPLOYMENT-STATUS-2026-11-05.md)
+
+A legacy 23.8 MB Agent-skill archive remains in the repository root and has not yet been content- or secret-scanned. Do not treat it as verified portable content or redistribute it until inspected. The repository is currently Public, so all committed material must be treated as publicly readable.
