@@ -54,3 +54,33 @@ Running at inspection:
 - Exact local `.env` files exist in `/home/xiaye/All-in`, `/opt/agents/-`, `/opt/ai-stack`, and `/opt/dify/docker`. Their contents were not read or uploaded.
 - Further content-level secret scanning and repository-by-repository migration are still required.
 - No project source code was broadly staged or pushed in this pass; dirty worktrees, staged deletions, broken Git metadata, nested repositories, root-owned files and low disk headroom must be reconciled individually first.
+
+
+## Agent OS portable deployment — 2026-11-12 09:xx Asia/Taipei
+
+- PR #4 was squash-merged into this repository's default branch.
+- Merge commit: 05e72a7e327f35add8b4fd9735d3ff302a66de51.
+- Portable package path: agent-os-portable/.
+- Local validation: pytest 3 passed; Ruff check passed; Ruff format check passed (18 files).
+- OpenHands health: existing loopback endpoint 127.0.0.1:13000 returned OK.
+- LiteLLM liveliness probe at 127.0.0.1:14000 returned TCP connection reset; no config or service change made.
+- No new inbound port, published Docker port, NAT or firewall rule was created.
+
+## Updated host findings — 2026-11-12
+
+- Root filesystem: 310 GB total, 275 GB used, 35 GB free (89%).
+- Confirmed local Git repositories include home projects Ai-agent-skill, All-in, CKA-Agent, Claude-code, hermes-007, openhands-extensions, repository/Google-AI, vps-mirror-workspace; system projects agent-plane, agents/-, ai-stack, dify, llama.cpp, openhands-upstream-build-v1.25.0, and /usr/local/lib/hermes-agent.
+- Important project sizes: /opt/agents ~14 GB; /home/xiaye/ai-agent-fleet ~1.1 GB; /home/xiaye/hermes-007 ~2.6 GB; /home/xiaye/CKA-Agent ~4.9 GB; /home/xiaye/vps-mirror-workspace ~18 GB.
+- Containers restarting: exa-mcp, Dify agent_backend, Dify local_sandbox.
+- systemd auto-restart/activating: ai-agent-throne, llama-agent, llama-agent-fast, sentinelx-cloud-core.
+- Existing listeners were enumerated; no port changes were performed.
+- Shellway latest check reported greencloud-ai offline.
+- Lody CLI is installed but not authenticated; device authorization command has been started and awaits browser approval. No credential is written to this repository.
+
+## Migration status (not complete)
+
+- Full project migration is still pending. Dirty worktrees, root-owned files, invalid Git metadata, nested repositories, submodules, old/unavailable remotes and Gitleaks findings remain to be reconciled project by project.
+- The /home/xiaye umbrella Git directory has no commits and contains personal home/configuration material; do not push it wholesale.
+- Known local .env paths and unclassified secret findings remain excluded from Git until sanitized.
+- No old GitHub account was restored or accessed. The only destination remains 0megAlpha/-.
+- Current GitHub repository visibility is Public.
