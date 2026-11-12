@@ -1,0 +1,4 @@
+services:
+  litellm:
+    volumes:
+      - ./litellm/config.yaml:/app/config.yaml:ro

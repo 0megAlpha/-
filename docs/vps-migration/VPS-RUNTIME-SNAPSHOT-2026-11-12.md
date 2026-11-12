@@ -84,3 +84,14 @@ Running at inspection:
 - Known local .env paths and unclassified secret findings remain excluded from Git until sanitized.
 - No old GitHub account was restored or accessed. The only destination remains 0megAlpha/-.
 - Current GitHub repository visibility is Public.
+
+
+## Agent stack repair completed — 2026-11-12 09:43 Asia/Taipei
+
+- LiteLLM bind mount corrected through a Compose overlay. Existing port 14000:4000 retained.
+- LiteLLM container recreated only; running with restart count 0. Authenticated model catalog returned 11 aliases. Health/liveliness and readiness both HTTP 200.
+- Dify agent_backend and local_sandbox received a generated 256-bit shared runtime auth token through a local-only mode-0600 env file outside Git. Only these two services were recreated; backend is running and local_sandbox is healthy.
+- OpenHands /health returned OK.
+- No new listener, published port, NAT, firewall or reverse-proxy rule was created.
+- LiteLLM logs still report one invalid model alias missing provider prefix; other 11 aliases loaded. Real inference test remains pending.
+- Exa MCP and several systemd agents remain in remediation queue.
