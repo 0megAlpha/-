@@ -1,0 +1,6 @@
+model:
+  name: openai/pollinations-free
+  api_base: http://agents-litellm:4000/v1
+  api_key: $LITELLM_MASTER_KEY
+  temperature: 0.0
+  completion_kwargs: {}
