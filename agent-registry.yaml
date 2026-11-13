@@ -125,3 +125,47 @@ provider_adapter_status:
     status: template-installed
     live_test: pending
     blocker: LiteLLM master key placeholder
+
+
+openhands_capabilities:
+  skills:
+    - emat-agent-court
+    - openhands-adaptive-evolution
+    - openhands-quality-gates
+    - harness-evolution
+    - sesm-engine
+    - agent-memory
+    - agent-creator
+    - agent-sdk-builder
+    - skill-optimizer
+    - cortex-training-rl
+    - software-factory
+    - qa-changes
+    - code-review
+    - security
+  runtime_toolchain:
+    playwright: "1.65.0 + chromium"
+    biome: "2.6.7"
+    eslint: "10.14.0"
+    sonar_scanner: "5.1.0; server_and_token_pending"
+    semgrep: "1.185.0"
+    trivy: "0.73.0"
+  live_validation:
+    emat_unit_tests: "8/8_pass"
+    playwright_browser_tests: "2/2_pass"
+    semgrep_python_smoke: "0_findings"
+    semgrep_javascript_smoke: "0_findings"
+    canvas_health: "http_200"
+  evolution_policy:
+    max_parallel_agents: 8
+    max_feedback_attempts: 3
+    magistrate_read_only: true
+    law_updates: proposal_only
+    topology_mutation: proposal_only
+    auto_deploy: false
+  status: installed_with_provider_credentials_pending
+
+non_llm_modules:
+  - {name: StateM, type: workflow_orchestration_engine, provider_adapter_required: false}
+  - {name: XAttacker, type: security_testing_tool, provider_adapter_required: false}
+  - {name: Dify, type: agent_orchestration_platform, runtime_health: verified}
