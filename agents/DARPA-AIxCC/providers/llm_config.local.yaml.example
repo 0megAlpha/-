@@ -1,0 +1,15 @@
+# Copy to fuzzingbrain/llm_config.local.yaml; keep that populated file out of Git.
+api_keys:
+  anthropic: ""
+  openai: ""
+  google: ""
+  xai: ""
+
+default_model: claude-opus-4-5
+fallback:
+  enabled: true
+  max_attempts: 3
+generation:
+  temperature: 0.1
+  max_tokens: 8192
+  timeout: 120
