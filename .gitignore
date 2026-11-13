@@ -16,3 +16,23 @@
 /VPS-AGENT-UPSTREAM-REFERENCES.md
 /VPS-MIRROR-PLAN.md
 /VPS-MIRROR-RUNBOOK.md
+
+# Runtime credentials, private agent state and deployment backups (keep locally; never commit)
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+openwebui/openwebui-repair-backup/
+openwebui/openwebui-net-backup/
+openwebui/open-webui-core/data/
+cline/cline-core/data/
+goose/goose-config/env
+goose/goose-config/secrets.yaml
+goose/goose-data/sessions/*.db*
+unknown/grok-config/auth.json
+unknown/grok-config/memory-v2/**/*.sqlite*
+unknown/lody-config/**/*.sqlite*
+agents/Cloud-vps/agents/hermes/hermes-007/*.db*
+unknown/Cloud-vps/agents/hermes/hermes-007/*.db*

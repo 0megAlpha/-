@@ -1,0 +1,22 @@
+schema: agent-stack.registry.v1
+primary_platform:
+  name: OpenHands
+  path: openhands
+  capabilities:
+    - model-routing: LiteLLM
+    - tools: MCP
+    - agent-interoperability: ACP
+    - skills: openhands/extensions/skills
+    - adjudication: openhands/extensions/skills/emat-agent-court
+agents:
+  - {name: claude-code, path: claude-code, provider_adapter: claude-code/providers, protocol: anthropic-messages, status: config-template}
+  - {name: codex, path: codex, provider_adapter: codex/providers, protocol: openai-responses, status: config-template}
+  - {name: devin, path: devin, provider_adapter: devin/providers, protocol: devin-service-api-and-mcp, status: service-api-only}
+  - {name: hermes, path: hermes, provider_adapter: hermes/providers, protocol: native-provider-registry-plus-openai-compatible, status: existing-provider-implementation}
+  - {name: dsh, path: dsh, provider_adapter: dsh/providers, protocol: openai-compatible-or-native, status: config-template}
+  - {name: aider, path: aider, provider_adapter: aider/providers, protocol: openai-chat-completions, status: config-template}
+  - {name: cline, path: cline, provider_adapter: cline/providers, protocol: openai-chat-completions, status: config-template}
+  - {name: goose, path: goose, provider_adapter: goose/providers, protocol: openai-chat-completions, status: config-template}
+  - {name: opencode, path: opencode, provider_adapter: opencode/providers, protocol: openai-chat-completions, status: config-template}
+  - {name: deepseek, path: deepseek, provider_adapter: deepseek/providers, protocol: deepseek-native-or-openai-compatible, status: config-template}
+  - {name: openwebui, path: openwebui, provider_adapter: openwebui/providers, protocol: openai-chat-completions, status: config-template}

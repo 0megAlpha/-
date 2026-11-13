@@ -1,0 +1,10 @@
+# Codex custom provider template.
+# Requires a LiteLLM route that implements the OpenAI Responses API.
+model = "deepseek-chat"
+model_provider = "litellm"
+
+[model_providers.litellm]
+name = "LiteLLM Responses"
+base_url = "http://127.0.0.1:14000/v1"
+wire_api = "responses"
+env_key = "LITELLM_MASTER_KEY"

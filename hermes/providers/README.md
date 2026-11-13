@@ -79,3 +79,7 @@ under `$HERMES_HOME/plugins/model-providers/` for a private plugin).
 ## Configuration fields
 
 Full reference in `providers/base.py` dataclass definition.
+
+## VPS LiteLLM endpoint
+
+For OpenAI-compatible routes, use http://127.0.0.1:14000/v1 on the host or http://agents-litellm:4000/v1 inside the OpenHands Compose network. Inject the gateway credential through the runtime secret store. Hermes-native provider profiles and plugins remain owned by this Hermes directory; do not replace its existing provider registry with a generic shared skill.

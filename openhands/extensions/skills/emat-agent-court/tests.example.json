@@ -1,0 +1,6 @@
+{
+  "runner_revision": "git-sha",
+  "results": [
+    {"command": ["python3", "-m", "unittest", "discover"], "exit_code": 0, "evidence": "CI job URL or log artifact"}
+  ]
+}

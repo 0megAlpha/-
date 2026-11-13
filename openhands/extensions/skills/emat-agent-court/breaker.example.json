@@ -1,0 +1,5 @@
+{
+  "counterexamples": [
+    {"id": "B-001", "description": "Example boundary case", "test_ref": "tests/test_boundary.py::test_boundary", "status": "addressed"}
+  ]
+}

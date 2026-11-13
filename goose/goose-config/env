@@ -1,5 +1,0 @@
-export OPENAI_API_KEY="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"
-export GOOSE_PROVIDER="openai"
-export OPENAI_BASE_URL="https://integrate.api.nvidia.com/v1"
-export GOOSE_MODEL="deepseek-ai/deepseek-v4-pro-0813"
-export GOOSE_MODE="smart_approve"

@@ -1,0 +1,5 @@
+{
+  "candidate_commit": "git-sha",
+  "changed_paths": ["src/example.py"],
+  "summary": "Implementation summary."
+}

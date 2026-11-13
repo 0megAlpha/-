@@ -1,0 +1,13 @@
+{
+  "objective": "Describe the requested engineering outcome.",
+  "baseline_revision": "git-sha",
+  "acceptance_criteria": [
+    "All named behavior is implemented.",
+    "Breaker counterexamples are addressed."
+  ],
+  "allowed_paths": ["src/**", "tests/**"],
+  "forbidden_paths": [".env", "**/*.pem", "**/*.key"],
+  "test_commands": [["python3", "-m", "unittest", "discover", "-s", "tests"]],
+  "timeout_seconds": 900,
+  "rollback_revision": "git-sha"
+}

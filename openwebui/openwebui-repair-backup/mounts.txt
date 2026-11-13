@@ -1,2 +1,0 @@
-volume /var/lib/docker/volumes/open-webui/_data /app/backend/data
-
