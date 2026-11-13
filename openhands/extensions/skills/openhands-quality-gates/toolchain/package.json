@@ -1,0 +1,13 @@
+{
+  "name": "openhands-runtime-quality-tools",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Persistent project-local browser and quality tooling for the OpenHands runtime",
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@playwright/test": "1.65.0",
+    "@sonar/scan": "5.1.0",
+    "eslint": "10.14.0",
+    "playwright": "1.65.0"
+  }
+}
