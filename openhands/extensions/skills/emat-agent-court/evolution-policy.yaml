@@ -1,0 +1,26 @@
+version: 1
+max_parallel_agents: 8
+max_feedback_attempts: 3
+roles:
+  breaker:
+    permissions: [read, test]
+    may_edit_builder_files: false
+  builder:
+    permissions: [read, write_branch, test]
+    may_write_production: false
+  magistrate:
+    permissions: [read, test]
+    may_edit_candidate: false
+    may_change_laws: proposal_only
+evolution:
+  branch_search: evidence_ranked_candidates
+  law_updates: versioned_proposals_only
+  topology_mutation: proposal_only
+  skill_hardening: test_then_hash_then_review
+  auto_deploy: false
+invariants:
+  - magistrate_read_only
+  - sealed_plan
+  - no_auto_deploy
+  - no_force_push
+  - production_changes_require_explicit_approval
