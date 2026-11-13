@@ -50,3 +50,23 @@ A provider/Agent is not marked live until:
 - Gemini, Groq, Z.AI, Cerebras, OpenRouter and Abliteration routes failed authentication/permission tests.
 - Codex Responses and Claude Code Anthropic Messages are not currently verified through the VPS LiteLLM.
 - Devin requires a valid service API credential and repository integration.
+
+
+## Additional runtime frameworks discovered in the full-tree inventory
+
+| Framework | Adapter path | Native integration | State |
+|---|---|---|---|
+| mini-SWE-agent | `agents/mini-swe-agent/providers` | LiteLLM, OpenAI-compatible, Anthropic, OpenRouter, Portkey | Template installed |
+| SWE-agent | `agents/SWE-agent/providers` | LiteLLM with explicit api_base/api_key | Template installed |
+| DGM | `agents/DGM/providers` | OpenAI SDK, Anthropic SDK, DeepSeek, OpenRouter | Template installed; custom base URL is limited to the OpenAI SDK branch |
+| HyperAgents | `agents/HyperAgents/providers` | LiteLLM | Template installed |
+| FuzzingBrain / DARPA-AIxCC | `agents/DARPA-AIxCC/providers` | OpenAI, Anthropic, Google, xAI | Template installed; current LLMConfig does not expose a general api_base field |
+| Agent System | `agents/agent-system/providers` | Existing generic LiteLLM base URL/key/model contract | Template installed |
+
+## OpenHands capabilities installed in the live workspace
+
+- EMAT court + adaptive evolution: 8/8 unit tests pass in the live Canvas container. Branch ranking requires complete test evidence, topology validation keeps Magistrate read-only, feedback retries are bounded to three, and law/topology changes remain proposal-only.
+- Quality gates: Playwright 1.65.0 + Chromium (2/2 browser tests pass), Biome 2.6.7, ESLint 10.14.0, SonarScanner wrapper 5.1.0, Semgrep 1.185.0 and Trivy 0.73.0.
+- Sonar analysis is not yet live because no SonarQube/SonarCloud endpoint or token is configured.
+- Semgrep smoke checks on one Python and one JavaScript file each returned zero findings; this is a smoke test, not a full repository security clearance.
+- The OpenHands runtime intentionally cannot access the host Docker socket directly. Container lifecycle stays under the OpenHands Docker runtime control plane.
