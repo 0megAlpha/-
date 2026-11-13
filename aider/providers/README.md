@@ -1,3 +1,9 @@
-# Aider provider adapter
+# Aider Provider Adapter
 
-For OpenAI-compatible routes, set OPENAI_API_BASE=http://127.0.0.1:14000/v1, inject OPENAI_API_KEY from LITELLM_MASTER_KEY, and select a LiteLLM model using Aider's OpenAI model naming convention (for example openai/deepseek-chat). Verify with a single completion before use.
+Aider can use OpenAI-compatible Chat Completions endpoints. Keep the selected model ID aligned with the gateway's registered model alias.
+
+- `OPENAI_API_BASE`: API root, normally `/v1`
+- `OPENAI_API_KEY`: runtime credential
+- `AIDER_MODEL`: model alias
+
+See `aider.conf.yml.example` and `aider.env.example`.

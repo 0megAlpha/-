@@ -1,10 +1,12 @@
-# Codex custom provider template.
-# Requires a LiteLLM route that implements the OpenAI Responses API.
-model = "deepseek-chat"
-model_provider = "litellm"
+# Merge into ~/.codex/config.toml; keep model and model_provider before table declarations.
+model = "gpt-5-codex"
+model_provider = "openai-compatible-responses"
 
-[model_providers.litellm]
-name = "LiteLLM Responses"
-base_url = "http://127.0.0.1:14000/v1"
+[model_providers.openai-compatible-responses]
+name = "OpenAI-compatible Responses provider"
+base_url = "https://api.openai.com/v1"
+env_key = "OPENAI_API_KEY"
 wire_api = "responses"
-env_key = "LITELLM_MASTER_KEY"
+request_max_retries = 4
+stream_max_retries = 5
+stream_idle_timeout_ms = 300000

@@ -38,3 +38,36 @@ Use these environment variable names only; inject real values through the runtim
 - Provider-specific keys such as DEEPSEEK_API_KEY, GEMINI_API_KEY, OPENROUTER_API_KEY, and NVIDIA_API_KEY.
 
 Current VPS observations on 2026-11-13: LiteLLM /v1/models returned 11 model IDs and its readiness endpoint returned HTTP 200. This proves route discovery and service readiness, not successful inference for every provider. Provider-specific credentials in .env were empty or placeholders at the time of inspection, so routes requiring those keys are not verified for live inference.
+
+## VPS live verification — 2026-11-13
+
+The VPS now has per-Agent adapter directories and examples under each canonical Agent folder. The cross-Agent contract lives only in `shared/providers/adapter-contract.md`; agent-specific configuration remains under each Agent's `providers/` directory.
+
+### Live endpoints
+- LiteLLM 1.108.0: host `http://127.0.0.1:14000/v1`, Docker network `http://agents-litellm:4000/v1`. Its master key is currently a placeholder and must be rotated before production use.
+- Local Qwen3 0.6B: host `http://127.0.0.1:8089/v1`; OpenHands Docker network `http://172.17.0.1:8089/v1`. This endpoint is bound only to the Docker bridge gateway. Chat Completions and a minimal text response were verified.
+- The local Qwen endpoint does not yet implement a verified OpenAI Responses or Anthropic Messages route.
+
+### Live Chat Completions route tests
+| Model alias | Result | Observed response |
+|---|---|---|
+| pollinations-free | PASS | HTTP 200 |
+| kilo-free | PASS | HTTP 200 |
+| refuseless-glm53-uncensored | PASS | HTTP 200 |
+| deepseek-chat | PASS | HTTP 200 |
+| qwen-plus | PASS | HTTP 200 |
+| llm7-free | FAIL | HTTP 400 invalid request/model |
+| abliteration-glm53-uncensored | FAIL | HTTP 401 authentication |
+| groq-llama | FAIL | HTTP 403 permission |
+| gemini-flash | FAIL | HTTP 401 authentication |
+| zai-glm-flash | FAIL | HTTP 401 authentication |
+| cerebras-llama | FAIL | HTTP 403 permission/edge challenge |
+| openrouter-free | FAIL | HTTP 401 authentication |
+
+### Native protocol status
+- Codex: configuration example uses `wire_api = "responses"`; the VPS LiteLLM `/v1/responses` test returned HTTP 500. Not yet live.
+- Claude Code: configuration example uses Anthropic Messages variables; the VPS `/v1/messages` test timed out. Not yet live.
+- Devin: service API adapter template is present. Devin is a hosted Agent service API/MCP integration, not a verified custom inference endpoint; no Devin credential was found.
+- Aider, Cline, Goose, OpenCode, Hermes, DSH, OpenHands, DeepSeek and Open WebUI have per-Agent provider examples. These are configuration templates until each Agent's own runtime test succeeds.
+
+Do not mark a provider as live merely because a configuration example exists. A route is live only after its native protocol test succeeds.

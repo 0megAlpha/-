@@ -1,13 +1,11 @@
-# OpenHands model and agent adapters
+# OpenHands Provider Adapter
 
-The OpenHands stack uses LiteLLM for model routing and MCP/ACP for tool and agent interoperability.
+OpenHands is the primary orchestration platform. Use LiteLLM for model routing, MCP for tools/resources, and ACP for external coding-agent runtimes. These are distinct integration layers.
 
-Host process:
-- LLM_BASE_URL=http://127.0.0.1:14000
-- LLM_API_KEY must be injected from the LiteLLM secret.
+- Docker-network LiteLLM base: `http://agents-litellm:4000`
+- OpenAI-compatible model route: `/v1`
+- Anthropic-compatible route: configure LiteLLM's Anthropic endpoint separately when an Anthropic provider is configured.
+- Model name: `litellm_proxy/<registered-model-alias>`
+- Credential: inject the actual gateway key through the runtime secret store.
 
-Container process on the OpenHands network:
-- LLM_BASE_URL=http://agents-litellm:4000
-- LLM_API_KEY must be injected from the LiteLLM secret.
-
-Do not hard-code a gateway key in config.toml. Keep model routing, MCP server definitions and ACP agent connections as separate configuration layers.
+The current LiteLLM master key and OpenHands LLM_API_KEY were detected as placeholders, not production credentials. Two keyless Chat Completions routes passed live inference; remaining provider routes and Responses/Anthropic conformance are pending.

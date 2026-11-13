@@ -1,5 +1,10 @@
-# Claude Code provider adapter
+# Claude Code Provider Adapter
 
-Claude Code's custom endpoint must implement Anthropic Messages semantics. Set ANTHROPIC_BASE_URL to an Anthropic-compatible gateway, ANTHROPIC_AUTH_TOKEN to the gateway credential, and select a model exposed by that gateway.
+Claude Code uses Anthropic Messages semantics. Configure a native Anthropic endpoint, a compatible gateway, or the LiteLLM Anthropic-format endpoint. Do not point Claude Code at a Chat Completions-only URL.
 
-The included example uses the local LiteLLM service URL. It is a configuration template only: verify the gateway's /v1/messages route and a real completion before applying it to a live Claude Code profile. MCP tool servers are configured separately.
+- `ANTHROPIC_BASE_URL`: provider root (for LiteLLM, normally the proxy root; pass-through can use `/anthropic`)
+- `ANTHROPIC_AUTH_TOKEN` or `ANTHROPIC_API_KEY`: runtime credential
+- `ANTHROPIC_MODEL`: provider model alias
+- `CLAUDE_CODE_USE_BEDROCK` / `CLAUDE_CODE_USE_VERTEX`: only for their respective native cloud modes
+
+See `claude-code.env.example`. Inject values through the secret store, then run `claude doctor` and a minimal `claude -p` request.

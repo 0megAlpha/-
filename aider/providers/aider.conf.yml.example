@@ -1,0 +1,3 @@
+model: openai/pollinations-free
+openai-api-base: http://127.0.0.1:14000/v1
+# Supply OPENAI_API_KEY through the runtime environment, not this file.

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "vps-litellm": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "VPS LiteLLM",
+      "options": {
+        "baseURL": "http://127.0.0.1:14000/v1",
+        "apiKey": "{env:OPENAI_API_KEY}"
+      },
+      "models": {
+        "pollinations-free": { "name": "Pollinations Free" },
+        "kilo-free": { "name": "Kilo Free" }
+      }
+    }
+  }
+}

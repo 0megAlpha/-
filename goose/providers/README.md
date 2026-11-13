@@ -1,3 +1,10 @@
-# Goose provider adapter
+# Goose Provider Adapter
 
-Use Goose's OpenAI provider with a custom host: OPENAI_HOST=http://127.0.0.1:14000/v1, OPENAI_API_KEY sourced from the gateway secret, and GOOSE_MODEL set to an exposed LiteLLM model ID. Validate the provider version's exact environment-variable contract before applying to a persistent profile.
+Goose supports an OpenAI-compatible provider configuration. Use its provider settings and environment variables; keep Goose extensions and recipes in the Goose directory.
+
+- Provider: OpenAI-compatible
+- Host: `OPENAI_HOST`
+- Key: `OPENAI_API_KEY`
+- Model: exact gateway alias
+
+See `goose.env.example`. Validate the installed Goose version's config schema before applying it to a live profile.

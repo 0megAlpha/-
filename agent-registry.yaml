@@ -20,3 +20,68 @@ agents:
   - {name: opencode, path: opencode, provider_adapter: opencode/providers, protocol: openai-chat-completions, status: config-template}
   - {name: deepseek, path: deepseek, provider_adapter: deepseek/providers, protocol: deepseek-native-or-openai-compatible, status: config-template}
   - {name: openwebui, path: openwebui, provider_adapter: openwebui/providers, protocol: openai-chat-completions, status: config-template}
+
+provider_adapter_status:
+  claude-code:
+    path: claude-code/providers
+    protocol: anthropic-messages
+    status: template-installed
+    live_test: pending
+    blocker: LiteLLM Anthropic Messages route timed out; provider credential not validated
+  codex:
+    path: codex/providers
+    protocol: openai-responses
+    status: template-installed
+    live_test: failed
+    blocker: LiteLLM /v1/responses returned HTTP 500
+  devin:
+    path: devin/providers
+    protocol: devin-service-api-and-mcp
+    status: template-installed
+    live_test: pending
+    blocker: Devin API credential not available
+  hermes:
+    path: hermes/providers
+    protocol: native-provider-registry-plus-openai-chat-completions
+    status: existing-adapter-plus-template
+    live_test: pending
+  dsh:
+    path: dsh/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  aider:
+    path: aider/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  cline:
+    path: cline/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  goose:
+    path: goose/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  opencode:
+    path: opencode/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  deepseek:
+    path: deepseek/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  openwebui:
+    path: openwebui/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+  openhands:
+    path: openhands/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: local-qwen3-0.6b-chat-completions-pass

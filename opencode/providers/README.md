@@ -1,3 +1,5 @@
-# OpenCode provider adapter
+# OpenCode Provider Adapter
 
-Define a custom provider with baseURL set to http://127.0.0.1:14000/v1, an environment-backed API key, and a model ID returned by LiteLLM /v1/models. Preserve OpenCode-specific plugins and skills inside this agent directory.
+OpenCode supports custom providers with a configurable `baseURL`, model ID and API key. Keep OpenCode plugins and agents in this directory's parent Agent folder.
+
+See `opencode.json.example`. Use the environment reference supported by the installed OpenCode release and verify with a minimal prompt.
