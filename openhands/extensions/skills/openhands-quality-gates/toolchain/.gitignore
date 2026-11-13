@@ -1,0 +1,13 @@
+node_modules/
+.npm-cache/
+.pip-cache/
+home/
+ms-playwright/
+semgrep-venv/
+.cache/
+.semgrep/
+artifacts/
+test-results/
+playwright-report/
+bin/trivy
+*.log
