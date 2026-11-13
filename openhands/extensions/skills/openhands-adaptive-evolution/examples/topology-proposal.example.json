@@ -1,0 +1,5 @@
+[
+  {"id":"breaker","role":"breaker","permissions":["read","test"],"sandboxed":true},
+  {"id":"builder","role":"builder","permissions":["read","write_branch","test"],"sandboxed":true},
+  {"id":"magistrate","role":"magistrate","permissions":["read","test"],"sandboxed":true}
+]
