@@ -1,0 +1,33 @@
+name: agent-os-ci
+on:
+  push:
+    branches:
+      - 'vps-mirror/**'
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: astral-sh/setup-uv@v5
+      - name: Install dependencies
+        working-directory: agent-os-portable
+        run: uv sync --frozen --extra dev
+      - name: Unit tests
+        working-directory: agent-os-portable
+        run: uv run pytest -q
+      - name: Lint
+        working-directory: agent-os-portable
+        run: uv run ruff check .
+      - name: Format
+        working-directory: agent-os-portable
+        run: uv run ruff format --check .
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: \${{ secrets.GITHUB_TOKEN }}

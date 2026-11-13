@@ -35,4 +35,4 @@ This is an active reconciliation workspace, not a claim that every VPS asset has
 
 Current evidence and remaining work:
 - docs/AGENT-CAPABILITY-OWNERSHIP.md
-- docs/CONVERSATION-WIDE-AGENT-REQUIREMENTS.md (sanitized requirements only)
+- docs/AGENT-CAPABILITY-OWNERSHIP.md
