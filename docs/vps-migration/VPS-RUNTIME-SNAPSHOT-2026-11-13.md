@@ -2,7 +2,7 @@
 
 ## Host and capacity
 - Host: agent-vps / Ubuntu 26.04 / 4 vCPU AMD EPYC / ~31 GiB RAM / ~320 GiB filesystem.
-- Root filesystem: 332,057,387,008 bytes total; 303,958,630,400 bytes used; 28,081,979,392 bytes free; 92% used.
+- After removing the verified clean duplicate Git worktree, root filesystem: 332,057,387,008 bytes total; approximately 263 GB used; 47 GB free; 86% used.
 - Inodes: 18% used.
 - Reboot required: yes (package update marker present). No reboot was initiated.
 - Docker: 29 running containers, 30 total containers, 32 named/anonymous volumes.
@@ -46,52 +46,16 @@ Protocol-specific tests:
 - Exa MCP container exited with code 0; Exa's ChatGPT connector is available. The container may be a stdio-launched MCP process rather than a persistent daemon; verify its MCP proxy launch configuration before treating it as a failure.
 - Package reboot marker is present; reboot was not performed.
 
-## TCP/UDP listeners
-Socket bindings are recorded below. A bind to `0.0.0.0` or `::` means the process listens on all host interfaces; actual internet reachability depends on firewall rules, which were not fully proven in this snapshot.
+## Network exposure
 
-### Public-interface binds (0.0.0.0 / ::)
-- TCP 22 — SSH administration.
-- TCP 631 — CUPS printing service.
-- TCP 2222, 6080, 8081, 26357 — additional host processes; process-to-port ownership still needs a dedicated map.
-- TCP 3000 — Open WebUI.
-- TCP 5003 — Dify plugin daemon.
-- TCP 5700 — Docker MCP Proxy.
-- TCP 8000 — OpenHands Agent Canvas.
-- TCP 8080 — MimoCode2API.
-- TCP 8743 — ENI Harbor service.
-- TCP 11344 — FRP relay.
-- TCP 13000 — OpenHands main UI/API.
-- TCP 13001 — NewAPI.
-- TCP 14000 — LiteLLM proxy.
-- TCP 15432 — agents PostgreSQL.
-- TCP 16333/16334 — agents Qdrant HTTP/gRPC.
-- TCP 16379 — agents Redis.
-- TCP 18080 — agents Mem0.
-- UDP 41641 — Tailscale WireGuard.
-
-### Tailscale-interface binds
-- TCP 443 and TCP 35539 on the Tailscale interface.
-
-### Loopback-only binds
-- TCP 3080 — DSH service.
-- TCP 4000 — LiteLLM internal listener.
-- TCP 6333/6334 — local Qdrant.
-- TCP 6379 — local Redis.
-- TCP 7000/7500 — FRP control/management.
-- TCP 8642/8643 — Hermes API/Gateway.
-- TCP 8787 — Agent-Throne API.
-- TCP 8890 — Agent-Throne File Center.
-- TCP 9050 — Tor SOCKS.
-- TCP 9999 — mcp-vps service.
-- TCP 11343 — FRP local listener.
-- TCP 20128 — 9router.
-- TCP 47937 — Hermes internal listener.
-- UDP 323 — chrony.
+- Detailed TCP/UDP listener inventory is retained in the private VPS maintenance record in Notion; it is intentionally not published in this public GitHub repository.
+- Several services bind to all host interfaces; actual internet reachability depends on firewall rules. No firewall or published-port changes were made in this pass.
 
 ## Storage and cleanup
-- A separate full-tree Git worktree at `/opt/agent-vps-worktrees/0megalpha-full-tree` occupies approximately 21.6 GB; the source checkout at `/opt/agents/-` occupies approximately 20.6 GB. The worktree is a temporary duplicate created for safe branch work. After the new commit is pushed and verified, remove only that clean worktree to reclaim its checkout space; preserve the source checkout and all named Docker volumes.
+- The temporary full-tree Git worktree was removed only after confirming it was clean and its HEAD exactly matched the remote branch SHA. Approximately 21.6 GB was reclaimed. The source checkout at `/opt/agents/-` and all Docker volumes were preserved.
 - 32 Docker volumes were inventoried. No volume was deleted because ownership and data retention have not been established.
 - Do not run blanket Docker volume pruning.
+- The original source checkout `/opt/agents/-` remains on `main`, ahead 3 / behind 2, with existing modified and untracked files. It was not reset, cleaned, switched or overwritten.
 
 ## Remaining deployment blockers
 1. Supply `litellm-master-key` in Gateway's secure stored-value UI, then apply it to LiteLLM and OpenHands and disable placeholder credentials.
