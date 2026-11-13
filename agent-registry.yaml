@@ -169,3 +169,42 @@ non_llm_modules:
   - {name: StateM, type: workflow_orchestration_engine, provider_adapter_required: false}
   - {name: XAttacker, type: security_testing_tool, provider_adapter_required: false}
   - {name: Dify, type: agent_orchestration_platform, runtime_health: verified}
+
+
+  - {name: oh-my-agent, path: agents/oh-my-agent, provider_adapter: agents/oh-my-agent/config/providers.env.example, protocol: provider-matrix-plus-litellm-and-native, status: existing-provider-implementation}
+
+integration_bundles:
+  - {name: All-in, path: agents/All-in, type: multi-agent-orchestration-bundle, provider_adapter: agents/All-in/providers, status: config-template}
+  - {name: Dify, path: infrastructure/dify, type: agent-orchestration-platform, status: runtime-health-verified}
+
+project_classification:
+  runtime_agent_frameworks:
+    - mini-swe-agent
+    - swe-agent
+    - dgm
+    - hyperagents
+    - fuzzingbrain
+    - agent-system
+    - oh-my-agent
+  orchestration_and_platforms:
+    - All-in
+    - Dify
+    - agent-plane
+    - ai-agent-fleet
+  non_llm_modules:
+    - {name: StateM, type: workflow_orchestration_engine, provider_adapter_required: false}
+    - {name: XAttacker, type: security_testing_tool, provider_adapter_required: false}
+    - {name: CKA-Agent, type: Kubernetes_security_research_project, provider_adapter_required: project_specific}
+  duplicate_and_alias_map:
+    - canonical: agents/oh-my-agent
+      retained_alias: agents/-oh-my-agent-
+      difference: only source marker file differs; do_not_deploy_both: true
+    - canonical: agents/DARPA-AIxCC
+      retained_alias: agents/-DARPA-AIxCC-
+      difference: only source marker file differs; do_not_deploy_both: true
+    - canonical: agents/DARPA-AIxCC
+      retained_historical_forks: [agents/afc-crs, agents/afc-crs-all-you-need-is-a-fuzzing-brain]
+      difference: divergent security/docs/SesM/venv content; retain for review, do_not_deploy_both: true
+    - canonical: agents/All-in
+      retained_historical_snapshot: agents/All-in-root
+      difference: divergent compose/dashboard and extra security/deploy docs; do_not_deploy_both: true
