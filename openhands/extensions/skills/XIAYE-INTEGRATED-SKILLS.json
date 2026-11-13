@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "generated_on": "2026-11-13",
+  "purpose": "portable capability ownership map; not an assertion that every capability is runtime-installed",
+  "groups": {
+    "openhands": {
+      "path": "openhands/extensions/skills",
+      "skills": [
+        "build-setup",
+        "cobol-modernization",
+        "cross-repo-testing",
+        "mainframe-planning",
+        "mainframe-removal",
+        "migration-mapping",
+        "migration-report",
+        "migration-scoring",
+        "score-quality",
+        "score-style",
+        "setup-openhands",
+        "setup-pr-review",
+        "to-java-migration",
+        "upcoming-release",
+        "update-sdk"
+      ]
+    },
+    "shared": {
+      "path": "agents/Ai-agent-skill/skills",
+      "skills": [
+        "agent-readiness-report",
+        "agent-skills",
+        "agentic-security-review",
+        "api-compatibility",
+        "apollo-memory",
+        "composio-tool-integration",
+        "define-to-ship",
+        "ecc",
+        "engineering-memory",
+        "firecrawl",
+        "firecrawl-web-research",
+        "harness-evolution",
+        "improve-agent-readiness",
+        "obra-superpowers",
+        "plan-once-verify-always",
+        "sesm-engine",
+        "skill-optimizer",
+        "setup-agents-md",
+        "understand-anything"
+      ]
+    },
+    "agent_fleet": {
+      "path": "agents/ai-agent-fleet/skills",
+      "skills": [
+        "agent-fleet-secure-workflow"
+      ]
+    },
+    "ops": {
+      "path": "ops/skills",
+      "skills": [
+        "vps-bridge"
+      ]
+    }
+  },
+  "excluded": [
+    "magic-word (test-only)"
+  ],
+  "runtime_validation": {
+    "openhands_existing_workspace_skill_count": 111,
+    "previously_reported_imported_count": 38,
+    "status": "runtime previously verified; per-Agent source ownership is being corrected in this repository"
+  }
+}

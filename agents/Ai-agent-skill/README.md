@@ -1,84 +1,42 @@
-<<<<<<< HEAD
-# 🧩 Ai-agent-skill — 一人 AI 軟體公司技能包（one pack, many agents）
+# AI Agent Skills — 共用能力庫
 
-## 原則
-1. **one pack many agents**：同一技能包可掛載到 Hermes / OpenCode / Kilo / Crush / Goose 等
-2. **skills need ownership**：每個技能都有維護者與版本號（SKILL.md frontmatter 標註）
-3. **共享 references 不隨單一技能帶入** → 統一放 `~/.agents/references/`
-4. **流程配合團隊實況更新**：以目前實際部署狀態為準（舊文件僅作歷史參考）
-5. **from output to delivery**：產出必須走到可交付（測試、文檔、部署、驗證）
+本目錄是跨 Agent 共用的能力資產來源，不是另一個 Agent Runtime。只保存已確認可由多個 Agent／Framework 共用的 Skills、工具、MCP 元件、Plugin adapters、工作流程與文件。
 
-## 目錄
-```
-Ai-agent-skill/
-├── skills/manifest.json        # 技能清單（本體位於 ../All-in/skills，單一真相來源）
-├── references/                 # 共享 references（安裝後連到 ~/.agents/references/）
-├── frontend/collaboration-monitor/  # 協作監控面板（修復 4：接 Qdrant + Hermes 真實數據）
-├── install.sh                  # 冪等安裝到三個 Agent 的 skills 目錄
-└── push.sh                     # 去敏推送（絕不 --force）
-```
+## 單一來源與歸屬規則
+- Agent 本體、專屬設定、專屬工具、Skills、Plugins、MCP adapter 和執行工作流，必須放在該 Agent 的唯一 canonical 目錄。
+- OpenHands 專屬能力放在 openhands/；Hermes 專屬能力放在 hermes/；DSH 專屬能力放在 dsh/；Open WebUI 專屬能力放在 openwebui/。
+- 其他獨立 Agent 的專屬資產放在 agents/<agent-id>/。
+- 本目錄 skills/、plugins/、mcp-servers/、tools/、workflows/ 僅保存 framework-neutral、可被多個 Agent 重用的單一來源。
+- Agent 專屬套件不得只放在共用庫，否則單獨拉取 Agent 目錄會缺能力。
+- 若共用資產需要 Agent-specific adapter，adapter 放在 Agent 目錄，核心實作仍只保留一份在共用庫。
 
-## 安裝
-```bash
-bash install.sh
-```
-
-## 協作監控面板（修復 4 實作）
-`frontend/collaboration-monitor/` 直接瀏覽器開啟即可：
-- **Qdrant**：`/collections` + `/collections/{name}`（記憶 collections 與 points 數）、
-  `/collections/{name}/points/scroll`（最新記憶內容檢索）
-- **Hermes**：`/health`、`/v1/agents/status`（Agent 狀態與任務進度）
-- 端點不存在或 CORS 未開 → 如實顯示 offline/unknown，**不假造數據**
-
-## 誠實狀態聲明
-本包由 DSH（無 shell 的檔案寫入 session）生成。推送需自行執行：
-```bash
-bash push.sh "feat: Ai-agent-skill 技能包 + 協作監控"
-```
-不偽造 commit hash 與服務狀態；推送前自動跑密鑰掃描。
-=======
-# AI-Agent-Skill
-
-通用 Agent / Skill 能力資產庫 — 非專屬 OpenHands 或 Hermes，可被多個 Agent / Framework 重複使用的 Skills、Agent capabilities、reusable tools、plugins、MCP/ACP 元件、Agent modules 與 scripts。
-
-> 維護方針：三大 Repository（OpenHands / Hermes / AI-Agent-Skill）之一。本 repo 只收**通用**能力；凡明確屬於 OpenHands 或 Hermes 的資產，分別歸入對應 Repository。
-
-## 目錄結構
-
-| 路徑 | 內容 |
+## 資產分類
+| 路徑 | 責任 |
 |---|---|
-| `skills/` | 通用 Skill bundle（8 套，均為內嵌檔案追蹤，clone 後即完整可用） |
-| `mcp-servers/` | 通用 MCP server 元件（14 個；stub 清單，實作以官方/全局套件為準） |
-| `.claude-plugins/` | 33 個 Claude 相容 plugin 目錄 |
-| `.claude/skills/` | Claude skills |
-| `.cline/plugins/` | Cline 插件配置 |
-| `opencode-engine/` | OpenCode 引擎 plugins（vulnerability-remediation, skill-optimizer, css-tailwind-purger, uv-env-manager, dotenv-secret-scanner 等） |
-| `openai-brain/` | OpenAI SDK configs（mcp-resource-subscription-manager, adaptive-thread-manager 等） |
-| `hermes-brain/` | Hermes 相容 core（9 個通用 skills + config） |
-| `openhands-core/` | OpenHands 相容 core（.agents/skills；本目錄於 git 忽略，正式來源為 open-hands repo） |
-| `multi-agent-orchestrator/` | 多 Agent 編排定義（18 個 JSON agent 組態） |
-| `devin-sandbox/`, `kiro-core/`, `langgraph-core/`, `autogen-core/`, `swe-agent-core/`, `coolify-core/`, `aider-core/`, `openai-brain/` | 各框架 core 參考/能力 |
-| `scripts/` | 可重用腳本（v6_orchestrator.py, n8n_workflow_importer.json） |
-| `docs/` | DEPLOYMENT_RECORD.md, SECURITY_SCAN.md, SOURCES.md |
-| `media-studio/`, `automation-center/`, `models/`, `memory/`, `security/`, `bookmarks/`, `dictionary/`, `portal/`, `notebook/` | 輔助資產 |
+| agents/ | Agent 定義、角色提示、能力設定與協作規格 |
+| skills/ | 多 Agent 可重用的 Skill bundles |
+| .claude-plugins/ | Claude Code 相容 Plugin／marketplace |
+| .cline/ | Cline 相容設定與 Plugin adapter |
+| mcp-servers/ | 通用 MCP server 來源、啟動規格、工具與資源契約 |
+| plugins/ | 多 Agent 可重用 Plugin 實作 |
+| tools/、scripts/ | 可獨立測試的通用工具 |
+| workflows/、multi-agent-orchestrator/ | 跨 Agent 任務拆分、狀態流轉、檢查與交付流程 |
+| references/、docs/ | 上游來源、版本、License、整合與驗證紀錄 |
+| memory/ | 可移植記憶格式與 adapter；不得放即時 session、憑證或私人對話資料 |
 
-## Skills（8 套通用 bundle）
+## 已盤點來源
+VPS 同名來源目錄包含通用開發、Code Review、安全、Research、Frontend、Kubernetes、Docker、GitHub、Vercel、Notion、Superpowers、GStack、Kiro Powers、Claude/Cline/OpenCode adapters、多 Agent 編排、MCP bridge、Filesystem、Browser automation、測試與部署能力。來源目錄存在不代表已安裝、已載入或通過執行測試；stub、範例和連結必須標示為 stub/reference，不得冒充完整實作。
 
-| Bundle | 來源（GitHub） | 說明 |
-|---|---|---|
-| addyosmani-agent-skills | addyosmani/agent-skills | agents/commands/docs 通用技能包（.claude-plugin marketplace 格式） |
-| awesome-claude-code-toolkit | rohitg00/awesome-claude-code-toolkit | Claude Code 工具包集合 |
-| claude-forge | immacualate/claude-forge（含 CC-CHIPS） | Claude Code 插件/能力（cc-chips） |
-| ghost-goat | (見 skills/ghost-goat) | ghost-goat skills：agent-evaluation, code-review, mcp-development, red-team-testing 等 |
-| gstack | garrytan/gstack | Claude Code 工作流 stack（AGENTS.md/CLAUDE.md） |
-| kiro-powers | (見 skills/kiro-powers) | 多雲能力：aws-transform-toolkit, datadog-monitoring, figma-design, firebase-integration, exa-web-search 等 |
-| cc-suite | (npx cc-suite) | cc-suite@1.0.5 工具鏈組態 |
-| superpowers | obra/superpowers | superpowers v6.3.0（Devin CLI / Hermes Agent 支援） |
+## 整合與驗收
+1. 記錄來源 Repository、License、版本／Commit、依賴和目標 Agent。
+2. 檢查同名／同功能資產，先比較內容、歷史、授權與測試，再決定共用或保留專屬副本。
+3. 安裝前執行秘密掃描、依賴檢查與隔離測試。
+4. 通用資產放本庫；專屬資產直接隨所屬 Agent 完整目錄保存。
+5. 驗證 Skill frontmatter、Plugin manifest、MCP initialize/list_tools、工具真實呼叫及 Agent 啟動流程。
+6. 記錄來源、版本、安裝位置、測試結果、必要環境變數名稱（不包含值）和回復方式。
 
-## 長期維護契約
+## 去敏
+禁止提交 .env、Token、API Key、Cookie、Authorization header、私鑰、憑證庫、SSH material、資料庫傾印、使用者 session、即時記憶資料庫、含秘密的 Log、私有模型權重及未審查備份。Public repository 也不得包含可定位實際主機的內部 port map、IP 或私有部署 endpoint。
 
-1. 通用能力進 `skills/`、`mcp-servers/`、`.claude-plugins/` 等；OpenHands 專屬進 open-hands repo；Hermes 專屬進 hermes-007 repo。
-2. 新增能力時：在 `docs/SOURCES.md` 記錄來源 URL 與檢核狀態。
-3. 敏感檔案（`.env*`、`.sim-key`、`.pg-pass`、`auth.json`、`*.pem`、`*.key`）一律禁止 commit（見 .gitignore）。
-4. 嵌套 repo 的 `.git` 元資料統一放 `.embedded-git/`（gitignore），確保 clone 後內容完整。
->>>>>>> 57abf191ba6b1fe69de6cb4bf2d4b0a48c3a95e9
+## 狀態
+這是共用能力資產庫，不是部署完成聲明。各 Agent 的專屬能力仍需按 canonical folder 完成比對、安裝、載入與功能驗證。來源記錄放在 docs/SOURCES.md；沒有來源、授權或測試證據的項目不得標記為已完成。

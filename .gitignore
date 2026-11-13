@@ -1,2 +1,14 @@
 .env
+.env.*
 *.log
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.bak
+*.backup
+/.ai-agent-skill-mirror.tar.gz
+/docs/vps-migration/
+/docs/CONVERSATION-WIDE-AGENT-REQUIREMENTS.md
+/docs/AGENT-PORTABILITY-AND-DEPLOYMENT.md

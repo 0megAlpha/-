@@ -1,42 +1,38 @@
-# VPS Agent Mirror
+# Portable Agent Workspace
 
-Private aggregation repository for the VPS Agent ecosystem.
+Repository: 0megAlpha/-
+Canonical branch: vps-mirror/full-tree
+Visibility last verified: Public.
 
-## Full upstream source repositories (Git submodules)
+This repository is the single portable source tree for the VPS Agent ecosystem. Each independent Agent must be pullable as one complete canonical directory, with its own source, runtime adapter, configuration templates, tools, Skills, Plugins, workflows, tests and deployment documentation.
 
-These folders are pinned to verified upstream commits. Clone with `--recurse-submodules` to download their complete source trees and Git history.
+## Canonical ownership
+- openhands/: primary software-engineering Agent and OpenHands-specific runtime/extensions.
+- hermes/: Hermes source, Hermes-specific Skills/Plugins, gateway adapters and deployment templates.
+- dsh/: DeepSeek Harness source, profiles, plugins, tools and DSH-specific integrations.
+- openwebui/: Open WebUI source/runtime integration, pipes, tools and UI plugins.
+- agents/<agent-id>/: one complete directory per other independent Agent (Claude Code, OpenCode, Cline, Aider, Goose, Agent Plane, SentinelX, Agent-Throne, AI Agent Fleet, etc.).
+- agents/Ai-agent-skill/: shared capability library only; not a dumping ground for Agent-specific plugins or packages.
+- shared/: only genuinely cross-Agent code: LLM routing contracts, MCP registry/schema, shared adapters and common protocols.
+- ops/: host-neutral templates and health checks. Host-specific secrets, live port maps, IPs, tokens and private runtime data are excluded.
+- docs/: source documents, migration maps, architecture, provenance and verified runbooks.
 
-| Folder | Upstream | Pinned HEAD |
-|---|---|---|
-| `hermes/` | https://github.com/NousResearch/hermes-agent | `c7c7e0fa92f40c8f526e4a52c0966c128245ffd3` |
-| `openhands/core/` | https://github.com/OpenHands/OpenHands | `cdd6a69248ce8f99b41ff4c47bdf68dee95024e5` |
-| `openhands/software-agent-sdk/` | https://github.com/OpenHands/software-agent-sdk | `98849457621881ae2414719b82b8bc1cf535b4ab` |
-| `openhands/extensions/` | https://github.com/OpenHands/extensions | `6fb2b67680b9a5b41452a148e5705f99c7df1a75` |
-| `CKA-Agent/` | https://github.com/Graph-COM/CKA-Agent | `938becd7011e834ed9cf89140e9fdddc12a2866c` |
+## Packaging rule
+A clone of openhands/, hermes/, dsh/, openwebui/ or agents/<agent-id>/ must contain that Agent's complete portable capability set. Shared Skills may be referenced by adapters/manifests, but Agent-specific Skills/Plugins/Tools must live inside their owning Agent directory. The shared capability library contains only assets verified as framework-neutral and reusable by multiple Agents. Do not put all extensions into one global skills folder.
 
-## VPS-local mirrors still pending
+## Upstream and history
+- Keep upstream source, version/tag, license, commit provenance and local patches traceable.
+- Preserve existing Git history, submodules and gitlinks where applicable.
+- Never force-push or rewrite history.
+- Do not flatten an upstream submodule into a second copy of the same source.
+- Each Agent has one canonical folder; version snapshots and backups are kept inside that folder only when genuinely distinct and useful.
 
-- `Ai-agent-skill`: one commit ahead / 24 behind; modified `push.sh`; seven untracked paths. Its configured private origin is not accessible with the currently stored Gateway credential.
-- `Claude-code`: clean local checkout, but configured private origin is not accessible with the currently stored Gateway credential.
-- `Google-AI`: 2,563 staged paths including submodule/gitlink state; not migrated yet.
-- `hermes-007`: local branch is 22 commits behind upstream; two untracked secrets-guide directories must be reviewed before inclusion. Upstream fetch has now completed.
-- `openhands-extensions`: local working tree clean; fetch from origin completed and updated 31 remote-tracking refs.
-- `CKA-Agent`: upstream fetch completed with no ref changes; local config modification and backup remain uncommitted.
-- `All-in`, `agent-plane`, `sentinelx-cloud-core`: root-owned; require complete source inventory and safe snapshot.
-- OpenHands integrated and v1.25.0 deployment snapshots remain separate from upstream core.
+## Security and portability
+This repository is currently Public. Never commit live API keys, tokens, cookies, passwords, private keys, SSH material, .env values, OAuth refresh tokens, database dumps, runtime sessions, private memory stores, sensitive logs, private model weights, host-specific port inventories, internal IPs or private deployment endpoints. Use sanitized .example templates with placeholder values only. Preserve upstream LICENSE/NOTICE files.
 
-## Browser clone
+## Current migration status
+This is an active reconciliation workspace, not a claim that every VPS asset has been mirrored or every Agent is runtime-verified. Each component must record source, canonical owner, install target, version/commit, secret-scan result, tests and remote commit SHA before being marked complete.
 
-```bash
-git clone --recurse-submodules --branch vps-mirror/inventory-2026-11 https://github.com/0megAlpha/-.git
-```
-
-## Safety
-
-No credentials, .env files, private keys, tokens, databases, runtime sessions or logs are included. Submodules preserve the upstream repositories and pinned commits, but do not include VPS-local modifications. This is a partial upstream-source mirror, not yet a complete VPS-local mirror.
-
-
-## Deployment records
-
-- [Uploaded Agent deployment guide](docs/source/Agent部署.md) — source-preserved upload; installation steps and third-party plugin compatibility remain to be verified on this VPS.
-- [Deployment status and handoff](docs/DEPLOYMENT-STATUS-2026-11-05.md) — verified GitHub write, VPS sync blockers, security notes, and remaining work.
+Current evidence and remaining work:
+- docs/AGENT-CAPABILITY-OWNERSHIP.md
+- docs/CONVERSATION-WIDE-AGENT-REQUIREMENTS.md (sanitized requirements only)
