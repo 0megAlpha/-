@@ -43,7 +43,7 @@ Protocol-specific tests:
 - `llama-agent-fast.service`: repaired and now active with zero restarts since the repair; currently serves Qwen3 0.6B, not the original 4B model.
 - `lody-agent.service`: repeatedly exits with `Worker authentication failed; run lody login`; service has approximately 13k historical restarts. Requires an authenticated Lody login.
 - `nginx.service`: inactive. No Caddy service was active during this snapshot.
-- Exa MCP container exited with code 0; Exa's ChatGPT connector is available. The container may be a stdio-launched MCP process rather than a persistent daemon; verify its MCP proxy launch configuration before treating it as a failure.
+- Standalone `exa-mcp` container is stopped (exit code 0; historical restart count 2,531), but the active `mcp-proxy` container launches an Exa MCP child process. Its Streamable HTTP endpoint `/servers/exa/mcp` completed MCP initialize and tools/list (server `exa-search-server` 3.4.3; Exa tools are exposed). The proxy's inherited `EXA_API_KEY` is a placeholder, although the host-side `/root/docker-mcp-proxy/.env` contains a non-placeholder key. Applying the host key requires a controlled proxy environment update/restart; this was not performed in this pass.
 - Package reboot marker is present; reboot was not performed.
 
 ## Network exposure
