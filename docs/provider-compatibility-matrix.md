@@ -45,7 +45,7 @@ The VPS now has per-Agent adapter directories and examples under each canonical 
 
 ### Live endpoints
 - LiteLLM 1.108.0: host `http://127.0.0.1:14000/v1`, Docker network `http://agents-litellm:4000/v1`. Its master key is currently a placeholder and must be rotated before production use.
-- Local Qwen3 0.6B: host `http://127.0.0.1:8089/v1`; OpenHands Docker network `http://172.17.0.1:8089/v1`. This endpoint is bound only to the Docker bridge gateway. Chat Completions and a minimal text response were verified.
+- Local Qwen3 0.6B: host and OpenHands Docker network `http://172.17.0.1:8089/v1` (bound only to the Docker bridge gateway). This endpoint is bound only to the Docker bridge gateway. Chat Completions and a minimal text response were verified.
 - The local Qwen endpoint does not yet implement a verified OpenAI Responses or Anthropic Messages route.
 
 ### Live Chat Completions route tests
