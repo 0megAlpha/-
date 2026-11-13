@@ -20,6 +20,12 @@ agents:
   - {name: opencode, path: opencode, provider_adapter: opencode/providers, protocol: openai-chat-completions, status: config-template}
   - {name: deepseek, path: deepseek, provider_adapter: deepseek/providers, protocol: deepseek-native-or-openai-compatible, status: config-template}
   - {name: openwebui, path: openwebui, provider_adapter: openwebui/providers, protocol: openai-chat-completions, status: config-template}
+  - {name: mini-swe-agent, path: agents/mini-swe-agent, provider_adapter: agents/mini-swe-agent/providers, protocol: litellm-openai-compatible-and-native-providers, status: config-template}
+  - {name: swe-agent, path: agents/SWE-agent, provider_adapter: agents/SWE-agent/providers, protocol: litellm-api-base-and-api-key, status: config-template}
+  - {name: dgm, path: agents/DGM, provider_adapter: agents/DGM/providers, protocol: openai-sdk-anthropic-sdk-deepseek-openrouter, status: config-template}
+  - {name: hyperagents, path: agents/HyperAgents, provider_adapter: agents/HyperAgents/providers, protocol: litellm, status: config-template}
+  - {name: fuzzingbrain, path: agents/DARPA-AIxCC, provider_adapter: agents/DARPA-AIxCC/providers, protocol: litellm-openai-anthropic-google-xai, status: config-template}
+  - {name: agent-system, path: agents/agent-system, provider_adapter: agents/agent-system/providers, protocol: openai-chat-completions, status: config-template}
 
 provider_adapter_status:
   claude-code:
@@ -85,3 +91,37 @@ provider_adapter_status:
     protocol: openai-chat-completions
     status: template-installed
     live_test: local-qwen3-0.6b-chat-completions-pass
+  mini-swe-agent:
+    path: agents/mini-swe-agent/providers
+    protocol: litellm-openai-compatible
+    status: template-installed
+    live_test: pending
+    blocker: LiteLLM master key placeholder
+  swe-agent:
+    path: agents/SWE-agent/providers
+    protocol: litellm-api-base
+    status: template-installed
+    live_test: pending
+    blocker: LiteLLM master key placeholder
+  dgm:
+    path: agents/DGM/providers
+    protocol: openai-sdk-compatible
+    status: template-installed
+    live_test: pending
+  hyperagents:
+    path: agents/HyperAgents/providers
+    protocol: litellm
+    status: template-installed
+    live_test: pending
+  fuzzingbrain:
+    path: agents/DARPA-AIxCC/providers
+    protocol: litellm-native-providers
+    status: template-installed
+    live_test: pending
+    blocker: custom api_base not exposed in current LLMConfig schema
+  agent-system:
+    path: agents/agent-system/providers
+    protocol: openai-chat-completions
+    status: template-installed
+    live_test: pending
+    blocker: LiteLLM master key placeholder
