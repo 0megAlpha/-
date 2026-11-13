@@ -1,0 +1,6 @@
+model:
+  model_class: litellm
+  model_name: pollinations-free
+  model_kwargs:
+    custom_llm_provider: openai
+    api_base: http://agents-litellm:4000/v1
