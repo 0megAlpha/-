@@ -1,0 +1,11 @@
+{
+  "current": {
+    "version": 1,
+    "invariants": ["magistrate_read_only", "sealed_plan", "no_auto_deploy", "no_force_push"]
+  },
+  "proposed": {
+    "version": 2,
+    "invariants": ["magistrate_read_only", "sealed_plan", "no_auto_deploy", "no_force_push", "production_changes_require_explicit_approval"],
+    "evidence_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+  }
+}
