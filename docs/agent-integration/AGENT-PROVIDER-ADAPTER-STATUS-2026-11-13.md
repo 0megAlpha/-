@@ -70,3 +70,11 @@ A provider/Agent is not marked live until:
 - Sonar analysis is not yet live because no SonarQube/SonarCloud endpoint or token is configured.
 - Semgrep smoke checks on one Python and one JavaScript file each returned zero findings; this is a smoke test, not a full repository security clearance.
 - The OpenHands runtime intentionally cannot access the host Docker socket directly. Container lifecycle stays under the OpenHands Docker runtime control plane.
+
+
+## Additional provider-enabled runtime and orchestration bundle
+
+- Oh My Agent: canonical path `agents/oh-my-agent`; existing ProviderMatrix and `config/providers.env.example` cover LiteLLM, OpenAI, Anthropic, Google, Azure, AWS, DeepSeek, Qwen, Mistral, xAI, Groq, Together, Fireworks, OpenRouter and Ollama. The hyphen-wrapped sibling is a retained alias, not a second deployment.
+- All-in: canonical path `agents/All-in`; orchestration bundle with OpenAI, DeepSeek, Moonshot, OpenRouter and LiteLLM endpoint variables. Its child agents retain their own provider adapters.
+- Duplicate policy: do not deploy both `agents/oh-my-agent` and `agents/-oh-my-agent-`; do not deploy both `agents/DARPA-AIxCC` and its marker-only sibling; retain the divergent `afc-crs`/FuzzingBrain snapshots for review only; `All-in-root` is a divergent historical snapshot and is not deployed beside canonical All-in.
+- StateM is a workflow engine and XAttacker is a security testing tool; they are not standalone LLM runtimes requiring a generic model-provider adapter.
